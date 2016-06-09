@@ -1,0 +1,125 @@
+/*
+ Localizable.strings
+ Chronic
+ 
+ Created by Ace Green on 2015-12-14.
+ Copyright © 2015 Ace Green. All rights reserved.
+ */
+
+/* Globals */
+"Reminder Notification Text" = "Zeit für eine tolle Training!";
+"Yes" = "Ja";
+"No" = "Nein";
+"Ok" = "Ok";
+"Cancel" = "Abbrechen";
+"Settings" = "Einstellungen";
+
+"Success" = "Erfolg!";
+"Failed" = "Gescheitert!";
+"Error" = "Fehler!";
+"Prompt Me" = "Aufforden";
+
+"Quick Timer" = "Quick Timer";
+
+"Hours" = "Studen";
+"Minutes" = "Minuten";
+"Seconds" = "Sekunden";
+
+"Day" = "Tag";
+"Week" = "Woche";
+"Month" = "Monat";
+
+/* Main */
+"Text-To-Speech Default Sentence" = "Diese App ist super";
+"Text-To-Speech Tracking Run Text" = "Tracking Lauf";
+"Text-To-Speech Timer Ended" = "Timer beendet";
+"Text-To-Speech Workout Complete Text" = "Workout beendet";
+"Text-To-Speech Run Complete Text" = "Lauf beendet";
+
+"Congratulation Text (Routine)" = "Glückwünsche! Sie haben Ihr Training beendet";
+"Congratulation Text (Run)" =  "Glückwünsche! Sie haben Ihre Lauf abgeschlossen";
+"Timer Ended Text" =  "Ihre Timer ist beendet";
+
+"No Exercise" = "Keine Übung";
+
+"Left Side Label Text (Routine)" = "Vergangen";
+"Right Side Label Text (Routine)" = "Verbleibend";
+
+"Left Side Label Text (Run)" = "Zeit";
+"Right Side Label Text (Run)" = "Distanz";
+
+"Text To Share Text" = "I habe gerade ein Training mit @ChronicTimer beendet";
+
+"Alert: Save Workout Question Title Text" = "Training Speichern?";
+"Alert: Save Workout Question Subtitle Text" = "Möchten Sie Ihr Training speichern?";
+
+"Alert: Authorize Chronic Save Workout Title Text" = "Autorisieren sie Chronic Trainings zu speichern!";
+"Alert: Authorize Chronic Save Workout Subtitle Text" = "Gehen Sie zu Einstellungen -> Datenschutz -> Gesundheit -> Chronic";
+"Alert: Authorize Chronic Save Workout Subtitle Text 2" = "Wir benötigen ihr erlaubnis um Workouts zuspeichern";
+
+"Alert: Location Authorization Title Text" = "Ort Berechtigung erforderlich!";
+"Alert: Location Authorization Subtitle Text" = "Gehen Sie zu Einstellungen -> Datenschutz -> Ortungsdienste -> Chronic";
+
+"Alert: Routine Exists Title Text" = "Routine ist bereits vorhanden";
+"Alert: Routine Exists Subtitle Text" = "Bitte benennen Sie Routine oder bearbeiten Sie vorhandene";
+
+"Alert: Routine Total Time Title Text" = "Oops!";
+"Alert: Routine Total Time Subtitle Text" = "Routine Gesamtzeit kann nicht null sein";
+
+"Alert: No Routine Selected Title Text" = "Oops!";
+"Alert: No Routine Selected Subtitle Text" = "Keine Routine ausgewählt";
+
+"Alert: Routine Name Missing Title Text" = "Routinename fehlt";
+"Alert: Routine Name Missing Subtitle Text" = "Bitte geben Sie Ihre Routine einen Namen";
+
+"Alert: Exercise Empty Title Text" = "Übung Name fehlt";
+"Alert: Exercise Empty Subtitle Text" = "Eine der Übungen wird fehlt ein Namen";
+
+"Alert: Exercise Delete Title Text" = "Übung kann nicht gelöscht werden";
+"Alert: Exercise Delete Subtitle Text" = "Ihre Routine muss mindestens eine Übung haben";
+
+"Alert: Requires Upgrade Title Text" = "Erfordert Upgrade!";
+"Alert: Requires Upgrade Subtitle Text" = "Verbindung zum Internet nötig um Kauf zu initiieren";
+
+"Alert: No Internet Connection Title Text" = "Keine Internetverbindung";
+"Alert: No Internet Connection Subtitle Text" = "Bitte verbinden Sie sich, um fortzufahren";
+
+"Alert: No Email Account Title Text" = "Keine E-Mail-Konto vorhanden";
+"Alert: No Email Account Subtitle Text" = "Bitte fügen Sie eine E-Mail-Konto in Ihrem Mail-App";
+
+"Alert: Workout Running Question Title Text" = "Training läuft?";
+"Alert: Workout Running Question Subtitle Text" = "Aktivieren Sie Benachrichtigungen, um Warnungen im Hintergrund erhalten";
+
+"Alert: In-App Purchases Disabled Title Text" = "In-App-Käufe deaktiviert!";
+"Alert: In-App Purchases Disabled Subtitle Text" = "Bitte aktivieren, um Kauf durchführen";
+
+"Alert: Processing Purchase Title Text" = "Festhalten!";
+"Alert: Processing Purchase Subtitle Text" = "Während wir Ihren Kauf Anfrage bearbeiten";
+
+"Alert: Loading Purchase Title Text" = "Festhalten!";
+"Alert: Loading Purchase Subtitle Text" = "Während wir Ihren Kauf Anfrage laden";
+
+"Alert: Restoring Purchase Title Text" = "Festhalten!";
+"Alert: Restoring Purchase Subtitle Text" = "Während wir Ihren Kauf wiederherzustellen";
+
+"Alert: Restore Success Subtitle Text" = "Ihre Einkäufe wurden erfolgreich wiederhergestellt";
+
+"Alert: Validation Error Title Text" = "Validierungsfehler!";
+"Alert: Validation Error Subtitle Text" = "Diese Transaktion konnte nicht überprüft werden kann, versuchen Sie es erneut";
+
+"Alert: Purchase Request Failed Title Text" = "Kaufanfrage fehlgeschlagen";
+"Alert: Purchase Request Failed Subtitle Text" = "Bitte versuchen Sie es erneut";
+
+"Alert: Health Prompted Title Text" = "bereits aufgefordert";
+"Alert: Health Prompted Subtitle Text" = "Sie können den Zugriff ändern in Einstellungen -> Datenschutz -> Gesundheit -> Chronic";
+
+"Alert: WCSession Paired Error Title Text" = "Apple-Uhr nicht gepaart!";
+"Alert: WCSession Paired Error Subtitle Text" = "Make sure your watch is paired and Chronic is installed on Watch";
+
+"Empty Routine Table Title Text" = "Keine Routinen!";
+"Empty Routine Table Subtitle Text" = "Sie können eine Routine mit dem \"+\" auf der Haupt-Seite hinzufügen";
+
+"Exercise Name Text (Warm Up)" = "Wärmen";
+"Exercise Name Text (Round)" = "Runde";
+"Exercise Name Text (Rest)" = "Ruhe";
+"Exercise Name Text (Cool Down)" = "Abkühlen";

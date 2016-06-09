@@ -1,0 +1,6 @@
+framework module Pods_Chronic {
+  umbrella header "Pods-Chronic-umbrella.h"
+
+  export *
+  module * { export * }
+}

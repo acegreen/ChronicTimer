@@ -1,0 +1,99 @@
+PODS:
+  - AMPopTip (1.0.3)
+  - AMWaveTransition (0.6.2)
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
+  - BubbleTransition (1.0.3)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - Charts (2.2.4):
+    - Charts/Core (= 2.2.4)
+  - Charts/Core (2.2.4)
+  - CNPPopupController (0.3.1)
+  - DZNEmptyDataSet (1.8.1)
+  - FBSDKCoreKit (4.12.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.12.0):
+    - FBSDKCoreKit
+  - Google-Mobile-Ads-SDK (7.8.1)
+  - LaunchKit (2.1.4):
+    - LaunchKit/LaunchKit (= 2.1.4)
+  - LaunchKit/LaunchKit (2.1.4)
+  - Parse (1.13.0):
+    - Bolts/Tasks (~> 1.6)
+  - ParseFacebookUtilsV4 (1.11.1):
+    - Bolts/Tasks (>= 1.6)
+    - FBSDKCoreKit (~> 4.10)
+    - FBSDKLoginKit (~> 4.10)
+    - FBSDKTVOSKit (~> 4.10)
+    - Parse (~> 1.12)
+  - ParseTwitterUtils (1.10.0):
+    - Bolts/Tasks (~> 1.5)
+    - Parse (~> 1.9)
+  - ParseUI (1.2.0):
+    - Bolts/Tasks (~> 1.3)
+    - Parse (~> 1.9)
+  - PureLayout (3.0.1)
+  - Rollout.io (1.0.0)
+  - SDVersion (2.6)
+  - Spring (1.0.3)
+
+DEPENDENCIES:
+  - AMPopTip
+  - AMWaveTransition
+  - BubbleTransition
+  - ChameleonFramework/Swift
+  - Charts
+  - CNPPopupController
+  - DZNEmptyDataSet
+  - Google-Mobile-Ads-SDK
+  - LaunchKit
+  - Parse
+  - ParseFacebookUtilsV4
+  - ParseTwitterUtils
+  - ParseUI
+  - PureLayout
+  - Rollout.io
+  - SDVersion
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift2
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  AMPopTip: 42ab801c5d4519093908d14134c8c9d7ffc435b4
+  AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  BubbleTransition: a7ae6678721406d60f604cbbea1ace505563119d
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
+  CNPPopupController: 67dc2ca5a3f88cd49a27bb1b0aeb78a24d423d79
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
+  FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
+  Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
+  LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
+  Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
+  ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
+  ParseTwitterUtils: 8856ac80da50bbb0f0bcf251def20b62e1ae6bc4
+  ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+  Rollout.io: 149a0164264c8960b0e963ddd28232aefdc12c46
+  SDVersion: c036f7890279d188c17f5701b9feea0d93b9f8ee
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+
+PODFILE CHECKSUM: 2b6e67ddd65cbcd2e9764d08c7c76e68bf2dcf1e
+
+COCOAPODS: 1.0.0

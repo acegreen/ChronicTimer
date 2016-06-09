@@ -1,0 +1,351 @@
+
+/* Class = "UILabel"; text = "Sorry!"; ObjectID = "0Up-H7-Yku"; */
+"0Up-H7-Yku.text" = "抱歉！";
+
+/* Class = "UITableViewSection"; headerTitle = "Upgrades"; ObjectID = "0fi-Bi-iQz"; */
+"0fi-Bi-iQz.headerTitle" = "升级";
+
+/* Class = "UILabel"; text = "Version:"; ObjectID = "1Ao-Gj-XOt"; */
+"1Ao-Gj-XOt.text" = "版本:";
+
+/* Class = "UITextField"; placeholder = "Enter Exercise Name"; ObjectID = "1Go-gJ-F42"; */
+"1Go-gJ-F42.placeholder" = "输入训练者名字";
+
+/* Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "2xz-BS-7zF"; */
+"2xz-BS-7zF.normalTitle" = "联系我们";
+
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "3GQ-hT-fPZ"; */
+"3GQ-hT-fPZ.title" = "设置";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "3Op-VU-lpR"; */
+"3Op-VU-lpR.text" = "1";
+
+/* Class = "UILabel"; text = "Elapsed"; ObjectID = "3sf-YS-vz9"; */
+"3sf-YS-vz9.text" = "过去";
+
+/* Class = "UILabel"; text = "Remove Ads"; ObjectID = "3yx-7I-liQ"; */
+"3yx-7I-liQ.text" = "移除广告";
+
+/* Class = "UILabel"; text = "Number of Rounds"; ObjectID = "50h-dc-HcN"; */
+"50h-dc-HcN.text" = "训练次数";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "5GG-Ww-woU"; */
+"5GG-Ww-woU.title" = "关闭";
+
+/* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "5Tz-d5-wtw"; */
+"5Tz-d5-wtw.text" = "我们期待您的反馈，请您访问 AppStore 给 Chronic 评分。";
+
+/* Class = "UILabel"; text = "Write a Review"; ObjectID = "62U-Rt-gry"; */
+"62U-Rt-gry.text" = "给一个评论";
+
+/* Class = "UILabel"; text = "Quick Timer"; ObjectID = "6YK-pi-Gau"; */
+"6YK-pi-Gau.text" = "快速计时器";
+
+/* Class = "UITableViewController"; title = "Profile & BMI"; ObjectID = "6em-RA-KNh"; */
+"6em-RA-KNh.title" = "档案 和 BMI";
+
+/* Class = "UINavigationItem"; title = "Routines"; ObjectID = "6gL-5a-ixa"; */
+"6gL-5a-ixa.title" = "Chronic";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "6km-se-awh"; */
+"6km-se-awh.title" = "设置";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "7H6-lU-9R8"; */
+"7H6-lU-9R8.text" = "未知";
+
+/* Class = "UILabel"; text = "Ultimate Package"; ObjectID = "7eP-zY-TBv"; */
+"7eP-zY-TBv.text" = "终极套装";
+
+/* Class = "UITableViewSection"; headerTitle = "Weight & Height"; ObjectID = "7jW-QJ-rPV"; */
+"7jW-QJ-rPV.headerTitle" = "身高和体重";
+
+/* Class = "UILabel"; text = "Enable Device Sleep"; ObjectID = "8wI-WB-13g"; */
+"8wI-WB-13g.text" = "开启设备休眠";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "8wN-lo-4Es"; */
+"8wN-lo-4Es.text" = "名称";
+
+/* Class = "UILabel"; text = "Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. "; ObjectID = "9Ss-1c-YZ1"; */
+"9Ss-1c-YZ1.text" = "好，现在让我们设置体能训练提醒，开启设置会有定时体能训练提醒。";
+
+/* Class = "UILabel"; text = "First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the approperiate permission"; ObjectID = "AEV-ww-lGd"; */
+"AEV-ww-lGd.text" = "首先，为了能保存您的体能训练数据，我们需要获得您的授权访问您的健康数据。点击下面的按钮设置访问权限。";
+
+/* Class = "UILabel"; text = "Timer Volume"; ObjectID = "AeL-ZO-UtH"; */
+"AeL-ZO-UtH.text" = "计时器音量";
+
+/* Class = "UITextField"; text = "Text-To-Speech"; ObjectID = "AoB-eI-8Zu"; */
+"AoB-eI-8Zu.text" = "语音播报";
+
+/* Class = "UILabel"; text = "Blood Type"; ObjectID = "BYg-cw-5b0"; */
+"BYg-cw-5b0.text" = "血型";
+
+/* Class = "UILabel"; text = "Every"; ObjectID = "BwH-YE-brU"; */
+"BwH-YE-brU.text" = "Every";
+
+/* Class = "UILabel"; text = "Routine"; ObjectID = "CRH-x2-kBV"; */
+"CRH-x2-kBV.text" = "训练计划";
+
+/* Class = "UITableViewController"; title = "Exercise Details"; ObjectID = "CVh-BG-Wt6"; */
+"CVh-BG-Wt6.title" = "训练详情";
+
+/* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "Ceb-xy-Zpg"; */
+"Ceb-xy-Zpg.title" = "训练计划详情";
+
+/* Class = "UILabel"; text = "Pro Features"; ObjectID = "D2Q-kn-9Pp"; */
+"D2Q-kn-9Pp.text" = "Pro功能";
+
+/* Class = "UILabel"; text = "Sex"; ObjectID = "DaS-Dy-Var"; */
+"DaS-Dy-Var.text" = "性别";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "DbO-PW-UIF"; */
+"DbO-PW-UIF.title" = "常问问题";
+
+/* Class = "UILabel"; text = "Warm Up"; ObjectID = "E5a-vJ-ckn"; */
+"E5a-vJ-ckn.text" = "热身";
+
+/* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "EEV-02-rZJ"; */
+"EEV-02-rZJ.placeholder" = "输入训练计划名称";
+
+/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "EFB-vi-a5a"; */
+"EFB-vi-a5a.headerTitle" = "设置";
+
+/* Class = "UILabel"; text = "01:00"; ObjectID = "ENO-Ee-DMr"; */
+"ENO-Ee-DMr.text" = "01:00";
+
+/* Class = "UITableViewSection"; headerTitle = "Notifications"; ObjectID = "EOa-un-ybR"; */
+"EOa-un-ybR.headerTitle" = "提示消息";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "FBa-IB-cCa"; */
+"FBa-IB-cCa.normalTitle" = "关闭";
+
+/* Class = "UILabel"; text = "Question"; ObjectID = "FPa-VY-ydJ"; */
+"FPa-VY-ydJ.text" = "题";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "FiK-dW-Abq"; */
+"FiK-dW-Abq.title" = "取消";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "Fx2-f3-V4K"; */
+"Fx2-f3-V4K.text" = "1";
+
+/* Class = "UITableViewSection"; headerTitle = "User Info"; ObjectID = "GhF-2p-GAD"; */
+"GhF-2p-GAD.headerTitle" = "用户信息";
+
+/* Class = "UILabel"; text = "Hi there!"; ObjectID = "HMf-yc-cve"; */
+"HMf-yc-cve.text" = "您好！";
+
+/* Class = "UIBarButtonItem"; title = "Routines"; ObjectID = "HsO-xr-GoR"; */
+"HsO-xr-GoR.title" = "训练计划";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "II3-ta-GUD"; */
+"II3-ta-GUD.normalTitle" = "返回";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "JNg-DG-Jjz"; */
+"JNg-DG-Jjz.text" = "名称";
+
+/* Class = "UITextField"; text = "18:00"; ObjectID = "Kdu-QU-81q"; */
+"Kdu-QU-81q.text" = "18:00";
+
+/* Class = "UITextField"; placeholder = "Enter Exercise Name"; ObjectID = "Kgw-Eb-Rmt"; */
+"Kgw-Eb-Rmt.placeholder" = "输入训练科目名称";
+
+/* Class = "UIButton"; normalTitle = "Sure!"; ObjectID = "M2v-PX-9sM"; */
+"M2v-PX-9sM.normalTitle" = "当然！";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "MAe-cf-U0y"; */
+"MAe-cf-U0y.text" = "01:00";
+
+/* Class = "UILabel"; text = "Answer"; ObjectID = "MJI-hM-te0"; */
+"MJI-hM-te0.text" = "回答";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "MbB-hh-ZlQ"; */
+"MbB-hh-ZlQ.title" = "档案";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "NCO-cD-nBI"; */
+"NCO-cD-nBI.normalTitle" = "返回";
+
+/* Class = "UIViewController"; title = "SelectRoutineTypeViewController"; ObjectID = "OEM-3I-2D6"; */
+"OEM-3I-2D6.title" = "SelectRoutineTypeViewController";
+
+/* Class = "UITextField"; text = "18:00"; ObjectID = "QtB-qu-X1C"; */
+"QtB-qu-X1C.text" = "18:00";
+
+/* Class = "UILabel"; text = "Timer Sound"; ObjectID = "RNd-mJ-SDV"; */
+"RNd-mJ-SDV.text" = "计时器音量";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "RZD-so-TdP"; */
+"RZD-so-TdP.text" = "年龄";
+
+/* Class = "UILabel"; text = "Add Exercises"; ObjectID = "Rdo-Xu-OgS"; */
+"Rdo-Xu-OgS.text" = "添加训练课目";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "Stk-tL-gga"; */
+"Stk-tL-gga.text" = "01:00";
+
+/* Class = "UILabel"; text = "Remind me"; ObjectID = "TbR-d9-kbv"; */
+"TbR-d9-kbv.text" = "提醒我";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "ThG-2m-7cS"; */
+"ThG-2m-7cS.text" = "00:00";
+
+/* Class = "UILabel"; text = "Height"; ObjectID = "UHU-nX-Epg"; */
+"UHU-nX-Epg.text" = "高度";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Veg-ND-IM1"; */
+"Veg-ND-IM1.text" = "名称";
+
+/* Class = "UILabel"; text = "Donation (Repurchasable)"; ObjectID = "WTk-cv-gXZ"; */
+"WTk-cv-gXZ.text" = "捐赠 (可重复购买)";
+
+/* Class = "UILabel"; text = "Run In Background"; ObjectID = "Y97-TV-dp6"; */
+"Y97-TV-dp6.text" = "在后台运行";
+
+/* Class = "UILabel"; text = "x"; ObjectID = "Zhg-wm-VJ1"; */
+"Zhg-wm-VJ1.text" = "x";
+
+/* Class = "UILabel"; text = "Cool Down"; ObjectID = "Zqr-Pn-K5p"; */
+"Zqr-Pn-K5p.text" = "休整";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "aN8-Mj-84x"; */
+"aN8-Mj-84x.text" = "1";
+
+/* Class = "UILabel"; text = "Remaining"; ObjectID = "asr-M9-FVI"; */
+"asr-M9-FVI.text" = "剩余";
+
+/* Class = "UILabel"; text = " Unknown"; ObjectID = "bQX-6W-Pgu"; */
+"bQX-6W-Pgu.text" = "未知";
+
+/* Class = "UINavigationItem"; title = "Routine Types"; ObjectID = "bbX-Mt-GBY"; */
+"bbX-Mt-GBY.title" = "训练计划类型";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "cFX-O3-qbQ"; */
+"cFX-O3-qbQ.text" = "00:00";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "cmv-zk-LSH"; */
+"cmv-zk-LSH.text" = "00:00";
+
+/* Class = "UILabel"; text = "Every"; ObjectID = "dCw-n5-c4O"; */
+"dCw-n5-c4O.text" = "每一个";
+
+/* Class = "UILabel"; text = "Good job keeping fit! \nBy the way, we’d love some feedback! How do you feel about Chronic? "; ObjectID = "dOe-44-JgT"; */
+"dOe-44-JgT.text" = "干的不错继续！\n我们期待您的反馈！您对 Chronic 有何宝贵意见和建议？";
+
+/* Class = "UILabel"; text = "Round Time"; ObjectID = "eHS-bw-2In"; */
+"eHS-bw-2In.text" = "轮次";
+
+/* Class = "UIViewController"; title = "QuickTimerViewController"; ObjectID = "eeg-Hi-sa7"; */
+"eeg-Hi-sa7.title" = "QuickTimerViewController";
+
+/* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "ekw-bF-kQ2"; */
+"ekw-bF-kQ2.headerTitle" = "支持";
+
+/* Class = "UILabel"; text = "Body Mass Index (BMI)"; ObjectID = "fBU-Gi-0rM"; */
+"fBU-Gi-0rM.text" = "Body Mass Index (BMI)";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "fEp-iJ-n91"; */
+"fEp-iJ-n91.text" = "未知";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "fKd-io-ho0"; */
+"fKd-io-ho0.text" = "01:00";
+
+/* Class = "UILabel"; text = "Remind Me To Workout"; ObjectID = "fcp-Ta-Nxf"; */
+"fcp-Ta-Nxf.text" = "提醒我开始体能锻炼";
+
+/* Class = "UILabel"; text = "Rest Time"; ObjectID = "fmz-O1-O7D"; */
+"fmz-O1-O7D.text" = "休息时间";
+
+/* Class = "UIButton"; normalTitle = "Chronic"; ObjectID = "gM7-vF-hwX"; */
+"gM7-vF-hwX.normalTitle" = "Chronic";
+
+/* Class = "UILabel"; text = "Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!"; ObjectID = "gc1-zg-3O7"; */
+"gc1-zg-3O7.text" = "有何宝贵意见和建议？ 请联系我们，我们非常期待您的反馈!";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "gun-mK-gVn"; */
+"gun-mK-gVn.title" = "关闭";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "h8N-8M-hbW"; */
+"h8N-8M-hbW.title" = "关闭";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "hJ3-2s-exZ"; */
+"hJ3-2s-exZ.text" = "未知";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "i4H-ob-BKR"; */
+"i4H-ob-BKR.normalTitle" = "Next";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "ich-BW-iW9"; */
+"ich-BW-iW9.title" = "关闭";
+
+/* Class = "UITextField"; text = "Day"; ObjectID = "ilb-5J-0Ym"; */
+"ilb-5J-0Ym.text" = "日期";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "k3g-8T-VWF"; */
+"k3g-8T-VWF.text" = "未知";
+
+/* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "ksH-2j-BQg"; */
+"ksH-2j-BQg.placeholder" = "输入课程名称";
+
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "m5y-CQ-t8h"; */
+"m5y-CQ-t8h.text" = "常问问题";
+
+/* Class = "UILabel"; text = "Restore Upgrades"; ObjectID = "mcW-yo-ctz"; */
+"mcW-yo-ctz.text" = "恢复升级";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "mqj-Fa-53j"; */
+"mqj-Fa-53j.text" = "颜色";
+
+/* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "mvc-Ed-45P"; */
+"mvc-Ed-45P.title" = "课程明细";
+
+/* Class = "UITextField"; text = "Day"; ObjectID = "oL4-m0-1Ho"; */
+"oL4-m0-1Ho.text" = "日期";
+
+/* Class = "UIButton"; normalTitle = "Nope"; ObjectID = "og9-r5-BCD"; */
+"og9-r5-BCD.normalTitle" = "不";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "oko-vD-zIo"; */
+"oko-vD-zIo.text" = "01:00";
+
+/* Class = "UILabel"; text = "# of Rounds"; ObjectID = "pYc-8m-Qdg"; */
+"pYc-8m-Qdg.text" = "第 # 轮";
+
+/* Class = "UILabel"; text = "At"; ObjectID = "rdp-69-aSV"; */
+"rdp-69-aSV.text" = "在";
+
+/* Class = "UILabel"; text = "Weight"; ObjectID = "sXh-6f-GEL"; */
+"sXh-6f-GEL.text" = "重量";
+
+/* Class = "UINavigationItem"; title = "Quick Timer"; ObjectID = "sxo-gx-Ral"; */
+"sxo-gx-Ral.title" = "Quick Timer";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "u6B-yn-UEJ"; */
+"u6B-yn-UEJ.title" = "关闭";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "uXJ-DE-TSl"; */
+"uXJ-DE-TSl.normalTitle" = "完成";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "ucr-QL-M0P"; */
+"ucr-QL-M0P.text" = "01:00";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "ugs-ak-flr"; */
+"ugs-ak-flr.text" = "未知";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "vQM-jl-vRg"; */
+"vQM-jl-vRg.text" = "01:00";
+
+/* Class = "UILabel"; text = "Yay!"; ObjectID = "vVX-df-kiU"; */
+"vVX-df-kiU.text" = "很棒！";
+
+/* Class = "UILabel"; text = "At"; ObjectID = "vnV-tz-5tH"; */
+"vnV-tz-5tH.text" = "在";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "wdO-aq-f58"; */
+"wdO-aq-f58.text" = "时间";
+
+/* Class = "UILabel"; text = "Lets set you up right so you get the most out of Chronic."; ObjectID = "yYN-50-1YB"; */
+"yYN-50-1YB.text" = "让我们正确设置，您可以方便实用 Chronic.";
+
+/* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
+"z2I-CN-Ytx.text" = "开始吧!";
+
+/* Class = "UILabel"; text = "Email Us"; ObjectID = "zrb-SX-QX1"; */
+"zrb-SX-QX1.text" = "给我们发送电子邮件";

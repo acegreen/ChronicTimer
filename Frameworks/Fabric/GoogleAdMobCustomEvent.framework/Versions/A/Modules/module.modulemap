@@ -1,0 +1,6 @@
+framework module GoogleAdMobCustomEvent {
+    umbrella header "GoogleAdMobCustomEvent.h"
+
+    export *
+    module * { export * }
+}

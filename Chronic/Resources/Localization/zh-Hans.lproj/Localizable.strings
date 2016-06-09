@@ -1,0 +1,125 @@
+/*
+ Localizable.strings
+ Chronic
+ 
+ Created by Ace Green on 2015-12-14.
+ Copyright © 2015 Ace Green. All rights reserved.
+ */
+
+/* Globals */
+"Reminder Notification Text" = "开始体能训练!";
+"Yes" = "是";
+"No" = "否";
+"Ok" = "好的";
+"Cancel" = "取消";
+"Settings" = "设置";
+
+"Success" = "成功!";
+"Failed" = "失败!";
+"Error" = "错误!";
+"Prompt Me" = "提示我";
+
+"Quick Timer" = "快速计时器";
+
+"Hours" = "小时";
+"Minutes" = "分钟";
+"Seconds" = "秒钟";
+
+"Day" = "日";
+"Week" = "周";
+"Month" = "月";
+
+/* Main */
+"Text-To-Speech Default Sentence" = "这个程序是真棒";
+"Text-To-Speech Tracking Run Text" = "记录跑步";
+"Text-To-Speech Timer Ended" = "定时器结束";
+"Text-To-Speech Workout Complete Text" = "训练完成";
+"Text-To-Speech Run Complete Text" = "跑步结束";
+
+"Congratulation Text (Routine)" = "恭喜！您已经完成了您的体能训练";
+"Congratulation Text (Run)" =  "恭喜！您已经完成了你的活动";
+"Timer Ended Text" =  "您的定时计数已到";
+
+"No Exercise" = "没有训练项目";
+
+"Left Side Label Text (Routine)" = "耗时";
+"Right Side Label Text (Routine)" = "剩余";
+
+"Left Side Label Text (Run)" = "时间";
+"Right Side Label Text (Run)" = "距离";
+
+"Text To Share Text" = "我刚利用 @ChronicTimer 完成一项体能训练";
+
+"Alert: Save Workout Question Title Text" = "保存训练计划?";
+"Alert: Save Workout Question Subtitle Text" = "您想保存您的训练计划吗?";
+
+"Alert: Authorize Chronic Save Workout Title Text" = "授权 Chronic 保存体能训练数据!";
+"Alert: Authorize Chronic Save Workout Subtitle Text" = "开启 设置 -> 隐私 -> 健康 -> Chronic";
+"Alert: Authorize Chronic Save Workout Subtitle Text 2" = "我们需要您的许可才能拯救训练";
+
+"Alert: Location Authorization Title Text" = "需要位置信息授权!";
+"Alert: Location Authorization Subtitle Text" = "开启 设置 -> 隐私 -> 位置服务 -> Chronic";
+
+"Alert: Routine Exists Title Text" = "课程已经存在";
+"Alert: Routine Exists Subtitle Text" = "请更改或者编辑先有的课程名称";
+
+"Alert: Routine Total Time Title Text" = "抱歉!";
+"Alert: Routine Total Time Subtitle Text" = "课程总时间不能为0";
+
+"Alert: No Routine Selected Title Text" = "抱歉!";
+"Alert: No Routine Selected Subtitle Text" = "没有选中";
+
+"Alert: Routine Name Missing Title Text" = "缺少课程名称";
+"Alert: Routine Name Missing Subtitle Text" = "请输入您的课程名称";
+
+"Alert: Exercise Empty Title Text" = "未填写练习名称";
+"Alert: Exercise Empty Subtitle Text" = "您的练习缺少名称";
+
+"Alert: Exercise Delete Title Text" = "无法删除练习";
+"Alert: Exercise Delete Subtitle Text" = "您的练习课程之少包含一个训练科目";
+
+"Alert: Requires Pro Features Title Text" = "此功能需要专业版升级!";
+"Alert: Requires Pro Features Subtitle Text" = "请连接互联网后进行购买";
+
+"Alert: No Internet Connection Title Text" = "未连接互联网";
+"Alert: No Internet Connection Subtitle Text" = "请连接互联网后再继续";
+
+"Alert: No Email Account Title Text" = "没有发现电子邮件账户";
+"Alert: No Email Account Subtitle Text" = "请在您的电子邮件应用中设置电子邮件账户";
+
+"Alert: Workout Running Question Title Text" = "开始体能训练?";
+"Alert: Workout Running Question Subtitle Text" = "开启消息通知以便后台接收消息";
+
+"Alert: In-App Purchases Disabled Title Text" = "内置购买被禁用!";
+"Alert: In-App Purchases Disabled Subtitle Text" = "请开启内置购买";
+
+"Alert: Processing Purchase Title Text" = "请耐心等待!";
+"Alert: Processing Purchase Subtitle Text" = "正在处理您的购买请求";
+
+"Alert: Loading Purchase Title Text" = "请耐心等待!";
+"Alert: Loading Purchase Subtitle Text" = "正在加载您的购买请求";
+
+"Alert: Restoring Purchase Title Text" = "请耐心等待!";
+"Alert: Restoring Purchase Subtitle Text" = "正在恢复购买";
+
+"Alert: Restore Success Subtitle Text" = "您的内置购买已经成功恢复";
+
+"Alert: Validation Error Title Text" = "验证错误!";
+"Alert: Validation Error Subtitle Text" = "此交易无法验证，请重试";
+
+"Alert: Purchase Request Failed Title Text" = "购买请求失败";
+"Alert: Purchase Request Failed Subtitle Text" = "请重试";
+
+"Alert: Health Prompted Title Text" = "已经提示";
+"Alert: Health Prompted Subtitle Text" = "您可以修改授权 设置 -> 隐私 -> 健康 -> Chronic";
+
+"Alert: WCSession Paired Error Title Text" = "Watch Connection Error!";
+"Alert: WCSession Paired Error Subtitle Text" = "Make sure your watch is paired and Chronic is installed on Watch";
+
+"Empty Routine Table Title Text" = "没有训练计划!";
+"Empty Routine Table Subtitle Text" = "您可以在主页面点击 \"+\" 添加新的计划";
+
+"Exercise Name Text (Warm Up)" = "热身";
+"Exercise Name Text (Round)" = "活动";
+"Exercise Name Text (Rest)" = "休息";
+"Exercise Name Text (Cool Down)" = "冷静一下";

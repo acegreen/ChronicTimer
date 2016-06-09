@@ -1,0 +1,66 @@
+
+/* Class = "WKInterfaceMenuItem"; title = "Stop"; ObjectID = "5fY-VT-mf3"; */
+"5fY-VT-mf3.title" = "Stop";
+
+/* Class = "WKInterfaceMenuItem"; title = "Pause"; ObjectID = "Bd6-q7-EJ4"; */
+"Bd6-q7-EJ4.title" = "Pause";
+
+/* Class = "WKInterfaceLabel"; text = "Routine"; ObjectID = "DQp-q6-2aD"; */
+"DQp-q6-2aD.text" = "Routine";
+
+/* Class = "WKInterfaceLabel"; text = "Purchase the Pro Features upgrade on your iPhone to access your routines on Apple Watch"; ObjectID = "E5i-17-l6Q"; */
+"E5i-17-l6Q.text" = "Kaufen Sie die Pro-Funktionen Upgrade- auf Ihrem iPhone, um auf die Routinen auf Apple-Uhr zuzugreifen";
+
+/* Class = "WKInterfaceController"; title = "Close"; ObjectID = "FaK-Yf-0Ii"; */
+"FaK-Yf-0Ii.title" = "Schließen";
+
+/* Class = "WKInterfaceLabel"; text = "Distance"; ObjectID = "Hwe-So-Gdb"; */
+"Hwe-So-Gdb.text" = "Distanz";
+
+/* Class = "WKInterfaceLabel"; text = "No Routine"; ObjectID = "KkW-xK-4WZ"; */
+"KkW-xK-4WZ.text" = "Keine Routinen";
+
+/* Class = "WKInterfaceLabel"; text = "Create A Routine On Your iPhone "; ObjectID = "NeY-BW-Gd1"; */
+"NeY-BW-Gd1.text" = "Erstellen Sie eine Routine auf Ihrem iPhone";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "RpH-vN-qcn"; */
+"RpH-vN-qcn.text" = "00:00";
+
+/* Class = "WKInterfaceButton"; title = "Start"; ObjectID = "SrM-ka-Pgj"; */
+"SrM-ka-Pgj.title" = "Starten";
+
+/* Class = "WKInterfaceLabel"; text = "Remaining"; ObjectID = "T9M-ZY-pwK"; */
+"T9M-ZY-pwK.text" = "Verbleibend";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "YUE-fZ-do1"; */
+"YUE-fZ-do1.text" = "00:00";
+
+/* Class = "WKInterfaceLabel"; text = "---"; ObjectID = "d3j-33-zZi"; */
+"d3j-33-zZi.text" = "---";
+
+/* Class = "WKInterfaceLabel"; text = "Time"; ObjectID = "iY1-kq-rDg"; */
+"iY1-kq-rDg.text" = "Zeit";
+
+/* Class = "WKInterfaceLabel"; text = "0"; ObjectID = "kcA-Su-Ftb"; */
+"kcA-Su-Ftb.text" = "0";
+
+/* Class = "WKInterfaceLabel"; text = "BPM"; ObjectID = "lrR-gq-WFP"; */
+"lrR-gq-WFP.text" = "BPM";
+
+/* Class = "WKInterfaceLabel"; text = "Elapsed"; ObjectID = "n5a-oH-osJ"; */
+"n5a-oH-osJ.text" = "Vergangen";
+
+/* Class = "WKInterfaceMenuItem"; title = "Play"; ObjectID = "nqd-4T-kb2"; */
+"nqd-4T-kb2.title" = "Start";
+
+/* Class = "WKInterfaceController"; title = "QT"; ObjectID = "nvx-ar-6as"; */
+"nvx-ar-6as.title" = "QT";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "q95-94-25s"; */
+"q95-94-25s.text" = "00:00";
+
+/* Class = "WKInterfaceController"; title = "Routines"; ObjectID = "rI9-Uu-uPM"; */
+"rI9-Uu-uPM.title" = "Routinen";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "uhL-jW-cs2"; */
+"uhL-jW-cs2.text" = "00:00";
