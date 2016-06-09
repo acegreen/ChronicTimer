@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nvx-ar-6as">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Symbol.ttf">
+            <string>Symbol</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Close-->
+        <scene sceneID="ia4-QA-GbH">
+            <objects>
+                <controller identifier="InterfaceController" title="Close" id="FaK-Yf-0Ii" customClass="InterfaceController" customModule="Chronic_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="vertical" spacing="0.0" id="zie-3X-pJq">
+                            <items>
+                                <group width="1" height="30" alignment="center" contentMode="scaleAspectFit" layout="vertical" id="MIN-Fo-rFM">
+                                    <items>
+                                        <label width="1" alignment="center" verticalAlignment="center" text="No Routine" textAlignment="center" id="KkW-xK-4WZ">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="font" type="system" pointSize="18"/>
+                                            <variation key="device=watch42mm">
+                                                <fontDescription key="font" type="system" pointSize="20"/>
+                                            </variation>
+                                        </label>
+                                    </items>
+                                    <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="0.0"/>
+                                    <variation key="device=watch42mm">
+                                        <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
+                                    </variation>
+                                </group>
+                                <group width="1" alignment="center" layout="vertical" spacing="0.0" id="V4N-b7-5Xc">
+                                    <items>
+                                        <label width="1" alignment="center" verticalAlignment="center" text="00:00" textAlignment="center" minimumScaleFactor="0.5" id="RpH-vN-qcn">
+                                            <fontDescription key="font" type="boldSystem" pointSize="43"/>
+                                            <variation key="device=watch42mm">
+                                                <fontDescription key="font" type="boldSystem" pointSize="50"/>
+                                            </variation>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group alignment="center" spacing="5" id="yAc-pL-ry4">
+                                    <items>
+                                        <group width="1" alignment="left" spacing="0.0" id="bGk-dA-VYh">
+                                            <items>
+                                                <label alignment="center" verticalAlignment="center" text="---" minimumScaleFactor="0.5" id="d3j-33-zZi">
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="font" name="Symbol" family="Symbol" pointSize="30"/>
+                                                    <variation key="device=watch42mm">
+                                                        <fontDescription key="font" name="Symbol" family="Symbol" pointSize="35"/>
+                                                    </variation>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="FGZ-eb-1ZT">
+                                            <items>
+                                                <label alignment="right" text="BPM" id="lrR-gq-WFP">
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                </label>
+                                                <imageView alignment="left" verticalAlignment="bottom" image="heart" id="i30-lp-VZf"/>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" verticalAlignment="bottom" id="fuQ-gO-voQ">
+                                    <items>
+                                        <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="2Xi-Sr-a7p">
+                                            <items>
+                                                <label height="14.5" alignment="left" text="Remaining" textAlignment="left" id="T9M-ZY-pwK">
+                                                    <fontDescription key="font" type="system" pointSize="12"/>
+                                                </label>
+                                                <label alignment="left" verticalAlignment="bottom" text="00:00" textAlignment="left" id="uhL-jW-cs2"/>
+                                            </items>
+                                        </group>
+                                        <group alignment="right" verticalAlignment="center" layout="vertical" spacing="0.0" id="qkO-Pl-bIS">
+                                            <items>
+                                                <label alignment="right" text="Elapsed" textAlignment="right" id="n5a-oH-osJ" userLabel="Time Elapsed">
+                                                    <fontDescription key="font" type="system" pointSize="12"/>
+                                                </label>
+                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="right" id="YUE-fZ-do1"/>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="5"/>
+                        </group>
+                    </items>
+                    <menu key="menu" id="8Bz-FV-hGd">
+                        <items>
+                            <menuItem title="Play" icon="play" id="nqd-4T-kb2">
+                                <connections>
+                                    <action selector="PlayButtonPressed" destination="FaK-Yf-0Ii" id="OmP-4f-AeC"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Pause" icon="pause" id="Bd6-q7-EJ4">
+                                <connections>
+                                    <action selector="PauseButtonPressed" destination="FaK-Yf-0Ii" id="FHD-ke-bTl"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stop" icon="repeat" id="5fY-VT-mf3">
+                                <connections>
+                                    <action selector="StopButtonPressed" destination="FaK-Yf-0Ii" id="XLN-CV-YRf"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="CountDownLabel" destination="RpH-vN-qcn" id="5BA-yC-DuC"/>
+                        <outlet property="RoutineStateLabel" destination="KkW-xK-4WZ" id="wmo-Sj-uMU"/>
+                        <outlet property="countDownGroup" destination="V4N-b7-5Xc" id="rVf-V9-iCE"/>
+                        <outlet property="heart" destination="i30-lp-VZf" id="1Ak-V3-ihE"/>
+                        <outlet property="heartRateGroup" destination="yAc-pL-ry4" id="eUf-Nw-47e"/>
+                        <outlet property="label" destination="d3j-33-zZi" id="fW3-vC-T3l"/>
+                        <outlet property="timeElapsedLabel" destination="YUE-fZ-do1" id="4q3-Cw-Qkr"/>
+                        <outlet property="timeRemainingLabel" destination="uhL-jW-cs2" id="ZJA-3o-vGs"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="151" y="54"/>
+        </scene>
+        <!--QT-->
+        <scene sceneID="bsF-Dt-knQ">
+            <objects>
+                <controller identifier="QTInterfaceController" title="QT" id="nvx-ar-6as" customClass="QTInterfaceController" customModule="Chronic_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="za0-hW-GKn">
+                            <items>
+                                <group width="1" alignment="center" id="JUS-FH-rOb">
+                                    <items>
+                                        <picker width="40" height="75" alignment="left" verticalAlignment="center" focusStyle="sequence" id="xac-CB-0RT">
+                                            <connections>
+                                                <action selector="hourPicker:" destination="nvx-ar-6as" id="rZV-ys-SMd"/>
+                                            </connections>
+                                        </picker>
+                                        <picker width="40" height="75" alignment="center" verticalAlignment="center" focusStyle="sequence" id="wDi-YF-Spk">
+                                            <connections>
+                                                <action selector="minutePicker:" destination="nvx-ar-6as" id="HvI-51-ldo"/>
+                                            </connections>
+                                        </picker>
+                                        <picker width="40" height="75" alignment="right" verticalAlignment="center" focusStyle="sequence" id="PcK-OB-VzQ">
+                                            <connections>
+                                                <action selector="secondPicker:" destination="nvx-ar-6as" id="XKh-uI-puB"/>
+                                            </connections>
+                                        </picker>
+                                    </items>
+                                    <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="left" verticalAlignment="bottom" id="7fs-86-7fm">
+                                    <items>
+                                        <button width="1" alignment="left" verticalAlignment="center" title="Start" id="SrM-ka-Pgj">
+                                            <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" type="boldSystem" pointSize="20"/>
+                                            <connections>
+                                                <segue destination="FaK-Yf-0Ii" kind="modal" identifier="QuickTimerSegue" id="8a6-oR-2gA"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                            </items>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="10" bottom="10"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="hourPicker" destination="xac-CB-0RT" id="xnY-4v-sxg"/>
+                        <outlet property="minutePicker" destination="wDi-YF-Spk" id="vTO-TW-Nbh"/>
+                        <outlet property="secondPicker" destination="PcK-OB-VzQ" id="wYI-9T-Nfj"/>
+                        <segue destination="rI9-Uu-uPM" kind="relationship" relationship="nextPage" id="UMF-B1-1Bf"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="38" y="-280"/>
+        </scene>
+        <!--Routines-->
+        <scene sceneID="lB2-Av-UuI">
+            <objects>
+                <controller identifier="InterfaceTableController" title="Routines" id="rI9-Uu-uPM" customClass="InterfaceTableController" customModule="Chronic_WatchKit_Extension">
+                    <items>
+                        <table alignment="center" id="Exb-6Y-lsp">
+                            <items>
+                                <tableRow identifier="noProVersionRow" selectable="NO" id="QGb-Gy-TAC" customClass="TableRowType" customModule="Chronic_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="0.0" id="cmY-Lx-6sF">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="Purchase the Pro Features upgrade on your iPhone to access your routines on Apple Watch" textAlignment="center" numberOfLines="10" id="E5i-17-l6Q">
+                                                <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                                                <variation key="device=watch42mm">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="17"/>
+                                                </variation>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="margins" left="10" right="10" top="10" bottom="10"/>
+                                    </group>
+                                </tableRow>
+                                <tableRow identifier="noRoutinesRow" selectable="NO" id="TBa-NP-fVy" customClass="TableRowType" customModule="Chronic_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="0.0" id="wDe-wt-md8">
+                                        <items>
+                                            <label width="1" height="100" alignment="center" verticalAlignment="center" text="Create A Routine On Your iPhone " textAlignment="center" numberOfLines="3" id="NeY-BW-Gd1">
+                                                <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                                                <variation key="device=watch42mm">
+                                                    <fontDescription key="font" type="boldSystem" pointSize="17"/>
+                                                </variation>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="margins" left="10" right="10" top="10" bottom="10"/>
+                                    </group>
+                                </tableRow>
+                                <tableRow identifier="routinesRow" id="ynX-xh-eVm" customClass="TableRowType" customModule="Chronic_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="zon-3N-uHJ">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Routine" textAlignment="center" numberOfLines="0" id="DQp-q6-2aD">
+                                                <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                <fontDescription key="font" type="boldSystem" pointSize="20"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="routineRowLabel" destination="DQp-q6-2aD" id="SSD-bc-CeG"/>
+                                        <segue destination="FaK-Yf-0Ii" kind="modal" identifier="RoutinesSegue" id="AlR-6Z-iIg"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="routineTable" destination="Exb-6Y-lsp" id="WTZ-qf-tFf"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="290" y="-280"/>
+        </scene>
+        <!--Run Tracker Interface Controller-->
+        <scene sceneID="9Qm-WV-ewp">
+            <objects>
+                <controller hidesWhenLoading="NO" id="XDd-gw-aFh" customClass="RunTrackerInterfaceController" customModule="Chronic_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="Gm6-2M-K6A">
+                            <items>
+                                <group width="1" height="1" alignment="left" id="G9o-sE-9O0">
+                                    <items>
+                                        <map height="100" alignment="left" id="slN-5c-8GW">
+                                            <variation key="device=watch42mm" height="125"/>
+                                        </map>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="left" verticalAlignment="bottom" id="4Yw-ig-0Xb">
+                                    <items>
+                                        <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="FEp-vM-lpJ">
+                                            <items>
+                                                <label height="14.5" alignment="left" text="Distance" textAlignment="left" id="Hwe-So-Gdb">
+                                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                                </label>
+                                                <label alignment="left" verticalAlignment="bottom" text="0" textAlignment="left" id="kcA-Su-Ftb"/>
+                                            </items>
+                                        </group>
+                                        <group alignment="right" verticalAlignment="center" layout="vertical" spacing="0.0" id="rjh-Zf-FvU">
+                                            <items>
+                                                <label alignment="right" text="Time" textAlignment="right" id="iY1-kq-rDg" userLabel="Time Elapsed">
+                                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                                </label>
+                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="right" id="q95-94-25s"/>
+                                            </items>
+                                        </group>
+                                    </items>
+                                    <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="0.0"/>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="distanceLabel" destination="kcA-Su-Ftb" id="T7J-Hb-WNZ"/>
+                        <outlet property="mapView" destination="slN-5c-8GW" id="IQH-Pw-sdM"/>
+                        <outlet property="timeLabel" destination="q95-94-25s" id="hWU-qQ-kaU"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="543" y="-280"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8a6-oR-2gA"/>
+    </inferredMetricsTieBreakers>
+</document>

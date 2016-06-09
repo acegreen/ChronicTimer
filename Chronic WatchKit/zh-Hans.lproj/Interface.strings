@@ -1,0 +1,66 @@
+
+/* Class = "WKInterfaceMenuItem"; title = "Stop"; ObjectID = "5fY-VT-mf3"; */
+"5fY-VT-mf3.title" = "停止";
+
+/* Class = "WKInterfaceMenuItem"; title = "Pause"; ObjectID = "Bd6-q7-EJ4"; */
+"Bd6-q7-EJ4.title" = "暂停";
+
+/* Class = "WKInterfaceLabel"; text = "Routine"; ObjectID = "DQp-q6-2aD"; */
+"DQp-q6-2aD.text" = "日程";
+
+/* Class = "WKInterfaceLabel"; text = "Purchase the Pro Features upgrade on your iPhone to access your routines on Apple Watch"; ObjectID = "E5i-17-l6Q"; */
+"E5i-17-l6Q.text" = "在购买Pro版本在iPhone上访问你的程序在苹果观看";
+
+/* Class = "WKInterfaceController"; title = "Close"; ObjectID = "FaK-Yf-0Ii"; */
+"FaK-Yf-0Ii.title" = "关闭";
+
+/* Class = "WKInterfaceLabel"; text = "Distance"; ObjectID = "Hwe-So-Gdb"; */
+"Hwe-So-Gdb.text" = "距离";
+
+/* Class = "WKInterfaceLabel"; text = "No Routine"; ObjectID = "KkW-xK-4WZ"; */
+"KkW-xK-4WZ.text" = "无日程";
+
+/* Class = "WKInterfaceLabel"; text = "Create A Routine On Your iPhone "; ObjectID = "NeY-BW-Gd1"; */
+"NeY-BW-Gd1.text" = "在你的iPhone手机上创建一个日程";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "RpH-vN-qcn"; */
+"RpH-vN-qcn.text" = "00:00";
+
+/* Class = "WKInterfaceButton"; title = "Start"; ObjectID = "SrM-ka-Pgj"; */
+"SrM-ka-Pgj.title" = "开始";
+
+/* Class = "WKInterfaceLabel"; text = "Remaining"; ObjectID = "T9M-ZY-pwK"; */
+"T9M-ZY-pwK.text" = "剩余";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "YUE-fZ-do1"; */
+"YUE-fZ-do1.text" = "00:00";
+
+/* Class = "WKInterfaceLabel"; text = "---"; ObjectID = "d3j-33-zZi"; */
+"d3j-33-zZi.text" = "---";
+
+/* Class = "WKInterfaceLabel"; text = "Time"; ObjectID = "iY1-kq-rDg"; */
+"iY1-kq-rDg.text" = "时间";
+
+/* Class = "WKInterfaceLabel"; text = "0"; ObjectID = "kcA-Su-Ftb"; */
+"kcA-Su-Ftb.text" = "0";
+
+/* Class = "WKInterfaceLabel"; text = "BPM"; ObjectID = "lrR-gq-WFP"; */
+"lrR-gq-WFP.text" = "BPM";
+
+/* Class = "WKInterfaceLabel"; text = "Elapsed"; ObjectID = "n5a-oH-osJ"; */
+"n5a-oH-osJ.text" = "经过";
+
+/* Class = "WKInterfaceMenuItem"; title = "Play"; ObjectID = "nqd-4T-kb2"; */
+"nqd-4T-kb2.title" = "播放";
+
+/* Class = "WKInterfaceController"; title = "QT"; ObjectID = "nvx-ar-6as"; */
+"nvx-ar-6as.title" = "QT";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "q95-94-25s"; */
+"q95-94-25s.text" = "00:00";
+
+/* Class = "WKInterfaceController"; title = "Routines"; ObjectID = "rI9-Uu-uPM"; */
+"rI9-Uu-uPM.title" = "日程";
+
+/* Class = "WKInterfaceLabel"; text = "00:00"; ObjectID = "uhL-jW-cs2"; */
+"uhL-jW-cs2.text" = "00:00";

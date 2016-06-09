@@ -1,0 +1,351 @@
+
+/* Class = "UILabel"; text = "Sorry!"; ObjectID = "0Up-H7-Yku"; */
+"0Up-H7-Yku.text" = "Scusa!";
+
+/* Class = "UITableViewSection"; headerTitle = "Upgrades"; ObjectID = "0fi-Bi-iQz"; */
+"0fi-Bi-iQz.headerTitle" = "Aggiornamenti";
+
+/* Class = "UILabel"; text = "Version:"; ObjectID = "1Ao-Gj-XOt"; */
+"1Ao-Gj-XOt.text" = "Versione:";
+
+/* Class = "UITextField"; placeholder = "Enter Exercise Name"; ObjectID = "1Go-gJ-F42"; */
+"1Go-gJ-F42.placeholder" = "Inserisci il Nome dell'Esercizio";
+
+/* Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "2xz-BS-7zF"; */
+"2xz-BS-7zF.normalTitle" = "Contattaci";
+
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "3GQ-hT-fPZ"; */
+"3GQ-hT-fPZ.title" = "Impostazioni";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "3Op-VU-lpR"; */
+"3Op-VU-lpR.text" = "1";
+
+/* Class = "UILabel"; text = "Elapsed"; ObjectID = "3sf-YS-vz9"; */
+"3sf-YS-vz9.text" = "Trascorso";
+
+/* Class = "UILabel"; text = "Remove Ads"; ObjectID = "3yx-7I-liQ"; */
+"3yx-7I-liQ.text" = "Rimuovi Pubblicita";
+
+/* Class = "UILabel"; text = "Number of Rounds"; ObjectID = "50h-dc-HcN"; */
+"50h-dc-HcN.text" = "Numero di Round";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "5GG-Ww-woU"; */
+"5GG-Ww-woU.title" = "Chiudi";
+
+/* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "5Tz-d5-wtw"; */
+"5Tz-d5-wtw.text" = "Che ne dici di votare Chronic sull'AppStore? Noi apprezziamo il tuo feedback!";
+
+/* Class = "UILabel"; text = "Write a Review"; ObjectID = "62U-Rt-gry"; */
+"62U-Rt-gry.text" = "Scrivi una Recensione";
+
+/* Class = "UILabel"; text = "Quick Timer"; ObjectID = "6YK-pi-Gau"; */
+"6YK-pi-Gau.text" = "Quick Timer";
+
+/* Class = "UITableViewController"; title = "Profile & BMI"; ObjectID = "6em-RA-KNh"; */
+"6em-RA-KNh.title" = "Profilo & IMC";
+
+/* Class = "UINavigationItem"; title = "Routines"; ObjectID = "6gL-5a-ixa"; */
+"6gL-5a-ixa.title" = "Chronic";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "6km-se-awh"; */
+"6km-se-awh.title" = "Impostazioni";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "7H6-lU-9R8"; */
+"7H6-lU-9R8.text" = "Sconosciuto";
+
+/* Class = "UILabel"; text = "Ultimate Package"; ObjectID = "7eP-zY-TBv"; */
+"7eP-zY-TBv.text" = "Pacchetto Finale";
+
+/* Class = "UITableViewSection"; headerTitle = "Weight & Height"; ObjectID = "7jW-QJ-rPV"; */
+"7jW-QJ-rPV.headerTitle" = "Peso & Altezza";
+
+/* Class = "UILabel"; text = "Enable Device Sleep"; ObjectID = "8wI-WB-13g"; */
+"8wI-WB-13g.text" = "Modalità Sleep";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "8wN-lo-4Es"; */
+"8wN-lo-4Es.text" = "Nome";
+
+/* Class = "UILabel"; text = "Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. "; ObjectID = "9Ss-1c-YZ1"; */
+"9Ss-1c-YZ1.text" = "Ok, adesso impostiamo un promemoria perché tutto possa sempre allenarti. Imposta lo switch su On e permetti cosi l'invio di notifiche. ";
+
+/* Class = "UILabel"; text = "First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the appropriate permission"; ObjectID = "AEV-ww-lGd"; */
+"AEV-ww-lGd.text" = "Innanzitutto, per poter salvare i risultati del tuo allenamenento, abbiamo bisogno del tuo permesso per poter leggere e scrivere i dati. Premi il pulsante qui sotto per impostare i permessi necessari";
+
+/* Class = "UILabel"; text = "Timer Volume"; ObjectID = "AeL-ZO-UtH"; */
+"AeL-ZO-UtH.text" = "Volume Timer";
+
+/* Class = "UITextField"; text = "Text-To-Speech"; ObjectID = "AoB-eI-8Zu"; */
+"AoB-eI-8Zu.text" = "Testo-A-Voce";
+
+/* Class = "UILabel"; text = "Blood Type"; ObjectID = "BYg-cw-5b0"; */
+"BYg-cw-5b0.text" = "Gruppo Sanguigno";
+
+/* Class = "UILabel"; text = "Every"; ObjectID = "BwH-YE-brU"; */
+"BwH-YE-brU.text" = "Ogni";
+
+/* Class = "UILabel"; text = "Routine"; ObjectID = "CRH-x2-kBV"; */
+"CRH-x2-kBV.text" = "Routine";
+
+/* Class = "UITableViewController"; title = "Exercise Details"; ObjectID = "CVh-BG-Wt6"; */
+"CVh-BG-Wt6.title" = "Dettagli dell'Esercizio";
+
+/* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "Ceb-xy-Zpg"; */
+"Ceb-xy-Zpg.title" = "Dettagli della Routine";
+
+/* Class = "UILabel"; text = "Pro Features"; ObjectID = "D2Q-kn-9Pp"; */
+"D2Q-kn-9Pp.text" = "Caratteristiche Pro";
+
+/* Class = "UILabel"; text = "Sex"; ObjectID = "DaS-Dy-Var"; */
+"DaS-Dy-Var.text" = "Sesso";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "DbO-PW-UIF"; */
+"DbO-PW-UIF.title" = "FAQ";
+
+/* Class = "UILabel"; text = "Warm Up"; ObjectID = "E5a-vJ-ckn"; */
+"E5a-vJ-ckn.text" = "Riscaldamento";
+
+/* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "EEV-02-rZJ"; */
+"EEV-02-rZJ.placeholder" = "Inserisci il Nome della Routine";
+
+/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "EFB-vi-a5a"; */
+"EFB-vi-a5a.headerTitle" = "Impostazioni";
+
+/* Class = "UILabel"; text = "01:00"; ObjectID = "ENO-Ee-DMr"; */
+"ENO-Ee-DMr.text" = "01:00";
+
+/* Class = "UITableViewSection"; headerTitle = "Notifications"; ObjectID = "EOa-un-ybR"; */
+"EOa-un-ybR.headerTitle" = "Notifiche";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "FBa-IB-cCa"; */
+"FBa-IB-cCa.normalTitle" = "Chiudi";
+
+/* Class = "UILabel"; text = "Question"; ObjectID = "FPa-VY-ydJ"; */
+"FPa-VY-ydJ.text" = "Domanda";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "FiK-dW-Abq"; */
+"FiK-dW-Abq.title" = "Annulla";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "Fx2-f3-V4K"; */
+"Fx2-f3-V4K.text" = "1";
+
+/* Class = "UITableViewSection"; headerTitle = "User Info"; ObjectID = "GhF-2p-GAD"; */
+"GhF-2p-GAD.headerTitle" = "Info Utente";
+
+/* Class = "UILabel"; text = "Hi there!"; ObjectID = "HMf-yc-cve"; */
+"HMf-yc-cve.text" = "Ciao!";
+
+/* Class = "UIBarButtonItem"; title = "Routines"; ObjectID = "HsO-xr-GoR"; */
+"HsO-xr-GoR.title" = "Routine";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "II3-ta-GUD"; */
+"II3-ta-GUD.normalTitle" = "Indietro";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "JNg-DG-Jjz"; */
+"JNg-DG-Jjz.text" = "Nome";
+
+/* Class = "UITextField"; text = "18:00"; ObjectID = "Kdu-QU-81q"; */
+"Kdu-QU-81q.text" = "18:00";
+
+/* Class = "UITextField"; placeholder = "Enter Exercise Name"; ObjectID = "Kgw-Eb-Rmt"; */
+"Kgw-Eb-Rmt.placeholder" = "Inserisci il Nome dell'Esercizio";
+
+/* Class = "UIButton"; normalTitle = "Sure!"; ObjectID = "M2v-PX-9sM"; */
+"M2v-PX-9sM.normalTitle" = "Certo!";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "MAe-cf-U0y"; */
+"MAe-cf-U0y.text" = "01:00";
+
+/* Class = "UILabel"; text = "Answer"; ObjectID = "MJI-hM-te0"; */
+"MJI-hM-te0.text" = "Risposta";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "MbB-hh-ZlQ"; */
+"MbB-hh-ZlQ.title" = "Profilo";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "NCO-cD-nBI"; */
+"NCO-cD-nBI.normalTitle" = "Indietro";
+
+/* Class = "UIViewController"; title = "SelectRoutineTypeViewController"; ObjectID = "OEM-3I-2D6"; */
+"OEM-3I-2D6.title" = "SelectRoutineTypeViewController";
+
+/* Class = "UITextField"; text = "18:00"; ObjectID = "QtB-qu-X1C"; */
+"QtB-qu-X1C.text" = "18:00";
+
+/* Class = "UILabel"; text = "Timer Sound"; ObjectID = "RNd-mJ-SDV"; */
+"RNd-mJ-SDV.text" = "Suoneria Timer";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "RZD-so-TdP"; */
+"RZD-so-TdP.text" = "Età";
+
+/* Class = "UILabel"; text = "Add Exercises"; ObjectID = "Rdo-Xu-OgS"; */
+"Rdo-Xu-OgS.text" = "Aggiungi Esercizio";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "Stk-tL-gga"; */
+"Stk-tL-gga.text" = "01:00";
+
+/* Class = "UILabel"; text = "Remind me"; ObjectID = "TbR-d9-kbv"; */
+"TbR-d9-kbv.text" = "Ricordami";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "ThG-2m-7cS"; */
+"ThG-2m-7cS.text" = "00:00";
+
+/* Class = "UILabel"; text = "Height"; ObjectID = "UHU-nX-Epg"; */
+"UHU-nX-Epg.text" = "Altezza";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Veg-ND-IM1"; */
+"Veg-ND-IM1.text" = "Nome";
+
+/* Class = "UILabel"; text = "Donation (Repurchasable)"; ObjectID = "WTk-cv-gXZ"; */
+"WTk-cv-gXZ.text" = "Dona (Riacquistabile)";
+
+/* Class = "UILabel"; text = "Run In Background"; ObjectID = "Y97-TV-dp6"; */
+"Y97-TV-dp6.text" = "Esegui In Background";
+
+/* Class = "UILabel"; text = "x"; ObjectID = "Zhg-wm-VJ1"; */
+"Zhg-wm-VJ1.text" = "x";
+
+/* Class = "UILabel"; text = "Cool Down"; ObjectID = "Zqr-Pn-K5p"; */
+"Zqr-Pn-K5p.text" = "Defaticamento";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "aN8-Mj-84x"; */
+"aN8-Mj-84x.text" = "1";
+
+/* Class = "UILabel"; text = "Remaining"; ObjectID = "asr-M9-FVI"; */
+"asr-M9-FVI.text" = "Rimanente";
+
+/* Class = "UILabel"; text = " Unknown"; ObjectID = "bQX-6W-Pgu"; */
+"bQX-6W-Pgu.text" = " Sconosciuto";
+
+/* Class = "UINavigationItem"; title = "Routine Types"; ObjectID = "bbX-Mt-GBY"; */
+"bbX-Mt-GBY.title" = "Tipi di Routine";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "cFX-O3-qbQ"; */
+"cFX-O3-qbQ.text" = "00:00";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "cmv-zk-LSH"; */
+"cmv-zk-LSH.text" = "00:00";
+
+/* Class = "UILabel"; text = "Every"; ObjectID = "dCw-n5-c4O"; */
+"dCw-n5-c4O.text" = "Ogni";
+
+/* Class = "UILabel"; text = "Good job keeping fit! \nBy the way, we‚Äôd love some feedback! How do you feel about Chronic? "; ObjectID = "dOe-44-JgT"; */
+"dOe-44-JgT.text" = "Ottimo lavoro nel tenerti in forma! \nIn ogni caso, noi apprezziamo il tuo feedback! Che ne pensi di Chronic? ";
+
+/* Class = "UILabel"; text = "Round Time"; ObjectID = "eHS-bw-2In"; */
+"eHS-bw-2In.text" = "Round Time";
+
+/* Class = "UIViewController"; title = "QuickTimerViewController"; ObjectID = "eeg-Hi-sa7"; */
+"eeg-Hi-sa7.title" = "QuickTimerViewController";
+
+/* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "ekw-bF-kQ2"; */
+"ekw-bF-kQ2.headerTitle" = "Supporto";
+
+/* Class = "UILabel"; text = "Body Mass Index (BMI)"; ObjectID = "fBU-Gi-0rM"; */
+"fBU-Gi-0rM.text" = "Indice di Massa Corporea (IMC)";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "fEp-iJ-n91"; */
+"fEp-iJ-n91.text" = "Sconosciuto";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "fKd-io-ho0"; */
+"fKd-io-ho0.text" = "01:00";
+
+/* Class = "UILabel"; text = "Remind Me To Workout"; ObjectID = "fcp-Ta-Nxf"; */
+"fcp-Ta-Nxf.text" = "Ricordami di Allenarmi";
+
+/* Class = "UILabel"; text = "Rest Time"; ObjectID = "fmz-O1-O7D"; */
+"fmz-O1-O7D.text" = "Riposo";
+
+/* Class = "UIButton"; normalTitle = "Chronic"; ObjectID = "gM7-vF-hwX"; */
+"gM7-vF-hwX.normalTitle" = "Chronic";
+
+/* Class = "UILabel"; text = "Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!"; ObjectID = "gc1-zg-3O7"; */
+"gc1-zg-3O7.text" = "Pensi che ci sia un modo per noi per migliorare la tua esperianza con Chronic? Contattaci, noi apprezziamo il tuo feedback!";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "gun-mK-gVn"; */
+"gun-mK-gVn.title" = "Chiudi";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "h8N-8M-hbW"; */
+"h8N-8M-hbW.title" = "Chiudi";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "hJ3-2s-exZ"; */
+"hJ3-2s-exZ.text" = "Sconosciuto";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "i4H-ob-BKR"; */
+"i4H-ob-BKR.normalTitle" = "Prossimo";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "ich-BW-iW9"; */
+"ich-BW-iW9.title" = "Chiudi";
+
+/* Class = "UITextField"; text = "Day"; ObjectID = "ilb-5J-0Ym"; */
+"ilb-5J-0Ym.text" = "Giorno";
+
+/* Class = "UILabel"; text = "Unknown"; ObjectID = "k3g-8T-VWF"; */
+"k3g-8T-VWF.text" = "Sconosciuto";
+
+/* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "ksH-2j-BQg"; */
+"ksH-2j-BQg.placeholder" = "Inserisci il Nome della Routine";
+
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "m5y-CQ-t8h"; */
+"m5y-CQ-t8h.text" = "FAQ";
+
+/* Class = "UILabel"; text = "Restore Upgrades"; ObjectID = "mcW-yo-ctz"; */
+"mcW-yo-ctz.text" = "Ripristina Aggiornamenti";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "mqj-Fa-53j"; */
+"mqj-Fa-53j.text" = "Colore";
+
+/* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "mvc-Ed-45P"; */
+"mvc-Ed-45P.title" = "Dettagli della Routine";
+
+/* Class = "UITextField"; text = "Day"; ObjectID = "oL4-m0-1Ho"; */
+"oL4-m0-1Ho.text" = "Giorno";
+
+/* Class = "UIButton"; normalTitle = "Nope"; ObjectID = "og9-r5-BCD"; */
+"og9-r5-BCD.normalTitle" = "No No";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "oko-vD-zIo"; */
+"oko-vD-zIo.text" = "01:00";
+
+/* Class = "UILabel"; text = "# of Rounds"; ObjectID = "pYc-8m-Qdg"; */
+"pYc-8m-Qdg.text" = "# di Round";
+
+/* Class = "UILabel"; text = "At"; ObjectID = "rdp-69-aSV"; */
+"rdp-69-aSV.text" = "A";
+
+/* Class = "UILabel"; text = "Weight"; ObjectID = "sXh-6f-GEL"; */
+"sXh-6f-GEL.text" = "Peso";
+
+/* Class = "UINavigationItem"; title = "Quick Timer"; ObjectID = "sxo-gx-Ral"; */
+"sxo-gx-Ral.title" = "Quick Timer";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "u6B-yn-UEJ"; */
+"u6B-yn-UEJ.title" = "Chiudi";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "uXJ-DE-TSl"; */
+"uXJ-DE-TSl.normalTitle" = "Fatto";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "ucr-QL-M0P"; */
+"ucr-QL-M0P.text" = "01:00";
+
+/* Class = "UILabel"; text = " Unknown"; ObjectID = "ugs-ak-flr"; */
+"ugs-ak-flr.text" = " Sconosciuto";
+
+/* Class = "UITextField"; text = "01:00"; ObjectID = "vQM-jl-vRg"; */
+"vQM-jl-vRg.text" = "01:00";
+
+/* Class = "UILabel"; text = "Yay!"; ObjectID = "vVX-df-kiU"; */
+"vVX-df-kiU.text" = "Evvai!";
+
+/* Class = "UILabel"; text = "At"; ObjectID = "vnV-tz-5tH"; */
+"vnV-tz-5tH.text" = "A";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "wdO-aq-f58"; */
+"wdO-aq-f58.text" = "Tempo";
+
+/* Class = "UILabel"; text = "Lets set you up right so you get the most out of Chronic."; ObjectID = "yYN-50-1YB"; */
+"yYN-50-1YB.text" = "Facciamo in modo che tu possa ottenere il meglio da Chronic.";
+
+/* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
+"z2I-CN-Ytx.text" = "Vai cosÏ!";
+
+/* Class = "UILabel"; text = "Email Us"; ObjectID = "zrb-SX-QX1"; */
+"zrb-SX-QX1.text" = "Scrivici";
