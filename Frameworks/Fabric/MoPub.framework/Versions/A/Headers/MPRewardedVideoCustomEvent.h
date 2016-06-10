@@ -265,6 +265,13 @@
  */
 - (void)rewardedVideoShouldRewardUserForCustomEvent:(MPRewardedVideoCustomEvent *)customEvent reward:(MPRewardedVideoReward *)reward;
 
+/**
+ * Call this method to get the customer ID associated with this custom event.
+ *
+ * @return The user's customer ID.
+ */
+- (NSString *)customerIdForRewardedVideoCustomEvent:(MPRewardedVideoCustomEvent *)customEvent;
+
 /** @name Impression and Click Tracking */
 
 /**
