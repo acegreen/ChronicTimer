@@ -17,6 +17,10 @@ class SettingsTableViewController: UITableViewController {
     var messageBody: String!
     var toReceipients: [String]!
     
+    @IBAction func unwindToSettingsViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
     @IBOutlet var timerSoundDetailTextField: UITextField!
     @IBOutlet var timerVolumeSlider: UISlider!
     @IBOutlet var enableDeviceSleepSwitch: UISwitch!

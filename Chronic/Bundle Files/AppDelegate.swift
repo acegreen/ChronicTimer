@@ -89,9 +89,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         keychainRemoveAdsString  = keychain[removeAdsKey]
         //print("keychainRemoveAdsString \(keychainRemoveAdsString)")
         
-        // Setup Parse
-        Parse.setApplicationId("Dyoh5fwgntEeU7pVGNWVQVpikIDMX2nIXVflX9oi",
-                               clientKey: "AlXOsEnni9PP08Wfqav2YjR17ZfkbRneNub6AfoN")
+        // Initialize Parse
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "Dyoh5fwgntEeU7pVGNWVQVpikIDMX2nIXVflX9oi"
+            $0.clientKey = ""
+            $0.server = "http://159.203.62.182:1337/parse"
+        }
+        Parse.initializeWithConfiguration(configuration)
         
         // Setup Crashlytics
         Fabric.with([Crashlytics.self, MoPub.self])
