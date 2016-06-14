@@ -24,7 +24,7 @@ class OnboardingViewController: AMWaveViewController {
 
     }
     
-    @IBAction func forwardButtonAction(sender: AnyObject) {
+    @IBAction func forwardButtonAction(_ sender: AnyObject) {
         
         if HKHealthStore.isHealthDataAvailable() {
             self.performSegueWithIdentifier("OBSegue_HealthController", sender: self)

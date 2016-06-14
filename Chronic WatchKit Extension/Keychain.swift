@@ -131,7 +131,7 @@ public enum Accessibility {
     case AlwaysThisDeviceOnly
 }
 
-public struct AuthenticationPolicy : OptionSetType {
+public struct AuthenticationPolicy : OptionSet {
     /**
     User presence policy using Touch ID or Passcode. Touch ID does not 
     have to be available or enrolled. Item is still accessible by Touch ID
@@ -249,7 +249,7 @@ private let ValueData = kSecValueData as String
 private let UseOperationPrompt = kSecUseOperationPrompt as String
 
 #if os(iOS)
-@available(iOS, introduced=8.0, deprecated=9.0, message="Use a UseAuthenticationUI instead.")
+@available(iOS, introduced:8.0, deprecated:9.0, message:"Use a UseAuthenticationUI instead.")
 private let UseNoAuthenticationUI = kSecUseNoAuthenticationUI as String
 #endif
 
@@ -337,7 +337,7 @@ public class Keychain {
     
     public convenience init() {
         var options = Options()
-        if let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier {
+        if let bundleIdentifier = Bundle.main().bundleIdentifier {
             options.service = bundleIdentifier
         }
         self.init(options)
@@ -351,7 +351,7 @@ public class Keychain {
     
     public convenience init(accessGroup: String) {
         var options = Options()
-        if let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier {
+        if let bundleIdentifier = Bundle.main().bundleIdentifier {
             options.service = bundleIdentifier
         }
         options.accessGroup = accessGroup
@@ -436,14 +436,14 @@ public class Keychain {
     // MARK:
     
     public func get(key: String) throws -> String? {
-        return try getString(key)
+        return try getString(key: key)
     }
     
     public func getString(key: String) throws -> String? {
-        guard let data = try getData(key) else  {
+        guard let data = try getData(key: key) else  {
             return nil
         }
-        guard let string = NSString(data: data, encoding: NSUTF8StringEncoding) as? String else {
+        guard let string = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue) as? String else {
             throw conversionError(message: "failed to convert data to string")
         }
         return string
@@ -476,10 +476,10 @@ public class Keychain {
     // MARK:
     
     public func set(value: String, key: String) throws {
-        guard let data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) else {
+        guard value.data(using: String.Encoding.utf8, allowLossyConversion: false) != nil else {
             throw conversionError(message: "failed to convert string to data")
         }
-        try set(data, key: key)
+        try set(value: value, key: key)
     }
     
     public func set(value: NSData, key: String) throws {
@@ -543,17 +543,17 @@ public class Keychain {
 
     public subscript(key: String) -> String? {
         get {
-            return (try? get(key)).flatMap { $0 }
+            return (try? get(key: key)).flatMap { $0 }
         }
 
         set {
             if let value = newValue {
                 do {
-                    try set(value, key: key)
+                    try set(value: value, key: key)
                 } catch {}
             } else {
                 do {
-                    try remove(key)
+                    try remove(key: key)
                 } catch {}
             }
         }
@@ -571,17 +571,17 @@ public class Keychain {
 
     public subscript(data key: String) -> NSData? {
         get {
-            return (try? getData(key)).flatMap { $0 }
+            return (try? getData(key: key)).flatMap { $0 }
         }
 
         set {
             if let value = newValue {
                 do {
-                    try set(value, key: key)
+                    try set(value: value, key: key)
                 } catch {}
             } else {
                 do {
-                    try remove(key)
+                    try remove(key: key)
                 } catch {}
             }
         }
@@ -778,21 +778,21 @@ public class Keychain {
 
     #if os(iOS)
     @available(iOS 8.0, *)
-    public class func requestSharedWebCredential(domain domain: String, completion: (credentials: [[String: String]], error: NSError?) -> () = { credentials, error -> () in }) {
+    public class func requestSharedWebCredential(domain: String, completion: (credentials: [[String: String]], error: NSError?) -> () = { credentials, error -> () in }) {
         requestSharedWebCredential(domain: domain, account: nil, completion: completion)
     }
     #endif
 
     #if os(iOS)
     @available(iOS 8.0, *)
-    public class func requestSharedWebCredential(domain domain: String, account: String, completion: (credentials: [[String: String]], error: NSError?) -> () = { credentials, error -> () in }) {
+    public class func requestSharedWebCredential(domain: String, account: String, completion: (credentials: [[String: String]], error: NSError?) -> () = { credentials, error -> () in }) {
         requestSharedWebCredential(domain: Optional(domain), account: Optional(account), completion: completion)
     }
     #endif
 
     #if os(iOS)
     @available(iOS 8.0, *)
-    private class func requestSharedWebCredential(domain domain: String?, account: String?, completion: (credentials: [[String: String]], error: NSError?) -> ()) {
+    private class func requestSharedWebCredential(domain: String?, account: String?, completion: (credentials: [[String: String]], error: NSError?) -> ()) {
         SecRequestSharedWebCredential(domain, account) { (credentials, error) -> () in
             var remoteError: NSError?
             if let error = error {
@@ -861,7 +861,7 @@ public class Keychain {
         return []
     }
     
-    private class func prettify(itemClass itemClass: ItemClass, items: [[String: AnyObject]]) -> [[String: AnyObject]] {
+    private class func prettify(itemClass: ItemClass, items: [[String: AnyObject]]) -> [[String: AnyObject]] {
         let items = items.map { attributes -> [String: AnyObject] in
             var item = [String: AnyObject]()
             
@@ -895,7 +895,7 @@ public class Keychain {
                 item["key"] = key
             }
             if let data = attributes[ValueData] as? NSData {
-                if let text = NSString(data: data, encoding: NSUTF8StringEncoding) as? String {
+                if let text = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue) as? String {
                     item["value"] = text
                 } else  {
                     item["value"] = data
@@ -918,18 +918,18 @@ public class Keychain {
     
     // MARK:
     
-    private class func conversionError(message message: String) -> NSError {
+    private class func conversionError(message: String) -> NSError {
         let error = NSError(domain: KeychainAccessErrorDomain, code: Int(Status.ConversionError.rawValue), userInfo: [NSLocalizedDescriptionKey: message])
         print("error:[\(error.code)] \(error.localizedDescription)")
         
         return error
     }
     
-    private func conversionError(message message: String) -> NSError {
+    private func conversionError(message: String) -> NSError {
         return self.dynamicType.conversionError(message: message)
     }
     
-    private class func securityError(status status: OSStatus) -> NSError {
+    private class func securityError(status: OSStatus) -> NSError {
         let message = Status(rawValue: status)!.description
         
         let error = NSError(domain: KeychainAccessErrorDomain, code: Int(status), userInfo: [NSLocalizedDescriptionKey: message])
@@ -938,7 +938,7 @@ public class Keychain {
         return error
     }
     
-    private func securityError(status status: OSStatus) -> NSError {
+    private func securityError(status: OSStatus) -> NSError {
         return self.dynamicType.securityError(status: status)
     }
 }
@@ -1019,7 +1019,7 @@ extension Options {
         return query
     }
     
-    func attributes(key key: String?, value: NSData) -> ([String: AnyObject], NSError?) {
+    func attributes(key: String?, value: NSData) -> ([String: AnyObject], NSError?) {
         var attributes: [String: AnyObject]
         
         if key != nil {
@@ -1041,7 +1041,7 @@ extension Options {
         if let policy = authenticationPolicy {
             if #available(OSX 10.10, *) {
                 var error: Unmanaged<CFError>?
-                guard let accessControl = SecAccessControlCreateWithFlags(kCFAllocatorDefault, accessibility.rawValue, SecAccessControlCreateFlags(rawValue: policy.rawValue), &error) else {
+                guard let accessControl = SecAccessControlCreateWithFlags(kCFAllocatorDefault, accessibility.rawValue, SecAccessControlCreateFlags(rawValue: CFOptionFlags(policy.rawValue)), &error) else {
                     if let error = error?.takeUnretainedValue() {
                         return (attributes, error.error)
                     }
@@ -1465,7 +1465,7 @@ extension CFError {
     }
 }
 
-public enum Status : OSStatus, ErrorType {
+public enum Status : OSStatus, ErrorProtocol {
     case Success
     case Unimplemented
     case DiskFull

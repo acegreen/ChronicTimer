@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -30,7 +30,7 @@ public class PieChartRenderer: ChartDataRendererBase
         self.chart = chart
     }
     
-    public override func drawData(context context: CGContext)
+    public override func drawData(context: CGContext)
     {
         guard let chart = chart else { return }
         
@@ -49,7 +49,7 @@ public class PieChartRenderer: ChartDataRendererBase
     }
     
     public func calculateMinimumRadiusForSpacedSlice(
-        center center: CGPoint,
+        center: CGPoint,
         radius: CGFloat,
         angle: CGFloat,
         arcStartPointX: CGFloat,
@@ -89,7 +89,7 @@ public class PieChartRenderer: ChartDataRendererBase
         return spacedRadius
     }
     
-    public func drawDataSet(context context: CGContext, dataSet: IPieChartDataSet)
+    public func drawDataSet(context: CGContext, dataSet: IPieChartDataSet)
     {
         guard let
             chart = chart,
@@ -122,7 +122,7 @@ public class PieChartRenderer: ChartDataRendererBase
         
         let sliceSpace = visibleAngleCount <= 1 ? 0.0 : dataSet.sliceSpace
 
-        CGContextSaveGState(context)
+        context.saveGState()
         
         for j in 0 ..< entryCount
         {
@@ -139,7 +139,7 @@ public class PieChartRenderer: ChartDataRendererBase
                 {
                     let accountForSliceSpacing = sliceSpace > 0.0 && sliceAngle <= 180.0
                     
-                    CGContextSetFillColorWithColor(context, dataSet.colorAt(j).CGColor)
+                    context.setFillColor(dataSet.colorAt(j).cgColor)
                     
                     let sliceSpaceAngleOuter = visibleAngleCount == 1 ?
                         0.0 :
@@ -154,21 +154,17 @@ public class PieChartRenderer: ChartDataRendererBase
                     let arcStartPointX = center.x + radius * cos(startAngleOuter * ChartUtils.Math.FDEG2RAD)
                     let arcStartPointY = center.y + radius * sin(startAngleOuter * ChartUtils.Math.FDEG2RAD)
 
-                    let path = CGPathCreateMutable()
+                    let path = CGMutablePath()
                     
-                    CGPathMoveToPoint(
-                        path,
-                        nil,
-                        arcStartPointX,
-                        arcStartPointY)
-                    CGPathAddRelativeArc(
-                        path,
-                        nil,
-                        center.x,
-                        center.y,
-                        radius,
-                        startAngleOuter * ChartUtils.Math.FDEG2RAD,
-                        sweepAngleOuter * ChartUtils.Math.FDEG2RAD)
+                    path.moveTo(nil,
+                        x: arcStartPointX,
+                        y: arcStartPointY)
+                    path.addRelativeArc(matrix: nil,
+                        x: center.x,
+                        y: center.y,
+                        radius: radius,
+                        startAngle: startAngleOuter * ChartUtils.Math.FDEG2RAD,
+                        delta: sweepAngleOuter * ChartUtils.Math.FDEG2RAD)
 
                     if drawInnerArc &&
                         (innerRadius > 0.0 || accountForSliceSpacing)
@@ -201,19 +197,15 @@ public class PieChartRenderer: ChartDataRendererBase
                         }
                         let endAngleInner = startAngleInner + sweepAngleInner
                         
-                        CGPathAddLineToPoint(
-                            path,
-                            nil,
-                            center.x + innerRadius * cos(endAngleInner * ChartUtils.Math.FDEG2RAD),
-                            center.y + innerRadius * sin(endAngleInner * ChartUtils.Math.FDEG2RAD))
-                        CGPathAddRelativeArc(
-                            path,
-                            nil,
-                            center.x,
-                            center.y,
-                            innerRadius,
-                            endAngleInner * ChartUtils.Math.FDEG2RAD,
-                            -sweepAngleInner * ChartUtils.Math.FDEG2RAD)
+                        path.addLineTo(nil,
+                            x: center.x + innerRadius * cos(endAngleInner * ChartUtils.Math.FDEG2RAD),
+                            y: center.y + innerRadius * sin(endAngleInner * ChartUtils.Math.FDEG2RAD))
+                        path.addRelativeArc(matrix: nil,
+                            x: center.x,
+                            y: center.y,
+                            radius: innerRadius,
+                            startAngle: endAngleInner * ChartUtils.Math.FDEG2RAD,
+                            delta: -sweepAngleInner * ChartUtils.Math.FDEG2RAD)
                     }
                     else
                     {
@@ -234,37 +226,33 @@ public class PieChartRenderer: ChartDataRendererBase
                             let arcEndPointX = center.x + sliceSpaceOffset * cos(angleMiddle * ChartUtils.Math.FDEG2RAD)
                             let arcEndPointY = center.y + sliceSpaceOffset * sin(angleMiddle * ChartUtils.Math.FDEG2RAD)
                             
-                            CGPathAddLineToPoint(
-                                path,
-                                nil,
-                                arcEndPointX,
-                                arcEndPointY)
+                            path.addLineTo(nil,
+                                x: arcEndPointX,
+                                y: arcEndPointY)
                         }
                         else
                         {
-                            CGPathAddLineToPoint(
-                                path,
-                                nil,
-                                center.x,
-                                center.y)
+                            path.addLineTo(nil,
+                                x: center.x,
+                                y: center.y)
                         }
                     }
                     
-                    CGPathCloseSubpath(path)
+                    path.closeSubpath()
                     
-                    CGContextBeginPath(context)
-                    CGContextAddPath(context, path)
-                    CGContextEOFillPath(context)
+                    context.beginPath()
+                    context.addPath(path)
+                    context.eoFillPath()
                 }
             }
             
             angle += sliceAngle * phaseX
         }
         
-        CGContextRestoreGState(context)
+        context.restoreGState()
     }
     
-    public override func drawValues(context context: CGContext)
+    public override func drawValues(context: CGContext)
     {
         guard let
             chart = chart,
@@ -275,7 +263,7 @@ public class PieChartRenderer: ChartDataRendererBase
         let center = chart.centerCircleBox
         
         // get whole the radius
-        var r = chart.radius
+        let radius = chart.radius
         let rotationAngle = chart.rotationAngle
         var drawAngles = chart.drawAngles
         var absoluteAngles = chart.absoluteAngles
@@ -283,14 +271,14 @@ public class PieChartRenderer: ChartDataRendererBase
         let phaseX = animator.phaseX
         let phaseY = animator.phaseY
         
-        var off = r / 10.0 * 3.0
+        var labelRadiusOffset = radius / 10.0 * 3.0
         
         if chart.drawHoleEnabled
         {
-            off = (r - (r * chart.holeRadiusPercent)) / 2.0
+            labelRadiusOffset = (radius - (radius * chart.holeRadiusPercent)) / 2.0
         }
         
-        r -= off; // offset to keep things inside the chart
+        let labelRadius = radius - labelRadiusOffset
         
         var dataSets = data.dataSets
         
@@ -301,6 +289,9 @@ public class PieChartRenderer: ChartDataRendererBase
         
         var angle: CGFloat = 0.0
         var xIndex = 0
+        
+        context.saveGState()
+        defer { context.restoreGState() }
         
         for i in 0 ..< dataSets.count
         {
@@ -313,7 +304,11 @@ public class PieChartRenderer: ChartDataRendererBase
                 continue
             }
             
+            let xValuePosition = dataSet.xValuePosition
+            let yValuePosition = dataSet.yValuePosition
+            
             let valueFont = dataSet.valueFont
+            let lineHeight = valueFont.lineHeight
             
             guard let formatter = dataSet.valueFormatter else { continue }
             
@@ -337,69 +332,174 @@ public class PieChartRenderer: ChartDataRendererBase
                 
                 let sliceAngle = drawAngles[xIndex]
                 let sliceSpace = dataSet.sliceSpace
-                let sliceSpaceMiddleAngle = sliceSpace / (ChartUtils.Math.FDEG2RAD * r)
+                let sliceSpaceMiddleAngle = sliceSpace / (ChartUtils.Math.FDEG2RAD * labelRadius)
                 
                 // offset needed to center the drawn text in the slice
-                let offset = (sliceAngle - sliceSpaceMiddleAngle / 2.0) / 2.0
+                let angleOffset = (sliceAngle - sliceSpaceMiddleAngle / 2.0) / 2.0
 
-                angle = angle + offset
+                angle = angle + angleOffset
                 
-                // calculate the text position
-                let x = r
-                    * cos((rotationAngle + angle * phaseY) * ChartUtils.Math.FDEG2RAD)
-                    + center.x
-                var y = r
-                    * sin((rotationAngle + angle * phaseY) * ChartUtils.Math.FDEG2RAD)
-                    + center.y
-
+                let transformedAngle = rotationAngle + angle * phaseY
+                
                 let value = usePercentValuesEnabled ? e.value / yValueSum * 100.0 : e.value
+                let valueText = formatter.string(from: value)!
                 
-                let val = formatter.stringFromNumber(value)!
+                let sliceXBase = cos(transformedAngle * ChartUtils.Math.FDEG2RAD)
+                let sliceYBase = sin(transformedAngle * ChartUtils.Math.FDEG2RAD)
                 
-                let lineHeight = valueFont.lineHeight
-                y -= lineHeight
+                let drawXOutside = drawXVals && xValuePosition == .outsideSlice
+                let drawYOutside = drawYVals && yValuePosition == .outsideSlice
+                let drawXInside = drawXVals && xValuePosition == .insideSlice
+                let drawYInside = drawYVals && yValuePosition == .insideSlice
                 
-                // draw everything, depending on settings
-                if (drawXVals && drawYVals)
+                if drawXOutside || drawYOutside
                 {
-                    ChartUtils.drawText(
-                        context: context,
-                        text: val,
-                        point: CGPoint(x: x, y: y),
-                        align: .Center,
-                        attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
-                    )
+                    let valueLineLength1 = dataSet.valueLinePart1Length
+                    let valueLineLength2 = dataSet.valueLinePart2Length
+                    let valueLinePart1OffsetPercentage = dataSet.valueLinePart1OffsetPercentage
                     
-                    if (j < data.xValCount && data.xVals[j] != nil)
+                    var pt2: CGPoint
+                    var labelPoint: CGPoint
+                    var align: NSTextAlignment
+                    
+                    var line1Radius: CGFloat
+                    
+                    if chart.drawHoleEnabled
+                    {
+                        line1Radius = (radius - (radius * chart.holeRadiusPercent)) * valueLinePart1OffsetPercentage + (radius * chart.holeRadiusPercent)
+                    }
+                    else
+                    {
+                        line1Radius = radius * valueLinePart1OffsetPercentage
+                    }
+                    
+                    let polyline2Length = dataSet.valueLineVariableLength
+                        ? labelRadius * valueLineLength2 * abs(sin(transformedAngle * ChartUtils.Math.FDEG2RAD))
+                        : labelRadius * valueLineLength2;
+                    
+                    let pt0 = CGPoint(
+                        x: line1Radius * sliceXBase + center.x,
+                        y: line1Radius * sliceYBase + center.y)
+                    
+                    let pt1 = CGPoint(
+                        x: labelRadius * (1 + valueLineLength1) * sliceXBase + center.x,
+                        y: labelRadius * (1 + valueLineLength1) * sliceYBase + center.y)
+                    
+                    if transformedAngle.truncatingRemainder(dividingBy: 360.0) >= 90.0 && transformedAngle.truncatingRemainder(dividingBy: 360.0) <= 270.0
+                    {
+                        pt2 = CGPoint(x: pt1.x - polyline2Length, y: pt1.y)
+                        align = .right
+                        labelPoint = CGPoint(x: pt2.x - 5, y: pt2.y - lineHeight)
+                    }
+                    else
+                    {
+                        pt2 = CGPoint(x: pt1.x + polyline2Length, y: pt1.y)
+                        align = .left
+                        labelPoint = CGPoint(x: pt2.x + 5, y: pt2.y - lineHeight)
+                    }
+                    
+                    if dataSet.valueLineColor != nil
+                    {
+                        context.setStrokeColor(dataSet.valueLineColor!.cgColor)
+                        context.setLineWidth(dataSet.valueLineWidth);
+                        
+                        context.moveTo(x: pt0.x, y: pt0.y)
+                        context.addLineTo(x: pt1.x, y: pt1.y)
+                        context.addLineTo(x: pt2.x, y: pt2.y)
+                        
+                        context.drawPath(using: CGPathDrawingMode.stroke);
+                    }
+                    
+                    if drawXOutside && drawYOutside
+                    {
+                        ChartUtils.drawText(
+                            context: context,
+                            text: valueText,
+                            point: labelPoint,
+                            align: align,
+                            attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
+                        )
+                        
+                        if (j < data.xValCount && data.xVals[j] != nil)
+                        {
+                            ChartUtils.drawText(
+                                context: context,
+                                text: data.xVals[j]!,
+                                point: CGPoint(x: labelPoint.x, y: labelPoint.y + lineHeight),
+                                align: align,
+                                attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
+                            )
+                        }
+                    }
+                    else if drawXOutside
                     {
                         ChartUtils.drawText(
                             context: context,
                             text: data.xVals[j]!,
-                            point: CGPoint(x: x, y: y + lineHeight),
-                            align: .Center,
+                            point: CGPoint(x: labelPoint.x, y: labelPoint.y + lineHeight / 2.0),
+                            align: align,
+                            attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
+                        )
+                    }
+                    else if drawYOutside
+                    {
+                        ChartUtils.drawText(
+                            context: context,
+                            text: valueText,
+                            point: CGPoint(x: labelPoint.x, y: labelPoint.y + lineHeight / 2.0),
+                            align: align,
                             attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
                         )
                     }
                 }
-                else if (drawXVals)
+                
+                if drawXInside || drawYInside
                 {
-                    ChartUtils.drawText(
-                        context: context,
-                        text: data.xVals[j]!,
-                        point: CGPoint(x: x, y: y + lineHeight / 2.0),
-                        align: .Center,
-                        attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
-                    )
-                }
-                else if (drawYVals)
-                {
-                    ChartUtils.drawText(
-                        context: context,
-                        text: val,
-                        point: CGPoint(x: x, y: y + lineHeight / 2.0),
-                        align: .Center,
-                        attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
-                    )
+                    // calculate the text position
+                    let x = labelRadius * sliceXBase + center.x
+                    let y = labelRadius * sliceYBase + center.y - lineHeight
+                 
+                    if drawXInside && drawYInside
+                    {
+                        ChartUtils.drawText(
+                            context: context,
+                            text: valueText,
+                            point: CGPoint(x: x, y: y),
+                            align: .center,
+                            attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
+                        )
+                        
+                        if j < data.xValCount && data.xVals[j] != nil
+                        {
+                            ChartUtils.drawText(
+                                context: context,
+                                text: data.xVals[j]!,
+                                point: CGPoint(x: x, y: y + lineHeight),
+                                align: .center,
+                                attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
+                            )
+                        }
+                    }
+                    else if drawXInside
+                    {
+                        ChartUtils.drawText(
+                            context: context,
+                            text: data.xVals[j]!,
+                            point: CGPoint(x: x, y: y + lineHeight / 2.0),
+                            align: .center,
+                            attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
+                        )
+                    }
+                    else if drawYInside
+                    {
+                        ChartUtils.drawText(
+                            context: context,
+                            text: valueText,
+                            point: CGPoint(x: x, y: y + lineHeight / 2.0),
+                            align: .center,
+                            attributes: [NSFontAttributeName: valueFont, NSForegroundColorAttributeName: dataSet.valueTextColorAt(j)]
+                        )
+                    }
                 }
                 
                 xIndex += 1
@@ -407,14 +507,14 @@ public class PieChartRenderer: ChartDataRendererBase
         }
     }
     
-    public override func drawExtras(context context: CGContext)
+    public override func drawExtras(context: CGContext)
     {
         drawHole(context: context)
         drawCenterText(context: context)
     }
     
     /// draws the hole in the center of the chart and the transparent circle / hole
-    private func drawHole(context context: CGContext)
+    private func drawHole(context: CGContext)
     {
         guard let
             chart = chart,
@@ -423,7 +523,7 @@ public class PieChartRenderer: ChartDataRendererBase
         
         if (chart.drawHoleEnabled)
         {
-            CGContextSaveGState(context)
+            context.saveGState()
             
             let radius = chart.radius
             let holeRadius = radius * chart.holeRadiusPercent
@@ -431,49 +531,49 @@ public class PieChartRenderer: ChartDataRendererBase
             
             if let holeColor = chart.holeColor
             {
-                if holeColor != NSUIColor.clearColor()
+                if holeColor != NSUIColor.clear()
                 {
                     // draw the hole-circle
-                    CGContextSetFillColorWithColor(context, chart.holeColor!.CGColor)
-                    CGContextFillEllipseInRect(context, CGRect(x: center.x - holeRadius, y: center.y - holeRadius, width: holeRadius * 2.0, height: holeRadius * 2.0))
+                    context.setFillColor(chart.holeColor!.cgColor)
+                    context.fillEllipse(in: CGRect(x: center.x - holeRadius, y: center.y - holeRadius, width: holeRadius * 2.0, height: holeRadius * 2.0))
                 }
             }
             
             // only draw the circle if it can be seen (not covered by the hole)
             if let transparentCircleColor = chart.transparentCircleColor
             {
-                if transparentCircleColor != NSUIColor.clearColor() &&
+                if transparentCircleColor != NSUIColor.clear() &&
                     chart.transparentCircleRadiusPercent > chart.holeRadiusPercent
                 {
                     let alpha = animator.phaseX * animator.phaseY
                     let secondHoleRadius = radius * chart.transparentCircleRadiusPercent
                     
                     // make transparent
-                    CGContextSetAlpha(context, alpha);
-                    CGContextSetFillColorWithColor(context, transparentCircleColor.CGColor)
+                    context.setAlpha(alpha);
+                    context.setFillColor(transparentCircleColor.cgColor)
                     
                     // draw the transparent-circle
-                    CGContextBeginPath(context)
-                    CGContextAddEllipseInRect(context, CGRect(
+                    context.beginPath()
+                    context.addEllipse(inRect: CGRect(
                         x: center.x - secondHoleRadius,
                         y: center.y - secondHoleRadius,
                         width: secondHoleRadius * 2.0,
                         height: secondHoleRadius * 2.0))
-                    CGContextAddEllipseInRect(context, CGRect(
+                    context.addEllipse(inRect: CGRect(
                         x: center.x - holeRadius,
                         y: center.y - holeRadius,
                         width: holeRadius * 2.0,
                         height: holeRadius * 2.0))
-                    CGContextEOFillPath(context)
+                    context.eoFillPath()
                 }
             }
             
-            CGContextRestoreGState(context)
+            context.restoreGState()
         }
     }
     
     /// draws the description text in the center of the pie chart makes most sense when center-hole is enabled
-    private func drawCenterText(context context: CGContext)
+    private func drawCenterText(context: CGContext)
     {
         guard let
             chart = chart,
@@ -489,30 +589,30 @@ public class PieChartRenderer: ChartDataRendererBase
             
             if (chart.centerTextRadiusPercent > 0.0)
             {
-                boundingRect = CGRectInset(boundingRect, (boundingRect.width - boundingRect.width * chart.centerTextRadiusPercent) / 2.0, (boundingRect.height - boundingRect.height * chart.centerTextRadiusPercent) / 2.0)
+                boundingRect = boundingRect.insetBy(dx: (boundingRect.width - boundingRect.width * chart.centerTextRadiusPercent) / 2.0, dy: (boundingRect.height - boundingRect.height * chart.centerTextRadiusPercent) / 2.0)
             }
             
-            let textBounds = centerAttributedText.boundingRectWithSize(boundingRect.size, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
+            let textBounds = centerAttributedText.boundingRect(with: boundingRect.size, options: [.usesLineFragmentOrigin, .usesFontLeading, .truncatesLastVisibleLine], context: nil)
             
             var drawingRect = boundingRect
             drawingRect.origin.x += (boundingRect.size.width - textBounds.size.width) / 2.0
             drawingRect.origin.y += (boundingRect.size.height - textBounds.size.height) / 2.0
             drawingRect.size = textBounds.size
             
-            CGContextSaveGState(context)
+            context.saveGState()
 
-            let clippingPath = CGPathCreateWithEllipseInRect(holeRect, nil)
-            CGContextBeginPath(context)
-            CGContextAddPath(context, clippingPath)
-            CGContextClip(context)
+            let clippingPath = CGPath(ellipseIn: holeRect, transform: nil)
+            context.beginPath()
+            context.addPath(clippingPath)
+            context.clip()
             
-            centerAttributedText.drawWithRect(drawingRect, options: [.UsesLineFragmentOrigin, .UsesFontLeading, .TruncatesLastVisibleLine], context: nil)
+            centerAttributedText.draw(with: drawingRect, options: [.usesLineFragmentOrigin, .usesFontLeading, .truncatesLastVisibleLine], context: nil)
             
-            CGContextRestoreGState(context)
+            context.restoreGState()
         }
     }
     
-    public override func drawHighlighted(context context: CGContext, indices: [ChartHighlight])
+    public override func drawHighlighted(context: CGContext, indices: [ChartHighlight])
     {
         guard let
             chart = chart,
@@ -520,7 +620,7 @@ public class PieChartRenderer: ChartDataRendererBase
             animator = animator
             else { return }
         
-        CGContextSaveGState(context)
+        context.saveGState()
         
         let phaseX = animator.phaseX
         let phaseY = animator.phaseY
@@ -581,7 +681,7 @@ public class PieChartRenderer: ChartDataRendererBase
             
             let accountForSliceSpacing = sliceSpace > 0.0 && sliceAngle <= 180.0
             
-            CGContextSetFillColorWithColor(context, set.colorAt(xIndex).CGColor)
+            context.setFillColor(set.colorAt(xIndex).cgColor)
             
             let sliceSpaceAngleOuter = visibleAngleCount == 1 ?
                 0.0 :
@@ -605,21 +705,17 @@ public class PieChartRenderer: ChartDataRendererBase
                 sweepAngleShifted = 0.0
             }
             
-            let path = CGPathCreateMutable()
+            let path = CGMutablePath()
             
-            CGPathMoveToPoint(
-                path,
-                nil,
-                center.x + highlightedRadius * cos(startAngleShifted * ChartUtils.Math.FDEG2RAD),
-                center.y + highlightedRadius * sin(startAngleShifted * ChartUtils.Math.FDEG2RAD))
-            CGPathAddRelativeArc(
-                path,
-                nil,
-                center.x,
-                center.y,
-                highlightedRadius,
-                startAngleShifted * ChartUtils.Math.FDEG2RAD,
-                sweepAngleShifted * ChartUtils.Math.FDEG2RAD)
+            path.moveTo(nil,
+                x: center.x + highlightedRadius * cos(startAngleShifted * ChartUtils.Math.FDEG2RAD),
+                y: center.y + highlightedRadius * sin(startAngleShifted * ChartUtils.Math.FDEG2RAD))
+            path.addRelativeArc(matrix: nil,
+                x: center.x,
+                y: center.y,
+                radius: highlightedRadius,
+                startAngle: startAngleShifted * ChartUtils.Math.FDEG2RAD,
+                delta: sweepAngleShifted * ChartUtils.Math.FDEG2RAD)
             
             var sliceSpaceRadius: CGFloat = 0.0
             if accountForSliceSpacing
@@ -658,19 +754,15 @@ public class PieChartRenderer: ChartDataRendererBase
                 }
                 let endAngleInner = startAngleInner + sweepAngleInner
                 
-                CGPathAddLineToPoint(
-                    path,
-                    nil,
-                    center.x + innerRadius * cos(endAngleInner * ChartUtils.Math.FDEG2RAD),
-                    center.y + innerRadius * sin(endAngleInner * ChartUtils.Math.FDEG2RAD))
-                CGPathAddRelativeArc(
-                    path,
-                    nil,
-                    center.x,
-                    center.y,
-                    innerRadius,
-                    endAngleInner * ChartUtils.Math.FDEG2RAD,
-                    -sweepAngleInner * ChartUtils.Math.FDEG2RAD)
+                path.addLineTo(nil,
+                    x: center.x + innerRadius * cos(endAngleInner * ChartUtils.Math.FDEG2RAD),
+                    y: center.y + innerRadius * sin(endAngleInner * ChartUtils.Math.FDEG2RAD))
+                path.addRelativeArc(matrix: nil,
+                    x: center.x,
+                    y: center.y,
+                    radius: innerRadius,
+                    startAngle: endAngleInner * ChartUtils.Math.FDEG2RAD,
+                    delta: -sweepAngleInner * ChartUtils.Math.FDEG2RAD)
             }
             else
             {
@@ -681,29 +773,25 @@ public class PieChartRenderer: ChartDataRendererBase
                     let arcEndPointX = center.x + sliceSpaceRadius * cos(angleMiddle * ChartUtils.Math.FDEG2RAD)
                     let arcEndPointY = center.y + sliceSpaceRadius * sin(angleMiddle * ChartUtils.Math.FDEG2RAD)
                     
-                    CGPathAddLineToPoint(
-                        path,
-                        nil,
-                        arcEndPointX,
-                        arcEndPointY)
+                    path.addLineTo(nil,
+                        x: arcEndPointX,
+                        y: arcEndPointY)
                 }
                 else
                 {
-                    CGPathAddLineToPoint(
-                        path,
-                        nil,
-                        center.x,
-                        center.y)
+                    path.addLineTo(nil,
+                        x: center.x,
+                        y: center.y)
                 }
             }
             
-            CGPathCloseSubpath(path)
+            path.closeSubpath()
             
-            CGContextBeginPath(context)
-            CGContextAddPath(context, path)
-            CGContextEOFillPath(context)
+            context.beginPath()
+            context.addPath(path)
+            context.eoFillPath()
         }
         
-        CGContextRestoreGState(context)
+        context.restoreGState()
     }
 }

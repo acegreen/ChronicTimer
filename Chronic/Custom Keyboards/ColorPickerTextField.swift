@@ -23,7 +23,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         self.inputAccessoryView = configureAccessoryView()
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent textfield from editing
         return false
@@ -33,7 +33,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     func configureColorPicker() -> UIView {
         
         // configure picker
-        let pickerViewFrame = CGRectMake(0.0,0.0, UIScreen.mainScreen().bounds.size.width, 216)
+        let pickerViewFrame = CGRect(x: 0.0,y: 0.0, width: UIScreen.main().bounds.size.width, height: 216)
         
         //let pickerWidth = min(UIScreen.mainScreen().bounds.size.width,500)
         
@@ -51,15 +51,15 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     
     func configureAccessoryView() -> UIView {
         
-        let inputAccessoryView = UIToolbar(frame: CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.size.width, 44))
-        inputAccessoryView.barStyle = UIBarStyle.BlackTranslucent
+        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main().bounds.size.width, height: 44))
+        inputAccessoryView.barStyle = UIBarStyle.blackTranslucent
         
-        let flex = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
+        let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
     
         // Configure done button
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
-        doneButton.tintColor = UIColor.greenColor()
+        doneButton.tintColor = UIColor.green()
         doneButton.action = #selector(ColorPickerTextField.dismissPicker)
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
@@ -69,17 +69,17 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     
     // Disallow selection or editing and remove caret
     
-    override func caretRectForPosition(position: UITextPosition) -> CGRect {
-        return CGRectZero
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        return CGRect.zero
     }
     
-    override func selectionRectsForRange(range: UITextRange) -> [AnyObject] {
+    override func selectionRects(for range: UITextRange) -> [AnyObject] {
         return []
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         
-        UIMenuController.sharedMenuController().menuVisible = false
+        UIMenuController.shared().isMenuVisible = false
         
         if action == "copy:" || action == "selectAll:" || action == "paste:" {
             return false
@@ -101,7 +101,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         
     }
     
-    func colorForPalletIndex(x: Int, y: Int, numXStripes: Int, numYStripes: Int) -> UIColor {
+    func colorForPalletIndex(_ x: Int, y: Int, numXStripes: Int, numYStripes: Int) -> UIColor {
         
         if colorMatrix.count > x  {
             let colorArray = colorMatrix[x]
@@ -120,11 +120,11 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     
     // MARK: - Color Matrix (only for test case)
     var colorMatrix = [ [UIColor.colorFromRGB(0x60E5BC), UIColor.colorFromRGB(0x1ABC9C), UIColor.colorFromRGB(0xF1C40F), UIColor.colorFromRGB(0xF39C12)],
-                        [UIColor.colorFromRGB(0x4CD964), UIColor.colorFromRGB(0x27AE60), UIColor.orangeColor(), UIColor.colorFromRGB(0xD35400)],
-                        [UIColor.colorFromRGB(0x5AC8FA), UIColor.colorFromRGB(0x3498DB), UIColor.colorFromRGB(0xE74C3C), UIColor.redColor()],
-                        [UIColor.colorFromRGB(0x9B59B6), UIColor.colorFromRGB(0x5856D6), UIColor.colorFromRGB(0x34495E), UIColor.blackColor()]]
+                        [UIColor.colorFromRGB(0x4CD964), UIColor.colorFromRGB(0x27AE60), UIColor.orange(), UIColor.colorFromRGB(0xD35400)],
+                        [UIColor.colorFromRGB(0x5AC8FA), UIColor.colorFromRGB(0x3498DB), UIColor.colorFromRGB(0xE74C3C), UIColor.red()],
+                        [UIColor.colorFromRGB(0x9B59B6), UIColor.colorFromRGB(0x5856D6), UIColor.colorFromRGB(0x34495E), UIColor.black()]]
     
-    private func fillColorMatrix(numX: Int, _ numY: Int) {
+    private func fillColorMatrix(_ numX: Int, _ numY: Int) {
         colorMatrix.removeAll()
         if numX > 0 && numY > 0 {
             

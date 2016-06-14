@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -43,42 +43,10 @@ public class HorizontalBarChartView: BarChartView
         offsetTop: CGFloat = 0.0,
         offsetBottom: CGFloat = 0.0
         
-        // setup offsets for legend
-        if (_legend !== nil && _legend.isEnabled)
-        {
-            if (_legend.position == .RightOfChart
-                || _legend.position == .RightOfChartCenter)
-            {
-                offsetRight += min(_legend.neededWidth, _viewPortHandler.chartWidth * _legend.maxSizePercent) + _legend.xOffset * 2.0
-            }
-            else if (_legend.position == .LeftOfChart
-                || _legend.position == .LeftOfChartCenter)
-            {
-                offsetLeft += min(_legend.neededWidth, _viewPortHandler.chartWidth * _legend.maxSizePercent) + _legend.xOffset * 2.0
-            }
-            else if (_legend.position == .BelowChartLeft
-                || _legend.position == .BelowChartRight
-                || _legend.position == .BelowChartCenter)
-            {
-                // It's possible that we do not need this offset anymore as it
-                //   is available through the extraOffsets, but changing it can mean
-                //   changing default visibility for existing apps.
-                let yOffset = _legend.textHeightMax + 2.5 * 2.0
-                
-                offsetBottom += min(_legend.neededHeight + yOffset, _viewPortHandler.chartHeight * _legend.maxSizePercent)
-            }
-            else if (_legend.position == .AboveChartLeft
-                || _legend.position == .AboveChartRight
-                || _legend.position == .AboveChartCenter)
-            {
-                // It's possible that we do not need this offset anymore as it
-                //   is available through the extraOffsets, but changing it can mean
-                //   changing default visibility for existing apps.
-                let yOffset = _legend.textHeightMax
-                
-                offsetTop += min(_legend.neededHeight + yOffset, _viewPortHandler.chartHeight * _legend.maxSizePercent)
-            }
-        }
+        calculateLegendOffsets(offsetLeft: &offsetLeft,
+                               offsetTop: &offsetTop,
+                               offsetRight: &offsetRight,
+                               offsetBottom: &offsetBottom)
         
         // offsets for y-labels
         if (_leftAxis.needsOffset)
@@ -96,15 +64,15 @@ public class HorizontalBarChartView: BarChartView
         if (_xAxis.isEnabled)
         {
             // offsets for x-labels
-            if (_xAxis.labelPosition == .Bottom)
+            if (_xAxis.labelPosition == .bottom)
             {
                 offsetLeft += xlabelwidth
             }
-            else if (_xAxis.labelPosition == .Top)
+            else if (_xAxis.labelPosition == .top)
             {
                 offsetRight += xlabelwidth
             }
-            else if (_xAxis.labelPosition == .BothSided)
+            else if (_xAxis.labelPosition == .bothSided)
             {
                 offsetLeft += xlabelwidth
                 offsetRight += xlabelwidth
@@ -149,11 +117,11 @@ public class HorizontalBarChartView: BarChartView
         }
     }
     
-    public override func getBarBounds(e: BarChartDataEntry) -> CGRect
+    public override func getBarBounds(_ e: BarChartDataEntry) -> CGRect
     {
         guard let
             set = _data?.getDataSetForEntry(e) as? IBarChartDataSet
-            else { return CGRectNull }
+            else { return CGRect.null }
         
         let barspace = set.barSpace
         let y = CGFloat(e.value)
@@ -172,7 +140,7 @@ public class HorizontalBarChartView: BarChartView
         return bounds
     }
     
-    public override func getPosition(e: ChartDataEntry, axis: ChartYAxis.AxisDependency) -> CGPoint
+    public override func getPosition(_ e: ChartDataEntry, axis: ChartYAxis.AxisDependency) -> CGPoint
     {
         var vals = CGPoint(x: CGFloat(e.value), y: CGFloat(e.xIndex))
         
@@ -181,7 +149,7 @@ public class HorizontalBarChartView: BarChartView
         return vals
     }
 
-    public override func getHighlightByTouchPoint(pt: CGPoint) -> ChartHighlight?
+    public override func getHighlightByTouchPoint(_ pt: CGPoint) -> ChartHighlight?
     {
         if _data === nil
         {
@@ -189,7 +157,7 @@ public class HorizontalBarChartView: BarChartView
             return nil
         }
         
-        return self.highlighter?.getHighlight(x: Double(pt.y), y: Double(pt.x))
+        return self.highlighter?.getHighlight(x: pt.y, y: pt.x)
     }
     
     public override var lowestVisibleXIndex: Int
@@ -198,7 +166,7 @@ public class HorizontalBarChartView: BarChartView
         let div = (step <= 1.0) ? 1.0 : step + (_data as! BarChartData).groupSpace
         
         var pt = CGPoint(x: _viewPortHandler.contentLeft, y: _viewPortHandler.contentBottom)
-        getTransformer(ChartYAxis.AxisDependency.Left).pixelToValue(&pt)
+        getTransformer(ChartYAxis.AxisDependency.left).pixelToValue(&pt)
         
         return Int(((pt.y <= 0.0) ? 0.0 : pt.y / div) + 1.0)
     }
@@ -209,7 +177,7 @@ public class HorizontalBarChartView: BarChartView
         let div = (step <= 1.0) ? 1.0 : step + (_data as! BarChartData).groupSpace
         
         var pt = CGPoint(x: _viewPortHandler.contentLeft, y: _viewPortHandler.contentTop)
-        getTransformer(ChartYAxis.AxisDependency.Left).pixelToValue(&pt)
+        getTransformer(ChartYAxis.AxisDependency.left).pixelToValue(&pt)
         
         return Int((pt.y >= CGFloat(chartXMax)) ? CGFloat(chartXMax) / div : (pt.y / div))
     }

@@ -6,7 +6,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -20,7 +20,7 @@ public class ZoomChartViewJob: ChartViewPortJob
 {
     internal var scaleX: CGFloat = 0.0
     internal var scaleY: CGFloat = 0.0
-    internal var axisDependency: ChartYAxis.AxisDependency = ChartYAxis.AxisDependency.Left
+    internal var axisDependency: ChartYAxis.AxisDependency = ChartYAxis.AxisDependency.left
     
     public init(
         viewPortHandler: ChartViewPortHandler,

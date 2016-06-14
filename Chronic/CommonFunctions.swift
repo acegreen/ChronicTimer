@@ -19,7 +19,7 @@ import AMPopTip
 
 // MARK: -Exercise Function
 
-func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
+func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
     
     let stagesArray = NSMutableArray()
     var totalTime = 0
@@ -57,7 +57,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                         
                         totalTime += customeExerciseDictionary["Time"] as! Int
                         
-                        stagesArray.addObject(customeExerciseDictionary)
+                        stagesArray.add(customeExerciseDictionary)
                     }
                 }
             }
@@ -78,7 +78,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                 
                 totalTime += warmUpDictionary["Time"] as! Int
                 
-                stagesArray.addObject(warmUpDictionary)
+                stagesArray.add(warmUpDictionary)
                 
             }
             
@@ -99,7 +99,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                     
                     totalTime += roundDictionary["Time"] as! Int
                     
-                    stagesArray.addObject(roundDictionary)
+                    stagesArray.add(roundDictionary)
                     
                 }
                 
@@ -117,7 +117,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                     
                     totalTime += restDictionary["Time"] as! Int
                     
-                    stagesArray.addObject(restDictionary)
+                    stagesArray.add(restDictionary)
                     
                 }
             }
@@ -131,7 +131,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                 
                 totalTime += coolDownDictionary["Time"] as! Int
                 
-                stagesArray.addObject(coolDownDictionary)
+                stagesArray.add(coolDownDictionary)
                 
             }
         }
@@ -143,11 +143,11 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
         // Quick Timer Time
         quickTimerDictionary["Name"] = NSLocalizedString("Quick Timer", comment: "")
         quickTimerDictionary["Time"] = QuickTimerTime
-        quickTimerDictionary["Color"] = NSKeyedArchiver.archivedDataWithRootObject(UIColor.orangeColor())
+        quickTimerDictionary["Color"] = NSKeyedArchiver.archivedData(withRootObject: UIColor.orange())
         
         totalTime += quickTimerDictionary["Time"] as! Int
         
-        stagesArray.addObject(quickTimerDictionary)
+        stagesArray.add(quickTimerDictionary)
         
     }
     
@@ -155,7 +155,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
     return (stagesArray as AnyObject as! [[String:AnyObject]], totalTime)
 }
 
-func setSelectedRoutine(routine: RoutineModel, completion: (result: Bool) -> Void) {
+func setSelectedRoutine(_ routine: RoutineModel, completion: (result: Bool) -> Void) {
         
     routine.setValue(true, forKey: "selectedRoutine")
 
@@ -180,7 +180,7 @@ func setSelectedRoutine(routine: RoutineModel, completion: (result: Bool) -> Voi
 
 func deselectSelectedRoutine() {
     
-    let selecredRoutinePredicate: NSPredicate = NSPredicate(format: "selectedRoutine == true")
+    let selecredRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
     
     guard let routineMarkedSelected = DataAccess.sharedInstance.GetRoutines(selecredRoutinePredicate)!.first as? RoutineModel else { return }
     
@@ -190,26 +190,26 @@ func deselectSelectedRoutine() {
         
         if save == true {
             
-            UIApplication.sharedApplication().shortcutItems = nil
+            UIApplication.shared().shortcutItems = nil
         }
     })
 }
 
-func getRoutine(withName withName: String) -> RoutineModel? {
+func getRoutine(withName: String) -> RoutineModel? {
     
-    let existingRoutinePredicate: NSPredicate = NSPredicate(format: "name == %@", withName)
+    let existingRoutinePredicate: Predicate = Predicate(format: "name == %@", withName)
     
     return DataAccess.sharedInstance.GetRoutines(existingRoutinePredicate)?.first as? RoutineModel
 }
 
 func getSelectedRoutine() -> RoutineModel? {
     
-    let selecredRoutinePredicate: NSPredicate = NSPredicate(format: "selectedRoutine == true")
+    let selecredRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
     
     return (DataAccess.sharedInstance.GetRoutines(selecredRoutinePredicate)?.first as? RoutineModel)
 }
 
-func saveContext(completion: (save: Bool) -> Void) {
+func saveContext(_ completion: (save: Bool) -> Void) {
     
     do {
         
@@ -229,22 +229,22 @@ func saveContext(completion: (save: Bool) -> Void) {
 @available(iOS 9.0, *)
 func updateDynamicAction(with routine: RoutineModel) {
         
-        let type = NSBundle.mainBundle().bundleIdentifier! + ".Dynamic"
-        let shortcutIconType = UIApplicationShortcutIconType.Play
+        let type = Bundle.main().bundleIdentifier! + ".Dynamic"
+        let shortcutIconType = UIApplicationShortcutIconType.play
         let icon = UIApplicationShortcutIcon(type: shortcutIconType)
         
         let dynamicShortcut = UIApplicationShortcutItem(type: type, localizedTitle: routine.name, localizedSubtitle: nil, icon: icon, userInfo: nil)
-        UIApplication.sharedApplication().shortcutItems = [dynamicShortcut]
+        UIApplication.shared().shortcutItems = [dynamicShortcut]
 }
 
-func xDaysFromNow (numberOfDays: Int) -> NSDate {
+func xDaysFromNow (_ numberOfDays: Int) -> Date {
     
-    let dayComponent: NSDateComponents = NSDateComponents()
+    var dayComponent: DateComponents = DateComponents()
     dayComponent.day = numberOfDays
     
-    let calendar:NSCalendar = NSCalendar.currentCalendar()
+    let calendar:Calendar = Calendar.current()
     
-    return calendar.dateByAddingComponents(dayComponent, toDate: NSDate(), options: NSCalendarOptions(rawValue: 0))!
+    return calendar.date(byAdding: dayComponent, to: Date(), options: Calendar.Options(rawValue: 0))!
     
 }
 
@@ -257,7 +257,7 @@ func isConnectedToNetwork() -> Bool {
     let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
         SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
     }
-    var flags = SCNetworkReachabilityFlags.ConnectionAutomatic
+    var flags = SCNetworkReachabilityFlags.connectionAutomatic
     
     if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
         return false
@@ -269,7 +269,7 @@ func isConnectedToNetwork() -> Bool {
 }
 
 @available(iOS 9.0, *)
-func addToSpotlight (title: String, contentDescription: String, uniqueIdentifier: String, domainIdentifier: String) {
+func addToSpotlight (_ title: String, contentDescription: String, uniqueIdentifier: String, domainIdentifier: String) {
     
     let attributeSet:CSSearchableItemAttributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
     attributeSet.title = title
@@ -277,7 +277,7 @@ func addToSpotlight (title: String, contentDescription: String, uniqueIdentifier
     
     let searchableItem = CSSearchableItem(uniqueIdentifier: uniqueIdentifier, domainIdentifier: domainIdentifier, attributeSet: attributeSet)
     
-    CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([searchableItem]) { (error) -> Void in
+    CSSearchableIndex.default().indexSearchableItems([searchableItem]) { (error) -> Void in
         
         if let error = error {
             print("Deindexing error: \(error.localizedDescription)")
@@ -289,9 +289,9 @@ func addToSpotlight (title: String, contentDescription: String, uniqueIdentifier
 }
 
 @available(iOS 9.0, *)
-func deleteFromSpotlight(uniqueIdentifier: String) {
+func deleteFromSpotlight(_ uniqueIdentifier: String) {
     
-    CSSearchableIndex.defaultSearchableIndex().deleteSearchableItemsWithIdentifiers([uniqueIdentifier]) { (error: NSError?) -> Void in
+    CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [uniqueIdentifier]) { (error: NSError?) -> Void in
         
         if let error = error {
             print("Deindexing error: \(error.localizedDescription)")
@@ -302,17 +302,17 @@ func deleteFromSpotlight(uniqueIdentifier: String) {
 }
 
 @available(iOS 9.0, *)
-func sendContextToAppleWatch(context: AnyObject) {
+func sendContextToAppleWatch(_ context: AnyObject) {
     
     guard (WCSession.isSupported()) else { return }
     
-    guard wcSession.watchAppInstalled else { return }
+    guard wcSession.isWatchAppInstalled else { return }
     
     // KEEP THOSE TWO GUARD STATEMENTS SEPARTED
     
-    if !wcSession.paired {
+    if !wcSession.isPaired {
         
-        SweetAlert().showAlert(NSLocalizedString("Alert: WCSession Paired Error Title Text", comment: ""), subTitle: NSLocalizedString("Alert: WCSession Paired Error Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil)
+        SweetAlert().showAlert(NSLocalizedString("Alert: WCSession Paired Error Title Text", comment: ""), subTitle: NSLocalizedString("Alert: WCSession Paired Error Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil)
     }
     
     do {
@@ -327,7 +327,7 @@ func sendContextToAppleWatch(context: AnyObject) {
     }
 }
 
-func timeComponentsFrom(time time: Int) -> (HoursLeft: Int, MinutesLeft: Int, SecondsLeft: Int) {
+func timeComponentsFrom(time: Int) -> (HoursLeft: Int, MinutesLeft: Int, SecondsLeft: Int) {
     
     let HoursLeft = time/3600
     let MinutesLeft = (time%3600)/60
@@ -337,9 +337,9 @@ func timeComponentsFrom(time time: Int) -> (HoursLeft: Int, MinutesLeft: Int, Se
     
 }
 
-func timeComponentsFrom(string string: String) -> (HoursLeft: Int, MinutesLeft: Int, SecondsLeft: Int) {
+func timeComponentsFrom(string: String) -> (HoursLeft: Int, MinutesLeft: Int, SecondsLeft: Int) {
     
-    var components = string.componentsSeparatedByString(":")
+    var components = string.components(separatedBy: ":")
     
     var hoursComponent: Int! = 0
     var minutesComponent: Int! = 0
@@ -347,7 +347,7 @@ func timeComponentsFrom(string string: String) -> (HoursLeft: Int, MinutesLeft: 
     
     if components.count == 3 {
         
-        hoursComponent = Int(components[0].stringByReplacingOccurrencesOfString(" ", withString: ""))!
+        hoursComponent = Int(components[0].replacingOccurrences(of: " ", with: ""))!
         minutesComponent = Int(components[1])!
         secondsComponent = Int(components[2])
         
@@ -361,7 +361,7 @@ func timeComponentsFrom(string string: String) -> (HoursLeft: Int, MinutesLeft: 
     
 }
 
-func timeStringFrom(time time: Int, type: String) -> String {
+func timeStringFrom(time: Int, type: String) -> String {
     
     let (HoursLeft,MinutesLeft,SecondsLeft) = timeComponentsFrom(time: time)
     
@@ -380,15 +380,15 @@ func timeStringFrom(time time: Int, type: String) -> String {
     }
 }
 
-func timeFromTimeComponents (hoursComponent hoursComponent:Int, minutesComponent:Int,secondsComponent:Int) -> Int {
+func timeFromTimeComponents (hoursComponent:Int, minutesComponent:Int,secondsComponent:Int) -> Int {
     
     return (hoursComponent * 3600) + (minutesComponent * 60) + (secondsComponent)
     
 }
 
-func displayAlert(title: String, message: String, Action1:UIAlertAction?, Action2:UIAlertAction?) -> UIAlertController {
+func displayAlert(_ title: String, message: String, Action1:UIAlertAction?, Action2:UIAlertAction?) -> UIAlertController {
     
-    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
     
     if Action1 != nil {
         
@@ -403,15 +403,15 @@ func displayAlert(title: String, message: String, Action1:UIAlertAction?, Action
     return alert
 }
 
-func loadPlayer(sound: String, ext: String) {
+func loadPlayer(_ sound: String, ext: String) {
     
     // Load Sound
-    soundlocation = NSBundle.mainBundle().URLForResource(sound, withExtension: ext)!
+    soundlocation = Bundle.main().urlForResource(sound, withExtension: ext)!
     
     do {
         
         // Play Sound
-        player = try AVAudioPlayer(contentsOfURL: soundlocation)
+        player = try AVAudioPlayer(contentsOf: soundlocation as URL)
         player.volume = timerVolume
         player.play()
         
@@ -421,19 +421,20 @@ func loadPlayer(sound: String, ext: String) {
     }
 }
 
-func textToSpeech(text: String) {
+func textToSpeech(_ text: String) {
     
     let myUtterance = AVSpeechUtterance(string: decryptString(text, dict: decryptDictionary))
     myUtterance.rate = 0.3
     myUtterance.volume = timerVolume
-    synthesizer.speakUtterance(myUtterance)
+    synthesizer.speak(myUtterance)
 }
 
-func decryptString (var string: String, dict: Dictionary<String, String>) -> String {
+func decryptString (_ string: String, dict: Dictionary<String, String>) -> String {
+    var string = string
     
     for (key, value) in dict {
         
-        string = string.stringByReplacingOccurrencesOfString("\(key)", withString: value)
+        string = string.replacingOccurrences(of: "\(key)", with: value)
         
     }
     
@@ -442,15 +443,15 @@ func decryptString (var string: String, dict: Dictionary<String, String>) -> Str
 
 func stopSoundsOrSpeech() {
     
-    if player.playing {
+    if player.isPlaying {
         
         player.stop()
         
     }
     
-    if synthesizer.speaking {
+    if synthesizer.isSpeaking {
         
-        synthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
+        synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
     }
     
 }
@@ -470,18 +471,18 @@ func checkDevice() {
 
 func markFeedbackGiven() {
     
-    userDefaults.setBool(true, forKey: "FEEDBACK_GIVEN")
+    userDefaults.set(true, forKey: "FEEDBACK_GIVEN")
     userDefaults.synchronize()
     
-    NSNotificationCenter.defaultCenter().postNotificationName("HideStarButton", object: nil)
+    NotificationCenter.default().post(name: Notification.Name(rawValue: "HideStarButton"), object: nil)
 
 }
 
 class TextField: UITextField {
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         
-        UIMenuController.sharedMenuController().menuVisible = false
+        UIMenuController.shared().isMenuVisible = false
         
         print("performaction")
         if action == #selector(NSObject.paste(_:)) {
@@ -492,7 +493,7 @@ class TextField: UITextField {
     }
 }
 
-func showPopTipOnceForKey(key: String, userDefaults: NSUserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: AMPopTipDirection = .Down, color: UIColor = .darkGrayColor()) -> AMPopTip? {
+func showPopTipOnceForKey(_ key: String, userDefaults: NSUserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: AMPopTipDirection = .Down, color: UIColor = .darkGrayColor()) -> AMPopTip? {
     if (!userDefaults.boolForKey(key)) {
         userDefaults.setBool(true, forKey: key)
         userDefaults.synchronize()
@@ -510,14 +511,14 @@ func showPopTipOnceForKey(key: String, userDefaults: NSUserDefaults, popTipText 
     return nil
 }
 
-func screenShotMethod(view: UIView) -> UIImage {
+func screenShotMethod(_ view: UIView) -> UIImage {
     //Create the UIImage
     UIGraphicsBeginImageContextWithOptions(view.frame.size, true, 0.0)
-    view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+    view.layer.render(in: UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     
-    return image
+    return image!
 }
 
 func removeAdsUpgradePurchased() -> Bool {

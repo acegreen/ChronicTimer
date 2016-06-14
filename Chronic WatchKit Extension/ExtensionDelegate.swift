@@ -34,9 +34,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         }
         
         // Setup WCSession
-        wcSession = WCSession.defaultSession()
+        wcSession = WCSession.default()
         wcSession.delegate = self
-        wcSession.activateSession()
+        wcSession.activate()
     }
 
     func applicationDidBecomeActive() {
@@ -51,36 +51,35 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     // =========================================================================
     // MARK: - WCSessionDelegate
     
-    func sessionWatchStateDidChange(session: WCSession) {
-        print(#function)
-        print(session)
-        print("reachable:\(session.reachable)")
+    @available(watchOSApplicationExtension 2.2, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+        print("session activationDidCompleteWith")
     }
     
-    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         
         print("Context received")
         
         if applicationContext["contextType"] as! String == "RoutineAdded" {
             
-            insertCoreDataObject(applicationContext)
+            insertCoreDataObject(appContext: applicationContext)
             
         } else if applicationContext["contextType"] as! String == "RoutineModified" {
             
-            modifyCoreDataObject(applicationContext)
+            modifyCoreDataObject(appContext: applicationContext)
             
         } else if applicationContext["contextType"] as! String == "RoutineDeleted" {
             
-            deleteCoreDataObject(applicationContext)
+            deleteCoreDataObject(appContext: applicationContext)
             
         } else if applicationContext["contextType"] as! String == "PurchasedProVersion" {
             
             // Set KeyChain Value
             do {
                 try keychain
-                    .accessibility(.Always)
-                    .synchronizable(true)
-                    .set(proVersionKeyValue, key: proVersionKey)
+                    .accessibility(accessibility: .Always)
+                    .synchronizable(synchronizable: true)
+                    .set(value: proVersionKeyValue, key: proVersionKey)
             } catch let error {
                 print("error: \(error)")
             }

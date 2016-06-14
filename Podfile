@@ -14,7 +14,7 @@ target "Chronic" do
     pod 'AMPopTip'
     pod 'AMWaveTransition'
     pod 'LaunchKit'
-    pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+    #pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     pod 'BubbleTransition'
     pod 'Rollout.io'
     pod 'ChameleonFramework/Swift'

@@ -34,13 +34,13 @@ func insertCoreDataObject(appContext: [String : AnyObject]) {
     
     let exerciseSet = NSMutableOrderedSet()
     
-    let newRoutine = RoutineModel(entity: routineEntity!, insertIntoManagedObjectContext: context)
+    let newRoutine = RoutineModel(entity: routineEntity!, insertInto: context)
     
-    for var stage = 0; stage < routineStage!.count; stage++ {
+    for stage in 0 ..< routineStage!.count {
         
-        let currentStageDict = routineStage!.objectAtIndex(stage) as! [String:AnyObject]
+        let currentStageDict = routineStage![stage] as! [String:AnyObject]
         
-        let newExercise = ExerciseModel(entity: exerciseEntity!, insertIntoManagedObjectContext: context)
+        let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
         
         newExercise.exerciseName = currentStageDict["Name"] as? String
         newExercise.exerciseTime = currentStageDict["Time"] as? Int
@@ -51,7 +51,7 @@ func insertCoreDataObject(appContext: [String : AnyObject]) {
         
         newExercise.exerciseToRoutine = newRoutine
         
-        exerciseSet.addObject(newExercise)
+        exerciseSet.add(newExercise)
         
     }
     
@@ -59,13 +59,13 @@ func insertCoreDataObject(appContext: [String : AnyObject]) {
     
     newRoutine.name = routineName! as? String
     newRoutine.selectedRoutine = true
-    newRoutine.date = NSDate()
+    newRoutine.date = Date()
     
     newRoutine.tableDisplayOrder = 1
     
     newRoutine.type = routineType! as? String
     
-    let (_, totalTime) = makeRoutineArray(newRoutine)
+    let (_, totalTime) = makeRoutineArray(routine: newRoutine)
     
     newRoutine.totalRoutineTime = totalTime
     
@@ -74,7 +74,7 @@ func insertCoreDataObject(appContext: [String : AnyObject]) {
         // save into CoreData
         try context.save()
         
-        NSNotificationCenter.defaultCenter().postNotificationName("willActivate", object: nil)
+        NotificationCenter.default().post(name: "willActivate" as NSNotification.Name, object: nil)
         
     } catch let error as NSError {
         
@@ -94,15 +94,15 @@ func modifyCoreDataObject(appContext: [String : AnyObject]) {
     
     let exerciseSet = NSMutableOrderedSet()
     
-    let existingRoutinePredicate: NSPredicate = NSPredicate(format:  "name == %@", routineName)
+    let existingRoutinePredicate: Predicate = Predicate(format:  "name == %@", routineName)
     
-    if let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(existingRoutinePredicate)!.first as? RoutineModel {
+    if let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first as? RoutineModel {
         
-        for var stage = 0; stage < routineStage!.count; stage++ {
+        for stage in 0 ..< routineStage!.count {
             
-            let currentStageDict = routineStage!.objectAtIndex(stage) as! [String:AnyObject]
+            let currentStageDict = routineStage![stage] as! [String:AnyObject]
             
-            let newExercise = ExerciseModel(entity: exerciseEntity!, insertIntoManagedObjectContext: context)
+            let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
             
             newExercise.exerciseName = currentStageDict["Name"] as? String
             newExercise.exerciseTime = currentStageDict["Time"] as? Int
@@ -113,16 +113,16 @@ func modifyCoreDataObject(appContext: [String : AnyObject]) {
             
             newExercise.exerciseToRoutine = existingRoutine
             
-            exerciseSet.addObject(newExercise)
+            exerciseSet.add(newExercise)
             
         }
         
         existingRoutine.routineToExcercise = exerciseSet
         
         existingRoutine.selectedRoutine = true
-        existingRoutine.date = NSDate()
+        existingRoutine.date = Date()
         
-        let (_, totalTime) = makeRoutineArray(existingRoutine)
+        let (_, totalTime) = makeRoutineArray(routine: existingRoutine)
         
         existingRoutine.totalRoutineTime = totalTime
         
@@ -131,7 +131,7 @@ func modifyCoreDataObject(appContext: [String : AnyObject]) {
             // save into CoreData
             try context.save()
             
-            NSNotificationCenter.defaultCenter().postNotificationName("willActivate", object: nil)
+            NotificationCenter.default().post(name: "willActivate" as NSNotification.Name, object: nil)
             
         } catch let error as NSError {
             
@@ -142,7 +142,7 @@ func modifyCoreDataObject(appContext: [String : AnyObject]) {
         
     } else {
         
-        insertCoreDataObject(appContext)
+        insertCoreDataObject(appContext: appContext)
     }
 }
 
@@ -150,20 +150,20 @@ func deleteCoreDataObject(appContext: [String : AnyObject]) {
     
     let routineName = appContext["routineName"] as! String
     
-    let existingRoutinePredicate: NSPredicate = NSPredicate(format:  "name == %@", routineName)
+    let existingRoutinePredicate: Predicate = Predicate(format:  "name == %@", routineName)
     
-    let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(existingRoutinePredicate)!.first as? RoutineModel
+    let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first as? RoutineModel
     
     if existingRoutine != nil {
         
-        context.deleteObject(existingRoutine!)
+        context.delete(existingRoutine!)
         
         do {
             
             // save into CoreData
             try context.save()
             
-            NSNotificationCenter.defaultCenter().postNotificationName("willActivate", object: nil)
+            NotificationCenter.default().post(name: "willActivate" as NSNotification.Name, object: nil)
             
         } catch let error as NSError {
             
@@ -191,7 +191,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
             
             for exercise in routineExercises {
                 
-                for var number = 1; number <= exercise.exerciseNumberOfRounds as Int; number += 1 {
+                for _ in 1...(exercise.exerciseNumberOfRounds as Int) {
                     
                     if exercise.exerciseTime as Int > 0 {
                         
@@ -202,7 +202,7 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                         
                         totalTime += customeExerciseDictionary["Time"] as! Int
                         
-                        stagesArray.addObject(customeExerciseDictionary)
+                        stagesArray.add(customeExerciseDictionary)
                     }
                 }
             }
@@ -215,11 +215,11 @@ func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
         // Quick Timer Time
         quickTimerDictionary["Name"] = NSLocalizedString("Quick Timer", comment: "")
         quickTimerDictionary["Time"] = QuickTimerTime
-        quickTimerDictionary["Color"] = NSKeyedArchiver.archivedDataWithRootObject(UIColor.orangeColor())
+        quickTimerDictionary["Color"] = NSKeyedArchiver.archivedData(withRootObject: UIColor.orange())
         
         totalTime += quickTimerDictionary["Time"] as! Int
         
-        stagesArray.addObject(quickTimerDictionary)
+        stagesArray.add(quickTimerDictionary)
         
     }
     

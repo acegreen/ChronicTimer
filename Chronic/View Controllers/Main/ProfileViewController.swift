@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
     
         // Header - Blurred Image
         
@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offset = scrollView.contentOffset.y
         var avatarTransform = CATransform3DIdentity

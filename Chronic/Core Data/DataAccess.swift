@@ -11,27 +11,29 @@ import CoreData
 
 public class DataAccess: NSObject {
     
+    private static var __once: () = {
+        Static.instance = DataAccess()
+    }()
+    
     public class var sharedInstance : DataAccess {
         
         struct Static {
-            static var onceToken: dispatch_once_t = 0
+            static var onceToken: Int = 0
             static var instance: DataAccess? = nil
         }
         
-        dispatch_once(&Static.onceToken) {
-            Static.instance = DataAccess()
-        }
+        _ = DataAccess.__once
         
         return Static.instance!
     }
     
     //MARK: -Get Routines & Exercises Functions
     
-    public func GetExistingRoutineWith(objectID: NSManagedObjectID) -> NSManagedObject? {
+    public func GetExistingRoutineWith(_ objectID: NSManagedObjectID) -> NSManagedObject? {
         
         do {
             
-            return try self.managedObjectContext.existingObjectWithID(objectID) 
+            return try self.managedObjectContext.existingObject(with: objectID)
             
         } catch let error as NSError {
             // failure
@@ -40,10 +42,10 @@ public class DataAccess: NSObject {
         }
     }
     
-    public func GetRoutines(predicate: NSPredicate?) -> [NSManagedObject]? {
+    public func GetRoutines(_ predicate: Predicate?) -> [NSManagedObject]? {
         
         let fetchRequest = NSFetchRequest(entityName: "Routines")
-        let entity = NSEntityDescription.entityForName("Routines", inManagedObjectContext: self.managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Routines", in: self.managedObjectContext)
         fetchRequest.entity = entity
         
         if predicate != nil {
@@ -51,15 +53,15 @@ public class DataAccess: NSObject {
             fetchRequest.predicate = predicate
         }
         
-        let sortDescriptors = [NSSortDescriptor(key: "tableDisplayOrder", ascending: false)]
+        let sortDescriptors = [SortDescriptor(key: "tableDisplayOrder", ascending: false)]
         
         fetchRequest.sortDescriptors = sortDescriptors
         
         var results: [NSManagedObject]!
         
         do {
-                
-            results = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            
+            results = try self.managedObjectContext.fetch(fetchRequest) as! [NSManagedObject]
             
         } catch let error as NSError {
             // failure
@@ -74,14 +76,14 @@ public class DataAccess: NSObject {
     public func GetExercises() -> [NSManagedObject]? {
         
         let fetchRequest = NSFetchRequest(entityName: "Exercises")
-        let entity = NSEntityDescription.entityForName("Exercises", inManagedObjectContext: self.managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Exercises", in: self.managedObjectContext)
         fetchRequest.entity = entity
         
         var results: [NSManagedObject]!
         
         do {
             
-            results = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            results = try self.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject]
             
             print(results)
             return results
@@ -96,28 +98,28 @@ public class DataAccess: NSObject {
     
     // MARK: - Core Data stack
     
-    lazy var applicationDocumentsDirectory: NSURL = {
+    lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "AG.Test" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = FileManager.default().urlsForDirectory(.documentDirectory, inDomains: .userDomainMask)
         return urls[urls.count-1]
-        }()
+    }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("Chronic", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
-        }()
+        let modelURL = Bundle.main().urlForResource("Chronic", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
+    }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Chronic.sqlite")
+        let url = try! self.applicationDocumentsDirectory.appendingPathComponent("Chronic.sqlite")
         
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             
-            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true])
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true])
             
         } catch {
             
@@ -136,15 +138,15 @@ public class DataAccess: NSObject {
         }
         
         return coordinator
-        }()
+    }()
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
-        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
-        }()
+    }()
     
     // MARK: - Core Data Saving support
     

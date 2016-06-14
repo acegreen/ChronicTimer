@@ -48,7 +48,7 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
                 
             barPoints.append(currentTimerDict["Name"] as! String)
             barValues.append(currentTimerDict["Time"] as! Double)
-            barColors.append((NSKeyedUnarchiver.unarchiveObjectWithData(currentTimerDict["Color"] as! NSData) as! UIColor).flatten())
+            barColors.append((NSKeyedUnarchiver.unarchiveObject(with: currentTimerDict["Color"] as! Data) as! UIColor).flatten())
         }
         
         self.setPieChart(self.barPoints, values: barValues)
@@ -57,7 +57,7 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
     
     // MARK: Routine Chart Stuff
     
-    func setPieChart(dataPoints: [String], values: [Double]) {
+    func setPieChart(_ dataPoints: [String], values: [Double]) {
         
         var dataEntries: [ChartDataEntry] = []
         
@@ -72,7 +72,7 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         
         routineChartView.data = pieChartData
-        routineChartView.userInteractionEnabled = false
+        routineChartView.isUserInteractionEnabled = false
         routineChartView.drawSliceTextEnabled = false
         routineChartView.legend.enabled = false
         routineChartView.holeColor = nil

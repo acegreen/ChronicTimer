@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -31,15 +31,15 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
     }
     
     /// draws the x-labels on the specified y-position
-    public override func drawLabels(context context: CGContext, pos: CGFloat, anchor: CGPoint)
+    public override func drawLabels(context: CGContext, pos: CGFloat, anchor: CGPoint)
     {
         guard let
             xAxis = xAxis,
             barData = chart?.data as? BarChartData
             else { return }
         
-        let paraStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-        paraStyle.alignment = .Center
+        let paraStyle = NSParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+        paraStyle.alignment = .center
         
         let labelAttrs = [NSFontAttributeName: xAxis.labelFont,
             NSForegroundColorAttributeName: xAxis.labelTextColor,
@@ -76,7 +76,7 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
                 position.x += (CGFloat(step) - 1.0) / 2.0
             }
             
-            position = CGPointApplyAffineTransform(position, valueToPixelMatrix)
+            position = position.apply(transform: valueToPixelMatrix)
             
             if (viewPortHandler.isInBoundsX(position.x))
             {
@@ -85,7 +85,7 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
                     // avoid clipping of the last
                     if (i == xAxis.values.count - 1)
                     {
-                        let width = label!.sizeWithAttributes(labelAttrs).width
+                        let width = label!.size(attributes: labelAttrs).width
                         
                         if (position.x + width / 2.0 > viewPortHandler.contentRight)
                         {
@@ -94,7 +94,7 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
                     }
                     else if (i == 0)
                     { // avoid clipping of the first
-                        let width = label!.sizeWithAttributes(labelAttrs).width
+                        let width = label!.size(attributes: labelAttrs).width
                         
                         if (position.x - width / 2.0 < viewPortHandler.contentLeft)
                         {
@@ -108,9 +108,9 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
         }
     }
     
-    private var _gridLineSegmentsBuffer = [CGPoint](count: 2, repeatedValue: CGPoint())
+    private var _gridLineSegmentsBuffer = [CGPoint](repeating: CGPoint(), count: 2)
     
-    public override func renderGridLines(context context: CGContext)
+    public override func renderGridLines(context: CGContext)
     {
         guard let
             xAxis = xAxis,
@@ -124,20 +124,20 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
         
         let step = barData.dataSetCount
         
-        CGContextSaveGState(context)
+        context.saveGState()
         
-        CGContextSetShouldAntialias(context, xAxis.gridAntialiasEnabled)
-        CGContextSetStrokeColorWithColor(context, xAxis.gridColor.CGColor)
-        CGContextSetLineWidth(context, xAxis.gridLineWidth)
-        CGContextSetLineCap(context, xAxis.gridLineCap)
+        context.setShouldAntialias(xAxis.gridAntialiasEnabled)
+        context.setStrokeColor(xAxis.gridColor.cgColor)
+        context.setLineWidth(xAxis.gridLineWidth)
+        context.setLineCap(xAxis.gridLineCap)
         
         if (xAxis.gridLineDashLengths != nil)
         {
-            CGContextSetLineDash(context, xAxis.gridLineDashPhase, xAxis.gridLineDashLengths, xAxis.gridLineDashLengths.count)
+            context.setLineDash(phase: xAxis.gridLineDashPhase, lengths: xAxis.gridLineDashLengths, count: xAxis.gridLineDashLengths.count)
         }
         else
         {
-            CGContextSetLineDash(context, 0.0, nil, 0)
+            context.setLineDash(phase: 0.0, lengths: nil, count: 0)
         }
         
         let valueToPixelMatrix = transformer.valueToPixelMatrix
@@ -148,7 +148,7 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
         {
             position.x = CGFloat(i * step) + CGFloat(i) * barData.groupSpace - 0.5
             position.y = 0.0
-            position = CGPointApplyAffineTransform(position, valueToPixelMatrix)
+            position = position.apply(transform: valueToPixelMatrix)
             
             if (viewPortHandler.isInBoundsX(position.x))
             {
@@ -156,10 +156,10 @@ public class ChartXAxisRendererBarChart: ChartXAxisRenderer
                 _gridLineSegmentsBuffer[0].y = viewPortHandler.contentTop
                 _gridLineSegmentsBuffer[1].x = position.x
                 _gridLineSegmentsBuffer[1].y = viewPortHandler.contentBottom
-                CGContextStrokeLineSegments(context, _gridLineSegmentsBuffer, 2)
+                context.strokeLineSegments(between: _gridLineSegmentsBuffer, count: 2)
             }
         }
         
-        CGContextRestoreGState(context)
+        context.restoreGState()
     }
 }

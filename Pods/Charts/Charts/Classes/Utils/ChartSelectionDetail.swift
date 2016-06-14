@@ -9,14 +9,16 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
 
 public class ChartSelectionDetail: NSObject
 {
+    private var _y = CGFloat.nan
     private var _value = Double(0)
+    private var _dataIndex = Int(0)
     private var _dataSetIndex = Int(0)
     private var _dataSet: IChartDataSet!
     
@@ -25,18 +27,40 @@ public class ChartSelectionDetail: NSObject
         super.init()
     }
     
-    public init(value: Double, dataSetIndex: Int, dataSet: IChartDataSet)
+    public init(y: CGFloat, value: Double, dataIndex: Int, dataSetIndex: Int, dataSet: IChartDataSet)
     {
         super.init()
         
+        _y = y
         _value = value
+        _dataIndex = dataIndex
         _dataSetIndex = dataSetIndex
         _dataSet = dataSet
+    }
+    
+    public convenience init(y: CGFloat, value: Double, dataSetIndex: Int, dataSet: IChartDataSet)
+    {
+        self.init(y: y, value: value, dataIndex: 0, dataSetIndex: dataSetIndex, dataSet: dataSet)
+    }
+    
+    public convenience init(value: Double, dataSetIndex: Int, dataSet: IChartDataSet)
+    {
+        self.init(y: CGFloat.nan, value: value, dataIndex: 0, dataSetIndex: dataSetIndex, dataSet: dataSet)
+    }
+    
+    public var y: CGFloat
+    {
+        return _y
     }
     
     public var value: Double
     {
         return _value
+    }
+    
+    public var dataIndex: Int
+    {
+        return _dataIndex
     }
     
     public var dataSetIndex: Int
@@ -51,14 +75,14 @@ public class ChartSelectionDetail: NSObject
     
     // MARK: NSObject
     
-    public override func isEqual(object: AnyObject?) -> Bool
+    public override func isEqual(_ object: AnyObject?) -> Bool
     {
         if (object === nil)
         {
             return false
         }
         
-        if (!object!.isKindOfClass(self.dynamicType))
+        if (!object!.isKind(of: self.dynamicType))
         {
             return false
         }
@@ -89,7 +113,7 @@ public func ==(lhs: ChartSelectionDetail, rhs: ChartSelectionDetail) -> Bool
         return true
     }
     
-    if (!lhs.isKindOfClass(rhs.dynamicType))
+    if (!lhs.isKind(of: rhs.dynamicType))
     {
         return false
     }

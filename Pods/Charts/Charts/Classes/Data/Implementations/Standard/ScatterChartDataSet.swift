@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -16,15 +16,15 @@ import CoreGraphics
 
 public class ScatterChartDataSet: LineScatterCandleRadarChartDataSet, IScatterChartDataSet
 {
-    @objc
-    public enum ScatterShape: Int
+    @objc(ScatterShape)
+    public enum Shape: Int
     {
-        case Square
-        case Circle
-        case Triangle
-        case Cross
-        case X
-        case Custom
+        case square
+        case circle
+        case triangle
+        case cross
+        case x
+        case custom
     }
     
     // The size the scatter shape will have
@@ -32,7 +32,7 @@ public class ScatterChartDataSet: LineScatterCandleRadarChartDataSet, IScatterCh
     
     // The type of shape that is set to be drawn where the values are at
     // **default**: .Square
-    public var scatterShape = ScatterChartDataSet.ScatterShape.Square
+    public var scatterShape = ScatterChartDataSet.Shape.square
     
     // The radius of the hole in the shape (applies to Square, Circle and Triangle)
     // **default**: 0.0
@@ -48,7 +48,7 @@ public class ScatterChartDataSet: LineScatterCandleRadarChartDataSet, IScatterCh
     
     // MARK: NSCopying
     
-    public override func copyWithZone(zone: NSZone) -> AnyObject
+    public override func copyWithZone(_ zone: NSZone?) -> AnyObject
     {
         let copy = super.copyWithZone(zone) as! ScatterChartDataSet
         copy.scatterShapeSize = scatterShapeSize

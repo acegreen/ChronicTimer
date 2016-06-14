@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -34,7 +34,7 @@ public class LineScatterCandleRadarChartDataSet: BarLineScatterCandleBubbleChart
     
     /// Enables / disables both vertical and horizontal highlight-indicators.
     /// :param: enabled
-    public func setDrawHighlightIndicators(enabled: Bool)
+    public func setDrawHighlightIndicators(_ enabled: Bool)
     {
         drawHorizontalHighlightIndicatorEnabled = enabled
         drawVerticalHighlightIndicatorEnabled = enabled
@@ -42,7 +42,7 @@ public class LineScatterCandleRadarChartDataSet: BarLineScatterCandleBubbleChart
     
     // MARK: NSCopying
     
-    public override func copyWithZone(zone: NSZone) -> AnyObject
+    public override func copyWithZone(_ zone: NSZone?) -> AnyObject
     {
         let copy = super.copyWithZone(zone) as! LineScatterCandleRadarChartDataSet
         copy.drawHorizontalHighlightIndicatorEnabled = drawHorizontalHighlightIndicatorEnabled

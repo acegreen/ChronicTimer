@@ -18,18 +18,18 @@ class CustomUIPickerView : UIPickerView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        hoursLabel = UILabel(frame: CGRectMake(((self.frame.size.width / 3) / 2) + 25, (self.frame.size.height / 2) -  15, 50, 30))
-        minutesLabel = UILabel(frame: CGRectMake((self.frame.size.width / 2) + 25, (self.frame.size.height / 2) -  15 , 50, 30))
-        secondsLabel = UILabel(frame: CGRectMake(((self.frame.size.width ) * (5 / 6)) + 25, (self.frame.size.height / 2) -  15, 50, 30))
+        hoursLabel = UILabel(frame: CGRect(x: ((self.frame.size.width / 3) / 2) + 25, y: (self.frame.size.height / 2) -  15, width: 50, height: 30))
+        minutesLabel = UILabel(frame: CGRect(x: (self.frame.size.width / 2) + 25, y: (self.frame.size.height / 2) -  15 , width: 50, height: 30))
+        secondsLabel = UILabel(frame: CGRect(x: ((self.frame.size.width ) * (5 / 6)) + 25, y: (self.frame.size.height / 2) -  15, width: 50, height: 30))
 
         hoursLabel.text = "hour"
-        hoursLabel.textColor = UIColor.whiteColor()
+        hoursLabel.textColor = UIColor.white()
         
         minutesLabel.text = "min"
-        minutesLabel.textColor = UIColor.whiteColor()
+        minutesLabel.textColor = UIColor.white()
     
         secondsLabel.text = "sec"
-        secondsLabel.textColor = UIColor.whiteColor()
+        secondsLabel.textColor = UIColor.white()
         
         self.addSubview(secondsLabel)
         self.addSubview(minutesLabel)
@@ -40,11 +40,11 @@ class CustomUIPickerView : UIPickerView {
         
         super.layoutSubviews()
         
-        hoursLabel.frame = CGRectMake(((self.frame.size.width / 3) / 2) + 25, (self.frame.size.height / 2) -  15, 50, 30)
+        hoursLabel.frame = CGRect(x: ((self.frame.size.width / 3) / 2) + 25, y: (self.frame.size.height / 2) -  15, width: 50, height: 30)
         
-        minutesLabel.frame = CGRectMake((self.frame.size.width / 2) + 25, (self.frame.size.height / 2) -  15 , 50, 30)
+        minutesLabel.frame = CGRect(x: (self.frame.size.width / 2) + 25, y: (self.frame.size.height / 2) -  15 , width: 50, height: 30)
         
-        secondsLabel.frame = CGRectMake(((self.frame.size.width ) * (5 / 6)) + 25, (self.frame.size.height / 2) -  15, 50, 30)
+        secondsLabel.frame = CGRect(x: ((self.frame.size.width ) * (5 / 6)) + 25, y: (self.frame.size.height / 2) -  15, width: 50, height: 30)
     }
     
     required init(coder aDecoder: NSCoder) {

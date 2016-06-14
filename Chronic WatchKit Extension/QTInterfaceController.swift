@@ -25,7 +25,7 @@ class QTInterfaceController: WKInterfaceController {
     
     @IBOutlet var secondPicker: WKInterfacePicker!
     
-    @IBAction func hourPicker(value: Int) {
+    @IBAction func hourPicker(_ value: Int) {
         
         let hourValueInt: Int = Int(value)
         
@@ -33,7 +33,7 @@ class QTInterfaceController: WKInterfaceController {
     
     }
     
-    @IBAction func minutePicker(value: Int) {
+    @IBAction func minutePicker(_ value: Int) {
         
         let minutesValueInt: Int = Int(value)
         
@@ -41,7 +41,7 @@ class QTInterfaceController: WKInterfaceController {
     
     }
     
-    @IBAction func secondPicker(value: Int) {
+    @IBAction func secondPicker(_ value: Int) {
         
         let secondsValueInt: Int = Int(value)
         
@@ -49,8 +49,8 @@ class QTInterfaceController: WKInterfaceController {
     
     }
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
         
         for n in 0...23 {
             let item = WKPickerItem()
@@ -97,7 +97,7 @@ class QTInterfaceController: WKInterfaceController {
     
     
 
-    override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> AnyObject? {
             
         QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
     
@@ -105,7 +105,7 @@ class QTInterfaceController: WKInterfaceController {
     
     }
     
-    override func contextsForSegueWithIdentifier(segueIdentifier: String) -> [AnyObject]? {
+    override func contextsForSegue(withIdentifier segueIdentifier: String) -> [AnyObject]? {
         
         QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
         

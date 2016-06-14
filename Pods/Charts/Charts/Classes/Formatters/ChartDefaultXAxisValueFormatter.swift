@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -17,7 +17,7 @@ import Foundation
 public class ChartDefaultXAxisValueFormatter: NSObject, ChartXAxisValueFormatter
 {
     
-    public func stringForXValue(index: Int, original: String, viewPortHandler: ChartViewPortHandler) -> String
+    public func stringForXValue(_ index: Int, original: String, viewPortHandler: ChartViewPortHandler) -> String
     {
         return original // just return original, no adjustments
     }

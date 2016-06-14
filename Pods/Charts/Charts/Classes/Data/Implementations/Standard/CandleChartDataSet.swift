@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -30,7 +30,7 @@ public class CandleChartDataSet: LineScatterCandleRadarChartDataSet, ICandleChar
     
     // MARK: - Data functions and accessors
     
-    public override func calcMinMax(start start: Int, end: Int)
+    public override func calcMinMax(start: Int, end: Int)
     {
         let yValCount = self.entryCount
         
@@ -58,7 +58,7 @@ public class CandleChartDataSet: LineScatterCandleRadarChartDataSet, ICandleChar
         _yMin = DBL_MAX
         _yMax = -DBL_MAX
         
-        for i in start ... endValue
+        for i in stride(from: start, through: endValue, by: 1)
         {
             let e = entries[i]
             

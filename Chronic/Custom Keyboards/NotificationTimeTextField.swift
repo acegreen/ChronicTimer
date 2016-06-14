@@ -28,7 +28,7 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         self.inputAccessoryView = configureAccessoryView()
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent textfield from editing
         return false
@@ -45,15 +45,15 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     
     func configureAccessoryView() -> UIView {
         
-        let inputAccessoryView = UIToolbar(frame: CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.size.width, 44))
-        inputAccessoryView.barStyle = UIBarStyle.BlackTranslucent
+        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main().bounds.size.width, height: 44))
+        inputAccessoryView.barStyle = UIBarStyle.blackTranslucent
         
-        let flex = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
+        let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
     
         // Configure done button
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
-        doneButton.tintColor = UIColor.greenColor()
+        doneButton.tintColor = UIColor.green()
         doneButton.action = Selector("dismissPicker")
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
@@ -63,17 +63,17 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     
     // Disallow selection or editing and remove caret
     
-    override func caretRectForPosition(position: UITextPosition) -> CGRect {
-        return CGRectZero
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        return CGRect.zero
     }
     
-    override func selectionRectsForRange(range: UITextRange) -> [AnyObject] {
+    override func selectionRects(for range: UITextRange) -> [AnyObject] {
         return []
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         
-        UIMenuController.sharedMenuController().menuVisible = false
+        UIMenuController.shared().isMenuVisible = false
         
         if action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.selectAll(_:)) || action == #selector(NSObject.paste(_:)) {
             return false
@@ -90,28 +90,28 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     //MARK: - UIPickerView Functions
     
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
         return 1
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         return 24
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> AttributedString? {
         
         let title = String(row) + ":00"
-        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        let attributedString = AttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white()])
         
-        pickerView.backgroundColor = UIColor.clearColor()
+        pickerView.backgroundColor = UIColor.clear()
         
         return attributedString
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         updateNotificationSetting("NOTIFICATION_REMINDER_TIME", value: row)
         
@@ -119,8 +119,8 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         self.sizeToFit()
     }
     
-    func updateNotificationSetting(key: String, value: Int) {
-        userDefaults.setInteger(value, forKey: key)
+    func updateNotificationSetting(_ key: String, value: Int) {
+        userDefaults.set(value, forKey: key)
         userDefaults.synchronize()
         NotificationHelper.updateNotificationPreferences(notificationReminderState)
     }

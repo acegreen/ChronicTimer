@@ -28,17 +28,17 @@ class ExpandingCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        stackView.arrangedSubviews.last?.hidden = true
+        stackView.arrangedSubviews.last?.isHidden = true
     }
     
-    func changeCellStatus(selected: Bool){
-        UIView.animateWithDuration(0.5,
+    func changeCellStatus(_ selected: Bool){
+        UIView.animate(withDuration: 0.5,
             delay: 0,
             usingSpringWithDamping: 1,
             initialSpringVelocity: 1,
-            options: UIViewAnimationOptions.CurveEaseIn,
+            options: UIViewAnimationOptions.curveEaseIn,
             animations: { () -> Void in
-                self.stackView.arrangedSubviews.last?.hidden = !selected
+                self.stackView.arrangedSubviews.last?.isHidden = !selected
             },
             completion: nil)
     }
