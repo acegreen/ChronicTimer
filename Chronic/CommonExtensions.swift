@@ -14,7 +14,7 @@ extension Array {
     
     // Safely lookup an index that might be out of bounds,
     // returning nil if it does not exist
-    func get(index: Int) -> Element? {
+    func get(_ index: Int) -> Element? {
         if 0 <= index && index < count {
             return self[index]
         } else {
@@ -22,9 +22,9 @@ extension Array {
         }
     }
     
-    func reduceWithIndex<T>(initial: T, @noescape combine: (T, Int, Array.Generator.Element) throws -> T) rethrows -> T {
+    func reduceWithIndex<T>(_ initial: T, @noescape combine: (T, Int, Array.Iterator.Element) throws -> T) rethrows -> T {
         var result = initial
-        for (index, element) in self.enumerate() {
+        for (index, element) in self.enumerated() {
             result = try combine(result, index, element)
         }
         return result
@@ -33,13 +33,13 @@ extension Array {
 
 extension Array where Element: Equatable {
     
-    mutating func removeObject(object: Element) {
-        if let index = self.indexOf(object) {
-            self.removeAtIndex(index)
+    mutating func removeObject(_ object: Element) {
+        if let index = self.index(of: object) {
+            self.remove(at: index)
         }
     }
     
-    mutating func removeObjectsInArray(array: [Element]) {
+    mutating func removeObjectsInArray(_ array: [Element]) {
         for object in array {
             self.removeObject(object)
         }
@@ -70,7 +70,7 @@ public extension UIColor {
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
     
-    class func colorFromRGB(rgbValue: UInt) -> UIColor {
+    class func colorFromRGB(_ rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -83,11 +83,11 @@ public extension UIColor {
 extension CALayer {
     var borderUIColor: UIColor {
         set {
-            self.borderColor = newValue.CGColor
+            self.borderColor = newValue.cgColor
         }
         
         get {
-            return UIColor(CGColor: self.borderColor!)
+            return UIColor(cgColor: self.borderColor!)
         }
     }
 }
@@ -99,29 +99,29 @@ public extension UIImage {
         imageView.layer.cornerRadius = size.height < size.width ? size.height/2 : size.width/2
         imageView.layer.masksToBounds = true
         UIGraphicsBeginImageContext(imageView.bounds.size)
-        imageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        imageView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return result
+        return result!
     }
     var circle: UIImage {
         let square = size.width < size.height ? CGSize(width: size.width, height: size.width) : CGSize(width: size.height, height: size.height)
         let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: square))
-        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.contentMode = UIViewContentMode.scaleAspectFill
         imageView.image = self
         imageView.layer.cornerRadius = square.width/2
         imageView.layer.masksToBounds = true
         UIGraphicsBeginImageContext(imageView.bounds.size)
-        imageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        imageView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return result
+        return result!
     }
 }
 
 public extension UIViewController {
     
-    func fixIOS9PopOverAnchor(segue:UIStoryboardSegue?) {
+    func fixIOS9PopOverAnchor(_ segue:UIStoryboardSegue?) {
         
         guard #available(iOS 9.0, *) else { return }
         if let popOver = segue?.destinationViewController.popoverPresentationController,
@@ -135,21 +135,21 @@ public extension UIViewController {
 extension SKProduct {
     
     func localizedPrice() -> String {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
         formatter.locale = self.priceLocale
-        return formatter.stringFromNumber(self.price)!
+        return formatter.string(from: self.price)!
     }
 }
 
 extension UIView {
     
-    func fitSubViewToSuperView(superView: UIView) {
+    func fitSubViewToSuperView(_ superView: UIView) {
         
-        let top: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: superView, attribute: .Top, multiplier: 1.0, constant: 0)
-        let bottom: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: superView, attribute: .Bottom, multiplier: 1.0, constant: 0)
-        let leading: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: superView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let trailing: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: superView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let top: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: superView, attribute: .top, multiplier: 1.0, constant: 0)
+        let bottom: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superView, attribute: .bottom, multiplier: 1.0, constant: 0)
+        let leading: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: superView, attribute: .leading, multiplier: 1.0, constant: 0.0)
+        let trailing: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: superView, attribute: .trailing, multiplier: 1.0, constant: 0.0)
         
         superView.addConstraint(top)
         superView.addConstraint(bottom)

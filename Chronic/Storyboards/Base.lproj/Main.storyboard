@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8AF-aD-OMI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" generatesPrototypingConstraints="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="8AF-aD-OMI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -73,11 +74,11 @@
                         <viewControllerLayoutGuide type="bottom" id="vUF-Ob-0kw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fCc-PL-Dxd">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oEC-ZA-lff">
-                                <rect key="frame" x="273" y="448" width="54" height="41"/>
+                                <rect key="frame" x="160" y="506" width="54" height="41"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Start">
@@ -127,22 +128,22 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="INf-bK-dLv">
-                                <rect key="frame" x="0.0" y="40" width="600" height="560"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Sqt-fO-K4I">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="108"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zh6-z8-sDn">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="108"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="108"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Elapsed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3sf-YS-vz9">
-                                                        <rect key="frame" x="55" y="0.0" width="90" height="42"/>
+                                                        <rect key="frame" x="17" y="0.0" width="90" height="42"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="heightClass=compact" misplaced="YES">
                                                             <rect key="frame" x="10" y="3" width="55" height="18"/>
@@ -153,9 +154,9 @@
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ThG-2m-7cS">
-                                                        <rect key="frame" x="50" y="42" width="101" height="67"/>
+                                                        <rect key="frame" x="0.0" y="84" width="125" height="133.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="heightClass=compact" misplaced="YES">
                                                             <rect key="frame" x="10" y="26" width="38.5" height="18"/>
@@ -168,12 +169,12 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H3l-Ct-PR9">
-                                                <rect key="frame" x="200" y="0.0" width="200" height="108"/>
+                                                <rect key="frame" x="125" y="0.0" width="125" height="108"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Timer" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rFP-b3-6i2">
                                                         <rect key="frame" x="69" y="0.0" width="63" height="42"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="heightClass=compact" misplaced="YES">
                                                             <rect key="frame" x="300" y="22" width="0.0" height="0.0"/>
@@ -188,13 +189,13 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="1/1" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cmx-fn-Byo">
                                                         <rect key="frame" x="71" y="42" width="58" height="67"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="heightClass=compact" misplaced="YES">
                                                             <rect key="frame" x="300" y="22" width="0.0" height="0.0"/>
                                                         </variation>
                                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="200" y="35" width="0.0" height="0.0"/>
+                                                            <rect key="frame" x="33" y="42" width="58" height="67"/>
                                                         </variation>
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="45"/>
@@ -203,12 +204,12 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jlX-Fw-G8F">
-                                                <rect key="frame" x="400" y="0.0" width="200" height="108"/>
+                                                <rect key="frame" x="250" y="0.0" width="125" height="108"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Remaining" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cdc-wW-Hzz">
                                                         <rect key="frame" x="41" y="0.0" width="119" height="42"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="heightClass=compact" misplaced="YES">
                                                             <rect key="frame" x="517" y="3" width="72.5" height="18"/>
@@ -219,9 +220,9 @@
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LzV-hW-rkk">
-                                                        <rect key="frame" x="50" y="42" width="101" height="67"/>
+                                                        <rect key="frame" x="0.0" y="84" width="125" height="133.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="heightClass=compact" misplaced="YES">
                                                             <rect key="frame" x="551" y="26" width="38.5" height="18"/>
@@ -236,15 +237,15 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1cu-li-C04">
-                                        <rect key="frame" x="0.0" y="108" width="600" height="392"/>
+                                        <rect key="frame" x="0.0" y="108" width="375" height="392"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwt-6w-I9G">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="392"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="392"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="ViewController" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="cFX-O3-qbQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="392"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="392"/>
                                                         <fontDescription key="fontDescription" name="Time-Normal" family="Time" pointSize="300"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="heightClass=compact" misplaced="YES">
                                                             <rect key="frame" x="10" y="63" width="580" height="273.5"/>
@@ -254,7 +255,7 @@
                                                         </variation>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="cFX-O3-qbQ" secondAttribute="trailing" id="2fe-MI-oXy"/>
                                                     <constraint firstItem="cFX-O3-qbQ" firstAttribute="leading" secondItem="Rwt-6w-I9G" secondAttribute="leading" id="30A-o9-7mQ"/>
@@ -265,38 +266,38 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bJj-Xi-nCY">
-                                        <rect key="frame" x="0.0" y="500" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="567" width="375" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQW-sx-1c2">
-                                                <rect key="frame" x="0.0" y="0.0" width="120" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="60"/>
                                                 <state key="normal" image="stop"/>
                                                 <connections>
                                                     <segue destination="rKa-LH-rNN" kind="unwind" identifier="StopWorkoutSegueIdentifier" unwindAction="unwindToMainviewcontroller:" id="42l-XN-YCr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5e-d4-pcr">
-                                                <rect key="frame" x="120" y="0.0" width="120" height="60"/>
+                                                <rect key="frame" x="75" y="0.0" width="75" height="60"/>
                                                 <state key="normal" image="rewind"/>
                                                 <connections>
                                                     <action selector="previousButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lgf-0r-cex"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dzf-Le-hXY">
-                                                <rect key="frame" x="240" y="0.0" width="120" height="60"/>
+                                                <rect key="frame" x="150" y="0.0" width="75" height="60"/>
                                                 <state key="normal" image="play"/>
                                                 <connections>
                                                     <action selector="playPausebarButtonItemPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rrE-DE-roL"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQk-HD-9YU">
-                                                <rect key="frame" x="360" y="0.0" width="120" height="60"/>
+                                                <rect key="frame" x="225" y="0.0" width="75" height="60"/>
                                                 <state key="normal" image="forward"/>
                                                 <connections>
                                                     <action selector="forwardButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AWF-u8-p5C"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKw-iq-0aJ">
-                                                <rect key="frame" x="480" y="0.0" width="120" height="60"/>
+                                                <rect key="frame" x="300" y="0.0" width="75" height="60"/>
                                                 <state key="normal" image="lock_unlocked"/>
                                                 <connections>
                                                     <action selector="lockUnlockButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fe4-w9-pVV"/>
@@ -308,7 +309,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
@@ -355,18 +356,18 @@
             <objects>
                 <tableViewController title="Settings" id="3GQ-hT-fPZ" customClass="SettingsTableViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="fPJ-3Q-iKe">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ao-Gj-XOt">
                             <rect key="frame" x="0.0" y="985.5" width="600" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <sections>
@@ -382,7 +383,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNd-mJ-SDV">
                                                     <rect key="frame" x="16" y="15" width="92.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text-To-Speech" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AoB-eI-8Zu" customClass="TimerSoundPickerTextField" customModule="Chronic" customModuleProvider="target">
@@ -398,7 +399,7 @@
                                                 <constraint firstItem="RNd-mJ-SDV" firstAttribute="leading" secondItem="Epj-GX-2X7" secondAttribute="leadingMargin" constant="8" id="qmC-La-Fef"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="AoB-eI-8Zu" secondAttribute="trailing" constant="33" id="Z6E-KT-o3m"/>
                                         </constraints>
@@ -413,7 +414,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeL-ZO-UtH">
                                                     <rect key="frame" x="15" y="15" width="100" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uYk-Jz-y1d">
@@ -454,7 +455,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EnableDeviceSleepCell" id="Eoi-Eg-9UR">
                                         <rect key="frame" x="0.0" y="149.5" width="600" height="50"/>
@@ -472,7 +473,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Sleep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wI-WB-13g">
                                                     <rect key="frame" x="15" y="15" width="94.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -483,7 +484,7 @@
                                                 <constraint firstAttribute="centerY" secondItem="8wI-WB-13g" secondAttribute="centerY" id="qJN-c6-q4C"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RunnBackgroundCell" id="mbN-xP-6KY">
                                         <rect key="frame" x="0.0" y="199.5" width="600" height="50"/>
@@ -501,7 +502,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run In Background" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y97-TV-dp6">
                                                     <rect key="frame" x="15" y="15.5" width="137" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -512,7 +513,7 @@
                                                 <constraint firstItem="6eS-ZV-edi" firstAttribute="trailing" secondItem="e87-8Q-tQM" secondAttribute="trailing" constant="-15" id="AGQ-Ql-sq8"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TimerSoundCell" id="GdZ-Y0-OoZ">
                                         <rect key="frame" x="0.0" y="249.5" width="600" height="50"/>
@@ -524,7 +525,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTm-7i-bG1">
                                                     <rect key="frame" x="16" y="15" width="63.5" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="KM" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ajO-no-Kgm">
@@ -540,7 +541,7 @@
                                                 <constraint firstItem="gTm-7i-bG1" firstAttribute="leading" secondItem="lhp-uu-QXh" secondAttribute="leadingMargin" constant="8" id="DoW-1c-5G3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ajO-no-Kgm" secondAttribute="trailing" constant="33" id="yoI-sI-AQR"/>
                                         </constraints>
@@ -560,12 +561,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProVersionCell" textLabel="D2Q-kn-9Pp" style="IBUITableViewCellStyleDefault" id="AgN-v0-AVQ">
                                         <rect key="frame" x="0.0" y="391.5" width="600" height="50"/>
@@ -578,12 +579,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RemoveAdsCell" textLabel="3yx-7I-liQ" style="IBUITableViewCellStyleDefault" id="gcv-um-aip">
                                         <rect key="frame" x="0.0" y="441.5" width="600" height="50"/>
@@ -596,12 +597,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DonateCell" textLabel="WTk-cv-gXZ" style="IBUITableViewCellStyleDefault" id="gJV-Tm-bWZ">
                                         <rect key="frame" x="0.0" y="491.5" width="600" height="50"/>
@@ -614,12 +615,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RestoreUpgradesCell" textLabel="mcW-yo-ctz" style="IBUITableViewCellStyleDefault" id="2Cl-rC-nQL">
                                         <rect key="frame" x="0.0" y="541.5" width="600" height="50"/>
@@ -632,32 +633,32 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Notifications" id="EOa-un-ybR">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationReminderCell" id="cY3-za-3kk">
-                                        <rect key="frame" x="0.0" y="633.5" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="633.5" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cY3-za-3kk" id="dbC-aW-54z">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Remind Me To Workout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-Ta-Nxf">
-                                                    <rect key="frame" x="15" y="15" width="141" height="19.5"/>
+                                                    <rect key="frame" x="15" y="15" width="168.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99f-Is-Pco">
-                                                    <rect key="frame" x="536" y="9.5" width="51" height="31"/>
+                                                    <rect key="frame" x="536" y="9" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="notificationSwitchChanged:" destination="3GQ-hT-fPZ" eventType="valueChanged" id="VWG-DE-SIp"/>
                                                     </connections>
@@ -670,23 +671,23 @@
                                                 <constraint firstItem="99f-Is-Pco" firstAttribute="centerY" secondItem="dbC-aW-54z" secondAttribute="centerY" id="FO5-he-BvI"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotificationIntervalCell" id="NaW-bh-fQX">
-                                        <rect key="frame" x="0.0" y="683.5" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="683.5" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NaW-bh-fQX" id="qcb-fi-pEh">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Every" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-n5-c4O">
-                                                    <rect key="frame" x="16" y="15" width="92.5" height="19.5"/>
+                                                    <rect key="frame" x="16" y="15" width="40.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Day" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilb-5J-0Ym" customClass="NotificationIntervalTextField" customModule="Chronic" customModuleProvider="target">
-                                                    <rect key="frame" x="446.5" y="15" width="120.5" height="20"/>
+                                                    <rect key="frame" x="310" y="15" width="32" height="20"/>
                                                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
@@ -698,26 +699,26 @@
                                                 <constraint firstItem="dCw-n5-c4O" firstAttribute="centerY" secondItem="qcb-fi-pEh" secondAttribute="centerY" id="qm5-T9-wFA"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ilb-5J-0Ym" secondAttribute="trailing" constant="33" id="vRK-ap-Tsy"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotificationTimeCell" id="BOC-fV-Hca">
-                                        <rect key="frame" x="0.0" y="733.5" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="733.5" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BOC-fV-Hca" id="63Q-sw-FE8">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdp-69-aSV">
-                                                    <rect key="frame" x="16" y="15" width="92.5" height="19.5"/>
+                                                    <rect key="frame" x="16" y="15" width="15.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18:00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdu-QU-81q" customClass="NotificationTimeTextField" customModule="Chronic" customModuleProvider="target">
-                                                    <rect key="frame" x="446.5" y="15" width="120.5" height="20"/>
+                                                    <rect key="frame" x="296" y="15" width="46" height="20"/>
                                                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
@@ -729,7 +730,7 @@
                                                 <constraint firstItem="rdp-69-aSV" firstAttribute="leading" secondItem="63Q-sw-FE8" secondAttribute="leadingMargin" constant="8" id="u3s-Z4-iaF"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Kdu-QU-81q" secondAttribute="trailing" constant="33" id="plS-QK-Ckf"/>
                                         </constraints>
@@ -749,12 +750,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WriteAReviewCell" textLabel="62U-Rt-gry" style="IBUITableViewCellStyleDefault" id="0Zc-mV-pUe">
                                         <rect key="frame" x="0.0" y="875.5" width="600" height="50"/>
@@ -767,12 +768,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EmailUsCell" textLabel="zrb-SX-QX1" style="IBUITableViewCellStyleDefault" id="ukQ-F8-85v">
                                         <rect key="frame" x="0.0" y="925.5" width="600" height="50"/>
@@ -785,12 +786,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -830,10 +831,10 @@
             <objects>
                 <tableViewController storyboardIdentifier="FAQTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dak-tt-yIO" customClass="FAQTableViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wm4-k9-TSD">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FAQCell" rowHeight="150" id="W8n-3c-vDC" customClass="ExpandingCell" customModule="Chronic" customModuleProvider="target">
@@ -852,7 +853,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flv-Kq-SRG">
                                                             <rect key="frame" x="16" y="8" width="568" height="34"/>
                                                             <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="21"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -869,7 +870,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQO-Sf-1rX">
                                                             <rect key="frame" x="16" y="8" width="568" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="18"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -891,7 +892,7 @@
                                         <constraint firstItem="Kii-Zt-L7K" firstAttribute="top" secondItem="u0r-qi-mKw" secondAttribute="top" id="zuO-0o-Nnm"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="detailLabel" destination="pQO-Sf-1rX" id="54B-EU-nEU"/>
                                     <outlet property="stackView" destination="Kii-Zt-L7K" id="Eax-AZ-6dO"/>
@@ -932,11 +933,11 @@
             <objects>
                 <tableViewController storyboardIdentifier="CircuitRoutineTableViewController" id="iDX-2M-kOI" customClass="CircuitRoutineTableViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="bGQ-Wf-MHd">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="ata-Ch-mKv">
@@ -951,7 +952,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wN-lo-4Es">
                                                     <rect key="frame" x="15" y="16" width="43" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                         <rect key="frame" x="15" y="16" width="43" height="19.5"/>
@@ -980,7 +981,7 @@
                                                 <constraint firstItem="EEV-02-rZJ" firstAttribute="leading" secondItem="8wN-lo-4Es" secondAttribute="trailing" constant="25" id="xjM-ny-oZ2"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="EEV-02-rZJ" firstAttribute="height" secondItem="kvT-F9-K4I" secondAttribute="height" id="FY8-Me-vu0"/>
                                         </constraints>
@@ -990,25 +991,25 @@
                             <tableViewSection id="E8L-eU-xfA">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WarmUpCell" id="uuC-Cl-XiG">
-                                        <rect key="frame" x="0.0" y="105" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="105" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uuC-Cl-XiG" id="1FV-nr-Wk3">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Warm Up" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5a-vJ-ckn">
-                                                    <rect key="frame" x="15" y="16" width="68" height="20"/>
+                                                    <rect key="frame" x="15" y="15" width="68" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="01:00" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="oko-vD-zIo" customClass="TimePickerTextField" customModule="Chronic" customModuleProvider="target">
                                                     <rect key="frame" x="510" y="0.0" width="75" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="cHO-42-1Lg"/>
                                                     </constraints>
-                                                    <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
@@ -1021,7 +1022,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="oko-vD-zIo" secondAttribute="trailing" constant="15" id="rjN-vd-8Qp"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1037,16 +1038,16 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Rounds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYc-8m-Qdg">
                                                     <rect key="frame" x="15" y="15" width="88" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Fx2-f3-V4K" customClass="NumberPickerTextField" customModule="Chronic" customModuleProvider="target">
                                                     <rect key="frame" x="510" y="0.0" width="75" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="cvh-nv-VXu"/>
                                                     </constraints>
-                                                    <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
@@ -1059,7 +1060,7 @@
                                                 <constraint firstItem="Fx2-f3-V4K" firstAttribute="centerY" secondItem="Gjf-QT-TDu" secondAttribute="centerY" id="tBD-fM-FIj"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1075,16 +1076,16 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHS-bw-2In">
                                                     <rect key="frame" x="15" y="15" width="87" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="01:00" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="vQM-jl-vRg" customClass="TimePickerTextField" customModule="Chronic" customModuleProvider="target">
                                                     <rect key="frame" x="510" y="0.0" width="75" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="t7N-P6-srR"/>
                                                     </constraints>
-                                                    <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
@@ -1097,7 +1098,7 @@
                                                 <constraint firstItem="eHS-bw-2In" firstAttribute="leadingMargin" secondItem="stU-QA-4U6" secondAttribute="leadingMargin" constant="15" id="xiK-4A-9C9"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestTimeCell" id="Wd0-Pj-HXR">
                                         <rect key="frame" x="0.0" y="295" width="600" height="50"/>
@@ -1109,16 +1110,16 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rest Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmz-O1-O7D">
                                                     <rect key="frame" x="15" y="15" width="73" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="01:00" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ucr-QL-M0P" customClass="TimePickerTextField" customModule="Chronic" customModuleProvider="target">
                                                     <rect key="frame" x="510" y="0.0" width="75" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="fer-fc-Ph1"/>
                                                     </constraints>
-                                                    <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
@@ -1131,32 +1132,32 @@
                                                 <constraint firstItem="ucr-QL-M0P" firstAttribute="centerY" secondItem="BgS-RB-Yi3" secondAttribute="centerY" id="zwx-0q-jAE"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="3HF-GL-OnA">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CoolDownCell" id="d0T-0S-IqO">
-                                        <rect key="frame" x="0.0" y="365" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="365" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d0T-0S-IqO" id="wOM-SD-YoQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cool Down" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqr-Pn-K5p">
-                                                    <rect key="frame" x="15" y="16" width="79" height="20"/>
+                                                    <rect key="frame" x="15" y="15" width="79" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="01:00" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="MAe-cf-U0y" customClass="TimePickerTextField" customModule="Chronic" customModuleProvider="target">
                                                     <rect key="frame" x="510" y="0.0" width="75" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="Zc5-15-Kue"/>
                                                     </constraints>
-                                                    <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
@@ -1169,7 +1170,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="MAe-cf-U0y" secondAttribute="trailing" constant="15" id="tmy-Vh-gNs"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1209,7 +1210,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="RoutinesTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iz1-8Q-HSi" customClass="RoutinesTableViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="6vv-aP-yjZ">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1244,7 +1245,7 @@
                                                 </stackView>
                                                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="uzy-cD-fvh" customClass="PieChartView" customModule="Charts">
                                                     <rect key="frame" x="340" y="0.0" width="200" height="200"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="uzy-cD-fvh" secondAttribute="height" multiplier="1:1" id="QtO-Us-lVW"/>
                                                     </constraints>
@@ -1259,7 +1260,7 @@
                                         <constraint firstItem="3Z2-tu-8RF" firstAttribute="centerX" secondItem="0hg-vc-DxN" secondAttribute="centerX" id="qjL-Lu-Zoy"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="routineChartView" destination="uzy-cD-fvh" id="DyX-xK-syg"/>
@@ -1310,7 +1311,7 @@
             <objects>
                 <tableViewController title="Profile &amp; BMI" id="6em-RA-KNh" customClass="ProfileTableViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WJi-rr-L5l">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -1510,11 +1511,11 @@
                         <viewControllerLayoutGuide type="bottom" id="x5j-06-8dA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="08V-Fq-mZh">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adn-9f-Gmy">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <userGuides>
                                     <userLayoutGuide location="316" affinity="minY"/>
                                     <userLayoutGuide location="316" affinity="minY"/>
@@ -1524,7 +1525,7 @@
                                 </userGuides>
                                 <subviews>
                                     <button autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BXb-3E-6aR">
-                                        <rect key="frame" x="200" y="47" width="200" height="150"/>
+                                        <rect key="frame" x="87" y="64" width="200" height="150"/>
                                         <color key="backgroundColor" red="0.43529412150382996" green="0.44313725829124451" blue="0.47450980544090271" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="N9y-1m-765"/>
@@ -1559,7 +1560,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-Rr-Wai">
-                                        <rect key="frame" x="200" y="241" width="200" height="150"/>
+                                        <rect key="frame" x="87" y="284" width="200" height="150"/>
                                         <color key="backgroundColor" red="0.43529412150382996" green="0.44313725829124451" blue="0.47450980544090271" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Sug-3k-oGw"/>
@@ -1594,7 +1595,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="BXb-3E-6aR" firstAttribute="centerX" secondItem="adn-9f-Gmy" secondAttribute="centerX" multiplier="0.5" id="4H6-pg-W5i"/>
                                     <constraint firstItem="bC8-Rr-Wai" firstAttribute="centerX" secondItem="adn-9f-Gmy" secondAttribute="centerX" id="AQP-hj-YPY"/>
@@ -1654,11 +1655,11 @@
             <objects>
                 <tableViewController storyboardIdentifier="CustomRoutineTableViewController" id="rG1-kr-HTf" customClass="CustomRoutineTableViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="zvR-La-xOc">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NameCell" id="piY-VL-y88" customClass="ExerciseNameTableViewCell" customModule="Chronic" customModuleProvider="target">
@@ -1671,7 +1672,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-DG-Jjz">
                                             <rect key="frame" x="15" y="15" width="43" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Routine Name" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ksH-2j-BQg">
@@ -1689,7 +1690,7 @@
                                             </connections>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="JNg-DG-Jjz" secondAttribute="centerY" id="3TF-43-o8b"/>
                                         <constraint firstItem="JNg-DG-Jjz" firstAttribute="leadingMargin" secondItem="Eaq-MV-cyd" secondAttribute="leadingMargin" constant="15" id="Af3-nw-VSQ"/>
@@ -1698,7 +1699,7 @@
                                         <constraint firstItem="ksH-2j-BQg" firstAttribute="leading" secondItem="JNg-DG-Jjz" secondAttribute="trailing" constant="25" id="zAr-jB-bQz"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ksH-2j-BQg" firstAttribute="height" secondItem="piY-VL-y88" secondAttribute="height" id="iMZ-OG-3sf"/>
                                 </constraints>
@@ -1729,11 +1730,11 @@
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="3Op-VU-lpR" customClass="NumberPickerTextField" customModule="Chronic" customModuleProvider="target">
                                             <rect key="frame" x="525" y="14" width="35" height="22"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="jlN-5P-eEg"/>
                                             </constraints>
-                                            <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                             <connections>
@@ -1746,17 +1747,17 @@
                                                 <constraint firstAttribute="width" constant="10" id="cHJ-jF-QRu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KF0-pv-aUI" customClass="ColorPickerTextField" customModule="Chronic" customModuleProvider="target">
                                             <rect key="frame" x="560" y="12" width="25" height="25"/>
-                                            <color key="backgroundColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="backgroundColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="KF0-pv-aUI" secondAttribute="height" multiplier="1:1" id="4P0-m5-rxW"/>
                                                 <constraint firstAttribute="width" constant="25" id="gx8-be-mZq"/>
                                             </constraints>
-                                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                             <connections>
@@ -1765,11 +1766,11 @@
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="01:00" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="fKd-io-ho0" customClass="TimePickerTextField" customModule="Chronic" customModuleProvider="target">
                                             <rect key="frame" x="422" y="14" width="85" height="22"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="85" id="184-L2-yLT"/>
                                             </constraints>
-                                            <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                             <connections>
@@ -1777,7 +1778,7 @@
                                             </connections>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="1Go-gJ-F42" firstAttribute="height" secondItem="tgH-yQ-ral" secondAttribute="height" id="0Q2-pb-lph"/>
                                         <constraint firstItem="Zhg-wm-VJ1" firstAttribute="leading" secondItem="fKd-io-ho0" secondAttribute="trailing" constant="8" id="2r2-6p-Jn9"/>
@@ -1794,7 +1795,7 @@
                                         <constraint firstItem="KF0-pv-aUI" firstAttribute="leading" secondItem="3Op-VU-lpR" secondAttribute="trailing" id="xCw-DF-3zt"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="excerciseNameTextField" destination="1Go-gJ-F42" id="Oiy-Yt-MuE"/>
                                     <outlet property="exerciseColorTextField" destination="KF0-pv-aUI" id="wbR-Zt-wwm"/>
@@ -1817,9 +1818,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -1846,7 +1847,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="CustomRoutineExerciseDetailTableViewController" title="Exercise Details" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CVh-BG-Wt6" customClass="CustomRoutineExerciseDetailTableViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="5Hd-QN-Z9M">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -1863,7 +1864,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veg-ND-IM1">
                                                     <rect key="frame" x="13" y="16" width="43" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                         <rect key="frame" x="13" y="16" width="43" height="19.5"/>
@@ -1890,7 +1891,7 @@
                                                 <constraint firstItem="Kgw-Eb-Rmt" firstAttribute="rightMargin" secondItem="jKC-ch-JBV" secondAttribute="rightMargin" constant="-15" id="wwy-2S-Qy4"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pbV-RK-80r">
                                         <rect key="frame" x="0.0" y="85" width="600" height="50"/>
@@ -1901,15 +1902,15 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="01:00" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Stk-tL-gga" customClass="PickerTextField" customModule="Chronic" customModuleProvider="target">
                                                     <rect key="frame" x="74" y="0.0" width="511" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdO-aq-f58">
                                                     <rect key="frame" x="13" y="16" width="36" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                         <rect key="frame" x="13" y="16" width="36" height="19.5"/>
@@ -1925,7 +1926,7 @@
                                                 <constraint firstItem="Stk-tL-gga" firstAttribute="height" secondItem="1Wb-aE-gXd" secondAttribute="height" id="tBf-3t-2r8"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0pG-LG-fsB">
                                         <rect key="frame" x="0.0" y="135" width="600" height="50"/>
@@ -1936,15 +1937,15 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="right" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="aN8-Mj-84x" customClass="NumberPickerTextField" customModule="Chronic" customModuleProvider="target">
                                                     <rect key="frame" x="175" y="0.0" width="410" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Rounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50h-dc-HcN">
                                                     <rect key="frame" x="13" y="16" width="137" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                                         <rect key="frame" x="13" y="16" width="136.5" height="19.5"/>
@@ -1960,7 +1961,7 @@
                                                 <constraint firstItem="aN8-Mj-84x" firstAttribute="leading" secondItem="50h-dc-HcN" secondAttribute="trailing" constant="25" id="wXN-Qp-bk7"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fcK-VX-tEZ">
                                         <rect key="frame" x="0.0" y="185" width="600" height="50"/>
@@ -1981,7 +1982,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqj-Fa-53j">
                                                     <rect key="frame" x="15" y="15" width="39" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1992,7 +1993,7 @@
                                                 <constraint firstItem="8rf-au-OTf" firstAttribute="centerY" secondItem="SlK-Wu-o8d" secondAttribute="centerY" id="u2T-8S-4jD"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2016,36 +2017,36 @@
                         <viewControllerLayoutGuide type="bottom" id="7WX-ch-xYg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EQM-QK-hXu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Way To Go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-CN-Ytx">
-                                <rect key="frame" x="16" y="54" width="568" height="70"/>
+                                <rect key="frame" x="16" y="72" width="343" height="56"/>
                                 <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOe-44-JgT">
-                                <rect key="frame" x="16" y="144" width="568" height="70"/>
+                                <rect key="frame" x="16" y="148" width="343" height="70"/>
                                 <string key="text">Good job keeping fit! 
 By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g6-Wn-dcE">
-                                <rect key="frame" x="250" y="259" width="100" height="100"/>
+                                <rect key="frame" x="137" y="263" width="100" height="100"/>
                                 <state key="normal" image="smile">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="19D-s3-KcY" kind="show" id="Hut-4N-eq7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSu-nj-ooS">
-                                <rect key="frame" x="250" y="389" width="100" height="100"/>
+                                <rect key="frame" x="137" y="393" width="100" height="100"/>
                                 <state key="normal" image="sad">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="gdC-VB-wAT" kind="show" id="Mf0-pc-MEO"/>
@@ -2083,31 +2084,31 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <viewControllerLayoutGuide type="bottom" id="lJ2-hx-zvj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ncz-Yu-0ir">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Yay!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVX-df-kiU">
-                                <rect key="frame" x="16" y="54" width="568" height="70"/>
+                                <rect key="frame" x="16" y="72" width="343" height="56"/>
                                 <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How about rating Chronic on the AppStore? We always appreciate the feedback!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tz-d5-wtw">
-                                <rect key="frame" x="16" y="174" width="568" height="47"/>
+                                <rect key="frame" x="16" y="178" width="343" height="70"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2v-PX-9sM">
-                                <rect key="frame" x="304" y="540" width="276" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="191" y="607" width="167.5" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="N1d-p5-Ru8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Sure!">
                                     <color key="titleColor" red="0.96078431369999995" green="0.75294117650000003" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2119,14 +2120,14 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="og9-r5-BCD">
-                                <rect key="frame" x="20" y="540" width="276" height="40"/>
+                                <rect key="frame" x="16" y="607" width="168" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HXB-Tc-YhN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Nope">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2175,19 +2176,19 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <viewControllerLayoutGuide type="bottom" id="U3w-Rd-R15"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cOa-Gy-w52">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBa-IB-cCa">
-                                <rect key="frame" x="20" y="540" width="276" height="40"/>
+                                <rect key="frame" x="16" y="607" width="168" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="cNu-mf-NRR"/>
                                     <constraint firstAttribute="height" constant="40" id="zyZ-aW-7qV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Close">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2203,8 +2204,8 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xz-BS-7zF">
-                                <rect key="frame" x="304" y="540" width="276" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="191" y="607" width="167.5" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Fvr-DD-EAa"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="tpV-bD-tgf"/>
@@ -2212,7 +2213,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Contact us">
                                     <color key="titleColor" red="0.96078431369999995" green="0.75294117650000003" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2224,15 +2225,15 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-zg-3O7">
-                                <rect key="frame" x="16" y="168" width="568" height="47"/>
+                                <rect key="frame" x="16" y="178" width="343" height="70"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sorry!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Up-H7-Yku">
-                                <rect key="frame" x="16" y="54" width="568" height="70"/>
+                                <rect key="frame" x="16" y="72" width="343" height="56"/>
                                 <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2290,13 +2291,13 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <viewControllerLayoutGuide type="bottom" id="Wgk-Ef-2Ft"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MSD-BO-ler">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lets set you up right so you get the most out of Chronic." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYN-50-1YB">
-                                <rect key="frame" x="20" y="165" width="560" height="29"/>
+                                <rect key="frame" x="16" y="171" width="343" height="57.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
@@ -2304,10 +2305,10 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtQ-C7-zSJ">
-                                <rect key="frame" x="0.0" y="400" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="450" width="375" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rpM-ke-vZB">
-                                        <rect key="frame" x="225" y="15" width="150" height="70"/>
+                                        <rect key="frame" x="112" y="15" width="150" height="70"/>
                                         <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="AER-EJ-2hh"/>
@@ -2339,7 +2340,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="rpM-ke-vZB" firstAttribute="centerY" secondItem="EtQ-C7-zSJ" secondAttribute="centerY" id="cSl-p9-F3U"/>
                                     <constraint firstItem="rpM-ke-vZB" firstAttribute="centerX" secondItem="EtQ-C7-zSJ" secondAttribute="centerX" id="jps-8p-byl"/>
@@ -2347,9 +2348,9 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hi there!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMf-yc-cve">
-                                <rect key="frame" x="16" y="45" width="568" height="70"/>
+                                <rect key="frame" x="16" y="65" width="343" height="56"/>
                                 <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                     <rect key="frame" x="16" y="70" width="768" height="56"/>
@@ -2397,25 +2398,25 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <viewControllerLayoutGuide type="bottom" id="Bbz-4P-ZQ9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="92A-3t-my5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEV-ww-lGd" userLabel="Header">
-                                <rect key="frame" x="20" y="45" width="560" height="115"/>
+                                <rect key="frame" x="16" y="65" width="343" height="143.5"/>
                                 <string key="text">First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the appropriate permission</string>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAE-dF-CWh" userLabel="Controls">
-                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II3-ta-GUD">
                                         <rect key="frame" x="20" y="20" width="100" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="L51-hW-5XW"/>
                                             <constraint firstAttribute="width" constant="100" id="jX4-wC-u2X"/>
@@ -2428,8 +2429,8 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4H-ob-BKR">
-                                        <rect key="frame" x="480" y="20" width="100" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="255" y="20" width="100" height="60"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="3gX-TH-Rbu"/>
                                             <constraint firstAttribute="width" constant="100" id="yJQ-dq-vhK"/>
@@ -2442,7 +2443,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="i4H-ob-BKR" secondAttribute="bottom" constant="20" id="94e-Uf-hNS"/>
                                     <constraint firstItem="II3-ta-GUD" firstAttribute="leading" secondItem="LAE-dF-CWh" secondAttribute="leading" constant="20" id="PAi-MK-mpe"/>
@@ -2452,7 +2453,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </constraints>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEM-ux-AHd">
-                                <rect key="frame" x="225" y="235" width="150" height="80"/>
+                                <rect key="frame" x="112" y="283.5" width="150" height="80"/>
                                 <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="2Ua-Fl-asE">
@@ -2524,24 +2525,24 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <viewControllerLayoutGuide type="bottom" id="Ql3-et-Wmx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GXO-eP-VFd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ss-1c-YZ1" userLabel="Header">
-                                <rect key="frame" x="20" y="45" width="560" height="86.5"/>
+                                <rect key="frame" x="16" y="65" width="343" height="115"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rP1-hh-fS4" userLabel="Controls">
-                                <rect key="frame" x="0.0" y="499.5" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="566" width="375" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXJ-DE-TSl">
-                                        <rect key="frame" x="480" y="20" width="100" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="255" y="20" width="100" height="60"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="ZyQ-kg-5V2"/>
                                             <constraint firstAttribute="width" constant="100" id="pZM-UY-ZqY"/>
@@ -2555,7 +2556,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCO-cD-nBI">
                                         <rect key="frame" x="20" y="20" width="100" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="BSn-en-cpJ"/>
                                             <constraint firstAttribute="height" constant="60" id="UsP-x0-Dgo"/>
@@ -2568,7 +2569,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="21K-Zw-sD9"/>
                                     <constraint firstAttribute="bottom" secondItem="uXJ-DE-TSl" secondAttribute="bottom" constant="20" id="6Of-ld-Zek"/>
@@ -2578,17 +2579,17 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ux-vj-KVz" userLabel="Every">
-                                <rect key="frame" x="0.0" y="211.5" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="260" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwH-YE-brU">
                                         <rect key="frame" x="20" y="11" width="49" height="27.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Day" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oL4-m0-1Ho" customClass="NotificationIntervalTextField" customModule="Chronic" customModuleProvider="target">
-                                        <rect key="frame" x="546" y="11" width="39" height="28"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="321" y="11" width="39" height="28"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                     </textField>
@@ -2602,17 +2603,17 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lcb-2y-PRR" userLabel="From">
-                                <rect key="frame" x="0.0" y="271.5" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="320" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnV-tz-5tH">
                                         <rect key="frame" x="20" y="11" width="20.5" height="27.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18:00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-qu-X1C" customClass="NotificationTimeTextField" customModule="Chronic" customModuleProvider="target">
-                                        <rect key="frame" x="530" y="11" width="55" height="28"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="305" y="11" width="55" height="28"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                     </textField>
@@ -2626,16 +2627,16 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1o-fI-S54" userLabel="On">
-                                <rect key="frame" x="0.0" y="151.5" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbR-d9-kbv">
                                         <rect key="frame" x="20" y="11" width="102" height="27.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vxO-k2-QA1">
-                                        <rect key="frame" x="536" y="9" width="51" height="31"/>
+                                        <rect key="frame" x="311" y="10" width="51" height="31"/>
                                         <color key="onTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="notificationSwitchChanged:" destination="q1v-du-9UI" eventType="valueChanged" id="Te7-EL-boB"/>
@@ -2712,7 +2713,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="svJ-U3-Igh">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
@@ -2793,7 +2794,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xvb-dE-cnp">
                         <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="tintColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="OEM-3I-2D6" kind="relationship" relationship="rootViewController" id="vlk-v1-uvJ"/>
@@ -2858,14 +2859,14 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <viewControllerLayoutGuide type="bottom" id="uNw-DL-KmK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WAF-3I-Fx1">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-Wb-XOc">
-                                <rect key="frame" x="20" y="257" width="560" height="21.5"/>
+                                <rect key="frame" x="20" y="290" width="335" height="21.5"/>
                                 <string key="text">As a Super User, you get special powers (perks). For example you can save custom routines without purchasing the pro features upgrade. More super powers are coming</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2912,5 +2913,5 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
         <segue reference="lSg-lC-qfG"/>
         <segue reference="M6E-OI-vVl"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.1647058874" green="0.98823535439999999" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+    <color key="tintColor" red="0.18728452920913696" green="1" blue="0.20461127161979675" alpha="1" colorSpace="calibratedRGB"/>
 </document>

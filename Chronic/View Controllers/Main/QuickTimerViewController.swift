@@ -18,18 +18,18 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBOutlet var StartButton: UIButton!
     
-    @IBAction func StartButtonPressed(sender: AnyObject) {
+    @IBAction func StartButtonPressed(_ sender: AnyObject) {
         
         if Routines != nil {
             
             deselectSelectedRoutine()
         }
         
-        let timerViewController = mainStoryboard.instantiateViewControllerWithIdentifier("TimerViewController") as! TimerViewController
+        let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
         timerViewController.initializeQuickTimer()
         
-        self.dismissViewControllerAnimated(true) { 
-            appDel.window?.rootViewController?.presentViewController(timerViewController, animated: true, completion: nil)
+        self.dismiss(animated: true) { 
+            appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
         }
     }
 
@@ -39,7 +39,7 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         picker.delegate = self
         picker.dataSource = self
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current().userInterfaceIdiom == .pad {
             
             self.navigationItem.leftBarButtonItem = nil
         
@@ -54,7 +54,7 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         configurePicker()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
         
@@ -72,19 +72,19 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func configurePicker() {
         
-        let hoursLabel: UILabel = UILabel(frame: CGRectMake(75, 95, 75, 30))
+        let hoursLabel: UILabel = UILabel(frame: CGRect(x: 75, y: 95, width: 75, height: 30))
         hoursLabel.text = "hour"
-        hoursLabel.textColor = UIColor.whiteColor()
+        hoursLabel.textColor = UIColor.white()
         picker.addSubview(hoursLabel)
         
-        let minutesLabel: UILabel = UILabel(frame: CGRectMake(75 + (picker.frame.size.width / 3), 95 , 75, 30))
+        let minutesLabel: UILabel = UILabel(frame: CGRect(x: 75 + (picker.frame.size.width / 3), y: 95 , width: 75, height: 30))
         minutesLabel.text = "min"
-        minutesLabel.textColor = UIColor.whiteColor()
+        minutesLabel.textColor = UIColor.white()
         picker.addSubview(minutesLabel)
         
-        let secondsLabel: UILabel = UILabel(frame: CGRectMake(75 + ((picker.frame.size.width / 3) * 2), 95, 75, 30))
+        let secondsLabel: UILabel = UILabel(frame: CGRect(x: 75 + ((picker.frame.size.width / 3) * 2), y: 95, width: 75, height: 30))
         secondsLabel.text = "sec"
-        secondsLabel.textColor = UIColor.whiteColor()
+        secondsLabel.textColor = UIColor.white()
         picker.addSubview(secondsLabel)
         
         self.view.addSubview(picker)
@@ -93,14 +93,14 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
  
         return 3
         
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if component == 0 {
             
@@ -111,13 +111,13 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         return 60
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> AttributedString? {
         
-        return NSAttributedString(string: String(row), attributes: [NSForegroundColorAttributeName:UIColor.whiteColor()])
+        return AttributedString(string: String(row), attributes: [NSForegroundColorAttributeName:UIColor.white()])
         
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if component == 0 {
             

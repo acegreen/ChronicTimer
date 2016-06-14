@@ -12,11 +12,11 @@ import CoreData
 import HealthKit
 import WatchConnectivity
 
-var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-let defaultPrefsFile: NSURL = NSBundle.mainBundle().URLForResource("DefaultPreferences", withExtension: "plist")!
-let defaultPrefs: NSDictionary = NSDictionary(contentsOfURL: defaultPrefsFile)!
+var userDefaults: UserDefaults = UserDefaults.standard()
+let defaultPrefsFile: URL = Bundle.main().urlForResource("DefaultPreferences", withExtension: "plist")!
+let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
 
-let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier
+let bundleIdentifier = Bundle.main().bundleIdentifier
 
 let keychain = Keychain(service: "AG.Chronic")
 
@@ -39,8 +39,8 @@ var pauseInBackgroundState: Bool = false
 var QuickTimerTime: Double = 60.0
 
 let context = WatchDataAccess.sharedInstance.managedObjectContext
-let routineEntity = NSEntityDescription.entityForName("Routines", inManagedObjectContext: context)
-let exerciseEntity = NSEntityDescription.entityForName("Exercises", inManagedObjectContext: context)
+let routineEntity = NSEntityDescription.entity(forEntityName: "Routines", in: context)
+let exerciseEntity = NSEntityDescription.entity(forEntityName: "Exercises", in: context)
 
 var warmUpExercise: ExerciseModel!
 var roundExercise: ExerciseModel!
@@ -51,6 +51,6 @@ var coolDownExercise: ExerciseModel!
 var wcSession: WCSession!
 
 enum distanceType {
-    case Miles
-    case Kilometers
+    case miles
+    case kilometers
 }

@@ -17,12 +17,12 @@ class InterfaceTableController: WKInterfaceController {
         
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(WKInterfaceController.willActivate),name:"willActivate", object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(WKInterfaceController.willActivate),name:"willActivate", object: nil)
         
     }
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
         
     }
 
@@ -37,7 +37,7 @@ class InterfaceTableController: WKInterfaceController {
         if proFeaturesUpgradePurchased() {
         
             // Get Routines from database
-            Routines = WatchDataAccess.sharedInstance.GetRoutines(nil) as! [RoutineModel]
+            Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil) as! [RoutineModel]
             
             if Routines.count != 0 {
                 
@@ -63,16 +63,16 @@ class InterfaceTableController: WKInterfaceController {
         
         self.routineTable.setNumberOfRows(Routines.count, withRowType: "routinesRow")
         
-        for (index, item) in Routines.enumerate() {
+        for (index, item) in Routines.enumerated() {
             
-            let row = self.routineTable.rowControllerAtIndex(index) as! TableRowType
+            let row = self.routineTable.rowController(at: index) as! TableRowType
             
-            row.routineRowLabel.setText(item.valueForKey("name")! as? String)
+            row.routineRowLabel.setText(item.value(forKey: "name")! as? String)
             
         }
     }
 
-    override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
         
         if Routines.count != 0 {
             
@@ -83,7 +83,7 @@ class InterfaceTableController: WKInterfaceController {
         return nil
     }
     
-    override func contextsForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> [AnyObject]? {
+    override func contextsForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> [AnyObject]? {
         
         if Routines.count != 0 {
             

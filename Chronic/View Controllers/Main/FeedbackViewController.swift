@@ -21,17 +21,17 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
         super.viewDidLoad()
     
         SARate.sharedInstance().eventCount = 0
-        negativeButton.layer.borderColor = UIColor.whiteColor().CGColor
+        negativeButton.layer.borderColor = UIColor.white().cgColor
     }
     
     @IBAction func reviewAction() {
-        self.dismissViewControllerAnimated(true) {
+        self.dismiss(animated: true) {
             iRate.sharedInstance().openRatingsPageInAppStore()
         }
     }
     
     @IBAction func negativeAction() {
-        self.dismissViewControllerAnimated(true) {}
+        self.dismiss(animated: true) {}
     }
 
     @IBAction func contactAction() {
@@ -50,11 +50,11 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
             mc.setMessageBody(messageBody, isHTML: true)
             mc.setToRecipients(toReceipients)
             
-            self.presentViewController(mc, animated: true, completion: nil)
+            self.present(mc, animated: true, completion: nil)
             
         } else {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: No Email Account Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Email Account Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+            SweetAlert().showAlert(NSLocalizedString("Alert: No Email Account Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Email Account Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
                 
             }
         }
@@ -62,19 +62,19 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     // MARK: - Email Delegate
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
         
         switch result.rawValue {
             
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.cancelled.rawValue:
             
             print("Mail Cancelled")
             
-        case MFMailComposeResultSaved.rawValue, MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.saved.rawValue, MFMailComposeResult.sent.rawValue:
             
             markFeedbackGiven()
             
-        case MFMailComposeResultFailed.rawValue:
+        case MFMailComposeResult.failed.rawValue:
             
             print("Mail Failed")
             
@@ -84,9 +84,9 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
             
         }
         
-        self.dismissViewControllerAnimated(true) { () -> Void in
+        self.dismiss(animated: true) { () -> Void in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         }
     }

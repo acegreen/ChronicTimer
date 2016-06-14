@@ -12,7 +12,7 @@ import LaunchKit
 
 class CustomRoutineTableViewController: UITableViewController, UITextFieldDelegate {
     
-    var tableRowSelected: NSIndexPath!
+    var tableRowSelected: IndexPath!
     
     var routineToEdit: RoutineModel!
     
@@ -30,21 +30,21 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         
         self.tableView.setEditing(true, animated: true)
         
-        nameCell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! ExerciseNameTableViewCell
+        nameCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ExerciseNameTableViewCell
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
         
         if routineToEdit != nil {
             
-            nameCell.NameTextField.enabled = false
+            nameCell.NameTextField.isEnabled = false
             
         } else {
             
-            let newExercise = ExerciseModel(entity: exerciseEntity!, insertIntoManagedObjectContext: context)
+            let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
             
             newExercise.exerciseName = ""
             
@@ -52,9 +52,9 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedDataWithRootObject(UIColor.greenColor())
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
             
-            exerciseSet.addObject(newExercise)
+            exerciseSet.add(newExercise)
             
             self.tableView.reloadData()
             
@@ -67,7 +67,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         // Dispose of any resources that can be recreated.
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: AnyObject?) -> Bool {
         
         if identifier == "SaveRoutineSegueIdentifier" {
             
@@ -90,7 +90,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         
         guard nameCell.NameTextField.text != "" else {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: Routine Name Missing Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Routine Name Missing Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle:NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+            SweetAlert().showAlert(NSLocalizedString("Alert: Routine Name Missing Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Routine Name Missing Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle:NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
             }
             
             return false
@@ -109,7 +109,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                     
                     if exercise.exerciseName == "" {
                         
-                        SweetAlert().showAlert(NSLocalizedString("Alert: Exercise Empty Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Exercise Empty Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+                        SweetAlert().showAlert(NSLocalizedString("Alert: Exercise Empty Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Exercise Empty Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
                         }
                         
                         return false
@@ -123,7 +123,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 routineToEdit.routineToExcercise = exerciseSet
                 
                 routineToEdit.selectedRoutine = true
-                routineToEdit!.date = NSDate()
+                routineToEdit!.date = Date()
                 
                 setSelectedRoutine(routineToEdit, completion: { (result) -> Void in
                     
@@ -147,7 +147,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
             } else {
                 
-                SweetAlert().showAlert(NSLocalizedString("Alert: Routine Exists Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Routine Exists Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+                SweetAlert().showAlert(NSLocalizedString("Alert: Routine Exists Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Routine Exists Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
                 }
                 
                 return false
@@ -162,7 +162,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                     
                     if exercise.exerciseName == "" {
                         
-                        SweetAlert().showAlert(NSLocalizedString("Alert: Exercise Empty Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Exercise Empty Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+                        SweetAlert().showAlert(NSLocalizedString("Alert: Exercise Empty Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Exercise Empty Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
                         }
                         
                         return false
@@ -173,13 +173,13 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                     }
                 }
                 
-                newRoutine = RoutineModel(entity: routineEntity!, insertIntoManagedObjectContext: context)
+                newRoutine = RoutineModel(entity: routineEntity!, insertInto: context)
                 
                 newRoutine.routineToExcercise = exerciseSet
                 
                 newRoutine.name = nameCell.NameTextField!.text!
                 newRoutine.selectedRoutine = true
-                newRoutine.date = NSDate()
+                newRoutine.date = Date()
                 
                 newRoutine.tableDisplayOrder = Routines.count + 1
                 
@@ -205,7 +205,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
             } else {
                 
-                SweetAlert().showAlert(NSLocalizedString("Alert: Routine Exists Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Routine Exists Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+                SweetAlert().showAlert(NSLocalizedString("Alert: Routine Exists Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Routine Exists Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
                 }
                 
                 return false
@@ -227,19 +227,19 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             print("Fetch failed: \(error.localizedDescription)")
             
-            SweetAlert().showAlert("Failed To Save!", subTitle: "Please try again", style: AlertStyle.Warning)
+            SweetAlert().showAlert("Failed To Save!", subTitle: "Please try again", style: AlertStyle.warning)
             return false
         }
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         switch (section) {
@@ -254,13 +254,13 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch (indexPath.section) {
+        switch ((indexPath as NSIndexPath).section) {
             
         case (0):
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("NameCell", forIndexPath: indexPath) as! ExerciseNameTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath) as! ExerciseNameTableViewCell
             
             if routineToEdit != nil {
                 
@@ -271,19 +271,19 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
         case (1):
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("ExerciseCell", forIndexPath: indexPath) as! ExerciseTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseTableViewCell
             
-            if exerciseSet.count != 0 && indexPath.row < exerciseSet.count {
+            if exerciseSet.count != 0 && (indexPath as NSIndexPath).row < exerciseSet.count {
                 
-                let exerciseAtIndexPath = exerciseSet.objectAtIndex(indexPath.row) as! ExerciseModel
+                let exerciseAtIndexPath = exerciseSet.object(at: (indexPath as NSIndexPath).row) as! ExerciseModel
                 
                 cell.excerciseNameTextField.text = exerciseAtIndexPath.exerciseName
                 
-                cell.exerciseTimeTextField.text = timeStringFrom(time:exerciseAtIndexPath.exerciseTime as! Int, type: "Routine")
+                cell.exerciseTimeTextField.text = timeStringFrom(time:exerciseAtIndexPath.exerciseTime as Int, type: "Routine")
                 
                 cell.exerciseNumberOfRounds.text = String(exerciseAtIndexPath.exerciseNumberOfRounds!)
                 
-                cell.exerciseColorTextField.backgroundColor = NSKeyedUnarchiver.unarchiveObjectWithData(exerciseAtIndexPath.exerciseColor! as! NSData ) as! UIColor
+                cell.exerciseColorTextField.backgroundColor = NSKeyedUnarchiver.unarchiveObject(with: exerciseAtIndexPath.exerciseColor! as! Data ) as! UIColor
                 
             }
             
@@ -291,15 +291,15 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
         default:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("AddExerciseCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddExerciseCell", for: indexPath)
             
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
-        switch (indexPath.section) {
+        switch ((indexPath as NSIndexPath).section) {
             
         case 1:
             
@@ -315,10 +315,10 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         }
     }
     
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return NO if you do not want the item to be re-orderable.
         
-        switch (indexPath.section) {
+        switch ((indexPath as NSIndexPath).section) {
             
         case (1):
             
@@ -330,17 +330,17 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         }
     }
     
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         
-        let fromIndexSet:NSIndexSet = NSIndexSet(index: fromIndexPath.row)
+        let fromIndexSet:IndexSet = IndexSet(integer: (fromIndexPath as NSIndexPath).row)
         
-        exerciseSet.moveObjectsAtIndexes(fromIndexSet, toIndex: toIndexPath.row)
+        exerciseSet.moveObjects(at: fromIndexSet, to: (toIndexPath as NSIndexPath).row)
         
     }
     
-    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         
-        if (sourceIndexPath.section != proposedDestinationIndexPath.section) {
+        if ((sourceIndexPath as NSIndexPath).section != (proposedDestinationIndexPath as NSIndexPath).section) {
             
             return sourceIndexPath
             
@@ -351,34 +351,34 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     }
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             
             if exerciseSet.count > 1 {
                 
                 // Delete the row from the data source
-                if exerciseSet.count != 0 && indexPath.row + 1 <= exerciseSet.count {
+                if exerciseSet.count != 0 && (indexPath as NSIndexPath).row + 1 <= exerciseSet.count {
                     
-                    context.deleteObject(exerciseSet[indexPath.row] as! NSManagedObject)
+                    context.delete(exerciseSet[(indexPath as NSIndexPath).row] as! NSManagedObject)
                     
-                    exerciseSet.removeObjectAtIndex(indexPath.row)
+                    exerciseSet.removeObject(at: (indexPath as NSIndexPath).row)
                 }
                 
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                tableView.deleteRows(at: [indexPath], with: .left)
                 
             } else {
                 
-                SweetAlert().showAlert(NSLocalizedString("Alert: Exercise Delete Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Exercise Delete Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle:NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+                SweetAlert().showAlert(NSLocalizedString("Alert: Exercise Delete Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Exercise Delete Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle:NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
                 }
             }
             
-        } else if editingStyle == .Insert {
+        } else if editingStyle == .insert {
             
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-            let index:NSIndexPath = NSIndexPath(forRow: self.tableView.numberOfRowsInSection(1), inSection: 1)
+            let index:IndexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 1), section: 1)
             
-            let newExercise = ExerciseModel(entity: exerciseEntity!, insertIntoManagedObjectContext: context)
+            let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
             
             newExercise.exerciseName = ""
             
@@ -386,57 +386,57 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedDataWithRootObject(UIColor.greenColor())
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
             
-            exerciseSet.addObject(newExercise)
+            exerciseSet.add(newExercise)
             
-            tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+            tableView.insertRows(at: [index], with: .automatic)
             
         }
         
         tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         
-        switch (indexPath.section) {
+        switch ((indexPath as NSIndexPath).section) {
             
         case (2):
             
-            return UITableViewCellEditingStyle.Insert
+            return UITableViewCellEditingStyle.insert
             
         default:
             
-            return UITableViewCellEditingStyle.Delete
+            return UITableViewCellEditingStyle.delete
         }
         
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear()
     }
     
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let view = view as? UITableViewHeaderFooterView {
             
-            view.textLabel!.textColor = UIColor.whiteColor()
+            view.textLabel!.textColor = UIColor.white()
             
         }
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch (indexPath.section) {
+        switch ((indexPath as NSIndexPath).section) {
             
         case (2):
             
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-            let index:NSIndexPath = NSIndexPath(forRow: self.tableView.numberOfRowsInSection(1), inSection: 1)
+            let index:IndexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 1), section: 1)
             
-            let newExercise = ExerciseModel(entity: exerciseEntity!, insertIntoManagedObjectContext: context)
+            let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
             
             newExercise.exerciseName = ""
             
@@ -444,11 +444,11 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedDataWithRootObject(UIColor.greenColor())
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
             
-            exerciseSet.addObject(newExercise)
+            exerciseSet.add(newExercise)
             
-            tableView.insertRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+            tableView.insertRows(at: [index], with: .automatic)
             
             print("exerciseSet", exerciseSet)
             
@@ -459,15 +459,15 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         
     }
     
-    func exerciseCellLongPressed(sender: UILongPressGestureRecognizer) {
+    func exerciseCellLongPressed(_ sender: UILongPressGestureRecognizer) {
         
-        if sender.state == UIGestureRecognizerState.Began {
+        if sender.state == UIGestureRecognizerState.began {
             print("UIGestureRecognizerState Began")
             
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "exerciseDetailSegue" {
             
@@ -483,20 +483,20 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     
     //MARK: - TextField and Touches Functions3
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         return true
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
         let textFieldRowCell:UITableViewCell = textField.superview!.superview as! UITableViewCell
         
-        let indexPath = self.tableView.indexPathForCell(textFieldRowCell)
+        let indexPath = self.tableView.indexPath(for: textFieldRowCell)
         
-        if indexPath?.section == 1 {
+        if (indexPath as NSIndexPath?)?.section == 1 {
             
-            let exercise = exerciseSet.objectAtIndex((indexPath?.row)!) as! ExerciseModel
+            let exercise = exerciseSet.object(at: ((indexPath as NSIndexPath?)?.row)!) as! ExerciseModel
             
             if textField.tag == 1 {
                 
@@ -516,20 +516,20 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
             } else if textField.tag == 4 {
                 
-                exercise.exerciseColor = NSKeyedArchiver.archivedDataWithRootObject(textField.backgroundColor!)
+                exercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: textField.backgroundColor!)
                 
             }
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
         
         return true
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent crashing undo bug – see note below.
         if (range.length + range.location) > textField.text?.characters.count {
@@ -542,9 +542,9 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        super.touchesBegan(touches as Set<UITouch>, withEvent: event)
+        super.touchesBegan(touches as Set<UITouch>, with: event)
         self.view.endEditing(true)
         
     }

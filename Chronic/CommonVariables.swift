@@ -17,13 +17,13 @@ import SystemConfiguration
 import AVFoundation
 import WatchConnectivity
 
-let current = UIDevice.currentDevice()
-let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier
-let infoDict = NSBundle.mainBundle().infoDictionary
+let current = UIDevice.current()
+let bundleIdentifier = Bundle.main().bundleIdentifier
+let infoDict = Bundle.main().infoDictionary
 let AppVersion = infoDict!["CFBundleShortVersionString"]!
 let BundleVersion = infoDict!["CFBundleVersion"]!
 
-let app = UIApplication.sharedApplication()
+let app = UIApplication.shared()
 let appDel:AppDelegate = app.delegate as! AppDelegate
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
@@ -39,16 +39,16 @@ let payload = [ "BundleID" : infoDict!["CFBundleIdentifier"]!,
 let iTunesID: UInt = 980247998
 let appTitle: String = "Chronic"
 let appLink: String = "https://itunes.apple.com/us/app/chronic/id980247998?ls=1&mt=8"
-let appURL = NSURL(string: "https://itunes.apple.com/us/app/chronic/id980247998?ls=1&mt=8")
-let appReviewURL = NSURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=980247998")
+let appURL = URL(string: "https://itunes.apple.com/us/app/chronic/id980247998?ls=1&mt=8")
+let appReviewURL = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=980247998")
 let appEmail: String = "ChronicTimer@gmail.com"
 
-let application = UIApplication.sharedApplication()
-let settingsURL = NSURL(string: UIApplicationOpenSettingsURLString)
-let receiptURL = NSBundle.mainBundle().appStoreReceiptURL
+let application = UIApplication.shared()
+let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
+let receiptURL = Bundle.main().appStoreReceiptURL
 
-let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
-let currentCalendar = NSCalendar.currentCalendar()
+let countryCode = Locale.current().object(forKey: Locale.Key.countryCode) as! String
+let currentCalendar = Calendar.current()
 
 let emailDiagnosticInfo = Array(payload.keys).reduce("", combine: { (input, key) -> String in
     return "\(input)\r\n\(key): \(payload[key]!)</br>"
@@ -57,14 +57,14 @@ let emailDiagnosticInfo = Array(payload.keys).reduce("", combine: { (input, key)
 let chronicColor: UIColor = UIColor(red: 92/255, green: 92/255, blue: 102/255, alpha: 1.0)
 let chronicGreen: UIColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0)
 
-let defaultPrefsFile: NSURL = NSBundle.mainBundle().URLForResource("DefaultPreferences", withExtension: "plist")!
-let defaultPrefs: NSDictionary = NSDictionary(contentsOfURL: defaultPrefsFile)!
+let defaultPrefsFile: URL = Bundle.main().urlForResource("DefaultPreferences", withExtension: "plist")!
+let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
 
 var Routines: [RoutineModel]!
 
 let context = DataAccess.sharedInstance.managedObjectContext
-let routineEntity = NSEntityDescription.entityForName("Routines", inManagedObjectContext: context)
-let exerciseEntity = NSEntityDescription.entityForName("Exercises", inManagedObjectContext: context)
+let routineEntity = NSEntityDescription.entity(forEntityName: "Routines", in: context)
+let exerciseEntity = NSEntityDescription.entity(forEntityName: "Exercises", in: context)
 
 var timerSound: String!
 var timerVolume: Float!
@@ -87,7 +87,7 @@ var donate99Key: String = "chronic.iap.donate0.99"
 
 var momentId:String = "Chronic_workout_complete"
 
-var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+var userDefaults: UserDefaults = UserDefaults.standard()
 
 var healtKitAuthorized: Bool = false
 
@@ -100,15 +100,15 @@ var QuickTimerTime: Double = 60.0
 
 var circleWidth: CGFloat!
 
-let okAlertAction = UIAlertAction(title: "Ok", style: .Default, handler:{ (ACTION :UIAlertAction!)in })
+let okAlertAction = UIAlertAction(title: "Ok", style: .default, handler:{ (ACTION :UIAlertAction!)in })
 
-let settingsAlertAction: UIAlertAction = UIAlertAction(title: "Settings", style: .Default, handler: { (action: UIAlertAction!) in
+let settingsAlertAction: UIAlertAction = UIAlertAction(title: "Settings", style: .default, handler: { (action: UIAlertAction!) in
     
-    UIApplication.sharedApplication().openURL(settingsURL!)
+    UIApplication.shared().openURL(settingsURL!)
     
 })
 
-let cancelAlertAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler:{ (ACTION :UIAlertAction!) in })
+let cancelAlertAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler:{ (ACTION :UIAlertAction!) in })
 
 let quickTimerCompleteImage: UIImage = UIImage(named: "timer")!
 let routineCompleteImage: UIImage = UIImage(named: "workout")!
@@ -116,7 +116,7 @@ let runCompleteImage: UIImage = UIImage(named: "runner")!
 
 let emptyTableGuyImage: UIImage = UIImage(named: "emptyTableGuy")!
 
-var soundlocation = NSURL()
+var soundlocation = URL()
 var player = AVAudioPlayer()
 var soundError: NSError? = nil
 let synthesizer = AVSpeechSynthesizer()
@@ -129,8 +129,8 @@ var decryptDictionary : Dictionary<String, String> = [
 var wcSession: WCSession!
 
 public enum distanceType {
-    case Miles
-    case Kilometers
+    case miles
+    case kilometers
 }
 public enum NotificationCategory: String {
     case ReminderCategory, WorkoutCategory

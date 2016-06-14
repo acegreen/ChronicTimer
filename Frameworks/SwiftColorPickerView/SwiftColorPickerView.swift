@@ -18,7 +18,7 @@ public protocol SwiftColorPickerDelegate {
 
 public protocol SwiftColorPickerDataSource: class {
     
-    func colorForPalletIndex(x: Int, y: Int, numXStripes: Int, numYStripes: Int) -> UIColor
+    func colorForPalletIndex(_ x: Int, y: Int, numXStripes: Int, numYStripes: Int) -> UIColor
 }
 
 /// Color Picker ViewController. Let the user pick a color from a 2D color palette.
@@ -86,10 +86,10 @@ final public class SwiftColorPickerView: UIView {
     private var selectionViewConstraintX: NSLayoutConstraint = NSLayoutConstraint()
     private var selectionViewConstraintY: NSLayoutConstraint = NSLayoutConstraint()
     
-    public override func drawRect(rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         
-        super.drawRect(rect)
-        let lineColor = UIColor.grayColor()
+        super.draw(rect)
+        let lineColor = UIColor.gray()
         let pS = patternSize()
         let w = pS.w
         let h = pS.h
@@ -98,12 +98,12 @@ final public class SwiftColorPickerView: UIView {
             
             for x in 0..<numberColorsInXDirection {
                 let path = UIBezierPath()
-                let start = CGPointMake(CGFloat(x)*w+CGFloat(coloredBorderWidth),CGFloat(y)*h+CGFloat(coloredBorderWidth))
-                path.moveToPoint(start);
-                path.addLineToPoint(CGPointMake(start.x+w, start.y))
-                path.addLineToPoint(CGPointMake(start.x+w, start.y+h))
-                path.addLineToPoint(CGPointMake(start.x, start.y+h))
-                path.addLineToPoint(start)
+                let start = CGPoint(x: CGFloat(x)*w+CGFloat(coloredBorderWidth),y: CGFloat(y)*h+CGFloat(coloredBorderWidth))
+                path.move(to: start);
+                path.addLine(to: CGPoint(x: start.x+w, y: start.y))
+                path.addLine(to: CGPoint(x: start.x+w, y: start.y+h))
+                path.addLine(to: CGPoint(x: start.x, y: start.y+h))
+                path.addLine(to: start)
                 path.lineWidth = 0.25
                 colorForRectAt(x,y:y).setFill();
                 
@@ -118,14 +118,14 @@ final public class SwiftColorPickerView: UIView {
         }
     }
     
-    private func colorForRectAt(x: Int, y: Int) -> UIColor {
+    private func colorForRectAt(_ x: Int, y: Int) -> UIColor {
         
         if let ds = dataSource {
             return ds.colorForPalletIndex(x, y: y, numXStripes: numberColorsInXDirection, numYStripes: numberColorsInYDirection)
         } else {
             
             var hue:CGFloat = CGFloat(x) / CGFloat(numberColorsInYDirection)
-            var fillColor = UIColor.whiteColor()
+            var fillColor = UIColor.white()
             if (y==0)
             {
                 if (x==(numberColorsInYDirection-1))
@@ -143,7 +143,7 @@ final public class SwiftColorPickerView: UIView {
         }
     }
     
-    func colorAtPoint(point: CGPoint) -> UIColor {
+    func colorAtPoint(_ point: CGPoint) -> UIColor {
         
         let pS = patternSize()
         let w = pS.w
@@ -169,12 +169,12 @@ final public class SwiftColorPickerView: UIView {
         print("Compiled and run for IB")
     }
     
-    public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         
         if let touch = touches.first {
             let t = touch
-            let point = t.locationInView(self)
+            let point = t.location(in: self)
             let colorSelected = self.colorAtPoint(point)
             delegate?.colorSelectionChanged(selectedColor: colorSelected)
         }

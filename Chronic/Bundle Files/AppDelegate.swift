@@ -36,13 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         init?(fullType: String) {
             
-            guard let last = fullType.componentsSeparatedByString(".").last else {return nil}
+            guard let last = fullType.components(separatedBy: ".").last else {return nil}
             self.init(rawValue: last)
         }
         
         var type: String {
             
-            return NSBundle.mainBundle().bundleIdentifier! + ".\(self.rawValue)"
+            return Bundle.main().bundleIdentifier! + ".\(self.rawValue)"
         }
         
     }
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         SARate.sharedInstance().promptAtLaunch = false
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // setup user defaults
         setupUserDefaults()
@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         Routines = DataAccess.sharedInstance.GetRoutines(nil) as! [RoutineModel]
         
         // Set idelTimerDisabled accordingly
-        UIApplication.sharedApplication().idleTimerDisabled = !enableDeviceSleepState
+        UIApplication.shared().isIdleTimerDisabled = !enableDeviceSleepState
         
         // Check for pro version purchase
         keychainProVersionString = keychain[proVersionKey]
@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         #if DEBUG
             Rollout.setupWithKey("56932e164e1e847211ffe9ee", developmentDevice: true)
         #else
-            Rollout.setupWithKey("56932e164e1e847211ffe9ee", developmentDevice: false)
+            Rollout.setup(withKey: "56932e164e1e847211ffe9ee", developmentDevice: false)
         #endif
         
         // Register for Google App Indexing
@@ -120,16 +120,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // Setup WCSession
         if (WCSession.isSupported()) {
-            wcSession = WCSession.defaultSession()
+            wcSession = WCSession.default()
             wcSession.delegate = self
-            wcSession.activateSession()
+            wcSession.activate()
         }
         
         // Setup sound mixing so that app can make sound when music is playing from another app
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        UIApplication.shared().beginReceivingRemoteControlEvents()
         do {
             
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.MixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             
         } catch let error as NSError {
@@ -146,13 +146,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         UITabBar.appearance().tintColor = chronicGreen
         
         // Track Push Notitications
-        if application.applicationState != UIApplicationState.Background {
+        if application.applicationState != UIApplicationState.background {
             // Track an app open here if we launch with a push, unless
             // "content_available" was used to trigger a background push (introduced in iOS 7).
             // In that case, we skip tracking here to avoid double counting the app-open.
             
-            let preBackgroundPush = !application.respondsToSelector(Selector("backgroundRefreshStatus"))
-            let oldPushHandlerOnly = !self.respondsToSelector(#selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
+            let preBackgroundPush = !application.responds(to: Selector("backgroundRefreshStatus"))
+            let oldPushHandlerOnly = !self.responds(to: #selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
             var pushPayload = false
             if let options = launchOptions {
                 pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
@@ -169,7 +169,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
         switch url.scheme {
             
@@ -187,25 +187,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         }
     }
     
-    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
         
         if userActivity.activityType == CSSearchableItemActionType {
             
             if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
                 
-                let uniqueIdentifierPredicate: NSPredicate = NSPredicate(format: "name = %@", uniqueIdentifier)
+                let uniqueIdentifierPredicate: Predicate = Predicate(format: "name = %@", uniqueIdentifier)
                 
                 let routineSelectedInSpotlight = DataAccess.sharedInstance.GetRoutines(uniqueIdentifierPredicate)!.first as! RoutineModel
                 
-                let timerViewController = mainStoryboard.instantiateViewControllerWithIdentifier("TimerViewController") as! TimerViewController
+                let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
                 timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
                 
                 let rootViewController = appDel.window?.rootViewController
                 if rootViewController?.presentedViewController != nil {
-                    rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    rootViewController?.dismiss(animated: true, completion: nil)
                 }
                 
-                rootViewController?.presentViewController(timerViewController, animated: true, completion: nil)
+                rootViewController?.present(timerViewController, animated: true, completion: nil)
                 
                 // Mark correct routine as selected
                 
@@ -225,29 +225,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     }
     
     @available(iOS 9.0, *)
-    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         
         let handledShhortcutItem = self.handleShortcutItem(shortcutItem)
         completionHandler(handledShhortcutItem)
         
     }
     
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         
-        guard userDefaults.boolForKey("NOTIFICATION_REMINDER_ENABLED") == true else { return }
+        guard userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") == true else { return }
         if NotificationHelper.checkScheduledNotificationsForNotificationWith(NotificationCategory.ReminderCategory.key()) == nil {
             NotificationHelper.scheduleNotification(NotificationHelper.reminderDate, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: appTitle, alertBody:  NSLocalizedString("Reminder Notification Text",comment: ""), sound: "Boxing.wav", category: NotificationCategory.ReminderCategory.key())
         }
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         let currentInstallation: PFInstallation = PFInstallation.currentInstallation()
         currentInstallation.setDeviceTokenFromData(deviceToken)
         currentInstallation.saveInBackground()
     }
     
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         
         if error.code == 3010 {
             
@@ -259,16 +259,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         }
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         
         // Handle received remote notification
         PFPush.handlePush(userInfo)
-        if application.applicationState == UIApplicationState.Inactive {
+        if application.applicationState == UIApplicationState.inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
         }
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         
         //        let vc = storyboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
         //
@@ -293,16 +293,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         //        }
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         
         if runInBackgroundState == true {
-            backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({})
+            backgroundTask = UIApplication.shared().beginBackgroundTask(expirationHandler: {})
         }
         
         // Register for Push Notitications
-        if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
-            let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        if application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:))) {
+            let userNotificationTypes: UIUserNotificationType = [.alert, .badge, .sound]
+            let settings = UIUserNotificationSettings(types: userNotificationTypes, categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
             
@@ -315,16 +315,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         if backgroundTask != nil {
             
-            UIApplication.sharedApplication().endBackgroundTask(backgroundTask)
+            UIApplication.shared().endBackgroundTask(backgroundTask)
             
             backgroundTask = nil
             
@@ -340,7 +340,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         NotificationHelper.unscheduleNotifications(NotificationCategory.WorkoutCategory.key())
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         saveContext { (save) -> Void in
@@ -350,10 +350,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     // MARK: - WCSessionDelegate
     
     @available(iOS 9.0, *)
-    func sessionWatchStateDidChange(session: WCSession) {
+    func sessionWatchStateDidChange(_ session: WCSession) {
         print(#function)
         print(session)
-        print("reachable:\(session.reachable)")
+        print("reachable:\(session.isReachable)")
     }
     
     // MARK: - iRateDelegate Functions
@@ -373,23 +373,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     func iRateDidDetectAppUpdate() {
         
         SARate.sharedInstance().eventCount = 0
-        userDefaults.setBool(false, forKey: "FEEDBACK_GIVEN")
+        userDefaults.set(false, forKey: "FEEDBACK_GIVEN")
         userDefaults.synchronize()
     }
     
     // MARK: - Shortcut Handling
     
     @available(iOS 9.0, *)
-    func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+    func handleShortcutItem(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
         
         guard ShortcutIdentifier(fullType: shortcutItem.type) != nil else { return false }
         guard let shortcutType = shortcutItem.type as String? else { return false }
         
-        let timerViewController = mainStoryboard.instantiateViewControllerWithIdentifier("TimerViewController") as! TimerViewController
+        let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
         
         let rootViewController = appDel.window?.rootViewController
         if rootViewController?.presentedViewController != nil {
-            rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+            rootViewController?.dismiss(animated: true, completion: nil)
         }
         
         switch (shortcutType) {
@@ -397,14 +397,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         case ShortcutIdentifier.Run.type:
             
             timerViewController.initializeRunner()
-            rootViewController?.presentViewController(timerViewController, animated: true, completion: nil)
+            rootViewController?.present(timerViewController, animated: true, completion: nil)
         
             return true
             
         case ShortcutIdentifier.QT.type:
             
             timerViewController.initializeQuickTimer()
-            rootViewController?.presentViewController(timerViewController, animated: true, completion: nil)
+            rootViewController?.present(timerViewController, animated: true, completion: nil)
             
             return true
             
@@ -413,7 +413,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             guard let selectedRoutine = getRoutine(withName: shortcutItem.localizedTitle) else { return false }
                 
             timerViewController.initializeRoutine(with: selectedRoutine)
-            rootViewController?.presentViewController(timerViewController, animated: true, completion: nil)
+            rootViewController?.present(timerViewController, animated: true, completion: nil)
             //timerViewController.play()
             
             return true
@@ -428,22 +428,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func setupUserDefaults() {
         
-        userDefaults.registerDefaults(defaultPrefs as! [String : AnyObject])
+        userDefaults.register(defaultPrefs as! [String : AnyObject])
         
         // Enable/Disable Timer Sound based on timerSound
-        timerSound = userDefaults.stringForKey("TIMER_SOUND")
+        timerSound = userDefaults.string(forKey: "TIMER_SOUND")
         
         // Set Timer Volume based on timerVolume
-        timerVolume = userDefaults.floatForKey("TIMER_VOLUME")
+        timerVolume = userDefaults.float(forKey: "TIMER_VOLUME")
         
         // Enable/Disable display sleep based on enableDeviceSleepState flag
-        enableDeviceSleepState = userDefaults.boolForKey("ENABLE_DEVICE_SLEEP") as Bool
+        enableDeviceSleepState = userDefaults.bool(forKey: "ENABLE_DEVICE_SLEEP") as Bool
         
         // Enable/Disable background tasks based on runInBackgroundState flag
-        runInBackgroundState = userDefaults.boolForKey("RUN_IN_BACKGROUND") as Bool
+        runInBackgroundState = userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
         
         // Enable/Disable notification reminders based on notificationReminderState flag
-        notificationReminderState = userDefaults.boolForKey("NOTIFICATION_REMINDER_ENABLED") as Bool
+        notificationReminderState = userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
     }
     
     // MARK: - Setup storyboards

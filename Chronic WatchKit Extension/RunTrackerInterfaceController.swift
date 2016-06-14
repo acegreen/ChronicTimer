@@ -30,8 +30,8 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     @IBOutlet var distanceLabel: WKInterfaceLabel!
     @IBOutlet var timeLabel: WKInterfaceLabel!
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: AnyObject?) {
+        super.awake(withContext: context)
     }
 
     override func willActivate() {
@@ -39,13 +39,13 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         super.willActivate()
         
         let status = CLLocationManager.authorizationStatus()
-        if status == .NotDetermined || status == .Denied {
+        if status == .notDetermined || status == .denied {
             // present an alert indicating location authorization required
             // and offer to take the user to Settings for the app via
             // UIApplication -openUrl: and UIApplicationOpenSettingsURLString
             locationManager.requestWhenInUseAuthorization()
             
-        } else if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
+        } else if status == .authorizedWhenInUse || status == .authorizedAlways {
             
             
         }
@@ -56,17 +56,17 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         super.didDeactivate()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         for location in locations {
             //update distance
             if self.locations.count > 0 {
-                distance += location.distanceFromLocation(self.locations.last!)
+                distance += location.distance(from: self.locations.last!)
                 
                 let distanceFormatter = MKDistanceFormatter()
-                distanceFormatter.units = MKDistanceFormatterUnits.Metric
-                distanceFormatter.unitStyle = MKDistanceFormatterUnitStyle.Default
-                self.distanceLabel.setText(distanceFormatter.stringFromDistance(distance))
+                distanceFormatter.units = MKDistanceFormatterUnits.metric
+                distanceFormatter.unitStyle = MKDistanceFormatterUnitStyle.default
+                self.distanceLabel.setText(distanceFormatter.string(fromDistance: distance))
                 
                 let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 100))
                 mapView.setRegion(region)
@@ -78,13 +78,7 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        
-        print("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)")
-    
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
         
         print(error)
         

@@ -21,7 +21,6 @@ import MoPub
 import SDVersion
 import AMPopTip
 import LaunchKit
-import Spring
 import ChameleonFramework
 import BubbleTransition
 import PureLayout
@@ -29,33 +28,33 @@ import PureLayout
 class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate, CNPPopupControllerDelegate {
     
     enum WorkoutType {
-        case Routine
-        case Run
-        case QuickTimer
+        case routine
+        case run
+        case quickTimer
     }
 
     enum WorkoutEventType {
-        case PreRun
-        case Active
-        case Paused
-        case Completed
+        case preRun
+        case active
+        case paused
+        case completed
     }
     
     enum ButtonState {
-        case Play
-        case Pause
-        case Initial
-        case Unlocked
-        case Locked
+        case play
+        case pause
+        case initial
+        case unlocked
+        case locked
     }
 
-    var workoutType = WorkoutType.QuickTimer
-    var workoutState = WorkoutEventType.PreRun
-    var buttonState = ButtonState.Initial
+    var workoutType = WorkoutType.quickTimer
+    var workoutState = WorkoutEventType.preRun
+    var buttonState = ButtonState.initial
 
-    var workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.CrossTraining
+    var workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.crossTraining
     
-    var timer = NSTimer()
+    var timer = Timer()
     var time: Int = 0
     var distance: Double = 0.0
     
@@ -74,8 +73,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     var currentTimerDict = [String:AnyObject]()
     
     var routineIndex: Int = 0
-    var routineStartDate: NSDate!
-    var routineEndDate: NSDate!
+    var routineStartDate: Date!
+    var routineEndDate: Date!
 
     // var adView: MPAdView = MPAdView(adUnitId: "fbfd798cc29d4a3a819108bc7e735c5c", size: MOPUB_BANNER_SIZE)
 
@@ -96,7 +95,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         var locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.activityType = .Fitness
+        locationManager.activityType = .fitness
         
         // Movement threshold for new events
         locationManager.distanceFilter = 5.0
@@ -143,11 +142,11 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     // MARK: - Button Actions
     
-    @IBAction func previousButtonPressed(sender: UIButton) {
+    @IBAction func previousButtonPressed(_ sender: UIButton) {
         
         guard (routineStages.get(routineIndex - 1) != nil) else { return }
         
-        if timer.valid {
+        if timer.isValid {
             self.pause()
         }
         
@@ -156,11 +155,11 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         changeStage()
     }
     
-    @IBAction func forwardButtonPressed(sender: UIButton) {
+    @IBAction func forwardButtonPressed(_ sender: UIButton) {
         
         guard (routineStages.get(routineIndex + 1) != nil) else { return }
         
-        if timer.valid {
+        if timer.isValid {
             self.pause()
         }
         
@@ -170,14 +169,14 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     //Button Action for playing routine button
-    @IBAction func playPausebarButtonItemPressed(sender: UIButton) {
+    @IBAction func playPausebarButtonItemPressed(_ sender: UIButton) {
         
         print(workoutState)
         
-        if workoutType != .Run && routineTotalTime == 0 {
+        if workoutType != .run && routineTotalTime == 0 {
             return
         } else {
-            if workoutState == .PreRun || workoutState == .Paused {
+            if workoutState == .preRun || workoutState == .paused {
                 self.play()
             } else {
                 self.pause()
@@ -185,9 +184,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
     }
     
-    @IBAction func lockUnlockButtonPressed(sender: UIButton) {
+    @IBAction func lockUnlockButtonPressed(_ sender: UIButton) {
 
-        if buttonState == .Locked {
+        if buttonState == .locked {
             self.unlock()
         } else {
             self.lock()
@@ -195,12 +194,12 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     func lock() {
-        buttonState = .Locked
+        buttonState = .locked
         switchButtonState()
     }
     
     func unlock() {
-        buttonState = .Unlocked
+        buttonState = .unlocked
         switchButtonState()
     }
     
@@ -208,11 +207,11 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         if !isConnectedToNetwork() && !removeAdsUpgradePurchased() {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.Warning)
+            SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
             
         } else {
             
-            if workoutState == .PreRun {
+            if workoutState == .preRun {
                 startCountDown()
             } else {
                 startWorkout()
@@ -224,8 +223,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         timer.invalidate()
     
-        workoutState = .Paused
-        buttonState = .Pause
+        workoutState = .paused
+        buttonState = .pause
         switchButtonState()
     }
     
@@ -234,26 +233,26 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         timer.invalidate()
         
         // Set end time
-        routineEndDate = NSDate()
+        routineEndDate = Date()
         print("end time \(routineEndDate)")
         
         // Complete workout if .Run 
-        if workoutType == .Run {
-            workoutState = WorkoutEventType.Completed
+        if workoutType == .run {
+            workoutState = WorkoutEventType.completed
         }
             
         // Set Alert if in background
         var message: String!
         
-        if UIApplication.sharedApplication().applicationState == UIApplicationState.Background {
+        if UIApplication.shared().applicationState == UIApplicationState.background {
             
-            if workoutType != .QuickTimer {
+            if workoutType != .quickTimer {
                 
-                if workoutType == .Routine {
+                if workoutType == .routine {
                     
                     message = NSLocalizedString("Congratulation Text (Routine)", comment: "")
                     
-                } else if workoutType == .Run {
+                } else if workoutType == .run {
                     
                     message = NSLocalizedString("Congratulation Text (Run)", comment: "")
                 }
@@ -273,11 +272,11 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         // Reset settings to initial state (Just for tidiness)
         switch workoutType {
-        case .QuickTimer:
+        case .quickTimer:
             self.initializeQuickTimer()
-        case .Routine:
+        case .routine:
             self.initializeRoutine(with: routine)
-        case .Run:
+        case .run:
             self.initializeRunner()
         }
     }
@@ -292,18 +291,18 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         super.viewDidLoad()
         
         // Adjust font greater than 300 limitation from Storyboard
-        self.CountDownLabel.font = CountDownLabel.font.fontWithSize(1000)
+        self.CountDownLabel.font = CountDownLabel.font.withSize(1000)
         
         // check if you should display ads
         self.displayBannerAds()
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        guard let ad = mopubBanner where ad.isDescendantOfView(self.adBannerView) else { return }
-        self.mopubBanner.rotateToOrientation(toInterfaceOrientation)
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        guard let ad = mopubBanner where ad.isDescendant(of: self.adBannerView) else { return }
+        self.mopubBanner.rotate(to: toInterfaceOrientation)
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         centerMoPubBannerAd(mopubBanner, relativeToView: self.adBannerView)
 
     }
@@ -342,7 +341,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     func LayoutBurSubview() {
         
         threeMinuteCounterLabel = UILabel()
-        threeMinuteCounterVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight)) as UIVisualEffectView
+        threeMinuteCounterVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)) as UIVisualEffectView
         
         self.view.addSubview(threeMinuteCounterVisualEffectView)
         threeMinuteCounterVisualEffectView.translatesAutoresizingMaskIntoConstraints = false
@@ -350,9 +349,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         threeMinuteCounterLabel.frame = CGRect(x: (threeMinuteCounterVisualEffectView.frame.width / 2) - 100, y: (threeMinuteCounterVisualEffectView.frame.height / 2) - 100, width: 200, height: 200)
         threeMinuteCounterLabel.text = String(preRoutineCountDownTime)
-        threeMinuteCounterLabel.textColor = UIColor.whiteColor()
+        threeMinuteCounterLabel.textColor = UIColor.white()
         threeMinuteCounterLabel.font = UIFont(name: threeMinuteCounterLabel.font.fontName, size: 200)
-        threeMinuteCounterLabel.textAlignment = NSTextAlignment.Center
+        threeMinuteCounterLabel.textAlignment = NSTextAlignment.center
         threeMinuteCounterVisualEffectView.addSubview(threeMinuteCounterLabel)
         threeMinuteCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         threeMinuteCounterLabel.autoCenterInSuperview()
@@ -370,19 +369,19 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     //Function to start exercise time
-    func startTimer(selector: String) {
+    func startTimer(_ selector: String) {
         
         timer.invalidate()
         
-        if !timer.valid {
-            timer = NSTimer .scheduledTimerWithTimeInterval(1, target: self, selector: Selector(selector) , userInfo: nil, repeats: true)
+        if !timer.isValid {
+            timer = Timer .scheduledTimer(timeInterval: 1, target: self, selector: Selector(selector) , userInfo: nil, repeats: true)
         }
     }
     
     //Timer Function
     func counter() {
         
-        if workoutType == .Routine || workoutType == .QuickTimer {
+        if workoutType == .routine || workoutType == .quickTimer {
             
             time -= 1
             timeRemaining -= 1
@@ -404,15 +403,15 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     playSound("Routine End")
                     
                     // Mark routine as completed
-                    workoutState = WorkoutEventType.Completed
+                    workoutState = WorkoutEventType.completed
                     
                     // Stop Timer
                     self.stop()
                     
                     // Ask for feedback or show ad
-                    if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && userDefaults.boolForKey("FEEDBACK_GIVEN") == false {
+                    if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
                         
-                        self.performSegueWithIdentifier("FeedbackSegueIdentifier", sender: self)
+                        self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
                         
                     } else {
 
@@ -433,7 +432,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 return
             }
             
-        } else if workoutType == .Run {
+        } else if workoutType == .run {
             
             timeElapsed += 1
             changeLabels()
@@ -455,7 +454,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             timer.invalidate()
     
-            if self.threeMinuteCounterVisualEffectView.isDescendantOfView(self.view) {
+            if self.threeMinuteCounterVisualEffectView.isDescendant(of: self.view) {
                 
                 threeMinuteCounterVisualEffectView.removeFromSuperview()
                 
@@ -471,13 +470,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         let status = CLLocationManager.authorizationStatus()
         
-        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
             
             locationManager.startUpdatingLocation()
             
         } else {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: Location Authorization Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Location Authorization Subtitle Text", comment: ""), style: AlertStyle.Warning)
+            SweetAlert().showAlert(NSLocalizedString("Alert: Location Authorization Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Location Authorization Subtitle Text", comment: ""), style: AlertStyle.warning)
         }
     }
     
@@ -485,7 +484,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         timer.invalidate()
         
-        workoutType = WorkoutType.QuickTimer
+        workoutType = WorkoutType.quickTimer
         
         (routineStages, routineTotalTime) = makeRoutineArray(nil)
         
@@ -496,7 +495,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
         timer.invalidate()
         
-        workoutType = WorkoutType.Routine
+        workoutType = WorkoutType.routine
         
         (routineStages, routineTotalTime) = makeRoutineArray(routine)
         self.routine = routine
@@ -508,7 +507,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         timer.invalidate()
         
-        workoutType = WorkoutType.Run
+        workoutType = WorkoutType.run
         routineStages = [[String:AnyObject]]()
         currentTimerDict = [String:AnyObject]()
         
@@ -529,16 +528,16 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
 //        ProgressCircle.strokeEnd = 0
         
-        locations.removeAll(keepCapacity: false)
+        locations.removeAll(keepingCapacity: false)
         
-        if mapView.isDescendantOfView(self.view) {
+        if mapView.isDescendant(of: self.view) {
             
             let pointsArray = mapView.overlays
             mapView.removeOverlays(pointsArray)
         }
     
-        workoutState = WorkoutEventType.PreRun
-        buttonState = ButtonState.Initial
+        workoutState = WorkoutEventType.preRun
+        buttonState = ButtonState.initial
     }
 
     //Function to change the state of routine, based on the currentTimerDict Value
@@ -558,7 +557,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func changeLabels() {
         
-        if workoutType == .Routine || workoutType == .QuickTimer {
+        if workoutType == .routine || workoutType == .quickTimer {
             
             //RoutineButton.setTitle(routineName, forState: .Normal)
             
@@ -568,16 +567,16 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             rightSideLabel2.text = timeStringFrom(time:timeRemaining, type: "Routine")
             leftSideLabel2.text = timeStringFrom(time:timeElapsed, type: "Routine")
             
-        } else if workoutType == .Run {
+        } else if workoutType == .run {
             
             //RoutineButton.setTitle(appTitle, forState: .Normal)
             leftSideLabel2.text = timeStringFrom(time: Int(timeElapsed), type: "Routine")
             
             let distanceFormatter = MKDistanceFormatter()
-            distanceFormatter.units = MKDistanceFormatterUnits.Metric
-            distanceFormatter.unitStyle = MKDistanceFormatterUnitStyle.Default
+            distanceFormatter.units = MKDistanceFormatterUnits.metric
+            distanceFormatter.unitStyle = MKDistanceFormatterUnitStyle.default
             
-            rightSideLabel2.text = distanceFormatter.stringFromDistance(distance)
+            rightSideLabel2.text = distanceFormatter.string(fromDistance: distance)
             
             //        let paceUnit = HKUnit.secondUnit().unitDividedByUnit(HKUnit.meterUnit())
             //        let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: time / distance)
@@ -589,9 +588,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         var stageColor: UIColor!
         
-        if let currentTimerDictColor = currentTimerDict["Color"] as? NSData {
+        if let currentTimerDictColor = currentTimerDict["Color"] as? Data {
             
-            stageColor = (NSKeyedUnarchiver.unarchiveObjectWithData(currentTimerDictColor) as? UIColor)!
+            stageColor = (NSKeyedUnarchiver.unarchiveObject(with: currentTimerDictColor) as? UIColor)!
             self.ProgressView.backgroundColor = stageColor.flatten()
             RoutineStateLabel.textColor = stageColor
             print(stageColor)
@@ -604,39 +603,39 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         switch workoutType {
             
-        case .QuickTimer, .Routine:
+        case .quickTimer, .routine:
         
-            workoutActivityType = HKWorkoutActivityType.CrossTraining
+            workoutActivityType = HKWorkoutActivityType.crossTraining
             
-            CountDownLabel.hidden = false
+            CountDownLabel.isHidden = false
             
-            if mapView.isDescendantOfView(self.ProgressView) {
+            if mapView.isDescendant(of: self.ProgressView) {
                 
                 mapView.removeFromSuperview()
             }
             
 //            ProgressBarView.hidden = false
 //            ProgressbarContainer.hidden = false
-            RoutineStateLabel.hidden = false
-            intervalLabel.hidden = false
+            RoutineStateLabel.isHidden = false
+            intervalLabel.isHidden = false
             
             leftSideLabel.text = NSLocalizedString("Left Side Label Text (Routine)", comment: "")
             rightSideLabel.text = NSLocalizedString("Right Side Label Text (Routine)", comment: "")
             
-        case .Run:
+        case .run:
         
-            workoutActivityType = HKWorkoutActivityType.Running
-            CountDownLabel.hidden = true
+            workoutActivityType = HKWorkoutActivityType.running
+            CountDownLabel.isHidden = true
             
-            if !mapView.isDescendantOfView(self.ProgressView) {
+            if !mapView.isDescendant(of: self.ProgressView) {
                 
                 self.LayoutMapView()
             }
             
 //            ProgressBarView.hidden = true
 //            ProgressbarContainer.hidden = true
-            RoutineStateLabel.hidden = true
-            intervalLabel.hidden = true
+            RoutineStateLabel.isHidden = true
+            intervalLabel.isHidden = true
             
             leftSideLabel.text = NSLocalizedString("Left Side Label Text (Run)", comment: "")
             rightSideLabel.text = NSLocalizedString("Right Side Label Text (Run)", comment: "")
@@ -649,46 +648,46 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         switch buttonState {
             
-        case .Initial:
+        case .initial:
             
-            playPauseButton.setImage(UIImage(named:"play.png"),forState:UIControlState.Normal)
-            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),forState:UIControlState.Normal)
+            playPauseButton.setImage(UIImage(named:"play.png"),for:UIControlState())
+            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),for:UIControlState())
             
-            playPauseButton.enabled = true
-            stopButton.enabled = true
+            playPauseButton.isEnabled = true
+            stopButton.isEnabled = true
             
             checkForwardBackButtonState()
             
-        case .Play:
+        case .play:
             
-            playPauseButton.setImage(UIImage(named:"pause.png"),forState:UIControlState.Normal)
+            playPauseButton.setImage(UIImage(named:"pause.png"),for:UIControlState())
 
             checkForwardBackButtonState()
 
             
-        case .Pause:
+        case .pause:
             
-            playPauseButton.setImage(UIImage(named:"play.png"),forState:UIControlState.Normal)
-            
-            checkForwardBackButtonState()
-            
-        case .Unlocked:
-            
-            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),forState:UIControlState.Normal)
-            
-            playPauseButton.enabled = true
-            stopButton.enabled = true
+            playPauseButton.setImage(UIImage(named:"play.png"),for:UIControlState())
             
             checkForwardBackButtonState()
             
-        case .Locked:
+        case .unlocked:
             
-            lockUnlockButton.setImage(UIImage(named:"lock_locked.png"),forState:UIControlState.Normal)
+            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),for:UIControlState())
             
-            playPauseButton.enabled = false
-            stopButton.enabled = false
-            previousButton.enabled = false
-            forwardButton.enabled = false
+            playPauseButton.isEnabled = true
+            stopButton.isEnabled = true
+            
+            checkForwardBackButtonState()
+            
+        case .locked:
+            
+            lockUnlockButton.setImage(UIImage(named:"lock_locked.png"),for:UIControlState())
+            
+            playPauseButton.isEnabled = false
+            stopButton.isEnabled = false
+            previousButton.isEnabled = false
+            forwardButton.isEnabled = false
         }
     }
     
@@ -696,23 +695,23 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         switch workoutType {
             
-        case .Routine:
+        case .routine:
             
             if (routineStages.get(routineIndex - 1) != nil) {
-                previousButton.enabled = true
+                previousButton.isEnabled = true
             } else {
-                previousButton.enabled = false
+                previousButton.isEnabled = false
             }
             
             if (routineStages.get(routineIndex + 1) != nil) {
-                forwardButton.enabled = true
+                forwardButton.isEnabled = true
             } else {
-                forwardButton.enabled = false
+                forwardButton.isEnabled = false
             }
             
-        case .Run, .QuickTimer:
-            previousButton.enabled = false
-            forwardButton.enabled = false
+        case .run, .quickTimer:
+            previousButton.isEnabled = false
+            forwardButton.isEnabled = false
         }
     }
     
@@ -769,7 +768,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
 //        rewardsButton.animate()
 //    }
     
-    func playSound (type: String) {
+    func playSound (_ type: String) {
         
         guard timerSound != "No Sound" else { return }
             
@@ -777,7 +776,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         var ext: String!
         var currentStage: String!
         
-        if workoutType == .Routine || workoutType == .QuickTimer {
+        if workoutType == .routine || workoutType == .quickTimer {
             
             currentStage = currentTimerDict["Name"] as! String
         }
@@ -788,11 +787,11 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             if timerSound == "Text-To-Speech" {
                 
-                if workoutType == .Routine || workoutType == .QuickTimer {
+                if workoutType == .routine || workoutType == .quickTimer {
                     
                     textToSpeech("\(currentStage)")
                     
-                } else if workoutType == .Run {
+                } else if workoutType == .run {
                     
                     textToSpeech(NSLocalizedString("Text-To-Speech Tracking Run Text", comment: ""))
                     
@@ -808,17 +807,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             if timerSound == "Text-To-Speech" {
                 
-                if workoutType == .QuickTimer {
+                if workoutType == .quickTimer {
                     
                     textToSpeech(NSLocalizedString("Text-To-Speech Timer Ended", comment: ""))
                     
                 } else {
                     
-                    if workoutType == .Routine {
+                    if workoutType == .routine {
                         
                         textToSpeech(NSLocalizedString("Text-To-Speech Workout Complete Text", comment: ""))
                         
-                    } else if workoutType == .Run {
+                    } else if workoutType == .run {
                         
                         textToSpeech(NSLocalizedString("Text-To-Speech Run Complete Text", comment: ""))
                     }
@@ -834,7 +833,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             if timerSound == "Text-To-Speech" {
                 
-                if workoutState == .PreRun {
+                if workoutState == .preRun {
                     textToSpeech("\(preRoutineCountDownTime)")
                     
                 } else {
@@ -871,7 +870,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func startCountDown() {
         
-        if workoutState == .PreRun {
+        if workoutState == .preRun {
             
             LayoutBurSubview()
             
@@ -881,46 +880,46 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func startWorkout() {
         
-        if workoutState == .PreRun {
+        if workoutState == .preRun {
             
             playSound("Routine Begin")
             
             // Set routine start time
-            routineStartDate = NSDate()
+            routineStartDate = Date()
             print("start time \(routineStartDate)")
             
             startTimer("counter")
             
-            if workoutType == .Run {
+            if workoutType == .run {
                 
                 startLocationUpdates()
             }
         }
         
-        if workoutState == .Paused {
+        if workoutState == .paused {
             
             startTimer("counter")
             
-            if workoutType == .Run {
+            if workoutType == .run {
                 
                 startLocationUpdates()
             }
         }
         
-        workoutState = .Active
-        buttonState = .Play
+        workoutState = .active
+        buttonState = .play
         switchButtonState()
     }
     
-    func checkSaveWorkout(completion: (Bool) -> ()) {
+    func checkSaveWorkout(_ completion: (Bool) -> ()) {
         
-        guard workoutState != .PreRun else { return completion(false) }
+        guard workoutState != .preRun else { return completion(false) }
         
         guard HKHealthStore.isHealthDataAvailable() else { return completion(false) }
         
-        if workoutType == .Routine || workoutType == .Run {
+        if workoutType == .routine || workoutType == .run {
             
-            if workoutState == .Completed {
+            if workoutState == .completed {
                 
                 self.saveWorkout({ (success) in
                     
@@ -940,9 +939,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
     }
     
-    func promptToSaveWorkout(completion: (Bool) -> ()) {
+    func promptToSaveWorkout(_ completion: (Bool) -> ()) {
         
-        SweetAlert().showAlert(NSLocalizedString("Alert: Save Workout Question Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Save Workout Question Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("No", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Yes", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
+        SweetAlert().showAlert(NSLocalizedString("Alert: Save Workout Question Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Save Workout Question Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("No", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Yes", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
             
             if !isOtherButton {
                 self.saveWorkout({ (success) in
@@ -954,13 +953,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
     }
     
-    func saveWorkout(completion: (Bool) -> ()) {
+    func saveWorkout(_ completion: (Bool) -> ()) {
         
-        let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatusForType(HealthKitHelper.sharedInstance.workoutType)
+        let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatus(for: HealthKitHelper.sharedInstance.workoutType)
     
-        guard workoutAuthorizationStatus != HKAuthorizationStatus.NotDetermined else {
+        guard workoutAuthorizationStatus != HKAuthorizationStatus.notDetermined else {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text 2", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Prompt Me", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
+            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text 2", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Prompt Me", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
                 
                 if !isOtherButton {
                     
@@ -969,7 +968,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                         
                         if success {
                             
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            DispatchQueue.main.async(execute: { () -> Void in
                                 
                                  self.saveWorkout({ (success) in
                                     
@@ -983,13 +982,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             return
         }
         
-        guard workoutAuthorizationStatus != HKAuthorizationStatus.SharingDenied else {
+        guard workoutAuthorizationStatus != HKAuthorizationStatus.sharingDenied else {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Settings", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
+            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Settings", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
                 
                 if !isOtherButton {
                     
-                    UIApplication.sharedApplication().openURL(settingsURL!)
+                    UIApplication.shared().openURL(settingsURL!)
                 }
             }
             
@@ -1001,17 +1000,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         // Add workout to HealthKit
         HealthKitHelper.sharedInstance.saveRunningWorkout(self.workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: distance, completion: { (success, error) -> Void in
 
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 
                 if success {
                     
-                    SweetAlert().showAlert("\(self.workoutType) Saved", subTitle: nil, style: .Success)
+                    SweetAlert().showAlert("\(self.workoutType) Saved", subTitle: nil, style: .success)
                     
                     completion(true)
                     
                 } else if error != nil {
                     
-                    SweetAlert().showAlert("Failed", subTitle: "We were unable to save your \(self.workoutType)", style: .Error)
+                    SweetAlert().showAlert("Failed", subTitle: "We were unable to save your \(self.workoutType)", style: .error)
                     
                     print("\(error)")
                     
@@ -1021,7 +1020,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "StopWorkoutSegueIdentifier" {
             
@@ -1031,7 +1030,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             let controller = segue.destinationViewController
             controller.transitioningDelegate = self
-            controller.modalPresentationStyle = .Custom
+            controller.modalPresentationStyle = .custom
         }
     }
 }
@@ -1040,7 +1039,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
 extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     // MARK: - CLLocationManagerDelegate
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdate locations: [CLLocation]) {
         
         for location in locations {
             let howRecent = location.timestamp.timeIntervalSinceNow
@@ -1048,18 +1047,18 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
                 //update distance
                 if self.locations.count > 0 {
-                    distance += location.distanceFromLocation(self.locations.last!)
+                    distance += location.distance(from: self.locations.last!)
                     
                     var coords = [CLLocationCoordinate2D]()
                     coords.append(self.locations.last!.coordinate)
                     coords.append(location.coordinate)
                     
-                    if workoutState == .Active {
+                    if workoutState == .active {
                         
                         let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
                         mapView.setRegion(region, animated: true)
                         
-                        mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
+                        mapView.add(MKPolyline(coordinates: &coords, count: coords.count))
                         
                     }
                 }
@@ -1070,24 +1069,24 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
         
         print(error)
     }
 
     // MARK: - MKMapViewDelegate
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let polyline = overlay as! MKPolyline
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = UIColor.greenColor()
+        renderer.strokeColor = UIColor.green()
         renderer.lineWidth = 10
         return renderer
     }
     
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         
-        if workoutState == .PreRun {
+        if workoutState == .preRun {
             
             let region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01))
             mapView.setRegion(region, animated: true)
@@ -1106,7 +1105,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         
         if !removeAdsUpgradePurchased() {
             
-            if UI_USER_INTERFACE_IDIOM() == .Phone {
+            if UI_USER_INTERFACE_IDIOM() == .phone {
                 bannerID = "c023d0aea31c44d6a0698c8bb11cba4e"
                 bannerSize = MOPUB_BANNER_SIZE
             }
@@ -1130,30 +1129,30 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             
             mainStackViewTopConstraint.constant = 20
 
-            guard let ad = mopubBanner where ad.isDescendantOfView(self.adBannerView) else { return }
+            guard let ad = mopubBanner where ad.isDescendant(of: self.adBannerView) else { return }
             mopubBanner.removeFromSuperview()
             adBannerView.removeFromSuperview()
         }
     }
     
-    func centerMoPubBannerAd(adView: MPAdView?, relativeToView: UIView?) {
+    func centerMoPubBannerAd(_ adView: MPAdView?, relativeToView: UIView?) {
         
         guard let adView = adView, let relativeToView = relativeToView else { return }
         
         let size: CGSize = adView.adContentViewSize()
         let centeredX: CGFloat = (relativeToView.bounds.size.width - size.width) / 2
-        adView.frame = CGRectMake(centeredX, 0, size.width, size.height)
+        adView.frame = CGRect(x: centeredX, y: 0, width: size.width, height: size.height)
         mainStackViewTopConstraint.constant = size.height
     }
     
-    func adViewDidLoadAd(view: MPAdView!) {
+    func adViewDidLoadAd(_ view: MPAdView!) {
         adBannerView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero, excludingEdge: .Bottom)
         adBannerView.autoSetDimension(.Height, toSize: view.adContentViewSize().height, relation: .Equal)
     
         centerMoPubBannerAd(view, relativeToView: self.view)
     }
     
-    func adViewDidFailToLoadAd(view: MPAdView!) {
+    func adViewDidFail(toLoadAd view: MPAdView!) {
         mainStackViewTopConstraint.constant = 20
     }
 
@@ -1167,7 +1166,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         
         if !removeAdsUpgradePurchased() {
             
-            if UI_USER_INTERFACE_IDIOM() == .Phone {
+            if UI_USER_INTERFACE_IDIOM() == .phone {
                 interstitialID = "ac4350a1be4046488d0cd0461469c8a9"
             }
             else {
@@ -1182,9 +1181,9 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         }
     }
     
-    func interstitialDidLoadAd(interstitial: MPInterstitialAdController) {
+    func interstitialDidLoadAd(_ interstitial: MPInterstitialAdController) {
         if (interstitial.ready) {
-            interstitial.showFromViewController(self)
+            interstitial.show(from: self)
         }
     }
 }
@@ -1192,15 +1191,15 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
 // MARK: - UIViewControllerTransitioningDelegate
 extension TimerViewController: UIViewControllerTransitioningDelegate {
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Present
+    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
         transition.startingPoint = self.view.center
         transition.bubbleColor = UIColor.goldColor()
         return transition
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Dismiss
+    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
         transition.startingPoint = self.view.center
         transition.bubbleColor = chronicColor
         return transition

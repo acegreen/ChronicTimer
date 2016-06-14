@@ -14,14 +14,14 @@ public class HealthKitHelper {
     static let sharedInstance = HealthKitHelper()
     let healthKitStore = HKHealthStore()
     
-    let heartRateUnit = HKUnit(fromString: "count/min")
+    let heartRateUnit = HKUnit(from: "count/min")
     let workoutType = HKObjectType.workoutType()
 
-    var distanceUnit:distanceType = .Kilometers
+    var distanceUnit:distanceType = .kilometers
     
-    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!) {
+    func authorizeHealthKit(_ completion: ((success:Bool, error:NSError?) -> Void)!) {
         
-        guard let HeartRateQuantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate) else {
+        guard let HeartRateQuantityType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate) else {
             //displayNotAllowed()
             return
         }
@@ -33,8 +33,8 @@ public class HealthKitHelper {
             ]
         // 2. Set the types you want to write to HK Store
         let healthKitTypesToWrite: Set<HKSampleType> = [
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!,
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKQuantityType.workoutType()
             ]
         
@@ -52,7 +52,7 @@ public class HealthKitHelper {
         }
         
         // 4.  Request HealthKit authorization
-        healthKitStore.requestAuthorizationToShareTypes(healthKitTypesToWrite, readTypes: healthKitTypesToRead) { (success, error) -> Void in
+        healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead) { (success, error) -> Void in
             
             if completion != nil {
                 
@@ -72,9 +72,9 @@ public class HealthKitHelper {
             
             let birthDay = try healthKitStore.dateOfBirth()
             
-            let today = NSDate()
+            let today = Date()
             //let calendar = NSCalendar.currentCalendar()
-            let differenceComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.Year, fromDate: birthDay, toDate: today, options: NSCalendarOptions(rawValue: 0))
+            let differenceComponents = Calendar.current().components(Calendar.Unit.year, from: birthDay, to: today, options: Calendar.Options(rawValue: 0))
             age = differenceComponents.year
             
         } catch let error as NSError {
@@ -108,15 +108,15 @@ public class HealthKitHelper {
         
     }
     
-    func readMostRecentSample(sampleType:HKSampleType , completion: ((HKSample!, NSError!) -> Void)!) {
+    func readMostRecentSample(_ sampleType:HKSampleType , completion: ((HKSample?, NSError?) -> Void)!) {
         
         // 1. Build the Predicate
-        let past = NSDate.distantPast() as NSDate
-        let now   = NSDate()
-        let mostRecentPredicate = HKQuery.predicateForSamplesWithStartDate(past, endDate:now, options: .None)
+        let past = Date.distantPast as Date
+        let now   = Date()
+        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: past, end:now, options: HKQueryOptions())
         
         // 2. Build the sort descriptor to return the samples in descending order
-        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+        let sortDescriptor = SortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
         // 3. we want to limit the number of samples returned by the query to just 1 (the most recent)
         let limit = 1
         
@@ -138,18 +138,18 @@ public class HealthKitHelper {
                 }
         }
         // 5. Execute the Query
-        healthKitStore.executeQuery(sampleQuery)
+        healthKitStore.execute(sampleQuery)
     }
     
-    func saveBMISample(bmi:Double, date:NSDate) {
+    func saveBMISample(_ bmi:Double, date:Date) {
         
         // 1. Create a BMI Sample
-        let bmiType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
-        let bmiQuantity = HKQuantity(unit: HKUnit.countUnit(), doubleValue: bmi)
-        let bmiSample = HKQuantitySample(type: bmiType!, quantity: bmiQuantity, startDate: date, endDate: date)
+        let bmiType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMassIndex)
+        let bmiQuantity = HKQuantity(unit: HKUnit.count(), doubleValue: bmi)
+        let bmiSample = HKQuantitySample(type: bmiType!, quantity: bmiQuantity, start: date, end: date)
         
         // 2. Save the sample in the store
-        healthKitStore.saveObject(bmiSample, withCompletion: { (success, error) -> Void in
+        healthKitStore.save(bmiSample, withCompletion: { (success, error) -> Void in
             if error != nil {
                 
                 print("Error saving BMI sample: \(error!.localizedDescription)")
@@ -161,12 +161,12 @@ public class HealthKitHelper {
         })
     }
     
-    func saveRunningWorkout(type: HKWorkoutActivityType, startDate:NSDate , endDate:NSDate, kiloCalories:Double?, distance:Double?, completion: ( (Bool, NSError!) -> Void)!) {
+    func saveRunningWorkout(_ type: HKWorkoutActivityType, startDate:Date , endDate:Date, kiloCalories:Double?, distance:Double?, completion: ( (Bool, NSError?) -> Void)!) {
  
         // 1. Set the Unit type
-        var hkUnit = HKUnit.meterUnit()
-        if distanceUnit == .Miles {
-            hkUnit = HKUnit.mileUnit()
+        var hkUnit = HKUnit.meter()
+        if distanceUnit == .miles {
+            hkUnit = HKUnit.mile()
         }
         
         var distanceQuantity: HKQuantity?
@@ -177,15 +177,15 @@ public class HealthKitHelper {
         
         var caloriesQuantity: HKQuantity?
         if let kiloCalories = kiloCalories {
-            caloriesQuantity = HKQuantity(unit: HKUnit.kilocalorieUnit(), doubleValue: kiloCalories)
+            caloriesQuantity = HKQuantity(unit: HKUnit.kilocalorie(), doubleValue: kiloCalories)
         }
         
         //let caloriesQuantity = HKQuantity(unit: HKUnit.kilocalorieUnit(), doubleValue: kiloCalories)
         
         // 3. Save Running Workout
-        let workout = HKWorkout(activityType: HKWorkoutActivityType.CrossTraining, startDate: startDate, endDate: endDate, duration: abs(endDate.timeIntervalSinceDate(startDate)), totalEnergyBurned: nil, totalDistance: distanceQuantity, metadata: nil)
+        let workout = HKWorkout(activityType: HKWorkoutActivityType.crossTraining, start: startDate, end: endDate, duration: abs(endDate.timeIntervalSince(startDate)), totalEnergyBurned: nil, totalDistance: distanceQuantity, metadata: nil)
         
-        healthKitStore.saveObject(workout, withCompletion: { (success, error) -> Void in
+        healthKitStore.save(workout, withCompletion: { (success, error) -> Void in
             if( error != nil  ) {
                 // Error saving the workout
                 completion(success,error)
@@ -194,17 +194,17 @@ public class HealthKitHelper {
                 // Workout saved
                 
                 if distanceQuantity != nil {
-                    let distanceSample = HKQuantitySample(type: HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!, quantity: distanceQuantity!, startDate: startDate, endDate: endDate)
+                    let distanceSample = HKQuantitySample(type: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!, quantity: distanceQuantity!, start: startDate, end: endDate)
                     
-                    self.healthKitStore.addSamples([distanceSample], toWorkout: workout, completion: { (success, error ) -> Void in
+                    self.healthKitStore.add([distanceSample], to: workout, completion: { (success, error ) -> Void in
                         completion(success, error)
                     })
                 }
                 
                 if caloriesQuantity != nil {
-                    let caloriesSample = HKQuantitySample(type: HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!, quantity: caloriesQuantity!, startDate: startDate, endDate: endDate)
+                    let caloriesSample = HKQuantitySample(type: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!, quantity: caloriesQuantity!, start: startDate, end: endDate)
 
-                    self.healthKitStore.addSamples([caloriesSample], toWorkout: workout, completion: { (success, error ) -> Void in
+                    self.healthKitStore.add([caloriesSample], to: workout, completion: { (success, error ) -> Void in
                         completion(success, error)
                     })
                 }

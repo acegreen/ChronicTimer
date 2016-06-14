@@ -4,12 +4,12 @@ import Parse
 
 public class NotificationHelper {
     
-    class var interval: String { return userDefaults.stringForKey("NOTIFICATION_REMINDER_INTERVAL")! }
-    class var hour: Int { return userDefaults.integerForKey("NOTIFICATION_REMINDER_TIME") ?? 0 }
+    class var interval: String { return userDefaults.string(forKey: "NOTIFICATION_REMINDER_INTERVAL")! }
+    class var hour: Int { return userDefaults.integer(forKey: "NOTIFICATION_REMINDER_TIME") ?? 0 }
 
-    class var reminderDate:NSDate { return currentCalendar.dateBySettingHour(hour, minute: 0, second: 0, ofDate: NSDate(), options: NSCalendarOptions())! }
+    class var reminderDate:Date { return currentCalendar.date(bySettingHour: hour, minute: 0, second: 0, of: Date(), options: Calendar.Options())! }
     
-    class func scheduleNotification(date: NSDate?, repeatInterval: NSCalendarUnit?, alertTitle: String?, alertBody: String?, sound: String?, category: String?) {
+    class func scheduleNotification(_ date: Date?, repeatInterval: Calendar.Unit?, alertTitle: String?, alertBody: String?, sound: String?, category: String?) {
         
         let localNotification = UILocalNotification()
         
@@ -29,25 +29,25 @@ public class NotificationHelper {
         localNotification.soundName = sound
         localNotification.category = category
         
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        print(UIApplication.sharedApplication().scheduledLocalNotifications)
+        UIApplication.shared().scheduleLocalNotification(localNotification)
+        print(UIApplication.shared().scheduledLocalNotifications)
     }
 
-    class func unscheduleNotifications(notificationCategory:String?) {
+    class func unscheduleNotifications(_ notificationCategory:String?) {
         
         if notificationCategory == nil {
             
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            UIApplication.shared().cancelAllLocalNotifications()
             
         } else if let notificationScheduled = checkScheduledNotificationsForNotificationWith(notificationCategory!) {
                 
-            UIApplication.sharedApplication().cancelLocalNotification(notificationScheduled)
+            UIApplication.shared().cancelLocalNotification(notificationScheduled)
         }
     }
     
-    class func checkScheduledNotificationsForNotificationWith(category:String) -> UILocalNotification? {
+    class func checkScheduledNotificationsForNotificationWith(_ category:String) -> UILocalNotification? {
             
-        guard let scheduledNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {
+        guard let scheduledNotifications = UIApplication.shared().scheduledLocalNotifications else {
             
             print("notification found in scheduled")
             return nil
@@ -75,9 +75,9 @@ public class NotificationHelper {
     }
 
     class func registerForNotifications() {
-        if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
-            let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        if application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:))) {
+            let userNotificationTypes: UIUserNotificationType = [.alert, .badge, .sound]
+            let settings = UIUserNotificationSettings(types: userNotificationTypes, categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
             
@@ -86,7 +86,7 @@ public class NotificationHelper {
         }
     }
 
-    class func updateNotificationPreferences(notificationReminderState: Bool) {
+    class func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
             NotificationHelper.unscheduleNotifications(NotificationCategory.ReminderCategory.key())
             NotificationHelper.registerForNotifications()
@@ -95,21 +95,21 @@ public class NotificationHelper {
         }
     }
     
-    class func getNSCalendarUnit(interval: String) -> NSCalendarUnit {
+    class func getNSCalendarUnit(_ interval: String) -> Calendar.Unit {
         
         switch interval {
             
             case NSLocalizedString("Week", comment: ""):
             
-            return NSCalendarUnit.WeekOfYear
+            return Calendar.Unit.weekOfYear
             
             case NSLocalizedString("Month", comment: ""):
             
-            return NSCalendarUnit.Month
+            return Calendar.Unit.month
             
             default:
             
-            return NSCalendarUnit.Day
+            return Calendar.Unit.day
             
         }
     }
