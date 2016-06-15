@@ -469,10 +469,10 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         }
         
         let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.system)
-        purchaseButton.setTitleColor(UIColor.white(), for: UIControlState.application)
+        purchaseButton.setTitleColor(UIColor.white(), for: UIControlState.normal)
         purchaseButton.setTitleColor(UIColor.lightGray(), for: UIControlState.highlighted)
         purchaseButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
-        purchaseButton.setTitle("Purchase", for: UIControlState.application)
+        purchaseButton.setTitle("Purchase", for: UIControlState.normal)
         purchaseButton.backgroundColor = UIColor.green()
         purchaseButton.layer.cornerRadius = 4
         purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControlEvents.touchUpInside)

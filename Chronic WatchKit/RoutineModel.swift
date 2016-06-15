@@ -25,3 +25,11 @@ public class RoutineModel: NSManagedObject {
     
 
 }
+
+extension RoutineModel {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<RoutineModel> {
+        return NSFetchRequest<RoutineModel>(entityName: "RoutineModel");
+    }
+    
+    @NSManaged var timeStamp: NSDate?
+}

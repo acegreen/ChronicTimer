@@ -134,10 +134,13 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             (routineArray, routineTotalTime) = makeRoutineArray(routine: nil)
         }
         
-        if !proFeaturesUpgradePurchased() {
+        #if DEBUG
             
-            hideHeartRateGroup()
-        }
+        #else
+            if !proFeaturesUpgradePurchased() {
+                hideHeartRateGroup()
+            }
+        #endif
         
         setToInitialState()
         changeStage()
@@ -156,7 +159,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         endWorkoutSession()
     }
     
-    //Function to start exercise time
+    //Function to start exercise timer
     func startTimer() {
         
         countDownTimer.invalidate()

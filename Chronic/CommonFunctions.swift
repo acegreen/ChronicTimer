@@ -182,7 +182,7 @@ func deselectSelectedRoutine() {
     
     let selecredRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
     
-    guard let routineMarkedSelected = DataAccess.sharedInstance.GetRoutines(selecredRoutinePredicate)!.first as? RoutineModel else { return }
+    guard let routineMarkedSelected = DataAccess.sharedInstance.GetRoutines(predicate: selecredRoutinePredicate)!.first else { return }
     
     routineMarkedSelected.selectedRoutine = false
     
@@ -199,14 +199,14 @@ func getRoutine(withName: String) -> RoutineModel? {
     
     let existingRoutinePredicate: Predicate = Predicate(format: "name == %@", withName)
     
-    return DataAccess.sharedInstance.GetRoutines(existingRoutinePredicate)?.first as? RoutineModel
+    return DataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)?.first
 }
 
 func getSelectedRoutine() -> RoutineModel? {
     
     let selecredRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
     
-    return (DataAccess.sharedInstance.GetRoutines(selecredRoutinePredicate)?.first as? RoutineModel)
+    return DataAccess.sharedInstance.GetRoutines(predicate: selecredRoutinePredicate)?.first
 }
 
 func saveContext(_ completion: (save: Bool) -> Void) {

@@ -96,7 +96,7 @@ func modifyCoreDataObject(appContext: [String : AnyObject]) {
     
     let existingRoutinePredicate: Predicate = Predicate(format:  "name == %@", routineName)
     
-    if let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first as? RoutineModel {
+    if let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first {
         
         for stage in 0 ..< routineStage!.count {
             
@@ -152,7 +152,7 @@ func deleteCoreDataObject(appContext: [String : AnyObject]) {
     
     let existingRoutinePredicate: Predicate = Predicate(format:  "name == %@", routineName)
     
-    let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first as? RoutineModel
+    let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first
     
     if existingRoutine != nil {
         
