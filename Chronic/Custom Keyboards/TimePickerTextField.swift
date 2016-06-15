@@ -66,7 +66,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
         doneButton.tintColor = UIColor.green()
-        doneButton.action = Selector("dismissPicker")
+        doneButton.action = #selector(TimePickerTextField.dismissPicker)
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
         
@@ -87,7 +87,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         
         UIMenuController.shared().isMenuVisible = false
         
-        if action == "copy:" || action == "selectAll:" || action == "paste:" {
+        if action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.selectAll(_:)) || action == #selector(NSObject.paste(_:)) {
             return false
         }
         

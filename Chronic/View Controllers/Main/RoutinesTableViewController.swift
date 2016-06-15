@@ -121,7 +121,8 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
             
             for routine in Routines {
                 
-                routine.setValue(i--, forKey: "tableDisplayOrder")
+                i -= 1
+                routine.setValue(i , forKey: "tableDisplayOrder")
             
             }
         }
@@ -225,19 +226,19 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
 // DZNEmptyDataSet delegate functions
 extension RoutinesTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
-    func imageForEmptyDataSet(_ scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         
         return emptyTableGuyImage
     }
     
-    func titleForEmptyDataSet(_ scrollView: UIScrollView!) -> AttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> AttributedString! {
         
         let attributedTitle: AttributedString = AttributedString(string: NSLocalizedString("Empty Routine Table Title Text", comment: ""), attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24)])
         
         return attributedTitle
     }
     
-    func descriptionForEmptyDataSet(_ scrollView: UIScrollView!) -> AttributedString! {
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> AttributedString! {
         
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping

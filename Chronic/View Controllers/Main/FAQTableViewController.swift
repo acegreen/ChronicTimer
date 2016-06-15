@@ -25,9 +25,9 @@ class FAQTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         let faqQuery = PFQuery(className: "FAQ")
-        faqQuery.orderByAscending("index")
+        faqQuery.order(byAscending: "index")
         
-        faqQuery.findObjectsInBackgroundWithBlock { (questions, error) -> Void in
+        faqQuery.findObjectsInBackground { (questions, error) -> Void in
             
             if questions != nil {
                 self.questionObjects = questions!
@@ -100,8 +100,8 @@ class FAQTableViewController: UITableViewController {
         
         let questionAtIndex = self.questionObjects[indexPath.row]
         
-        cell.title = questionAtIndex.objectForKey("question") as? String
-        cell.detail = questionAtIndex.objectForKey("answer") as? String
+        cell.title = questionAtIndex.object(forKey: "question") as? String
+        cell.detail = questionAtIndex.object(forKey: "answer") as? String
 
         return cell
     }

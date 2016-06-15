@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             $0.clientKey = ""
             $0.server = "http://159.203.62.182:1337/parse"
         }
-        Parse.initializeWithConfiguration(configuration)
+        Parse.initialize(with: configuration)
         
         // Setup Crashlytics
         Fabric.with([Crashlytics.self, MoPub.self])
@@ -104,13 +104,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Initalize LaunchKit
-        LaunchKit.launchWithToken("FYwLCkgJpT_r8kEp1O_-PSg-UnhaD3B7PMPxkG5qIIfq")
+        LaunchKit.launch(withToken: "FYwLCkgJpT_r8kEp1O_-PSg-UnhaD3B7PMPxkG5qIIfq")
         LaunchKit.sharedInstance().debugAlwaysPresentAppReleaseNotes = true
         LaunchKit.sharedInstance().debugAppUserIsAlwaysSuper = true
         
         // Initialize Rollout
         #if DEBUG
-            Rollout.setupWithKey("56932e164e1e847211ffe9ee", developmentDevice: true)
+            Rollout.setup(withKey: "56932e164e1e847211ffe9ee", developmentDevice: true)
         #else
             Rollout.setup(withKey: "56932e164e1e847211ffe9ee", developmentDevice: false)
         #endif
@@ -151,14 +151,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             // "content_available" was used to trigger a background push (introduced in iOS 7).
             // In that case, we skip tracking here to avoid double counting the app-open.
             
-            let preBackgroundPush = !application.responds(to: Selector("backgroundRefreshStatus"))
+            let preBackgroundPush = !application.responds(to: #selector(getter: UIApplication.backgroundRefreshStatus))
             let oldPushHandlerOnly = !self.responds(to: #selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
             var pushPayload = false
             if let options = launchOptions {
                 pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
             }
             if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
-                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+                PFAnalytics.trackAppOpened(launchOptions: launchOptions)
             }
         }
         
@@ -171,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        switch url.scheme {
+        switch url.scheme! {
             
         case "chronic":
             
@@ -179,7 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             
         case "fb1691125951168014":
             
-            return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
             
         default:
             
@@ -242,8 +242,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        let currentInstallation: PFInstallation = PFInstallation.currentInstallation()
-        currentInstallation.setDeviceTokenFromData(deviceToken)
+        let currentInstallation: PFInstallation = PFInstallation.current()
+        currentInstallation.setDeviceTokenFrom(deviceToken)
         currentInstallation.saveInBackground()
     }
     
@@ -262,9 +262,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         
         // Handle received remote notification
-        PFPush.handlePush(userInfo)
+        PFPush.handle(userInfo)
         if application.applicationState == UIApplicationState.inactive {
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+            PFAnalytics.trackAppOpened(withRemoteNotificationPayload: userInfo)
         }
     }
     
@@ -349,6 +349,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     // MARK: - WCSessionDelegate
     
+    @available(iOS 9.3, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+        print("WCSession activationDidCompleteWith")
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("sessionDidBecomeInactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("sessionDidDeactivate")
+    }
+    
     @available(iOS 9.0, *)
     func sessionWatchStateDidChange(_ session: WCSession) {
         print(#function)
@@ -367,7 +380,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
                           contentName: "Chronic rated",
                           contentType: "rate",
                           contentId: nil,
-                          customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "Country Code": countryCode, "App Version": AppVersion])
+                          customAttributes: ["Installation ID":PFInstallation.current().installationId, "Country Code": countryCode, "App Version": AppVersion])
     }
     
     func iRateDidDetectAppUpdate() {

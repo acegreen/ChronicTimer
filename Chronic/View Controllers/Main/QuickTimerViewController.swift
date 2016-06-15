@@ -11,10 +11,10 @@ import UIKit
 class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var picker:UIPickerView = UIPickerView()
-    var pickerHours: Double!
-    var pickerMinutes: Double!
-    var pickerSeconds: Double!
-    var pickerTotal: Double!
+    var pickerHours: Double = 0.0
+    var pickerMinutes: Double = 0.0
+    var pickerSeconds: Double = 0.0
+    var pickerTotal: Double = 0.0
     
     @IBOutlet var StartButton: UIButton!
     

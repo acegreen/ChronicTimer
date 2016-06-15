@@ -1146,8 +1146,8 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     }
     
     func adViewDidLoadAd(_ view: MPAdView!) {
-        adBannerView.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero, excludingEdge: .Bottom)
-        adBannerView.autoSetDimension(.Height, toSize: view.adContentViewSize().height, relation: .Equal)
+        adBannerView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsetsZero, excludingEdge: .bottom)
+        adBannerView.autoSetDimension(.height, toSize: view.adContentViewSize().height, relation: .equal)
     
         centerMoPubBannerAd(view, relativeToView: self.view)
     }

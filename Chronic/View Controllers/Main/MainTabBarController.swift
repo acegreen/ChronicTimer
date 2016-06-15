@@ -30,7 +30,7 @@ class MainTabBarController: UITabBarController {
             self.performSegue(withIdentifier: "OBSegueIdentifier", sender: self)
         } else {
             // Present release notes on first update
-            LaunchKit.sharedInstance().presentAppReleaseNotesIfNeededFromViewController(self, completion: { (didPresent) -> Void in
+            LaunchKit.sharedInstance().presentAppReleaseNotesIfNeeded(from: self, completion: { (didPresent) -> Void in
                 if didPresent {
                     print("Woohoo, we showed the release notes card!")
                 }

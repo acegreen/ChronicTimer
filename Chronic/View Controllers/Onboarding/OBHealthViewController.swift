@@ -23,7 +23,7 @@ class OBHealthViewController: OnboardingViewController {
                     }
                     
                 } else if error != nil {
-                    SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error.localizedDescription, style: AlertStyle.warning)
+                    SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error?.localizedDescription, style: AlertStyle.warning)
                     print("\(error)")
                 }
             })

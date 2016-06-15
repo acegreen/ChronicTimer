@@ -88,7 +88,6 @@
 		238C1ABE1C8B6F3F009F9CC1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238C1ABB1C8B6F3F009F9CC1 /* Fabric.framework */; };
 		238C1AC91C8B6FAD009F9CC1 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AC11C8B6FAD009F9CC1 /* Keychain.swift */; };
 		238C1ACA1C8B6FAD009F9CC1 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AC31C8B6FAD009F9CC1 /* SweetAlert.swift */; };
-		238C1ACB1C8B6FAD009F9CC1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AC51C8B6FAD009F9CC1 /* SwiftyJSON.swift */; };
 		238C1ACC1C8B6FAD009F9CC1 /* TutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AC81C8B6FAD009F9CC1 /* TutorialView.m */; };
 		238C1ACF1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1ACE1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift */; };
 		238C1AD21C8B706D009F9CC1 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AD11C8B706D009F9CC1 /* Arrow.m */; };
@@ -303,7 +302,6 @@
 		238C1ABB1C8B6F3F009F9CC1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		238C1AC11C8B6FAD009F9CC1 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		238C1AC31C8B6FAD009F9CC1 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
-		238C1AC51C8B6FAD009F9CC1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		238C1AC71C8B6FAD009F9CC1 /* TutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialView.h; sourceTree = "<group>"; };
 		238C1AC81C8B6FAD009F9CC1 /* TutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialView.m; sourceTree = "<group>"; };
 		238C1ACE1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticolorPolylineSegment.swift; sourceTree = "<group>"; };
@@ -506,7 +504,6 @@
 			children = (
 				238C1AC01C8B6FAD009F9CC1 /* Keychain */,
 				238C1AC21C8B6FAD009F9CC1 /* SweetAlert */,
-				238C1AC41C8B6FAD009F9CC1 /* SwiftyJSON */,
 				238C1AC61C8B6FAD009F9CC1 /* TutorialView */,
 				23E4F5FE1BBECF05009A0F53 /* Fabric */,
 				238C1ACD1C8B6FF4009F9CC1 /* MulticolorPolylineSegment */,
@@ -647,14 +644,6 @@
 				238C1AC31C8B6FAD009F9CC1 /* SweetAlert.swift */,
 			);
 			path = SweetAlert;
-			sourceTree = "<group>";
-		};
-		238C1AC41C8B6FAD009F9CC1 /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				238C1AC51C8B6FAD009F9CC1 /* SwiftyJSON.swift */,
-			);
-			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 		238C1AC61C8B6FAD009F9CC1 /* TutorialView */ = {
@@ -1335,7 +1324,6 @@
 				23D66F391B69459B00BE7041 /* TimePickerTextField.swift in Sources */,
 				238C1ACA1C8B6FAD009F9CC1 /* SweetAlert.swift in Sources */,
 				2392DA8E1BC72CB2002A7110 /* CustomUIPickerView.swift in Sources */,
-				238C1ACB1C8B6FAD009F9CC1 /* SwiftyJSON.swift in Sources */,
 				23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */,
 				2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */,
 				237B10901C2667EA00D52713 /* OBHealthViewController.swift in Sources */,
@@ -1629,7 +1617,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1669,7 +1657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1698,7 +1686,7 @@
 					"$(PROJECT_DIR)/Frameworks/Fabric/google-ad-mob-7.1",
 				);
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
@@ -1734,7 +1722,7 @@
 					"$(PROJECT_DIR)/Frameworks/Fabric/google-ad-mob-7.1",
 				);
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";

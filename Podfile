@@ -14,11 +14,12 @@ target "Chronic" do
     pod 'AMPopTip'
     pod 'AMWaveTransition'
     pod 'LaunchKit'
+    pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'swift3'
     #pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     pod 'BubbleTransition'
     pod 'Rollout.io'
     pod 'ChameleonFramework/Swift'
-    pod 'Charts'
+    #pod 'Charts'
     pod 'PureLayout'
     pod 'Google-Mobile-Ads-SDK'
 end

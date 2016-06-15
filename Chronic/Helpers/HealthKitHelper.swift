@@ -60,54 +60,54 @@ public class HealthKitHelper {
             }
         }
     }
-    
-    func readProfile() -> ( age:Int?,  biologicalsex:HKBiologicalSexObject?, bloodtype:HKBloodTypeObject?) {
-        
-        var age:Int?
-        var biologicalSex:HKBiologicalSexObject?
-        var bloodType:HKBloodTypeObject?
-        
-        // 1. Request birthday and calculate age
-        do {
-            
-            let birthDay = try healthKitStore.dateOfBirthComponents()
-            let birthDayDate = birthDay.date
-            
-            let today = Date()
-            //let calendar = NSCalendar.currentCalendar()
-            let differenceComponents = Calendar.current().components(Calendar.Unit.year, from: birthDayDate!, to: today, options: Calendar.Options(rawValue: 0))
-            age = differenceComponents.year
-            
-        } catch let error as NSError {
-            // failure
-            print("Fetch failed: \(error.localizedDescription)")
-        }
-        
-        // 2. Read biological sex
-        do {
-            
-            biologicalSex = try healthKitStore.biologicalSex()
-            
-        } catch let error as NSError {
-            
-            print("Fetch failed: \(error.localizedDescription)")
-            
-        }
-        
-        // 3. Read blood type
-        do {
-            
-            bloodType = try healthKitStore.bloodType()
-            
-        } catch let error as NSError {
-            
-            print("Fetch failed: \(error.localizedDescription)")
-        }
-        
-        // 4. Return the information read in a tuple
-        return (age, biologicalSex, bloodType)
-        
-    }
+
+//    func readProfile() -> ( age:Int?,  biologicalsex:HKBiologicalSexObject?, bloodtype:HKBloodTypeObject?) {
+//        
+//        var age:Int?
+//        var biologicalSex:HKBiologicalSexObject?
+//        var bloodType:HKBloodTypeObject?
+//        
+//        // 1. Request birthday and calculate age
+//        do {
+//            
+//            let birthDay = try healthKitStore.dateOfBirthComponents()
+//            let birthDayDate = birthDay.date
+//            
+//            let today = Date()
+//            //let calendar = NSCalendar.currentCalendar()
+//            let differenceComponents = Calendar.current().components(Calendar.Unit.year, from: birthDayDate!, to: today, options: Calendar.Options(rawValue: 0))
+//            age = differenceComponents.year
+//            
+//        } catch let error as NSError {
+//            // failure
+//            print("Fetch failed: \(error.localizedDescription)")
+//        }
+//        
+//        // 2. Read biological sex
+//        do {
+//            
+//            biologicalSex = try healthKitStore.biologicalSex()
+//            
+//        } catch let error as NSError {
+//            
+//            print("Fetch failed: \(error.localizedDescription)")
+//            
+//        }
+//        
+//        // 3. Read blood type
+//        do {
+//            
+//            bloodType = try healthKitStore.bloodType()
+//            
+//        } catch let error as NSError {
+//            
+//            print("Fetch failed: \(error.localizedDescription)")
+//        }
+//        
+//        // 4. Return the information read in a tuple
+//        return (age, biologicalSex, bloodType)
+//        
+//    }
     
     func readMostRecentSample(_ sampleType:HKSampleType , completion: ((HKSample?, NSError?) -> Void)!) {
         
