@@ -12,7 +12,7 @@ import CoreData
 import HealthKit
 import WatchConnectivity
 
-func timeStringFrom(time time: Int) -> String {
+func timeStringFrom(time: Int) -> String {
     
     let HoursLeft = time/3600
     let MinutesLeft = (time%3600)/60

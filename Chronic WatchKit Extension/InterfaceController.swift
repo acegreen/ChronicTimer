@@ -14,6 +14,12 @@ import UserNotifications
 
 class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
+    enum WorkoutType {
+        case routine
+        case run
+        case quickTimer
+    }
+    
     enum WorkoutEventType {
         case preRun
         case run
@@ -21,6 +27,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         case complete
     }
     
+    var workoutType = WorkoutType.quickTimer
     var workoutState = WorkoutEventType.complete
     
     var countDownTimer = Timer()
@@ -116,9 +123,13 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         if selectedRoutine is RoutineModel {
             
+            workoutType = .routine
+            
             (routineArray, routineTotalTime) = makeRoutineArray(routine: selectedRoutine as? RoutineModel)
             
         } else {
+            
+            workoutType = .quickTimer
             
             (routineArray, routineTotalTime) = makeRoutineArray(routine: nil)
         }
@@ -135,10 +146,6 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
-//        if workoutState == WorkoutEventType.Run {
-//            checkRoutineProgress(routineStartDate)
-//        }
     }
     
     deinit {
@@ -244,51 +251,6 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
     }
     
-    func checkRoutineProgress(_ dateSinceStart: Date) {
-        
-        print("checking routine status")
-        
-        let timeElapsedSinceRoutineStart = -Int((dateSinceStart.timeIntervalSinceNow))
-        var totalStageTime = 0
-        
-        if timeElapsedSinceRoutineStart < routineTotalTime {
-            
-            for (index, _) in routineArray.enumerated() {
-                
-                currentTimerDict = routineArray[index]
-                totalStageTime += currentTimerDict["Time"] as! Int
-                
-                if timeElapsedSinceRoutineStart > totalStageTime {
-                    
-                    print("timeElapsedSinceRoutineStart is past \(currentTimerDict)")
-                    
-                    timer = 0
-                    
-                } else {
-                    
-                    timer = Int(totalStageTime - timeElapsedSinceRoutineStart)
-                    timeRemaining = routineTotalTime - timeElapsedSinceRoutineStart
-                    timeElapsed = timeElapsedSinceRoutineStart
-                    routineIndex = index
-                    
-                    print(timer)
-                    print(timeRemaining)
-                    print(timeElapsed)
-                    
-                    changeLabels()
-                    changeStageLabelColor()
-                    
-                    startTimer()
-                    
-                    break
-                }
-            }
-            
-        } else {
-            completeWorkoutInBackground()
-        }
-    }
-    
     func changeLabels() {
         
         //self.setTitle(routineName)
@@ -346,36 +308,32 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         //Congrats you've completed workout
         playFeedback("Routine End")
         
+        // Set Alert if in background
+        if WKExtension.shared().applicationState == WKApplicationState.background {
+            
+            var notificaitonBody: String!
+            
+            switch workoutType {
+            case .quickTimer:
+                notificaitonBody = NSLocalizedString("Timer Ended Text", comment: "")
+            case .routine:
+                notificaitonBody = NSLocalizedString("Congratulation Text (Routine)", comment: "")
+            case .run:
+                notificaitonBody = NSLocalizedString("Congratulation Text (Run)", comment: "")
+            }
+            
+            // Schedule workoutCompleteLocalNotification
+            let notificationContent = UNMutableNotificationContent()
+            notificationContent.body = notificaitonBody
+            let notificaitonSound = UNNotificationSound.default()
+            notificationContent.sound = notificaitonSound
+            notificationContent.title = "Chronic"
+            
+            let request = UNNotificationRequest(identifier: NotificationCategory.WorkoutCategory.key(), content: notificationContent, trigger: nil)
+        }
+        
         // Stop time, save workout & reset environment
         StopButtonPressed()
-    }
-    
-    func completeWorkoutInBackground() {
-        
-        // Mark routine as completed
-        workoutState = WorkoutEventType.complete
-        
-        //Congrats you've completed workout
-        playFeedback("Routine End")
-        
-        // Setup environment
-        if workoutState == .run || workoutState == .pause || workoutState == .complete {
-            
-            // Set end time
-            routineEndDate = routineStartDate.addingTimeInterval(TimeInterval(routineTotalTime))
-            print("end time \(routineEndDate)")
-            
-        }
-        
-        if workoutState != .preRun {
-            checkSaveWorkout()
-        }
-        
-        // End workout session if running
-        endWorkoutSession()
-        
-        setToInitialState()
-        changeStage()
     }
     
     func checkSaveWorkout() {
@@ -457,14 +415,25 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         guard workoutSession == nil else { return }
         
-        // Start HKWorkoutSession
-        workoutSession = HKWorkoutSession(activityType: workoutActivityType, locationType: HKWorkoutSessionLocationType.unknown)
-        workoutSession.delegate = self
-        
-        guard workoutSession.state == .notStarted else { return }
-        HealthKitHelper.sharedInstance.healthKitStore.start(workoutSession)
-        
-        print("Workout session started")
+        do {
+            
+            // Start HKWorkoutSession
+            let workoutSessionConfiguration = HKWorkoutConfiguration()
+            workoutSessionConfiguration.activityType = workoutActivityType
+            workoutSessionConfiguration.locationType = .unknown
+            
+            workoutSession = try HKWorkoutSession(configuration: workoutSessionConfiguration)
+            
+            workoutSession.delegate = self
+            
+            guard workoutSession.state == .notStarted else { return }
+            HealthKitHelper.sharedInstance.healthKitStore.start(workoutSession)
+            
+            print("Workout session started")
+            
+        } catch {
+            print(error)
+        }
     }
     
     func endWorkoutSession() {

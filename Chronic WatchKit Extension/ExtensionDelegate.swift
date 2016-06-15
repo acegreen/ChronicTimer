@@ -77,9 +77,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             // Set KeyChain Value
             do {
                 try keychain
-                    .accessibility(accessibility: .Always)
-                    .synchronizable(synchronizable: true)
-                    .set(value: proVersionKeyValue, key: proVersionKey)
+                    .accessibility(.always)
+                    .synchronizable(true)
+                    .set(proVersionKeyValue, key: proVersionKey)
             } catch let error {
                 print("error: \(error)")
             }
