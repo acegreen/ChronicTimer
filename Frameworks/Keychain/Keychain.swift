@@ -1527,7 +1527,7 @@ public enum Status : OSStatus, ErrorProtocol {
     case policyDenied
     case invalidKey
     case decode
-    case `internal`
+    case internally
     case unsupportedAlgorithm
     case unsupportedOperation
     case unsupportedPadding
@@ -1998,7 +1998,7 @@ extension Status : RawRepresentable, CustomStringConvertible {
         case -26275:
             self = decode
         case -26276:
-            self = `internal`
+            self = internally
         case -26268:
             self = unsupportedAlgorithm
         case -26271:

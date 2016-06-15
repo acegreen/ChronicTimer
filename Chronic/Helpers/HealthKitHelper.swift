@@ -70,11 +70,12 @@ public class HealthKitHelper {
         // 1. Request birthday and calculate age
         do {
             
-            let birthDay = try healthKitStore.dateOfBirth()
+            let birthDay = try healthKitStore.dateOfBirthComponents()
+            let birthDayDate = birthDay.date
             
             let today = Date()
             //let calendar = NSCalendar.currentCalendar()
-            let differenceComponents = Calendar.current().components(Calendar.Unit.year, from: birthDay, to: today, options: Calendar.Options(rawValue: 0))
+            let differenceComponents = Calendar.current().components(Calendar.Unit.year, from: birthDayDate!, to: today, options: Calendar.Options(rawValue: 0))
             age = differenceComponents.year
             
         } catch let error as NSError {

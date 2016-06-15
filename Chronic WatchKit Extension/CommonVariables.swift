@@ -1,6 +1,6 @@
 //
 //  CommonVariables.swift
-//  Chronic
+//  Chronic Watch Extension
 //
 //  Created by Ace Green on 2015-10-08.
 //  Copyright © 2015 Ace Green. All rights reserved.
@@ -53,4 +53,17 @@ var wcSession: WCSession!
 enum distanceType {
     case miles
     case kilometers
+}
+
+public enum NotificationCategory: String {
+    case ReminderCategory, WorkoutCategory
+    
+    public func key() -> String {
+        switch self {
+        case .ReminderCategory:
+            return "REMINDER_CATEGORY"
+        case .WorkoutCategory:
+            return "WORKOUT_CATEGORY"
+        }
+    }
 }

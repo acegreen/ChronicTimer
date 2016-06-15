@@ -28,16 +28,16 @@ public class ChartYAxis: ChartAxisBase
     @objc(YAxisLabelPosition)
     public enum LabelPosition: Int
     {
-        case outsideChart
-        case insideChart
+        case OutsideChart
+        case InsideChart
     }
     
     ///  Enum that specifies the axis a DataSet should be plotted against, either Left or Right.
     @objc
     public enum AxisDependency: Int
     {
-        case left
-        case right
+        case Left
+        case Right
     }
     
     public var entries = [Double]()
@@ -56,7 +56,7 @@ public class ChartYAxis: ChartAxisBase
     public var inverted = false
     
     /// This property is deprecated - Use `axisMinValue` instead.
-    @available(*, deprecated:1.0, message:"Use axisMinValue instead.")
+    @available(*, deprecated=1.0, message="Use axisMinValue instead.")
     public var startAtZeroEnabled: Bool
     {
         get
@@ -83,7 +83,7 @@ public class ChartYAxis: ChartAxisBase
     public var drawZeroLineEnabled = false
     
     /// Color of the zero line
-    public var zeroLineColor: NSUIColor? = NSUIColor.gray()
+    public var zeroLineColor: NSUIColor? = NSUIColor.grayColor()
     
     /// Width of the zero line
     public var zeroLineWidth: CGFloat = 1.0
@@ -97,10 +97,10 @@ public class ChartYAxis: ChartAxisBase
     public var zeroLineDashLengths: [CGFloat]?
     
     /// the formatter used to customly format the y-labels
-    public var valueFormatter: NumberFormatter?
+    public var valueFormatter: NSNumberFormatter?
     
     /// the formatter used to customly format the y-labels
-    internal var _defaultValueFormatter = NumberFormatter()
+    internal var _defaultValueFormatter = NSNumberFormatter()
 
     /// axis space from the largest value to the top in percent of the total axis range
     public var spaceTop = CGFloat(0.1)
@@ -109,10 +109,10 @@ public class ChartYAxis: ChartAxisBase
     public var spaceBottom = CGFloat(0.1)
     
     /// the position of the y-labels relative to the chart
-    public var labelPosition = LabelPosition.outsideChart
+    public var labelPosition = LabelPosition.OutsideChart
     
     /// the side this axis object represents
-    private var _axisDependency = AxisDependency.left
+    private var _axisDependency = AxisDependency.Left
     
     /// the minimum width that the axis should take
     /// 
@@ -181,7 +181,7 @@ public class ChartYAxis: ChartAxisBase
         return _axisDependency
     }
     
-    public func setLabelCount(_ count: Int, force: Bool)
+    public func setLabelCount(count: Int, force: Bool)
     {
         _labelCount = count
         
@@ -217,7 +217,7 @@ public class ChartYAxis: ChartAxisBase
     public func requiredSize() -> CGSize
     {
         let label = getLongestLabel() as NSString
-        var size = label.size(attributes: [NSFontAttributeName: labelFont])
+        var size = label.sizeWithAttributes([NSFontAttributeName: labelFont])
         size.width += xOffset * 2.0
         size.height += yOffset * 2.0
         size.width = max(minWidth, min(size.width, maxWidth > 0.0 ? maxWidth : size.width))
@@ -247,20 +247,20 @@ public class ChartYAxis: ChartAxisBase
     }
 
     /// - returns: the formatted y-label at the specified index. This will either use the auto-formatter or the custom formatter (if one is set).
-    public func getFormattedLabel(_ index: Int) -> String
+    public func getFormattedLabel(index: Int) -> String
     {
         if (index < 0 || index >= entries.count)
         {
             return ""
         }
         
-        return (valueFormatter ?? _defaultValueFormatter).string(from: entries[index])!
+        return (valueFormatter ?? _defaultValueFormatter).stringFromNumber(entries[index])!
     }
     
     /// - returns: true if this axis needs horizontal offset, false if no offset is needed.
     public var needsOffset: Bool
     {
-        if (isEnabled && isDrawLabelsEnabled && labelPosition == .outsideChart)
+        if (isEnabled && isDrawLabelsEnabled && labelPosition == .OutsideChart)
         {
             return true
         }
@@ -273,7 +273,7 @@ public class ChartYAxis: ChartAxisBase
     public var isInverted: Bool { return inverted; }
     
     /// This is deprecated now, use `axisMinValue`
-    @available(*, deprecated:1.0, message:"Use axisMinValue instead.")
+    @available(*, deprecated=1.0, message="Use axisMinValue instead.")
     public var isStartAtZeroEnabled: Bool { return startAtZeroEnabled }
 
     /// - returns: true if focing the y-label count is enabled. Default: false

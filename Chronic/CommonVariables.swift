@@ -132,6 +132,7 @@ public enum distanceType {
     case miles
     case kilometers
 }
+
 public enum NotificationCategory: String {
     case ReminderCategory, WorkoutCategory
     

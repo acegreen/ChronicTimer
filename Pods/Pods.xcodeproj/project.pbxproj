@@ -4993,14 +4993,79 @@
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
+					0EB19C1377A747F81110D44E2D5FCF78 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					124BA04F2E4A4F5C8CDAA39DB6C7F903 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					13253E63F6640F2072B6B55CBCB1746F = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					16FB872D0D2D4BA0F378AB34D47CF95F = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					2C8AA1BAF35413BDB954A1DF93576ED1 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
 					5172ACAB7FEA22813859DC97CA0AA16F = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
 						LastSwiftMigration = 0800;
+					};
+					52D82BFDD1E808D9CB257431922C1EE4 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					586E40C0BEBAB01A075A5E60359FA09D = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					66B430207B132208DA143D41AB4BF82C = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					679E8FF327E1316EE11A5011A90D1D65 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					6EDC37F3FA92533C6AC3562458AA91F1 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
 					};
 					7372CA79CE92E7AC032175441663EBE4 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
 						LastSwiftMigration = 0800;
 					};
+					8004BD72C14F3C786A3B1990FE84C94C = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					8978C7FB7007A28B676AB1EA004C3923 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
 					C6828C2508515BC0428D6BDAA1292DC9 = {
-						LastSwiftMigration = 0800;
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					C84EEF4960B0ABAB9713B32EE53B41A9 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					D2D17D2E6A8AD8B5A2D1F30A3032805E = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					E1F78B1C5F8F2CCD0E68552EAF2B9B52 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
 					};
 				};
 			};
@@ -6033,7 +6098,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -6266,7 +6330,6 @@
 				PRODUCT_NAME = Charts;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

@@ -30,7 +30,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
         self.chart = chart
     }
     
-    public override func computeAxis(yMin: Double, yMax: Double)
+    public override func computeAxis(yMin yMin: Double, yMax: Double)
     {
         computeAxisValues(min: yMin, max: yMax)
     }
@@ -68,7 +68,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
             if yAxis.entries.count < labelCount
             {
                 // Ensure stops contains at least numStops elements.
-                yAxis.entries.removeAll(keepingCapacity: true)
+                yAxis.entries.removeAll(keepCapacity: true)
             }
             else
             {
@@ -92,7 +92,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
             // clean old values
             if (yAxis.entries.count > 0)
             {
-                yAxis.entries.removeAll(keepingCapacity: false)
+                yAxis.entries.removeAll(keepCapacity: false)
             }
             
             // if the labels should only show min and max
@@ -115,7 +115,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
                 let last = ChartUtils.nextUp(floor(Double(yMax) / interval) * interval)
                 
                 var n = 0
-                for _ in st ride(from: first, through: last, by: interval)
+                for _ in first.stride(through: last, by: interval)
                 {
                     n += 1
                 }
@@ -128,7 +128,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
                 if (yAxis.entries.count < n)
                 {
                     // Ensure stops contains at least numStops elements.
-                    yAxis.entries = [Double](repeating: 0.0, count: n)
+                    yAxis.entries = [Double](count: n, repeatedValue: 0.0)
                 }
                 
                 var f = first
@@ -153,7 +153,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
         yAxis.axisRange = abs(yAxis._axisMaximum - yAxis._axisMinimum)
     }
     
-    public override func renderAxisLabels(context: CGContext)
+    public override func renderAxisLabels(context context: CGContext)
     {
         guard let
             yAxis = yAxis,
@@ -188,11 +188,11 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
             
             let label = yAxis.getFormattedLabel(j)
             
-            ChartUtils.drawText(context: context, text: label, point: CGPoint(x: p.x + 10.0, y: p.y - labelLineHeight), align: .left, attributes: [NSFontAttributeName: labelFont, NSForegroundColorAttributeName: labelTextColor])
+            ChartUtils.drawText(context: context, text: label, point: CGPoint(x: p.x + 10.0, y: p.y - labelLineHeight), align: .Left, attributes: [NSFontAttributeName: labelFont, NSForegroundColorAttributeName: labelTextColor])
         }
     }
     
-    public override func renderLimitLines(context: CGContext)
+    public override func renderLimitLines(context context: CGContext)
     {
         guard let
             yAxis = yAxis,
@@ -206,7 +206,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
             return
         }
         
-        context.saveGState()
+        CGContextSaveGState(context)
         
         let sliceangle = chart.sliceAngle
         
@@ -224,20 +224,20 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
                 continue
             }
             
-            context.setStrokeColor(l.lineColor.cgColor)
-            context.setLineWidth(l.lineWidth)
+            CGContextSetStrokeColorWithColor(context, l.lineColor.CGColor)
+            CGContextSetLineWidth(context, l.lineWidth)
             if (l.lineDashLengths != nil)
             {
-                context.setLineDash(phase: l.lineDashPhase, lengths: l.lineDashLengths!, count: l.lineDashLengths!.count)
+                CGContextSetLineDash(context, l.lineDashPhase, l.lineDashLengths!, l.lineDashLengths!.count)
             }
             else
             {
-                context.setLineDash(phase: 0.0, lengths: nil, count: 0)
+                CGContextSetLineDash(context, 0.0, nil, 0)
             }
             
             let r = CGFloat(l.limit - chart.chartYMin) * factor
             
-            context.beginPath()
+            CGContextBeginPath(context)
             
             for j in 0 ..< chart.data!.xValCount
             {
@@ -245,19 +245,19 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
                 
                 if (j == 0)
                 {
-                    context.moveTo(x: p.x, y: p.y)
+                    CGContextMoveToPoint(context, p.x, p.y)
                 }
                 else
                 {
-                    context.addLineTo(x: p.x, y: p.y)
+                    CGContextAddLineToPoint(context, p.x, p.y)
                 }
             }
             
-            context.closePath()
+            CGContextClosePath(context)
             
-            context.strokePath()
+            CGContextStrokePath(context)
         }
         
-        context.restoreGState()
+        CGContextRestoreGState(context)
     }
 }

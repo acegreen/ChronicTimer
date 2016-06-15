@@ -24,11 +24,11 @@ public class CombinedChartView: BarLineChartViewBase, LineChartDataProvider, Bar
     @objc(CombinedChartDrawOrder)
     public enum DrawOrder: Int
     {
-        case bar
-        case bubble
-        case line
-        case candle
-        case scatter
+        case Bar
+        case Bubble
+        case Line
+        case Candle
+        case Scatter
     }
     
     public override func initialize()

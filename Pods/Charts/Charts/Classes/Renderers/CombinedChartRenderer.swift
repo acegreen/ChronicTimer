@@ -29,7 +29,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
     
     internal var _renderers = [ChartDataRendererBase]()
     
-    internal var _drawOrder: [CombinedChartView.DrawOrder] = [.bar, .bubble, .line, .candle, .scatter]
+    internal var _drawOrder: [CombinedChartView.DrawOrder] = [.Bar, .Bubble, .Line, .Candle, .Scatter]
     
     public init(chart: CombinedChartView, animator: ChartAnimator, viewPortHandler: ChartViewPortHandler)
     {
@@ -54,35 +54,35 @@ public class CombinedChartRenderer: ChartDataRendererBase
         {
             switch (order)
             {
-            case .bar:
+            case .Bar:
                 if (chart.barData !== nil)
                 {
                     _renderers.append(BarChartRenderer(dataProvider: chart, animator: animator, viewPortHandler: viewPortHandler))
                 }
                 break
                 
-            case .line:
+            case .Line:
                 if (chart.lineData !== nil)
                 {
                     _renderers.append(LineChartRenderer(dataProvider: chart, animator: animator, viewPortHandler: viewPortHandler))
                 }
                 break
                 
-            case .candle:
+            case .Candle:
                 if (chart.candleData !== nil)
                 {
                     _renderers.append(CandleStickChartRenderer(dataProvider: chart, animator: animator, viewPortHandler: viewPortHandler))
                 }
                 break
                 
-            case .scatter:
+            case .Scatter:
                 if (chart.scatterData !== nil)
                 {
                     _renderers.append(ScatterChartRenderer(dataProvider: chart, animator: animator, viewPortHandler: viewPortHandler))
                 }
                 break
                 
-            case .bubble:
+            case .Bubble:
                 if (chart.bubbleData !== nil)
                 {
                     _renderers.append(BubbleChartRenderer(dataProvider: chart, animator: animator, viewPortHandler: viewPortHandler))
@@ -93,7 +93,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
 
     }
     
-    public override func drawData(context: CGContext)
+    public override func drawData(context context: CGContext)
     {
         for renderer in _renderers
         {
@@ -101,7 +101,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
         }
     }
     
-    public override func drawValues(context: CGContext)
+    public override func drawValues(context context: CGContext)
     {
         for renderer in _renderers
         {
@@ -109,7 +109,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
         }
     }
     
-    public override func drawExtras(context: CGContext)
+    public override func drawExtras(context context: CGContext)
     {
         for renderer in _renderers
         {
@@ -117,7 +117,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
         }
     }
     
-    public override func drawHighlighted(context: CGContext, indices: [ChartHighlight])
+    public override func drawHighlighted(context context: CGContext, indices: [ChartHighlight])
     {
         for renderer in _renderers
         {
@@ -144,7 +144,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
                 data = (renderer as! BubbleChartRenderer).dataProvider?.bubbleData
             }
             
-            let dataIndex = data == nil ? nil : (chart?.data as? CombinedChartData)?.allData.index(of: data!)
+            let dataIndex = data == nil ? nil : (chart?.data as? CombinedChartData)?.allData.indexOf(data!)
             
             let dataIndices = indices.filter{ $0.dataIndex == dataIndex || $0.dataIndex == -1 }
             
@@ -152,7 +152,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
         }
     }
     
-    public override func calcXBounds(chart: BarLineScatterCandleBubbleChartDataProvider, xAxisModulus: Int)
+    public override func calcXBounds(chart chart: BarLineScatterCandleBubbleChartDataProvider, xAxisModulus: Int)
     {
         for renderer in _renderers
         {
@@ -161,7 +161,7 @@ public class CombinedChartRenderer: ChartDataRendererBase
     }
 
     /// - returns: the sub-renderer object at the specified index.
-    public func getSubRenderer(index: Int) -> ChartDataRendererBase?
+    public func getSubRenderer(index index: Int) -> ChartDataRendererBase?
     {
         if (index >= _renderers.count || index < 0)
         {

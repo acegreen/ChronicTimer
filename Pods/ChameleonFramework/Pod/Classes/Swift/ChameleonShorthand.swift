@@ -90,7 +90,7 @@ public func HexColor(_ hexString: String, _ alpha: CGFloat = 1.0) -> UIColor {
  - returns: A flat UIColor object in the HSB colorspace.
  */
 public func AverageColorFromImage(_ image: UIImage) -> UIColor {
-    return UIColor(averageColorFrom: image)
+    return UIColor(patternImage: image)
 }
 
 // MARK: - Array Methods Shorthand

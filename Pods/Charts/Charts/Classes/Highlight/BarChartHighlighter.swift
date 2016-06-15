@@ -17,7 +17,7 @@ import CoreGraphics
 
 public class BarChartHighlighter: ChartHighlighter
 {
-    public override func getHighlight(x: CGFloat, y: CGFloat) -> ChartHighlight?
+    public override func getHighlight(x x: CGFloat, y: CGFloat) -> ChartHighlight?
     {
         if let barData = self.chart?.data as? BarChartData
         {
@@ -61,7 +61,7 @@ public class BarChartHighlighter: ChartHighlighter
         return nil
     }
     
-    public override func getXIndex(_ x: CGFloat) -> Int
+    public override func getXIndex(x: CGFloat) -> Int
     {
         if let barData = self.chart?.data as? BarChartData
         {
@@ -96,7 +96,7 @@ public class BarChartHighlighter: ChartHighlighter
         }
     }
     
-    public override func getSelectionDetail(xIndex: Int, y: CGFloat, dataSetIndex: Int?) -> ChartSelectionDetail?
+    public override func getSelectionDetail(xIndex xIndex: Int, y: CGFloat, dataSetIndex: Int?) -> ChartSelectionDetail?
     {
         if let barData = self.chart?.data as? BarChartData
         {
@@ -120,7 +120,7 @@ public class BarChartHighlighter: ChartHighlighter
     /// - parameter xIndex:
     /// - parameter yValue:
     /// - returns:
-    public func getStackedHighlight(selectionDetail: ChartSelectionDetail,
+    public func getStackedHighlight(selectionDetail selectionDetail: ChartSelectionDetail,
                                                     set: IBarChartDataSet,
                                                     xIndex: Int,
                                                     yValue: Double) -> ChartHighlight?
@@ -156,7 +156,7 @@ public class BarChartHighlighter: ChartHighlighter
     /// - parameter entry:
     /// - parameter value:
     /// - returns:
-    public func getClosestStackIndex(ranges: [ChartRange]?, value: Double) -> Int
+    public func getClosestStackIndex(ranges ranges: [ChartRange]?, value: Double) -> Int
     {
         if ranges == nil
         {
@@ -185,7 +185,7 @@ public class BarChartHighlighter: ChartHighlighter
     /// Returns the base x-value to the corresponding x-touch value in pixels.
     /// - parameter x:
     /// - returns:
-    public func getBase(_ x: CGFloat) -> Double
+    public func getBase(x: CGFloat) -> Double
     {
         guard let barData = self.chart?.data as? BarChartData
             else { return 0.0 }
@@ -195,7 +195,7 @@ public class BarChartHighlighter: ChartHighlighter
         pt.x = CGFloat(x)
         
         // take any transformer to determine the x-axis value
-        self.chart?.getTransformer(ChartYAxis.AxisDependency.left).pixelToValue(&pt)
+        self.chart?.getTransformer(ChartYAxis.AxisDependency.Left).pixelToValue(&pt)
         let xVal = Double(pt.x)
         
         let setCount = barData.dataSetCount ?? 0
@@ -213,7 +213,7 @@ public class BarChartHighlighter: ChartHighlighter
     /// Splits up the stack-values of the given bar-entry into Range objects.
     /// - parameter entry:
     /// - returns:
-    public func getRanges(entry: BarChartDataEntry) -> [ChartRange]?
+    public func getRanges(entry entry: BarChartDataEntry) -> [ChartRange]?
     {
         let values = entry.values
         if (values == nil)

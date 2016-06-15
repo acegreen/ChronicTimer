@@ -23,33 +23,33 @@ public class LineRadarChartRenderer: LineScatterCandleRadarChartRenderer
     }
     
     /// Draws the provided path in filled mode with the provided drawable.
-    public func drawFilledPath(context: CGContext, path: CGPath, fill: ChartFill, fillAlpha: CGFloat)
+    public func drawFilledPath(context context: CGContext, path: CGPath, fill: ChartFill, fillAlpha: CGFloat)
     {
-        context.saveGState()
-        context.beginPath()
-        context.addPath(path)
+        CGContextSaveGState(context)
+        CGContextBeginPath(context)
+        CGContextAddPath(context, path)
         
         // filled is usually drawn with less alpha
-        context.setAlpha(fillAlpha)
+        CGContextSetAlpha(context, fillAlpha)
         
         fill.fillPath(context: context, rect: viewPortHandler.contentRect)
         
-        context.restoreGState()
+        CGContextRestoreGState(context)
     }
     
     /// Draws the provided path in filled mode with the provided color and alpha.
-    public func drawFilledPath(context: CGContext, path: CGPath, fillColor: NSUIColor, fillAlpha: CGFloat)
+    public func drawFilledPath(context context: CGContext, path: CGPath, fillColor: NSUIColor, fillAlpha: CGFloat)
     {
-        context.saveGState()
-        context.beginPath()
-        context.addPath(path)
+        CGContextSaveGState(context)
+        CGContextBeginPath(context)
+        CGContextAddPath(context, path)
         
         // filled is usually drawn with less alpha
-        context.setAlpha(fillAlpha)
+        CGContextSetAlpha(context, fillAlpha)
         
-        context.setFillColor(fillColor.cgColor)
-        context.fillPath()
+        CGContextSetFillColorWithColor(context, fillColor.CGColor)
+        CGContextFillPath(context)
         
-        context.restoreGState()
+        CGContextRestoreGState(context)
     }
 }

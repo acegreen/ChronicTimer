@@ -37,7 +37,7 @@ public class AnimatedZoomChartViewJob: AnimatedViewPortJob
         zoomCenterY: CGFloat,
         zoomOriginX: CGFloat,
         zoomOriginY: CGFloat,
-        duration: TimeInterval,
+        duration: NSTimeInterval,
         easing: ChartEasingFunctionBlock?)
     {
         super.init(viewPortHandler: viewPortHandler,

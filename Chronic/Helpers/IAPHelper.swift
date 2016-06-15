@@ -390,6 +390,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         // Set KeyChain Value
         do {
             try keychain
+                .accessibility(.always)
                 .synchronizable(true)
                 .set(removeAdsKeyValue, key: removeAdsKey)
         } catch let error {
