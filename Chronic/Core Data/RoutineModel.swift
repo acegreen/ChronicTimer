@@ -23,3 +23,11 @@ public class RoutineModel: NSManagedObject {
     
     @NSManaged public var routineToExcercise: OrderedSet?
 }
+
+extension RoutineModel {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<RoutineModel> {
+        return NSFetchRequest<RoutineModel>(entityName: "RoutineModel");
+    }
+    
+    @NSManaged var timeStamp: NSDate?
+}

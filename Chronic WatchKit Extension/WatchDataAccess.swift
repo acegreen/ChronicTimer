@@ -28,50 +28,23 @@ public class WatchDataAccess: NSObject {
         }
     }
     
-    public func GetRoutines(predicate: Predicate?) -> [NSManagedObject]? {
+    public func GetRoutines(predicate: Predicate?) -> [RoutineModel]? {
         
-        let fetchRequest = RoutineModel.fetchRequest()
+        let request: NSFetchRequest<RoutineModel> = RoutineModel.fetchRequest()
         let entity = NSEntityDescription.entity(forEntityName: "Routines", in: self.managedObjectContext)
-        fetchRequest.entity = entity
+        request.entity = entity
         
         if predicate != nil {
             
-            fetchRequest.predicate = predicate
+            request.predicate = predicate
         }
         
-        let sortDescriptors = [SortDescriptor(key: "date", ascending: false)]
-        
-        fetchRequest.sortDescriptors = sortDescriptors
-        
-        var results: [NSManagedObject]!
+        let sortDescriptors = [SortDescriptor(key: "tableDisplayOrder", ascending: false)]
+        request.sortDescriptors = sortDescriptors
         
         do {
             
-            results = try self.managedObjectContext.fetch(fetchRequest) as! [NSManagedObject]
-            
-        } catch let error as NSError {
-            // failure
-            print("Fetch failed: \(error.localizedDescription)")
-            
-        }
-        
-//        print(results)
-        return results
-    }
-    
-    public func GetExercises() -> [NSManagedObject]? {
-        
-        let fetchRequest = ExerciseModel.fetchRequest()
-        let entity = NSEntityDescription.entity(forEntityName: "Exercises", in: self.managedObjectContext)
-        fetchRequest.entity = entity
-        
-        var results: [NSManagedObject]!
-        
-        do {
-            
-            results = try self.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject]
-            
-//            print(results)
+            let results = try context.fetch(request)
             return results
             
         } catch let error as NSError {
@@ -79,6 +52,7 @@ public class WatchDataAccess: NSObject {
             print("Fetch failed: \(error.localizedDescription)")
             
             return nil
+            
         }
     }
     

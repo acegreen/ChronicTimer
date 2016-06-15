@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         setupUserDefaults()
         
         // Get Routines from database
-        Routines = DataAccess.sharedInstance.GetRoutines(nil) as! [RoutineModel]
+        Routines = DataAccess.sharedInstance.GetRoutines(predicate: nil)
         
         // Set idelTimerDisabled accordingly
         UIApplication.shared().isIdleTimerDisabled = !enableDeviceSleepState
@@ -195,7 +195,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
                 
                 let uniqueIdentifierPredicate: Predicate = Predicate(format: "name = %@", uniqueIdentifier)
                 
-                let routineSelectedInSpotlight = DataAccess.sharedInstance.GetRoutines(uniqueIdentifierPredicate)!.first as! RoutineModel
+                let routineSelectedInSpotlight = DataAccess.sharedInstance.GetRoutines(predicate: uniqueIdentifierPredicate)!.first
                 
                 let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
                 timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
@@ -217,7 +217,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
                     
                 }
                     
-                routineSelectedInSpotlight.selectedRoutine = true
+                routineSelectedInSpotlight?.selectedRoutine = true
             }
         }
         
@@ -461,18 +461,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     // MARK: - Setup storyboards
     
-    func loadOnboardingInterface() {
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        if let controller = storyboard.instantiateInitialViewController() {
-            self.window?.rootViewController = controller
-        }
-    }
-    
-    func loadMainInterface() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = storyboard.instantiateInitialViewController() {
-            self.window?.rootViewController = controller
-        }
-    }
+//    func loadOnboardingInterface() {
+//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+//        if let controller = storyboard.instantiateInitialViewController() {
+//            self.window?.rootViewController = controller
+//        }
+//    }
+//    
+//    func loadMainInterface() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let controller = storyboard.instantiateInitialViewController() {
+//            self.window?.rootViewController = controller
+//        }
+//    }
 }
 

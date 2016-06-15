@@ -83,15 +83,6 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
             
                 let routine = Routines[(indexPath as NSIndexPath).row]
                 cell.configure(with: routine)
-                
-//                if indexPath.row == selectedRow {
-//                    
-//                    cell.accessoryType = .Checkmark
-//                    
-//                } else {
-//                    
-//                    cell.accessoryType = .None
-//                }
         }
         
         return cell

@@ -157,3 +157,7 @@ extension UIView {
         superView.addConstraint(trailing)
     }
 }
+
+extension UIControlState {
+    public static var normal: UIControlState { return [] }
+}

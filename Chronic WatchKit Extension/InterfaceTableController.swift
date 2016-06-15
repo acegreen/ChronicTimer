@@ -34,10 +34,9 @@ class InterfaceTableController: WKInterfaceController {
         // Check for pro version purchase
         keychainProVersionString = keychain[proVersionKey]
         
-        if proFeaturesUpgradePurchased() {
-        
+        #if DEBUG
             // Get Routines from database
-            Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil) as! [RoutineModel]
+            Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
             
             if Routines.count != 0 {
                 
@@ -47,11 +46,27 @@ class InterfaceTableController: WKInterfaceController {
                 
                 self.routineTable.setNumberOfRows(1, withRowType: "noRoutinesRow")
             }
-        
-        } else {
             
-            self.routineTable.setNumberOfRows(1, withRowType: "noProVersionRow")
-        }
+        #else
+            if proFeaturesUpgradePurchased() {
+                
+                // Get Routines from database
+                Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
+                
+                if Routines.count != 0 {
+                    
+                    loadTableData()
+                    
+                } else {
+                    
+                    self.routineTable.setNumberOfRows(1, withRowType: "noRoutinesRow")
+                }
+                
+            } else {
+                
+                self.routineTable.setNumberOfRows(1, withRowType: "noProVersionRow")
+            }
+        #endif
     }
 
     override func didDeactivate() {

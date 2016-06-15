@@ -219,7 +219,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             try context.save()
             
             // Get Routines from database
-            Routines = DataAccess.sharedInstance.GetRoutines(nil) as! [RoutineModel]
+            Routines = DataAccess.sharedInstance.GetRoutines(predicate: nil)
             
             return true
             

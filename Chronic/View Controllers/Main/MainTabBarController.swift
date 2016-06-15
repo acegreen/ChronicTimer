@@ -20,10 +20,6 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
         
         if !userDefaults.bool(forKey: "ONBOARDING_SHOWN") {
             // Present onboarding on first install
@@ -36,6 +32,10 @@ class MainTabBarController: UITabBarController {
                 }
             })
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
 
     override func didReceiveMemoryWarning() {
