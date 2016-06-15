@@ -11,21 +11,7 @@ import CoreData
 
 public class DataAccess: NSObject {
     
-    private static var __once: () = {
-        Static.instance = DataAccess()
-    }()
-    
-    public class var sharedInstance : DataAccess {
-        
-        struct Static {
-            static var onceToken: Int = 0
-            static var instance: DataAccess? = nil
-        }
-        
-        _ = DataAccess.__once
-        
-        return Static.instance!
-    }
+    static let sharedInstance = DataAccess()
     
     //MARK: -Get Routines & Exercises Functions
     
@@ -44,7 +30,7 @@ public class DataAccess: NSObject {
     
     public func GetRoutines(_ predicate: Predicate?) -> [NSManagedObject]? {
         
-        let fetchRequest = NSFetchRequest(entityName: "Routines")
+        let fetchRequest = RoutineModel.fetchRequest()
         let entity = NSEntityDescription.entity(forEntityName: "Routines", in: self.managedObjectContext)
         fetchRequest.entity = entity
         
@@ -75,7 +61,7 @@ public class DataAccess: NSObject {
     
     public func GetExercises() -> [NSManagedObject]? {
         
-        let fetchRequest = NSFetchRequest(entityName: "Exercises")
+        let fetchRequest = ExerciseModel.fetchRequest()
         let entity = NSEntityDescription.entity(forEntityName: "Exercises", in: self.managedObjectContext)
         fetchRequest.entity = entity
         

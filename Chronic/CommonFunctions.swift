@@ -40,15 +40,15 @@ func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
             
             for exercise in routineExercises {
                 
-                for var number = 1; number <= exercise.exerciseNumberOfRounds; number += 1 {
+                for number in 1...(exercise.exerciseNumberOfRounds as Int) {
                     
-                    if exercise.exerciseTime > 0 {
+                    if exercise.exerciseTime as Int > 0 {
                         
                         //Exercise Name & Time
                         
                         customeExerciseDictionary["Name"] = exercise.exerciseName
                         
-                        if exercise.exerciseNumberOfRounds > 1 {
+                        if exercise.exerciseNumberOfRounds as Int > 1 {
                             customeExerciseDictionary["Interval"] = "\(number) / \(exercise.exerciseNumberOfRounds)"
                         }
                         
@@ -69,7 +69,7 @@ func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
             restExercise = routineExercises[2]
             coolDownExercise = routineExercises[3]
             
-            if warmUpExercise.exerciseTime > 0 {
+            if warmUpExercise.exerciseTime as Int > 0 {
                 
                 //Warmup
                 warmUpDictionary["Name"] = warmUpExercise.exerciseName
@@ -84,13 +84,13 @@ func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
             
             for i in 1...Int(roundExercise.exerciseNumberOfRounds) {
                     
-                if roundExercise.exerciseTime > 0 {
+                if roundExercise.exerciseTime as Int > 0 {
                     
                     //Round Time
                     
                     roundDictionary["Name"] = roundExercise.exerciseName
                     
-                    if roundExercise.exerciseNumberOfRounds > 1 {
+                    if roundExercise.exerciseNumberOfRounds as Int > 1 {
                         roundDictionary["Interval"] = "\(i) / \(roundExercise.exerciseNumberOfRounds)"
                     }
                     
@@ -103,13 +103,13 @@ func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                     
                 }
                 
-                if restExercise.exerciseTime > 0 {
+                if restExercise.exerciseTime as Int > 0 {
                     
                     //Rest Time
                     
                     restDictionary["Name"] = restExercise.exerciseName
                     
-                    if restExercise.exerciseNumberOfRounds > 1 {
+                    if restExercise.exerciseNumberOfRounds as Int > 1 {
                         restDictionary["Interval"] = "\(i) / \(restExercise.exerciseNumberOfRounds)"
                     }
                     restDictionary["Time"] = restExercise.exerciseTime
@@ -122,7 +122,7 @@ func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
                 }
             }
             
-            if coolDownExercise.exerciseTime > 0 {
+            if coolDownExercise.exerciseTime as Int > 0 {
                 
                 // Cool Down Time
                 coolDownDictionary["Name"] = coolDownExercise.exerciseName
@@ -493,16 +493,16 @@ class TextField: UITextField {
     }
 }
 
-func showPopTipOnceForKey(_ key: String, userDefaults: NSUserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: AMPopTipDirection = .Down, color: UIColor = .darkGrayColor()) -> AMPopTip? {
-    if (!userDefaults.boolForKey(key)) {
-        userDefaults.setBool(true, forKey: key)
+func showPopTipOnceForKey(_ key: String, userDefaults: UserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: AMPopTipDirection = .down, color: UIColor = .darkGray()) -> AMPopTip? {
+    if (!userDefaults.bool(forKey: key)) {
+        userDefaults.set(true, forKey: key)
         userDefaults.synchronize()
         AMPopTip.appearance().popoverColor = color
         AMPopTip.appearance().offset = 10
         AMPopTip.appearance().edgeMargin = 5
         let popTip = AMPopTip()
-        popTip.showText(text, direction: direction, maxWidth: 250, inView: view, fromFrame: frame)
-        popTip.actionAnimation = AMPopTipActionAnimation.Bounce
+        popTip.showText(text, direction: direction, maxWidth: 250, in: view, fromFrame: frame)
+        popTip.actionAnimation = AMPopTipActionAnimation.bounce
         popTip.shouldDismissOnTapOutside = false
     
         return popTip

@@ -60,7 +60,7 @@ public class SweetAlert: UIViewController {
         
         dismissButton = UIButton(type: UIButtonType.custom)
         dismissButton.setImage(UIImage(named: "stop_gray"), for: UIControlState())
-        dismissButton.addTarget(self, action: "dismissButtonPressed:", for: UIControlEvents.touchUpInside)
+        dismissButton.addTarget(self, action: #selector(SweetAlert.dismissButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         dismissView!.addSubview(dismissButton)
     }
     
@@ -162,7 +162,7 @@ public class SweetAlert: UIViewController {
             buttonX = buttonX + buttons[i].bounds.size.width + kWidthMargin
             buttons[i].layer.cornerRadius = 5.0
             self.contentView.addSubview(buttons[i])
-            buttons[i].addTarget(self, action: "pressed:", for: UIControlEvents.touchUpInside)
+            buttons[i].addTarget(self, action: #selector(SweetAlert.pressed(_:)), for: UIControlEvents.touchUpInside)
             
         }
         
@@ -201,11 +201,9 @@ public class SweetAlert: UIViewController {
         let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
         let dispatchTime = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         
-        DispatchQueue.main.after(when: dispatchTime, block: {
-            
+        DispatchQueue.main.after(when: dispatchTime) { 
             self.closeAlert(nil)
-            
-        })
+        }
     }
     
     public override func viewWillLayoutSubviews() {

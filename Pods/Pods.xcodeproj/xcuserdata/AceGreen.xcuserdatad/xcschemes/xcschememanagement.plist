@@ -34,11 +34,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Charts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -99,6 +94,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -112,12 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>13253E63F6640F2072B6B55CBCB1746F</key>
+		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
+		<key>215D1BE0D128E87B5984605EA33C1CCE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,11 +152,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>679E8FF327E1316EE11A5011A90D1D65</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
@@ -177,12 +172,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6828C2508515BC0428D6BDAA1292DC9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C84EEF4960B0ABAB9713B32EE53B41A9</key>
+		<key>B38D91F4742E000E93E45EC332B4DB47</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,7 +182,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DBAD7D21B4439E2E7A0DBB18CF247B20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E1F78B1C5F8F2CCD0E68552EAF2B9B52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFA556A9B0BDAAAF8B02A7CD0C4D58F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

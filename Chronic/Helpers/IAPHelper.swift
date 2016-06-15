@@ -12,6 +12,7 @@ import StoreKit
 import CNPPopupController
 import Crashlytics
 import Parse
+import SwiftyJSON
 
 class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver, SKRequestDelegate {
     
@@ -81,7 +82,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         
         if inAppPurchasePopupController != nil {
             
-            inAppPurchasePopupController.dismissPopupControllerAnimated(true)
+            inAppPurchasePopupController.dismiss(animated: true)
         }
         
         for transaction:SKPaymentTransaction in transactions {
@@ -135,13 +136,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log Ultimate Package purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Ultimate Package",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -154,13 +155,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log pro purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Pro Version",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -173,13 +174,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     if transactionID.string == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log remove ads purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Remove Ads",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -191,13 +192,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log donation purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Donation",
                                             itemType: "In-App Purchase (Consumable)",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -253,13 +254,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                     SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: errorMessage, style: AlertStyle.error)
                 })
                 
-                Answers.logPurchaseWithPrice(nil,
+                Answers.logPurchase(withPrice: nil,
                     currency: nil,
                     success: false,
                     itemName: nil,
                     itemType: nil,
                     itemId: nil,
-                    customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "Error": errorMessage, "App Version": AppVersion])
+                    customAttributes: ["Installation ID":PFInstallation.current().installationId, "Error": errorMessage, "App Version": AppVersion])
                 
                 print(errorMessage)
                 
@@ -362,7 +363,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                     if product.productIdentifier == productID {
                         
                         self.p = product
-                        self.displayCustomAlert(self.p.localizedTitle, lineTwo: self.p.localizedPrice(), lineThree: "\(self.p.localizedDescription)", image: nil, popupStyle: CNPPopupStyle.Centered)
+                        self.displayCustomAlert(self.p.localizedTitle, lineTwo: self.p.localizedPrice(), lineThree: "\(self.p.localizedDescription)", image: nil, popupStyle: CNPPopupStyle.centered)
                         break
                     }
                 }
@@ -467,20 +468,20 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             contents.append(imageView)
         }
         
-        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.System)
-        purchaseButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        purchaseButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Highlighted)
-        purchaseButton.titleLabel?.font =  UIFont.boldSystemFontOfSize(20)
-        purchaseButton.setTitle("Purchase", forState: UIControlState.Normal)
-        purchaseButton.backgroundColor = UIColor.greenColor()
+        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.system)
+        purchaseButton.setTitleColor(UIColor.white(), for: UIControlState.application)
+        purchaseButton.setTitleColor(UIColor.lightGray(), for: UIControlState.highlighted)
+        purchaseButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
+        purchaseButton.setTitle("Purchase", for: UIControlState.application)
+        purchaseButton.backgroundColor = UIColor.green()
         purchaseButton.layer.cornerRadius = 4
-        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), forControlEvents: UIControlEvents.TouchUpInside)
+        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControlEvents.touchUpInside)
         contents.append(purchaseButton)
         
         inAppPurchasePopupController = CNPPopupController(contents: contents)
         inAppPurchasePopupController.theme.popupStyle = popupStyle
         inAppPurchasePopupController.theme.contentVerticalPadding = 5
-        inAppPurchasePopupController.presentPopupControllerAnimated(true)
+        inAppPurchasePopupController.present(animated: true)
         
     }
     
@@ -527,23 +528,23 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         let payloadData = payload.data(using: String.Encoding.utf8.rawValue)
         //print("\(payloadData)")
         
-        let request = NSMutableURLRequest(url: URL(string: serverURL)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10)
+        var request = URLRequest(url: URL(string: serverURL)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10)
         
         let session = URLSession.shared()
         request.httpMethod = "POST"
         request.httpBody = payloadData
         
-        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+        let task = session.dataTask(with: request) { (data, response, error) in
             
             guard error == nil else {
                 
                 print(error!.localizedDescription)
-                let jsonString = NSString(data: data!, encoding: String.Encoding.utf8)
+                let jsonString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                 print(")Error could not parse JSON: \(jsonString)")
                 
                 return completionHandler(receiptTransactionsArray: nil, environment: nil)
             }
-
+            
             let json = JSON(data: data!)
             let receiptStatus = json["status"]
             let receiptEnvironment = json["environment"]
@@ -558,7 +559,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 
                 return completionHandler(receiptTransactionsArray: nil, environment: receiptEnvironment.string)
             }
-                
+            
             print("Sucessfully returned purchased receipt data")
             
             let receiptContent = json["receipt"]

@@ -22,7 +22,7 @@ extension Array {
         }
     }
     
-    func reduceWithIndex<T>(_ initial: T, @noescape combine: (T, Int, Array.Iterator.Element) throws -> T) rethrows -> T {
+    func reduceWithIndex<T>(_ initial: T, combine: @noescape(T, Int, Array.Iterator.Element) throws -> T) rethrows -> T {
         var result = initial
         for (index, element) in self.enumerated() {
             result = try combine(result, index, element)

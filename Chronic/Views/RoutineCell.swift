@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Charts
+//import Charts
 
-class RoutineCell: UITableViewCell, ChartViewDelegate {
+class RoutineCell: UITableViewCell {
     
     var barPoints: [String]!
     var barValues: [Double]!
@@ -29,7 +29,7 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
     
     @IBOutlet private weak var routineName: UILabel!
     @IBOutlet private weak var routineTotalTime: UILabel!
-    @IBOutlet private weak var routineChartView: PieChartView!
+    //@IBOutlet private weak var routineChartView: PieChartView!
     
     func configure(with routine: RoutineModel) {
         
@@ -51,33 +51,33 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
             barColors.append((NSKeyedUnarchiver.unarchiveObject(with: currentTimerDict["Color"] as! Data) as! UIColor).flatten())
         }
         
-        self.setPieChart(self.barPoints, values: barValues)
+        //self.setPieChart(self.barPoints, values: barValues)
     }
     
     
     // MARK: Routine Chart Stuff
     
-    func setPieChart(_ dataPoints: [String], values: [Double]) {
-        
-        var dataEntries: [ChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
-            dataEntries.append(dataEntry)
-        }
-        
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Routine Data")
-        pieChartDataSet.colors = barColors
-        pieChartDataSet.drawValuesEnabled = false
-        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
-        
-        routineChartView.data = pieChartData
-        routineChartView.isUserInteractionEnabled = false
-        routineChartView.drawSliceTextEnabled = false
-        routineChartView.legend.enabled = false
-        routineChartView.holeColor = nil
-        routineChartView.descriptionText = ""
-    }
+//    func setPieChart(_ dataPoints: [String], values: [Double]) {
+//        
+//        var dataEntries: [ChartDataEntry] = []
+//        
+//        for i in 0..<dataPoints.count {
+//            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+//            dataEntries.append(dataEntry)
+//        }
+//        
+//        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Routine Data")
+//        pieChartDataSet.colors = barColors
+//        pieChartDataSet.drawValuesEnabled = false
+//        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+//        
+//        routineChartView.data = pieChartData
+//        routineChartView.isUserInteractionEnabled = false
+//        routineChartView.drawSliceTextEnabled = false
+//        routineChartView.legend.enabled = false
+//        routineChartView.holeColor = nil
+//        routineChartView.descriptionText = ""
+//    }
     
 //    func setBarChart(dataPoints: [String], values: [Double]) {
 //        

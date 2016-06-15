@@ -116,7 +116,7 @@ let runCompleteImage: UIImage = UIImage(named: "runner")!
 
 let emptyTableGuyImage: UIImage = UIImage(named: "emptyTableGuy")!
 
-var soundlocation = URL()
+var soundlocation: URL!
 var player = AVAudioPlayer()
 var soundError: NSError? = nil
 let synthesizer = AVSpeechSynthesizer()
