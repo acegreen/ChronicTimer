@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ONBOARDING_SHOWN</key>
+	<false/>
+	<key>HEALTHACCESS_PROMPTED</key>
+	<false/>
+	<key>FEEDBACK_GIVEN</key>
+	<false/>
+	<key>WELCOME_ALERT_PRESENTED</key>
+	<false/>
+	<key>SETTINGS_HINT</key>
+	<false/>
+	<key>ENABLE_DEVICE_SLEEP</key>
+	<false/>
+	<key>RUN_IN_BACKGROUND</key>
+	<true/>
+	<key>REWARDS_HINT_SHOWN</key>
+	<false/>
+	<key>FEEDBACK_HINT_SHOWN</key>
+	<false/>
+	<key>TIMER_SOUND</key>
+	<string>Text-To-Speech</string>
+	<key>TIMER_VOLUME</key>
+	<real>0.75</real>
+	<key>NOTIFICATION_REMINDER_ENABLED</key>
+	<false/>
+	<key>NOTIFICATION_REMINDER_INTERVAL</key>
+	<string>Day</string>
+	<key>NOTIFICATION_REMINDER_TIME</key>
+	<integer>18</integer>
+</dict>
+</plist>
