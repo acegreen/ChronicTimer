@@ -102,6 +102,7 @@
 		2396A6AB1B8232C200E6A55F /* Toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2396A6AA1B8232C200E6A55F /* Toggle.wav */; };
 		23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23979D921B63C81E005BC945 /* CustomRoutineTableViewController.swift */; };
 		23979D961B63FB60005BC945 /* RoutineTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23979D951B63FB60005BC945 /* RoutineTypeViewController.swift */; };
+		239D97071D12E3F10070D423 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239D97061D12E3F10070D423 /* UserNotifications.framework */; };
 		23A0E7E71B5AEDA700F53E50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A0E7E61B5AEDA700F53E50 /* Assets.xcassets */; };
 		23A0E7EE1B5AEDA700F53E50 /* Chronic WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 23A0E7ED1B5AEDA700F53E50 /* Chronic WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		23A0E7FF1B5AEDA700F53E50 /* Chronic WatchKit.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 23A0E7E11B5AEDA700F53E50 /* Chronic WatchKit.app */; };
@@ -324,6 +325,7 @@
 		23979D921B63C81E005BC945 /* CustomRoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRoutineTableViewController.swift; sourceTree = "<group>"; };
 		23979D951B63FB60005BC945 /* RoutineTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineTypeViewController.swift; sourceTree = "<group>"; };
 		2397F2F11B66B158008F7BFF /* ExerciseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		239D97061D12E3F10070D423 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		23A0E7E11B5AEDA700F53E50 /* Chronic WatchKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chronic WatchKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23A0E7E61B5AEDA700F53E50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23A0E7E81B5AEDA700F53E50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239D97071D12E3F10070D423 /* UserNotifications.framework in Frameworks */,
 				233082721CEFAE0300613197 /* MoPub.framework in Frameworks */,
 				238C1ABD1C8B6F3F009F9CC1 /* Crashlytics.framework in Frameworks */,
 				238C1ABE1C8B6F3F009F9CC1 /* Fabric.framework in Frameworks */,
@@ -427,6 +430,7 @@
 		0EFAF1910CC8A0EA09285B01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				239D97061D12E3F10070D423 /* UserNotifications.framework */,
 				2384D7E11D107BAC00ADB984 /* UserNotifications.framework */,
 				4934001276192676997B0F48 /* Pods_Chronic.framework */,
 			);

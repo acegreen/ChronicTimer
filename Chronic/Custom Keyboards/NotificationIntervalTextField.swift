@@ -122,7 +122,6 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
     
     func updateNotificationSetting(_ key: String, value: String) {
         userDefaults.setValue(value, forKey: key)
-        userDefaults.synchronize()
         NotificationHelper.updateNotificationPreferences(notificationReminderState)
     }
 }

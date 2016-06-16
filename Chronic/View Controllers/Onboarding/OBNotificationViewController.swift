@@ -18,7 +18,6 @@ class OBNotificationViewController: OnboardingViewController {
 
     @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
         userDefaults.set(sender.isOn, forKey: "NOTIFICATION_REMINDER_ENABLED")
-        userDefaults.synchronize()
         
         notificationReminderState = userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
         NotificationHelper.updateNotificationPreferences(notificationReminderState)
@@ -32,10 +31,10 @@ class OBNotificationViewController: OnboardingViewController {
     
     func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
-            NotificationHelper.unscheduleNotifications(NotificationCategory.ReminderCategory.key())
+            NotificationHelper.unscheduleNotifications(notificationIdentifier: NotificationIdentifier.ReminderIdentifier.key())
             NotificationHelper.registerForNotifications()
         } else {
-            NotificationHelper.unscheduleNotifications(NotificationCategory.ReminderCategory.key())
+            NotificationHelper.unscheduleNotifications(notificationIdentifier: NotificationIdentifier.ReminderIdentifier.key())
         }
     }
 }

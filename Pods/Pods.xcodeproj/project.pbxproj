@@ -4648,6 +4648,80 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					0EB19C1377A747F81110D44E2D5FCF78 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					124BA04F2E4A4F5C8CDAA39DB6C7F903 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					16FB872D0D2D4BA0F378AB34D47CF95F = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					215D1BE0D128E87B5984605EA33C1CCE = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					2C8AA1BAF35413BDB954A1DF93576ED1 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					5172ACAB7FEA22813859DC97CA0AA16F = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					52D82BFDD1E808D9CB257431922C1EE4 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					586E40C0BEBAB01A075A5E60359FA09D = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					66B430207B132208DA143D41AB4BF82C = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					6EDC37F3FA92533C6AC3562458AA91F1 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					7372CA79CE92E7AC032175441663EBE4 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					8004BD72C14F3C786A3B1990FE84C94C = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					8978C7FB7007A28B676AB1EA004C3923 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					B38D91F4742E000E93E45EC332B4DB47 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					D2D17D2E6A8AD8B5A2D1F30A3032805E = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					DBAD7D21B4439E2E7A0DBB18CF247B20 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					E1F78B1C5F8F2CCD0E68552EAF2B9B52 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+					FFA556A9B0BDAAAF8B02A7CD0C4D58F0 = {
+						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";

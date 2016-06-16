@@ -314,25 +314,32 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         // Set Alert if in background
         if WKExtension.shared().applicationState == WKApplicationState.background {
             
-            var notificaitonBody: String!
+            var alertTitle: String!
+            var alertBody: String!
             
             switch workoutType {
             case .quickTimer:
-                notificaitonBody = NSLocalizedString("Timer Ended Text", comment: "")
-            case .routine:
-                notificaitonBody = NSLocalizedString("Congratulation Text (Routine)", comment: "")
-            case .run:
-                notificaitonBody = NSLocalizedString("Congratulation Text (Run)", comment: "")
+                alertTitle = NSLocalizedString("Notification Timer Text", comment: "")
+                alertBody = NSLocalizedString("Notification Timer subText", comment: "")
+            case .routine, .run:
+                alertTitle = NSLocalizedString("Notification Workout Text", comment: "")
+                alertBody = NSLocalizedString("Notifcation Workout subText", comment: "")
             }
             
             // Schedule workoutCompleteLocalNotification
             let notificationContent = UNMutableNotificationContent()
-            notificationContent.body = notificaitonBody
+            notificationContent.title = alertTitle
+            notificationContent.body = alertBody
             let notificaitonSound = UNNotificationSound.default()
             notificationContent.sound = notificaitonSound
-            notificationContent.title = "Chronic"
             
             let request = UNNotificationRequest(identifier: NotificationCategory.WorkoutCategory.key(), content: notificationContent, trigger: nil)
+            
+            // Schedule the notification.
+            let center = UNUserNotificationCenter.current()
+            center.add(request) { (error) in
+                print(error)
+            }
         }
         
         // Stop time, save workout & reset environment

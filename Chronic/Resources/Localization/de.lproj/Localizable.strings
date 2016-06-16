@@ -7,7 +7,6 @@
  */
 
 /* Globals */
-"Reminder Notification Text" = "Zeit für eine tolle Training!";
 "Yes" = "Ja";
 "No" = "Nein";
 "Ok" = "Ok";
@@ -36,9 +35,13 @@
 "Text-To-Speech Workout Complete Text" = "Workout beendet";
 "Text-To-Speech Run Complete Text" = "Lauf beendet";
 
-"Congratulation Text (Routine)" = "Glückwünsche! Sie haben Ihr Training beendet";
-"Congratulation Text (Run)" =  "Glückwünsche! Sie haben Ihre Lauf abgeschlossen";
-"Timer Ended Text" =  "Ihre Timer ist beendet";
+"Notification Workout Text" = "Workout Complete";
+"Notification Workout subText" = "Glückwünsche! Sie haben Ihr Training beendet";
+"Notification Timer Text" =  "Timer Finished";
+"Notification Timer subText" = "Ihre Timer ist beendet";
+"Notification Reminder Text" = "Workout Reminder";
+"Notification Reminder subText" = "Zeit für eine tolle Training!";
+//"Congratulation Text (Run)" =  "Glückwünsche! Sie haben Ihre Lauf abgeschlossen";
 
 "No Exercise" = "Keine Übung";
 
