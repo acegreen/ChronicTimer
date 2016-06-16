@@ -81,6 +81,8 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 // Start workout session
                 startWorkSession()
                 
+            } else {
+                resumeWorkSession()
             }
             
             startTimer()
@@ -93,6 +95,8 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         countDownTimer.invalidate()
         
         workoutState = WorkoutEventType.pause
+        
+        pauseWorkSession()
     }
     
     @IBAction func StopButtonPressed() {
@@ -103,10 +107,10 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             routineEndDate = Date()
             print("end time \(routineEndDate)")
             
-            // End workout session if running
-            endWorkoutSession()
-            
         }
+        
+        // End workout session if running
+        endWorkoutSession()
         
         if workoutState == .run || workoutState == .pause || workoutState == .complete {
             checkSaveWorkout()
@@ -147,16 +151,16 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     }
     
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        print("willActivate")
     }
     
-    deinit {
-    
-        print("deinit")
+    override func didDeactivate() {
+        super.didDeactivate()
+        print("didDeactivate")
         
-        // End workout session if running
-        endWorkoutSession()
+        // Stop time, save workout & reset environment
+        StopButtonPressed()
     }
     
     //Function to start exercise timer
@@ -444,6 +448,26 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         } catch {
             print(error)
         }
+    }
+    
+    func pauseWorkSession() {
+        
+        guard workoutSession == nil else { return }
+        guard workoutSession.state == .running else { return }
+        
+        HealthKitHelper.sharedInstance.healthKitStore.pause(workoutSession)
+        
+        print("Workout session paused")
+    }
+    
+    func resumeWorkSession() {
+        
+        guard workoutSession == nil else { return }
+        guard workoutSession.state == .paused else { return }
+        
+        HealthKitHelper.sharedInstance.healthKitStore.resumeWorkoutSession(workoutSession)
+        
+        print("Workout session resumed")
     }
     
     func endWorkoutSession() {
