@@ -20,6 +20,7 @@ import Parse
 import ParseFacebookUtilsV4
 import CNPPopupController
 import LaunchKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateDelegate {
@@ -235,9 +236,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         
         guard userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") == true else { return }
-        if NotificationHelper.checkScheduledNotificationsForNotificationWith(NotificationCategory.ReminderCategory.key()) == nil {
-            NotificationHelper.scheduleNotification(NotificationHelper.reminderDate, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: appTitle, alertBody:  NSLocalizedString("Reminder Notification Text",comment: ""), sound: "Boxing.wav", category: NotificationCategory.ReminderCategory.key())
-        }
+        NotificationHelper.scheduleNotification(NotificationHelper.reminderDateComponents, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: "Notification Reminder Text", alertBody:  NSLocalizedString("Notification Reminder subText",comment: ""), sound: "Boxing.wav", identifier: NotificationIdentifier.ReminderIdentifier.key())
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -266,31 +265,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         if application.applicationState == UIApplicationState.inactive {
             PFAnalytics.trackAppOpened(withRemoteNotificationPayload: userInfo)
         }
-    }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        
-        //        let vc = storyboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
-        //
-        //        guard vc.workoutState == .Run || vc.workoutState == .Pause else { return }
-        //
-        //        if let settings = UIApplication.sharedApplication().currentUserNotificationSettings() {
-        //
-        //            if settings.types.contains([.None]) {
-        //
-        //                let notificationSweetAlert = SweetAlert()
-        //
-        //                notificationSweetAlert.showAlert(NSLocalizedString("Alert: Workout Running Question Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Workout Running Question Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle:NSLocalizedString("Settings", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
-        //
-        //                    notificationSweetAlert.closeAlertDismissButton()
-        //
-        //                    if !isOtherButton {
-        //
-        //                        UIApplication.sharedApplication().openURL(settingsURL!)
-        //                    }
-        //                }
-        //            }
-        //        }
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -337,7 +311,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         NotificationHelper.resetAppBadgePush()
         
         // Clear workoutCompleteLocalNotification
-        NotificationHelper.unscheduleNotifications(NotificationCategory.WorkoutCategory.key())
+        NotificationHelper.unscheduleNotifications(notificationIdentifier: NotificationIdentifier.WorkoutIdentifier.key())
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -387,7 +361,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         SARate.sharedInstance().eventCount = 0
         userDefaults.set(false, forKey: "FEEDBACK_GIVEN")
-        userDefaults.synchronize()
     }
     
     // MARK: - Shortcut Handling

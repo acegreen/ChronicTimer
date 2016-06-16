@@ -472,7 +472,6 @@ func checkDevice() {
 func markFeedbackGiven() {
     
     userDefaults.set(true, forKey: "FEEDBACK_GIVEN")
-    userDefaults.synchronize()
     
     NotificationCenter.default().post(name: Notification.Name(rawValue: "HideStarButton"), object: nil)
 
@@ -496,7 +495,6 @@ class TextField: UITextField {
 func showPopTipOnceForKey(_ key: String, userDefaults: UserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: AMPopTipDirection = .down, color: UIColor = .darkGray()) -> AMPopTip? {
     if (!userDefaults.bool(forKey: key)) {
         userDefaults.set(true, forKey: key)
-        userDefaults.synchronize()
         AMPopTip.appearance().popoverColor = color
         AMPopTip.appearance().offset = 10
         AMPopTip.appearance().edgeMargin = 5

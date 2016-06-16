@@ -133,14 +133,14 @@ public enum distanceType {
     case kilometers
 }
 
-public enum NotificationCategory: String {
-    case ReminderCategory, WorkoutCategory
+public enum NotificationIdentifier: String {
+    case ReminderIdentifier, WorkoutIdentifier
     
     public func key() -> String {
         switch self {
-        case .ReminderCategory:
+        case .ReminderIdentifier:
             return "REMINDER_CATEGORY"
-        case .WorkoutCategory:
+        case .WorkoutIdentifier:
             return "WORKOUT_CATEGORY"
         }
     }

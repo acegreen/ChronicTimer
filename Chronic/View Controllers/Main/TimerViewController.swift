@@ -246,24 +246,20 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         if UIApplication.shared().applicationState == UIApplicationState.background {
             
-            if workoutType != .quickTimer {
-                
-                if workoutType == .routine {
-                    
-                    message = NSLocalizedString("Congratulation Text (Routine)", comment: "")
-                    
-                } else if workoutType == .run {
-                    
-                    message = NSLocalizedString("Congratulation Text (Run)", comment: "")
-                }
-                
-            } else {
-                
-                message = NSLocalizedString("Timer Ended Text", comment: "")
+            var alertTitle: String!
+            var alertBody: String!
+            
+            switch workoutType {
+            case .quickTimer:
+                alertTitle = NSLocalizedString("Notification Timer Text", comment: "")
+                alertBody = NSLocalizedString("Notification Timer subText", comment: "")
+            case .routine, .run:
+                alertTitle = NSLocalizedString("Notification Workout Text", comment: "")
+                alertBody = NSLocalizedString("Notifcation Workout subText", comment: "")
             }
             
             // Schedule workoutCompleteLocalNotification
-            NotificationHelper.scheduleNotification(nil, repeatInterval: nil, alertTitle: appTitle, alertBody: message, sound: "Boxing.wav", category: NotificationCategory.WorkoutCategory.key())
+            NotificationHelper.scheduleNotification(nil, repeatInterval: nil, alertTitle: alertTitle, alertBody: alertBody, sound: "Boxing.wav", identifier: NotificationIdentifier.WorkoutIdentifier.key())
         }
         
         // Save workout

@@ -36,8 +36,7 @@ class SettingsTableViewController: UITableViewController {
         timerVolume = timerVolumeSlider.value
         
         userDefaults.set(timerVolumeSlider.value, forKey: "TIMER_VOLUME")
-        
-        userDefaults.synchronize()
+
     }
     
     @IBAction func enableDeviceSleepSwitchChanged(_ sender: UISwitch) {
@@ -50,9 +49,7 @@ class SettingsTableViewController: UITableViewController {
                 
             userDefaults.set(true, forKey: "ENABLE_DEVICE_SLEEP")
         }
-        
-        userDefaults.synchronize()
-        
+                
         enableDeviceSleepState = userDefaults.bool(forKey: "ENABLE_DEVICE_SLEEP") as Bool
         
         UIApplication.shared().isIdleTimerDisabled = !enableDeviceSleepState
@@ -70,14 +67,12 @@ class SettingsTableViewController: UITableViewController {
             userDefaults.set(true, forKey: "RUN_IN_BACKGROUND")
         }
         
-        userDefaults.synchronize()
         runInBackgroundState = userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
         
     }
     
     @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
         userDefaults.set(sender.isOn, forKey: "NOTIFICATION_REMINDER_ENABLED")
-        userDefaults.synchronize()
         self.tableView.reloadData()
         
         notificationReminderState = userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
@@ -145,7 +140,7 @@ class SettingsTableViewController: UITableViewController {
         } else if (section == 1) {
             return 4
         } else if (section == 2) {
-            if userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") {
+            if notificationReminderState == true {
                 return 3
             } else {
                 return 1

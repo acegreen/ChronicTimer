@@ -7,7 +7,6 @@
  */
 
 /* Globals */
-"Reminder Notification Text" = "开始体能训练!";
 "Yes" = "是";
 "No" = "否";
 "Ok" = "好的";
@@ -36,9 +35,13 @@
 "Text-To-Speech Workout Complete Text" = "训练完成";
 "Text-To-Speech Run Complete Text" = "跑步结束";
 
-"Congratulation Text (Routine)" = "恭喜！您已经完成了您的体能训练";
-"Congratulation Text (Run)" =  "恭喜！您已经完成了你的活动";
-"Timer Ended Text" =  "您的定时计数已到";
+"Notification Workout Text" = "Workout Complete";
+"Notification Workout subText" = "恭喜！您已经完成了您的体能训练";
+"Notification Timer Text" =  "Timer Finished";
+"Notification Timer subText" =  "您的定时计数已到";
+"Notification Reminder Text" = "Workout Reminder";
+"Notification Reminder subText" = "开始体能训练!";
+//"Congratulation Text (Run)" =  "恭喜！您已经完成了你的活动";
 
 "No Exercise" = "没有训练项目";
 
