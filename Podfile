@@ -19,7 +19,7 @@ target "Chronic" do
     pod 'BubbleTransition'
     pod 'Rollout.io'
     pod 'ChameleonFramework/Swift'
-    #pod 'Charts'
+    pod 'Charts', :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Swift-3.0'
     pod 'PureLayout'
     pod 'Google-Mobile-Ads-SDK'
 end

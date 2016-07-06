@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         var type: String {
             
-            return Bundle.main().bundleIdentifier! + ".\(self.rawValue)"
+            return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
         }
         
     }
@@ -75,9 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // setup user defaults
         setupUserDefaults()
-        
-        // Get Routines from database
-        Routines = DataAccess.sharedInstance.GetRoutines(predicate: nil)
         
         // Set idelTimerDisabled accordingly
         UIApplication.shared().isIdleTimerDisabled = !enableDeviceSleepState
@@ -196,29 +193,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
                 
                 let uniqueIdentifierPredicate: Predicate = Predicate(format: "name = %@", uniqueIdentifier)
                 
-                let routineSelectedInSpotlight = DataAccess.sharedInstance.GetRoutines(predicate: uniqueIdentifierPredicate)!.first
-                
-                let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-                timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
-                
-                let rootViewController = appDel.window?.rootViewController
-                if rootViewController?.presentedViewController != nil {
-                    rootViewController?.dismiss(animated: true, completion: nil)
+                do {
+                    
+                    guard let routineSelectedInSpotlight = try DataAccess.sharedInstance.GetRoutines(uniqueIdentifierPredicate).first else { return false }
+                    
+                    let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+                    timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
+                    
+                    let rootViewController = appDel.window?.rootViewController
+                    if rootViewController?.presentedViewController != nil {
+                        rootViewController?.dismiss(animated: true, completion: nil)
+                    }
+                    
+                    rootViewController?.present(timerViewController, animated: true, completion: nil)
+                    
+                    // Mark correct routine as selected
+                    
+                    let routineMarkedSelected = getSelectedRoutine()
+                    
+                    if routineMarkedSelected != nil && routineMarkedSelected?.name != uniqueIdentifier {
+                        
+                        routineMarkedSelected!.selectedRoutine = false
+                        
+                    }
+                    
+                    routineSelectedInSpotlight.selectedRoutine = true
+                    
+                } catch {
+                    // TO-DO: HANDLE ERROR
                 }
-                
-                rootViewController?.present(timerViewController, animated: true, completion: nil)
-                
-                // Mark correct routine as selected
-                
-                let routineMarkedSelected = getSelectedRoutine()
-                
-                if routineMarkedSelected != nil && routineMarkedSelected?.name != uniqueIdentifier {
-                    
-                    routineMarkedSelected!.selectedRoutine = false
-                    
-                }
-                    
-                routineSelectedInSpotlight?.selectedRoutine = true
             }
         }
         
@@ -311,7 +314,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         NotificationHelper.resetAppBadgePush()
         
         // Clear workoutCompleteLocalNotification
-        NotificationHelper.unscheduleNotifications(notificationIdentifier: NotificationIdentifier.WorkoutIdentifier.key())
+        NotificationHelper.unscheduleNotifications(NotificationIdentifier.WorkoutIdentifier.key())
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -396,7 +399,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             
         case ShortcutIdentifier.Dynamic.type:
             
-            guard let selectedRoutine = getRoutine(withName: shortcutItem.localizedTitle) else { return false }
+            guard let selectedRoutine = getRoutine(shortcutItem.localizedTitle) else { return false }
                 
             timerViewController.initializeRoutine(with: selectedRoutine)
             rootViewController?.present(timerViewController, animated: true, completion: nil)

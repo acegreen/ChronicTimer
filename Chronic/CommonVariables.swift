@@ -18,8 +18,8 @@ import AVFoundation
 import WatchConnectivity
 
 let current = UIDevice.current()
-let bundleIdentifier = Bundle.main().bundleIdentifier
-let infoDict = Bundle.main().infoDictionary
+let bundleIdentifier = Bundle.main.bundleIdentifier
+let infoDict = Bundle.main.infoDictionary
 let AppVersion = infoDict!["CFBundleShortVersionString"]!
 let BundleVersion = infoDict!["CFBundleVersion"]!
 
@@ -45,10 +45,10 @@ let appEmail: String = "ChronicTimer@gmail.com"
 
 let application = UIApplication.shared()
 let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
-let receiptURL = Bundle.main().appStoreReceiptURL
+let receiptURL = Bundle.main.appStoreReceiptURL
 
-let countryCode = Locale.current().object(forKey: Locale.Key.countryCode) as! String
-let currentCalendar = Calendar.current()
+let countryCode = Locale.current.object(forKey: Locale.Key.countryCode) as! String
+let currentCalendar = Calendar.current
 
 let emailDiagnosticInfo = Array(payload.keys).reduce("", combine: { (input, key) -> String in
     return "\(input)\r\n\(key): \(payload[key]!)</br>"
@@ -57,10 +57,8 @@ let emailDiagnosticInfo = Array(payload.keys).reduce("", combine: { (input, key)
 let chronicColor: UIColor = UIColor(red: 92/255, green: 92/255, blue: 102/255, alpha: 1.0)
 let chronicGreen: UIColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0)
 
-let defaultPrefsFile: URL = Bundle.main().urlForResource("DefaultPreferences", withExtension: "plist")!
+let defaultPrefsFile: URL = Bundle.main.urlForResource("DefaultPreferences", withExtension: "plist")!
 let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
-
-var Routines: [RoutineModel]!
 
 let context = DataAccess.sharedInstance.managedObjectContext
 let routineEntity = NSEntityDescription.entity(forEntityName: "Routines", in: context)
@@ -87,7 +85,7 @@ var donate99Key: String = "chronic.iap.donate0.99"
 
 var momentId:String = "Chronic_workout_complete"
 
-var userDefaults: UserDefaults = UserDefaults.standard()
+var userDefaults: UserDefaults = UserDefaults.standard
 
 var healtKitAuthorized: Bool = false
 

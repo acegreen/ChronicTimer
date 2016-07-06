@@ -150,17 +150,9 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         changeStage()
     }
     
-    override func willActivate() {
-        super.willActivate()
-        print("willActivate")
-    }
-    
-    override func didDeactivate() {
-        super.didDeactivate()
-        print("didDeactivate")
-        
-        // Stop time, save workout & reset environment
-        StopButtonPressed()
+    deinit {
+        // End workout session if running
+        endWorkoutSession()
     }
     
     //Function to start exercise timer

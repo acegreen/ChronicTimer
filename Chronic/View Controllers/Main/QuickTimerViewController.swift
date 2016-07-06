@@ -19,11 +19,8 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet var StartButton: UIButton!
     
     @IBAction func StartButtonPressed(_ sender: AnyObject) {
-        
-        if Routines != nil {
-            
-            deselectSelectedRoutine()
-        }
+    
+        deselectSelectedRoutine()
         
         let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
         timerViewController.initializeQuickTimer()

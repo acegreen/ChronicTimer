@@ -43,7 +43,7 @@ class SettingsTableViewController: UITableViewController {
         
         if !sender.isOn {
             
-        userDefaults.set(false, forKey: "ENABLE_DEVICE_SLEEP")
+            userDefaults.set(false, forKey: "ENABLE_DEVICE_SLEEP")
             
         } else if sender.isOn {
                 
@@ -164,7 +164,7 @@ class SettingsTableViewController: UITableViewController {
             
             if isConnectedToNetwork() {
                 
-                appDel.window?.rootViewController?.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
+                iRate.sharedInstance().openRatingsPageInAppStore()
                 
             } else {
                 

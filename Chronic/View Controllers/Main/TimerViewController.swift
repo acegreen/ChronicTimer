@@ -984,7 +984,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 
                 if !isOtherButton {
                     
-                    UIApplication.shared().openURL(settingsURL!)
+                    UIApplication.shared().open(settingsURL!, options: [:], completionHandler: { (success) in
+                        
+                    })
                 }
             }
             

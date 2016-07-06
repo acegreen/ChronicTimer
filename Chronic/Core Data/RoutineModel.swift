@@ -29,5 +29,5 @@ extension RoutineModel {
         return NSFetchRequest<RoutineModel>(entityName: "RoutineModel");
     }
     
-    @NSManaged var timeStamp: NSDate?
+    @NSManaged var timeStamp: Date?
 }

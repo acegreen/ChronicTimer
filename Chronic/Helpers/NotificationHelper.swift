@@ -39,7 +39,7 @@ public class NotificationHelper {
         
     }
 
-    class func unscheduleNotifications(notificationIdentifier :String?) {
+    class func unscheduleNotifications(_ notificationIdentifier :String?) {
         
         if notificationIdentifier == nil {
             
@@ -55,7 +55,7 @@ public class NotificationHelper {
         }
     }
     
-    class func checkScheduledNotificationsForNotificationWith(notificationIdentifier: String) -> Bool {
+    class func checkScheduledNotificationsForNotificationWith(_ notificationIdentifier: String) -> Bool {
         
         let deliveredNotification: [UNNotification] = {
             var deliveredNotification = [UNNotification]()
@@ -105,10 +105,10 @@ public class NotificationHelper {
 
     class func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
-            NotificationHelper.unscheduleNotifications(notificationIdentifier: NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.unscheduleNotifications(NotificationIdentifier.ReminderIdentifier.key())
             NotificationHelper.registerForNotifications()
         } else {
-            NotificationHelper.unscheduleNotifications(notificationIdentifier: NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.unscheduleNotifications(NotificationIdentifier.ReminderIdentifier.key())
         }
     }
     

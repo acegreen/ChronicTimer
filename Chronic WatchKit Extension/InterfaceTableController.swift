@@ -17,7 +17,7 @@ class InterfaceTableController: WKInterfaceController {
         
         super.init()
         
-        NotificationCenter.default().addObserver(self, selector: #selector(WKInterfaceController.willActivate),name:"willActivate", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(WKInterfaceController.willActivate),name:"willActivate" as NSNotification.Name, object: nil)
         
     }
     

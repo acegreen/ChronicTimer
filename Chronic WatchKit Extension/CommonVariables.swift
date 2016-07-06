@@ -12,11 +12,11 @@ import CoreData
 import HealthKit
 import WatchConnectivity
 
-var userDefaults: UserDefaults = UserDefaults.standard()
-let defaultPrefsFile: URL = Bundle.main().urlForResource("DefaultPreferences", withExtension: "plist")!
+var userDefaults: UserDefaults = UserDefaults.standard
+let defaultPrefsFile: URL = Bundle.main.urlForResource("DefaultPreferences", withExtension: "plist")!
 let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
 
-let bundleIdentifier = Bundle.main().bundleIdentifier
+let bundleIdentifier = Bundle.main.bundleIdentifier
 
 let keychain = Keychain(service: "AG.Chronic")
 

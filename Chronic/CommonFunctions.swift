@@ -180,33 +180,53 @@ func setSelectedRoutine(_ routine: RoutineModel, completion: (result: Bool) -> V
 
 func deselectSelectedRoutine() {
     
-    let selecredRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
+    let selectedRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
     
-    guard let routineMarkedSelected = DataAccess.sharedInstance.GetRoutines(predicate: selecredRoutinePredicate)!.first else { return }
-    
-    routineMarkedSelected.selectedRoutine = false
-    
-    saveContext( { (save) -> Void in
+    do {
         
-        if save == true {
+        let routineMarkedSelected = try DataAccess.sharedInstance.GetRoutines(selectedRoutinePredicate).first
+        
+        routineMarkedSelected?.selectedRoutine = false
+        
+        saveContext( { (save) -> Void in
             
-            UIApplication.shared().shortcutItems = nil
-        }
-    })
+            if save == true {
+                
+                UIApplication.shared().shortcutItems = nil
+            }
+        })
+        
+    } catch {
+        // TO-DO: HANDLE ERROR
+    }
 }
 
-func getRoutine(withName: String) -> RoutineModel? {
+func getRoutine(_ withName: String) -> RoutineModel? {
     
     let existingRoutinePredicate: Predicate = Predicate(format: "name == %@", withName)
-    
-    return DataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)?.first
+        
+    do {
+        
+        return try DataAccess.sharedInstance.GetRoutines(existingRoutinePredicate).first
+        
+    } catch {
+        // TO-DO: HANDLE ERROR
+        return nil
+    }
 }
 
 func getSelectedRoutine() -> RoutineModel? {
     
-    let selecredRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
+    let selectedRoutinePredicate: Predicate = Predicate(format: "selectedRoutine == true")
     
-    return DataAccess.sharedInstance.GetRoutines(predicate: selecredRoutinePredicate)?.first
+    do {
+        
+        return try DataAccess.sharedInstance.GetRoutines(selectedRoutinePredicate).first
+        
+    } catch {
+        // TO-DO: HANDLE ERROR
+        return nil
+    }
 }
 
 func saveContext(_ completion: (save: Bool) -> Void) {
@@ -229,7 +249,7 @@ func saveContext(_ completion: (save: Bool) -> Void) {
 @available(iOS 9.0, *)
 func updateDynamicAction(with routine: RoutineModel) {
         
-        let type = Bundle.main().bundleIdentifier! + ".Dynamic"
+        let type = Bundle.main.bundleIdentifier! + ".Dynamic"
         let shortcutIconType = UIApplicationShortcutIconType.play
         let icon = UIApplicationShortcutIcon(type: shortcutIconType)
         
@@ -242,7 +262,7 @@ func xDaysFromNow (_ numberOfDays: Int) -> Date {
     var dayComponent: DateComponents = DateComponents()
     dayComponent.day = numberOfDays
     
-    let calendar:Calendar = Calendar.current()
+    let calendar:Calendar = Calendar.current
     
     return calendar.date(byAdding: dayComponent, to: Date(), options: Calendar.Options(rawValue: 0))!
     
@@ -406,7 +426,7 @@ func displayAlert(_ title: String, message: String, Action1:UIAlertAction?, Acti
 func loadPlayer(_ sound: String, ext: String) {
     
     // Load Sound
-    soundlocation = Bundle.main().urlForResource(sound, withExtension: ext)!
+    soundlocation = Bundle.main.urlForResource(sound, withExtension: ext)!
     
     do {
         
@@ -458,7 +478,7 @@ func stopSoundsOrSpeech() {
 
 func checkDevice() {
     
-    if SDiOSVersion.deviceVersion() == .iPadPro {
+    if SDiOSVersion.deviceVersion() == .iPadPro12Dot9Inch || SDiOSVersion.deviceVersion() == .iPadPro9Dot7Inch {
 
         circleWidth = 880
         
@@ -473,7 +493,7 @@ func markFeedbackGiven() {
     
     userDefaults.set(true, forKey: "FEEDBACK_GIVEN")
     
-    NotificationCenter.default().post(name: Notification.Name(rawValue: "HideStarButton"), object: nil)
+    NotificationCenter.default.post(name: Notification.Name(rawValue: "HideStarButton"), object: nil)
 
 }
 
