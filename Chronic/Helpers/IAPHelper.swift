@@ -317,7 +317,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     func requestDidFinish(_ request: SKRequest) {
         
         print("request did finish")
-        let fileExists = FileManager.default().fileExists(atPath: receiptURL!.path!)
+        let fileExists = FileManager.default.fileExists(atPath: receiptURL!.path!)
         
         if fileExists {
             print("Appstore Receipt now exists")
@@ -489,7 +489,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     func obtainReceipt() {
         
-        let fileExists = FileManager.default().fileExists(atPath: receiptURL!.path!)
+        let fileExists = FileManager.default.fileExists(atPath: receiptURL!.path!)
         
         if fileExists {
             print("Appstore Receipt already exists")
@@ -521,7 +521,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             return
         }
         
-        let receiptData: NSString = receipt.base64EncodedString(NSData.Base64EncodingOptions(rawValue: 0))
+        let receiptData: NSString = receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         //print("\(receiptData)")
         
         let payload: NSString = "{\"receipt-data\" : \"\(receiptData)\"}"
@@ -530,7 +530,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         
         var request = URLRequest(url: URL(string: serverURL)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10)
         
-        let session = URLSession.shared()
+        let session = URLSession.shared
         request.httpMethod = "POST"
         request.httpBody = payloadData
         

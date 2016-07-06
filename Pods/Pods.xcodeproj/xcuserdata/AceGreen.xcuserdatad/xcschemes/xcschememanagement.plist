@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -117,12 +122,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>215D1BE0D128E87B5984605EA33C1CCE</key>
+		<key>2582BF0BC0E063FA9582F06F0EDFE4C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>2C8AA1BAF35413BDB954A1DF93576ED1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4048F6B1D29487C247120BD16CFDF00A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,7 +182,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B38D91F4742E000E93E45EC332B4DB47</key>
+		<key>B544A96D547DEECF27C7EF4C8FB41A88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6828C2508515BC0428D6BDAA1292DC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,17 +197,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DBAD7D21B4439E2E7A0DBB18CF247B20</key>
+		<key>E1BEFEEFA1B1AF0377E097568E2C7F89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E1F78B1C5F8F2CCD0E68552EAF2B9B52</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FFA556A9B0BDAAAF8B02A7CD0C4D58F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

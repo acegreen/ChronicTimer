@@ -337,7 +337,7 @@ public class Keychain {
     
     public convenience init() {
         var options = Options()
-        if let bundleIdentifier = Bundle.main().bundleIdentifier {
+        if let bundleIdentifier = Bundle.main.bundleIdentifier {
             options.service = bundleIdentifier
         }
         self.init(options)
@@ -351,7 +351,7 @@ public class Keychain {
     
     public convenience init(accessGroup: String) {
         var options = Options()
-        if let bundleIdentifier = Bundle.main().bundleIdentifier {
+        if let bundleIdentifier = Bundle.main.bundleIdentifier {
             options.service = bundleIdentifier
         }
         options.accessGroup = accessGroup
@@ -516,7 +516,7 @@ public class Keychain {
             } else {
                 status = SecItemUpdate(query, attributes)
                 if status != errSecSuccess {
-                    throw securityError(status: status)
+                    throw securityError(status)
                 }
             }
             #else
@@ -709,7 +709,7 @@ public class Keychain {
                 }
             }
         } else {
-            let error = securityError(status: Status.param.rawValue)
+            let error = securityError(Status.param.rawValue)
             completion(account: nil, password: nil, error: error)
         }
     }
@@ -731,7 +731,7 @@ public class Keychain {
                 }
             }
         } else {
-            let error = securityError(status: Status.param.rawValue)
+            let error = securityError(Status.param.rawValue)
             completion(password: nil, error: error)
         }
     }
@@ -756,7 +756,7 @@ public class Keychain {
                 }
             }
         } else {
-            let error = securityError(status: Status.param.rawValue)
+            let error = securityError(Status.param.rawValue)
             completion(error: error)
         }
     }
@@ -771,7 +771,7 @@ public class Keychain {
 
     #if os(iOS)
     @available(iOS 8.0, *)
-    public class func requestSharedWebCredential(_ completion: (credentials: [[String: String]], error: NSError?) -> () = { credentials, error -> () in }) {
+    public class func requestSharedWebCredential(completion: (credentials: [[String: String]], error: NSError?) -> () = { credentials, error -> () in }) {
         requestSharedWebCredential(domain: nil, account: nil, completion: completion)
     }
     #endif

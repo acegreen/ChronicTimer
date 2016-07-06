@@ -12,6 +12,8 @@ import LaunchKit
 
 class CustomRoutineTableViewController: UITableViewController, UITextFieldDelegate {
     
+    var delegate: RoutineDelegate?
+    
     var tableRowSelected: IndexPath!
     
     var routineToEdit: RoutineModel!
@@ -99,7 +101,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         
         deselectSelectedRoutine()
         
-        let existingRoutine = getRoutine(withName: nameCell.NameTextField.text!)
+        let existingRoutine = getRoutine(nameCell.NameTextField.text!)
         
         if routineToEdit != nil {
             
@@ -181,7 +183,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 newRoutine.selectedRoutine = true
                 newRoutine.date = Date()
                 
-                newRoutine.tableDisplayOrder = Routines.count + 1
+                //newRoutine.tableDisplayOrder = Routines.count + 1
                 
                 newRoutine.type = "Custom"
                 
@@ -218,8 +220,8 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             // save into CoreData
             try context.save()
             
-            // Get Routines from database
-            Routines = DataAccess.sharedInstance.GetRoutines(predicate: nil)
+            // send delegate out
+            self.delegate?.didCreateRoutine(newRoutine ?? routineToEdit)
             
             return true
             

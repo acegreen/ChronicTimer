@@ -74,7 +74,7 @@ func insertCoreDataObject(appContext: [String : AnyObject]) {
         // save into CoreData
         try context.save()
         
-        NotificationCenter.default().post(name: "willActivate" as NSNotification.Name, object: nil)
+        NotificationCenter.default.post(name: "willActivate" as NSNotification.Name, object: nil)
         
     } catch let error as NSError {
         
@@ -131,7 +131,7 @@ func modifyCoreDataObject(appContext: [String : AnyObject]) {
             // save into CoreData
             try context.save()
             
-            NotificationCenter.default().post(name: "willActivate" as NSNotification.Name, object: nil)
+            NotificationCenter.default.post(name: "willActivate" as NSNotification.Name, object: nil)
             
         } catch let error as NSError {
             
@@ -163,7 +163,7 @@ func deleteCoreDataObject(appContext: [String : AnyObject]) {
             // save into CoreData
             try context.save()
             
-            NotificationCenter.default().post(name: "willActivate" as NSNotification.Name, object: nil)
+            NotificationCenter.default.post(name: "willActivate" as NSNotification.Name, object: nil)
             
         } catch let error as NSError {
             

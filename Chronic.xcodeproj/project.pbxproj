@@ -37,6 +37,10 @@
 		232614931B30C38000180218 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614921B30C38000180218 /* CoreTelephony.framework */; };
 		232614951B30C38F00180218 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614941B30C38F00180218 /* SystemConfiguration.framework */; };
 		2328E4791AC03136009A8C46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2328E4771AC03136009A8C46 /* Main.storyboard */; };
+		232D21E31D2CA17300B2242B /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232D21E21D2CA17300B2242B /* WatchConnectivity.framework */; };
+		232D21E51D2CA17A00B2242B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232D21E41D2CA17A00B2242B /* MapKit.framework */; };
+		232D21E81D2CA18C00B2242B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232D21E71D2CA18C00B2242B /* HealthKit.framework */; };
+		232E26431D244D45004597EE /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E26421D244D45004597EE /* SweetAlert.swift */; };
 		232EDE3B1C1A1823007D0103 /* KaushanScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE391C1A1823007D0103 /* KaushanScript.ttf */; };
 		232EDE3C1C1A1823007D0103 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE3A1C1A1823007D0103 /* Lato-Light.ttf */; };
 		232F4C7C1AC02EA700D25995 /* CircuitRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F4C751AC02EA700D25995 /* CircuitRoutineTableViewController.swift */; };
@@ -58,9 +62,6 @@
 		236582C51C174FE000FE1378 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236582C41C174FE000FE1378 /* FeedbackViewController.swift */; };
 		2368C1731B0CC5C800F41346 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368C1721B0CC5C800F41346 /* AudioToolbox.framework */; };
 		23698CD51BCDF05400EBEC7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614961B30C39500180218 /* AdSupport.framework */; };
-		237525BD1BD6835400E667D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525BC1BD6835400E667D2 /* MapKit.framework */; };
-		237525BF1BD6835900E667D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525BE1BD6835900E667D2 /* HealthKit.framework */; };
-		237525C11BD6836100E667D2 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525C01BD6836100E667D2 /* WatchConnectivity.framework */; };
 		237525C51BD6838200E667D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525C41BD6838100E667D2 /* HealthKit.framework */; };
 		237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237605271AEFE779003E2C07 /* SettingsTableViewController.swift */; };
 		2376052A1AF27A5D003E2C07 /* Buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 237605291AF27A5D003E2C07 /* Buzzer.wav */; };
@@ -84,10 +85,7 @@
 		238890FD1B81143700750D90 /* Gong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 238890FC1B81143700750D90 /* Gong.wav */; };
 		2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2388D3271B0672770091C9E5 /* QuickTimerViewController.swift */; };
 		238C1A9F1C8B651E009F9CC1 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1A9E1C8B651E009F9CC1 /* DataAccess.swift */; };
-		238C1ABD1C8B6F3F009F9CC1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238C1ABA1C8B6F3F009F9CC1 /* Crashlytics.framework */; };
-		238C1ABE1C8B6F3F009F9CC1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238C1ABB1C8B6F3F009F9CC1 /* Fabric.framework */; };
 		238C1AC91C8B6FAD009F9CC1 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AC11C8B6FAD009F9CC1 /* Keychain.swift */; };
-		238C1ACA1C8B6FAD009F9CC1 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AC31C8B6FAD009F9CC1 /* SweetAlert.swift */; };
 		238C1ACC1C8B6FAD009F9CC1 /* TutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AC81C8B6FAD009F9CC1 /* TutorialView.m */; };
 		238C1ACF1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238C1ACE1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift */; };
 		238C1AD21C8B706D009F9CC1 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 238C1AD11C8B706D009F9CC1 /* Arrow.m */; };
@@ -116,10 +114,12 @@
 		23AB7A4D1AFCFD2C00F74EE1 /* Tick-Deep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23AB7A4C1AFCFD2C00F74EE1 /* Tick-Deep.mp3 */; };
 		23AF7DE81AC02E2900AA3FC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */; };
 		23AF7DF71AC02E2900AA3FC7 /* ChronicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF7DF61AC02E2900AA3FC7 /* ChronicTests.swift */; };
+		23B099C21D2C988600BB125A /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2305F2A01BBDB4C30049447E /* PassKit.framework */; };
+		23B099C31D2C994700BB125A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238C1ABB1C8B6F3F009F9CC1 /* Fabric.framework */; };
+		23B099C41D2C995100BB125A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238C1ABA1C8B6F3F009F9CC1 /* Crashlytics.framework */; };
 		23BAAE981AC14BFC00723FAB /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BAAE971AC14BFC00723FAB /* CommonFunctions.swift */; };
 		23C2F2111B6EE2C200056DBB /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2101B6EE2C200056DBB /* CoreSpotlight.framework */; };
 		23C2F2131B6EE2D000056DBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */; };
-		23CE71691C11DCF700E87420 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525C21BD6836800E667D2 /* CoreLocation.framework */; };
 		23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */; };
 		23CFD9181BC5D95000CF4BAC /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CFD9171BC5D95000CF4BAC /* CommonExtensions.swift */; };
 		23CFD91A1BC5F25F00CF4BAC /* CustomRoutineExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CFD9191BC5F25F00CF4BAC /* CustomRoutineExerciseDetailTableViewController.swift */; };
@@ -133,8 +133,7 @@
 		23F85F3C1B64521A002221AF /* ExerciseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */; };
 		23FDF3FC1BC6131400ABD267 /* Chronic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23FDF3F91BC6131400ABD267 /* Chronic.xcdatamodeld */; };
 		23FDF3FE1BC69CD300ABD267 /* CommonVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FDF3FD1BC69CD300ABD267 /* CommonVariables.swift */; };
-		A435A640484830461DBCE4EF /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1C575335584DEB8F7E6C88 /* Pods_Chronic.framework */; };
-		C71407B4F70355AE2BD055C4 /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4934001276192676997B0F48 /* Pods_Chronic.framework */; };
+		92B8BD4A37F3E27713BDEB65 /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341947639641CB1E7950F23C /* Pods_Chronic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,7 +196,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D1C575335584DEB8F7E6C88 /* Pods_Chronic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2301715F1C3979EB00B1EBC9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		230171611C397C9D00B1EBC9 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		230171631C399B1900B1EBC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -235,6 +233,10 @@
 		232614941B30C38F00180218 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		232614961B30C39500180218 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2328E4781AC03136009A8C46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		232D21E21D2CA17300B2242B /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.0.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
+		232D21E41D2CA17A00B2242B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		232D21E71D2CA18C00B2242B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		232E26421D244D45004597EE /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		232EDE391C1A1823007D0103 /* KaushanScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KaushanScript.ttf; sourceTree = "<group>"; };
 		232EDE3A1C1A1823007D0103 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		232F4C751AC02EA700D25995 /* CircuitRoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitRoutineTableViewController.swift; sourceTree = "<group>"; };
@@ -270,10 +272,6 @@
 		2362B70B1B6FF7D400A8AFB0 /* RoutineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
 		236582C41C174FE000FE1378 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		2368C1721B0CC5C800F41346 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		237525BC1BD6835400E667D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
-		237525BE1BD6835900E667D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		237525C01BD6836100E667D2 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
-		237525C21BD6836800E667D2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		237525C41BD6838100E667D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		237605271AEFE779003E2C07 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		237605291AF27A5D003E2C07 /* Buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Buzzer.wav; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 		238C1ABA1C8B6F3F009F9CC1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		238C1ABB1C8B6F3F009F9CC1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		238C1AC11C8B6FAD009F9CC1 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		238C1AC31C8B6FAD009F9CC1 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		238C1AC71C8B6FAD009F9CC1 /* TutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialView.h; sourceTree = "<group>"; };
 		238C1AC81C8B6FAD009F9CC1 /* TutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialView.m; sourceTree = "<group>"; };
 		238C1ACE1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticolorPolylineSegment.swift; sourceTree = "<group>"; };
@@ -358,9 +355,8 @@
 		23FDF3FA1BC6131400ABD267 /* Chronic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chronic.xcdatamodel; sourceTree = "<group>"; };
 		23FDF3FB1BC6131400ABD267 /* Chronic_ 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Chronic_ 2.xcdatamodel"; sourceTree = "<group>"; };
 		23FDF3FD1BC69CD300ABD267 /* CommonVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonVariables.swift; sourceTree = "<group>"; };
-		4934001276192676997B0F48 /* Pods_Chronic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		341947639641CB1E7950F23C /* Pods_Chronic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		574CEB827F8A6DCBDED6D002 /* Pods-Chronic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.release.xcconfig"; sourceTree = "<group>"; };
-		EC02C1F076C58BB55C4CA781 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFA6AE49CB5BE02EDB6123B /* Pods-Chronic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -369,11 +365,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232D21E81D2CA18C00B2242B /* HealthKit.framework in Frameworks */,
+				232D21E51D2CA17A00B2242B /* MapKit.framework in Frameworks */,
+				232D21E31D2CA17300B2242B /* WatchConnectivity.framework in Frameworks */,
 				2384D7E21D107BAC00ADB984 /* UserNotifications.framework in Frameworks */,
-				23CE71691C11DCF700E87420 /* CoreLocation.framework in Frameworks */,
-				237525C11BD6836100E667D2 /* WatchConnectivity.framework in Frameworks */,
-				237525BF1BD6835900E667D2 /* HealthKit.framework in Frameworks */,
-				237525BD1BD6835400E667D2 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,12 +376,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				239D97071D12E3F10070D423 /* UserNotifications.framework in Frameworks */,
+				23B099C31D2C994700BB125A /* Fabric.framework in Frameworks */,
+				23B099C41D2C995100BB125A /* Crashlytics.framework in Frameworks */,
 				233082721CEFAE0300613197 /* MoPub.framework in Frameworks */,
-				238C1ABD1C8B6F3F009F9CC1 /* Crashlytics.framework in Frameworks */,
-				238C1ABE1C8B6F3F009F9CC1 /* Fabric.framework in Frameworks */,
+				231CE08B1CF229E60095E607 /* GoogleAdMobCustomEvent.framework in Frameworks */,
+				239D97071D12E3F10070D423 /* UserNotifications.framework in Frameworks */,
 				2301ECBA1BE56C6100A65AFD /* libsqlite3.tbd in Frameworks */,
 				2301ECB81BE56C5200A65AFD /* libz.tbd in Frameworks */,
+				23B099C21D2C988600BB125A /* PassKit.framework in Frameworks */,
 				232614951B30C38F00180218 /* SystemConfiguration.framework in Frameworks */,
 				2301ECB61BE56C2900A65AFD /* Security.framework in Frameworks */,
 				23D02ABB1B003A3100DCB1C5 /* QuartzCore.framework in Frameworks */,
@@ -394,7 +391,6 @@
 				2301ECB21BE56C1100A65AFD /* CFNetwork.framework in Frameworks */,
 				2368C1731B0CC5C800F41346 /* AudioToolbox.framework in Frameworks */,
 				237525C51BD6838200E667D2 /* HealthKit.framework in Frameworks */,
-				231CE08B1CF229E60095E607 /* GoogleAdMobCustomEvent.framework in Frameworks */,
 				232F57B51BD088CA00DC7686 /* MapKit.framework in Frameworks */,
 				23852A9B1BD008E4003D487D /* CoreLocation.framework in Frameworks */,
 				23698CD51BCDF05400EBEC7B /* AdSupport.framework in Frameworks */,
@@ -405,8 +401,7 @@
 				234078751AC030CB006BBD70 /* MediaPlayer.framework in Frameworks */,
 				232614931B30C38000180218 /* CoreTelephony.framework in Frameworks */,
 				234078731AC030B8006BBD70 /* AVFoundation.framework in Frameworks */,
-				A435A640484830461DBCE4EF /* Pods_Chronic.framework in Frameworks */,
-				C71407B4F70355AE2BD055C4 /* Pods_Chronic.framework in Frameworks */,
+				92B8BD4A37F3E27713BDEB65 /* Pods_Chronic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,16 +422,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0EFAF1910CC8A0EA09285B01 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				239D97061D12E3F10070D423 /* UserNotifications.framework */,
-				2384D7E11D107BAC00ADB984 /* UserNotifications.framework */,
-				4934001276192676997B0F48 /* Pods_Chronic.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		19AA88A6D119872640CE60F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +467,14 @@
 			path = iRate;
 			sourceTree = "<group>";
 		};
+		232E26411D244D45004597EE /* SweetAlert */ = {
+			isa = PBXGroup;
+			children = (
+				232E26421D244D45004597EE /* SweetAlert.swift */,
+			);
+			path = SweetAlert;
+			sourceTree = "<group>";
+		};
 		232EDE371C1A1823007D0103 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,13 +499,14 @@
 		234078761AC030D5006BBD70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				232E26411D244D45004597EE /* SweetAlert */,
 				238C1AC01C8B6FAD009F9CC1 /* Keychain */,
-				238C1AC21C8B6FAD009F9CC1 /* SweetAlert */,
 				238C1AC61C8B6FAD009F9CC1 /* TutorialView */,
 				23E4F5FE1BBECF05009A0F53 /* Fabric */,
 				238C1ACD1C8B6FF4009F9CC1 /* MulticolorPolylineSegment */,
 				231465151B176C8C008DD375 /* SARate-master */,
 				238C1AD71C8B7250009F9CC1 /* SwiftColorPickerView */,
+				239D97061D12E3F10070D423 /* UserNotifications.framework */,
 				237525C41BD6838100E667D2 /* HealthKit.framework */,
 				232F57B41BD088CA00DC7686 /* MapKit.framework */,
 				23852A9A1BD008E4003D487D /* CoreLocation.framework */,
@@ -528,13 +522,11 @@
 				23D02ABA1B003A3100DCB1C5 /* QuartzCore.framework */,
 				234078741AC030CB006BBD70 /* MediaPlayer.framework */,
 				234078721AC030B8006BBD70 /* AVFoundation.framework */,
-				EC02C1F076C58BB55C4CA781 /* Pods.framework */,
 				2301ECB91BE56C6100A65AFD /* libsqlite3.tbd */,
 				2301ECB71BE56C5200A65AFD /* libz.tbd */,
 				2301ECB51BE56C2900A65AFD /* Security.framework */,
 				2301ECB31BE56C1900A65AFD /* CoreGraphics.framework */,
 				2301ECB11BE56C1100A65AFD /* CFNetwork.framework */,
-				1D1C575335584DEB8F7E6C88 /* Pods_Chronic.framework */,
 			);
 			name = Frameworks;
 			path = ../Frameworks;
@@ -564,20 +556,12 @@
 		23698CD61BCED16600EBEC7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				237525C21BD6836800E667D2 /* CoreLocation.framework */,
-				237525C01BD6836100E667D2 /* WatchConnectivity.framework */,
-				237525BE1BD6835900E667D2 /* HealthKit.framework */,
-				237525BC1BD6835400E667D2 /* MapKit.framework */,
-				23698CD71BCED16B00EBEC7B /* Twitter Fabric */,
+				232D21E71D2CA18C00B2242B /* HealthKit.framework */,
+				232D21E41D2CA17A00B2242B /* MapKit.framework */,
+				232D21E21D2CA17300B2242B /* WatchConnectivity.framework */,
+				2384D7E11D107BAC00ADB984 /* UserNotifications.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		23698CD71BCED16B00EBEC7B /* Twitter Fabric */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Twitter Fabric";
 			sourceTree = "<group>";
 		};
 		237B106D1C1F36C600D52713 /* Helpers */ = {
@@ -614,8 +598,8 @@
 			isa = PBXGroup;
 			children = (
 				2304E5351CA83B4300A10005 /* MainTabBarController.swift */,
-				23979D951B63FB60005BC945 /* RoutineTypeViewController.swift */,
 				232F4C7A1AC02EA700D25995 /* RoutinesTableViewController.swift */,
+				23979D951B63FB60005BC945 /* RoutineTypeViewController.swift */,
 				235930E31B0A89800021003D /* TimerViewController.swift */,
 				2388D3271B0672770091C9E5 /* QuickTimerViewController.swift */,
 				232F4C751AC02EA700D25995 /* CircuitRoutineTableViewController.swift */,
@@ -640,14 +624,6 @@
 				238C1AC11C8B6FAD009F9CC1 /* Keychain.swift */,
 			);
 			path = Keychain;
-			sourceTree = "<group>";
-		};
-		238C1AC21C8B6FAD009F9CC1 /* SweetAlert */ = {
-			isa = PBXGroup;
-			children = (
-				238C1AC31C8B6FAD009F9CC1 /* SweetAlert.swift */,
-			);
-			path = SweetAlert;
 			sourceTree = "<group>";
 		};
 		238C1AC61C8B6FAD009F9CC1 /* TutorialView */ = {
@@ -757,7 +733,7 @@
 				23A0E7F11B5AEDA700F53E50 /* Chronic WatchKit Extension */,
 				23AF7DD91AC02E2800AA3FC7 /* Products */,
 				19AA88A6D119872640CE60F1 /* Pods */,
-				0EFAF1910CC8A0EA09285B01 /* Frameworks */,
+				CAB895CE144CF53267391711 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -855,6 +831,14 @@
 			path = Fabric;
 			sourceTree = "<group>";
 		};
+		CAB895CE144CF53267391711 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				341947639641CB1E7950F23C /* Pods_Chronic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -898,7 +882,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23AF7DFA1AC02E2900AA3FC7 /* Build configuration list for PBXNativeTarget "Chronic" */;
 			buildPhases = (
-				EA86015371A3F65EACE7ECC2 /* 📦 Check Pods Manifest.lock */,
+				EA86015371A3F65EACE7ECC2 /* [CP] Check Pods Manifest.lock */,
 				51E3AF98EF4C78CD92D2BA75 /* Rollout.io pre-build */,
 				5147C6E2AA6AC7917AC7CA18 /* üì¶ Check Pods Manifest.lock */,
 				A39CC92CC1981E51EC2E93A8 /* Ô£ø√º√¨¬∂ Check Pods Manifest.lock */,
@@ -908,13 +892,9 @@
 				23A0E8071B5AEDA700F53E50 /* Embed Watch Content */,
 				23E4F5F81BBECE96009A0F53 /* ShellScript */,
 				23E6E6EE1CEB6EED009CB57A /* ShellScript */,
-				A8D9740CF5671ED01F5EF621 /* Ô£ø√º√¨¬∂ Embed Pods Frameworks */,
-				18F5B85ABA0F81D5B4DD8D85 /* Ô£ø√º√¨¬∂ Copy Pods Resources */,
-				4F632BD01FE35150A87A2DE4 /* üì¶ Embed Pods Frameworks */,
-				61E8598FF58234C1FD382F67 /* üì¶ Copy Pods Resources */,
 				6AB311AA37D363C61EC65CD1 /* Rollout.io post-build */,
-				B44215EFFBB3B7FECE6C7522 /* 📦 Embed Pods Frameworks */,
-				B17030D637C1B3C253716D5E /* 📦 Copy Pods Resources */,
+				D1BE961839030199606E2AB6 /* [CP] Embed Pods Frameworks */,
+				D6336CB693D8296A93F5B472 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -957,6 +937,7 @@
 					23A0E7E01B5AEDA700F53E50 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 8T3W9YR268;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -985,7 +966,9 @@
 					23AF7DD71AC02E2800AA3FC7 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 8T3W9YR268;
+						DevelopmentTeamName = "Ace Green";
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -1102,21 +1085,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		18F5B85ABA0F81D5B4DD8D85 /* Ô£ø√º√¨¬∂ Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Ô£ø√º√¨¬∂ Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chronic/Pods-Chronic-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		23E4F5F81BBECE96009A0F53 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1142,21 +1110,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\n# VerNSLocalizedStrings\n\nwhile getopts \"vsl:\" arg; do\ncase $arg in\nv)\nverbose=\"yes\"\n;;\ns)\nstopOnMissing=\"yes\"\n;;\nl)\nlang=$OPTARG\n;;\nesac\ndone\n\nif [[ -z $lang ]]\nthen\nlang=\"en\"\nfi\n\nsearchDir=$lang.lproj\nfileFound=`ls . | grep $searchDir`\nif [[ -z $fileFound ]]\nthen\necho \"dir \"$searchDir\" not found.\"\nexit\nfi\n\nfileFound=`ls $searchDir/ | grep strings`\nif [[ -z $fileFound ]]\nthen\necho \"No .strings files found in dir \"$searchDir\".\"\nexit\nfi\n\necho \"Verifying NSLocalizationStrings in \"$searchDir\n\n# Get all the NSLocalizedString Commands\noutput=$(grep -R NSLocalizedString . --include=\"*.m\")\n\n# Go thru the NSLocalizedString commands line for line\ncount=$(( 0 ))\nmissing=$(( 0 ))\nunusable=$(( 0 ))\nOIFS=\"${IFS}\"\nNIFS=$'\\n'\nIFS=\"${NIFS}\"\nfor LINE in ${output} ; do\nIFS=\"${OIFS}\"\n\n# Now extract the key from it\n# admittedly this only works if there are no line breaks between\n# NSLocalizedStrings and the entire key,\n# but it accounts for the keys it couldn't identify.\nquotes=`echo $LINE | awk -F\\\" '{ for(i=2; i<=NF; i=i+2){ a = a\"\\\"\"$i\"\\\"\"\"^\";} {print a; a=\"\";}}'`\nkey=`echo $quotes | cut -f1 -d\"^\"`\n\n# If we couldn't find the key then flag problem\nif [[ -z $key ]]\nthen\n(( unusable += 1 ))\necho \"Couldn't extract key: \" $LINE\nif [ -n \"$stopOnMissing\" ]\nthen\nbreak\nelse\ncontinue\nfi\nfi\n\n# I don't know how grep works regarding length of string, only that\n# if the string is too long then it doesn't find it in the file\nkeyLength=$(echo ${#key})\n    if [ $keyLength -gt 79 ]\n    then\n    (( unusable += 1 ))\n    echo \"Key too long (\"$keyLength\"): \" $key\n    if [ -n \"$stopOnMissing\" ]\n    then\n    break\n    else\n    continue\n    fi\n    fi\n    \n    # It would be nice if this were a regular expression that allowed as many\n    # spaces as you want, even a line break then forced the quotes on the\n    # other side of the equal sign.\n    keyString=$key\" =\"\n    \n    # Search for the key\n    found=$(iconv -sc -f utf-16 -t utf8 $searchDir/*.strings | grep \"$keyString\")\n                                                   \n                                                   # damned if I know why some strings files are utf-16 and others are utf8\n                                                   if [[ -z $found ]]\n                                                   then\n                                                   found=$(grep -r \"$keyString\" $searchDir/ --include=*.strings)\n                                                   fi\n                                                   \n                                                   # analyze the result\n                                                   if [[ -z $found ]]\n                                                   then\n                                                   (( missing += 1 ))\n                                                   echo \"Missing:  \" $key \"\\n from: \" $LINE\n                                                   if [ -n \"$stopOnMissing\" ]\n                                                   then\n                                                   break\n                                                   fi\n                                                   else\n                                                   if [ -n \"$verbose\" ]\n                                                   then\n                                                   echo \"found:  \" $key\n                                                   fi\n                                                   fi\n                                                   (( count += 1 ))\n                                                   \n                                                   IFS=\"${NIFS}\" \n                                                   done\n                                                   \n                                                   IFS=\"${OIFS}\"\n                                                   \n                                                   # It would also be nice if it went the other way and identified \n                                                   # extraneous unused items in the strings files.  But\n                                                   # I've spent enough time on this for now\n                                                   \n                                                   echo $count \" keys analyzed\"\n                                                   echo $unusable \" keys could not be determined\"\n                                                   echo $missing \" keys missing\"";
-		};
-		4F632BD01FE35150A87A2DE4 /* üì¶ Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "üì¶ Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chronic/Pods-Chronic-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		5147C6E2AA6AC7917AC7CA18 /* üì¶ Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1187,21 +1140,6 @@
 			shellPath = /bin/sh;
 			shellScript = "ROLLOUT_lastXcodeprojConfiguration=6 \"${SRCROOT}/Pods/Rollout.io/lib/pre-build_xcode_phase\"";
 		};
-		61E8598FF58234C1FD382F67 /* üì¶ Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "üì¶ Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chronic/Pods-Chronic-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6AB311AA37D363C61EC65CD1 /* Rollout.io post-build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1231,14 +1169,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A8D9740CF5671ED01F5EF621 /* Ô£ø√º√¨¬∂ Embed Pods Frameworks */ = {
+		D1BE961839030199606E2AB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Ô£ø√º√¨¬∂ Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1246,14 +1184,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chronic/Pods-Chronic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B17030D637C1B3C253716D5E /* 📦 Copy Pods Resources */ = {
+		D6336CB693D8296A93F5B472 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1261,29 +1199,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chronic/Pods-Chronic-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B44215EFFBB3B7FECE6C7522 /* 📦 Embed Pods Frameworks */ = {
+		EA86015371A3F65EACE7ECC2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chronic/Pods-Chronic-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EA86015371A3F65EACE7ECC2 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1326,7 +1249,6 @@
 				230171721C407D7000B1EBC9 /* FAQTableViewController.swift in Sources */,
 				231CE07F1CF217B80095E607 /* SuperUserPopoverViewController.swift in Sources */,
 				23D66F391B69459B00BE7041 /* TimePickerTextField.swift in Sources */,
-				238C1ACA1C8B6FAD009F9CC1 /* SweetAlert.swift in Sources */,
 				2392DA8E1BC72CB2002A7110 /* CustomUIPickerView.swift in Sources */,
 				23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */,
 				2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */,
@@ -1367,6 +1289,7 @@
 				238C1AD61C8B70EF009F9CC1 /* ExpandingCell.swift in Sources */,
 				2342557C1BDC0114006CAEF0 /* ProfileViewController.swift in Sources */,
 				230F4E811B2F53E6001F2ABF /* ProfileTableViewController.swift in Sources */,
+				232E26431D244D45004597EE /* SweetAlert.swift in Sources */,
 				238C1AC91C8B6FAD009F9CC1 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1560,6 +1483,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1583,6 +1507,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1699,6 +1624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "AG.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1717,7 +1643,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Chronic/Bundle Files/Chronic.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1735,6 +1661,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "AG.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

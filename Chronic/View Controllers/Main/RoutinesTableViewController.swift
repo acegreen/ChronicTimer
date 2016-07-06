@@ -11,7 +11,13 @@ import QuartzCore
 import DZNEmptyDataSet
 import LaunchKit
 
-class RoutinesTableViewController: UITableViewController, UIPopoverControllerDelegate {
+protocol RoutineDelegate {
+    func didCreateRoutine(_ routine: RoutineModel)
+}
+
+class RoutinesTableViewController: UITableViewController, UIPopoverControllerDelegate, RoutineDelegate {
+    
+    var routines = [RoutineModel]()
 
     @IBAction func runnerButtonPressed(_ sender: AnyObject) {
         
@@ -20,10 +26,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
             return
         }
             
-        if Routines != nil {
-            
-            deselectSelectedRoutine()
-        }
+        deselectSelectedRoutine()
         
         let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
         timerViewController.initializeRunner()
@@ -36,15 +39,13 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         
         // Meant to remove the cell separators on empty table
         self.tableView.tableFooterView = UIView()
+        
+        loadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
-        
-        if !Routines.isEmpty {
-            reloadData()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,9 +53,27 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         // Dispose of any resources that can be recreated.
     }
 
-    func reloadData() {
+    func loadData() {
         
-        self.tableView.reloadData()
+        // Get Routines from database
+        do {
+            
+            self.routines = try DataAccess.sharedInstance.GetRoutines(nil)
+
+            self.tableView.reloadData()
+        
+        } catch {
+            // TO-DO: HANDLE ERROR
+        }
+    }
+    
+    func didCreateRoutine(_ routine: RoutineModel) {
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        routines.insert(routine, at: 0)
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        
+        self.tableView.reloadEmptyDataSet()
     }
     
     // MARK: -TableView Functions
@@ -67,7 +86,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return Routines.count ?? 0
+        return routines.count
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -79,9 +98,9 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RoutineCell
         
-        if Routines.count != 0 {
+        if routines.count != 0 {
             
-                let routine = Routines[(indexPath as NSIndexPath).row]
+                let routine = routines[(indexPath as NSIndexPath).row]
                 cell.configure(with: routine)
         }
         
@@ -90,12 +109,12 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        if Routines.count != 0 {
+        if routines.count != 0 {
             
-            setSelectedRoutine(Routines[(indexPath as NSIndexPath).row], completion: { (result) -> Void in
+            setSelectedRoutine(routines[(indexPath as NSIndexPath).row], completion: { (result) -> Void in
                 
                 let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-                timerViewController.initializeRoutine(with: Routines[(indexPath as NSIndexPath).row])
+                timerViewController.initializeRoutine(with: self.routines[(indexPath as NSIndexPath).row])
                 
                 appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
             })
@@ -108,9 +127,9 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         
         if !editing {
             
-            var i = Routines.count
+            var i = routines.count
             
-            for routine in Routines {
+            for routine in routines {
                 
                 i -= 1
                 routine.setValue(i , forKey: "tableDisplayOrder")
@@ -122,7 +141,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let selectedRoutine = Routines[(indexPath as NSIndexPath).row]
+        let selectedRoutine = routines[(indexPath as NSIndexPath).row]
         
         let editAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) -> Void in
             
@@ -145,13 +164,13 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
                 try context.save()
                 
                 context.delete(selectedRoutine)
-                Routines.remove(at: (indexPath as NSIndexPath).row)
+                self.routines.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: .left)
                 
                 sendContextToAppleWatch(["routineName":selectedRoutine.name!,"contextType":"RoutineDeleted"])
                 deleteFromSpotlight(selectedRoutine.name!)
                 
-                if Routines.count == 0 {
+                if self.routines.count == 0 {
                     
                     self.tableView.tableFooterView = UIView()
                     self.tableView.reloadEmptyDataSet()
@@ -172,7 +191,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
-        if Routines.count == 0 {
+        if routines.count == 0 {
             
             return false
             
@@ -188,9 +207,9 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
 //    
 //    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
 //        
-//        let routineToBeMoved = Routines[fromIndexPath.row]
-//        Routines.removeAtIndex(fromIndexPath.row)
-//        Routines.insert(routineToBeMoved, atIndex: toIndexPath.row)
+//        let routineToBeMoved = routines[fromIndexPath.row]
+//        routines.removeAtIndex(fromIndexPath.row)
+//        routines.insert(routineToBeMoved, atIndex: toIndexPath.row)
 //        
 //    }
     
@@ -201,6 +220,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         if segue.identifier == "EditCircuitRoutineSegueIdentifier" {
             
             let circuitRoutineTableViewController = destinationController.viewControllers.first as! CircuitRoutineTableViewController
+            circuitRoutineTableViewController.delegate = self
             
             circuitRoutineTableViewController.routineToEdit = sender as! RoutineModel
             circuitRoutineTableViewController.exerciseSet = circuitRoutineTableViewController.routineToEdit.routineToExcercise?.mutableCopy() as! NSMutableOrderedSet
@@ -208,8 +228,14 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         } else if segue.identifier == "EditCustomRoutineSegueIdentifier" {
             
             let customRoutineTableViewController = destinationController.viewControllers.first as! CustomRoutineTableViewController
+            customRoutineTableViewController.delegate = self
+            
             customRoutineTableViewController.routineToEdit = sender as! RoutineModel
             customRoutineTableViewController.exerciseSet = customRoutineTableViewController.routineToEdit.routineToExcercise?.mutableCopy() as! NSMutableOrderedSet
+        } else if segue.identifier == "AddRoutineSegueIdentifier" {
+            
+            let routineTypeViewController = destinationController.viewControllers.first as! RoutineTypeViewController
+            routineTypeViewController.delegate = self
         }
     }
 }

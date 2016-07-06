@@ -86,14 +86,14 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning {
     /**
     Required by UIViewControllerAnimatedTransitioning
     */
-    public func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
 
     /**
      Required by UIViewControllerAnimatedTransitioning
      */
-    public func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let containerView = transitionContext.containerView()
 

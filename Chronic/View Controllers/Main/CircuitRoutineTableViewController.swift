@@ -11,6 +11,8 @@ import CoreData
 
 class CircuitRoutineTableViewController: UITableViewController, UITextFieldDelegate {
     
+    var delegate: RoutineDelegate?
+    
     @IBOutlet var nameTextField: UITextField!
     
     @IBOutlet var warmUpNameTextField: UILabel!
@@ -28,8 +30,8 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
     @IBOutlet var coolDownTimeTextField: TimePickerTextField!
     
     var routineToEdit: RoutineModel!
-    
     var newRoutine: RoutineModel!
+    
     var exerciseSet:NSMutableOrderedSet = NSMutableOrderedSet()
     var exerciseHours: Int = 0
     var exerciseMinutes: Int = 0
@@ -125,7 +127,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             
             deselectSelectedRoutine()
             
-            let existingRoutine = getRoutine(withName: nameTextField.text!)
+            let existingRoutine = getRoutine(nameTextField.text!)
             
             if routineToEdit != nil {
                 
@@ -302,7 +304,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     newRoutine.selectedRoutine = true
                     newRoutine.date = Date()
                     
-                    newRoutine.tableDisplayOrder = Routines.count + 1
+                    // newRoutine.tableDisplayOrder = Routines.count + 1
                     
                     newRoutine.type = "Circuit"
                     
@@ -326,7 +328,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                         sendContextToAppleWatch(["routineName":newRoutine.name!, "routineType":newRoutine.type!, "routineStage":stagesArray, "contextType":"RoutineAdded"])
                     }
                     
-                    print("New Routine: \(nameTextField.text) saved")
+                    print("New Routine: \(nameTextField.text) created")
                     
                 } else {
                     
@@ -335,7 +337,6 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     }
                     
                     return false
-                    
                 }
             }
             
@@ -344,8 +345,8 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                 // save into CoreData
                 try context.save()
                 
-                // Get Routines from database
-                Routines = DataAccess.sharedInstance.GetRoutines(predicate: nil)
+                // send delegate out
+                self.delegate?.didCreateRoutine(newRoutine ?? routineToEdit)
                 
                 return true
                 
@@ -410,13 +411,10 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
         return newLength <= 20
         
     }
-    
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         super.touchesBegan(touches as Set<UITouch>, with: event)
         self.view.endEditing(true)
-        
     }
     
 }
