@@ -76,7 +76,7 @@ static inline UIViewAnimationOptions UIViewAnimationCurveToAnimationOptions(UIVi
 
 - (void)orientationWillChange {
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:self.theme.animationDuration animations:^{
         self.maskView.frame = self.applicationWindow.bounds;
         self.popupView.center = [self endingPoint];
     }];
@@ -85,10 +85,10 @@ static inline UIViewAnimationOptions UIViewAnimationCurveToAnimationOptions(UIVi
 - (void)orientationChanged {
     
     UIInterfaceOrientation statusBarOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    CGFloat angle = UIInterfaceOrientationAngleOfOrientation(statusBarOrientation);
+    CGFloat angle = CNP_UIInterfaceOrientationAngleOfOrientation(statusBarOrientation);
     CGAffineTransform transform = CGAffineTransformMakeRotation(angle);
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:self.theme.animationDuration animations:^{
         self.maskView.frame = self.applicationWindow.bounds;
         self.popupView.center = [self endingPoint];
         if (CNP_SYSTEM_VERSION_LESS_THAN(@"8.0")) {
@@ -97,7 +97,7 @@ static inline UIViewAnimationOptions UIViewAnimationCurveToAnimationOptions(UIVi
     }];
 }
 
-CGFloat UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orientation)
+CGFloat CNP_UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orientation)
 {
     CGFloat angle;
     
@@ -172,7 +172,7 @@ CGFloat UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orientat
             }
             else {
                 if (update) {
-                    view.frame = CGRectMake((size.width-_size.width+inset.left+inset.right)*0.5, result.height, _size.width, _size.height);
+                    view.frame = CGRectMake(0, result.height, _size.width, _size.height);
                 }
             }
             result.height += _size.height + self.theme.contentVerticalPadding;
@@ -183,7 +183,12 @@ CGFloat UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orientat
     result.height -= self.theme.contentVerticalPadding;
     result.width += inset.left + inset.right;
     result.height = MIN(INFINITY, MAX(0.0f, result.height + inset.bottom));
-    if (update) self.popupView.frame = CGRectMake(0, 0, result.width, result.height);
+    if (update) {
+        for (UIView *view in self.popupView.subviews) {
+            view.frame = CGRectMake((result.width - view.frame.size.width) * 0.5, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+        }
+        self.popupView.frame = CGRectMake(0, 0, result.width, result.height);
+    }
     return result;
 }
 
@@ -254,7 +259,7 @@ CGFloat UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orientat
     self.popupView.center = [self originPoint];
     [self.applicationWindow addSubview:self.maskView];
     self.maskView.alpha = 0;
-    [UIView animateWithDuration:flag?0.3:0.0 animations:^{
+    [UIView animateWithDuration:flag?self.theme.animationDuration:0.0 animations:^{
         self.maskView.alpha = 1.0;
         self.popupView.center = [self endingPoint];;
     } completion:^(BOOL finished) {
@@ -269,7 +274,7 @@ CGFloat UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orientat
     if ([self.delegate respondsToSelector:@selector(popupControllerWillDismiss:)]) {
         [self.delegate popupControllerWillDismiss:self];
     }
-    [UIView animateWithDuration:flag?0.3:0.0 animations:^{
+    [UIView animateWithDuration:flag?self.theme.animationDuration:0.0 animations:^{
         self.maskView.alpha = 0.0;
         self.popupView.center = [self dismissedPoint];;
     } completion:^(BOOL finished) {
@@ -411,6 +416,7 @@ CGFloat UIInterfaceOrientationAngleOfOrientation(UIInterfaceOrientation orientat
     defaultTheme.movesAboveKeyboard = YES;
     defaultTheme.contentVerticalPadding = 16.0f;
     defaultTheme.maxPopupWidth = 300.0f;
+    defaultTheme.animationDuration = 0.3f;
     return defaultTheme;
 }
 

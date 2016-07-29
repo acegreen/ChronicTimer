@@ -66,7 +66,7 @@ extension MainTabBarController: UIViewControllerTransitioningDelegate {
         return transition
     }
     
-    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
         transition.startingPoint = self.view.center
         transition.bubbleColor = chronicColor

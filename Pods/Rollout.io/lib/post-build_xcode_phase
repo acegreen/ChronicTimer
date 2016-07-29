@@ -9,14 +9,12 @@ VAR_DIR=/tmp/rollout_var
 ERROR_wrongArguments=("exit=1" "message=Got an incorrect command line argument" "xcode_alert=error")
 ERROR_appKeyMissing=("exit=2" "message=app_key argument is required" "xcode_alert=error")
 ERROR_wrongSelfVersion=("exit=3" "message=Incorrect SDK version" "xcode_alert=error")
-ERROR_couldNotSplitDsym=("exit=12" "message=Couldn't split dSYM. Please contact us at support@rollout.io" "xcode_alert=error")
-ERROR_couldNotSplitExecutable=("exit=13" "message=Couldn't split executable. Please contact us at support@rollout.io" "xcode_alert=error")
 ERROR_missingDsym=("exit=14" "message=Missing dSYM. Please contact us at support@rollout.io" "xcode_alert=error")
 ERROR_missingExecutable=("exit=15" "message=Missing executable. Please contact us at support@rollout.io" "xcode_alert=error")
-ERROR_lipoInfoFailed=("exit=16" "message=Could not parse 'lipo -info' output. Please contact us at support@rollout.io" "xcode_alert=error")
 ERROR_dsym2protoFailed=("exit=17" "message=dsym2proto failed. Please contact us at support@rollout.io" "xcode_alert=error")
-ERROR_dsymAndExecMismatch=("exit=18" "message=The dSYM and the executable have different UUIDs. Please contact us at support@rollout.io" "xcode_alert=error")
-ERROR_missingProto=("exit=18" "message=The proto data file is missing. Please contact us at support@rollout.io" "xcode_alert=error")
+ERROR_missingProto=("exit=19" "message=The proto data file is missing. Please contact us at support@rollout.io" "xcode_alert=error")
+ERROR_dsym2protoNotFound=("exit=20" "message=dsym2proto not found. Please contact us at support@rollout.io" "xcode_alert=error")
+
 handle_error() { #{{{
   eval local error=('"${'$1'[@]}"')
   local details="$2"
@@ -114,51 +112,19 @@ fi
 
 [ -f "$dsym_file" ] || handle_error ERROR_missingDsym
 
-[ `(. "$LIB_DIR"/versions; echo $lib | cut -d- -f1)` != SwiftBeta -a "$CONFIGURATION" != "Debug-SwiftMilestone" ] || {
+[ `(. "$LIB_DIR"/versions; echo $lib | cut -d- -f1)` != SwiftBeta -a "$CONFIGURATION" != "Debug-SwiftMilestone" -a "$CONFIGURATION" != "Release-SwiftMilestone" ] || {
   echo "In Swift-beta part"
   executable_file=${SYMROOT}/${CONFIGURATION}-${PLATFORM_NAME}/${PRODUCT_NAME}.app/${PRODUCT_NAME}
-  lipo_info=`xcrun lipo -info "$dsym_file" | head -1`
-  lipo_archs=${lipo_info##*:}
-  split_by_arch="$temp_dir/archs"
-  mkdir $split_by_arch
-  if echo "$lipo_info" | grep "^Architectures in the fat file: " > /dev/null; then
-    for arch in $lipo_archs; do
-      arch_dir=$split_by_arch/$arch
-      mkdir $arch_dir
-      xcrun lipo -thin $arch -output $arch_dir/dsym "$dsym_file" || handle_error ERROR_couldNotSplitDsym
-      xcrun lipo -thin $arch -output $arch_dir/executable "$executable_file" || handle_error ERROR_couldNotSplitExecutable
-    done
-  elif echo "$lipo_info" | grep "^Non-fat file: " > /dev/null; then
-    arch=`echo $lipo_archs`
-    arch_dir=$split_by_arch/$arch
-    mkdir $arch_dir
-    ln -s "$dsym_file" $arch_dir/dsym
-    ln -s "$executable_file" $arch_dir/executable
-  else
-    handle_error ERROR_lipoInfoFailed
-  fi
-
   debug_info_file_name=rollout_swift_debug_info
   dsym2proto="`get_overridable_rollout_tool dsym2proto`"
-  for arch_dir in "$split_by_arch"/*; do
-    arch=`basename "$arch_dir"`
-    executable_uuid=`get_UUID $arch_dir/executable`
-    dsym_uuid=`get_UUID $arch_dir/dsym`
-    [ -n "$executable_uuid" -a $executable_uuid == $dsym_uuid ] || handle_error ERROR_dsymAndExecMismatch
-    echo "Running dsym2proto for ${arch}.."
-    temp_proto_parent=$temp_dir/temp_proto.$arch
-    mkdir $temp_proto_parent
-    "$dsym2proto" --include-names --input-dsym $arch_dir/dsym --input-binary $arch_dir/executable --output-dir $temp_proto_parent || handle_error ERROR_dsym2protoFailed
-    mv $temp_proto_parent/$executable_uuid.bin $temp_dir/$debug_info_file_name.$arch || handle_error ERROR_missingProto
-  done
+  [ -x "$dsym2proto" ] || handle_error ERROR_dsym2protoNotFound
 
-  # Ticket #1644: replace the following line with the joining to fat data file;
-  #               if dsym2proto accepts multiple pairs of exec+dsym, then update the call to dsym2proto above too
-  all_infos=($temp_dir/$debug_info_file_name.*) && cp ${all_infos[0]} $temp_dir/$debug_info_file_name
+  "$dsym2proto" --include-names --input-dsym "$dsym_file" --input-binary "$executable_file" --create-protobin --supported-swift-only --output-prefix $temp_dir/$debug_info_file_name || handle_error ERROR_dsym2protoFailed
+	mv $temp_dir/$debug_info_file_name.bin $temp_dir/$debug_info_file_name
 
   cp -v $temp_dir/$debug_info_file_name  "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/"
   if [ -d "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}" ]; then
-    echo "Rollout: Installation mode, special copy" 
+    echo "Rollout: Installation mode, special copy"
     cp -v $temp_dir/$debug_info_file_name  "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
   fi
 }

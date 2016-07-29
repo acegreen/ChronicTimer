@@ -85,7 +85,7 @@ public class NotificationHelper {
     
     class func resetAppBadgePush() {
         if application.isRegisteredForRemoteNotifications() {
-            let currentInstallation = PFInstallation.current()
+            guard let currentInstallation = PFInstallation.current() else { return }
             currentInstallation.badge = 0
             currentInstallation.saveEventually()
         }

@@ -48,7 +48,7 @@ class RoutineCell: UITableViewCell {
                 
             barPoints.append(currentTimerDict["Name"] as! String)
             barValues.append(currentTimerDict["Time"] as! Double)
-            barColors.append((NSKeyedUnarchiver.unarchiveObject(with: currentTimerDict["Color"] as! Data) as! UIColor).flatten())
+            barColors.append((NSKeyedUnarchiver.unarchiveObject(with: currentTimerDict["Color"] as! Data) as! UIColor))
         }
         
         self.setupPieChart(self.barPoints, values: barValues)

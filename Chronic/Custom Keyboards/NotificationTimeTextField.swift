@@ -54,7 +54,7 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
         doneButton.tintColor = UIColor.green()
-        doneButton.action = Selector("dismissPicker")
+        doneButton.action = #selector(NotificationTimeTextField.dismissPicker)
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
         

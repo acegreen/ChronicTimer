@@ -155,7 +155,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
                 
             }
         }
-        editAction.backgroundColor = UIColor.flatOrange()
+        editAction.backgroundColor = UIColor.orange()
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) -> Void in
             

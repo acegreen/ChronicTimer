@@ -14,7 +14,7 @@ Please feel free to contribute to this project, open issues, make suggestions an
 
 ## Installation
 
-Available in [Cocoa Pods](http://cocoapods.org/?q=CNPPopupController)
+Available in [CocoaPods](http://cocoapods.org/?q=CNPPopupController)
 
 `pod 'CNPPopupController'`
 
@@ -63,15 +63,22 @@ A `CNPPopupTheme` instance can be created and assigned to the `theme` property o
 
 `@property (nonatomic, assign) CGFloat maxPopupWidth;`
 
+`@property (nonatomic, assign) CGFloat animationDuration;`
+
 ## Notes
 
 ### Deployment
-`CNPPopupController ` works on **iOS 6 - iOS 9**
+`CNPPopupController ` works on **iOS 6 - iOS 10**
 
 ##Credits
 CNPPopupController was created by [Carson Perrotti](http://carsonperrotti.com)
 
 ##Version History
+
+**July 14, 2016 v0.3.2**
+- Fixes an issue where content would not be perfectly centred.
+- Project compatibility fixes to prevent ‘duplicate symbols` errors.
+- Added property to adjust animation transition duration.
 
 **September 13, 2015 v0.3.1**
 - Sets `movesAboveKeyboard` to `YES` in the default theme.
@@ -90,6 +97,6 @@ CNPPopupController was created by [Carson Perrotti](http://carsonperrotti.com)
 
 **June 14th, 2015 v0.2.0**
 - Completely rewritten. *Started from the bottom, now we're here.*
-- Ther are some minor API changes in v0.2.0. I tried to keep it as close to the last version as possible. See the example project if you need some help getting it set up.
+- There are some minor API changes in v0.2.0. I tried to keep it as close to the last version as possible. See the example project if you need some help getting it set up.
 - Custom view support (You can add anything, as it's contents as long as it is a UIView or subclass of UIView
 - Lots of bug fixes

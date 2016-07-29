@@ -29,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ChameleonFramework.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -122,27 +117,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2582BF0BC0E063FA9582F06F0EDFE4C8</key>
+		<key>1F4E855A5B8A45DB04058AA298D0FCC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>2C8AA1BAF35413BDB954A1DF93576ED1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4048F6B1D29487C247120BD16CFDF00A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>52D82BFDD1E808D9CB257431922C1EE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,6 +152,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>75D7E6156C75F2F2539C45940308F1D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8004BD72C14F3C786A3B1990FE84C94C</key>
 		<dict>
 			<key>primary</key>
@@ -182,7 +167,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B544A96D547DEECF27C7EF4C8FB41A88</key>
+		<key>9A2CE90D4DB40B6AD9F49FD7329F9D5A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B255908831C9ECB1FB55BEBC13DA3DD3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -193,11 +188,6 @@
 			<true/>
 		</dict>
 		<key>D2D17D2E6A8AD8B5A2D1F30A3032805E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E1BEFEEFA1B1AF0377E097568E2C7F89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
