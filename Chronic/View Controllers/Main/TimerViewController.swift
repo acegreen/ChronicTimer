@@ -21,7 +21,6 @@ import MoPub
 import SDVersion
 import AMPopTip
 import LaunchKit
-import ChameleonFramework
 import BubbleTransition
 import PureLayout
 
@@ -587,7 +586,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         if let currentTimerDictColor = currentTimerDict["Color"] as? Data {
             
             stageColor = (NSKeyedUnarchiver.unarchiveObject(with: currentTimerDictColor) as? UIColor)!
-            self.ProgressView.backgroundColor = stageColor.flatten()
+            self.ProgressView.backgroundColor = stageColor
             RoutineStateLabel.textColor = stageColor
             print(stageColor)
         }

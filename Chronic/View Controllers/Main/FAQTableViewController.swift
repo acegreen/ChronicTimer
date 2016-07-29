@@ -62,7 +62,7 @@ class FAQTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
-        if let selectedIndex = tableView.indexPathForSelectedRow where selectedIndex == indexPath {
+        if let selectedIndex = tableView.indexPathForSelectedRow, selectedIndex == indexPath {
             
             if let cell = tableView.cellForRow(at: indexPath) as? ExpandingCell {
                 tableView.beginUpdates()

@@ -107,11 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         LaunchKit.sharedInstance().debugAppUserIsAlwaysSuper = true
         
         // Initialize Rollout
-        #if DEBUG
-            Rollout.setup(withKey: "56932e164e1e847211ffe9ee", developmentDevice: true)
-        #else
-            Rollout.setup(withKey: "56932e164e1e847211ffe9ee", developmentDevice: false)
-        #endif
+        Rollout.setup(withKey: "56932e164e1e847211ffe9ee")
         
         // Register for Google App Indexing
         //GSDAppIndexing.sharedInstance().registerApp(iTunesID)
@@ -244,7 +240,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        let currentInstallation: PFInstallation = PFInstallation.current()
+        guard let currentInstallation: PFInstallation = PFInstallation.current() else { return }
         currentInstallation.setDeviceTokenFrom(deviceToken)
         currentInstallation.saveInBackground()
     }
@@ -357,7 +353,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
                           contentName: "Chronic rated",
                           contentType: "rate",
                           contentId: nil,
-                          customAttributes: ["Installation ID":PFInstallation.current().installationId, "Country Code": countryCode, "App Version": AppVersion])
+                          customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "Country Code": countryCode, "App Version": AppVersion])
     }
     
     func iRateDidDetectAppUpdate() {

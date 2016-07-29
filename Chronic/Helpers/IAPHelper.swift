@@ -142,7 +142,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Ultimate Package",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -161,7 +161,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Pro Version",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -180,7 +180,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Remove Ads",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -198,7 +198,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Donation",
                                             itemType: "In-App Purchase (Consumable)",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -260,7 +260,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                     itemName: nil,
                     itemType: nil,
                     itemId: nil,
-                    customAttributes: ["Installation ID":PFInstallation.current().installationId, "Error": errorMessage, "App Version": AppVersion])
+                    customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "Error": errorMessage, "App Version": AppVersion])
                 
                 print(errorMessage)
                 
