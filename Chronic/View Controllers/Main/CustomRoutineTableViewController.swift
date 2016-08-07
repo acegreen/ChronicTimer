@@ -46,7 +46,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
         } else {
             
-            let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+            let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
             
             newExercise.exerciseName = ""
             
@@ -54,7 +54,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
             
             exerciseSet.add(newExercise)
             
@@ -83,9 +83,9 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     
     func SaveRoutine() -> Bool {
         
-        guard proFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !removeAdsUpgradePurchased()) else {
+        guard Functions.isProFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !Functions.isRemoveAdsUpgradePurchased()) else {
             
-            IAPHelper.sharedInstance.selectProduct(proVersionKey)
+            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
             
             return false
         }
@@ -99,9 +99,9 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
         }
         
-        deselectSelectedRoutine()
+        Functions.deselectSelectedRoutine()
         
-        let existingRoutine = getRoutine(nameCell.NameTextField.text!)
+        let existingRoutine = Functions.getRoutine(nameCell.NameTextField.text!)
         
         if routineToEdit != nil {
             
@@ -127,25 +127,25 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 routineToEdit.selectedRoutine = true
                 routineToEdit!.date = Date()
                 
-                setSelectedRoutine(routineToEdit, completion: { (result) -> Void in
+                Functions.setSelectedRoutine(routineToEdit, completion: { (result) -> Void in
                     
                 })
                 
-                let (stagesArray, totalTime) = makeRoutineArray(self.routineToEdit)
+                let (stagesArray, totalTime) = Functions.makeRoutineArray(self.routineToEdit)
                 
                 routineToEdit.totalRoutineTime = totalTime
                 
                 // add routine to spotlight & send context to Watch
-                let totalTimeString = timeStringFrom(time:routineToEdit.totalRoutineTime! as Int, type: "Routine")
+                let totalTimeString = Functions.timeStringFrom(time:routineToEdit.totalRoutineTime! as Int, type: "Routine")
                 
-                addToSpotlight(routineToEdit.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: routineToEdit.name!, domainIdentifier: "Routines")
+                Functions.addToSpotlight(routineToEdit.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: routineToEdit.name!, domainIdentifier: "Routines")
                 
-                if wcSession != nil {
+                if Constants.wcSession != nil {
                     
-                    sendContextToAppleWatch(["routineName":routineToEdit.name!, "routineType":routineToEdit.type!, "routineStage":stagesArray, "contextType":"RoutineModified"])
+                    Functions.sendContextToAppleWatch(["routineName":routineToEdit.name!, "routineType":routineToEdit.type!, "routineStage":stagesArray, "contextType":"RoutineModified"])
                 }
                 
-                print("\(routineToEdit) renamed")
+                print("Routine renamed: ", routineToEdit)
                 
             } else {
                 
@@ -175,7 +175,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                     }
                 }
                 
-                newRoutine = RoutineModel(entity: routineEntity!, insertInto: context)
+                newRoutine = RoutineModel(entity: Constants.routineEntity!, insertInto: Constants.context)
                 
                 newRoutine.routineToExcercise = exerciseSet
                 
@@ -187,23 +187,23 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 newRoutine.type = "Custom"
                 
-                setSelectedRoutine(newRoutine, completion: { (result) -> Void in
+                Functions.setSelectedRoutine(newRoutine, completion: { (result) -> Void in
                 })
                 
-                let (stagesArray, totalTime) = makeRoutineArray(self.newRoutine)
+                let (stagesArray, totalTime) = Functions.makeRoutineArray(self.newRoutine)
                 
                 newRoutine.totalRoutineTime = totalTime
                 
                 // add routine to spotlight & send context to Watch if iOS9                
-                let totalTimeString = timeStringFrom(time:newRoutine.totalRoutineTime! as Int, type: "Routine")
+                let totalTimeString = Functions.timeStringFrom(time:newRoutine.totalRoutineTime! as Int, type: "Routine")
                 
-                addToSpotlight(newRoutine.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: newRoutine.name!, domainIdentifier: "Routines")
+                Functions.addToSpotlight(newRoutine.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: newRoutine.name!, domainIdentifier: "Routines")
                 
-                if wcSession != nil {
-                    sendContextToAppleWatch(["routineName":newRoutine.name!, "routineType":newRoutine.type!, "routineStage":stagesArray, "contextType":"RoutineAdded"])
+                if Constants.wcSession != nil {
+                    Functions.sendContextToAppleWatch(["routineName":newRoutine.name!, "routineType":newRoutine.type!, "routineStage":stagesArray, "contextType":"RoutineAdded"])
                 }
                 
-                print("New Routine: \(nameCell.NameTextField.text) saved")
+                print("New Routine: ", newRoutine)
                 
             } else {
                 
@@ -218,10 +218,10 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         do {
             
             // save into CoreData
-            try context.save()
+            try Constants.context.save()
             
             // send delegate out
-            self.delegate?.didCreateRoutine(newRoutine ?? routineToEdit)
+            self.delegate?.didCreateRoutine(routine: newRoutine ?? routineToEdit, isNew: (routineToEdit != nil) ? false : true)
             
             return true
             
@@ -281,7 +281,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 cell.excerciseNameTextField.text = exerciseAtIndexPath.exerciseName
                 
-                cell.exerciseTimeTextField.text = timeStringFrom(time:exerciseAtIndexPath.exerciseTime as Int, type: "Routine")
+                cell.exerciseTimeTextField.text = Functions.timeStringFrom(time:exerciseAtIndexPath.exerciseTime as Int, type: "Routine")
                 
                 cell.exerciseNumberOfRounds.text = String(exerciseAtIndexPath.exerciseNumberOfRounds!)
                 
@@ -362,7 +362,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 // Delete the row from the data source
                 if exerciseSet.count != 0 && (indexPath as NSIndexPath).row + 1 <= exerciseSet.count {
                     
-                    context.delete(exerciseSet[(indexPath as NSIndexPath).row] as! NSManagedObject)
+                    Constants.context.delete(exerciseSet[(indexPath as NSIndexPath).row] as! NSManagedObject)
                     
                     exerciseSet.removeObject(at: (indexPath as NSIndexPath).row)
                 }
@@ -380,7 +380,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             let index:IndexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 1), section: 1)
             
-            let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+            let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
             
             newExercise.exerciseName = ""
             
@@ -388,7 +388,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
             
             exerciseSet.add(newExercise)
             
@@ -416,14 +416,14 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        cell.backgroundColor = UIColor.clear()
+        cell.backgroundColor = UIColor.clear
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let view = view as? UITableViewHeaderFooterView {
             
-            view.textLabel!.textColor = UIColor.white()
+            view.textLabel!.textColor = UIColor.white
             
         }
         
@@ -438,7 +438,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             let index:IndexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 1), section: 1)
             
-            let newExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+            let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
             
             newExercise.exerciseName = ""
             
@@ -446,7 +446,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
             
             exerciseSet.add(newExercise)
             
@@ -475,7 +475,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             let indexPathofSelectedRow = self.tableView.indexPathForSelectedRow
             
-            let destinationVC = segue.destinationViewController as! CustomRoutineExerciseDetailTableViewController
+            let destinationVC = segue.destination as! CustomRoutineExerciseDetailTableViewController
             
             destinationVC.indexOfExercise = indexPathofSelectedRow
             
@@ -508,9 +508,9 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
             } else if textField.tag == 2 {
                 
-                (exerciseHours,exerciseMinutes,exerciseSeconds) = timeComponentsFrom(string: textField.text!)
+                (exerciseHours,exerciseMinutes,exerciseSeconds) = Functions.timeComponentsFrom(string: textField.text!)
                 
-                exercise.exerciseTime = timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
+                exercise.exerciseTime = Functions.timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
                 
             } else if textField.tag == 3 {
                 

@@ -50,13 +50,13 @@ class FAQTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        cell.backgroundColor = UIColor.clear()
+        cell.backgroundColor = UIColor.clear
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let view = view as? UITableViewHeaderFooterView {
-            view.textLabel!.textColor = UIColor.white()
+            view.textLabel!.textColor = UIColor.white
         }
     }
     

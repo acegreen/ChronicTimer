@@ -28,7 +28,7 @@ public class DataAccess: NSObject {
         }
     }
     
-    public func GetRoutines(_ predicate: Predicate?) throws -> [RoutineModel] {
+    public func GetRoutines(_ predicate: NSPredicate?) throws -> [RoutineModel] {
         
         let request: NSFetchRequest<RoutineModel> = RoutineModel.fetchRequest()
         let entity = NSEntityDescription.entity(forEntityName: "Routines", in: self.managedObjectContext)
@@ -39,12 +39,12 @@ public class DataAccess: NSObject {
             request.predicate = predicate
         }
         
-        let sortDescriptors = [SortDescriptor(key: "date", ascending: false)]
+        let sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         request.sortDescriptors = sortDescriptors
         
         do {
             
-            let results = try context.fetch(request)
+            let results = try Constants.context.fetch(request)
             return results
             
         } catch let error as NSError {
@@ -60,13 +60,13 @@ public class DataAccess: NSObject {
     
     lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "AG.Test" in the application's documents Application Support directory.
-        let urls = FileManager.default.urlsForDirectory(.documentDirectory, inDomains: .userDomainMask)
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1]
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = Bundle.main.urlForResource("Chronic", withExtension: "momd")!
+        let modelURL = Bundle.main.url(forResource: "Chronic", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     

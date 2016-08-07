@@ -24,8 +24,8 @@ class RoutineTypeViewController: UIViewController, RoutineDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func didCreateRoutine(_ routine: RoutineModel) {
-        self.delegate?.didCreateRoutine(routine)
+    func didCreateRoutine(routine: RoutineModel, isNew: Bool) {
+        self.delegate?.didCreateRoutine(routine: routine, isNew: isNew)
     }
 
     // MARK: - Navigation
@@ -34,12 +34,12 @@ class RoutineTypeViewController: UIViewController, RoutineDelegate {
         
         if segue.identifier == "AddCircuitRoutineSegueIdentifier" {
             
-            let circuitRoutineTableViewController = segue.destinationViewController as! CircuitRoutineTableViewController
+            let circuitRoutineTableViewController = segue.destination as! CircuitRoutineTableViewController
             circuitRoutineTableViewController.delegate = self
             
         } else if segue.identifier == "AddCustomRoutineSegueIdentifier" {
             
-            let customRoutineTableViewController = segue.destinationViewController as! CustomRoutineTableViewController
+            let customRoutineTableViewController = segue.destination as! CustomRoutineTableViewController
             customRoutineTableViewController.delegate = self
         }
     }

@@ -23,13 +23,13 @@ class CustomUIPickerView : UIPickerView {
         secondsLabel = UILabel(frame: CGRect(x: ((self.frame.size.width ) * (5 / 6)) + 25, y: (self.frame.size.height / 2) -  15, width: 50, height: 30))
 
         hoursLabel.text = "hour"
-        hoursLabel.textColor = UIColor.white()
+        hoursLabel.textColor = UIColor.white
         
         minutesLabel.text = "min"
-        minutesLabel.textColor = UIColor.white()
-    
+        minutesLabel.textColor = UIColor.white
+
         secondsLabel.text = "sec"
-        secondsLabel.textColor = UIColor.white()
+        secondsLabel.textColor = UIColor.white
         
         self.addSubview(secondsLabel)
         self.addSubview(minutesLabel)

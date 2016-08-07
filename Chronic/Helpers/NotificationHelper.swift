@@ -7,12 +7,12 @@ public class NotificationHelper {
     
     static let center = UNUserNotificationCenter.current()
     
-    class var interval: String { return userDefaults.string(forKey: "NOTIFICATION_REMINDER_INTERVAL")! }
-    class var hour: Int { return userDefaults.integer(forKey: "NOTIFICATION_REMINDER_TIME") ?? 0 }
+    class var interval: String { return Constants.userDefaults.string(forKey: "NOTIFICATION_REMINDER_INTERVAL")! }
+    class var hour: Int { return Constants.userDefaults.integer(forKey: "NOTIFICATION_REMINDER_TIME") ?? 0 }
 
-    class var reminderDateComponents:DateComponents { return DateComponents(calendar: currentCalendar, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: hour, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil) }
+    class var reminderDateComponents:DateComponents { return DateComponents(calendar: Constants.currentCalendar, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: hour, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil) }
     
-    class func scheduleNotification(_ dateComponents: DateComponents!, repeatInterval: Calendar.Unit?, alertTitle: String!, alertBody: String!, sound: String!, identifier: String!) {
+    class func scheduleNotification(_ dateComponents: DateComponents!, repeatInterval: Calendar.Component?, alertTitle: String!, alertBody: String!, sound: String!, identifier: String!) {
         
         // Schedule workoutCompleteLocalNotification
         let notificationContent = UNMutableNotificationContent()
@@ -84,50 +84,61 @@ public class NotificationHelper {
     }
     
     class func resetAppBadgePush() {
-        if application.isRegisteredForRemoteNotifications() {
+        if Constants.application.isRegisteredForRemoteNotifications {
             guard let currentInstallation = PFInstallation.current() else { return }
             currentInstallation.badge = 0
             currentInstallation.saveEventually()
         }
     }
 
-    class func registerForNotifications() {
-        if application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:))) {
-            let userNotificationTypes: UIUserNotificationType = [.alert, .badge, .sound]
-            let settings = UIUserNotificationSettings(types: userNotificationTypes, categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
+    class func registerForPushNotifications() {
+        
+        if Constants.application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:))) {
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                
+                if granted == true {
+                    
+                    guard Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") == true else { return }
+                    NotificationHelper.scheduleNotification(NotificationHelper.reminderDateComponents, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: "Notification Reminder Text", alertBody:  NSLocalizedString("Notification Reminder subText",comment: ""), sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
+                    print("Granted")
+                    
+                } else if let error = error {
+                    print(error)
+                }
+                
+                Constants.application.registerForRemoteNotifications()
+            }
             
         } else {
-            application.registerForRemoteNotifications()
+            Constants.application.registerForRemoteNotifications()
         }
     }
 
     class func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
-            NotificationHelper.unscheduleNotifications(NotificationIdentifier.ReminderIdentifier.key())
-            NotificationHelper.registerForNotifications()
+            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.registerForPushNotifications()
         } else {
-            NotificationHelper.unscheduleNotifications(NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
         }
     }
     
-    class func getNSCalendarUnit(_ interval: String) -> Calendar.Unit {
+    class func getNSCalendarUnit(_ interval: String) -> Calendar.Component {
         
         switch interval {
             
             case NSLocalizedString("Week", comment: ""):
             
-            return Calendar.Unit.weekOfYear
+            return Calendar.Component.weekOfYear
             
             case NSLocalizedString("Month", comment: ""):
             
-            return Calendar.Unit.month
+            return Calendar.Component.month
             
             default:
             
-            return Calendar.Unit.day
-            
+            return Calendar.Component.day
         }
     }
 }

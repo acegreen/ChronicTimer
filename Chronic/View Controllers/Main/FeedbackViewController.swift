@@ -13,7 +13,7 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
 
     @IBOutlet weak var negativeButton: UIButton!
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
     
@@ -21,7 +21,7 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
         super.viewDidLoad()
     
         SARate.sharedInstance().eventCount = 0
-        negativeButton.layer.borderColor = UIColor.white().cgColor
+        negativeButton.layer.borderColor = UIColor.white.cgColor
     }
     
     @IBAction func reviewAction() {
@@ -43,8 +43,8 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
             mc.mailComposeDelegate = self
             
             let emailTitle = "Chronic Feedback/Bug"
-            let messageBody = "Hello Chronic Team, </br> </br> </br> </br> </br> - - - - - - - - - - - - - - - - - - - - - </br>" + emailDiagnosticInfo
-            let toReceipients = [appEmail]
+            let messageBody = "Hello Chronic Team, </br> </br> </br> </br> </br> - - - - - - - - - - - - - - - - - - - - - </br>" + Constants.emailDiagnosticInfo
+            let toReceipients = [Constants.appEmail]
             
             mc.setSubject(emailTitle)
             mc.setMessageBody(messageBody, isHTML: true)
@@ -72,7 +72,7 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
             
         case MFMailComposeResult.saved.rawValue, MFMailComposeResult.sent.rawValue:
             
-            markFeedbackGiven()
+            Functions.markFeedbackGiven()
             
         case MFMailComposeResult.failed.rawValue:
             

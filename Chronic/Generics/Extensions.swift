@@ -1,5 +1,5 @@
 //
-//  CommonExtensions.swift
+//  Extensions.swift
 //  Chronic
 //
 //  Created by Ace Green on 2015-10-07.
@@ -119,15 +119,15 @@ public extension UIImage {
     }
 }
 
-public extension UIViewController {
+extension UIViewController {
     
     func fixIOS9PopOverAnchor(_ segue:UIStoryboardSegue?) {
         
         guard #available(iOS 9.0, *) else { return }
-        if let popOver = segue?.destinationViewController.popoverPresentationController,
+        if let popOver = segue?.destination.popoverPresentationController,
             let anchor  = popOver.sourceView
             where popOver.sourceRect == CGRect()
-                && segue!.sourceViewController === self
+                && segue!.source === self
         { popOver.sourceRect = anchor.bounds }
     }       
 }
@@ -143,6 +143,34 @@ extension SKProduct {
 }
 
 extension UIView {
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return self.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return self.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor?  {
+        get {
+            return self.borderColor
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+    }
     
     func fitSubViewToSuperView(_ superView: UIView) {
         

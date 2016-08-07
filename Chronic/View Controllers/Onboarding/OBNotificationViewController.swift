@@ -11,30 +11,30 @@ class OBNotificationViewController: OnboardingViewController {
     }
     
     override func updateUI() {
-        notificationSwitch.isOn = notificationReminderState
+        notificationSwitch.isOn = Constants.notificationReminderState
         notificationIntervalTextfield.text = NotificationHelper.interval
         notificationTimeTextfield.text = String(NotificationHelper.hour) + ":00"
     }
 
     @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
-        userDefaults.set(sender.isOn, forKey: "NOTIFICATION_REMINDER_ENABLED")
+        Constants.userDefaults.set(sender.isOn, forKey: "NOTIFICATION_REMINDER_ENABLED")
         
-        notificationReminderState = userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
-        NotificationHelper.updateNotificationPreferences(notificationReminderState)
+        Constants.notificationReminderState = Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
+        NotificationHelper.updateNotificationPreferences(Constants.notificationReminderState)
     }
     
     @IBAction func doneAction() {
         
-        userDefaults.set(true, forKey: "ONBOARDING_SHOWN")
+        Constants.userDefaults.set(true, forKey: "ONBOARDING_SHOWN")
         self.dismiss(animated: true, completion: nil)
     }
     
     func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
-            NotificationHelper.unscheduleNotifications(NotificationIdentifier.ReminderIdentifier.key())
-            NotificationHelper.registerForNotifications()
+            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.registerForPushNotifications()
         } else {
-            NotificationHelper.unscheduleNotifications(NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
         }
     }
 }

@@ -33,7 +33,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     func configureColorPicker() -> UIView {
         
         // configure picker
-        let pickerViewFrame = CGRect(x: 0.0,y: 0.0, width: UIScreen.main().bounds.size.width, height: 216)
+        let pickerViewFrame = CGRect(x: 0.0,y: 0.0, width: UIScreen.main.bounds.size.width, height: 216)
         
         //let pickerWidth = min(UIScreen.mainScreen().bounds.size.width,500)
         
@@ -51,7 +51,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     
     func configureAccessoryView() -> UIView {
         
-        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main().bounds.size.width, height: 44))
+        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 44))
         inputAccessoryView.barStyle = UIBarStyle.blackTranslucent
         
         let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -59,7 +59,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         // Configure done button
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
-        doneButton.tintColor = UIColor.green()
+        doneButton.tintColor = UIColor.green
         doneButton.action = #selector(ColorPickerTextField.dismissPicker)
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
@@ -79,7 +79,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     
     override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         
-        UIMenuController.shared().isMenuVisible = false
+        UIMenuController.shared.isMenuVisible = false
         
         if action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.selectAll(_:)) || action == #selector(NSObject.paste(_:)) {
             return false
@@ -120,9 +120,9 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     
     // MARK: - Color Matrix (only for test case)
     var colorMatrix = [ [UIColor.colorFromRGB(0x60E5BC), UIColor.colorFromRGB(0x1ABC9C), UIColor.colorFromRGB(0xF1C40F), UIColor.colorFromRGB(0xF39C12)],
-                        [UIColor.colorFromRGB(0x4CD964), UIColor.colorFromRGB(0x27AE60), UIColor.orange(), UIColor.colorFromRGB(0xD35400)],
-                        [UIColor.colorFromRGB(0x5AC8FA), UIColor.colorFromRGB(0x3498DB), UIColor.colorFromRGB(0xE74C3C), UIColor.red()],
-                        [UIColor.colorFromRGB(0x9B59B6), UIColor.colorFromRGB(0x5856D6), UIColor.colorFromRGB(0x34495E), UIColor.black()]]
+                        [UIColor.colorFromRGB(0x4CD964), UIColor.colorFromRGB(0x27AE60), UIColor.orange, UIColor.colorFromRGB(0xD35400)],
+                        [UIColor.colorFromRGB(0x5AC8FA), UIColor.colorFromRGB(0x3498DB), UIColor.colorFromRGB(0xE74C3C), UIColor.red],
+                        [UIColor.colorFromRGB(0x9B59B6), UIColor.colorFromRGB(0x5856D6), UIColor.colorFromRGB(0x34495E), UIColor.black]]
     
     private func fillColorMatrix(_ numX: Int, _ numY: Int) {
         colorMatrix.removeAll()

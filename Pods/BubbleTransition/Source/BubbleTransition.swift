@@ -63,7 +63,7 @@ public class BubbleTransition: NSObject {
     /**
     The color of the bubble. Make sure that it matches the destination controller's background color.
     */
-    public var bubbleColor: UIColor = .white()
+    public var bubbleColor: UIColor = .white
     
     public private(set) var bubble = UIView()
 
@@ -95,7 +95,7 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning {
      */
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
-        let containerView = transitionContext.containerView()
+        let containerView = transitionContext.containerView
 
         if transitionMode == .present {
             let presentedControllerView = transitionContext.view(forKey: UITransitionContextToViewKey)!

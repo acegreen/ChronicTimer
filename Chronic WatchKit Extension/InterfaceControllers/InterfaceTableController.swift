@@ -32,13 +32,13 @@ class InterfaceTableController: WKInterfaceController {
         super.willActivate()
         
         // Check for pro version purchase
-        keychainProVersionString = keychain[proVersionKey]
+        Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         
         #if DEBUG
             // Get Routines from database
-            Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
+            Constants.Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
             
-            if Routines.count != 0 {
+            if Constants.Routines.count != 0 {
                 
                 loadTableData()
                 
@@ -76,9 +76,9 @@ class InterfaceTableController: WKInterfaceController {
     
     func loadTableData() {
         
-        self.routineTable.setNumberOfRows(Routines.count, withRowType: "routinesRow")
+        self.routineTable.setNumberOfRows(Constants.Routines.count, withRowType: "routinesRow")
         
-        for (index, item) in Routines.enumerated() {
+        for (index, item) in Constants.Routines.enumerated() {
             
             let row = self.routineTable.rowController(at: index) as! TableRowType
             
@@ -89,9 +89,9 @@ class InterfaceTableController: WKInterfaceController {
 
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
         
-        if Routines.count != 0 {
+        if Constants.Routines.count != 0 {
             
-            return Routines[rowIndex]
+            return Constants.Routines[rowIndex]
             
         }
         
@@ -100,9 +100,9 @@ class InterfaceTableController: WKInterfaceController {
     
     override func contextsForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> [AnyObject]? {
         
-        if Routines.count != 0 {
+        if Constants.Routines.count != 0 {
             
-            return [Routines[rowIndex]]
+            return [Constants.Routines[rowIndex]]
             
         }
         

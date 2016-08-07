@@ -42,7 +42,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             
             print("IAP is enabled, loading")
             
-            let productIDs: NSSet = NSSet(objects: iapUltimatePackageKey, proVersionKey, removeAdsKey, donate99Key)
+            let productIDs: NSSet = NSSet(objects: Constants.iapUltimatePackageKey, Constants.proVersionKey, Constants.removeAdsKey, Constants.donate99Key)
             
             request = SKProductsRequest(productIdentifiers: productIDs as! Set<String>)
             request.delegate = self
@@ -127,7 +127,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                 
                                 switch transactionProductID {
 
-                                case iapUltimatePackageKey:
+                                case Constants.iapUltimatePackageKey:
                                     
                                     print("\(transaction.transactionState) - ultimate")
                                     self.proVersionPurchased()
@@ -142,12 +142,12 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Ultimate Package",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
                                     
-                                case proVersionKey:
+                                case Constants.proVersionKey:
                                     
                                     print("\(transaction.transactionState) - pro version")
                                     self.proVersionPurchased()
@@ -161,12 +161,12 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Pro Version",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
                                     
-                                case removeAdsKey:
+                                case Constants.removeAdsKey:
                                     
                                     print("\(transaction.transactionState) - remove ads")
                                     self.removeAdsPurchased()
@@ -180,12 +180,12 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Remove Ads",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
                                     
-                                case donate99Key:
+                                case Constants.donate99Key:
                                     
                                     print("\(transaction.transactionState) - donate")
                                     
@@ -198,7 +198,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Donation",
                                             itemType: "In-App Purchase (Consumable)",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -229,24 +229,24 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 
                 var errorMessage = ""
                 
-                switch (transaction.error!.code) {
-                case SKErrorCode.unknown.rawValue:
+                switch (transaction.error as? SKError)!.code {
+                case .unknown:
                     errorMessage = "Unknown error"
-                    break;
-                case SKErrorCode.clientInvalid.rawValue:
+                    break
+                case .clientInvalid:
                     errorMessage = "Client Not Allowed To issue Request"
-                    break;
-                case SKErrorCode.paymentCancelled.rawValue:
+                    break
+                case .paymentCancelled:
                     errorMessage = "User Cancelled Request"
-                    break;
-                case SKErrorCode.paymentInvalid.rawValue:
+                    break
+                case .paymentInvalid:
                     errorMessage = "Purchase Identifier Invalid"
-                    break;
-                case SKErrorCode.paymentNotAllowed.rawValue:
+                    break
+                case .paymentNotAllowed:
                     errorMessage = "Device Not Allowed To Make Payment"
-                    break;
+                    break
                 default:
-                    break;
+                    break
                 }
                 
                 DispatchQueue.main.async(execute: { () -> Void in
@@ -260,7 +260,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                     itemName: nil,
                     itemType: nil,
                     itemId: nil,
-                    customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "Error": errorMessage, "App Version": AppVersion])
+                    customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "Error": errorMessage, "App Version": Constants.AppVersion])
                 
                 print(errorMessage)
                 
@@ -317,7 +317,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     func requestDidFinish(_ request: SKRequest) {
         
         print("request did finish")
-        let fileExists = FileManager.default.fileExists(atPath: receiptURL!.path!)
+        let fileExists = FileManager.default.fileExists(atPath: Constants.receiptURL!.path)
         
         if fileExists {
             print("Appstore Receipt now exists")
@@ -338,7 +338,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     func selectProduct(_ productID: String) {
         
-        guard isConnectedToNetwork() else {
+        guard Functions.isConnectedToNetwork() else {
             
             DispatchQueue.main.async(execute: { () -> Void in
                 SweetAlert().showAlert(NSLocalizedString("Alert: Requires Upgrade Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Requires Upgrade Subtitle Text", comment: ""), style: AlertStyle.warning)
@@ -390,36 +390,35 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         
         // Set KeyChain Value
         do {
-            try keychain
-                .accessibility(.always)
-                .synchronizable(true)
-                .set(removeAdsKeyValue, key: removeAdsKey)
+            try Constants.keychain
+                .accessibility(accessibility: .Always)
+                .synchronizable(synchronizable: true)
+                .set(value: Constants.removeAdsKeyValue, key: Constants.removeAdsKey)
         } catch let error {
             print("error: \(error)")
         }
         
-        keychainRemoveAdsString  = keychain[removeAdsKey]
+        Constants.keychainRemoveAdsString  = Constants.keychain[Constants.removeAdsKey]
     }
     
     func proVersionPurchased() {
         
         // send context to Watch if iOS9
-        if wcSession != nil {
-            
-            sendContextToAppleWatch(["contextType":"PurchasedProVersion"])
+        if Constants.wcSession != nil {
+            Functions.sendContextToAppleWatch(["contextType":"PurchasedProVersion"])
         }
         
         // Set KeyChain Value
         do {
-            try keychain
-                .accessibility(.always)
-                .synchronizable(true)
-                .set(proVersionKeyValue, key: proVersionKey)
+            try Constants.keychain
+                .accessibility(accessibility: .Always)
+                .synchronizable(synchronizable: true)
+                .set(value: Constants.proVersionKeyValue, key: Constants.proVersionKey)
         } catch let error {
             print("error: \(error)")
         }
         
-        keychainProVersionString = keychain[proVersionKey]
+        Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
     }
     
     func restorePurchases() {
@@ -441,11 +440,11 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
         paragraphStyle.alignment = NSTextAlignment.center
         
-        let attributedLineOne: AttributedString = AttributedString(string: lineOne, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24), NSParagraphStyleAttributeName: paragraphStyle])
+        let attributedLineOne: NSAttributedString = NSAttributedString(string: lineOne, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24), NSParagraphStyleAttributeName: paragraphStyle])
         
-        let attributedLineTwo: AttributedString = AttributedString(string: lineTwo, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSParagraphStyleAttributeName: paragraphStyle])
+        let attributedLineTwo: NSAttributedString = NSAttributedString(string: lineTwo, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSParagraphStyleAttributeName: paragraphStyle])
         
-        let attributedLineThree: AttributedString = AttributedString(string: lineThree, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
+        let attributedLineThree: NSAttributedString = NSAttributedString(string: lineThree, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
         
         let lineOneLabel: UILabel = UILabel()
         lineOneLabel.numberOfLines = 0
@@ -469,11 +468,11 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         }
         
         let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.system)
-        purchaseButton.setTitleColor(UIColor.white(), for: UIControlState.normal)
-        purchaseButton.setTitleColor(UIColor.lightGray(), for: UIControlState.highlighted)
+        purchaseButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        purchaseButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
         purchaseButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
         purchaseButton.setTitle("Purchase", for: UIControlState.normal)
-        purchaseButton.backgroundColor = UIColor.green()
+        purchaseButton.backgroundColor = UIColor.green
         purchaseButton.layer.cornerRadius = 4
         purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControlEvents.touchUpInside)
         contents.append(purchaseButton)
@@ -489,7 +488,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     func obtainReceipt() {
         
-        let fileExists = FileManager.default.fileExists(atPath: receiptURL!.path!)
+        let fileExists = FileManager.default.fileExists(atPath: Constants.receiptURL!.path)
         
         if fileExists {
             print("Appstore Receipt already exists")
@@ -516,7 +515,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             let serverURL = "https://buy.itunes.apple.com/verifyReceipt"
         #endif
         
-        guard let receipt: Data = try? Data(contentsOf: receiptURL!) else {
+        guard let receipt: Data = try? Data(contentsOf: Constants.receiptURL!) else {
             print("no receipt content")
             return
         }

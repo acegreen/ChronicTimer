@@ -33,9 +33,9 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func timerVolumeSlider(_ sender: UISlider) {
         
-        timerVolume = timerVolumeSlider.value
+        Constants.timerVolume = timerVolumeSlider.value
         
-        userDefaults.set(timerVolumeSlider.value, forKey: "TIMER_VOLUME")
+        Constants.userDefaults.set(timerVolumeSlider.value, forKey: "TIMER_VOLUME")
 
     }
     
@@ -43,16 +43,16 @@ class SettingsTableViewController: UITableViewController {
         
         if !sender.isOn {
             
-            userDefaults.set(false, forKey: "ENABLE_DEVICE_SLEEP")
+            Constants.userDefaults.set(false, forKey: "ENABLE_DEVICE_SLEEP")
             
         } else if sender.isOn {
                 
-            userDefaults.set(true, forKey: "ENABLE_DEVICE_SLEEP")
+            Constants.userDefaults.set(true, forKey: "ENABLE_DEVICE_SLEEP")
         }
                 
-        enableDeviceSleepState = userDefaults.bool(forKey: "ENABLE_DEVICE_SLEEP") as Bool
+        Constants.enableDeviceSleepState = Constants.userDefaults.bool(forKey: "ENABLE_DEVICE_SLEEP") as Bool
         
-        UIApplication.shared().isIdleTimerDisabled = !enableDeviceSleepState
+        UIApplication.shared.isIdleTimerDisabled = !Constants.enableDeviceSleepState
         
     }
     
@@ -60,23 +60,24 @@ class SettingsTableViewController: UITableViewController {
         
         if !sender.isOn {
             
-            userDefaults.set(false, forKey: "RUN_IN_BACKGROUND")
+            Constants.userDefaults.set(false, forKey: "RUN_IN_BACKGROUND")
             
         } else if sender.isOn {
             
-            userDefaults.set(true, forKey: "RUN_IN_BACKGROUND")
+            Constants.userDefaults.set(true, forKey: "RUN_IN_BACKGROUND")
         }
         
-        runInBackgroundState = userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
+        Constants.runInBackgroundState = Constants.userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
         
     }
     
     @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
-        userDefaults.set(sender.isOn, forKey: "NOTIFICATION_REMINDER_ENABLED")
-        self.tableView.reloadData()
+        Constants.userDefaults.set(sender.isOn, forKey: "NOTIFICATION_REMINDER_ENABLED")
         
-        notificationReminderState = userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
-        NotificationHelper.updateNotificationPreferences(notificationReminderState)
+        Constants.notificationReminderState = Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
+        NotificationHelper.updateNotificationPreferences(Constants.notificationReminderState)
+    
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -90,14 +91,14 @@ class SettingsTableViewController: UITableViewController {
         
         super.viewWillAppear(true)
         
-        timerSoundDetailTextField.text = timerSound
-        timerVolumeSlider.value = timerVolume
-        enableDeviceSleepSwitch.isOn = enableDeviceSleepState
-        runInBackgroundSwitch.isOn = runInBackgroundState
-        notificationSwitch.isOn = notificationReminderState
+        timerSoundDetailTextField.text = Constants.timerSound
+        timerVolumeSlider.value = Constants.timerVolume
+        enableDeviceSleepSwitch.isOn = Constants.enableDeviceSleepState
+        runInBackgroundSwitch.isOn = Constants.runInBackgroundState
+        notificationSwitch.isOn = Constants.notificationReminderState
         notificationIntervalTextfield.text = NotificationHelper.interval
         notificationTimeTextfield.text = String(NotificationHelper.hour) + ":00"
-        appVersionLabel.text = payloadShort
+        appVersionLabel.text = Constants.payloadShort
 
     }
     
@@ -122,14 +123,14 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        cell.backgroundColor = UIColor.clear()
+        cell.backgroundColor = UIColor.clear
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let view = view as? UITableViewHeaderFooterView {
             
-            view.textLabel!.textColor = UIColor.white()
+            view.textLabel!.textColor = UIColor.white
             
         }
     }
@@ -140,7 +141,7 @@ class SettingsTableViewController: UITableViewController {
         } else if (section == 1) {
             return 4
         } else if (section == 2) {
-            if notificationReminderState == true {
+            if Constants.notificationReminderState == true {
                 return 3
             } else {
                 return 1
@@ -162,7 +163,7 @@ class SettingsTableViewController: UITableViewController {
             
         case "WriteAReviewCell":
             
-            if isConnectedToNetwork() {
+            if Functions.isConnectedToNetwork() {
                 
                 iRate.sharedInstance().openRatingsPageInAppStore()
                 
@@ -180,8 +181,8 @@ class SettingsTableViewController: UITableViewController {
                 mc.mailComposeDelegate = self
                 
                 emailTitle = "Chronic Feedback/Bug"
-                messageBody = "Hello Chronic Team, </br> </br> </br> </br> </br> - - - - - - - - - - - - - - - - - - - - - </br>" + emailDiagnosticInfo
-                toReceipients = [appEmail]
+                messageBody = "Hello Chronic Team, </br> </br> </br> </br> </br> - - - - - - - - - - - - - - - - - - - - - </br>" + Constants.emailDiagnosticInfo
+                toReceipients = [Constants.appEmail]
                 
                 mc.setSubject(emailTitle)
                 mc.setMessageBody(messageBody, isHTML: true)
@@ -198,19 +199,19 @@ class SettingsTableViewController: UITableViewController {
             
         case "UltimatePackageCell":
             
-            IAPHelper.sharedInstance.selectProduct(iapUltimatePackageKey)
+            IAPHelper.sharedInstance.selectProduct(Constants.iapUltimatePackageKey)
             
         case "ProVersionCell":
             
-            IAPHelper.sharedInstance.selectProduct(proVersionKey)
+            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
             
         case "RemoveAdsCell":
             
-            IAPHelper.sharedInstance.selectProduct(removeAdsKey)
+            IAPHelper.sharedInstance.selectProduct(Constants.removeAdsKey)
             
         case "DonateCell":
             
-            IAPHelper.sharedInstance.selectProduct(donate99Key)
+            IAPHelper.sharedInstance.selectProduct(Constants.donate99Key)
             
         case "RestoreUpgradesCell":
             
@@ -226,7 +227,7 @@ class SettingsTableViewController: UITableViewController {
             
         case "FAQCell":
             
-            if isConnectedToNetwork() {
+            if Functions.isConnectedToNetwork() {
                 
                 self.performSegue(withIdentifier: "FAQSegueIdentifier", sender: self)
                 
