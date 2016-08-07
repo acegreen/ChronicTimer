@@ -21,7 +21,7 @@ public class RoutineModel: NSManagedObject {
     @NSManaged public var totalRoutineTime: NSNumber?
     @NSManaged public var type: String!
     
-    @NSManaged public var routineToExcercise: OrderedSet?
+    @NSManaged public var routineToExcercise: NSOrderedSet?
 }
 
 extension RoutineModel {

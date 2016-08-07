@@ -204,7 +204,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func play() {
         
-        if !isConnectedToNetwork() && !removeAdsUpgradePurchased() {
+        if !Functions.isConnectedToNetwork() && !Functions.isRemoveAdsUpgradePurchased() {
             
             SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
             
@@ -243,7 +243,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         // Set Alert if in background
         var message: String!
         
-        if UIApplication.shared().applicationState == UIApplicationState.background {
+        if UIApplication.shared.applicationState == UIApplicationState.background {
             
             var alertTitle: String!
             var alertBody: String!
@@ -258,7 +258,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             }
             
             // Schedule workoutCompleteLocalNotification
-            NotificationHelper.scheduleNotification(nil, repeatInterval: nil, alertTitle: alertTitle, alertBody: alertBody, sound: "Boxing.wav", identifier: NotificationIdentifier.WorkoutIdentifier.key())
+            NotificationHelper.scheduleNotification(nil, repeatInterval: nil, alertTitle: alertTitle, alertBody: alertBody, sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.WorkoutIdentifier.key())
         }
         
         // Save workout
@@ -278,7 +278,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     // MARK: - View Life Cycle
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
     
@@ -293,7 +293,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        guard let ad = mopubBanner where ad.isDescendant(of: self.adBannerView) else { return }
+        guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
         self.mopubBanner.rotate(to: toInterfaceOrientation)
     }
     
@@ -344,7 +344,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         threeMinuteCounterLabel.frame = CGRect(x: (threeMinuteCounterVisualEffectView.frame.width / 2) - 100, y: (threeMinuteCounterVisualEffectView.frame.height / 2) - 100, width: 200, height: 200)
         threeMinuteCounterLabel.text = String(preRoutineCountDownTime)
-        threeMinuteCounterLabel.textColor = UIColor.white()
+        threeMinuteCounterLabel.textColor = UIColor.white
         threeMinuteCounterLabel.font = UIFont(name: threeMinuteCounterLabel.font.fontName, size: 200)
         threeMinuteCounterLabel.textAlignment = NSTextAlignment.center
         threeMinuteCounterVisualEffectView.addSubview(threeMinuteCounterLabel)
@@ -404,7 +404,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     self.stop()
                     
                     // Ask for feedback or show ad
-                    if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
+                    if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
                         
                         self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
                         
@@ -481,7 +481,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         workoutType = WorkoutType.quickTimer
         
-        (routineStages, routineTotalTime) = makeRoutineArray(nil)
+        (routineStages, routineTotalTime) = Functions.makeRoutineArray(nil)
         
         switchAppState()
     }
@@ -492,7 +492,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         workoutType = WorkoutType.routine
         
-        (routineStages, routineTotalTime) = makeRoutineArray(routine)
+        (routineStages, routineTotalTime) = Functions.makeRoutineArray(routine)
         self.routine = routine
         
         switchAppState()
@@ -558,14 +558,14 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             RoutineStateLabel.text = currentTimerDict["Name"] as? String
             intervalLabel.text = currentTimerDict["Interval"] as? String
-            CountDownLabel.text = timeStringFrom(time:Int(time), type: "Routine")
-            rightSideLabel2.text = timeStringFrom(time:timeRemaining, type: "Routine")
-            leftSideLabel2.text = timeStringFrom(time:timeElapsed, type: "Routine")
+            CountDownLabel.text = Functions.timeStringFrom(time:Int(time), type: "Routine")
+            rightSideLabel2.text = Functions.timeStringFrom(time:timeRemaining, type: "Routine")
+            leftSideLabel2.text = Functions.timeStringFrom(time:timeElapsed, type: "Routine")
             
         } else if workoutType == .run {
             
             //RoutineButton.setTitle(appTitle, forState: .Normal)
-            leftSideLabel2.text = timeStringFrom(time: Int(timeElapsed), type: "Routine")
+            leftSideLabel2.text = Functions.timeStringFrom(time: Int(timeElapsed), type: "Routine")
             
             let distanceFormatter = MKDistanceFormatter()
             distanceFormatter.units = MKDistanceFormatterUnits.metric
@@ -765,7 +765,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func playSound (_ type: String) {
         
-        guard timerSound != "No Sound" else { return }
+        guard Constants.timerSound != "No Sound" else { return }
             
         var soundName: String = ""
         var ext: String!
@@ -780,59 +780,59 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         case "Routine Begin":
             
-            if timerSound == "Text-To-Speech" {
+            if Constants.timerSound == "Text-To-Speech" {
                 
                 if workoutType == .routine || workoutType == .quickTimer {
                     
-                    textToSpeech("\(currentStage)")
+                    Functions.textToSpeech("\(currentStage)")
                     
                 } else if workoutType == .run {
                     
-                    textToSpeech(NSLocalizedString("Text-To-Speech Tracking Run Text", comment: ""))
+                    Functions.textToSpeech(NSLocalizedString("Text-To-Speech Tracking Run Text", comment: ""))
                     
                 }
                 
             } else {
                 
-                soundName = timerSound
+                soundName = Constants.timerSound
                 ext = ".wav"
             }
             
         case "Routine End":
             
-            if timerSound == "Text-To-Speech" {
+            if Constants.timerSound == "Text-To-Speech" {
                 
                 if workoutType == .quickTimer {
                     
-                    textToSpeech(NSLocalizedString("Text-To-Speech Timer Ended", comment: ""))
+                    Functions.textToSpeech(NSLocalizedString("Text-To-Speech Timer Ended", comment: ""))
                     
                 } else {
                     
                     if workoutType == .routine {
                         
-                        textToSpeech(NSLocalizedString("Text-To-Speech Workout Complete Text", comment: ""))
+                        Functions.textToSpeech(NSLocalizedString("Text-To-Speech Workout Complete Text", comment: ""))
                         
                     } else if workoutType == .run {
                         
-                        textToSpeech(NSLocalizedString("Text-To-Speech Run Complete Text", comment: ""))
+                        Functions.textToSpeech(NSLocalizedString("Text-To-Speech Run Complete Text", comment: ""))
                     }
                 }
                 
             } else {
                 
-                soundName = timerSound
+                soundName = Constants.timerSound
                 ext = ".wav"
             }
             
         case "Tick":
             
-            if timerSound == "Text-To-Speech" {
+            if Constants.timerSound == "Text-To-Speech" {
                 
                 if workoutState == .preRun {
-                    textToSpeech("\(preRoutineCountDownTime)")
+                    Functions.textToSpeech("\(preRoutineCountDownTime)")
                     
                 } else {
-                    textToSpeech("\(time)")
+                    Functions.textToSpeech("\(time)")
                 }
                 
             } else {
@@ -844,13 +844,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         default:
             
-            if timerSound == "Text-To-Speech" {
+            if Constants.timerSound == "Text-To-Speech" {
                 
-                textToSpeech("\(currentStage)")
+                Functions.textToSpeech("\(currentStage)")
                 
             } else {
                 
-                soundName = timerSound
+                soundName = Constants.timerSound
                 ext = ".wav"
                 
             }
@@ -858,7 +858,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         if soundName != "" {
             
-            loadPlayer(soundName, ext: ext)
+            Functions.loadPlayer(soundName, ext: ext)
             
         }
     }
@@ -983,7 +983,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 
                 if !isOtherButton {
                     
-                    UIApplication.shared().open(settingsURL!, options: [:], completionHandler: { (success) in
+                    UIApplication.shared.open(Constants.settingsURL!, options: [:], completionHandler: { (success) in
                         
                     })
                 }
@@ -1025,7 +1025,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         } else if segue.identifier == "FeedbackSegueIdentifier" {
             
-            let controller = segue.destinationViewController
+            let controller = segue.destination
             controller.transitioningDelegate = self
             controller.modalPresentationStyle = .custom
         }
@@ -1076,7 +1076,7 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         
         let polyline = overlay as! MKPolyline
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = UIColor.green()
+        renderer.strokeColor = UIColor.green
         renderer.lineWidth = 10
         return renderer
     }
@@ -1100,7 +1100,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         var bannerID: String!
         var bannerSize: CGSize!
         
-        if !removeAdsUpgradePurchased() {
+        if !Functions.isRemoveAdsUpgradePurchased() {
             
             if UI_USER_INTERFACE_IDIOM() == .phone {
                 bannerID = "c023d0aea31c44d6a0698c8bb11cba4e"
@@ -1143,7 +1143,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     }
     
     func adViewDidLoadAd(_ view: MPAdView!) {
-        adBannerView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsetsZero, excludingEdge: .bottom)
+        adBannerView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero, excludingEdge: .bottom)
         adBannerView.autoSetDimension(.height, toSize: view.adContentViewSize().height, relation: .equal)
     
         centerMoPubBannerAd(view, relativeToView: self.view)
@@ -1161,7 +1161,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         
         var interstitialID: String!
         
-        if !removeAdsUpgradePurchased() {
+        if !Functions.isRemoveAdsUpgradePurchased() {
             
             if UI_USER_INTERFACE_IDIOM() == .phone {
                 interstitialID = "ac4350a1be4046488d0cd0461469c8a9"
@@ -1198,7 +1198,7 @@ extension TimerViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
         transition.startingPoint = self.view.center
-        transition.bubbleColor = chronicColor
+        transition.bubbleColor = Constants.chronicColor
         return transition
     }
 }

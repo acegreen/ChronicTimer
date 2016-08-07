@@ -20,10 +20,15 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         
-        if !userDefaults.bool(forKey: "ONBOARDING_SHOWN") {
+        if !Constants.userDefaults.bool(forKey: "ONBOARDING_SHOWN") {
             // Present onboarding on first install
             self.performSegue(withIdentifier: "OBSegueIdentifier", sender: self)
+            
         } else {
             // Present release notes on first update
             LaunchKit.sharedInstance().presentAppReleaseNotesIfNeeded(from: self, completion: { (didPresent) -> Void in
@@ -32,10 +37,6 @@ class MainTabBarController: UITabBarController {
                 }
             })
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +49,7 @@ class MainTabBarController: UITabBarController {
         
         if segue.identifier == "FeedbackSegueIdentifier" {
             
-            let controller = segue.destinationViewController
+            let controller = segue.destination
             controller.transitioningDelegate = self
             controller.modalPresentationStyle = .custom
         }
@@ -69,7 +70,7 @@ extension MainTabBarController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
         transition.startingPoint = self.view.center
-        transition.bubbleColor = chronicColor
+        transition.bubbleColor = Constants.chronicColor
         return transition
     }
 }

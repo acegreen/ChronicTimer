@@ -17,7 +17,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         // setup user defaults
         //userDefaults.registerDefaults(defaultPrefs as! [String : AnyObject])
         
-        keychainProVersionString = keychain[proVersionKey]
+        Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         
         // Request HealthKit Authorization
         HealthKitHelper.sharedInstance.authorizeHealthKit { (authorized,  error) -> Void in
@@ -34,9 +34,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         }
         
         // Setup WCSession
-        wcSession = WCSession.default()
-        wcSession.delegate = self
-        wcSession.activate()
+        Constants.wcSession = WCSession.default()
+        Constants.wcSession.delegate = self
+        Constants.wcSession.activate()
     }
 
     func applicationDidBecomeActive() {
@@ -52,7 +52,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     // MARK: - WCSessionDelegate
     
     @available(watchOSApplicationExtension 2.2, *)
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("session activationDidCompleteWith")
     }
     
@@ -62,29 +62,29 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         
         if applicationContext["contextType"] as! String == "RoutineAdded" {
             
-            insertCoreDataObject(appContext: applicationContext)
+            Functions.insertCoreDataObject(appContext: applicationContext)
             
         } else if applicationContext["contextType"] as! String == "RoutineModified" {
             
-            modifyCoreDataObject(appContext: applicationContext)
+            Functions.modifyCoreDataObject(appContext: applicationContext)
             
         } else if applicationContext["contextType"] as! String == "RoutineDeleted" {
             
-            deleteCoreDataObject(appContext: applicationContext)
+            Functions.deleteCoreDataObject(appContext: applicationContext)
             
         } else if applicationContext["contextType"] as! String == "PurchasedProVersion" {
             
             // Set KeyChain Value
             do {
-                try keychain
-                    .accessibility(.always)
-                    .synchronizable(true)
-                    .set(proVersionKeyValue, key: proVersionKey)
+                try Constants.keychain
+                    .accessibility(accessibility: .Always)
+                    .synchronizable(synchronizable: true)
+                    .set(value: Constants.proVersionKeyValue, key: Constants.proVersionKey)
             } catch let error {
                 print("error: \(error)")
             }
             
-            keychainProVersionString = keychain[proVersionKey]
+            Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         }
         
     }

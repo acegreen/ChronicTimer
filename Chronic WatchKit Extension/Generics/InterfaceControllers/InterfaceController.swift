@@ -129,13 +129,13 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             
             workoutType = .routine
             
-            (routineArray, routineTotalTime) = makeRoutineArray(routine: selectedRoutine as? RoutineModel)
+            (routineArray, routineTotalTime) = Functions.makeRoutineArray(routine: selectedRoutine as? RoutineModel)
             
         } else {
             
             workoutType = .quickTimer
             
-            (routineArray, routineTotalTime) = makeRoutineArray(routine: nil)
+            (routineArray, routineTotalTime) = Functions.makeRoutineArray(routine: nil)
         }
         
         #if DEBUG
@@ -254,9 +254,9 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         //self.setTitle(routineName)
         RoutineStateLabel.setText(currentTimerDict["Name"] as? String)
-        CountDownLabel.setText(timeStringFrom(time: Int(timer)))
-        timeRemainingLabel.setText(timeStringFrom(time: Int(timeRemaining)))
-        timeElapsedLabel.setText(timeStringFrom(time: Int(timeElapsed)))
+        CountDownLabel.setText(Functions.timeStringFrom(time: Int(timer)))
+        timeRemainingLabel.setText(Functions.timeStringFrom(time: Int(timeRemaining)))
+        timeElapsedLabel.setText(Functions.timeStringFrom(time: Int(timeElapsed)))
         
     }
     
@@ -269,7 +269,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             stageColor = (NSKeyedUnarchiver.unarchiveObject(with: currentTimerDictColor) as? UIColor)!
         }
 
-        RoutineStateLabel.setTextColor(stageColor ?? UIColor.green())
+        RoutineStateLabel.setTextColor(stageColor ?? UIColor.green)
     }
     
     func playFeedback (_ type: String) {
@@ -329,7 +329,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             let notificaitonSound = UNNotificationSound.default()
             notificationContent.sound = notificaitonSound
             
-            let request = UNNotificationRequest(identifier: NotificationCategory.WorkoutCategory.key(), content: notificationContent, trigger: nil)
+            let request = UNNotificationRequest(identifier: Constants.NotificationCategory.WorkoutCategory.key(), content: notificationContent, trigger: nil)
             
             // Schedule the notification.
             let center = UNUserNotificationCenter.current()
@@ -492,8 +492,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         }
     }
     
-    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: NSError) {
-        
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         print("workout session failed: \(error)")
     }
     
@@ -561,15 +560,15 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         }
         
         let when = DispatchTime.now() + Double(Int64(0.5 * double_t(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        let queue = DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault)
-        queue.after(when: when) {
+        let queue = DispatchQueue.global(qos: .default)
+        queue.asyncAfter(deadline: when, execute: {
             DispatchQueue.main.async(execute: {
                 self.animate(withDuration: 0.5, animations: {
                     self.heart.setWidth(15)
                     self.heart.setHeight(15)
                 })
             })
-        }
+        })
     }
     
     func hideHeartRateGroup() {

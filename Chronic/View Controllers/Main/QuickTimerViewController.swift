@@ -20,13 +20,13 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBAction func StartButtonPressed(_ sender: AnyObject) {
     
-        deselectSelectedRoutine()
+        Functions.deselectSelectedRoutine()
         
-        let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+        let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
         timerViewController.initializeQuickTimer()
         
         self.dismiss(animated: true) { 
-            appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
+            Constants.appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
         }
     }
 
@@ -36,7 +36,7 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         picker.delegate = self
         picker.dataSource = self
         
-        if UIDevice.current().userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             
             self.navigationItem.leftBarButtonItem = nil
         
@@ -71,17 +71,17 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         let hoursLabel: UILabel = UILabel(frame: CGRect(x: 75, y: 95, width: 75, height: 30))
         hoursLabel.text = "hour"
-        hoursLabel.textColor = UIColor.white()
+        hoursLabel.textColor = UIColor.white
         picker.addSubview(hoursLabel)
         
         let minutesLabel: UILabel = UILabel(frame: CGRect(x: 75 + (picker.frame.size.width / 3), y: 95 , width: 75, height: 30))
         minutesLabel.text = "min"
-        minutesLabel.textColor = UIColor.white()
+        minutesLabel.textColor = UIColor.white
         picker.addSubview(minutesLabel)
         
         let secondsLabel: UILabel = UILabel(frame: CGRect(x: 75 + ((picker.frame.size.width / 3) * 2), y: 95, width: 75, height: 30))
         secondsLabel.text = "sec"
-        secondsLabel.textColor = UIColor.white()
+        secondsLabel.textColor = UIColor.white
         picker.addSubview(secondsLabel)
         
         self.view.addSubview(picker)
@@ -108,9 +108,9 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         return 60
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> AttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        return AttributedString(string: String(row), attributes: [NSForegroundColorAttributeName:UIColor.white()])
+        return NSAttributedString(string: String(row), attributes: [NSForegroundColorAttributeName:UIColor.white])
         
     }
     
@@ -131,7 +131,7 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         pickerTotal = pickerHours + pickerMinutes + pickerSeconds
         
-        QuickTimerTime = pickerTotal
+        Constants.QuickTimerTime = pickerTotal
     }
     
     func setPickerInitialValues() {
@@ -141,7 +141,7 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         pickerSeconds = 0.0
         
         pickerTotal = 60.0
-        QuickTimerTime = pickerTotal
+        Constants.QuickTimerTime = pickerTotal
         
     }
     

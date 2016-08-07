@@ -99,17 +99,17 @@ class QTInterfaceController: WKInterfaceController {
 
     override func contextForSegue(withIdentifier segueIdentifier: String) -> AnyObject? {
             
-        QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
+        Constants.QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
     
-        return QuickTimerTime
+        return Constants.QuickTimerTime
     
     }
     
     override func contextsForSegue(withIdentifier segueIdentifier: String) -> [AnyObject]? {
         
-        QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
+        Constants.QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
         
-        return [QuickTimerTime]
+        return [Constants.QuickTimerTime]
     }
     
 }

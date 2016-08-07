@@ -34,13 +34,13 @@ class RoutineCell: UITableViewCell {
     func configure(with routine: RoutineModel) {
         
         self.name = routine.name
-        self.time = timeStringFrom(time:Int(routine.totalRoutineTime!), type: "Routine")
+        self.time = Functions.timeStringFrom(time:Int(routine.totalRoutineTime!), type: "Routine")
         
         barPoints = [String]()
         barValues = [Double]()
         barColors = [UIColor]()
         
-        let (routineStages, _) = makeRoutineArray(routine)
+        let (routineStages, _) = Functions.makeRoutineArray(routine)
         
         for stage in routineStages {
 
@@ -92,7 +92,7 @@ class RoutineCell: UITableViewCell {
         chartDataSet.drawValuesEnabled = false
         chartDataSet.colors = barColors
         chartDataSet.valueFont = UIFont(name: "HelveticaNeue", size: 15.0)!
-        chartDataSet.valueTextColor = chronicColor
+        chartDataSet.valueTextColor = Constants.chronicColor
         chartDataSet.barSpace = 0
         
         let numberFormatter = NumberFormatter()
@@ -108,7 +108,7 @@ class RoutineCell: UITableViewCell {
         routineChartView.xAxis.drawLabelsEnabled = false
         routineChartView.xAxis.drawGridLinesEnabled = false
         routineChartView.xAxis.labelFont = UIFont(name: "HelveticaNeue", size: 11.0)!
-        routineChartView.xAxis.labelTextColor = chronicColor
+        routineChartView.xAxis.labelTextColor = Constants.chronicColor
 //        routineChartView.leftAxis.enabled = false
 //        routineChartView.leftAxis.drawGridLinesEnabled = false
 //        routineChartView.leftAxis.customAxisMin = 0.0

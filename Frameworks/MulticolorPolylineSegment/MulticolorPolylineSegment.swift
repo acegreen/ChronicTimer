@@ -53,7 +53,7 @@ class MulticolorPolylineSegment: MKPolyline {
       coords.append(CLLocationCoordinate2D(latitude: l2.coordinate.latitude, longitude: l2.coordinate.longitude))
 
       let speed = speeds[i-1]
-      var color = UIColor.black()
+      var color = UIColor.black
 
       if speed < minSpeed { // Between Red & Yellow
         let ratio = (speed - minSpeed) / (meanSpeed - minSpeed)

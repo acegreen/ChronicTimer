@@ -12,7 +12,7 @@ class OnboardingViewController: AMWaveViewController {
         updateUI()
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
 

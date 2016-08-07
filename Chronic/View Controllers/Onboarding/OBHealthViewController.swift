@@ -11,7 +11,7 @@ class OBHealthViewController: OnboardingViewController {
                 
                 if success {
                     
-                    if userDefaults.bool(forKey: "HEALTHACCESS_PROMPTED") {
+                    if Constants.userDefaults.bool(forKey: "HEALTHACCESS_PROMPTED") {
                         
                         SweetAlert().showAlert(NSLocalizedString("Alert: Health Prompted Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Health Prompted Subtitle Text", comment: ""), style: AlertStyle.success)
                         
@@ -19,7 +19,7 @@ class OBHealthViewController: OnboardingViewController {
                         
                     } else {
                         
-                        userDefaults.set(true, forKey: "HEALTHACCESS_PROMPTED")
+                        Constants.userDefaults.set(true, forKey: "HEALTHACCESS_PROMPTED")
                     }
                     
                 } else if error != nil {

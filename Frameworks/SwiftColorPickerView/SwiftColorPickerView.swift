@@ -89,7 +89,7 @@ final public class SwiftColorPickerView: UIView {
     public override func draw(_ rect: CGRect) {
         
         super.draw(rect)
-        let lineColor = UIColor.gray()
+        let lineColor = UIColor.gray
         let pS = patternSize()
         let w = pS.w
         let h = pS.h
@@ -125,7 +125,7 @@ final public class SwiftColorPickerView: UIView {
         } else {
             
             var hue:CGFloat = CGFloat(x) / CGFloat(numberColorsInYDirection)
-            var fillColor = UIColor.white()
+            var fillColor = UIColor.white
             if (y==0)
             {
                 if (x==(numberColorsInYDirection-1))

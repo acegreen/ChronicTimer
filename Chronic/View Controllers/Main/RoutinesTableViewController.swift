@@ -12,7 +12,7 @@ import DZNEmptyDataSet
 import LaunchKit
 
 protocol RoutineDelegate {
-    func didCreateRoutine(_ routine: RoutineModel)
+    func didCreateRoutine(routine: RoutineModel, isNew: Bool)
 }
 
 class RoutinesTableViewController: UITableViewController, UIPopoverControllerDelegate, RoutineDelegate {
@@ -21,17 +21,17 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
 
     @IBAction func runnerButtonPressed(_ sender: AnyObject) {
         
-        guard proFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !removeAdsUpgradePurchased()) else {
-            IAPHelper.sharedInstance.selectProduct(proVersionKey)
+        guard Functions.isProFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !Functions.isRemoveAdsUpgradePurchased()) else {
+            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
             return
         }
             
-        deselectSelectedRoutine()
+        Functions.deselectSelectedRoutine()
         
-        let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+        let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
         timerViewController.initializeRunner()
         
-        appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
+        Constants.appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -67,12 +67,21 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         }
     }
     
-    func didCreateRoutine(_ routine: RoutineModel) {
+    func didCreateRoutine(routine: RoutineModel, isNew: Bool) {
+        
+        if !isNew {
+            
+            if let indexOfRoutine = routines.index(of: routine) {
+                let indexPath = IndexPath(row: indexOfRoutine, section: 0)
+                routines.removeObject(routine)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
         
         let indexPath = IndexPath(row: 0, section: 0)
         routines.insert(routine, at: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
         
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
         self.tableView.reloadEmptyDataSet()
     }
     
@@ -91,7 +100,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        cell.backgroundColor = UIColor.clear()
+        cell.backgroundColor = UIColor.clear
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
@@ -111,12 +120,12 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
        
         if routines.count != 0 {
             
-            setSelectedRoutine(routines[(indexPath as NSIndexPath).row], completion: { (result) -> Void in
+            Functions.setSelectedRoutine(routines[(indexPath as NSIndexPath).row], completion: { (result) -> Void in
                 
-                let timerViewController = mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+                let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
                 timerViewController.initializeRoutine(with: self.routines[(indexPath as NSIndexPath).row])
                 
-                appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
+                Constants.appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
             })
         }
     }
@@ -155,20 +164,20 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
                 
             }
         }
-        editAction.backgroundColor = UIColor.orange()
+        editAction.backgroundColor = UIColor.orange
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) -> Void in
             
             do {
                 
-                try context.save()
+                try Constants.context.save()
                 
-                context.delete(selectedRoutine)
+                Constants.context.delete(selectedRoutine)
                 self.routines.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: .left)
                 
-                sendContextToAppleWatch(["routineName":selectedRoutine.name!,"contextType":"RoutineDeleted"])
-                deleteFromSpotlight(selectedRoutine.name!)
+                Functions.sendContextToAppleWatch(["routineName":selectedRoutine.name!,"contextType":"RoutineDeleted"])
+                Functions.deleteFromSpotlight(selectedRoutine.name!)
                 
                 if self.routines.count == 0 {
                     
@@ -215,7 +224,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let destinationController = segue.destinationViewController as! UINavigationController
+        let destinationController = segue.destination as! UINavigationController
         
         if segue.identifier == "EditCircuitRoutineSegueIdentifier" {
             
@@ -245,23 +254,23 @@ extension RoutinesTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         
-        return emptyTableGuyImage
+        return Constants.emptyRoutineTableIcon
     }
     
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> AttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
-        let attributedTitle: AttributedString = AttributedString(string: NSLocalizedString("Empty Routine Table Title Text", comment: ""), attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24)])
+        let attributedTitle: NSAttributedString = NSAttributedString(string: NSLocalizedString("Empty Routine Table Title Text", comment: ""), attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24)])
         
         return attributedTitle
     }
     
-    func description(forEmptyDataSet scrollView: UIScrollView!) -> AttributedString! {
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
         paragraphStyle.alignment = NSTextAlignment.center
         
-        let attributedDescription: AttributedString = AttributedString(string: NSLocalizedString("Empty Routine Table Subtitle Text", comment: ""), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
+        let attributedDescription: NSAttributedString = NSAttributedString(string: NSLocalizedString("Empty Routine Table Subtitle Text", comment: ""), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
         
         return attributedDescription
         

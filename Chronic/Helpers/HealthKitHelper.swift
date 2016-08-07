@@ -17,7 +17,7 @@ public class HealthKitHelper {
     let heartRateUnit = HKUnit(from: "count/min")
     let workoutType = HKObjectType.workoutType()
 
-    var distanceUnit:distanceType = .kilometers
+    var distanceUnit: Constants.DistanceType = .kilometers
     
     func authorizeHealthKit(_ completion: ((success:Bool, error:NSError?) -> Void)!) {
         
@@ -117,7 +117,7 @@ public class HealthKitHelper {
         let mostRecentPredicate = HKQuery.predicateForSamples(withStart: past, end:now, options: HKQueryOptions())
         
         // 2. Build the sort descriptor to return the samples in descending order
-        let sortDescriptor = SortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
         // 3. we want to limit the number of samples returned by the query to just 1 (the most recent)
         let limit = 1
         

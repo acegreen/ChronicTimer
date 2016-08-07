@@ -51,23 +51,23 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             
             exerciseSet = routineToEdit.routineToExcercise as! NSMutableOrderedSet
             
-            warmUpExercise = exerciseSet[0] as! ExerciseModel
-            roundExercise = exerciseSet[1] as! ExerciseModel
-            restExercise = exerciseSet[2] as! ExerciseModel
-            coolDownExercise = exerciseSet[3] as! ExerciseModel
+            Constants.warmUpExercise = exerciseSet[0] as! ExerciseModel
+            Constants.roundExercise = exerciseSet[1] as! ExerciseModel
+            Constants.restExercise = exerciseSet[2] as! ExerciseModel
+            Constants.coolDownExercise = exerciseSet[3] as! ExerciseModel
             
-            WarmUpDuration = warmUpExercise.exerciseTime as Int
-            NumberOfRounds = roundExercise.exerciseNumberOfRounds as Int
-            RoundDuration = roundExercise.exerciseTime as Int
-            RestDuration = restExercise.exerciseTime as Int
-            CoolDownDuration = coolDownExercise.exerciseTime as Int
+            WarmUpDuration = Constants.warmUpExercise.exerciseTime as Int
+            NumberOfRounds = Constants.roundExercise.exerciseNumberOfRounds as Int
+            RoundDuration = Constants.roundExercise.exerciseTime as Int
+            RestDuration = Constants.restExercise.exerciseTime as Int
+            CoolDownDuration = Constants.coolDownExercise.exerciseTime as Int
             
             self.nameTextField.text = routineToEdit.name
-            self.warmUpTimeTextField.text = timeStringFrom(time:WarmUpDuration, type: "Routine")
+            self.warmUpTimeTextField.text = Functions.timeStringFrom(time:WarmUpDuration, type: "Routine")
             self.numberOfRoundsTextField.text = String(NumberOfRounds)
-            self.roundTimeTextField.text = timeStringFrom(time:RoundDuration, type: "Routine")
-            self.restTimeTextField.text = timeStringFrom(time:RestDuration, type: "Routine")
-            self.coolDownTimeTextField.text = timeStringFrom(time:CoolDownDuration, type: "Routine")
+            self.roundTimeTextField.text = Functions.timeStringFrom(time:RoundDuration, type: "Routine")
+            self.restTimeTextField.text = Functions.timeStringFrom(time:RestDuration, type: "Routine")
+            self.coolDownTimeTextField.text = Functions.timeStringFrom(time:CoolDownDuration, type: "Routine")
             
             nameTextField.isEnabled = false
             
@@ -103,31 +103,31 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             
         }
         
-        (exerciseHours,exerciseMinutes,exerciseSeconds) = timeComponentsFrom(string: self.warmUpTimeTextField.text!)
+        (exerciseHours,exerciseMinutes,exerciseSeconds) = Functions.timeComponentsFrom(string: self.warmUpTimeTextField.text!)
         
-        WarmUpDuration = timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
+        WarmUpDuration = Functions.timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
         
         NumberOfRounds = Int(self.numberOfRoundsTextField.text!)!
         
-        (exerciseHours,exerciseMinutes,exerciseSeconds) = timeComponentsFrom(string: self.roundTimeTextField.text!)
+        (exerciseHours,exerciseMinutes,exerciseSeconds) = Functions.timeComponentsFrom(string: self.roundTimeTextField.text!)
         
-        RoundDuration = timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
+        RoundDuration = Functions.timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
         
-        (exerciseHours,exerciseMinutes,exerciseSeconds) = timeComponentsFrom(string: self.restTimeTextField.text!)
+        (exerciseHours,exerciseMinutes,exerciseSeconds) = Functions.timeComponentsFrom(string: self.restTimeTextField.text!)
         
-        RestDuration = timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
+        RestDuration = Functions.timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
         
-        (exerciseHours,exerciseMinutes,exerciseSeconds) = timeComponentsFrom(string: self.coolDownTimeTextField.text!)
+        (exerciseHours,exerciseMinutes,exerciseSeconds) = Functions.timeComponentsFrom(string: self.coolDownTimeTextField.text!)
         
-        CoolDownDuration = timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
+        CoolDownDuration = Functions.timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
         
         if (WarmUpDuration != 0) || (RoundDuration != 0) || (RestDuration != 0) || (CoolDownDuration != 0) {
             
             exerciseSet = NSMutableOrderedSet()
             
-            deselectSelectedRoutine()
+            Functions.deselectSelectedRoutine()
             
-            let existingRoutine = getRoutine(nameTextField.text!)
+            let existingRoutine = Functions.getRoutine(nameTextField.text!)
             
             if routineToEdit != nil {
                 
@@ -135,7 +135,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Warm Up Exercise
                     
-                    let warmUpExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let warmUpExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     warmUpExercise.exerciseName = NSLocalizedString("Exercise Name Text (Warm Up)", comment: "")
                     
@@ -143,7 +143,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     warmUpExercise.exerciseNumberOfRounds = 1
                     
-                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.yellow())
+                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.yellow)
                     
                     warmUpExercise.exerciseToRoutine = routineToEdit
                     
@@ -151,7 +151,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Round Exercise
                     
-                    let roundExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let roundExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     roundExercise.exerciseName = NSLocalizedString("Exercise Name Text (Round)", comment: "")
                     
@@ -159,7 +159,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     roundExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.red())
+                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.red)
                     
                     roundExercise.exerciseToRoutine = routineToEdit
                     
@@ -167,7 +167,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Rest Exercise
                     
-                    let restExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let restExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     restExercise.exerciseName = NSLocalizedString("Exercise Name Text (Rest)", comment: "")
                     
@@ -175,7 +175,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     restExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
+                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
                     
                     restExercise.exerciseToRoutine = routineToEdit
                     
@@ -183,7 +183,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Cool Down Exercise
                     
-                    let coolDownExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let coolDownExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     coolDownExercise.exerciseName = NSLocalizedString("Exercise Name Text (Cool Down)", comment: "")
                     
@@ -191,7 +191,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     coolDownExercise.exerciseNumberOfRounds = 1
                     
-                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue())
+                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
                     
                     coolDownExercise.exerciseToRoutine = routineToEdit
                     
@@ -202,23 +202,23 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     routineToEdit.selectedRoutine = true
                     routineToEdit!.date = Date()
                     
-                    setSelectedRoutine(routineToEdit, completion: { (result) -> Void in
+                    Functions.setSelectedRoutine(routineToEdit, completion: { (result) -> Void in
                     })
                     
-                    let (stagesArray, totalTime) = makeRoutineArray(self.routineToEdit)
+                    let (stagesArray, totalTime) = Functions.makeRoutineArray(self.routineToEdit)
                     
                     routineToEdit.totalRoutineTime = totalTime
                     
                     // add routine to spotlight & send context to Watch
-                    let totalTimeString = timeStringFrom(time: routineToEdit.totalRoutineTime! as Int, type: "Routine")
+                    let totalTimeString = Functions.timeStringFrom(time: routineToEdit.totalRoutineTime! as Int, type: "Routine")
                     
-                    addToSpotlight(routineToEdit.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: routineToEdit.name!, domainIdentifier: "Routines")
+                    Functions.addToSpotlight(routineToEdit.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: routineToEdit.name!, domainIdentifier: "Routines")
                     
-                    if wcSession != nil {
-                        sendContextToAppleWatch(["routineName":routineToEdit.name!, "routineType":routineToEdit.type!, "routineStage": stagesArray, "contextType":"RoutineModified"])
+                    if Constants.wcSession != nil {
+                        Functions.sendContextToAppleWatch(["routineName":routineToEdit.name!, "routineType":routineToEdit.type!, "routineStage": stagesArray, "contextType":"RoutineModified"])
                     }
                     
-                    print("\(routineToEdit) renamed")
+                    print("Routine renamed: ", routineToEdit)
                     
                 } else {
                     
@@ -235,14 +235,14 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Warm Up Exercise
                     
-                    let warmUpExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let warmUpExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     warmUpExercise.exerciseName = NSLocalizedString("Exercise Name Text (Warm Up)", comment: "")
                     warmUpExercise.exerciseTime = WarmUpDuration
                     
                     warmUpExercise.exerciseNumberOfRounds = 1
                     
-                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.yellow())
+                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.yellow)
                     
                     warmUpExercise.exerciseToRoutine = newRoutine
                     
@@ -250,7 +250,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Round Exercise
                     
-                    let roundExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let roundExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     roundExercise.exerciseName = NSLocalizedString("Exercise Name Text (Round)", comment: "")
                     
@@ -258,7 +258,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     roundExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green())
+                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
                     
                     roundExercise.exerciseToRoutine = routineToEdit
                     
@@ -266,7 +266,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Rest Exercise
                     
-                    let restExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let restExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     restExercise.exerciseName = NSLocalizedString("Exercise Name Text (Rest)", comment: "")
                     
@@ -274,7 +274,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     restExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.red())
+                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.red)
                     
                     restExercise.exerciseToRoutine = routineToEdit
                     
@@ -282,7 +282,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Cool Down Exercise
                     
-                    let coolDownExercise = ExerciseModel(entity: exerciseEntity!, insertInto: context)
+                    let coolDownExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                     
                     coolDownExercise.exerciseName = NSLocalizedString("Exercise Name Text (Cool Down)", comment: "")
                     
@@ -290,13 +290,13 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     coolDownExercise.exerciseNumberOfRounds = 1
                     
-                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue())
+                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
                     
                     coolDownExercise.exerciseToRoutine = newRoutine
                     
                     exerciseSet.add(coolDownExercise)
                     
-                    newRoutine = RoutineModel(entity: routineEntity!, insertInto: context)
+                    newRoutine = RoutineModel(entity: Constants.routineEntity!, insertInto: Constants.context)
                     
                     newRoutine.routineToExcercise = exerciseSet
                     
@@ -308,27 +308,27 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     newRoutine.type = "Circuit"
                     
-                    setSelectedRoutine(newRoutine, completion: { (result) -> Void in
+                    Functions.setSelectedRoutine(newRoutine, completion: { (result) -> Void in
                     })
                     
-                    let (stagesArray, totalTime) = makeRoutineArray(self.newRoutine)
+                    let (stagesArray, totalTime) = Functions.makeRoutineArray(self.newRoutine)
                     
                     newRoutine.totalRoutineTime = totalTime
                     
                     // add routine to spotlight & send context to Watch                        
-                    let totalTimeString = timeStringFrom(time: newRoutine.totalRoutineTime! as Int, type: "Routine")
+                    let totalTimeString = Functions.timeStringFrom(time: newRoutine.totalRoutineTime! as Int, type: "Routine")
                     
-                    addToSpotlight(newRoutine.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: newRoutine.name!, domainIdentifier: "Routines")
+                    Functions.addToSpotlight(newRoutine.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: newRoutine.name!, domainIdentifier: "Routines")
                     
-                    if wcSession != nil {
+                    if Constants.wcSession != nil {
                         
 //                        let keys = Array(routineToExcercise.entity.attributesByName.keys)
 //                        let dict = routineToExcercise.dictionaryWithValuesForKeys(keys)
                         
-                        sendContextToAppleWatch(["routineName":newRoutine.name!, "routineType":newRoutine.type!, "routineStage":stagesArray, "contextType":"RoutineAdded"])
+                        Functions.sendContextToAppleWatch(["routineName":newRoutine.name!, "routineType":newRoutine.type!, "routineStage":stagesArray, "contextType":"RoutineAdded"])
                     }
                     
-                    print("New Routine: \(nameTextField.text) created")
+                    print("New Routine: ", newRoutine)
                     
                 } else {
                     
@@ -343,18 +343,18 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             do {
                 
                 // save into CoreData
-                try context.save()
+                try Constants.context.save()
                 
                 // send delegate out
-                self.delegate?.didCreateRoutine(newRoutine ?? routineToEdit)
+                self.delegate?.didCreateRoutine(routine: newRoutine ?? routineToEdit, isNew: (routineToEdit != nil) ? false : true)
                 
                 return true
                 
             } catch let error as NSError {
                 
                 print("Fetch failed: \(error.localizedDescription)")
-
-                SweetAlert().showAlert("Failed To Save!", subTitle: "Please try again", style: AlertStyle.warning)
+  
+                SweetAlert().showAlert("Failed To Save!", subTitle: "Something seems to be missing", style: AlertStyle.warning)
                 return false
             }
             
@@ -371,15 +371,14 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
     //MARK: -TableView Functions
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        cell.backgroundColor = UIColor.clear()
+        cell.backgroundColor = UIColor.clear
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let view = view as? UITableViewHeaderFooterView {
             
-            view.textLabel!.textColor = UIColor.white()
+            view.textLabel!.textColor = UIColor.white
             
         }
         
@@ -388,7 +387,6 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
     //MARK: - TextField and Touches Functions
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
         return true
     }
     
@@ -409,12 +407,10 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
         let newLength: NSInteger = (textField.text?.characters.count)! + string.characters.count - range.length
         
         return newLength <= 20
-        
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches as Set<UITouch>, with: event)
         self.view.endEditing(true)
     }
-    
 }

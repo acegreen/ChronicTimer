@@ -49,7 +49,7 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
     
     func configureAccessoryView() -> UIView {
         
-        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main().bounds.size.width, height: 44))
+        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 44))
         inputAccessoryView.barStyle = UIBarStyle.blackTranslucent
         
         let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -57,7 +57,7 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
         // Configure done button
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
-        doneButton.tintColor = UIColor.green()
+        doneButton.tintColor = UIColor.green
         doneButton.action = #selector(NumberPickerTextField.dismissPicker)
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
@@ -77,7 +77,7 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
     
     override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         
-        UIMenuController.shared().isMenuVisible = false
+        UIMenuController.shared.isMenuVisible = false
         
         if action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.selectAll(_:)) || action == #selector(NSObject.paste(_:)) {
             return false
@@ -105,12 +105,12 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
         return 500
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> AttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let title = String(row + 1)
-        let attributedString = AttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white()])
+        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
         
-        pickerView.backgroundColor = UIColor.clear()
+        pickerView.backgroundColor = UIColor.clear
         
         return attributedString
     }

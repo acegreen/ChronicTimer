@@ -43,7 +43,7 @@ public class SweetAlert: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.view.frame = UIScreen.main().bounds
+        self.view.frame = UIScreen.main.bounds
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
         self.view.backgroundColor = UIColor(red:0, green:0, blue:0, alpha:kBakcgroundTansperancy)
         self.view.addSubview(contentView)
@@ -93,7 +93,7 @@ public class SweetAlert: UIViewController {
     }
     
     private func resizeAndRelayout() {
-        let mainScreenBounds = UIScreen.main().bounds
+        let mainScreenBounds = UIScreen.main.bounds
         self.view.frame.size = mainScreenBounds.size
         let x: CGFloat = kWidthMargin
         var y: CGFloat = 0.0
@@ -201,19 +201,19 @@ public class SweetAlert: UIViewController {
         let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
         let dispatchTime = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         
-        DispatchQueue.main.after(when: dispatchTime) { 
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             self.closeAlert(nil)
-        }
+        })
     }
     
     public override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        var sz = UIScreen.main().bounds.size
-        let sver = UIDevice.current().systemVersion as NSString
+        var sz = UIScreen.main.bounds.size
+        let sver = UIDevice.current.systemVersion as NSString
         let ver = sver.floatValue
         if ver < 8.0 {
             // iOS versions before 7.0 did not switch the width and height on device roration
-            if UIInterfaceOrientationIsLandscape(UIApplication.shared().statusBarOrientation) {
+            if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
                 let ssz = sz
                 sz = CGSize(width:ssz.height, height:ssz.width)
             }
@@ -297,7 +297,7 @@ public class SweetAlert: UIViewController {
     public func showAlert(_ title: String, subTitle: String?, style: AlertStyle, dismissTime: TimeInterval?, buttonTitle: String?,buttonColor: UIColor?,otherButtonTitle:
         String?, action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
             self.showAlert(title, subTitle: subTitle, style: style, dismissTime: dismissTime, buttonTitle: buttonTitle,buttonColor: buttonColor,otherButtonTitle:
-                otherButtonTitle,otherButtonColor: UIColor.red())
+                otherButtonTitle,otherButtonColor: UIColor.red)
             userAction = action
             return self
     }
@@ -306,7 +306,7 @@ public class SweetAlert: UIViewController {
         String?, otherButtonColor: UIColor?,action: ((isOtherButton: Bool) -> Void)? = nil) {
             
             userAction = action
-            let window: UIWindow = UIApplication.shared().keyWindow!
+            let window: UIWindow = UIApplication.shared.keyWindow!
             window.addSubview(view)
             window.bringSubview(toFront: view)
             view.frame = window.bounds
@@ -338,7 +338,7 @@ public class SweetAlert: UIViewController {
             case .activityIndicator:
                 self.activityIndicatorView = UIActivityIndicatorView()
                 self.activityIndicatorView?.activityIndicatorViewStyle = .whiteLarge
-                self.activityIndicatorView?.color = UIColor.darkGray()
+                self.activityIndicatorView?.color = UIColor.darkGray
                 self.activityIndicatorView?.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
                 self.activityIndicatorView?.startAnimating()
                 
@@ -365,7 +365,7 @@ public class SweetAlert: UIViewController {
                 let button: UIButton = UIButton(type: UIButtonType.custom)
                 button.setTitle(otherButtonTitle, for: UIControlState())
                 button.backgroundColor = otherButtonColor
-                button.addTarget(self, action: "pressed:", for: UIControlEvents.touchUpInside)
+                button.addTarget(self, action: #selector(SweetAlert.pressed(_:)), for: UIControlEvents.touchUpInside)
                 button.tag = 1
                 buttons.append(button)
             }
@@ -476,7 +476,7 @@ class CancelAnimatedView: AnimatableView {
     
     private func setupLayers() {
         circleLayer.path = outlineCircle
-        circleLayer.fillColor = UIColor.clear().cgColor;
+        circleLayer.fillColor = UIColor.clear.cgColor;
         circleLayer.strokeColor = UIColor.colorFromRGB(0xF27474).cgColor;
         circleLayer.lineCap = kCALineCapRound
         circleLayer.lineWidth = 4;
@@ -485,7 +485,7 @@ class CancelAnimatedView: AnimatableView {
         self.layer.addSublayer(circleLayer)
         
         crossPathLayer.path = crossPath
-        crossPathLayer.fillColor = UIColor.clear().cgColor;
+        crossPathLayer.fillColor = UIColor.clear.cgColor;
         crossPathLayer.strokeColor = UIColor.colorFromRGB(0xF27474).cgColor;
         crossPathLayer.lineCap = kCALineCapRound
         crossPathLayer.lineWidth = 4;
@@ -573,7 +573,7 @@ class InfoAnimatedView: AnimatableView {
     
     func setupLayers() {
         circleLayer.path = outlineCircle
-        circleLayer.fillColor = UIColor.clear().cgColor;
+        circleLayer.fillColor = UIColor.clear.cgColor;
         circleLayer.strokeColor = UIColor.colorFromRGB(0xF8D486).cgColor;
         circleLayer.lineCap = kCALineCapRound
         circleLayer.lineWidth = 4;
@@ -641,7 +641,7 @@ class SuccessAnimatedView: AnimatableView {
         outlineLayer.position = CGPoint(x: 0,
             y: 0);
         outlineLayer.path = outlineCircle
-        outlineLayer.fillColor = UIColor.clear().cgColor;
+        outlineLayer.fillColor = UIColor.clear.cgColor;
         outlineLayer.strokeColor = UIColor(red: 150.0/255.0, green: 216.0/255.0, blue: 115.0/255.0, alpha: 1.0).cgColor;
         outlineLayer.lineCap = kCALineCapRound
         outlineLayer.lineWidth = 4;
@@ -651,7 +651,7 @@ class SuccessAnimatedView: AnimatableView {
         circleLayer.position = CGPoint(x: 0,
             y: 0);
         circleLayer.path = path
-        circleLayer.fillColor = UIColor.clear().cgColor;
+        circleLayer.fillColor = UIColor.clear.cgColor;
         circleLayer.strokeColor = UIColor(red: 150.0/255.0, green: 216.0/255.0, blue: 115.0/255.0, alpha: 1.0).cgColor;
         circleLayer.lineCap = kCALineCapRound
         circleLayer.lineWidth = 4;
