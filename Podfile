@@ -20,6 +20,7 @@ target "Chronic" do
     pod 'PureLayout'
     pod 'Google-Mobile-Ads-SDK'
 
+    #pod 'PermissionScope'
     #pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     #pod 'ChameleonFramework/Swift'
 end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nvx-ar-6as">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11191" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nvx-ar-6as">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11151.4"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11074"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Symbol.ttf">
@@ -35,7 +35,7 @@
                                 <group width="1" alignment="center" layout="vertical" spacing="0.0" id="V4N-b7-5Xc">
                                     <items>
                                         <label width="1" alignment="center" verticalAlignment="center" text="00:00" textAlignment="center" minimumScaleFactor="0.5" id="RpH-vN-qcn">
-                                            <fontDescription key="font" type="boldSystem" pointSize="43"/>
+                                            <fontDescription key="font" type="boldSystem" pointSize="42"/>
                                             <variation key="device=watch42mm">
                                                 <fontDescription key="font" type="boldSystem" pointSize="50"/>
                                             </variation>
@@ -61,7 +61,9 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                                 </label>
-                                                <imageView alignment="left" verticalAlignment="bottom" image="heart" id="i30-lp-VZf"/>
+                                                <imageView alignment="left" verticalAlignment="bottom" image="heart" id="i30-lp-VZf">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
                                             </items>
                                         </group>
                                     </items>
@@ -73,7 +75,12 @@
                                                 <label height="14.5" alignment="left" text="Remaining" textAlignment="left" id="T9M-ZY-pwK">
                                                     <fontDescription key="font" type="system" pointSize="12"/>
                                                 </label>
-                                                <label alignment="left" verticalAlignment="bottom" text="00:00" textAlignment="left" id="uhL-jW-cs2"/>
+                                                <label alignment="left" verticalAlignment="bottom" text="00:00" textAlignment="left" id="uhL-jW-cs2">
+                                                    <fontDescription key="font" type="system" pointSize="17"/>
+                                                    <variation key="device=watch42mm">
+                                                        <fontDescription key="font" type="system" pointSize="18"/>
+                                                    </variation>
+                                                </label>
                                             </items>
                                         </group>
                                         <group alignment="right" verticalAlignment="center" layout="vertical" spacing="0.0" id="qkO-Pl-bIS">
@@ -81,7 +88,12 @@
                                                 <label alignment="right" text="Elapsed" textAlignment="right" id="n5a-oH-osJ" userLabel="Time Elapsed">
                                                     <fontDescription key="font" type="system" pointSize="12"/>
                                                 </label>
-                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="right" id="YUE-fZ-do1"/>
+                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="right" id="YUE-fZ-do1">
+                                                    <fontDescription key="font" type="system" pointSize="17"/>
+                                                    <variation key="device=watch42mm">
+                                                        <fontDescription key="font" type="system" pointSize="18"/>
+                                                    </variation>
+                                                </label>
                                             </items>
                                         </group>
                                     </items>
@@ -116,6 +128,7 @@
                         <outlet property="heart" destination="i30-lp-VZf" id="1Ak-V3-ihE"/>
                         <outlet property="heartRateGroup" destination="yAc-pL-ry4" id="eUf-Nw-47e"/>
                         <outlet property="label" destination="d3j-33-zZi" id="fW3-vC-T3l"/>
+                        <outlet property="mainGroup" destination="zie-3X-pJq" id="VeX-YD-b12"/>
                         <outlet property="timeElapsedLabel" destination="YUE-fZ-do1" id="4q3-Cw-Qkr"/>
                         <outlet property="timeRemainingLabel" destination="uhL-jW-cs2" id="ZJA-3o-vGs"/>
                     </connections>
@@ -230,42 +243,53 @@
                     </items>
                     <connections>
                         <outlet property="routineTable" destination="Exb-6Y-lsp" id="WTZ-qf-tFf"/>
+                        <segue destination="XDd-gw-aFh" kind="relationship" relationship="nextPage" id="snm-Wq-YvD"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="290" y="-280"/>
         </scene>
-        <!--Run Tracker Interface Controller-->
+        <!--Runner-->
         <scene sceneID="9Qm-WV-ewp">
             <objects>
-                <controller hidesWhenLoading="NO" id="XDd-gw-aFh" customClass="RunTrackerInterfaceController" customModule="Chronic_WatchKit_Extension">
+                <controller title="Runner" id="XDd-gw-aFh" customClass="RunTrackerInterfaceController" customModule="Chronic_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" id="Gm6-2M-K6A">
+                        <group width="1" height="1" alignment="left" layout="vertical" id="Gm6-2M-K6A">
                             <items>
-                                <group width="1" height="1" alignment="left" id="G9o-sE-9O0">
+                                <group width="1" alignment="left" id="G9o-sE-9O0">
                                     <items>
-                                        <map height="100" alignment="left" id="slN-5c-8GW">
+                                        <map height="105" alignment="left" enabled="NO" id="slN-5c-8GW">
                                             <variation key="device=watch42mm" height="125"/>
                                         </map>
                                     </items>
                                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                 </group>
-                                <group width="1" alignment="left" verticalAlignment="bottom" id="4Yw-ig-0Xb">
+                                <group width="1" alignment="left" verticalAlignment="center" id="4Yw-ig-0Xb">
                                     <items>
                                         <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="FEp-vM-lpJ">
                                             <items>
                                                 <label height="14.5" alignment="left" text="Distance" textAlignment="left" id="Hwe-So-Gdb">
-                                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                                    <fontDescription key="font" type="system" pointSize="12"/>
                                                 </label>
-                                                <label alignment="left" verticalAlignment="bottom" text="0" textAlignment="left" id="kcA-Su-Ftb"/>
+                                                <label alignment="left" verticalAlignment="bottom" text="0 m" textAlignment="left" id="kcA-Su-Ftb">
+                                                    <fontDescription key="font" type="system" pointSize="17"/>
+                                                    <variation key="device=watch42mm">
+                                                        <fontDescription key="font" type="system" pointSize="18"/>
+                                                    </variation>
+                                                </label>
                                             </items>
                                         </group>
                                         <group alignment="right" verticalAlignment="center" layout="vertical" spacing="0.0" id="rjh-Zf-FvU">
                                             <items>
                                                 <label alignment="right" text="Time" textAlignment="right" id="iY1-kq-rDg" userLabel="Time Elapsed">
-                                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                                    <fontDescription key="font" type="system" pointSize="12"/>
                                                 </label>
-                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="right" id="q95-94-25s"/>
+                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="right" id="q95-94-25s">
+                                                    <fontDescription key="font" type="system" pointSize="17"/>
+                                                    <variation key="device=watch42mm">
+                                                        <fontDescription key="font" type="system" pointSize="18"/>
+                                                    </variation>
+                                                </label>
                                             </items>
                                         </group>
                                     </items>
@@ -274,10 +298,29 @@
                             </items>
                         </group>
                     </items>
+                    <menu key="menu" id="STk-Nt-dfC">
+                        <items>
+                            <menuItem title="Play" icon="play" id="3UU-xu-eMU">
+                                <connections>
+                                    <action selector="PlayButtonPressed" destination="XDd-gw-aFh" id="8hV-Bn-eni"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Pause" icon="pause" id="yba-0y-xso">
+                                <connections>
+                                    <action selector="PauseButtonPressed" destination="XDd-gw-aFh" id="mp4-Lh-HY6"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stop" icon="repeat" id="ePB-wa-XBo">
+                                <connections>
+                                    <action selector="StopButtonPressed" destination="XDd-gw-aFh" id="vrQ-oC-dUA"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="distanceLabel" destination="kcA-Su-Ftb" id="T7J-Hb-WNZ"/>
                         <outlet property="mapView" destination="slN-5c-8GW" id="IQH-Pw-sdM"/>
-                        <outlet property="timeLabel" destination="q95-94-25s" id="hWU-qQ-kaU"/>
+                        <outlet property="timeElapsedLabel" destination="q95-94-25s" id="9lP-PN-G0e"/>
                     </connections>
                 </controller>
             </objects>
@@ -285,6 +328,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AlR-6Z-iIg"/>
+        <segue reference="8a6-oR-2gA"/>
     </inferredMetricsTieBreakers>
 </document>

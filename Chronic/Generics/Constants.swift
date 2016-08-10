@@ -125,6 +125,19 @@ class Constants {
     
     static var wcSession: WCSession!
     
+    enum WorkoutType {
+        case routine
+        case run
+        case quickTimer
+    }
+    
+    enum WorkoutEventType {
+        case preRun
+        case active
+        case paused
+        case completed
+    }
+    
     enum DistanceType {
         case miles
         case kilometers

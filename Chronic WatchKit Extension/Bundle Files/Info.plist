@@ -34,8 +34,8 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Chronic uses location to track your runs</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Chronic would use location to show your progress during a run</string>
 	<key>RemoteInterfacePrincipalClass</key>
 	<string>$(PRODUCT_MODULE_NAME).InterfaceController</string>
 	<key>WKBackgroundModes</key>

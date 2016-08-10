@@ -1,5 +1,5 @@
 PODS:
-  - AMPopTip (1.1.2)
+  - AMPopTip (1.2.0)
   - AMWaveTransition (0.6.2)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
@@ -36,7 +36,7 @@ PODS:
     - Bolts/Tasks (~> 1.3)
     - Parse (~> 1.9)
   - PureLayout (3.0.2)
-  - Rollout.io (1.2.0)
+  - Rollout.io (1.2.1)
   - SDVersion (3.2)
   - SwiftyJSON (2.3.2)
 
@@ -68,14 +68,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Charts:
-    :commit: 30edf8ecf235571754036231c9951945e5a706df
+    :commit: 33e17835eda45615d888740ff975dc948ac1bd48
     :git: https://github.com/danielgindi/Charts.git
   SwiftyJSON:
     :commit: 1a9755949a652967dc2986cd7f4653496e556715
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  AMPopTip: b31859b2e313f61318c676686493b1508c9a7221
+  AMPopTip: 853bcb307ecc6f71742cccdbc5b594bea097f188
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BubbleTransition: a7ae6678721406d60f604cbbea1ace505563119d
@@ -91,10 +91,10 @@ SPEC CHECKSUMS:
   ParseTwitterUtils: 0dde9689565e7012d83f892c64aed2ebe69f2ea9
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
-  Rollout.io: 8ea8b9711a4a0f033236fecde67756197585dd66
+  Rollout.io: 551ca646cc1a7eb4fa82e870b8c764d7e44a36d6
   SDVersion: e8bf034813e40fdd31c002942f78182f46468ee1
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: af9e7bb538288e09c5b88f182413d478dccb59bd
+PODFILE CHECKSUM: 114e642d3525bb230a50618b90c7e019076e10fb
 
 COCOAPODS: 1.1.0.beta.1

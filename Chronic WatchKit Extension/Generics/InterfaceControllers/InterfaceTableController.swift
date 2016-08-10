@@ -18,12 +18,10 @@ class InterfaceTableController: WKInterfaceController {
         super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(WKInterfaceController.willActivate),name:"willActivate" as NSNotification.Name, object: nil)
-        
     }
     
     override func awake(withContext context: AnyObject?) {
         super.awake(withContext: context)
-        
     }
 
     override func willActivate() {
@@ -34,38 +32,24 @@ class InterfaceTableController: WKInterfaceController {
         // Check for pro version purchase
         Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         
+        // Get Routines from database
+        Constants.Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
+        
         #if DEBUG
-            // Get Routines from database
-            Constants.Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
             
-            if Constants.Routines.count != 0 {
+            loadTableData()
+            
+        #else
+            
+            if Functions.isProFeaturesUpgradePurchased() {
                 
                 loadTableData()
                 
             } else {
                 
-                self.routineTable.setNumberOfRows(1, withRowType: "noRoutinesRow")
-            }
-            
-        #else
-            if proFeaturesUpgradePurchased() {
-                
-                // Get Routines from database
-                Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
-                
-                if Routines.count != 0 {
-                    
-                    loadTableData()
-                    
-                } else {
-                    
-                    self.routineTable.setNumberOfRows(1, withRowType: "noRoutinesRow")
-                }
-                
-            } else {
-                
                 self.routineTable.setNumberOfRows(1, withRowType: "noProVersionRow")
             }
+            
         #endif
     }
 
@@ -75,6 +59,11 @@ class InterfaceTableController: WKInterfaceController {
     }
     
     func loadTableData() {
+        
+        guard Constants.Routines.count > 0 else {
+            self.routineTable.setNumberOfRows(1, withRowType: "noRoutinesRow")
+            return
+        }
         
         self.routineTable.setNumberOfRows(Constants.Routines.count, withRowType: "routinesRow")
         
@@ -107,6 +96,5 @@ class InterfaceTableController: WKInterfaceController {
         }
         
         return nil
-        
     }
 }

@@ -21,11 +21,11 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
 
     @IBAction func runnerButtonPressed(_ sender: AnyObject) {
         
-        guard Functions.isProFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !Functions.isRemoveAdsUpgradePurchased()) else {
-            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
-            return
-        }
-            
+//        guard Functions.isProFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !Functions.isRemoveAdsUpgradePurchased()) else {
+//            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
+//            return
+//        }
+        
         Functions.deselectSelectedRoutine()
         
         let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController

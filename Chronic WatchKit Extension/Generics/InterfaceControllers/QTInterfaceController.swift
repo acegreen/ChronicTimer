@@ -30,7 +30,6 @@ class QTInterfaceController: WKInterfaceController {
         let hourValueInt: Int = Int(value)
         
         pickerHours = Double(hourValueInt) * 3600
-    
     }
     
     @IBAction func minutePicker(_ value: Int) {
@@ -38,7 +37,6 @@ class QTInterfaceController: WKInterfaceController {
         let minutesValueInt: Int = Int(value)
         
         pickerMinutes = Double(minutesValueInt) * 60
-    
     }
     
     @IBAction func secondPicker(_ value: Int) {
@@ -46,7 +44,6 @@ class QTInterfaceController: WKInterfaceController {
         let secondsValueInt: Int = Int(value)
         
         pickerSeconds = Double(secondsValueInt)
-    
     }
 
     override func awake(withContext context: AnyObject?) {
@@ -94,8 +91,6 @@ class QTInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-    
-    
 
     override func contextForSegue(withIdentifier segueIdentifier: String) -> AnyObject? {
             

@@ -143,7 +143,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     warmUpExercise.exerciseNumberOfRounds = 1
                     
-                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.yellow)
+                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFFCD02)) // yellow
                     
                     warmUpExercise.exerciseToRoutine = routineToEdit
                     
@@ -159,7 +159,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     roundExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.red)
+                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) // greem
                     
                     roundExercise.exerciseToRoutine = routineToEdit
                     
@@ -175,7 +175,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     restExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
+                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFF3A2D)) // red
                     
                     restExercise.exerciseToRoutine = routineToEdit
                     
@@ -191,7 +191,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     coolDownExercise.exerciseNumberOfRounds = 1
                     
-                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
+                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x1D62F0)) // blue
                     
                     coolDownExercise.exerciseToRoutine = routineToEdit
                     
@@ -242,7 +242,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     warmUpExercise.exerciseNumberOfRounds = 1
                     
-                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.yellow)
+                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFFCD02))
                     
                     warmUpExercise.exerciseToRoutine = newRoutine
                     
@@ -258,7 +258,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     roundExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
+                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427))
                     
                     roundExercise.exerciseToRoutine = routineToEdit
                     
@@ -274,7 +274,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     restExercise.exerciseNumberOfRounds = NumberOfRounds
                     
-                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.red)
+                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFF3A2D))
                     
                     restExercise.exerciseToRoutine = routineToEdit
                     
@@ -290,7 +290,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     coolDownExercise.exerciseNumberOfRounds = 1
                     
-                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
+                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x1D62F0))
                     
                     coolDownExercise.exerciseToRoutine = newRoutine
                     

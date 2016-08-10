@@ -81,7 +81,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         
         UIMenuController.shared.isMenuVisible = false
         
-        if action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.selectAll(_:)) || action == #selector(NSObject.paste(_:)) {
+        if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {
             return false
         }
         
@@ -119,10 +119,10 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     }
     
     // MARK: - Color Matrix (only for test case)
-    var colorMatrix = [ [UIColor.colorFromRGB(0x60E5BC), UIColor.colorFromRGB(0x1ABC9C), UIColor.colorFromRGB(0xF1C40F), UIColor.colorFromRGB(0xF39C12)],
-                        [UIColor.colorFromRGB(0x4CD964), UIColor.colorFromRGB(0x27AE60), UIColor.orange, UIColor.colorFromRGB(0xD35400)],
-                        [UIColor.colorFromRGB(0x5AC8FA), UIColor.colorFromRGB(0x3498DB), UIColor.colorFromRGB(0xE74C3C), UIColor.red],
-                        [UIColor.colorFromRGB(0x9B59B6), UIColor.colorFromRGB(0x5856D6), UIColor.colorFromRGB(0x34495E), UIColor.black]]
+    var colorMatrix = [[UIColor.colorFromRGB(0x60E5BC), UIColor.colorFromRGB(0x1ABC9C), UIColor.colorFromRGB(0xFFCD02), UIColor.colorFromRGB(0xFF9500)],
+                       [UIColor.colorFromRGB(0x5AD427), UIColor.colorFromRGB(0x27AE60), UIColor.colorFromRGB(0xFF5E3A), UIColor.colorFromRGB(0xD35400)],
+                       [UIColor.colorFromRGB(0x5AC8FA), UIColor.colorFromRGB(0x3498DB), UIColor.colorFromRGB(0xE74C3C), UIColor.colorFromRGB(0xFF3A2D)],
+                       [UIColor.colorFromRGB(0x9B59B6), UIColor.colorFromRGB(0x1D62F0), UIColor.colorFromRGB(0x8E8E93), UIColor.colorFromRGB(0x4A4A4A)]]
     
     private func fillColorMatrix(_ numX: Int, _ numY: Int) {
         colorMatrix.removeAll()
