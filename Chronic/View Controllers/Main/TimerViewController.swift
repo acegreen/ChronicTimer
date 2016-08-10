@@ -25,20 +25,7 @@ import BubbleTransition
 import PureLayout
 
 class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate, CNPPopupControllerDelegate {
-    
-    enum WorkoutType {
-        case routine
-        case run
-        case quickTimer
-    }
 
-    enum WorkoutEventType {
-        case preRun
-        case active
-        case paused
-        case completed
-    }
-    
     enum ButtonState {
         case play
         case pause
@@ -47,8 +34,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         case locked
     }
 
-    var workoutType = WorkoutType.quickTimer
-    var workoutState = WorkoutEventType.preRun
+    var workoutType = Constants.WorkoutType.quickTimer
+    var workoutState = Constants.WorkoutEventType.preRun
     var buttonState = ButtonState.initial
 
     var workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.crossTraining
@@ -237,7 +224,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         // Complete workout if .Run 
         if workoutType == .run {
-            workoutState = WorkoutEventType.completed
+            workoutState = Constants.WorkoutEventType.completed
         }
             
         // Set Alert if in background
@@ -398,7 +385,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     playSound("Routine End")
                     
                     // Mark routine as completed
-                    workoutState = WorkoutEventType.completed
+                    workoutState = Constants.WorkoutEventType.completed
                     
                     // Stop Timer
                     self.stop()
@@ -479,7 +466,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         timer.invalidate()
         
-        workoutType = WorkoutType.quickTimer
+        workoutType = Constants.WorkoutType.quickTimer
         
         (routineStages, routineTotalTime) = Functions.makeRoutineArray(nil)
         
@@ -490,7 +477,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
         timer.invalidate()
         
-        workoutType = WorkoutType.routine
+        workoutType = Constants.WorkoutType.routine
         
         (routineStages, routineTotalTime) = Functions.makeRoutineArray(routine)
         self.routine = routine
@@ -502,7 +489,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         timer.invalidate()
         
-        workoutType = WorkoutType.run
+        workoutType = Constants.WorkoutType.run
         routineStages = [[String:AnyObject]]()
         currentTimerDict = [String:AnyObject]()
         
@@ -531,7 +518,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             mapView.removeOverlays(pointsArray)
         }
     
-        workoutState = WorkoutEventType.preRun
+        workoutState = Constants.WorkoutEventType.preRun
         buttonState = ButtonState.initial
     }
 
@@ -772,7 +759,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         var currentStage: String!
         
         if workoutType == .routine || workoutType == .quickTimer {
-            
             currentStage = currentTimerDict["Name"] as! String
         }
         
@@ -784,7 +770,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 
                 if workoutType == .routine || workoutType == .quickTimer {
                     
-                    Functions.textToSpeech("\(currentStage)")
+                    Functions.textToSpeech(currentStage)
                     
                 } else if workoutType == .run {
                     
@@ -846,7 +832,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             if Constants.timerSound == "Text-To-Speech" {
                 
-                Functions.textToSpeech("\(currentStage)")
+                Functions.textToSpeech(currentStage)
                 
             } else {
                 
@@ -1036,12 +1022,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
 extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     // MARK: - CLLocationManagerDelegate
-    func locationManager(_ manager: CLLocationManager, didUpdate locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         for location in locations {
             let howRecent = location.timestamp.timeIntervalSinceNow
             
             if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
+                
                 //update distance
                 if self.locations.count > 0 {
                     distance += location.distance(from: self.locations.last!)
@@ -1056,17 +1043,16 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
                         mapView.setRegion(region, animated: true)
                         
                         mapView.add(MKPolyline(coordinates: &coords, count: coords.count))
-                        
                     }
                 }
-                
-                //save location
-                self.locations.append(location)
             }
+            
+            //save location
+            self.locations.append(location)
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
         print(error)
     }
@@ -1076,8 +1062,8 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         
         let polyline = overlay as! MKPolyline
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = UIColor.green
-        renderer.lineWidth = 10
+        renderer.strokeColor = Constants.chronicGreen
+        renderer.lineWidth = 6
         return renderer
     }
     
@@ -1100,7 +1086,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         var bannerID: String!
         var bannerSize: CGSize!
         
-        if !Functions.isRemoveAdsUpgradePurchased() {
+        if !Functions.isRemoveAdsUpgradePurchased() && (LaunchKit.sharedInstance().currentUser?.isSuper() == false) {
             
             if UI_USER_INTERFACE_IDIOM() == .phone {
                 bannerID = "c023d0aea31c44d6a0698c8bb11cba4e"
@@ -1126,7 +1112,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             
             mainStackViewTopConstraint.constant = 20
 
-            guard let ad = mopubBanner where ad.isDescendant(of: self.adBannerView) else { return }
+            guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
             mopubBanner.removeFromSuperview()
             adBannerView.removeFromSuperview()
         }

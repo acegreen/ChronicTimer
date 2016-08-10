@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Ace Green. All rights reserved.
 //
 
-import UIKit
 import WatchKit
 import Foundation
 import HealthKit
@@ -14,21 +13,11 @@ import UserNotifications
 
 class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
-    enum WorkoutType {
-        case routine
-        case run
-        case quickTimer
-    }
+    var workoutType = Constants.WorkoutType.quickTimer
+    var workoutState = Constants.WorkoutEventType.preRun
     
-    enum WorkoutEventType {
-        case preRun
-        case run
-        case pause
-        case complete
-    }
-    
-    var workoutType = WorkoutType.quickTimer
-    var workoutState = WorkoutEventType.complete
+    let workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.crossTraining
+    var anchor = HKQueryAnchor(fromValue: Int(HKAnchoredObjectQueryNoAnchor))
     
     var countDownTimer = Timer()
     var timer: Int = 0
@@ -48,21 +37,18 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     var soundlocation = NSURL()
     var localNotification: UNNotification!
     
-    let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatus(for: HealthKitHelper.sharedInstance.workoutType)
-    var workoutSession: HKWorkoutSession!
-    var workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.crossTraining
-    var anchor = HKQueryAnchor(fromValue: Int(HKAnchoredObjectQueryNoAnchor))
+    @IBOutlet var mainGroup: WKInterfaceGroup!
+    @IBOutlet var countDownGroup: WKInterfaceGroup!
+    @IBOutlet var heartRateGroup: WKInterfaceGroup!
     
     @IBOutlet var RoutineStateLabel: WKInterfaceLabel!
-    
-    @IBOutlet var countDownGroup: WKInterfaceGroup!
+
     @IBOutlet var CountDownLabel: WKInterfaceLabel!
     
     @IBOutlet var timeRemainingLabel: WKInterfaceLabel!
     
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
     
-    @IBOutlet var heartRateGroup: WKInterfaceGroup!
     @IBOutlet var heart: WKInterfaceImage!
     @IBOutlet var label: WKInterfaceLabel!
     
@@ -79,14 +65,14 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 print("start time \(routineStartDate)")
                 
                 // Start workout session
-                startWorkSession()
+                Functions.startWorkSession(delegateInterfaceController: self, workoutActivityType: self.workoutActivityType)
                 
             } else {
-                resumeWorkSession()
+                Functions.resumeWorkSession()
             }
             
             startTimer()
-            workoutState = WorkoutEventType.run
+            workoutState = Constants.WorkoutEventType.active
         }
     }
     
@@ -94,14 +80,14 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         countDownTimer.invalidate()
         
-        workoutState = WorkoutEventType.pause
+        workoutState = Constants.WorkoutEventType.pause
         
-        pauseWorkSession()
+        Functions.pauseWorkSession()
     }
     
     @IBAction func StopButtonPressed() {
         
-        if workoutState == .run || workoutState == .pause || workoutState == .complete {
+        if workoutState == .active || workoutState == .pause || workoutState == .complete {
 
             // Set end time
             routineEndDate = Date()
@@ -110,9 +96,9 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         }
         
         // End workout session if running
-        endWorkoutSession()
+        Functions.endWorkoutSession()
         
-        if workoutState == .run || workoutState == .pause || workoutState == .complete {
+        if workoutState == .active || workoutState == .pause || workoutState == .complete {
             checkSaveWorkout()
         }
         
@@ -138,21 +124,21 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             (routineArray, routineTotalTime) = Functions.makeRoutineArray(routine: nil)
         }
         
-        #if DEBUG
-            
-        #else
-            if !proFeaturesUpgradePurchased() {
-                hideHeartRateGroup()
-            }
-        #endif
+//        // MARK: Disable heart rate
+//        if !Functions.isProFeaturesUpgradePurchased() {
+//            hideHeartRateGroup()
+//        }
         
         setToInitialState()
         changeStage()
     }
     
     deinit {
-        // End workout session if running
-        endWorkoutSession()
+        
+        // Set initial state
+        setToInitialState()
+        
+        print("deinit")
     }
     
     //Function to start exercise timer
@@ -161,11 +147,8 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         countDownTimer.invalidate()
         
         if !countDownTimer.isValid {
-            
-            countDownTimer = Timer .scheduledTimer(timeInterval: 1, target: self, selector: #selector(InterfaceController.countDown) , userInfo: nil, repeats: true)
-            
+            countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(InterfaceController.countDown) , userInfo: nil, repeats: true)
         }
-        
     }
     
     //Timer Function
@@ -234,20 +217,22 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             //NextButton.enabled = true
             
         }
-        
     }
     
     //Function to set the view to initial stage
     func setToInitialState() {
     
+        // Invalidate timer if running
         countDownTimer.invalidate()
+        
+        // End workout session if running
+        Functions.endWorkoutSession()
         
         routineIndex = 0
         timeRemaining = routineTotalTime
         timeElapsed = 0
     
-        workoutState = WorkoutEventType.preRun
-        
+        workoutState = Constants.WorkoutEventType.preRun
     }
     
     func changeLabels() {
@@ -257,7 +242,6 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         CountDownLabel.setText(Functions.timeStringFrom(time: Int(timer)))
         timeRemainingLabel.setText(Functions.timeStringFrom(time: Int(timeRemaining)))
         timeElapsedLabel.setText(Functions.timeStringFrom(time: Int(timeElapsed)))
-        
     }
     
     func changeStageLabelColor() {
@@ -269,7 +253,8 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             stageColor = (NSKeyedUnarchiver.unarchiveObject(with: currentTimerDictColor) as? UIColor)!
         }
 
-        RoutineStateLabel.setTextColor(stageColor ?? UIColor.green)
+        mainGroup.setBackgroundColor(stageColor)
+        //RoutineStateLabel.setTextColor(stageColor ?? UIColor.white)
     }
     
     func playFeedback (_ type: String) {
@@ -302,7 +287,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     func completeWorkout() {
         
         // Mark routine as completed
-        workoutState = WorkoutEventType.complete
+        workoutState = Constants.WorkoutEventType.complete
         
         //Congrats you've completed workout
         playFeedback("Routine End")
@@ -319,7 +304,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 alertBody = NSLocalizedString("Notification Timer subText", comment: "")
             case .routine, .run:
                 alertTitle = NSLocalizedString("Notification Workout Text", comment: "")
-                alertBody = NSLocalizedString("Notifcation Workout subText", comment: "")
+                alertBody = NSLocalizedString("Notification Workout subText", comment: "")
             }
             
             // Schedule workoutCompleteLocalNotification
@@ -350,7 +335,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             
             if workoutState == .complete {
                 
-                saveWorkout()
+                Functions.saveWorkout(interfaceController: self, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil, workoutActivityType: self.workoutActivityType)
                 
             } else {
                 promptToSaveWorkout()
@@ -365,8 +350,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         let yesAction = WKAlertAction(title: NSLocalizedString("Yes", comment: ""), style: WKAlertActionStyle.default, handler: { () -> Void in
             
-            self.saveWorkout()
-            
+            Functions.saveWorkout(interfaceController: self, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil, workoutActivityType: self.workoutActivityType)
         })
         
         let noAction = WKAlertAction(title: NSLocalizedString("No", comment: ""), style: WKAlertActionStyle.default, handler: { })
@@ -374,112 +358,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         self.presentAlert(withTitle: NSLocalizedString("Alert: Save Workout Question Title Text", comment: ""), message: NSLocalizedString("Alert: Save Workout Question Subtitle Text", comment: ""), preferredStyle: WKAlertControllerStyle.actionSheet, actions: [yesAction, noAction])
     }
     
-    func saveWorkout() {
-        
-        guard workoutAuthorizationStatus != HKAuthorizationStatus.notDetermined else {
-            
-            // Request Authorization
-            HealthKitHelper.sharedInstance.authorizeHealthKit { (success,  error) -> Void in
-                
-                if success {
-                    
-                    self.saveWorkout()
-                }
-            }
-            
-            return
-        }
-        
-        guard workoutAuthorizationStatus != HKAuthorizationStatus.sharingDenied else {
-            
-            let okAction = WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: WKAlertActionStyle.default, handler: { })
-            
-            self.presentAlert(withTitle: "Alert: Authorize Chronic Save Workout Title Text", message: "Alert: Authorize Chronic Save Workout Subtitle Text", preferredStyle: WKAlertControllerStyle.actionSheet, actions: [okAction])
-            
-            return
-        }
-        
-        guard self.routineStartDate != nil && self.routineEndDate != nil else { return }
-        
-        // Add workout to HealthKit if available
-        HealthKitHelper.sharedInstance.saveRunningWorkout(self.workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil, completion: { (success, error) -> Void in
-            
-            if success {
-                
-                print("Workout saved!")
-                
-            } else if error != nil {
-                
-                print("\(error)")
-            }
-            
-            return
-        })
-    }
-    
-    func startWorkSession() {
-        
-        guard workoutSession == nil else { return }
-        
-        do {
-            
-            // Start HKWorkoutSession
-            let workoutSessionConfiguration = HKWorkoutConfiguration()
-            workoutSessionConfiguration.activityType = workoutActivityType
-            workoutSessionConfiguration.locationType = .unknown
-            
-            workoutSession = try HKWorkoutSession(configuration: workoutSessionConfiguration)
-            
-            workoutSession.delegate = self
-            
-            guard workoutSession.state == .notStarted else { return }
-            HealthKitHelper.sharedInstance.healthKitStore.start(workoutSession)
-            
-            print("Workout session started")
-            
-        } catch {
-            print(error)
-        }
-    }
-    
-    func pauseWorkSession() {
-        
-        guard workoutSession == nil else { return }
-        guard workoutSession.state == .running else { return }
-        
-        HealthKitHelper.sharedInstance.healthKitStore.pause(workoutSession)
-        
-        print("Workout session paused")
-    }
-    
-    func resumeWorkSession() {
-        
-        guard workoutSession == nil else { return }
-        guard workoutSession.state == .paused else { return }
-        
-        HealthKitHelper.sharedInstance.healthKitStore.resumeWorkoutSession(workoutSession)
-        
-        print("Workout session resumed")
-    }
-    
-    func endWorkoutSession() {
-        
-        guard workoutSession != nil else { return }
-        guard workoutSession.state == .running else { return }
-        
-        HealthKitHelper.sharedInstance.healthKitStore.end(workoutSession)
-        
-        workoutSession.delegate = nil
-        workoutSession = nil
-        
-        print("Workout session ended")
-    }
-    
     // Heart rate stuff
-    
-    func displayNotAllowed() {
-        label.setText("Not allowed")
-    }
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         switch toState {
@@ -498,7 +377,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     func workoutDidStart(_ date : Date) {
         
-        guard selectedRoutine is RoutineModel else { return }
+        guard selectedRoutine != nil else { return }
         
         if let query = createHeartRateStreamingQuery() {
              HealthKitHelper.sharedInstance.healthKitStore.execute(query)
@@ -509,7 +388,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     func workoutDidEnd(_ date : Date) {
         
-        guard selectedRoutine is RoutineModel else { return }
+        guard selectedRoutine != nil else { return }
         
         if let query = createHeartRateStreamingQuery() {
              HealthKitHelper.sharedInstance.healthKitStore.stop(query)

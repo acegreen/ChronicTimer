@@ -15,7 +15,7 @@ class TextField: UITextField {
         UIMenuController.shared.isMenuVisible = false
         
         print("performaction")
-        if action == #selector(NSObject.paste(_:)) {
+        if action == #selector(paste(_:)) {
             print("no paste")
             return false
         }

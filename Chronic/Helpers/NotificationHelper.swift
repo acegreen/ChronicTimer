@@ -99,8 +99,10 @@ public class NotificationHelper {
                 
                 if granted == true {
                     
-                    guard Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") == true else { return }
-                    NotificationHelper.scheduleNotification(NotificationHelper.reminderDateComponents, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: "Notification Reminder Text", alertBody:  NSLocalizedString("Notification Reminder subText",comment: ""), sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
+                    if Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") == true  {
+                    
+                        NotificationHelper.scheduleNotification(NotificationHelper.reminderDateComponents, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: NSLocalizedString("Notification Reminder Text", comment: ""), alertBody:  NSLocalizedString("Notification Reminder subText", comment: ""), sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
+                    }
                     print("Granted")
                     
                 } else if let error = error {

@@ -76,7 +76,7 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
         
         UIMenuController.shared.isMenuVisible = false
         
-        if action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.selectAll(_:)) || action == #selector(NSObject.paste(_:)) {
+        if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {
             return false
         }
         

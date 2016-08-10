@@ -83,12 +83,12 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     
     func SaveRoutine() -> Bool {
         
-        guard Functions.isProFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !Functions.isRemoveAdsUpgradePurchased()) else {
-            
-            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
-            
-            return false
-        }
+//        guard Functions.isProFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !Functions.isRemoveAdsUpgradePurchased()) else {
+//            
+//            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
+//            
+//            return false
+//        }
         
         guard nameCell.NameTextField.text != "" else {
             
