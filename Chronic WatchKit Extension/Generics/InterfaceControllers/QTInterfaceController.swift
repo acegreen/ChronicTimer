@@ -45,8 +45,9 @@ class QTInterfaceController: WKInterfaceController {
         
         pickerSeconds = Double(secondsValueInt)
     }
+    
 
-    override func awake(withContext context: AnyObject?) {
+    override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         for n in 0...23 {
@@ -73,7 +74,6 @@ class QTInterfaceController: WKInterfaceController {
         hourPicker.setItems(hourItemArray)
         minutePicker.setItems(minuteItemArray)
         secondPicker.setItems(secondItemArray)
-        
     }
 
     override func willActivate() {
@@ -92,7 +92,7 @@ class QTInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
-    override func contextForSegue(withIdentifier segueIdentifier: String) -> AnyObject? {
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
             
         Constants.QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
     
@@ -100,7 +100,7 @@ class QTInterfaceController: WKInterfaceController {
     
     }
     
-    override func contextsForSegue(withIdentifier segueIdentifier: String) -> [AnyObject]? {
+    override func contextsForSegue(withIdentifier segueIdentifier: String) -> [Any]? {
         
         Constants.QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
         

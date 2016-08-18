@@ -17,10 +17,10 @@ class InterfaceTableController: WKInterfaceController {
         
         super.init()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(WKInterfaceController.willActivate),name:"willActivate" as NSNotification.Name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(WKInterfaceController.willActivate),name: NSNotification.Name("willActivate"), object: nil)
     }
     
-    override func awake(withContext context: AnyObject?) {
+    override func awake(withContext context: Any?) {
         super.awake(withContext: context)
     }
 
@@ -76,7 +76,7 @@ class InterfaceTableController: WKInterfaceController {
         }
     }
 
-    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         
         if Constants.Routines.count != 0 {
             
@@ -87,7 +87,7 @@ class InterfaceTableController: WKInterfaceController {
         return nil
     }
     
-    override func contextsForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> [AnyObject]? {
+    override func contextsForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> [Any]? {
         
         if Constants.Routines.count != 0 {
             

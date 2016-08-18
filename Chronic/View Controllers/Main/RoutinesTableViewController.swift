@@ -12,7 +12,7 @@ import DZNEmptyDataSet
 import LaunchKit
 
 protocol RoutineDelegate {
-    func didCreateRoutine(routine: RoutineModel, isNew: Bool)
+    func didCreateRoutine(_ routine: RoutineModel, isNew: Bool)
 }
 
 class RoutinesTableViewController: UITableViewController, UIPopoverControllerDelegate, RoutineDelegate {
@@ -67,7 +67,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         }
     }
     
-    func didCreateRoutine(routine: RoutineModel, isNew: Bool) {
+    func didCreateRoutine(_ routine: RoutineModel, isNew: Bool) {
         
         if !isNew {
             
@@ -222,7 +222,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
 //        
 //    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destinationController = segue.destination as! UINavigationController
         

@@ -78,7 +78,7 @@ class MulticolorPolylineSegment: MKPolyline {
     return colorSegments
   }
 
-  private class func allSpeeds(forLocations locations: [CLLocation]) -> (speeds: [Double], minSpeed: Double, maxSpeed: Double) {
+  fileprivate class func allSpeeds(forLocations locations: [CLLocation]) -> (speeds: [Double], minSpeed: Double, maxSpeed: Double) {
     // Make Array of all speeds. Find slowest and fastest
     var speeds = [Double]()
     var minSpeed = DBL_MAX

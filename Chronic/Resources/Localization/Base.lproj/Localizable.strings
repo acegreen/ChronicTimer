@@ -47,6 +47,7 @@
 "Left Side Label Text (Routine)" = "Elapsed";
 "Right Side Label Text (Routine)" = "Remaining";
 
+"Middle Label Text (Run)" = "Pace";
 "Left Side Label Text (Run)" = "Time";
 "Right Side Label Text (Run)" = "Distance";
 

@@ -79,11 +79,11 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         return CGRect.zero
     }
     
-    override func selectionRects(for range: UITextRange) -> [AnyObject] {
+    override func selectionRects(for range: UITextRange) -> [Any] {
         return []
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         
         UIMenuController.shared.isMenuVisible = false
         

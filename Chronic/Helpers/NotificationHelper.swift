@@ -3,12 +3,12 @@ import UIKit
 import Parse
 import UserNotifications
 
-public class NotificationHelper {
+open class NotificationHelper {
     
     static let center = UNUserNotificationCenter.current()
     
     class var interval: String { return Constants.userDefaults.string(forKey: "NOTIFICATION_REMINDER_INTERVAL")! }
-    class var hour: Int { return Constants.userDefaults.integer(forKey: "NOTIFICATION_REMINDER_TIME") ?? 0 }
+    class var hour: Int { return Constants.userDefaults.integer(forKey: "NOTIFICATION_REMINDER_TIME")}
 
     class var reminderDateComponents:DateComponents { return DateComponents(calendar: Constants.currentCalendar, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: hour, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil) }
     
@@ -143,4 +143,16 @@ public class NotificationHelper {
             return Calendar.Component.day
         }
     }
+    
+//    // MARK: UNUserNotificationCenterDelegate functions
+//    
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+//        
+//        print("willPresent notification called")
+//    }
+//    
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
+//        
+//        // Handle received remote notification
+//    }
 }

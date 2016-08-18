@@ -72,6 +72,8 @@
 		235930E41B0A89800021003D /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235930E31B0A89800021003D /* TimerViewController.swift */; };
 		235B0CF61C279B6800A8D7D7 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B106B1C1F1A4F00D52713 /* HealthKitHelper.swift */; };
 		235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B50031BF64E95008FBC53 /* IAPHelper.swift */; };
+		2362A04E1D63476600EBD63F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2362A04D1D63476600EBD63F /* Keychain.swift */; };
+		2362A04F1D63476700EBD63F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2362A04D1D63476600EBD63F /* Keychain.swift */; };
 		236582C51C174FE000FE1378 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236582C41C174FE000FE1378 /* FeedbackViewController.swift */; };
 		2368C1731B0CC5C800F41346 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368C1721B0CC5C800F41346 /* AudioToolbox.framework */; };
 		23698CD51BCDF05400EBEC7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614961B30C39500180218 /* AdSupport.framework */; };
@@ -118,8 +120,6 @@
 		23B099C21D2C988600BB125A /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2305F2A01BBDB4C30049447E /* PassKit.framework */; };
 		23B099C31D2C994700BB125A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238C1ABB1C8B6F3F009F9CC1 /* Fabric.framework */; };
 		23B099C41D2C995100BB125A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238C1ABA1C8B6F3F009F9CC1 /* Crashlytics.framework */; };
-		23B1ADBB1D5274B3009165F4 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1ADBA1D5274B3009165F4 /* Keychain.swift */; };
-		23B1ADBC1D5274B3009165F4 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1ADBA1D5274B3009165F4 /* Keychain.swift */; };
 		23C2F2111B6EE2C200056DBB /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2101B6EE2C200056DBB /* CoreSpotlight.framework */; };
 		23C2F2131B6EE2D000056DBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */; };
 		23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */; };
@@ -269,6 +269,7 @@
 		235930E31B0A89800021003D /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		235B50031BF64E95008FBC53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		23612F3F1AFD57620087A11E /* Chronic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chronic.entitlements; sourceTree = "<group>"; };
+		2362A04D1D63476600EBD63F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		236582C41C174FE000FE1378 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		2368C1721B0CC5C800F41346 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		237525C41BD6838100E667D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -322,7 +323,6 @@
 		23AF7DF01AC02E2900AA3FC7 /* ChronicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChronicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AF7DF51AC02E2900AA3FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23AF7DF61AC02E2900AA3FC7 /* ChronicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronicTests.swift; sourceTree = "<group>"; };
-		23B1ADBA1D5274B3009165F4 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		23C2F2101B6EE2C200056DBB /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerTextField.swift; sourceTree = "<group>"; };
@@ -668,7 +668,7 @@
 		238C1AC01C8B6FAD009F9CC1 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
-				23B1ADBA1D5274B3009165F4 /* Keychain.swift */,
+				2362A04D1D63476600EBD63F /* Keychain.swift */,
 			);
 			path = Keychain;
 			sourceTree = "<group>";
@@ -1227,9 +1227,9 @@
 				234954111D565517007B053A /* RunTrackerInterfaceController.swift in Sources */,
 				234954251D565632007B053A /* WatchDataAccess.swift in Sources */,
 				234954241D565632007B053A /* RoutineModel.swift in Sources */,
-				23B1ADBC1D5274B3009165F4 /* Keychain.swift in Sources */,
 				2349540F1D565517007B053A /* InterfaceTableController.swift in Sources */,
 				2349540E1D565517007B053A /* InterfaceController.swift in Sources */,
+				2362A04F1D63476700EBD63F /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1248,6 +1248,7 @@
 				2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */,
 				234954321D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift in Sources */,
 				237B10901C2667EA00D52713 /* OBHealthViewController.swift in Sources */,
+				2362A04E1D63476600EBD63F /* Keychain.swift in Sources */,
 				238C1AD91C8B7250009F9CC1 /* SwiftColorPickerView.swift in Sources */,
 				2311EC301B6FF2C3001A48E1 /* ExerciseModel.swift in Sources */,
 				2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */,
@@ -1270,7 +1271,6 @@
 				237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */,
 				23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */,
 				236582C51C174FE000FE1378 /* FeedbackViewController.swift in Sources */,
-				23B1ADBB1D5274B3009165F4 /* Keychain.swift in Sources */,
 				232F4C7C1AC02EA700D25995 /* CircuitRoutineTableViewController.swift in Sources */,
 				238C1A9F1C8B651E009F9CC1 /* DataAccess.swift in Sources */,
 				237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */,

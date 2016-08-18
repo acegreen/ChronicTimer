@@ -27,9 +27,9 @@ class RoutineCell: UITableViewCell {
         }
     }
     
-    @IBOutlet private weak var routineName: UILabel!
-    @IBOutlet private weak var routineTotalTime: UILabel!
-    @IBOutlet private weak var routineChartView: PieChartView!
+    @IBOutlet fileprivate weak var routineName: UILabel!
+    @IBOutlet fileprivate weak var routineTotalTime: UILabel!
+    @IBOutlet fileprivate weak var routineChartView: PieChartView!
     
     func configure(with routine: RoutineModel) {
         

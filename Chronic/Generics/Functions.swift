@@ -21,18 +21,18 @@ class Functions {
     
     // MARK: -Exercise Function
     
-    class func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
+    class func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:Any]], Int) {
         
         let stagesArray = NSMutableArray()
         var totalTime = 0
         
         if routine != nil {
             
-            var customeExerciseDictionary = [String:AnyObject]()
-            var warmUpDictionary = [String:AnyObject]()
-            var roundDictionary = [String:AnyObject]()
-            var restDictionary = [String:AnyObject]()
-            var coolDownDictionary = [String:AnyObject]()
+            var customeExerciseDictionary = [String:Any]()
+            var warmUpDictionary = [String:Any]()
+            var roundDictionary = [String:Any]()
+            var restDictionary = [String:Any]()
+            var coolDownDictionary = [String:Any]()
             
             let routineExercises = routine!.routineToExcercise?.array as! [ExerciseModel]
             
@@ -51,7 +51,7 @@ class Functions {
                             customeExerciseDictionary["Name"] = exercise.exerciseName
                             
                             if exercise.exerciseNumberOfRounds as Int > 1 {
-                                customeExerciseDictionary["Interval"] = "\(number) / \(exercise.exerciseNumberOfRounds)"
+                                customeExerciseDictionary["Interval"] = "\(number) / \(exercise.exerciseNumberOfRounds!)"
                             }
                             
                             customeExerciseDictionary["Time"] = exercise.exerciseTime
@@ -140,7 +140,7 @@ class Functions {
             
         } else {
             
-            var quickTimerDictionary = [String:AnyObject]()
+            var quickTimerDictionary = [String:Any]()
             
             // Quick Timer Time
             quickTimerDictionary["Name"] = NSLocalizedString("Quick Timer", comment: "")
@@ -154,10 +154,10 @@ class Functions {
         }
         
         // print(stagesArray, totalTime)
-        return (stagesArray as AnyObject as! [[String:AnyObject]], totalTime)
+        return (stagesArray as Any as! [[String:Any]], totalTime)
     }
     
-    class func setSelectedRoutine(_ routine: RoutineModel, completion: (result: Bool) -> Void) {
+    class func setSelectedRoutine(_ routine: RoutineModel, completion: (_ result: Bool) -> Void) {
         
         routine.setValue(true, forKey: "selectedRoutine")
         
@@ -168,12 +168,12 @@ class Functions {
             if (save == true) {
                 
                 print("selectedRoutine attribute updated")
-                completion(result: true)
+                completion(true)
                 
             } else {
                 
                 print("Didnt save data")
-                completion(result: false)
+                completion(false)
                 
             }
             
@@ -231,19 +231,19 @@ class Functions {
         }
     }
     
-    class func saveContext(_ completion: (save: Bool) -> Void) {
+    class func saveContext(_ completion: (_ save: Bool) -> Void) {
         
         do {
             
             try Constants.context.save()
             
-            completion(save: true)
+            completion(true)
             
         } catch let error as NSError {
             
             print("Fetch failed: \(error.localizedDescription)")
             
-            completion(save: false)
+            completion(false)
         }
         
     }
@@ -273,10 +273,10 @@ class Functions {
     class func isConnectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
         zeroAddress.sin_family = sa_family_t(AF_INET)
         
-        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
             SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
         }
         var flags = SCNetworkReachabilityFlags.connectionAutomatic
@@ -324,7 +324,7 @@ class Functions {
     }
     
     @available(iOS 9.0, *)
-    class func sendContextToAppleWatch(_ context: AnyObject) {
+    class func sendContextToAppleWatch(_ context: Any) {
         
         guard (WCSession.isSupported()) else { return }
         
@@ -339,7 +339,7 @@ class Functions {
         
         do {
             
-            try Constants.wcSession.updateApplicationContext(context as! [String : AnyObject])
+            try Constants.wcSession.updateApplicationContext(context as! [String : Any])
             
             print("Context sent")
             
@@ -347,6 +347,12 @@ class Functions {
             
             print("Updating the context failed: " + error.localizedDescription)
         }
+    }
+    
+    class func timeFromTimeComponents (hoursComponent: Int, minutesComponent: Int, secondsComponent: Int) -> Int {
+        
+        return (hoursComponent * 3600) + (minutesComponent * 60) + (secondsComponent)
+        
     }
     
     class func timeComponentsFrom(time: Int) -> (HoursLeft: Int, MinutesLeft: Int, SecondsLeft: Int) {
@@ -402,13 +408,7 @@ class Functions {
         }
     }
     
-    class func timeFromTimeComponents (hoursComponent:Int, minutesComponent:Int,secondsComponent:Int) -> Int {
-        
-        return (hoursComponent * 3600) + (minutesComponent * 60) + (secondsComponent)
-        
-    }
-    
-    class func displayAlert(_ title: String, message: String, Action1:UIAlertAction?, Action2:UIAlertAction?) -> UIAlertController {
+    class func displayAlert(_ title: String, message: String, Action1: UIAlertAction?, Action2: UIAlertAction?) -> UIAlertController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         

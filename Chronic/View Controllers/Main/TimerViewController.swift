@@ -46,6 +46,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     var timeRemaining: Int = 0
     var timeElapsed: Int = 0
+    var pace: Double = 0.0
     var preRoutineCountDownTime: Int = 3
     
 //    var ProgressbarContainer: UIView = UIView()
@@ -54,15 +55,20 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
 //    var circleLineWidth: CGFloat = 20
     
     var routine: RoutineModel?
-    var routineStages = [[String:AnyObject]]()
+    var routineStages = [[String:Any]]()
     var routineTotalTime = Int()
-    var currentTimerDict = [String:AnyObject]()
+    var currentTimerDict = [String:Any]()
     
     var routineIndex: Int = 0
     var routineStartDate: Date!
     var routineEndDate: Date!
-
-    // var adView: MPAdView = MPAdView(adUnitId: "fbfd798cc29d4a3a819108bc7e735c5c", size: MOPUB_BANNER_SIZE)
+    
+    var distanceFormatter: MKDistanceFormatter = {
+        let distanceFormatter = MKDistanceFormatter()
+        //distanceFormatter.units = MKDistanceFormatterUnits.metric
+        distanceFormatter.unitStyle = .abbreviated
+        return distanceFormatter
+    }()
 
     lazy var mapView: MKMapView = {
         
@@ -82,8 +88,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.activityType = .fitness
-        
-        // Movement threshold for new events
         locationManager.distanceFilter = 5.0
         return locationManager
     }()
@@ -99,26 +103,19 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     @IBOutlet var mainStackViewTopConstraint: NSLayoutConstraint!
     
     @IBOutlet var topStackView: UIStackView!
-    
     @IBOutlet var middleStackView: UIStackView!
-    
     @IBOutlet var bottomStackView: UIStackView!
     
-    @IBOutlet var ProgressView: UIView!
+    @IBOutlet var progressView: UIView!
     
-    @IBOutlet var RoutineStateLabel: UILabel!
+    @IBOutlet var countDownLabel: UILabel!
     
-    @IBOutlet var intervalLabel: UILabel!
-    
-    @IBOutlet var CountDownLabel: UILabel!
-    
-    // @IBOutlet var rewardsButton: SpringButton!
-    
-    @IBOutlet var leftSideLabel: UILabel!
-    @IBOutlet var leftSideLabel2: UILabel!
-    
-    @IBOutlet var rightSideLabel: UILabel!
-    @IBOutlet var rightSideLabel2: UILabel!
+    @IBOutlet var leftTopLabel: UILabel!
+    @IBOutlet var leftBottomLabel: UILabel!
+    @IBOutlet var middleTopLabel: UILabel!
+    @IBOutlet var middleBottomLabel: UILabel!
+    @IBOutlet var rightTopLabel: UILabel!
+    @IBOutlet var rightBottomLabel: UILabel!
     
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var previousButton: UIButton!
@@ -273,7 +270,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         super.viewDidLoad()
         
         // Adjust font greater than 300 limitation from Storyboard
-        self.CountDownLabel.font = CountDownLabel.font.withSize(1000)
+        self.countDownLabel.font = countDownLabel.font.withSize(1000)
         
         // check if you should display ads
         self.displayBannerAds()
@@ -340,7 +337,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     func LayoutMapView() {
-        self.ProgressView.addSubview(mapView)
+        self.progressView.addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.autoPinEdgesToSuperviewEdges()
     }
@@ -363,7 +360,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     //Timer Function
     func counter() {
         
-        if workoutType == .routine || workoutType == .quickTimer {
+        switch workoutType {
+        case .routine, .quickTimer:
             
             time -= 1
             timeRemaining -= 1
@@ -396,7 +394,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                         self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
                         
                     } else {
-
+                        
                         self.displayInterstitialAds()
                     }
                     
@@ -405,7 +403,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     routineIndex += 1
                     
                     changeStage()
-                    playSound(currentTimerDict["Name"] as! String!)
+                    
+                    // Play exercise name and interval stage
+                    playSound("Stage Change")
                     
                     startTimer("counter")
                     
@@ -414,12 +414,16 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 return
             }
             
-        } else if workoutType == .run {
+        case .run:
             
             timeElapsed += 1
+            
+            if timeElapsed % 60 == 0 || pace == 0 {
+                pace = calculatePace(timeElapsed, distance: distance)
+            }
+            
             changeLabels()
         }
-        
     }
     
     func countDown3Seconds() {
@@ -542,27 +546,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         if workoutType == .routine || workoutType == .quickTimer {
             
             //RoutineButton.setTitle(routineName, forState: .Normal)
-            
-            RoutineStateLabel.text = currentTimerDict["Name"] as? String
-            intervalLabel.text = currentTimerDict["Interval"] as? String
-            CountDownLabel.text = Functions.timeStringFrom(time:Int(time), type: "Routine")
-            rightSideLabel2.text = Functions.timeStringFrom(time:timeRemaining, type: "Routine")
-            leftSideLabel2.text = Functions.timeStringFrom(time:timeElapsed, type: "Routine")
+            countDownLabel.text = Functions.timeStringFrom(time: time, type: "Routine")
+            leftBottomLabel.text = Functions.timeStringFrom(time:timeElapsed, type: "Routine")
+            middleTopLabel.text = currentTimerDict["Name"] as? String
+            middleBottomLabel.text = currentTimerDict["Interval"] as? String
+            rightBottomLabel.text = Functions.timeStringFrom(time:timeRemaining, type: "Routine")
             
         } else if workoutType == .run {
             
-            //RoutineButton.setTitle(appTitle, forState: .Normal)
-            leftSideLabel2.text = Functions.timeStringFrom(time: Int(timeElapsed), type: "Routine")
-            
-            let distanceFormatter = MKDistanceFormatter()
-            distanceFormatter.units = MKDistanceFormatterUnits.metric
-            distanceFormatter.unitStyle = MKDistanceFormatterUnitStyle.default
-            
-            rightSideLabel2.text = distanceFormatter.string(fromDistance: distance)
-            
-            //        let paceUnit = HKUnit.secondUnit().unitDividedByUnit(HKUnit.meterUnit())
-            //        let paceQuantity = HKQuantity(unit: paceUnit, doubleValue: time / distance)
-            //        paceLabel.text = "Pace: " + paceQuantity.description
+            leftBottomLabel.text = Functions.timeStringFrom(time: timeElapsed, type: "Routine")
+            middleBottomLabel.text = Functions.timeStringFrom(time: Int(pace * 3600), type: "Routine")
+            rightBottomLabel.text = distanceFormatter.string(fromDistance: distance)
         }
     }
     
@@ -573,8 +567,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         if let currentTimerDictColor = currentTimerDict["Color"] as? Data {
             
             stageColor = (NSKeyedUnarchiver.unarchiveObject(with: currentTimerDictColor) as? UIColor)!
-            self.ProgressView.backgroundColor = stageColor
-            RoutineStateLabel.textColor = stageColor
+            self.progressView.backgroundColor = stageColor
+            middleTopLabel.textColor = stageColor
             print(stageColor)
         }
     }
@@ -589,38 +583,38 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
             workoutActivityType = HKWorkoutActivityType.crossTraining
             
-            CountDownLabel.isHidden = false
+            countDownLabel.isHidden = false
             
-            if mapView.isDescendant(of: self.ProgressView) {
+            if mapView.isDescendant(of: self.progressView) {
                 
                 mapView.removeFromSuperview()
             }
             
 //            ProgressBarView.hidden = false
 //            ProgressbarContainer.hidden = false
-            RoutineStateLabel.isHidden = false
-            intervalLabel.isHidden = false
+//            middleTopLabel.isHidden = false
+//            middleBottomLabel.isHidden = false
             
-            leftSideLabel.text = NSLocalizedString("Left Side Label Text (Routine)", comment: "")
-            rightSideLabel.text = NSLocalizedString("Right Side Label Text (Routine)", comment: "")
+            leftTopLabel.text = NSLocalizedString("Left Side Label Text (Routine)", comment: "")
+            rightTopLabel.text = NSLocalizedString("Right Side Label Text (Routine)", comment: "")
             
         case .run:
         
             workoutActivityType = HKWorkoutActivityType.running
-            CountDownLabel.isHidden = true
+            countDownLabel.isHidden = true
             
-            if !mapView.isDescendant(of: self.ProgressView) {
-                
+            if !mapView.isDescendant(of: self.progressView) {
                 self.LayoutMapView()
             }
             
 //            ProgressBarView.hidden = true
 //            ProgressbarContainer.hidden = true
-            RoutineStateLabel.isHidden = true
-            intervalLabel.isHidden = true
+//            middleTopLabel.isHidden = true
+//            middleBottomLabel.isHidden = true
             
-            leftSideLabel.text = NSLocalizedString("Left Side Label Text (Run)", comment: "")
-            rightSideLabel.text = NSLocalizedString("Right Side Label Text (Run)", comment: "")
+            leftTopLabel.text = NSLocalizedString("Left Side Label Text (Run)", comment: "")
+            middleTopLabel.text = NSLocalizedString("Middle Label Text (Run)", comment: "")
+            rightTopLabel.text = NSLocalizedString("Right Side Label Text (Run)", comment: "")
         }
         
         changeStage()
@@ -712,6 +706,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         return timeRemaining
     }
     
+    func calculatePace (_ timeElapsed: Int, distance: Double) -> Double {
+        
+        guard timeElapsed != 0 && distance != 0 else { return 0 }
+        
+        return Double(timeElapsed) / distance
+    }
+    
 //    func animateStarButton() {
 //        
 //        self.view.bringSubviewToFront(starButton)
@@ -759,7 +760,15 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         var currentStage: String!
         
         if workoutType == .routine || workoutType == .quickTimer {
-            currentStage = currentTimerDict["Name"] as! String
+            
+            switch (currentTimerDict["Name"] as? String, currentTimerDict["Interval"] as? String) {
+            case (let exerciseName?, let exerciseInterval?):
+                currentStage = exerciseName + " " + exerciseInterval
+            case (let exerciseName?, _):
+                currentStage = exerciseName
+            default:
+                break
+            }
         }
         
         switch type {
@@ -890,9 +899,12 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         workoutState = .active
         buttonState = .play
         switchButtonState()
+        
+        // Handle connection loss when workout running
+        
     }
     
-    func checkSaveWorkout(_ completion: (Bool) -> ()) {
+    func checkSaveWorkout(_ completion: @escaping (Bool) -> ()) {
         
         guard workoutState != .preRun else { return completion(false) }
         
@@ -920,7 +932,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
     }
     
-    func promptToSaveWorkout(_ completion: (Bool) -> ()) {
+    func promptToSaveWorkout(_ completion: @escaping (Bool) -> ()) {
         
         SweetAlert().showAlert(NSLocalizedString("Alert: Save Workout Question Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Save Workout Question Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("No", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Yes", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
             
@@ -934,7 +946,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
     }
     
-    func saveWorkout(_ completion: (Bool) -> ()) {
+    func saveWorkout(_ completion: @escaping (Bool) -> ()) {
         
         let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatus(for: HealthKitHelper.sharedInstance.workoutType)
     
@@ -1003,7 +1015,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         })
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "StopWorkoutSegueIdentifier" {
             
@@ -1086,7 +1098,8 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         var bannerID: String!
         var bannerSize: CGSize!
         
-        if !Functions.isRemoveAdsUpgradePurchased() && (LaunchKit.sharedInstance().currentUser?.isSuper() == false) {
+        // && (LaunchKit.sharedInstance().currentUser?.isSuper() == false)
+        if !Functions.isRemoveAdsUpgradePurchased() {
             
             if UI_USER_INTERFACE_IDIOM() == .phone {
                 bannerID = "c023d0aea31c44d6a0698c8bb11cba4e"

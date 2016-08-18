@@ -9,7 +9,7 @@
 import UIKit
 import HealthKit
 
-public class HealthKitHelper {
+open class HealthKitHelper {
 
     static let sharedInstance = HealthKitHelper()
     let healthKitStore = HKHealthStore()
@@ -19,7 +19,7 @@ public class HealthKitHelper {
 
     var distanceUnit: Constants.DistanceType = .kilometers
     
-    func authorizeHealthKit(_ completion: ((success:Bool, error:NSError?) -> Void)!) {
+    func authorizeHealthKit(_ completion: ((_ success: Bool, _ error: Error?) -> Void)!) {
         
         guard let HeartRateQuantityType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate) else {
             //displayNotAllowed()
@@ -45,7 +45,7 @@ public class HealthKitHelper {
             
             if completion != nil {
                 
-                completion(success:false, error:error)
+                completion(false, error)
             }
             
             return
@@ -56,7 +56,7 @@ public class HealthKitHelper {
             
             if completion != nil {
                 
-                completion(success:success,error:error)
+                completion(success, error)
             }
         }
     }
@@ -109,7 +109,7 @@ public class HealthKitHelper {
 //        
 //    }
     
-    func readMostRecentSample(_ sampleType:HKSampleType , completion: ((HKSample?, NSError?) -> Void)!) {
+    func readMostRecentSample(_ sampleType:HKSampleType , completion: ((HKSample?, Error?) -> Void)!) {
         
         // 1. Build the Predicate
         let past = Date.distantPast as Date
@@ -162,7 +162,7 @@ public class HealthKitHelper {
         })
     }
     
-    func saveRunningWorkout(_ type: HKWorkoutActivityType, startDate:Date , endDate:Date, kiloCalories:Double?, distance:Double?, completion: ( (Bool, NSError?) -> Void)!) {
+    func saveRunningWorkout(_ type: HKWorkoutActivityType, startDate:Date , endDate:Date, kiloCalories:Double?, distance:Double?, completion: ( (Bool, Error?) -> Void)!) {
  
         // 1. Set the Unit type
         var hkUnit = HKUnit.meter()

@@ -28,24 +28,24 @@ class Functions {
     }
     
     //MARK: - Core Data Function
-    class func insertCoreDataObject(appContext: [String : AnyObject]) {
+    class func insertCoreDataObject(appContext: [String : Any]) {
         
         let routineName = appContext["routineName"]
         let routineType = appContext["routineType"]
-        let routineStage = appContext["routineStage"]
+        let routineStage = appContext["routineStage"] as! [[String: Any]]
         
         let exerciseSet = NSMutableOrderedSet()
         
         let newRoutine = RoutineModel(entity: Constants.routineEntity!, insertInto: Constants.context)
         
-        for stage in 0 ..< routineStage!.count {
+        for stage in 0 ..< routineStage.count {
             
-            let currentStageDict = routineStage![stage] as! [String:AnyObject]
+            let currentStageDict = routineStage[stage]
             
             let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
             
             newExercise.exerciseName = currentStageDict["Name"] as? String
-            newExercise.exerciseTime = currentStageDict["Time"] as? Int
+            newExercise.exerciseTime = currentStageDict["Time"] as! NSNumber
             
             newExercise.exerciseNumberOfRounds = 1
             
@@ -69,14 +69,14 @@ class Functions {
         
         let (_, totalTime) = makeRoutineArray(routine: newRoutine)
         
-        newRoutine.totalRoutineTime = totalTime
+        newRoutine.totalRoutineTime = totalTime as NSNumber
         
         do {
             
             // save into CoreData
             try Constants.context.save()
             
-            NotificationCenter.default.post(name: "willActivate" as NSNotification.Name, object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("willActivate"), object: nil)
             
         } catch let error as NSError {
             
@@ -89,10 +89,10 @@ class Functions {
         
     }
     
-    class func modifyCoreDataObject(appContext: [String : AnyObject]) {
+    class func modifyCoreDataObject(appContext: [String : Any]) {
         
         let routineName = appContext["routineName"] as! String
-        let routineStage = appContext["routineStage"]
+        let routineStage = appContext["routineStage"] as! [[String: Any]]
         
         let exerciseSet = NSMutableOrderedSet()
         
@@ -100,14 +100,14 @@ class Functions {
         
         if let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first {
             
-            for stage in 0 ..< routineStage!.count {
+            for stage in 0 ..< routineStage.count {
                 
-                let currentStageDict = routineStage![stage] as! [String:AnyObject]
+                let currentStageDict = routineStage[stage]
                 
                 let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
                 
                 newExercise.exerciseName = currentStageDict["Name"] as? String
-                newExercise.exerciseTime = currentStageDict["Time"] as? Int
+                newExercise.exerciseTime = currentStageDict["Time"] as! NSNumber
                 
                 newExercise.exerciseNumberOfRounds = 1
                 
@@ -126,12 +126,14 @@ class Functions {
             
             let (_, totalTime) = makeRoutineArray(routine: existingRoutine)
             
-            existingRoutine.totalRoutineTime = totalTime
+            existingRoutine.totalRoutineTime = totalTime as NSNumber
             
             do {
                 
                 // save into CoreData
                 try Constants.context.save()
+                
+                NotificationCenter.default.post(name: NSNotification.Name("willActivate"), object: nil)
                 
             } catch let error as NSError {
                 
@@ -145,7 +147,7 @@ class Functions {
         }
     }
     
-    class func deleteCoreDataObject(appContext: [String : AnyObject]) {
+    class func deleteCoreDataObject(appContext: [String : Any]) {
         
         let routineName = appContext["routineName"] as! String
         
@@ -162,7 +164,7 @@ class Functions {
                 // save into CoreData
                 try Constants.context.save()
                 
-                NotificationCenter.default.post(name: "willActivate" as NSNotification.Name, object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "willActivate"), object: nil)
                 
             } catch let error as NSError {
                 
@@ -181,7 +183,7 @@ class Functions {
         
         if routine != nil {
             
-            var customeExerciseDictionary = [String:AnyObject]()
+            var customeExerciseDictionary = [String: Any]()
             
             let routineExercises = routine!.routineToExcercise?.array as! [ExerciseModel]
             let type:String = routine!.type!
@@ -209,7 +211,7 @@ class Functions {
             
         } else {
             
-            var quickTimerDictionary = [String:AnyObject]()
+            var quickTimerDictionary = [String: Any]()
             
             // Quick Timer Time
             quickTimerDictionary["Name"] = NSLocalizedString("Quick Timer", comment: "")

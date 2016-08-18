@@ -22,7 +22,7 @@ extension Array {
         }
     }
     
-    func reduceWithIndex<T>(_ initial: T, combine: @noescape(T, Int, Array.Iterator.Element) throws -> T) rethrows -> T {
+    func reduceWithIndex<T>(_ initial: T, combine: (T, Int, Array.Iterator.Element) throws -> T) rethrows -> T {
         var result = initial
         for (index, element) in self.enumerated() {
             result = try combine(result, index, element)
@@ -126,7 +126,7 @@ extension UIViewController {
         guard #available(iOS 9.0, *) else { return }
         if let popOver = segue?.destination.popoverPresentationController,
             let anchor  = popOver.sourceView
-            where popOver.sourceRect == CGRect()
+            , popOver.sourceRect == CGRect()
                 && segue!.source === self
         { popOver.sourceRect = anchor.bounds }
     }       

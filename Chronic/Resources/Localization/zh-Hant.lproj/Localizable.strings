@@ -48,6 +48,7 @@
 "Left Side Label Text (Routine)" = "耗時";
 "Right Side Label Text (Routine)" = "剩餘";
 
+"Middle Label Text (Run)" = "Pace";
 "Left Side Label Text (Run)" = "時間";
 "Right Side Label Text (Run)" = "距離";
 

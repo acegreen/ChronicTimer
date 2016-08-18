@@ -22,9 +22,9 @@ class ExpandingCell: UITableViewCell {
         }
     }
     
-    @IBOutlet private weak var stackView: UIStackView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var detailLabel: UILabel!
+    @IBOutlet fileprivate weak var stackView: UIStackView!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var detailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
