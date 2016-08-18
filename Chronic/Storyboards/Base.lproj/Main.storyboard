@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8AF-aD-OMI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8AF-aD-OMI">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11151.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -30,7 +30,7 @@
             <objects>
                 <navigationController storyboardIdentifier="QuickTimerNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DQf-4P-NDH" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="uld-3O-csg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="uld-3O-csg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -112,9 +112,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="INf-bK-dLv">
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="INf-bK-dLv">
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="250" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Sqt-fO-K4I">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="250" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Sqt-fO-K4I">
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zh6-z8-sDn">
                                                 <subviews>
@@ -150,7 +150,7 @@
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H3l-Ct-PR9">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Timer" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rFP-b3-6i2">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Round" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rFP-b3-6i2">
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -291,21 +291,21 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="X8E-HS-ns9"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="CountDownLabel" destination="cFX-O3-qbQ" id="hs2-7e-FmC"/>
-                        <outlet property="ProgressView" destination="Rwt-6w-I9G" id="PYw-VN-NtI"/>
-                        <outlet property="RoutineStateLabel" destination="rFP-b3-6i2" id="nMc-en-PoB"/>
                         <outlet property="bottomStackView" destination="bJj-Xi-nCY" id="KfM-Vl-sj6"/>
+                        <outlet property="countDownLabel" destination="cFX-O3-qbQ" id="eti-2f-IyK"/>
                         <outlet property="forwardButton" destination="IQk-HD-9YU" id="2rZ-Fo-lfb"/>
-                        <outlet property="intervalLabel" destination="Cmx-fn-Byo" id="dsc-NW-U8u"/>
-                        <outlet property="leftSideLabel" destination="3sf-YS-vz9" id="a50-Ms-M62"/>
-                        <outlet property="leftSideLabel2" destination="ThG-2m-7cS" id="acW-AV-CaC"/>
+                        <outlet property="leftBottomLabel" destination="ThG-2m-7cS" id="c03-ui-grm"/>
+                        <outlet property="leftTopLabel" destination="3sf-YS-vz9" id="V1d-Ye-WOx"/>
                         <outlet property="lockUnlockButton" destination="EKw-iq-0aJ" id="vfW-GS-7ln"/>
                         <outlet property="mainStackViewTopConstraint" destination="RIV-ek-vUP" id="xKi-JM-nY8"/>
+                        <outlet property="middleBottomLabel" destination="Cmx-fn-Byo" id="LEJ-Ea-Pfo"/>
                         <outlet property="middleStackView" destination="1cu-li-C04" id="rxd-EV-avF"/>
+                        <outlet property="middleTopLabel" destination="rFP-b3-6i2" id="gug-vZ-Rqd"/>
                         <outlet property="playPauseButton" destination="Dzf-Le-hXY" id="0en-2C-C8Z"/>
                         <outlet property="previousButton" destination="c5e-d4-pcr" id="Aqz-Pg-UiQ"/>
-                        <outlet property="rightSideLabel" destination="Cdc-wW-Hzz" id="U3y-LQ-gvG"/>
-                        <outlet property="rightSideLabel2" destination="LzV-hW-rkk" id="Aum-4K-6ME"/>
+                        <outlet property="progressView" destination="Rwt-6w-I9G" id="Ati-JW-tTg"/>
+                        <outlet property="rightBottomLabel" destination="LzV-hW-rkk" id="WWJ-oa-rgs"/>
+                        <outlet property="rightTopLabel" destination="Cdc-wW-Hzz" id="84F-be-tei"/>
                         <outlet property="stopButton" destination="QQW-sx-1c2" id="vbN-Ha-Jgz"/>
                         <outlet property="topStackView" destination="Sqt-fO-K4I" id="WZW-ff-xp5"/>
                         <segue destination="0Fz-OJ-Z1d" kind="presentation" identifier="FeedbackSegueIdentifier" id="M6E-OI-vVl"/>
@@ -329,7 +329,7 @@
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ao-Gj-XOt">
-                            <frame key="frameInset" minY="1009.5" width="320" height="55"/>
+                            <rect key="frame" x="0.0" y="1009.5" width="320" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -530,7 +530,7 @@
                                             <frame key="frameInset" width="287" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Pro Features" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D2Q-kn-9Pp">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Apple Watch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D2Q-kn-9Pp">
                                                     <frame key="frameInset" minX="15" width="270" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -750,15 +750,7 @@
                             <outlet property="delegate" destination="3GQ-hT-fPZ" id="ceJ-44-BB4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="6km-se-awh">
-                        <barButtonItem key="rightBarButtonItem" image="superUser" id="EcQ-Ar-zvV">
-                            <connections>
-                                <segue destination="gxn-OV-Zdu" kind="popoverPresentation" identifier="superUserPopOverSegueIdentifier" popoverAnchorBarButtonItem="EcQ-Ar-zvV" id="Pau-vQ-Aaj">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="6km-se-awh"/>
                     <connections>
                         <outlet property="appVersionLabel" destination="1Ao-Gj-XOt" id="Te9-fu-eaq"/>
                         <outlet property="enableDeviceSleepSwitch" destination="mdy-0m-5ib" id="fZ0-c8-4hn"/>
@@ -787,7 +779,7 @@
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FAQCell" rowHeight="150" id="W8n-3c-vDC" customClass="ExpandingCell" customModule="Chronic" customModuleProvider="target">
-                                <frame key="frameInset" minY="28" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W8n-3c-vDC" id="u0r-qi-mKw">
                                     <frame key="frameInset" width="320" height="149.5"/>
@@ -863,7 +855,7 @@
         <scene sceneID="Ep8-cp-owd">
             <objects>
                 <navigationController id="gxn-OV-Zdu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Wtf-Pn-azS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Wtf-Pn-azS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1150,7 +1142,7 @@
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" showsReorderControl="YES" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Fzs-9a-bXC" customClass="RoutineCell" customModule="Chronic" customModuleProvider="target">
-                                <frame key="frameInset" minY="22" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fzs-9a-bXC" id="0hg-vc-DxN">
                                     <frame key="frameInset" width="320" height="199.5"/>
@@ -1400,7 +1392,7 @@
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NameCell" id="piY-VL-y88" customClass="ExerciseNameTableViewCell" customModule="Chronic" customModuleProvider="target">
-                                <frame key="frameInset" minY="55.5" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="piY-VL-y88" id="Eaq-MV-cyd">
                                     <frame key="frameInset" width="320" height="49.5"/>
@@ -1443,7 +1435,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExerciseCell" id="CUr-TI-mCM" customClass="ExerciseTableViewCell" customModule="Chronic" customModuleProvider="target">
-                                <frame key="frameInset" minY="105.5" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="105.5" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CUr-TI-mCM" id="tgH-yQ-ral">
                                     <frame key="frameInset" width="320" height="49.5"/>
@@ -1525,7 +1517,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExerciseCell" textLabel="Rdo-Xu-OgS" style="IBUITableViewCellStyleDefault" id="gSy-YU-hIB">
-                                <frame key="frameInset" minY="155.5" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="155.5" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gSy-YU-hIB" id="94g-Od-MrC">
                                     <frame key="frameInset" width="320" height="49.5"/>
@@ -1973,7 +1965,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="0Fz-OJ-Z1d" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="96z-Io-XRn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="96z-Io-XRn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2379,7 +2371,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Tiy-sT-Jaq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uVS-qV-WKQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uVS-qV-WKQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2421,7 +2413,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nSH-gy-Gab" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Routines" image="List" id="vXJ-CU-W0w"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8Mq-cE-FtM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="8Mq-cE-FtM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2445,7 +2437,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xtB-c9-a1F" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="djS-Os-rWb"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8ng-Ph-cDH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="8ng-Ph-cDH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2468,7 +2460,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v7v-b5-daC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ffL-aA-ZpM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ffL-aA-ZpM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2496,7 +2488,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8cy-eJ-dV1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ocv-Fw-GT5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Ocv-Fw-GT5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2519,7 +2511,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ow-GY-lFm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Pjj-e7-4h6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Pjj-e7-4h6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2550,7 +2542,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl1-Wb-XOc">
-                                <string key="text">As a Super User, you get special powers (perks). For example, banner ads will not show if you are a super user. More super powers are coming</string>
+                                <string key="text">As a Super User, you get special powers (perks). For example, you can save custom routines without purchasing the pro features upgrade. More super powers are coming</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2591,7 +2583,6 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
         <image name="sad" width="100" height="100"/>
         <image name="smile" width="100" height="100"/>
         <image name="stop" width="25" height="25"/>
-        <image name="superUser" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="M6E-OI-vVl"/>

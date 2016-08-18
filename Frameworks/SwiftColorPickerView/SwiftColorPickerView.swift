@@ -83,8 +83,8 @@ final public class SwiftColorPickerView: UIView {
     
     weak var dataSource: SwiftColorPickerDataSource?
     
-    private var selectionViewConstraintX: NSLayoutConstraint = NSLayoutConstraint()
-    private var selectionViewConstraintY: NSLayoutConstraint = NSLayoutConstraint()
+    fileprivate var selectionViewConstraintX: NSLayoutConstraint = NSLayoutConstraint()
+    fileprivate var selectionViewConstraintY: NSLayoutConstraint = NSLayoutConstraint()
     
     public override func draw(_ rect: CGRect) {
         
@@ -118,7 +118,7 @@ final public class SwiftColorPickerView: UIView {
         }
     }
     
-    private func colorForRectAt(_ x: Int, y: Int) -> UIColor {
+    fileprivate func colorForRectAt(_ x: Int, y: Int) -> UIColor {
         
         if let ds = dataSource {
             return ds.colorForPalletIndex(x, y: y, numXStripes: numberColorsInXDirection, numYStripes: numberColorsInYDirection)
@@ -154,7 +154,7 @@ final public class SwiftColorPickerView: UIView {
         return colorForRectAt(Int(x), y:Int(y))
     }
     
-    private func patternSize() -> (w: CGFloat, h:CGFloat) {
+    fileprivate func patternSize() -> (w: CGFloat, h:CGFloat) {
         
         let width = self.bounds.width-CGFloat(2*coloredBorderWidth)
         let height = self.bounds.height-CGFloat(2*coloredBorderWidth)

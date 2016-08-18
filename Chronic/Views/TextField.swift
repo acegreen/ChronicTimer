@@ -10,7 +10,7 @@ import Foundation
 
 class TextField: UITextField {
     
-    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         
         UIMenuController.shared.isMenuVisible = false
         

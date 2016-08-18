@@ -19,6 +19,7 @@ target "Chronic" do
     pod 'Charts', :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Swift-3.0'
     pod 'PureLayout'
     pod 'Google-Mobile-Ads-SDK'
+    pod 'ReachabilitySwift'
 
     #pod 'PermissionScope'
     #pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'

@@ -65,7 +65,7 @@ public class BubbleTransition: NSObject {
     */
     public var bubbleColor: UIColor = .white
     
-    public private(set) var bubble = UIView()
+    public fileprivate(set) var bubble = UIView()
 
     /**
     The possible directions of the transition.
@@ -98,7 +98,7 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
 
         if transitionMode == .present {
-            let presentedControllerView = transitionContext.view(forKey: UITransitionContextToViewKey)!
+            let presentedControllerView = transitionContext.view(forKey: UITransitionContextViewKey.to)!
             let originalCenter = presentedControllerView.center
             let originalSize = presentedControllerView.frame.size
 
@@ -124,7 +124,7 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning {
                     transitionContext.completeTransition(true)
             }
         } else {
-            let key = (transitionMode == .pop) ? UITransitionContextToViewKey : UITransitionContextFromViewKey
+            let key = (transitionMode == .pop) ? UITransitionContextViewKey.to : UITransitionContextViewKey.from
             let returningControllerView = transitionContext.view(forKey: key)!
             let originalCenter = returningControllerView.center
             let originalSize = returningControllerView.frame.size
@@ -153,8 +153,8 @@ extension BubbleTransition: UIViewControllerAnimatedTransitioning {
     }
 }
 
-private extension BubbleTransition {
-    private func frameForBubble(_ originalCenter: CGPoint, size originalSize: CGSize, start: CGPoint) -> CGRect {
+fileprivate extension BubbleTransition {
+    fileprivate func frameForBubble(_ originalCenter: CGPoint, size originalSize: CGSize, start: CGPoint) -> CGRect {
         let lengthX = fmax(start.x, originalSize.width - start.x);
         let lengthY = fmax(start.y, originalSize.height - start.y)
         let offset = sqrt(lengthX * lengthX + lengthY * lengthY) * 2;

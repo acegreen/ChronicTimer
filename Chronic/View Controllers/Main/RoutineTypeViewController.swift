@@ -24,13 +24,13 @@ class RoutineTypeViewController: UIViewController, RoutineDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func didCreateRoutine(routine: RoutineModel, isNew: Bool) {
-        self.delegate?.didCreateRoutine(routine: routine, isNew: isNew)
+    func didCreateRoutine(_ routine: RoutineModel, isNew: Bool) {
+        self.delegate?.didCreateRoutine(routine, isNew: isNew)
     }
 
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "AddCircuitRoutineSegueIdentifier" {
             

@@ -62,7 +62,7 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     // MARK: - Email Delegate
     
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         switch result.rawValue {
             

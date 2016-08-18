@@ -327,13 +327,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         print("something went wrong while obtaining the receipt, maybe the user did not successfully enter it's credentials")
     }
     
-    func request(_ request: SKRequest, didFailWithError error: NSError) {
+    func request(_ request: SKRequest, didFailWithError error: Error) {
         
         DispatchQueue.main.async(execute: { () -> Void in
             SweetAlert().showAlert(NSLocalizedString("Alert: Purchase Request Failed Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Purchase Request Failed Subtitle Text", comment: ""), style: AlertStyle.warning)
         })
         
-        print("request did fail with error: \(error.code)")
+        print("request did fail with error: \(error.localizedDescription)")
     }
     
     func selectProduct(_ productID: String) {
@@ -391,8 +391,8 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         // Set KeyChain Value
         do {
             try Constants.keychain
-                .accessibility(accessibility: .Always)
-                .synchronizable(synchronizable: true)
+                .accessibility(.always)
+                .synchronizable(true)
                 .set(value: Constants.removeAdsKeyValue, key: Constants.removeAdsKey)
         } catch let error {
             print("error: \(error)")
@@ -411,8 +411,8 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         // Set KeyChain Value
         do {
             try Constants.keychain
-                .accessibility(accessibility: .Always)
-                .synchronizable(synchronizable: true)
+                .accessibility(.always)
+                .synchronizable(true)
                 .set(value: Constants.proVersionKeyValue, key: Constants.proVersionKey)
         } catch let error {
             print("error: \(error)")
@@ -505,7 +505,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         request.start()
     }
     
-    func verifyReceipt(_ completionHandler:(receiptTransactionsArray: [JSON]?, environment: String?) -> Void) {
+    func verifyReceipt(_ completionHandler: @escaping (_ receiptTransactionsArray: [JSON]?, _ environment: String?) -> Void) {
         
         print("Validating Receipt")
         
@@ -520,10 +520,10 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             return
         }
         
-        let receiptData: NSString = receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        let receiptData: NSString = NSString(string: receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)))
         //print("\(receiptData)")
         
-        let payload: NSString = "{\"receipt-data\" : \"\(receiptData)\"}"
+        let payload: NSString = NSString(string: "{\"receipt-data\" : \"\(receiptData)\"}")
         let payloadData = payload.data(using: String.Encoding.utf8.rawValue)
         //print("\(payloadData)")
         
@@ -541,7 +541,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 let jsonString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                 print(")Error could not parse JSON: \(jsonString)")
                 
-                return completionHandler(receiptTransactionsArray: nil, environment: nil)
+                return completionHandler(nil, nil)
             }
             
             let json = JSON(data: data!)
@@ -549,14 +549,14 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             let receiptEnvironment = json["environment"]
             
             guard json != nil else {
-                return completionHandler(receiptTransactionsArray: nil, environment: receiptEnvironment.string)
+                return completionHandler(nil, receiptEnvironment.string)
             }
             
             print("Receipt \(json)")
             
             guard receiptStatus.int == 0  else {
                 
-                return completionHandler(receiptTransactionsArray: nil, environment: receiptEnvironment.string)
+                return completionHandler(nil, receiptEnvironment.string)
             }
             
             print("Sucessfully returned purchased receipt data")
@@ -565,18 +565,18 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             
             if let inAppPurchases = receiptContent["in_app"].array {
                 
-                completionHandler(receiptTransactionsArray: inAppPurchases, environment: receiptEnvironment.string)
+                completionHandler(inAppPurchases, receiptEnvironment.string)
                 
             } else {
                 
-                completionHandler(receiptTransactionsArray: nil, environment: receiptEnvironment.string)
+                completionHandler(nil, receiptEnvironment.string)
                 
             }
         }
         task.resume()
     }
     
-    func validateTransaction(_ transaction: SKPaymentTransaction, receiptTransactionsArray: [JSON], completionHandler:(success:Bool, receiptTransactionArray: JSON?) -> Void) {
+    func validateTransaction(_ transaction: SKPaymentTransaction, receiptTransactionsArray: [JSON], completionHandler:(_ success:Bool, _ receiptTransactionArray: JSON?) -> Void) {
         
         let transactionProductID = transaction.payment.productIdentifier as String
         
@@ -589,13 +589,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             
             if product_id.string == transactionProductID {
                 
-                completionHandler(success: true, receiptTransactionArray: inAppPurchase)
+                completionHandler(true, inAppPurchase)
                 
                 break
                 
             } else if index == receiptTransactionsArray.count - 1 {
                 
-                completionHandler(success: false, receiptTransactionArray: nil)
+                completionHandler(false, nil)
                 
             }
         }

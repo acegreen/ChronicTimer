@@ -16,7 +16,7 @@ class OnboardingViewController: AMWaveViewController {
         return true
     }
 
-    override func visibleCells() -> [AnyObject]! {
+    override func visibleCells() -> [Any]! {
         return self.viewArray
     }
 

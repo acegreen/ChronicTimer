@@ -54,7 +54,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) // green
             
             exerciseSet.add(newExercise)
             
@@ -69,7 +69,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         // Dispose of any resources that can be recreated.
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         
         if identifier == "SaveRoutineSegueIdentifier" {
             
@@ -133,7 +133,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 let (stagesArray, totalTime) = Functions.makeRoutineArray(self.routineToEdit)
                 
-                routineToEdit.totalRoutineTime = totalTime
+                routineToEdit.totalRoutineTime = totalTime as NSNumber
                 
                 // add routine to spotlight & send context to Watch
                 let totalTimeString = Functions.timeStringFrom(time:routineToEdit.totalRoutineTime! as Int, type: "Routine")
@@ -192,7 +192,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 let (stagesArray, totalTime) = Functions.makeRoutineArray(self.newRoutine)
                 
-                newRoutine.totalRoutineTime = totalTime
+                newRoutine.totalRoutineTime = totalTime as NSNumber
                 
                 // add routine to spotlight & send context to Watch if iOS9                
                 let totalTimeString = Functions.timeStringFrom(time:newRoutine.totalRoutineTime! as Int, type: "Routine")
@@ -221,7 +221,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             try Constants.context.save()
             
             // send delegate out
-            self.delegate?.didCreateRoutine(routine: newRoutine ?? routineToEdit, isNew: (routineToEdit != nil) ? false : true)
+            self.delegate?.didCreateRoutine(newRoutine ?? routineToEdit, isNew: (routineToEdit != nil) ? false : true)
             
             return true
             
@@ -283,9 +283,9 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 cell.exerciseTimeTextField.text = Functions.timeStringFrom(time:exerciseAtIndexPath.exerciseTime as Int, type: "Routine")
                 
-                cell.exerciseNumberOfRounds.text = String(exerciseAtIndexPath.exerciseNumberOfRounds!)
+                cell.exerciseNumberOfRounds.text = exerciseAtIndexPath.exerciseNumberOfRounds!.stringValue
                 
-                cell.exerciseColorTextField.backgroundColor = NSKeyedUnarchiver.unarchiveObject(with: exerciseAtIndexPath.exerciseColor! as! Data ) as! UIColor
+                cell.exerciseColorTextField.backgroundColor = NSKeyedUnarchiver.unarchiveObject(with: exerciseAtIndexPath.exerciseColor as! Data) as? UIColor
                 
             }
             
@@ -388,7 +388,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) // green
             
             exerciseSet.add(newExercise)
             
@@ -469,7 +469,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "exerciseDetailSegue" {
             
@@ -510,11 +510,11 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 (exerciseHours,exerciseMinutes,exerciseSeconds) = Functions.timeComponentsFrom(string: textField.text!)
                 
-                exercise.exerciseTime = Functions.timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds)
+                exercise.exerciseTime = Functions.timeFromTimeComponents(hoursComponent: exerciseHours, minutesComponent: exerciseMinutes, secondsComponent: exerciseSeconds) as NSNumber
                 
             } else if textField.tag == 3 {
                 
-                exercise.exerciseNumberOfRounds = Int(textField.text!)!
+                exercise.exerciseNumberOfRounds = Int(textField.text!)! as NSNumber
                 
             } else if textField.tag == 4 {
                 
@@ -534,7 +534,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent crashing undo bug – see note below.
-        if (range.length + range.location) > textField.text?.characters.count {
+        if let text = textField.text, text.characters.count < (range.length + range.location) {
             return false
         }
         

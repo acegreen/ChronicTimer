@@ -3564,11 +3564,11 @@
 				300E720780146DA6C252B841D6EEC49D /* ChartFill.swift */,
 				877149F07272F6BBC7EA6B9D47D9EBD8 /* ChartFillFormatter.swift */,
 				05871C06DDF6FF635A62BA41E9F0BAC4 /* ChartHighlight.swift */,
+				3F535AA8AC9C06443E760EF1FDE9C3BE /* ChartMarker.swift */,
 				D50979279E32C3E09DCB2B033542645E /* ChartHighlighter.swift */,
 				0995B9CFFF99EABDC4FA6BC275EC8F64 /* ChartLegend.swift */,
 				F9BFC21E6D097F4F8B918B5755DCB703 /* ChartLegendRenderer.swift */,
 				F81BEEDDB97F1A952A83289FA932B920 /* ChartLimitLine.swift */,
-				3F535AA8AC9C06443E760EF1FDE9C3BE /* ChartMarker.swift */,
 				5660944CA1376B653504CFA44E32D495 /* ChartPlatform.swift */,
 				F0AA306CA5B2B4F5D283EF7A8DB3066D /* ChartRange.swift */,
 				E67C94DDF022FC4EA458DEA1006BD832 /* ChartRendererBase.swift */,
@@ -4881,6 +4881,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					586E40C0BEBAB01A075A5E60359FA09D = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -5750,6 +5755,7 @@
 			baseConfigurationReference = 9D2B91AE2B96AB5ED5146E470590B963 /* AMPopTip.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -6809,6 +6815,7 @@
 			baseConfigurationReference = 9D2B91AE2B96AB5ED5146E470590B963 /* AMPopTip.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -6828,6 +6835,7 @@
 				PRODUCT_NAME = AMPopTip;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

@@ -56,7 +56,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         print("session activationDidCompleteWith")
     }
     
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         
         print("Context received")
         
@@ -77,8 +77,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             // Set KeyChain Value
             do {
                 try Constants.keychain
-                    .accessibility(accessibility: .Always)
-                    .synchronizable(synchronizable: true)
+                    .accessibility(.always)
+                    .synchronizable(true)
                     .set(value: Constants.proVersionKeyValue, key: Constants.proVersionKey)
             } catch let error {
                 print("error: \(error)")
@@ -86,6 +86,5 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             
             Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         }
-        
     }
 }

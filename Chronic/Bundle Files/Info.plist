@@ -79,12 +79,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Chronic would use location to show your progress during a run</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Chronic would like to show you your heart rate during workouts &amp; workout history.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Chronic would like to save your workouts to the Health app.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Chronic would use location to show your progress during a run</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

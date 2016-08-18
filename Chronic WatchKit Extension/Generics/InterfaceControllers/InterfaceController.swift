@@ -25,7 +25,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     var routineArray = [[String:AnyObject]]()
     var currentTimerDict = [String:AnyObject]()
     var routineTotalTime = Int()
-    var selectedRoutine: AnyObject!
+    var selectedRoutine: Any!
     var routineIndex: Int = 0
     
     var routineStartDate: Date!
@@ -106,7 +106,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         changeStage()
     }
     
-    override func awake(withContext context: AnyObject?) {
+    override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         selectedRoutine = context
