@@ -10,18 +10,18 @@ import UIKit
 import CoreData
 
 @objc (RoutineModel)
-open class RoutineModel: NSManagedObject {
+public class RoutineModel: NSManagedObject {
     
     //properties feeding the attributes in "Routines" entity
     
-    @NSManaged open var date: Date?
-    @NSManaged open var name: String!
-    @NSManaged open var selectedRoutine: Bool
-    @NSManaged open var tableDisplayOrder: NSNumber!
-    @NSManaged open var totalRoutineTime: NSNumber?
-    @NSManaged open var type: String!
+    @NSManaged public var date: Date?
+    @NSManaged public var name: String!
+    @NSManaged public var selectedRoutine: Bool
+    @NSManaged public var tableDisplayOrder: NSNumber!
+    @NSManaged public var totalRoutineTime: NSNumber?
+    @NSManaged public var type: String!
     
-    @NSManaged open var routineToExcercise: NSOrderedSet?
+    @NSManaged public var routineToExcercise: NSOrderedSet?
 }
 
 extension RoutineModel {

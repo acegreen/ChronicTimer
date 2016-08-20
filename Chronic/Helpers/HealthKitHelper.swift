@@ -9,7 +9,7 @@
 import UIKit
 import HealthKit
 
-open class HealthKitHelper {
+public class HealthKitHelper {
 
     static let sharedInstance = HealthKitHelper()
     let healthKitStore = HKHealthStore()
@@ -162,7 +162,7 @@ open class HealthKitHelper {
         })
     }
     
-    func saveRunningWorkout(_ type: HKWorkoutActivityType, startDate:Date , endDate:Date, kiloCalories:Double?, distance:Double?, completion: ( (Bool, Error?) -> Void)!) {
+    func saveRunningWorkout(workoutActivityType: HKWorkoutActivityType, startDate:Date , endDate:Date, kiloCalories:Double?, distance:Double?, completion: ( (Bool, Error?) -> Void)!) {
  
         // 1. Set the Unit type
         var hkUnit = HKUnit.meter()
@@ -181,19 +181,16 @@ open class HealthKitHelper {
             caloriesQuantity = HKQuantity(unit: HKUnit.kilocalorie(), doubleValue: kiloCalories)
         }
         
-        //let caloriesQuantity = HKQuantity(unit: HKUnit.kilocalorieUnit(), doubleValue: kiloCalories)
-        
         // 3. Save Running Workout
-        let workout = HKWorkout(activityType: HKWorkoutActivityType.crossTraining, start: startDate, end: endDate, duration: abs(endDate.timeIntervalSince(startDate)), totalEnergyBurned: nil, totalDistance: distanceQuantity, metadata: nil)
+        let workout = HKWorkout(activityType: workoutActivityType, start: startDate, end: endDate, duration: abs(endDate.timeIntervalSince(startDate)), totalEnergyBurned: nil, totalDistance: distanceQuantity, metadata: nil)
         
         healthKitStore.save(workout, withCompletion: { (success, error) -> Void in
-            if( error != nil  ) {
+            
+            if error != nil {
                 // Error saving the workout
                 completion(success,error)
-            }
-            else {
+            } else {
                 // Workout saved
-                
                 if distanceQuantity != nil {
                     let distanceSample = HKQuantitySample(type: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!, quantity: distanceQuantity!, start: startDate, end: endDate)
                     

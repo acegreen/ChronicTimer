@@ -41,13 +41,14 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     var workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.crossTraining
     
     var timer = Timer()
-    var time: Int = 0
-    var distance: Double = 0.0
     
+    var time: Int = 0
     var timeRemaining: Int = 0
     var timeElapsed: Int = 0
-    var pace: Double = 0.0
     var preRoutineCountDownTime: Int = 3
+
+    var distance: Double = 0.0
+    var pace: Double = 0.0
     
 //    var ProgressbarContainer: UIView = UIView()
 //    var ProgressCircle = CAShapeLayer()
@@ -506,7 +507,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     func setToInitialState() {
         
         routineIndex = 0
-        timeRemaining = routineTotalTime ?? 0
+        timeRemaining = routineTotalTime 
         timeElapsed = 0
         distance = 0
         time = 0
@@ -993,7 +994,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         guard self.routineStartDate != nil && self.routineEndDate != nil else { return }
         
         // Add workout to HealthKit
-        HealthKitHelper.sharedInstance.saveRunningWorkout(self.workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: distance, completion: { (success, error) -> Void in
+        HealthKitHelper.sharedInstance.saveRunningWorkout(workoutActivityType: self.workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: distance, completion: { (success, error) -> Void in
 
             DispatchQueue.main.async(execute: { () -> Void in
                 
@@ -1037,9 +1038,10 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         for location in locations {
+            
             let howRecent = location.timestamp.timeIntervalSinceNow
             
-            if abs(howRecent) < 10 && location.horizontalAccuracy < 20 {
+            if abs(howRecent) < 10 && location.horizontalAccuracy < 20 && workoutState == .active {
                 
                 //update distance
                 if self.locations.count > 0 {
@@ -1048,14 +1050,11 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
                     var coords = [CLLocationCoordinate2D]()
                     coords.append(self.locations.last!.coordinate)
                     coords.append(location.coordinate)
+                        
+                    let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
+                    mapView.setRegion(region, animated: true)
                     
-                    if workoutState == .active {
-                        
-                        let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
-                        mapView.setRegion(region, animated: true)
-                        
-                        mapView.add(MKPolyline(coordinates: &coords, count: coords.count))
-                    }
+                    mapView.add(MKPolyline(coordinates: &coords, count: coords.count))
                 }
             }
             

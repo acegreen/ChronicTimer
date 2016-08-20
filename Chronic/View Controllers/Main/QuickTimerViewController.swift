@@ -11,10 +11,10 @@ import UIKit
 class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var picker:UIPickerView = UIPickerView()
-    var pickerHours: Double = 0.0
-    var pickerMinutes: Double = 0.0
-    var pickerSeconds: Double = 0.0
-    var pickerTotal: Double = 0.0
+    var pickerHours: Int = 0
+    var pickerMinutes: Int = 0
+    var pickerSeconds: Int = 0
+    var pickerTotal: Int = 0
     
     @IBOutlet var StartButton: UIButton!
     
@@ -118,15 +118,15 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         if component == 0 {
             
-            pickerHours = Double(row) * 3600
+            pickerHours = row * 3600
             
         } else if component == 1 {
             
-            pickerMinutes = Double(row) * 60
+            pickerMinutes = row * 60
             
         } else if component == 2 {
             
-            pickerSeconds = Double(row)
+            pickerSeconds = row
         }
         
         pickerTotal = pickerHours + pickerMinutes + pickerSeconds
@@ -136,11 +136,11 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func setPickerInitialValues() {
         
-        pickerHours = 0.0
-        pickerMinutes = 60.0
-        pickerSeconds = 0.0
+        pickerHours = 0
+        pickerMinutes = 60
+        pickerSeconds = 0
         
-        pickerTotal = 60.0
+        pickerTotal = 60
         Constants.QuickTimerTime = pickerTotal
         
     }

@@ -19,7 +19,6 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     let workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.running
     
-    var countDownTimer = Timer()
     var timeElapsed: Int = 0
     
     var routineStartDate: Date!
@@ -33,9 +32,16 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         // Movement threshold for new events
         locationManager.distanceFilter = 5.0
         return locationManager
-        }()
+    }()
     
     lazy var locations = [CLLocation]()
+    
+    var distanceFormatter: MKDistanceFormatter = {
+        let distanceFormatter = MKDistanceFormatter()
+        //distanceFormatter.units = MKDistanceFormatterUnits.metric
+        distanceFormatter.unitStyle = .abbreviated
+        return distanceFormatter
+    }()
     var distance = 0.0
     
     @IBOutlet var mapView: WKInterfaceMap!
@@ -44,7 +50,7 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     @IBAction func PlayButtonPressed() {
         
-        if !countDownTimer.isValid {
+        if !Constants.timer.isValid {
             
             if workoutState == .preRun {
                 
@@ -70,7 +76,7 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     @IBAction func PauseButtonPressed() {
         
-        countDownTimer.invalidate()
+        Constants.timer.invalidate()
         
         workoutState = Constants.WorkoutEventType.pause
         
@@ -79,31 +85,30 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     @IBAction func StopButtonPressed() {
         
-        if workoutState == .active || workoutState == .pause || workoutState == .complete {
-            
-            // Set end time
-            routineEndDate = Date()
-            print("end time \(routineEndDate)")
-            
+        if workoutState == .active || workoutState == .pause {
+            // Mark routine as completed
+            workoutState = Constants.WorkoutEventType.complete
         }
         
         // End workout session if running
         Functions.endWorkoutSession()
         
-        if workoutState == .active || workoutState == .pause || workoutState == .complete {
-            Functions.saveWorkout(interfaceController: self, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: distance, workoutActivityType: self.workoutActivityType)
+        if workoutState == .complete {
+            
+            // Set end time
+            routineEndDate = Date()
+            print("end time \(routineEndDate)")
+            
+            // Save workout
+            Functions.saveWorkout(interfaceController: self, workoutActivityType: workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: distance)
         }
         
+        // Set to initial state
         setToInitialState()
     }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-    }
-
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
         
         setToInitialState()
         
@@ -118,28 +123,20 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         
         locationManager.requestLocation()
     }
-
+    
+    override func willActivate() {
+        // This method is called when watch view controller is about to be visible to user
+        super.willActivate()
+    }
+    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
-    
-        // End workout session if running
-        Functions.endWorkoutSession()
-        
-        // Set initial state
-        setToInitialState()
     }
     
     //Function to start exercise timer
     func startTimer() {
-        
-        countDownTimer.invalidate()
-        
-        if !countDownTimer.isValid {
-            
-            countDownTimer = Timer .scheduledTimer(timeInterval: 1, target: self, selector: #selector(RunTrackerInterfaceController.countUp) , userInfo: nil, repeats: true)
-            
-        }
+        Constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RunTrackerInterfaceController.countUp) , userInfo: nil, repeats: true)
     }
     
     func startLocationUpdates() {
@@ -154,13 +151,13 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     //Timer Function
     func countUp() {
-        
         timeElapsed += 1
         changeLabels()
     }
     
     func changeLabels() {
         timeElapsedLabel.setText(Functions.timeStringFrom(time: timeElapsed))
+        distanceLabel.setText(distanceFormatter.string(fromDistance: distance))
     }
     
     func playFeedback (_ type: String) {
@@ -188,7 +185,10 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     func setToInitialState() {
         
-        countDownTimer.invalidate()
+        // nil timer if exists
+        Constants.timer.invalidate()
+        
+        // Stop location request if running
         locationManager.stopUpdatingLocation()
         
         timeElapsed = 0
@@ -196,17 +196,20 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         locations.removeAll(keepingCapacity: false)
         
         workoutState = Constants.WorkoutEventType.preRun
+        
+        changeLabels()
     }
     
     // MARK: HKWorkoutSessionDelegate
+    
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         switch toState {
         case .running:
-            print("Workout session running")
+            print("Workout didChangeTo running")
         case .ended:
-            print("Workout session ended")
+            print("Workout didChangeTo ended")
         default:
-            print("Unexpected state \(toState)")
+            print("state \(toState.hashValue)")
         }
     }
     
@@ -220,24 +223,24 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         
         for location in locations {
             
-            //update distance
-            if self.locations.count > 0 {
-                distance += location.distance(from: self.locations.last!)
+            let howRecent = location.timestamp.timeIntervalSinceNow
+            
+            if abs(howRecent) < 10 && location.horizontalAccuracy < 20 && workoutState == .active {
                 
-                let distanceFormatter = MKDistanceFormatter()
-                distanceFormatter.units = MKDistanceFormatterUnits.metric
-                distanceFormatter.unitStyle = MKDistanceFormatterUnitStyle.default
-                self.distanceLabel.setText(distanceFormatter.string(fromDistance: distance))
-                
-                if workoutState == .active {
+                //update distance
+                if self.locations.count > 0 {
+                    distance += location.distance(from: self.locations.last!)
+                    self.distanceLabel.setText(distanceFormatter.string(fromDistance: distance))
+                    
+                    
                     let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
                     mapView.setRegion(region)
                 }
             }
-            
+                
             //save location
             self.locations.append(location)
-            print(location)
+            print(distance)
         }
     }
     

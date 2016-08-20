@@ -11,9 +11,9 @@ import Foundation
 
 class QTInterfaceController: WKInterfaceController {
     
-    var pickerHours: Double = 0.0
-    var pickerMinutes: Double = 60.0
-    var pickerSeconds: Double = 0.0
+    var pickerHours: Int = 0
+    var pickerMinutes: Int = 60
+    var pickerSeconds: Int = 0
     
     var hourItemArray = [WKPickerItem]()
     var minuteItemArray = [WKPickerItem]()
@@ -29,21 +29,21 @@ class QTInterfaceController: WKInterfaceController {
         
         let hourValueInt: Int = Int(value)
         
-        pickerHours = Double(hourValueInt) * 3600
+        pickerHours = hourValueInt * 3600
     }
     
     @IBAction func minutePicker(_ value: Int) {
         
         let minutesValueInt: Int = Int(value)
         
-        pickerMinutes = Double(minutesValueInt) * 60
+        pickerMinutes = minutesValueInt * 60
     }
     
     @IBAction func secondPicker(_ value: Int) {
         
         let secondsValueInt: Int = Int(value)
         
-        pickerSeconds = Double(secondsValueInt)
+        pickerSeconds = secondsValueInt
     }
     
 
@@ -94,17 +94,17 @@ class QTInterfaceController: WKInterfaceController {
 
     override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
             
-        Constants.QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
+        Constants.quickTimerTime = pickerHours + pickerMinutes + pickerSeconds
     
-        return Constants.QuickTimerTime
+        return Constants.quickTimerTime
     
     }
     
     override func contextsForSegue(withIdentifier segueIdentifier: String) -> [Any]? {
         
-        Constants.QuickTimerTime = pickerHours + pickerMinutes + pickerSeconds
+        Constants.quickTimerTime = pickerHours + pickerMinutes + pickerSeconds
         
-        return [Constants.QuickTimerTime]
+        return [Constants.quickTimerTime]
     }
     
 }

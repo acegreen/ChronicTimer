@@ -75,6 +75,7 @@ class RoutineCell: UITableViewCell {
         routineChartView.isUserInteractionEnabled = false
         routineChartView.drawSliceTextEnabled = false
         routineChartView.legend.enabled = false
+        //routineChartView.drawHoleEnabled = false
         routineChartView.holeColor = nil
         routineChartView.descriptionText = ""
     }

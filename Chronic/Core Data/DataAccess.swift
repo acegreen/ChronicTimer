@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-open class DataAccess: NSObject {
+public class DataAccess: NSObject {
     
     static let sharedInstance = DataAccess()
     
     //MARK: -Get Routines & Exercises Functions
     
-    open func GetExistingRoutineWith(_ objectID: NSManagedObjectID) -> NSManagedObject? {
+    public func GetExistingRoutineWith(_ objectID: NSManagedObjectID) -> NSManagedObject? {
         
         do {
             
@@ -28,7 +28,7 @@ open class DataAccess: NSObject {
         }
     }
     
-    open func GetRoutines(_ predicate: NSPredicate?) throws -> [RoutineModel] {
+    public func GetRoutines(_ predicate: NSPredicate?) throws -> [RoutineModel] {
         
         let request: NSFetchRequest<RoutineModel> = RoutineModel.fetchRequest()
         let entity = NSEntityDescription.entity(forEntityName: "Routines", in: self.managedObjectContext)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11191" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nvx-ar-6as">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nvx-ar-6as">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -127,7 +127,7 @@
                         <outlet property="countDownGroup" destination="V4N-b7-5Xc" id="rVf-V9-iCE"/>
                         <outlet property="heart" destination="i30-lp-VZf" id="1Ak-V3-ihE"/>
                         <outlet property="heartRateGroup" destination="yAc-pL-ry4" id="eUf-Nw-47e"/>
-                        <outlet property="label" destination="d3j-33-zZi" id="fW3-vC-T3l"/>
+                        <outlet property="heartRateLabel" destination="d3j-33-zZi" id="prw-PH-d9F"/>
                         <outlet property="mainGroup" destination="zie-3X-pJq" id="VeX-YD-b12"/>
                         <outlet property="timeElapsedLabel" destination="YUE-fZ-do1" id="4q3-Cw-Qkr"/>
                         <outlet property="timeRemainingLabel" destination="uhL-jW-cs2" id="ZJA-3o-vGs"/>
@@ -199,7 +199,7 @@
                                 <tableRow identifier="noProVersionRow" selectable="NO" id="QGb-Gy-TAC" customClass="TableRowType" customModule="Chronic_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="0.0" id="cmY-Lx-6sF">
                                         <items>
-                                            <label alignment="center" verticalAlignment="center" text="Purchase the Pro Features upgrade on your iPhone to access your routines on Apple Watch" textAlignment="center" numberOfLines="10" id="E5i-17-l6Q">
+                                            <label alignment="center" verticalAlignment="center" text="Purchase the Apple Watch upgrade on your iPhone to access your routines on Apple Watch" textAlignment="center" numberOfLines="10" id="E5i-17-l6Q">
                                                 <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                                 <variation key="device=watch42mm">
                                                     <fontDescription key="font" type="boldSystem" pointSize="17"/>
@@ -328,6 +328,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8a6-oR-2gA"/>
+        <segue reference="AlR-6Z-iIg"/>
     </inferredMetricsTieBreakers>
 </document>

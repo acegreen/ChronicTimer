@@ -93,7 +93,7 @@ class Functions {
                         roundDictionary["Name"] = Constants.roundExercise.exerciseName
                         
                         if Constants.roundExercise.exerciseNumberOfRounds as Int > 1 {
-                            roundDictionary["Interval"] = "\(i) / \(Constants.roundExercise.exerciseNumberOfRounds)"
+                            roundDictionary["Interval"] = "\(i) / \(Constants.roundExercise.exerciseNumberOfRounds!)"
                         }
                         
                         roundDictionary["Time"] = Constants.roundExercise.exerciseTime
@@ -112,7 +112,7 @@ class Functions {
                         restDictionary["Name"] = Constants.restExercise.exerciseName
                         
                         if Constants.restExercise.exerciseNumberOfRounds as Int > 1 {
-                            restDictionary["Interval"] = "\(i) / \(Constants.restExercise.exerciseNumberOfRounds)"
+                            restDictionary["Interval"] = "\(i) / \(Constants.restExercise.exerciseNumberOfRounds!)"
                         }
                         restDictionary["Time"] = Constants.restExercise.exerciseTime
                         restDictionary["Color"] = Constants.restExercise.exerciseColor
@@ -267,27 +267,6 @@ class Functions {
         let calendar:Calendar = Calendar.current
         
         return calendar.date(byAdding: dayComponent, to: Date())!
-        
-    }
-    
-    class func isConnectedToNetwork() -> Bool {
-        
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        
-        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-        }
-        var flags = SCNetworkReachabilityFlags.connectionAutomatic
-        
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
-            return false
-        }
-        
-        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
-        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
-        return (isReachable && !needsConnection)
     }
     
     @available(iOS 9.0, *)
@@ -523,6 +502,16 @@ class Functions {
         UIGraphicsEndImageContext()
         
         return image!
+    }
+    
+    // MARK: Generic Question Bool Functions
+    
+    class func isConnectedToNetwork() -> Bool {
+        if Constants.reachability?.currentReachabilityStatus == .notReachable {
+            return false
+        } else {
+            return true
+        }
     }
     
     class func isRemoveAdsUpgradePurchased() -> Bool {
