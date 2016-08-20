@@ -89,6 +89,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ReachabilitySwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDVersion.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -113,11 +118,6 @@
 			<true/>
 		</dict>
 		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1F4E855A5B8A45DB04058AA298D0FCC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,12 +152,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75D7E6156C75F2F2539C45940308F1D4</key>
+		<key>8004BD72C14F3C786A3B1990FE84C94C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8004BD72C14F3C786A3B1990FE84C94C</key>
+		<key>88E3C3C6ED793CE7E38E16C72017064B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,17 +167,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A2CE90D4DB40B6AD9F49FD7329F9D5A</key>
+		<key>8D07468191C0914B62ABE153B8B766E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>99D9911A4FB33960E496203125523C9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B255908831C9ECB1FB55BEBC13DA3DD3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,7 +192,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DF0D0269A2BBAAA5085BBC27B09F2687</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E1F78B1C5F8F2CCD0E68552EAF2B9B52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB03E590A6A52FEF516F6A52795B1B5A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

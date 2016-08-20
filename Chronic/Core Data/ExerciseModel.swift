@@ -10,14 +10,14 @@ import UIKit
 import CoreData
 
 @objc (ExerciseModel)
-open class ExerciseModel: NSManagedObject {
+public class ExerciseModel: NSManagedObject {
     
     //properties feeding the attributes in "Exercises" entity
     
-    @NSManaged open var exerciseName: String!
-    @NSManaged open var exerciseTime: NSNumber!
-    @NSManaged open var exerciseNumberOfRounds: NSNumber!
-    @NSManaged open var exerciseColor: Any
+    @NSManaged public var exerciseName: String!
+    @NSManaged public var exerciseTime: NSNumber!
+    @NSManaged public var exerciseNumberOfRounds: NSNumber!
+    @NSManaged public var exerciseColor: Any
     
     @NSManaged open var exerciseToRoutine: RoutineModel?
     

@@ -16,6 +16,7 @@ import SystemConfiguration
 import WatchConnectivity
 import AVFoundation
 import UserNotifications
+import ReachabilitySwift
 
 class Constants {
     
@@ -24,6 +25,8 @@ class Constants {
     static let infoDict = Bundle.main.infoDictionary
     static let AppVersion = infoDict!["CFBundleShortVersionString"]!
     static let BundleVersion = infoDict!["CFBundleVersion"]!
+    
+    static let reachability = Reachability()
     
     static let app = UIApplication.shared
     static let appDel: AppDelegate = Constants.app.delegate as! AppDelegate
@@ -72,7 +75,7 @@ class Constants {
     static var runInBackgroundState: Bool!
     static var notificationReminderState: Bool!
     
-    static var QuickTimerTime: Double = 60.0
+    static var QuickTimerTime: Int = 60
     
     static let keychain = Keychain(service: "AG.Chronic")
     

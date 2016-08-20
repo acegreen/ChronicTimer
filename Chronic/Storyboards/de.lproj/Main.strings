@@ -92,8 +92,8 @@
 /* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "Ceb-xy-Zpg"; */
 "Ceb-xy-Zpg.title" = "Routine Details";
 
-/* Class = "UILabel"; text = "Pro Features"; ObjectID = "D2Q-kn-9Pp"; */
-"D2Q-kn-9Pp.text" = "Pro-Funktionen";
+/* Class = "UILabel"; text = "Apple Watch"; ObjectID = "D2Q-kn-9Pp"; */
+"D2Q-kn-9Pp.text" = "Apple Watch";
 
 /* Class = "UILabel"; text = "Sex"; ObjectID = "DaS-Dy-Var"; */
 "DaS-Dy-Var.text" = "Geschlecht";

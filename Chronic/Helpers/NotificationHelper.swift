@@ -3,7 +3,7 @@ import UIKit
 import Parse
 import UserNotifications
 
-open class NotificationHelper {
+public class NotificationHelper {
     
     static let center = UNUserNotificationCenter.current()
     

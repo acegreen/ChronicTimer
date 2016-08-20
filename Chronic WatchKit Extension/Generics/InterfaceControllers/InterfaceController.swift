@@ -19,9 +19,6 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     let workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.crossTraining
     var anchor = HKQueryAnchor(fromValue: Int(HKAnchoredObjectQueryNoAnchor))
     
-    var countDownTimer = Timer()
-    var timer: Int = 0
-    
     var routineArray = [[String:AnyObject]]()
     var currentTimerDict = [String:AnyObject]()
     var routineTotalTime = Int()
@@ -31,11 +28,14 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     var routineStartDate: Date!
     var routineEndDate: Date!
     
+    var time: Int = 0
     var timeRemaining: Int = 0
     var timeElapsed: Int = 0
     
     var soundlocation = NSURL()
     var localNotification: UNNotification!
+    
+    var heartRateQuery: HKQuery?
     
     @IBOutlet var mainGroup: WKInterfaceGroup!
     @IBOutlet var countDownGroup: WKInterfaceGroup!
@@ -50,11 +50,11 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
     
     @IBOutlet var heart: WKInterfaceImage!
-    @IBOutlet var label: WKInterfaceLabel!
+    @IBOutlet var heartRateLabel: WKInterfaceLabel!
     
     @IBAction func PlayButtonPressed() {
         
-        if routineArray.count != 0 && !countDownTimer.isValid {
+        if routineArray.count != 0 && !Constants.timer.isValid {
             
             if workoutState == .preRun {
                 
@@ -78,7 +78,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     @IBAction func PauseButtonPressed() {
         
-        countDownTimer.invalidate()
+        Constants.timer.invalidate()
         
         workoutState = Constants.WorkoutEventType.pause
         
@@ -87,18 +87,16 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     @IBAction func StopButtonPressed() {
         
-        if workoutState == .active || workoutState == .pause || workoutState == .complete {
-
-            // Set end time
-            routineEndDate = Date()
-            print("end time \(routineEndDate)")
-            
-        }
-        
         // End workout session if running
         Functions.endWorkoutSession()
         
         if workoutState == .active || workoutState == .pause || workoutState == .complete {
+            
+            // Set end time
+            routineEndDate = Date()
+            print("end time \(routineEndDate)")
+            
+            // Check to save workout
             checkSaveWorkout()
         }
         
@@ -143,28 +141,23 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     //Function to start exercise timer
     func startTimer() {
-        
-        countDownTimer.invalidate()
-        
-        if !countDownTimer.isValid {
-            countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(InterfaceController.countDown) , userInfo: nil, repeats: true)
-        }
+        Constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(InterfaceController.countDown) , userInfo: nil, repeats: true)
     }
     
     //Timer Function
     func countDown() {
         
-        timer -= 1
+        time -= 1
         timeRemaining -= 1
         timeElapsed += 1
         
         changeLabels()
         
-        if timer < 4 && timer > 0 {
+        if time < 4 && time > 0 {
             
             playFeedback("Tick")
             
-        } else if timer <= 0 {
+        } else if time <= 0 {
             
             // If the current timer ends
             
@@ -176,7 +169,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 
                 routineIndex += 1
                 
-                countDownTimer.invalidate()
+                Constants.timer.invalidate()
                 
                 changeStage()
                 
@@ -198,23 +191,10 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             
             currentTimerDict = routineArray[routineIndex]
             
-            timer = currentTimerDict["Time"] as! Int
+            time = currentTimerDict["Time"] as! Int
             
             changeLabels()
             changeStageLabelColor()
-            
-        }
-        
-        //To enable buttons
-        if routineIndex > 0 {
-            
-            //PreviousButton.enabled = true
-            
-        }
-        
-        if routineIndex < routineArray.count {
-            
-            //NextButton.enabled = true
             
         }
     }
@@ -223,7 +203,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     func setToInitialState() {
     
         // Invalidate timer if running
-        countDownTimer.invalidate()
+        Constants.timer.invalidate()
         
         // End workout session if running
         Functions.endWorkoutSession()
@@ -233,13 +213,15 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         timeElapsed = 0
     
         workoutState = Constants.WorkoutEventType.preRun
+        
+        changeLabels()
     }
     
     func changeLabels() {
         
         //self.setTitle(routineName)
         RoutineStateLabel.setText(currentTimerDict["Name"] as? String)
-        CountDownLabel.setText(Functions.timeStringFrom(time: Int(timer)))
+        CountDownLabel.setText(Functions.timeStringFrom(time: Int(time)))
         timeRemainingLabel.setText(Functions.timeStringFrom(time: Int(timeRemaining)))
         timeElapsedLabel.setText(Functions.timeStringFrom(time: Int(timeElapsed)))
     }
@@ -334,9 +316,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         if selectedRoutine is RoutineModel {
             
             if workoutState == .complete {
-                
-                Functions.saveWorkout(interfaceController: self, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil, workoutActivityType: self.workoutActivityType)
-                
+                Functions.saveWorkout(interfaceController: self, workoutActivityType: workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil)
             } else {
                 promptToSaveWorkout()
             }
@@ -350,7 +330,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         let yesAction = WKAlertAction(title: NSLocalizedString("Yes", comment: ""), style: WKAlertActionStyle.default, handler: { () -> Void in
             
-            Functions.saveWorkout(interfaceController: self, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil, workoutActivityType: self.workoutActivityType)
+            Functions.saveWorkout(interfaceController: self, workoutActivityType: self.workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil)
         })
         
         let noAction = WKAlertAction(title: NSLocalizedString("No", comment: ""), style: WKAlertActionStyle.default, handler: { })
@@ -367,7 +347,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         case .ended:
             workoutDidEnd(date)
         default:
-            print("Unexpected state \(toState)")
+            print("state \(toState.hashValue)")
         }
     }
     
@@ -377,24 +357,22 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     func workoutDidStart(_ date : Date) {
         
-        guard selectedRoutine != nil else { return }
+        heartRateQuery = createHeartRateStreamingQuery()
         
-        if let query = createHeartRateStreamingQuery() {
+        if let query = heartRateQuery {
              HealthKitHelper.sharedInstance.healthKitStore.execute(query)
         } else {
-            label.setText("Cannot start")
+            heartRateLabel.setText("Cannot start")
         }
     }
     
     func workoutDidEnd(_ date : Date) {
         
-        guard selectedRoutine != nil else { return }
-        
-        if let query = createHeartRateStreamingQuery() {
-             HealthKitHelper.sharedInstance.healthKitStore.stop(query)
-            label.setText("---")
+        if let query = heartRateQuery {
+            HealthKitHelper.sharedInstance.healthKitStore.stop(query)
+            heartRateLabel.setText("---")
         } else {
-            label.setText("Cannot stop")
+            heartRateLabel.setText("Cannot stop")
         }
     }
     
@@ -405,7 +383,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         guard let quantityType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate) else { return nil }
         
         let heartRateQuery = HKAnchoredObjectQuery(type: quantityType, predicate: nil, anchor: anchor, limit: Int(HKObjectQueryNoLimit)) { (query, sampleObjects, deletedObjects, newAnchor, error) -> Void in
-            guard let newAnchor = newAnchor else {return}
+            guard let newAnchor = newAnchor else { return }
             self.anchor = newAnchor
             self.updateHeartRate(sampleObjects)
         }
@@ -423,7 +401,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         DispatchQueue.main.async {
             guard let sample = heartRateSamples.first else{return}
             let value = sample.quantity.doubleValue( for: HealthKitHelper.sharedInstance.heartRateUnit)
-            self.label.setText(String(UInt16(value)))
+            self.heartRateLabel.setText(String(Int(value)))
             
             // retrieve source from sample
             //let name = sample.sourceRevision.source.name

@@ -99,6 +99,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ParseTwitterUtils/ParseTwitterUtils.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ParseUI/ParseUI.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PureLayout/PureLayout.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ReachabilitySwift/ReachabilitySwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SDVersion/SDVersion.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi
@@ -118,6 +119,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ParseTwitterUtils/ParseTwitterUtils.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ParseUI/ParseUI.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PureLayout/PureLayout.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ReachabilitySwift/ReachabilitySwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SDVersion/SDVersion.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
 fi

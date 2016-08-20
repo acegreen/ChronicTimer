@@ -44,8 +44,9 @@ class Constants {
     static var roundExercise: ExerciseModel!
     static var restExercise: ExerciseModel!
     static var coolDownExercise: ExerciseModel!
-    static var QuickTimerTime: Double = 60.0
+    static var quickTimerTime: Int = 60
 
+    static var timer = Timer()
     static var wcSession: WCSession!
     
     static let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatus(for: HealthKitHelper.sharedInstance.workoutType)

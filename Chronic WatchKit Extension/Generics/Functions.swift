@@ -215,7 +215,7 @@ class Functions {
             
             // Quick Timer Time
             quickTimerDictionary["Name"] = NSLocalizedString("Quick Timer", comment: "")
-            quickTimerDictionary["Time"] = Constants.QuickTimerTime
+            quickTimerDictionary["Time"] = Constants.quickTimerTime
             quickTimerDictionary["Color"] = NSKeyedArchiver.archivedData(withRootObject: UIColor.orange)
             
             totalTime += quickTimerDictionary["Time"] as! Int
@@ -310,16 +310,14 @@ class Functions {
         print("Workout session ended")
     }
     
-    class func saveWorkout(interfaceController: WKInterfaceController, startDate: Date, endDate: Date, kiloCalories: Double?, distance: Double?, workoutActivityType: HKWorkoutActivityType) {
+    class func saveWorkout(interfaceController: WKInterfaceController, workoutActivityType: HKWorkoutActivityType, startDate: Date, endDate: Date, kiloCalories: Double?, distance: Double?) {
         
         guard Constants.workoutAuthorizationStatus != HKAuthorizationStatus.notDetermined else {
             
             // Request Authorization
             HealthKitHelper.sharedInstance.authorizeHealthKit { (success,  error) -> Void in
-                
                 if success {
-                    
-                    self.saveWorkout(interfaceController: interfaceController, startDate: startDate, endDate: endDate, kiloCalories: kiloCalories, distance: distance, workoutActivityType: workoutActivityType)
+                    self.saveWorkout(interfaceController: interfaceController, workoutActivityType: workoutActivityType, startDate: startDate, endDate: endDate, kiloCalories: kiloCalories, distance: distance)
                 }
             }
             
@@ -336,7 +334,7 @@ class Functions {
         }
         
         // Add workout to HealthKit if available
-        HealthKitHelper.sharedInstance.saveRunningWorkout(workoutActivityType, startDate: startDate, endDate: endDate, kiloCalories: kiloCalories, distance: distance, completion: { (success, error) -> Void in
+        HealthKitHelper.sharedInstance.saveRunningWorkout(workoutActivityType: workoutActivityType, startDate: startDate, endDate: endDate, kiloCalories: kiloCalories, distance: distance, completion: { (success, error) -> Void in
             
             if success {
                 
