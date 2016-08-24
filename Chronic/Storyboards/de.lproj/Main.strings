@@ -35,8 +35,8 @@
 /* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "5Tz-d5-wtw"; */
 "5Tz-d5-wtw.text" = "Würden Sie Chronic im App Store bewerten? Wir schätzen immer Ihren Feedback!";
 
-/* Class = "UILabel"; text = "Write a Review"; ObjectID = "62U-Rt-gry"; */
-"62U-Rt-gry.text" = "Eine Review schreiben";
+/* Class = "UILabel"; text = "Write a Review"; ObjectID = "SiX-ba-3V3"; */
+"SiX-ba-3V3.text" = "Eine Review schreiben";
 
 /* Class = "UILabel"; text = "Quick Timer"; ObjectID = "6YK-pi-Gau"; */
 "6YK-pi-Gau.text" = "Quick Timer";
@@ -47,7 +47,7 @@
 /* Class = "UINavigationItem"; title = "Routines"; ObjectID = "6gL-5a-ixa"; */
 "6gL-5a-ixa.title" = "Chronic";
 
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "6km-se-awh"; */
+/* Class = "UINavigationItem"; title = "Settings"Elapsed; ObjectID = "6km-se-awh"; */
 "6km-se-awh.title" = "Einstellungen";
 
 /* Class = "UILabel"; text = "Unknown"; ObjectID = "7H6-lU-9R8"; */
@@ -284,8 +284,8 @@
 /* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "ksH-2j-BQg"; */
 "ksH-2j-BQg.placeholder" = "Routine Name Eingeben";
 
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "m5y-CQ-t8h"; */
-"m5y-CQ-t8h.text" = "FAQ";
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "ODQ-6G-b00"; */
+"ODQ-6G-b00.text" = "FAQ";
 
 /* Class = "UILabel"; text = "Restore Upgrades"; ObjectID = "mcW-yo-ctz"; */
 "mcW-yo-ctz.text" = "Upgrades Wiederherstellen";
@@ -347,5 +347,17 @@
 /* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
 "z2I-CN-Ytx.text" = "Super!";
 
-/* Class = "UILabel"; text = "Email Us"; ObjectID = "zrb-SX-QX1"; */
-"zrb-SX-QX1.text" = "Schreiben Sie uns";
+/* Class = "UILabel"; text = "Email Us"; ObjectID = "eV4-4e-xDW"; */
+"eV4-4e-xDW.text" = "Schreiben Sie uns";
+
+/* Class = "UITableViewSection"; headerTitle = "Social"; ObjectID = "ekw-bF-kQ2"; */
+"ekw-bF-kQ2.headerTitle" = "Sozial";
+
+/* Class = "UILabel"; text = "Like us on Facebook"; ObjectID = "m5y-CQ-t8h"; */
+"m5y-CQ-t8h.text" = "Like uns auf Facebook";
+
+/* Class = "UILabel"; text = "Follow us on Twitter"; ObjectID = "62U-Rt-gry"; */
+"62U-Rt-gry.text" = "Folge uns auf Twitter";
+
+/* Class = "UILabel"; text = "Share With Friends"; ObjectID = "zrb-SX-QX1"; */
+"zrb-SX-QX1.text" = "Mit Freunden teilen";

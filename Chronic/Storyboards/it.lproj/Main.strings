@@ -35,8 +35,8 @@
 /* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "5Tz-d5-wtw"; */
 "5Tz-d5-wtw.text" = "Che ne dici di votare Chronic sull'AppStore? Noi apprezziamo il tuo feedback!";
 
-/* Class = "UILabel"; text = "Write a Review"; ObjectID = "62U-Rt-gry"; */
-"62U-Rt-gry.text" = "Scrivi una Recensione";
+/* Class = "UILabel"; text = "Write a Review"; ObjectID = "SiX-ba-3V3"; */
+"SiX-ba-3V3.text" = "Scrivi una Recensione";
 
 /* Class = "UILabel"; text = "Quick Timer"; ObjectID = "6YK-pi-Gau"; */
 "6YK-pi-Gau.text" = "Quick Timer";
@@ -231,7 +231,7 @@
 "dOe-44-JgT.text" = "Ottimo lavoro nel tenerti in forma! \nIn ogni caso, noi apprezziamo il tuo feedback! Che ne pensi di Chronic? ";
 
 /* Class = "UILabel"; text = "Round Time"; ObjectID = "eHS-bw-2In"; */
-"eHS-bw-2In.text" = "Round Time";
+"eHS-bw-2In.text" = "Durata del round";
 
 /* Class = "UIViewController"; title = "QuickTimerViewController"; ObjectID = "eeg-Hi-sa7"; */
 "eeg-Hi-sa7.title" = "QuickTimerViewController";
@@ -252,7 +252,7 @@
 "fcp-Ta-Nxf.text" = "Ricordami di Allenarmi";
 
 /* Class = "UILabel"; text = "Rest Time"; ObjectID = "fmz-O1-O7D"; */
-"fmz-O1-O7D.text" = "Riposo";
+"fmz-O1-O7D.text" = "Durata riposo";
 
 /* Class = "UIButton"; normalTitle = "Chronic"; ObjectID = "gM7-vF-hwX"; */
 "gM7-vF-hwX.normalTitle" = "Chronic";
@@ -284,8 +284,8 @@
 /* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "ksH-2j-BQg"; */
 "ksH-2j-BQg.placeholder" = "Inserisci il Nome della Routine";
 
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "m5y-CQ-t8h"; */
-"m5y-CQ-t8h.text" = "FAQ";
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "ODQ-6G-b00"; */
+"ODQ-6G-b00.text" = "FAQ";
 
 /* Class = "UILabel"; text = "Restore Upgrades"; ObjectID = "mcW-yo-ctz"; */
 "mcW-yo-ctz.text" = "Ripristina Aggiornamenti";
@@ -347,5 +347,17 @@
 /* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
 "z2I-CN-Ytx.text" = "Vai cosÏ!";
 
-/* Class = "UILabel"; text = "Email Us"; ObjectID = "zrb-SX-QX1"; */
-"zrb-SX-QX1.text" = "Scrivici";
+/* Class = "UILabel"; text = "Email Us"; ObjectID = "eV4-4e-xDW"; */
+"eV4-4e-xDW.text" = "Scrivici";
+
+/* Class = "UITableViewSection"; headerTitle = "Social"; ObjectID = "ekw-bF-kQ2"; */
+"ekw-bF-kQ2.headerTitle" = "Sociale";
+
+/* Class = "UILabel"; text = "Like us on Facebook"; ObjectID = "m5y-CQ-t8h"; */
+"m5y-CQ-t8h.text" = "Come noi su Facebook";
+
+/* Class = "UILabel"; text = "Follow us on Twitter"; ObjectID = "62U-Rt-gry"; */
+"62U-Rt-gry.text" = "Seguici su Twitter";
+
+/* Class = "UILabel"; text = "Share With Friends"; ObjectID = "zrb-SX-QX1"; */
+"zrb-SX-QX1.text" = "Condividere con gli amici";

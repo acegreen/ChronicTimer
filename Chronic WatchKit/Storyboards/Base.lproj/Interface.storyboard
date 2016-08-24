@@ -213,7 +213,7 @@
                                 <tableRow identifier="noRoutinesRow" selectable="NO" id="TBa-NP-fVy" customClass="TableRowType" customModule="Chronic_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="0.0" id="wDe-wt-md8">
                                         <items>
-                                            <label width="1" height="100" alignment="center" verticalAlignment="center" text="Create A Routine On Your iPhone " textAlignment="center" numberOfLines="3" id="NeY-BW-Gd1">
+                                            <label width="1" height="100" alignment="center" verticalAlignment="center" text="Create a routine on your iPhone" textAlignment="center" numberOfLines="3" id="NeY-BW-Gd1">
                                                 <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                                 <variation key="device=watch42mm">
                                                     <fontDescription key="font" type="boldSystem" pointSize="17"/>

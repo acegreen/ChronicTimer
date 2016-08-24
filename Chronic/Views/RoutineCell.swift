@@ -80,49 +80,50 @@ class RoutineCell: UITableViewCell {
         routineChartView.descriptionText = ""
     }
     
-    func setBarChart(_ dataPoints: [String], values: [Double]) {
-        
-        var dataEntries = [BarChartDataEntry]()
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
-            dataEntries.append(dataEntry)
-        }
-        
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Routine Data")
-        chartDataSet.drawValuesEnabled = false
-        chartDataSet.colors = barColors
-        chartDataSet.valueFont = UIFont(name: "HelveticaNeue", size: 15.0)!
-        chartDataSet.valueTextColor = Constants.chronicColor
-        chartDataSet.barSpace = 0
-        
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .none
-        chartDataSet.valueFormatter = numberFormatter
-        
-        //        routineChartView.noDataText = "Loading Analysts Data"
-        //        routineChartView.infoFont = UIFont(name: "HelveticaNeue", size: 20.0)!
-        //        routineChartView.infoTextColor = Constants.stockSwipeFontColor
-        routineChartView.descriptionText = ""
-        //routineChartView.backgroundColor = UIColor.flatGrayColor()
-        routineChartView.xAxis.labelPosition = .bottom
-        routineChartView.xAxis.drawLabelsEnabled = false
-        routineChartView.xAxis.drawGridLinesEnabled = false
-        routineChartView.xAxis.labelFont = UIFont(name: "HelveticaNeue", size: 11.0)!
-        routineChartView.xAxis.labelTextColor = Constants.chronicColor
-//        routineChartView.leftAxis.enabled = false
-//        routineChartView.leftAxis.drawGridLinesEnabled = false
-//        routineChartView.leftAxis.customAxisMin = 0.0
-//        routineChartView.rightAxis.enabled = false
-//        routineChartView.rightAxis.drawGridLinesEnabled = false
-//        routineChartView.drawBordersEnabled = false
-//        routineChartView.drawGridBackgroundEnabled = false
-        routineChartView.legend.enabled = false
-        routineChartView.isUserInteractionEnabled = false
-        
-        let chartData = BarChartData(xVals: barPoints, dataSet: chartDataSet)
-        routineChartView.data = chartData
-        
-        routineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 0.5)
-    }
+    // Bar chart version
+//    func setBarChart(_ dataPoints: [String], values: [Double]) {
+//        
+//        var dataEntries = [BarChartDataEntry]()
+//        
+//        for i in 0..<dataPoints.count {
+//            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+//            dataEntries.append(dataEntry)
+//        }
+//        
+//        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Routine Data")
+//        chartDataSet.drawValuesEnabled = false
+//        chartDataSet.colors = barColors
+//        chartDataSet.valueFont = UIFont(name: "HelveticaNeue", size: 15.0)!
+//        chartDataSet.valueTextColor = Constants.chronicColor
+//        chartDataSet.barSpace = 0
+//        
+//        let numberFormatter = NumberFormatter()
+//        numberFormatter.numberStyle = .none
+//        chartDataSet.valueFormatter = numberFormatter
+//        
+//        //        routineChartView.noDataText = "Loading Analysts Data"
+//        //        routineChartView.infoFont = UIFont(name: "HelveticaNeue", size: 20.0)!
+//        //        routineChartView.infoTextColor = Constants.stockSwipeFontColor
+//        routineChartView.descriptionText = ""
+//        //routineChartView.backgroundColor = UIColor.flatGrayColor()
+//        routineChartView.xAxis.labelPosition = .bottom
+//        routineChartView.xAxis.drawLabelsEnabled = false
+//        routineChartView.xAxis.drawGridLinesEnabled = false
+//        routineChartView.xAxis.labelFont = UIFont(name: "HelveticaNeue", size: 11.0)!
+//        routineChartView.xAxis.labelTextColor = Constants.chronicColor
+////        routineChartView.leftAxis.enabled = false
+////        routineChartView.leftAxis.drawGridLinesEnabled = false
+////        routineChartView.leftAxis.customAxisMin = 0.0
+////        routineChartView.rightAxis.enabled = false
+////        routineChartView.rightAxis.drawGridLinesEnabled = false
+////        routineChartView.drawBordersEnabled = false
+////        routineChartView.drawGridBackgroundEnabled = false
+//        routineChartView.legend.enabled = false
+//        routineChartView.isUserInteractionEnabled = false
+//        
+//        let chartData = BarChartData(xVals: barPoints, dataSet: chartDataSet)
+//        routineChartView.data = chartData
+//        
+//        routineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 0.5)
+//    }
 }
