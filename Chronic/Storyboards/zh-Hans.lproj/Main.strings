@@ -35,8 +35,8 @@
 /* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "5Tz-d5-wtw"; */
 "5Tz-d5-wtw.text" = "我们期待您的反馈，请您访问 AppStore 给 Chronic 评分。";
 
-/* Class = "UILabel"; text = "Write a Review"; ObjectID = "62U-Rt-gry"; */
-"62U-Rt-gry.text" = "给一个评论";
+/* Class = "UILabel"; text = "Write a Review"; ObjectID = "SiX-ba-3V3"; */
+"SiX-ba-3V3.text" = "给一个评论";
 
 /* Class = "UILabel"; text = "Quick Timer"; ObjectID = "6YK-pi-Gau"; */
 "6YK-pi-Gau.text" = "快速计时器";
@@ -270,7 +270,7 @@
 "hJ3-2s-exZ.text" = "未知";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "i4H-ob-BKR"; */
-"i4H-ob-BKR.normalTitle" = "Next";
+"i4H-ob-BKR.normalTitle" = "下一个";
 
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "ich-BW-iW9"; */
 "ich-BW-iW9.title" = "关闭";
@@ -284,8 +284,8 @@
 /* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "ksH-2j-BQg"; */
 "ksH-2j-BQg.placeholder" = "输入课程名称";
 
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "m5y-CQ-t8h"; */
-"m5y-CQ-t8h.text" = "常问问题";
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "ODQ-6G-b00"; */
+"ODQ-6G-b00.text" = "常问问题";
 
 /* Class = "UILabel"; text = "Restore Upgrades"; ObjectID = "mcW-yo-ctz"; */
 "mcW-yo-ctz.text" = "恢复升级";
@@ -347,5 +347,17 @@
 /* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
 "z2I-CN-Ytx.text" = "开始吧!";
 
-/* Class = "UILabel"; text = "Email Us"; ObjectID = "zrb-SX-QX1"; */
-"zrb-SX-QX1.text" = "给我们发送电子邮件";
+/* Class = "UILabel"; text = "Email Us"; ObjectID = "eV4-4e-xDW"; */
+"eV4-4e-xDW.text" = "给我们发送电子邮件";
+
+/* Class = "UITableViewSection"; headerTitle = "Social"; ObjectID = "ekw-bF-kQ2"; */
+"ekw-bF-kQ2.headerTitle" = "社会";
+
+/* Class = "UILabel"; text = "Like us on Facebook"; ObjectID = "m5y-CQ-t8h"; */
+"m5y-CQ-t8h.text" = "就像我们在Facebook";
+
+/* Class = "UILabel"; text = "Follow us on Twitter"; ObjectID = "62U-Rt-gry"; */
+"62U-Rt-gry.text" = "在推特上关注我们";
+
+/* Class = "UILabel"; text = "Share With Friends"; ObjectID = "zrb-SX-QX1"; */
+"zrb-SX-QX1.text" = "和朋友分享";

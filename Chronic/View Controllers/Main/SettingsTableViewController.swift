@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 import HealthKit
 import LaunchKit
+import Crashlytics
 
 class SettingsTableViewController: UITableViewController {
     
@@ -160,6 +161,64 @@ class SettingsTableViewController: UITableViewController {
         case "TimerSoundCell":
             
             timerSoundDetailTextField.becomeFirstResponder()
+            
+        case "FacebookLikeCell":
+            
+            Constants.app.open(Constants.appFacebookURL, options: [:], completionHandler: nil)
+            
+        case "TwitterFollowCell":
+            
+            Constants.app.open(Constants.appTwitterURL, options: [:], completionHandler: nil)
+            
+        case "ShareWithFriendsCell":
+            
+            guard Functions.isConnectedToNetwork() else {
+                SweetAlert().showAlert("No Internet Connection", subTitle: "Make sure your device is connected to the internet", style: AlertStyle.warning)
+                return
+            }
+            
+            let textToShare: String = "Check out Chronic Timer, the simplest workout timer app! For Interval, HIIT, Tabata, Yoga, Boxing, Running"
+            
+            let objectsToShare: NSArray = [textToShare, Constants.appURL!]
+            
+            let excludedActivityTypesArray: [UIActivityType] = [
+                UIActivityType.postToWeibo,
+                UIActivityType.addToReadingList,
+                UIActivityType.assignToContact,
+                UIActivityType.print,
+                UIActivityType.saveToCameraRoll,
+                UIActivityType.assignToContact,
+                UIActivityType.airDrop,
+                ]
+            
+            let activityVC = UIActivityViewController(activityItems: objectsToShare as [AnyObject], applicationActivities: nil)
+            activityVC.excludedActivityTypes = excludedActivityTypesArray
+            
+            activityVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.unknown
+            
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2, width: 0, height: 0)
+            
+            self.present(activityVC, animated: true, completion: nil)
+            
+            activityVC.completionWithItemsHandler = { (activity, success, items, error) in
+                print("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
+                
+                if success {
+                    
+                    SweetAlert().showAlert("Success!", subTitle: nil, style: AlertStyle.success)
+                    
+                    // log shared successfully
+                    Answers.logShare(withMethod: "\(activity!)",
+                                               contentName: "Chronic Shared",
+                                               contentType: "Share",
+                                               contentId: nil,
+                                               customAttributes: ["App Version": Constants.AppVersion])
+                    
+                } else if error != nil {
+                    SweetAlert().showAlert("Error!", subTitle: "That didn't go through", style: AlertStyle.error)
+                }
+            }
             
         case "WriteAReviewCell":
             

@@ -32,7 +32,7 @@ class Constants {
     static let appDel: AppDelegate = Constants.app.delegate as! AppDelegate
     static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-    static let payloadShort = "Version: \(AppVersion) (\(BundleVersion)) \n Copyright © 2015"
+    static let payloadShort = "Version: \(AppVersion) (\(BundleVersion)) \n Copyright © 2016"
     
     static let payload = [ "BundleID" : infoDict!["CFBundleIdentifier"]!,
                     "AppVersion" : AppVersion,
@@ -47,6 +47,8 @@ class Constants {
     static let appURL = URL(string: "https://itunes.apple.com/us/app/chronic/id980247998?ls=1&mt=8")
     static let appReviewURL = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=980247998")
     static let appEmail: String = "ChronicTimer@gmail.com"
+    static let appFacebookURL = URL(string: "https://facebook.com/chronictimer")!
+    static let appTwitterURL = URL(string: "https://twitter.com/chronictimer")!
     
     static let application = UIApplication.shared
     static let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
