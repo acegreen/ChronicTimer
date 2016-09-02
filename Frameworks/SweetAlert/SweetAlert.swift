@@ -304,7 +304,7 @@ open class SweetAlert: UIViewController {
     
     open func showAlert(_ title: String, subTitle: String?, style: AlertStyle, dismissTime: TimeInterval?, buttonTitle: String?,buttonColor: UIColor?,otherButtonTitle:
         String?, otherButtonColor: UIColor?,action: ((_ isOtherButton: Bool) -> Void)? = nil) {
-            
+        
             userAction = action
             let window: UIWindow = UIApplication.shared.keyWindow!
             window.addSubview(view)

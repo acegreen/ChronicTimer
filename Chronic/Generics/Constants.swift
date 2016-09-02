@@ -47,8 +47,6 @@ class Constants {
     static let appURL = URL(string: "https://itunes.apple.com/us/app/chronic/id980247998?ls=1&mt=8")
     static let appReviewURL = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=980247998")
     static let appEmail: String = "ChronicTimer@gmail.com"
-    static let appFacebookURL = URL(string: "https://facebook.com/chronictimer")!
-    static let appTwitterURL = URL(string: "https://twitter.com/chronictimer")!
     
     static let application = UIApplication.shared
     static let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
@@ -106,9 +104,7 @@ class Constants {
     static let okAlertAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler:{ (ACTION :UIAlertAction!) in })
     
     static let settingsAlertAction: UIAlertAction = UIAlertAction(title: "Settings", style: .default, handler: { (ACTION: UIAlertAction!) in
-        
-        UIApplication.shared.openURL(settingsURL!)
-        
+        app.open(settingsURL!, options: [:], completionHandler: nil)
     })
     
     static let cancelAlertAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler:{ (ACTION :UIAlertAction!) in })
@@ -158,6 +154,34 @@ class Constants {
             case .WorkoutIdentifier:
                 return "WORKOUT_CATEGORY"
             }
+        }
+    }
+    
+    struct SocialNetworkUrl {
+        let scheme: String
+        let page: String
+        
+        func openPage() {
+            
+            if let schemeUrl = URL(string: scheme), app.canOpenURL(schemeUrl) {
+                app.open(schemeUrl, options: [:], completionHandler: nil)
+            } else if let pageURL = URL(string: page) {
+                app.open(pageURL, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
+    enum SocialNetwork {
+        case Facebook, Twitter
+        func url() -> SocialNetworkUrl {
+            switch self {
+            case .Facebook: return SocialNetworkUrl(scheme: "fb://profile/392045597653932", page: "https://facebook.com/chronictimer")
+            case .Twitter: return SocialNetworkUrl(scheme: "twitter:///user?screen_name=ChronicTimer", page: "https://twitter.com/chronictimer")
+            }
+        }
+        
+        func openPage() {
+            self.url().openPage()
         }
     }
 }

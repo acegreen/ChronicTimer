@@ -14,7 +14,6 @@ import MobileCoreServices
 import SystemConfiguration
 import AVFoundation
 import WatchConnectivity
-import SDVersion
 import AMPopTip
 
 class Functions {
@@ -231,7 +230,7 @@ class Functions {
         }
     }
     
-    class func saveContext(_ completion: (_ save: Bool) -> Void) {
+    class func saveContext(_ completion: (_ didSave: Bool) -> Void) {
         
         do {
             

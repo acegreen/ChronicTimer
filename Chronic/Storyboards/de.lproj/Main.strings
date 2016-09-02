@@ -35,7 +35,7 @@
 /* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "5Tz-d5-wtw"; */
 "5Tz-d5-wtw.text" = "Würden Sie Chronic im App Store bewerten? Wir schätzen immer Ihren Feedback!";
 
-/* Class = "UILabel"; text = "Write a Review"; ObjectID = "SiX-ba-3V3"; */
+/* Class = "UILabel"; text = "Rate us on App Store"; ObjectID = "SiX-ba-3V3"; */
 "SiX-ba-3V3.text" = "Eine Review schreiben";
 
 /* Class = "UILabel"; text = "Quick Timer"; ObjectID = "6YK-pi-Gau"; */

@@ -31,10 +31,9 @@ class OBNotificationViewController: OnboardingViewController {
     
     func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
-            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
             NotificationHelper.registerForPushNotifications()
         } else {
-            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.unscheduleNotifications(notificationIdentifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
         }
     }
 }

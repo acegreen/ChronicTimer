@@ -164,11 +164,11 @@ class SettingsTableViewController: UITableViewController {
             
         case "FacebookLikeCell":
             
-            Constants.app.open(Constants.appFacebookURL, options: [:], completionHandler: nil)
+            Constants.SocialNetwork.Facebook.openPage()
             
         case "TwitterFollowCell":
             
-            Constants.app.open(Constants.appTwitterURL, options: [:], completionHandler: nil)
+            Constants.SocialNetwork.Twitter.openPage()
             
         case "ShareWithFriendsCell":
             
@@ -177,7 +177,7 @@ class SettingsTableViewController: UITableViewController {
                 return
             }
             
-            let textToShare: String = "Check out Chronic Timer, the simplest workout timer app! For Interval, HIIT, Tabata, Yoga, Boxing, Running"
+            let textToShare: String = "Check out @ChronicTimer, the simplest workout timer app! For Interval, HIIT, Tabata, Yoga, Boxing, Running #ChronicTimer"
             
             let objectsToShare: NSArray = [textToShare, Constants.appURL!]
             

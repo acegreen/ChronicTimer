@@ -19,9 +19,9 @@ import CoreGraphics
 #endif
 
 
-public class PieChartRenderer: ChartDataRendererBase
+open class PieChartRenderer: ChartDataRendererBase
 {
-    public weak var chart: PieChartView?
+    open weak var chart: PieChartView?
     
     public init(chart: PieChartView, animator: ChartAnimator?, viewPortHandler: ChartViewPortHandler)
     {
@@ -30,7 +30,7 @@ public class PieChartRenderer: ChartDataRendererBase
         self.chart = chart
     }
     
-    public override func drawData(context: CGContext)
+    open override func drawData(context: CGContext)
     {
         guard let chart = chart else { return }
         
@@ -48,7 +48,7 @@ public class PieChartRenderer: ChartDataRendererBase
         }
     }
     
-    public func calculateMinimumRadiusForSpacedSlice(
+    open func calculateMinimumRadiusForSpacedSlice(
         center: CGPoint,
         radius: CGFloat,
         angle: CGFloat,
@@ -89,7 +89,7 @@ public class PieChartRenderer: ChartDataRendererBase
         return spacedRadius
     }
     
-    public func drawDataSet(context: CGContext, dataSet: IPieChartDataSet)
+    open func drawDataSet(context: CGContext, dataSet: IPieChartDataSet)
     {
         guard let chart = chart,
               let data = chart.data,
@@ -231,7 +231,7 @@ public class PieChartRenderer: ChartDataRendererBase
                     
                     context.beginPath()
                     context.addPath(path)
-                    context.fillPath()
+                    context.fillPath(using: .evenOdd)
                 }
             }
             
@@ -241,7 +241,7 @@ public class PieChartRenderer: ChartDataRendererBase
         context.restoreGState()
     }
     
-    public override func drawValues(context: CGContext)
+    open override func drawValues(context: CGContext)
     {
         guard let chart = chart,
               let data = chart.data,
@@ -330,7 +330,7 @@ public class PieChartRenderer: ChartDataRendererBase
                 let transformedAngle = rotationAngle + angle * phaseY
                 
                 let value = usePercentValuesEnabled ? e.value / yValueSum * 100.0 : e.value
-                let valueText = formatter.string(for: value)!
+                let valueText = formatter.string(from: value as NSNumber)!
                 
                 let sliceXBase = cos(transformedAngle * ChartUtils.Math.FDEG2RAD)
                 let sliceYBase = sin(transformedAngle * ChartUtils.Math.FDEG2RAD)
@@ -495,7 +495,7 @@ public class PieChartRenderer: ChartDataRendererBase
         }
     }
     
-    public override func drawExtras(context: CGContext)
+    open override func drawExtras(context: CGContext)
     {
         drawHole(context: context)
         drawCenterText(context: context)
@@ -551,7 +551,7 @@ public class PieChartRenderer: ChartDataRendererBase
                         y: center.y - holeRadius,
                         width: holeRadius * 2.0,
                         height: holeRadius * 2.0))
-                    context.fillPath()
+                    context.fillPath(using: .evenOdd)
                 }
             }
             
@@ -598,11 +598,11 @@ public class PieChartRenderer: ChartDataRendererBase
         }
     }
     
-    public override func drawHighlighted(context: CGContext, indices: [ChartHighlight])
+    open override func drawHighlighted(context: CGContext, indices: [ChartHighlight])
     {
         guard let chart = chart,
-            let data = chart.data,
-            let animator = animator
+              let data = chart.data,
+              let animator = animator
         else { return }
         
         context.saveGState()
@@ -764,7 +764,7 @@ public class PieChartRenderer: ChartDataRendererBase
             
             context.beginPath()
             context.addPath(path)
-            context.fillPath()
+            context.fillPath(using: .evenOdd)
         }
         
         context.restoreGState()

@@ -1,32 +1,80 @@
-#!/bin/bash
+#!/bin/bash -x
 
-set -e
+VAR_DIR=/tmp/rollout_var/swift_injections
+mkdir -p "$VAR_DIR"
+
+originalParams=("$@")
+swift_path=`/usr/bin/xcrun -f swiftc`
+error_file="$VAR_DIR"/swiftc_error
+error_handler() {
+    local check_last_status=$1
+    local last_status=$2
+    local category=$3
+    echo "exec original swiftc"
+    unset ROLLOUT_REPLACEMENTS
+    unset DYLD_FORCE_FLAT_NAMESPACE
+    unset DYLD_INSERT_LIBRARIES
+    "$swift_path" "${originalParams[@]}"
+    local original_status=$?
+    if [[ ("$check_last_status" == "false" && "$original_status" -eq "0") || ("$check_last_status" == "true" && "$original_status" -ne "$last_status") ]]; then 
+       echo "ROLLOUT ERROR: $category"
+       echo "going to send error to Rollout.io"
+       (
+           echo "$error_file"
+           server="$ROLLOUT_allServicesInOneServer"
+           [ -n "$ROLLOUT_allServicesInOneServer" ] || server="https://error.rollout.io"
+           url="$server/build/error/$category"
+           gzip -c "$error_file" | curl -sS --location --post301 --post302 -F data=@"-" "$url" 
+       ) &
+    else
+       echo "OTHER ERROR"
+    fi
+   
+    clean 
+    exit $original_status
+}
+
+clean() {
+    [ -d /tmp/rollout_swiftc_generated_files_debug_location ] && {
+      rm -rf /tmp/rollout_swiftc_generated_files_debug_location/*
+      mv "$VAR_DIR" /tmp/rollout_swiftc_generated_files_debug_location
+    } || {
+      rm -rf "$VAR_DIR"
+    }
+}
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-Temp_Files=()
+rollout_replacements_file=`mktemp "$VAR_DIR"/replacements.XXX`
+rollout_sources_file=`mktemp "$VAR_DIR"/sources.XXX`
 for i in "$@"
 do
     [[ $i =~ RolloutGenerated\.swift$ ]] && {
-        Rollout_Generated=`mktemp "$i".XXXX`
-        cp $i $Rollout_Generated
-        Rollout_Replacements="$Rollout_Replacements,$i,$Rollout_Generated"
+        last_component=`basename "$i"`
+        Rollout_Generated=`mktemp "$VAR_DIR"/"$last_component".XXXX`
+        cp "$i" "$Rollout_Generated" 2>$error_file ||  error_handler "false" $? "CopyFiles"
+        echo "$i" >> "$rollout_replacements_file"
+        echo "$Rollout_Generated" >> "$rollout_replacements_file"
         continue;
     }
+
     [[ $i =~ \.swift$ ]] && {
-        TEMP_FILE=`mktemp "$i".XXXX`
-        cp $i $TEMP_FILE
-        Temp_Files+=($TEMP_FILE)
-        Rollout_Replacements="$Rollout_Replacements,$i,$TEMP_FILE"
+        last_component=`basename "$i"`
+        TEMP_FILE=`mktemp "$VAR_DIR"/"$last_component".XXXX`
+        cp "$i" "$TEMP_FILE" 2>$error_file ||  error_handler "false" $? "CopyFiles"
+        echo "$TEMP_FILE" >> "$rollout_sources_file"
+        echo "$i" >> "$rollout_replacements_file"
+        echo "$TEMP_FILE" >> "$rollout_replacements_file"
     }
 done
 
-Rollout_Replacements="${Rollout_Replacements:1}"
+$DIR/../../lib/oyster "$Rollout_Generated" "$rollout_sources_file" 2>$error_file || error_handler "false" $? "Oyster"
 
-"$DIR"/../../Oyster/Build/Products/Debug/Oyster "$Rollout_Generated" "${Temp_Files[@]}" 
+export ROLLOUT_REPLACEMENTS="$rollout_replacements_file"
+export DYLD_FORCE_FLAT_NAMESPACE=1
+export DYLD_INSERT_LIBRARIES=$DIR/../../lib/libRolloutOverrides.dylib
 
-swift_path=`/usr/bin/xcrun -f swiftc`
+"$swift_path" "$@" 2>$error_file || error_handler "true" $? "Compiler"
+cat $error_file
 
-ROLLOUT_REPLACEMENTS=$Rollout_Replacements DYLD_FORCE_FLAT_NAMESPACE=1 DYLD_INSERT_LIBRARIES=$DIR/../../Oyster/lib_overrides.dylib "$swift_path" "$@"
-
-rm $Rollout_Generated "${Temp_Files[@]}"  
+clean

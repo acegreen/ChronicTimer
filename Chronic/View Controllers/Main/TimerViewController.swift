@@ -18,7 +18,6 @@ import Parse
 import Fabric
 import Crashlytics
 import MoPub
-import SDVersion
 import AMPopTip
 import LaunchKit
 import BubbleTransition
@@ -360,6 +359,16 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     //Timer Function
     func counter() {
+        
+        // Check for internet connection every 30 seconds, pause routine and display error if not connected and no upgrade purchased
+        if timeElapsed % 30 == 0 && !Functions.isConnectedToNetwork() && !Functions.isRemoveAdsUpgradePurchased() {
+            
+            SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
+            
+            self.pause()
+            
+            return
+        }
         
         switch workoutType {
         case .routine, .quickTimer:
@@ -1094,11 +1103,11 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     // MARK: MoPud Functions
     func displayBannerAds() {
         
-        var bannerID: String!
-        var bannerSize: CGSize!
-        
         // && (LaunchKit.sharedInstance().currentUser?.isSuper() == false)
         if !Functions.isRemoveAdsUpgradePurchased() {
+            
+            var bannerID: String!
+            var bannerSize: CGSize!
             
             if UI_USER_INTERFACE_IDIOM() == .phone {
                 bannerID = "c023d0aea31c44d6a0698c8bb11cba4e"
@@ -1114,6 +1123,10 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             
             // Positions the ad at the top, with the correct size
             adBannerView = CustomAdView(forAutoLayout: ())
+            
+            self.view.addSubview(adBannerView)
+            self.adBannerView.addSubview(mopubBanner)
+            
             self.view.addSubview(adBannerView)
             self.adBannerView.addSubview(mopubBanner)
             

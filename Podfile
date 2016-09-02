@@ -13,7 +13,7 @@ target "Chronic" do
     pod 'AMPopTip'
     pod 'AMWaveTransition'
     pod 'LaunchKit'
-    pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'swift3'
+    pod 'SwiftyJSON', :git => 'https://github.com/acegreen/SwiftyJSON.git', :branch => 'swift3'
     pod 'BubbleTransition'
     pod 'Rollout.io'
     pod 'Charts', :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Swift-3.0'
