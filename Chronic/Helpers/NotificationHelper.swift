@@ -39,7 +39,7 @@ public class NotificationHelper {
         
     }
 
-    class func unscheduleNotifications(_ notificationIdentifier :String?) {
+    class func unscheduleNotifications(notificationIdentifier :String?) {
         
         if notificationIdentifier == nil {
             
@@ -93,6 +93,9 @@ public class NotificationHelper {
 
     class func registerForPushNotifications() {
         
+        // Unschedule reminder notifications
+        self.unscheduleNotifications(notificationIdentifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
+        
         if Constants.application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:))) {
             
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
@@ -101,7 +104,8 @@ public class NotificationHelper {
                     
                     if Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") == true  {
                     
-                        NotificationHelper.scheduleNotification(NotificationHelper.reminderDateComponents, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: NSLocalizedString("Notification Reminder Text", comment: ""), alertBody:  NSLocalizedString("Notification Reminder subText", comment: ""), sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
+                        // Schedule reminder notifications if userdefault if true
+                        self.scheduleNotification(NotificationHelper.reminderDateComponents, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: NSLocalizedString("Notification Reminder Text", comment: ""), alertBody:  NSLocalizedString("Notification Reminder subText", comment: ""), sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
                     }
                     print("Granted")
                     
@@ -119,10 +123,9 @@ public class NotificationHelper {
 
     class func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
-            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
             NotificationHelper.registerForPushNotifications()
         } else {
-            NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.ReminderIdentifier.key())
+            NotificationHelper.unscheduleNotifications(notificationIdentifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
         }
     }
     

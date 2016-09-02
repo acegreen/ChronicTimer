@@ -36,22 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         case Dynamic
         
         init?(fullType: String) {
-            
             guard let last = fullType.components(separatedBy: ".").last else {return nil}
             self.init(rawValue: last)
         }
         
         var type: String {
-            
             return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
         }
         
     }
     
     override class func initialize() {
-        
         setupSARate()
-        
     }
     
     class func setupSARate() {
@@ -162,15 +158,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         return true
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    // func depracted iOS9 - needs to be replaced by func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any?) -> Bool {
     
-        switch url.scheme! {
+        switch url.scheme {
             
-        case "chronic":
+        case "chronic"?:
             
             return true
             
-        case "fb1691125951168014":
+        case "fb1691125951168014"?:
             
             return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
             
@@ -230,19 +227,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        guard let currentInstallation: PFInstallation = PFInstallation.current() else { return }
-        currentInstallation.setDeviceTokenFrom(deviceToken)
-        currentInstallation.saveInBackground()
+        if let currentInstallation: PFInstallation = PFInstallation.current() {
+            currentInstallation.setDeviceTokenFrom(deviceToken)
+            currentInstallation.saveInBackground()
+        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         
         if (error as NSError).code == 3010 {
-            
             print("Push notifications are not supported in the iOS Simulator.")
-            
         } else {
-            
             print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
         }
     }
@@ -266,7 +261,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         NotificationHelper.registerForPushNotifications()
         
         print("app entered background mode")
-        
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -281,7 +275,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             UIApplication.shared.endBackgroundTask(backgroundTask)
             
             backgroundTask = nil
-            
         }
         
         // Track Facebook events
@@ -290,14 +283,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         // Clear Parse Push badges
         NotificationHelper.resetAppBadgePush()
         
-        // Clear workoutCompleteLocalNotification
-        NotificationHelper.unscheduleNotifications(Constants.NotificationIdentifier.WorkoutIdentifier.key())
+        // Clear delivered notifications
+        NotificationHelper.center.removeAllDeliveredNotifications()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        Functions.saveContext { (save) -> Void in
+        Functions.saveContext { (didSave) -> Void in
         }
     }
     

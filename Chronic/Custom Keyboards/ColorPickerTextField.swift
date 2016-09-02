@@ -15,10 +15,6 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let square = self.bounds.width < self.bounds.height ? CGSize(width: self.bounds.width, height: self.bounds.width) : CGSize(width: self.bounds.height, height: self.bounds.height)
-        self.layer.cornerRadius = square.width / 2
-        self.layer.masksToBounds = true
-        
         self.inputView = configureColorPicker()
         self.inputAccessoryView = configureAccessoryView()
     }
@@ -27,7 +23,6 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         
         // Prevent textfield from editing
         return false
-        
     }
     
     func configureColorPicker() -> UIView {
@@ -46,7 +41,6 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         colorPickerView.coloredBorderWidth = 0
         
         return colorPickerView
-        
     }
     
     func configureAccessoryView() -> UIView {
@@ -98,7 +92,6 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     func colorSelectionChanged(selectedColor color: UIColor) {
         
         self.backgroundColor = color
-        
     }
     
     func colorForPalletIndex(_ x: Int, y: Int, numXStripes: Int, numYStripes: Int) -> UIColor {

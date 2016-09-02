@@ -10,6 +10,7 @@ import UIKit
 import QuartzCore
 import DZNEmptyDataSet
 import LaunchKit
+import SDVersion
 
 protocol RoutineDelegate {
     func didCreateRoutine(_ routine: RoutineModel, isNew: Bool)
@@ -88,8 +89,6 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     // MARK: -TableView Functions
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
     
@@ -101,6 +100,15 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         cell.backgroundColor = UIColor.clear
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if let size: DeviceVersion = SDiOSVersion.deviceVersion(), size == .iPadPro12Dot9Inch || size == .iPadPro9Dot7Inch {
+            return 300
+        }
+        
+        return 200
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
@@ -259,7 +267,7 @@ extension RoutinesTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
-        let attributedTitle: NSAttributedString = NSAttributedString(string: NSLocalizedString("Empty Routine Table Title Text", comment: ""), attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24)])
+        let attributedTitle: NSAttributedString = NSAttributedString(string: NSLocalizedString("Empty Routine Table Title Text", comment: ""), attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24), NSForegroundColorAttributeName: UIColor.white])
         
         return attributedTitle
     }
@@ -270,7 +278,7 @@ extension RoutinesTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
         paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
         paragraphStyle.alignment = NSTextAlignment.center
         
-        let attributedDescription: NSAttributedString = NSAttributedString(string: NSLocalizedString("Empty Routine Table Subtitle Text", comment: ""), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
+        let attributedDescription: NSAttributedString = NSAttributedString(string: NSLocalizedString("Empty Routine Table Subtitle Text", comment: ""), attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.white, NSParagraphStyleAttributeName: paragraphStyle])
         
         return attributedDescription
         
