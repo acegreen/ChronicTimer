@@ -65,12 +65,6 @@
 /* Class = "UILabel"; text = "Name"; ObjectID = "8wN-lo-4Es"; */
 "8wN-lo-4Es.text" = "Name";
 
-/* Class = "UILabel"; text = "Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. "; ObjectID = "9Ss-1c-YZ1"; */
-"9Ss-1c-YZ1.text" = "Ok, jetzt eine Erinnerung, so dass Sie immer Ihren Training bekommen. Schalten Sie den Schalter und Akzeptieren Sie Benachrichtigungen, wenn Sie dazu aufgefordert werden.";
-
-/* Class = "UILabel"; text = "First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the appropriate permission"; ObjectID = "AEV-ww-lGd"; */
-"AEV-ww-lGd.text" = "Erstens, um für uns Ihr Training zu speichern, brauchen wir Ihre Erlaubnis zum Lesen und Schreiben von ein paar Dinge. Tippen Sie auf die Schaltfläche unten, um die Einrichtung die entsprechende Berechtigung.";
-
 /* Class = "UILabel"; text = "Timer Lautstärke"; ObjectID = "AeL-ZO-UtH"; */
 "AeL-ZO-UtH.text" = "Timer Lautstärke";
 
@@ -131,14 +125,8 @@
 /* Class = "UITableViewSection"; headerTitle = "User Info"; ObjectID = "GhF-2p-GAD"; */
 "GhF-2p-GAD.headerTitle" = "Benutzerinformation";
 
-/* Class = "UILabel"; text = "Hi there!"; ObjectID = "HMf-yc-cve"; */
-"HMf-yc-cve.text" = "Hallo!";
-
 /* Class = "UIBarButtonItem"; title = "Routines"; ObjectID = "HsO-xr-GoR"; */
 "HsO-xr-GoR.title" = "Routinen";
-
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "II3-ta-GUD"; */
-"II3-ta-GUD.normalTitle" = "Zurück";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "JNg-DG-Jjz"; */
 "JNg-DG-Jjz.text" = "Name";
@@ -161,14 +149,8 @@
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "MbB-hh-ZlQ"; */
 "MbB-hh-ZlQ.title" = "Profile";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "NCO-cD-nBI"; */
-"NCO-cD-nBI.normalTitle" = "Zurück";
-
 /* Class = "UIViewController"; title = "SelectRoutineTypeViewController"; ObjectID = "OEM-3I-2D6"; */
 "OEM-3I-2D6.title" = "SelectRoutineTypeViewController";
-
-/* Class = "UITextField"; text = "18:00"; ObjectID = "QtB-qu-X1C"; */
-"QtB-qu-X1C.text" = "18:00";
 
 /* Class = "UILabel"; text = "Timer Sound"; ObjectID = "RNd-mJ-SDV"; */
 "RNd-mJ-SDV.text" = "Timer Klang";
@@ -181,9 +163,6 @@
 
 /* Class = "UITextField"; text = "01:00"; ObjectID = "Stk-tL-gga"; */
 "Stk-tL-gga.text" = "01:00";
-
-/* Class = "UILabel"; text = "Remind me"; ObjectID = "TbR-d9-kbv"; */
-"TbR-d9-kbv.text" = "Erinnere mich";
 
 /* Class = "UILabel"; text = "00:00"; ObjectID = "ThG-2m-7cS"; */
 "ThG-2m-7cS.text" = "00:00";
@@ -296,9 +275,6 @@
 /* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "mvc-Ed-45P"; */
 "mvc-Ed-45P.title" = "Routine Details";
 
-/* Class = "UITextField"; text = "Day"; ObjectID = "oL4-m0-1Ho"; */
-"oL4-m0-1Ho.text" = "Tag";
-
 /* Class = "UIButton"; normalTitle = "Nope"; ObjectID = "og9-r5-BCD"; */
 "og9-r5-BCD.normalTitle" = "Nee";
 
@@ -320,9 +296,6 @@
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "u6B-yn-UEJ"; */
 "u6B-yn-UEJ.title" = "Schließen";
 
-/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "uXJ-DE-TSl"; */
-"uXJ-DE-TSl.normalTitle" = "Fertig";
-
 /* Class = "UITextField"; text = "01:00"; ObjectID = "ucr-QL-M0P"; */
 "ucr-QL-M0P.text" = "01:00";
 
@@ -335,14 +308,8 @@
 /* Class = "UILabel"; text = "Yay!"; ObjectID = "vVX-df-kiU"; */
 "vVX-df-kiU.text" = "Yay!";
 
-/* Class = "UILabel"; text = "At"; ObjectID = "vnV-tz-5tH"; */
-"vnV-tz-5tH.text" = "Um";
-
 /* Class = "UILabel"; text = "Time"; ObjectID = "wdO-aq-f58"; */
 "wdO-aq-f58.text" = "Zeit";
-
-/* Class = "UILabel"; text = "Lets set you up right so you get the most out of Chronic."; ObjectID = "yYN-50-1YB"; */
-"yYN-50-1YB.text" = "Lassen Sie uns ein paar Einstellungen setzen, damit Sie das Beste aus Chronic bekommen.";
 
 /* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
 "z2I-CN-Ytx.text" = "Super!";

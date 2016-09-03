@@ -11,8 +11,9 @@ import MessageUI
 import HealthKit
 import LaunchKit
 import Crashlytics
+import MZFormSheetPresentationController
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, Dimmable {
     
     var emailTitle: String!
     var messageBody: String!
@@ -116,7 +117,6 @@ class SettingsTableViewController: UITableViewController {
             self.runInBackgroundSwitchChanged(self.runInBackgroundSwitch)
             self.enableDeviceSleepSwitch.isOn = false
             self.enableDeviceSleepSwitchChanged(self.enableDeviceSleepSwitch)
-            
         })
     }
     
@@ -256,21 +256,11 @@ class SettingsTableViewController: UITableViewController {
                 }
             }
             
-        case "UltimatePackageCell":
+        case "UltimatePackageCell", "ProVersionCell", "RemoveAdsCell", "DonateCell":
             
-            IAPHelper.sharedInstance.selectProduct(Constants.iapUltimatePackageKey)
-            
-        case "ProVersionCell":
-            
-            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
-            
-        case "RemoveAdsCell":
-            
-            IAPHelper.sharedInstance.selectProduct(Constants.removeAdsKey)
-            
-        case "DonateCell":
-            
-            IAPHelper.sharedInstance.selectProduct(Constants.donate99Key)
+            if IAPHelper.sharedInstance.list != nil {
+                self.performSegue(withIdentifier: "InAppPurchaseSegueIdentifier", sender: tableView.cellForRow(at: indexPath))
+            }
             
         case "RestoreUpgradesCell":
             
@@ -299,13 +289,34 @@ class SettingsTableViewController: UITableViewController {
             break
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "InAppPurchaseSegueIdentifier" {
+            let presentationSegue = segue as! MZFormSheetPresentationViewControllerSegue
+            presentationSegue.formSheetPresentationController.contentViewControllerTransitionStyle = .slideAndBounceFromLeft
+            presentationSegue.formSheetPresentationController.presentationController?.shouldCenterVertically = true
+            presentationSegue.formSheetPresentationController.presentationController?.shouldUseMotionEffect = true
+            presentationSegue.formSheetPresentationController.presentationController?.shouldDismissOnBackgroundViewTap = true
+            presentationSegue.formSheetPresentationController.presentationController?.contentViewSize = CGSize(width: self.view.bounds.size.width, height: 450)
+            
+            let navigationController = presentationSegue.formSheetPresentationController.contentViewController as! UINavigationController
+            let presentedViewController = navigationController.viewControllers.first as! InAppPurchaseViewController
+            
+            //presentedViewController.preferredContentSize = CGSize(width: self.view.bounds.size.width, height: 450)
+            presentedViewController.inAppProducts = IAPHelper.sharedInstance.list
+            
+            guard let cell = sender as? UITableViewCell else { return }
+            presentedViewController.carouselIndex = self.tableView.indexPath(for: cell)?.row ?? 0
+        }
+    }
 }
 
 // MARK: - Email Delegate
 extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     
     
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         switch result.rawValue {
             

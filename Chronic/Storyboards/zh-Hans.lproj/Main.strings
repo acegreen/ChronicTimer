@@ -65,12 +65,6 @@
 /* Class = "UILabel"; text = "Name"; ObjectID = "8wN-lo-4Es"; */
 "8wN-lo-4Es.text" = "名称";
 
-/* Class = "UILabel"; text = "Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. "; ObjectID = "9Ss-1c-YZ1"; */
-"9Ss-1c-YZ1.text" = "好，现在让我们设置体能训练提醒，开启设置会有定时体能训练提醒。";
-
-/* Class = "UILabel"; text = "First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the approperiate permission"; ObjectID = "AEV-ww-lGd"; */
-"AEV-ww-lGd.text" = "首先，为了能保存您的体能训练数据，我们需要获得您的授权访问您的健康数据。点击下面的按钮设置访问权限。";
-
 /* Class = "UILabel"; text = "Timer Volume"; ObjectID = "AeL-ZO-UtH"; */
 "AeL-ZO-UtH.text" = "计时器音量";
 
@@ -79,9 +73,6 @@
 
 /* Class = "UILabel"; text = "Blood Type"; ObjectID = "BYg-cw-5b0"; */
 "BYg-cw-5b0.text" = "血型";
-
-/* Class = "UILabel"; text = "Every"; ObjectID = "BwH-YE-brU"; */
-"BwH-YE-brU.text" = "Every";
 
 /* Class = "UILabel"; text = "Routine"; ObjectID = "CRH-x2-kBV"; */
 "CRH-x2-kBV.text" = "训练计划";
@@ -131,14 +122,8 @@
 /* Class = "UITableViewSection"; headerTitle = "User Info"; ObjectID = "GhF-2p-GAD"; */
 "GhF-2p-GAD.headerTitle" = "用户信息";
 
-/* Class = "UILabel"; text = "Hi there!"; ObjectID = "HMf-yc-cve"; */
-"HMf-yc-cve.text" = "您好！";
-
 /* Class = "UIBarButtonItem"; title = "Routines"; ObjectID = "HsO-xr-GoR"; */
 "HsO-xr-GoR.title" = "训练计划";
-
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "II3-ta-GUD"; */
-"II3-ta-GUD.normalTitle" = "返回";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "JNg-DG-Jjz"; */
 "JNg-DG-Jjz.text" = "名称";
@@ -161,14 +146,8 @@
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "MbB-hh-ZlQ"; */
 "MbB-hh-ZlQ.title" = "档案";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "NCO-cD-nBI"; */
-"NCO-cD-nBI.normalTitle" = "返回";
-
 /* Class = "UIViewController"; title = "SelectRoutineTypeViewController"; ObjectID = "OEM-3I-2D6"; */
 "OEM-3I-2D6.title" = "SelectRoutineTypeViewController";
-
-/* Class = "UITextField"; text = "18:00"; ObjectID = "QtB-qu-X1C"; */
-"QtB-qu-X1C.text" = "18:00";
 
 /* Class = "UILabel"; text = "Timer Sound"; ObjectID = "RNd-mJ-SDV"; */
 "RNd-mJ-SDV.text" = "计时器音量";
@@ -181,9 +160,6 @@
 
 /* Class = "UITextField"; text = "01:00"; ObjectID = "Stk-tL-gga"; */
 "Stk-tL-gga.text" = "01:00";
-
-/* Class = "UILabel"; text = "Remind me"; ObjectID = "TbR-d9-kbv"; */
-"TbR-d9-kbv.text" = "提醒我";
 
 /* Class = "UILabel"; text = "00:00"; ObjectID = "ThG-2m-7cS"; */
 "ThG-2m-7cS.text" = "00:00";
@@ -296,9 +272,6 @@
 /* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "mvc-Ed-45P"; */
 "mvc-Ed-45P.title" = "课程明细";
 
-/* Class = "UITextField"; text = "Day"; ObjectID = "oL4-m0-1Ho"; */
-"oL4-m0-1Ho.text" = "日期";
-
 /* Class = "UIButton"; normalTitle = "Nope"; ObjectID = "og9-r5-BCD"; */
 "og9-r5-BCD.normalTitle" = "不";
 
@@ -320,9 +293,6 @@
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "u6B-yn-UEJ"; */
 "u6B-yn-UEJ.title" = "关闭";
 
-/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "uXJ-DE-TSl"; */
-"uXJ-DE-TSl.normalTitle" = "完成";
-
 /* Class = "UITextField"; text = "01:00"; ObjectID = "ucr-QL-M0P"; */
 "ucr-QL-M0P.text" = "01:00";
 
@@ -335,14 +305,8 @@
 /* Class = "UILabel"; text = "Yay!"; ObjectID = "vVX-df-kiU"; */
 "vVX-df-kiU.text" = "很棒！";
 
-/* Class = "UILabel"; text = "At"; ObjectID = "vnV-tz-5tH"; */
-"vnV-tz-5tH.text" = "在";
-
 /* Class = "UILabel"; text = "Time"; ObjectID = "wdO-aq-f58"; */
 "wdO-aq-f58.text" = "时间";
-
-/* Class = "UILabel"; text = "Lets set you up right so you get the most out of Chronic."; ObjectID = "yYN-50-1YB"; */
-"yYN-50-1YB.text" = "让我们正确设置，您可以方便实用 Chronic.";
 
 /* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
 "z2I-CN-Ytx.text" = "开始吧!";

@@ -18,7 +18,6 @@ import Crashlytics
 import MoPub
 import Parse
 import ParseFacebookUtilsV4
-import CNPPopupController
 import LaunchKit
 import UserNotifications
 
@@ -151,9 +150,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             }
         }
         
+        // Request upgrade products
+        IAPHelper.sharedInstance.requestProductsWithCompletionHandler({ (success) in
+        })
+        
         // increment event count
         SARate.sharedInstance().eventCount += 1
         print("eventCount", SARate.sharedInstance().eventCount)
+        
+        // load storyboard
+        if !Constants.userDefaults.bool(forKey: "ONBOARDING_SHOWN") {
+            Functions.loadOnboardingInterface()
+        } else {
+            Functions.loadMainInterface()
+        }
         
         return true
     }
@@ -402,21 +412,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         // Enable/Disable notification reminders based on notificationReminderState flag
         Constants.notificationReminderState = Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
     }
-    
-    // MARK: - Setup storyboards
-    
-//    func loadOnboardingInterface() {
-//        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-//        if let controller = storyboard.instantiateInitialViewController() {
-//            self.window?.rootViewController = controller
-//        }
-//    }
-//    
-//    func loadMainInterface() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let controller = storyboard.instantiateInitialViewController() {
-//            self.window?.rootViewController = controller
-//        }
-//    }
 }
 

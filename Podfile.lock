@@ -11,7 +11,6 @@ PODS:
   - Charts (2.2.5):
     - Charts/Core (= 2.2.5)
   - Charts/Core (2.2.5)
-  - CNPPopupController (0.3.2)
   - DZNEmptyDataSet (1.8.1)
   - FBSDKCoreKit (4.15.0):
     - Bolts (~> 1.7)
@@ -21,6 +20,9 @@ PODS:
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
+  - MZAppearance (1.1.6)
+  - MZFormSheetPresentationController (2.4.1):
+    - MZAppearance
   - Parse (1.14.2):
     - Bolts/Tasks (~> 1.8)
   - ParseFacebookUtilsV4 (1.11.1):
@@ -46,10 +48,10 @@ DEPENDENCIES:
   - AMWaveTransition
   - BubbleTransition
   - Charts (from `https://github.com/danielgindi/Charts.git`, branch `Swift-3.0`)
-  - CNPPopupController
   - DZNEmptyDataSet
   - Google-Mobile-Ads-SDK
   - LaunchKit
+  - MZFormSheetPresentationController
   - Parse
   - ParseFacebookUtilsV4
   - ParseTwitterUtils
@@ -88,12 +90,13 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BubbleTransition: a7ae6678721406d60f604cbbea1ace505563119d
   Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
-  CNPPopupController: 359b331f0e164f1af1f3a9193aac10a820d0039e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FBSDKCoreKit: 6680cbd33a4243d80700f182d0af36b3fa7f3118
   FBSDKLoginKit: 96d9b70b5784490f02ab86119e542a1f182017a8
   Google-Mobile-Ads-SDK: c8da9e592fe43d9b47ef86b018cadb71af53f6b3
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
+  MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
+  MZFormSheetPresentationController: 730bf8879cd637d84462ef5343fca65ad6bf1fc0
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
   ParseTwitterUtils: 0dde9689565e7012d83f892c64aed2ebe69f2ea9
@@ -104,6 +107,6 @@ SPEC CHECKSUMS:
   SDVersion: c0a16b2c659a66e0af6c7bba6de4057bc2cc626d
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 58a549921247ee9c823297f236b7ce8a1e98cf8a
+PODFILE CHECKSUM: d2c0520f9b9ffddaec2626ae3fadfd0695572e7f
 
 COCOAPODS: 1.1.0.beta.1

@@ -528,4 +528,20 @@ class Functions {
         }
         return true
     }
+    
+    // MARK: - Setup storyboards
+    
+    class func loadOnboardingInterface() {
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            Constants.appDel.window?.rootViewController = controller
+        }
+    }
+    
+    class func loadMainInterface() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = storyboard.instantiateInitialViewController() {
+            Constants.appDel.window?.rootViewController = controller
+        }
+    }
 }

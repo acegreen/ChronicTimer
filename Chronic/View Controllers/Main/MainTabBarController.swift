@@ -25,18 +25,12 @@ class MainTabBarController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if !Constants.userDefaults.bool(forKey: "ONBOARDING_SHOWN") {
-            // Present onboarding on first install
-            self.performSegue(withIdentifier: "OBSegueIdentifier", sender: self)
-            
-        } else {
-            // Present release notes on first update
-            LaunchKit.sharedInstance().presentAppReleaseNotesIfNeeded(from: self, completion: { (didPresent) -> Void in
-                if didPresent {
-                    print("Woohoo, we showed the release notes card!")
-                }
-            })
-        }
+        // Present release notes on first update
+        LaunchKit.sharedInstance().presentAppReleaseNotesIfNeeded(from: self, completion: { (didPresent) -> Void in
+            if didPresent {
+                print("Woohoo, we showed the release notes card!")
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {

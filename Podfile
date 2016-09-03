@@ -3,7 +3,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target "Chronic" do
-    pod 'CNPPopupController'
     pod 'DZNEmptyDataSet'
     pod 'SDVersion'
     pod 'Parse'
@@ -20,7 +19,9 @@ target "Chronic" do
     pod 'PureLayout'
     pod 'Google-Mobile-Ads-SDK'
     pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :branch => 'feature/ios10'
+    pod 'MZFormSheetPresentationController'
 
+    #pod 'CNPPopupController'
     #pod 'PermissionScope'
     #pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     #pod 'ChameleonFramework/Swift'

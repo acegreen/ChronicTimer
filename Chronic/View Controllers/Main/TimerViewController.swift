@@ -13,7 +13,6 @@ import CoreGraphics
 import MapKit
 import iAd
 import HealthKit
-import CNPPopupController
 import Parse
 import Fabric
 import Crashlytics
@@ -23,7 +22,7 @@ import LaunchKit
 import BubbleTransition
 import PureLayout
 
-class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate, CNPPopupControllerDelegate {
+class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     enum ButtonState {
         case play
@@ -225,8 +224,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
             
         // Set Alert if in background
-        var message: String!
-        
         if UIApplication.shared.applicationState == UIApplicationState.background {
             
             var alertTitle: String!

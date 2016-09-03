@@ -26,7 +26,7 @@ class OBNotificationViewController: OnboardingViewController {
     @IBAction func doneAction() {
         
         Constants.userDefaults.set(true, forKey: "ONBOARDING_SHOWN")
-        self.dismiss(animated: true, completion: nil)
+        Functions.loadMainInterface()
     }
     
     func updateNotificationPreferences(_ notificationReminderState: Bool) {
