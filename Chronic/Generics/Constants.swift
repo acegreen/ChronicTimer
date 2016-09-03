@@ -184,4 +184,6 @@ class Constants {
             self.url().openPage()
         }
     }
+
+    enum SegueDirection { case In, Out }
 }

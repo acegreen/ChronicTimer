@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import StoreKit
-import CNPPopupController
+//import CNPPopupController
 import Crashlytics
 import Parse
 import SwiftyJSON
@@ -23,10 +23,9 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     var request: SKProductsRequest!
     var list = [SKProduct]()
     var p = SKProduct()
+    var productsArray = [Constants.iapUltimatePackageKey, Constants.proVersionKey, Constants.removeAdsKey, Constants.donate99Key]
     
-    var inAppPurchasePopupController: CNPPopupController!
-    var sweetAlertLoadingPurchase = SweetAlert()
-    var sweetAlertProcessingPurchase = SweetAlert()
+    //var inAppPurchasePopupController: CNPPopupController!
     var sweetAlertRestorePurchases = SweetAlert()
     
     override init() {
@@ -37,14 +36,22 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     func requestProductsWithCompletionHandler(_ handler:((Bool) -> Void)) {
         
+        guard Functions.isConnectedToNetwork() else {
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                SweetAlert().showAlert(NSLocalizedString("Alert: Requires Upgrade Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Requires Upgrade Subtitle Text", comment: ""), style: AlertStyle.warning)
+            })
+            return
+        }
+        
         self.completionHandler = handler
         if SKPaymentQueue.canMakePayments() {
             
             print("IAP is enabled, loading")
             
-            let productIDs: NSSet = NSSet(objects: Constants.iapUltimatePackageKey, Constants.proVersionKey, Constants.removeAdsKey, Constants.donate99Key)
+            let productIDs: Set = Set(productsArray)
             
-            request = SKProductsRequest(productIdentifiers: productIDs as! Set<String>)
+            request = SKProductsRequest(productIdentifiers: productIDs)
             request.delegate = self
             request.start()
             
@@ -63,15 +70,14 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         print("Product Request")
         let myProducts = response.products
         
-        for product in myProducts {
-            
-            print("Product added")
-            print(product.productIdentifier)
-            print(product.localizedTitle)
-            print(product.localizedDescription)
-            print(product.price)
-            
-            list.append(product as SKProduct)
+        list.removeAll()
+        
+        for product in productsArray {
+            for myProduct in myProducts {
+                if myProduct.productIdentifier == product {
+                    list.append(myProduct)
+                }
+            }
         }
         
         self.completionHandler?(true)
@@ -80,10 +86,10 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
-        if inAppPurchasePopupController != nil {
-            
-            inAppPurchasePopupController.dismiss(animated: true)
-        }
+//        if inAppPurchasePopupController != nil {
+//            
+//            inAppPurchasePopupController.dismiss(animated: true)
+//        }
         
         for transaction:SKPaymentTransaction in transactions {
             
@@ -97,17 +103,11 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 
             case .purchasing:
                 
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.sweetAlertProcessingPurchase.showAlert(NSLocalizedString("Alert: Processing Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Processing Purchase Subtitle Text", comment: ""), style: AlertStyle.activityIndicator, dismissTime: nil)
-                })
+                print("purchasing")
                 
             case .purchased, .restored:
                 
                 verifyReceipt({ (receiptTransactionsArray, environment) -> Void in
-                    
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        self.sweetAlertProcessingPurchase.closeAlertDismissButton()
-                    })
                     
                     if let receiptTransactionsArray = receiptTransactionsArray {
                         
@@ -250,7 +250,6 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 }
                 
                 DispatchQueue.main.async(execute: { () -> Void in
-                    self.sweetAlertProcessingPurchase.closeAlertDismissButton()
                     SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: errorMessage, style: AlertStyle.error)
                 })
                 
@@ -336,46 +335,48 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         print("request did fail with error: \(error.localizedDescription)")
     }
     
-    func selectProduct(_ productID: String) {
-        
-        guard Functions.isConnectedToNetwork() else {
-            
-            DispatchQueue.main.async(execute: { () -> Void in
-                SweetAlert().showAlert(NSLocalizedString("Alert: Requires Upgrade Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Requires Upgrade Subtitle Text", comment: ""), style: AlertStyle.warning)
-            })
-            return
-        }
-        
-        DispatchQueue.main.async(execute: { () -> Void in
-            self.sweetAlertLoadingPurchase.showAlert(NSLocalizedString("Alert: Loading Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Loading Purchase Subtitle Text", comment: ""), style: AlertStyle.activityIndicator, dismissTime: nil)
-        })
-        
-        self.requestProductsWithCompletionHandler { (success) -> Void in
-            
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.sweetAlertLoadingPurchase.closeAlertDismissButton()
-            })
-            
-            if success {
-                
-                for product in self.list {
-                    
-                    if product.productIdentifier == productID {
-                        
-                        self.p = product
-                        self.displayCustomAlert(self.p.localizedTitle, lineTwo: self.p.localizedPrice(), lineThree: "\(self.p.localizedDescription)", image: nil, popupStyle: CNPPopupStyle.centered)
-                        break
-                    }
-                }
-            }
-        }
-    }
+//    func selectProduct(_ productID: String) {
+//        
+//        guard Functions.isConnectedToNetwork() else {
+//            
+//            DispatchQueue.main.async(execute: { () -> Void in
+//                SweetAlert().showAlert(NSLocalizedString("Alert: Requires Upgrade Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Requires Upgrade Subtitle Text", comment: ""), style: AlertStyle.warning)
+//            })
+//            return
+//        }
+//        
+//        DispatchQueue.main.async(execute: { () -> Void in
+//            self.sweetAlertLoadingPurchase.showAlert(NSLocalizedString("Alert: Loading Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Loading Purchase Subtitle Text", comment: ""), style: AlertStyle.activityIndicator, dismissTime: nil)
+//        })
+//        
+//        self.requestProductsWithCompletionHandler { (success) -> Void in
+//            
+//            DispatchQueue.main.async(execute: { () -> Void in
+//                self.sweetAlertLoadingPurchase.closeAlertDismissButton()
+//            })
+//            
+//            if success {
+//                
+//                for product in self.list {
+//                    
+//                    if product.productIdentifier == productID {
+//                        
+//                        self.p = product
+//                        self.displayCustomAlert(self.p.localizedTitle, lineTwo: self.p.localizedPrice(), lineThree: "\(self.p.localizedDescription)", image: nil, popupStyle: CNPPopupStyle.centered)
+//                        break
+//                    }
+//                }
+//            }
+//        }
+//    }
     
-    func buyProduct() {
+    func buyProduct(product: SKProduct) {
         
-        print("buy " + p.productIdentifier)
+        print("buy " + product.productIdentifier)
         
-        let pay = SKPayment(product: p)
+        self.p = product
+        
+        let pay = SKPayment(product: product)
         _ = SKPaymentQueue.default().add(pay as SKPayment)
         
     }
@@ -432,57 +433,56 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     // Custom Alert Functions
     
-    func displayCustomAlert (_ lineOne: String, lineTwo: String, lineThree:String, image: UIImage?, popupStyle: CNPPopupStyle) {
-        
-        var contents:[AnyObject] = []
-        
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
-        paragraphStyle.alignment = NSTextAlignment.center
-        
-        let attributedLineOne: NSAttributedString = NSAttributedString(string: lineOne, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24), NSParagraphStyleAttributeName: paragraphStyle])
-        
-        let attributedLineTwo: NSAttributedString = NSAttributedString(string: lineTwo, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSParagraphStyleAttributeName: paragraphStyle])
-        
-        let attributedLineThree: NSAttributedString = NSAttributedString(string: lineThree, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
-        
-        let lineOneLabel: UILabel = UILabel()
-        lineOneLabel.numberOfLines = 0
-        lineOneLabel.attributedText = attributedLineOne
-        contents.append(lineOneLabel)
-        
-        let lineTwoLabel: UILabel = UILabel()
-        lineTwoLabel.numberOfLines = 0
-        lineTwoLabel.attributedText = attributedLineTwo
-        contents.append(lineTwoLabel)
-        
-        let lineThreeLabel: UILabel = UILabel()
-        lineThreeLabel.numberOfLines = 0
-        lineThreeLabel.attributedText = attributedLineThree
-        contents.append(lineThreeLabel)
-        
-        if image != nil {
-            
-            let imageView: UIImageView = UIImageView(image: image)
-            contents.append(imageView)
-        }
-        
-        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.system)
-        purchaseButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        purchaseButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
-        purchaseButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
-        purchaseButton.setTitle("Purchase", for: UIControlState.normal)
-        purchaseButton.backgroundColor = UIColor.green
-        purchaseButton.layer.cornerRadius = 4
-        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControlEvents.touchUpInside)
-        contents.append(purchaseButton)
-        
-        inAppPurchasePopupController = CNPPopupController(contents: contents)
-        inAppPurchasePopupController.theme.popupStyle = popupStyle
-        inAppPurchasePopupController.theme.contentVerticalPadding = 5
-        inAppPurchasePopupController.present(animated: true)
-        
-    }
+//    func displayCustomAlert (_ lineOne: String, lineTwo: String, lineThree:String, image: UIImage?, popupStyle: CNPPopupStyle) {
+//        
+//        var contents:[AnyObject] = []
+//        
+//        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
+//        paragraphStyle.alignment = NSTextAlignment.center
+//        
+//        let attributedLineOne: NSAttributedString = NSAttributedString(string: lineOne, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24), NSParagraphStyleAttributeName: paragraphStyle])
+//        
+//        let attributedLineTwo: NSAttributedString = NSAttributedString(string: lineTwo, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSParagraphStyleAttributeName: paragraphStyle])
+//        
+//        let attributedLineThree: NSAttributedString = NSAttributedString(string: lineThree, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
+//        
+//        let lineOneLabel: UILabel = UILabel()
+//        lineOneLabel.numberOfLines = 0
+//        lineOneLabel.attributedText = attributedLineOne
+//        contents.append(lineOneLabel)
+//        
+//        let lineTwoLabel: UILabel = UILabel()
+//        lineTwoLabel.numberOfLines = 0
+//        lineTwoLabel.attributedText = attributedLineTwo
+//        contents.append(lineTwoLabel)
+//        
+//        let lineThreeLabel: UILabel = UILabel()
+//        lineThreeLabel.numberOfLines = 0
+//        lineThreeLabel.attributedText = attributedLineThree
+//        contents.append(lineThreeLabel)
+//        
+//        if image != nil {
+//            
+//            let imageView: UIImageView = UIImageView(image: image)
+//            contents.append(imageView)
+//        }
+//        
+//        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.system)
+//        purchaseButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+//        purchaseButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
+//        purchaseButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
+//        purchaseButton.setTitle("Purchase", for: UIControlState.normal)
+//        purchaseButton.backgroundColor = UIColor.green
+//        purchaseButton.layer.cornerRadius = 4
+//        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControlEvents.touchUpInside)
+//        contents.append(purchaseButton)
+//        
+//        inAppPurchasePopupController = CNPPopupController(contents: contents)
+//        inAppPurchasePopupController.theme.popupStyle = popupStyle
+//        inAppPurchasePopupController.theme.contentVerticalPadding = 5
+//        inAppPurchasePopupController.present(animated: true)
+//    }
     
     //MARK: Receipt methods
     

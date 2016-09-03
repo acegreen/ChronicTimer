@@ -189,3 +189,43 @@ extension UIView {
 extension UIControlState {
     public static var normal: UIControlState { return [] }
 }
+
+extension Dimmable where Self: UIViewController {
+    
+    func dim(direction: Constants.SegueDirection, color: UIColor = UIColor.black, alpha: CGFloat = 0.0, speed: Double = 0.0) {
+        
+        var dimView: UIView!
+        
+        switch direction {
+        case .In:
+            
+            // Create and add a dim view
+            dimView = UIView(frame: view.window!.frame)
+            dimView.backgroundColor = color
+            dimView.alpha = 0.0
+            self.parent?.view.addSubview(dimView)
+            
+            // Deal with Auto Layout
+            dimView.translatesAutoresizingMaskIntoConstraints = false
+            dimView.autoPinEdgesToSuperviewEdges()
+            
+            // Animate alpha (the actual "dimming" effect)
+            UIView.animate(withDuration: speed) { () -> Void in
+                dimView.alpha = alpha
+            }
+            
+        case .Out:
+            
+            UIView.animate(withDuration: speed, animations: { () -> Void in
+                dimView.alpha = alpha
+                }, completion: { (complete) -> Void in
+                    dimView.removeFromSuperview()
+            })
+        }
+    }
+}
+
+extension Dismissible where Self: UIViewController {
+    
+    
+}

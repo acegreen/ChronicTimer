@@ -100,7 +100,7 @@
 "Alert: Processing Purchase Subtitle Text" = "While we process your purchase request";
 
 "Alert: Loading Purchase Title Text" = "Hold On!";
-"Alert: Loading Purchase Subtitle Text" = "While we load your purchase request";
+"Alert: Loading Purchase Subtitle Text" = "While we get things loaded";
 
 "Alert: Restoring Purchase Title Text" = "Hold On!";
 "Alert: Restoring Purchase Subtitle Text" = "While we restore your purchase(s)";

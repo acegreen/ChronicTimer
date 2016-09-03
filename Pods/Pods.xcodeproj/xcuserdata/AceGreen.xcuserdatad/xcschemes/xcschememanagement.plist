@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CNPPopupController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -55,6 +50,16 @@
 			<false/>
 		</dict>
 		<key>LaunchKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MZAppearance.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MZFormSheetPresentationController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -122,7 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2FAD1D6D244B1367E860E63F5EE02E53</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3C5685456B3ED2A700DBD8CC7DE83D96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4428872B6DA6450021F3C7747B95F553</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>577269A22490686C5DC12CB1650640FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,6 +162,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6D5E3C4FD20C680651454A2B8EBEE01D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
@@ -157,22 +182,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88E3C3C6ED793CE7E38E16C72017064B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>8978C7FB7007A28B676AB1EA004C3923</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D07468191C0914B62ABE153B8B766E6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>99D9911A4FB33960E496203125523C9F</key>
+		<key>9C21158A7B41D923AD9278EC173670D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,12 +202,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2D17D2E6A8AD8B5A2D1F30A3032805E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DF0D0269A2BBAAA5085BBC27B09F2687</key>
+		<key>C9F2E32D9E264D55D39C5183C598F96C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,7 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB03E590A6A52FEF516F6A52795B1B5A</key>
+		<key>FFABAFE9408FF95CFC8B3C3770D56837</key>
 		<dict>
 			<key>primary</key>
 			<true/>

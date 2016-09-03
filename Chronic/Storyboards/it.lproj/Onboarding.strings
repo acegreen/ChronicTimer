@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the appropriate permission"; ObjectID = "AwI-N6-Myc"; */
+"AwI-N6-Myc.text" = "Innanzitutto, per poter salvare i risultati del tuo allenamenento, abbiamo bisogno del tuo permesso per poter leggere e scrivere i dati. Premi il pulsante qui sotto per impostare i permessi necessari";
+
+/* Class = "UILabel"; text = "Remind me"; ObjectID = "CJb-a2-pbO"; */
+"CJb-a2-pbO.text" = "Ricordami";
+
+/* Class = "UILabel"; text = "Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. "; ObjectID = "DTT-8b-Les"; */
+"DTT-8b-Les.text" = "Ok, adesso impostiamo un promemoria perché tutto possa sempre allenarti. Imposta lo switch su On e permetti cosi l'invio di notifiche.";
+
+/* Class = "UILabel"; text = "At"; ObjectID = "I4s-EA-o6Y"; */
+"I4s-EA-o6Y.text" = "A";
+
+/* Class = "UILabel"; text = "Lets set you up right so you get the most out of Chronic."; ObjectID = "KDX-QH-y2U"; */
+"KDX-QH-y2U.text" = "Facciamo in modo che tu possa ottenere il meglio da Chronic.";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "RxO-Ic-eSU"; */
+"RxO-Ic-eSU.normalTitle" = "Fatto";
+
+/* Class = "UILabel"; text = "Hi there!"; ObjectID = "aAb-fL-2kN"; */
+"aAb-fL-2kN.text" = "Ciao!";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "bhL-Z1-ZSl"; */
+"bhL-Z1-ZSl.normalTitle" = "Indietro";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "iUV-37-MkW"; */
+"iUV-37-MkW.normalTitle" = "Indietro";
+
+/* Class = "UITextField"; text = "Day"; ObjectID = "lgm-sG-NWR"; */
+"lgm-sG-NWR.text" = "Giorno";
+
+/* Class = "UILabel"; text = "Every"; ObjectID = "nDs-uh-OIF"; */
+"nDs-uh-OIF.text" = "Ogni";
+
+/* Class = "UITextField"; text = "18:00"; ObjectID = "vHP-sz-7Gz"; */
+"vHP-sz-7Gz.text" = "18:00";
