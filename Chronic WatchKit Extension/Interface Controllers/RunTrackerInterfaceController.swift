@@ -14,15 +14,7 @@ import HealthKit
 
 class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDelegate, HKWorkoutSessionDelegate {
     
-    var workoutType = Constants.WorkoutType.run
-    var workoutState = Constants.WorkoutEventType.preRun
-    
-    let workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.running
-    
-    var timeElapsed: Int = 0
-    
-    var routineStartDate: Date!
-    var routineEndDate: Date!
+    var workout: Workout!
     
     lazy var locationManager: CLLocationManager = {
         var locationManager = CLLocationManager()
@@ -42,7 +34,6 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         distanceFormatter.unitStyle = .abbreviated
         return distanceFormatter
     }()
-    var distance = 0.0
     
     @IBOutlet var mapView: WKInterfaceMap!
     @IBOutlet var distanceLabel: WKInterfaceLabel!
@@ -52,16 +43,16 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         
         if !Constants.timer.isValid {
             
-            if workoutState == .preRun {
+            if workout.workoutState == .preRun {
                 
                 playFeedback("Routine Begin")
                 
                 // Set routine start time
-                routineStartDate = Date()
-                print("start time \(routineStartDate)")
+                workout.routineStartDate = Date()
+                print("start time \(workout.routineStartDate)")
                 
                 // Start workout session
-                Functions.startWorkSession(delegateInterfaceController: self, workoutActivityType: self.workoutActivityType)
+                Functions.startWorkSession(delegateInterfaceController: self, workoutActivityType: workout.workoutActivityType)
                 
             } else {
                 Functions.resumeWorkSession()
@@ -70,7 +61,7 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
             startLocationUpdates()
             
             startTimer()
-            workoutState = Constants.WorkoutEventType.active
+            workout.workoutState = .active
         }
     }
     
@@ -78,29 +69,29 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         
         Constants.timer.invalidate()
         
-        workoutState = Constants.WorkoutEventType.pause
+        workout.workoutState = .paused
         
         Functions.pauseWorkSession()
     }
     
     @IBAction func StopButtonPressed() {
         
-        if workoutState == .active || workoutState == .pause {
+        if workout.workoutState == .active || workout.workoutState == .paused {
             // Mark routine as completed
-            workoutState = Constants.WorkoutEventType.complete
+            workout.workoutState = .completed
         }
         
         // End workout session if running
         Functions.endWorkoutSession()
         
-        if workoutState == .complete {
+        if workout.workoutState == .completed {
             
             // Set end time
-            routineEndDate = Date()
-            print("end time \(routineEndDate)")
+            workout.routineEndDate = Date()
+            print("end time \(workout.routineEndDate)")
             
             // Save workout
-            Functions.saveWorkout(interfaceController: self, workoutActivityType: workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: distance)
+            Functions.saveWorkout(interfaceController: self, workoutActivityType: workout.workoutActivityType, startDate: workout.routineStartDate, endDate: workout.routineEndDate, kiloCalories: nil, distance: workout.distance)
         }
         
         // Set to initial state
@@ -109,6 +100,8 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        self.workout = Workout(workoutActivityType: .running, workoutType: .run)
         
         setToInitialState()
         
@@ -151,13 +144,13 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     
     //Timer Function
     func countUp() {
-        timeElapsed += 1
+        workout.timeElapsed += 1
         changeLabels()
     }
     
     func changeLabels() {
-        timeElapsedLabel.setText(Functions.timeStringFrom(time: timeElapsed))
-        distanceLabel.setText(distanceFormatter.string(fromDistance: distance))
+        timeElapsedLabel.setText(Functions.timeStringFrom(time: workout.timeElapsed))
+        distanceLabel.setText(distanceFormatter.string(fromDistance: workout.distance))
     }
     
     func playFeedback (_ type: String) {
@@ -191,11 +184,11 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
         // Stop location request if running
         locationManager.stopUpdatingLocation()
         
-        timeElapsed = 0
-        distance = 0.0
+        workout.timeElapsed = 0
+        workout.distance = 0.0
         locations.removeAll(keepingCapacity: false)
         
-        workoutState = Constants.WorkoutEventType.preRun
+        workout.workoutState = .preRun
         
         changeLabels()
     }
@@ -225,12 +218,12 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
             
             let howRecent = location.timestamp.timeIntervalSinceNow
             
-            if abs(howRecent) < 10 && location.horizontalAccuracy < 20 && workoutState == .active {
+            if abs(howRecent) < 10 && location.horizontalAccuracy < 20 && workout.workoutState == .active {
                 
                 //update distance
                 if self.locations.count > 0 {
-                    distance += location.distance(from: self.locations.last!)
-                    self.distanceLabel.setText(distanceFormatter.string(fromDistance: distance))
+                    workout.distance += location.distance(from: self.locations.last!)
+                    self.distanceLabel.setText(distanceFormatter.string(fromDistance: workout.distance))
                     
                     
                     let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
@@ -240,7 +233,7 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
                 
             //save location
             self.locations.append(location)
-            print(distance)
+            print(workout.distance)
         }
     }
     

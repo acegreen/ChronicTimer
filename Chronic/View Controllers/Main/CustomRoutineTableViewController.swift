@@ -131,12 +131,12 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                     
                 })
                 
-                let (stagesArray, totalTime) = Functions.makeRoutineArray(self.routineToEdit)
+                let (stagesArray, totalTime) = Functions.makeRoutineArray(routine: self.routineToEdit)
                 
                 routineToEdit.totalRoutineTime = totalTime as NSNumber
                 
                 // add routine to spotlight & send context to Watch
-                let totalTimeString = Functions.timeStringFrom(time:routineToEdit.totalRoutineTime! as Int, type: "Routine")
+                let totalTimeString = Functions.timeStringFrom(time:routineToEdit.totalRoutineTime! as Int)
                 
                 Functions.addToSpotlight(routine: routineToEdit, domainIdentifier: "Routines")
                 
@@ -190,12 +190,12 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 Functions.setSelectedRoutine(newRoutine, completion: { (result) -> Void in
                 })
                 
-                let (stagesArray, totalTime) = Functions.makeRoutineArray(self.newRoutine)
+                let (stagesArray, totalTime) = Functions.makeRoutineArray(routine: self.newRoutine)
                 
                 newRoutine.totalRoutineTime = totalTime as NSNumber
                 
                 // add routine to spotlight & send context to Watch if iOS9                
-                let totalTimeString = Functions.timeStringFrom(time:newRoutine.totalRoutineTime! as Int, type: "Routine")
+                let totalTimeString = Functions.timeStringFrom(time:newRoutine.totalRoutineTime! as Int)
                 
                 Functions.addToSpotlight(routine: newRoutine, domainIdentifier: "Routines")
                 
@@ -281,7 +281,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 cell.excerciseNameTextField.text = exerciseAtIndexPath.exerciseName
                 
-                cell.exerciseTimeTextField.text = Functions.timeStringFrom(time:exerciseAtIndexPath.exerciseTime as Int, type: "Routine")
+                cell.exerciseTimeTextField.text = Functions.timeStringFrom(time:exerciseAtIndexPath.exerciseTime as Int)
                 
                 cell.exerciseNumberOfRounds.text = exerciseAtIndexPath.exerciseNumberOfRounds!.stringValue
                 

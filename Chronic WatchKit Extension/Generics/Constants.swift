@@ -52,19 +52,6 @@ class Constants {
     static let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatus(for: HealthKitHelper.sharedInstance.workoutType)
     static var workoutSession: HKWorkoutSession!
     
-    enum WorkoutType {
-        case routine
-        case run
-        case quickTimer
-    }
-    
-    enum WorkoutEventType {
-        case preRun
-        case active
-        case pause
-        case complete
-    }
-    
     enum DistanceType {
         case miles
         case kilometers

@@ -36,6 +36,7 @@
 		23210BD01D6CF28E00C004E6 /* InterfaceTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23210BCC1D6CF28E00C004E6 /* InterfaceTableController.swift */; };
 		23210BD11D6CF28E00C004E6 /* QTInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23210BCD1D6CF28E00C004E6 /* QTInterfaceController.swift */; };
 		23210BD21D6CF28E00C004E6 /* RunTrackerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23210BCE1D6CF28E00C004E6 /* RunTrackerInterfaceController.swift */; };
+		2324ACDA1D7CA8C8005EAF7B /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2357819C1D7C8B3700F7CF96 /* Workout.swift */; };
 		232614931B30C38000180218 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614921B30C38000180218 /* CoreTelephony.framework */; };
 		232614951B30C38F00180218 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614941B30C38F00180218 /* SystemConfiguration.framework */; };
 		2328E4791AC03136009A8C46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2328E4771AC03136009A8C46 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		234954321D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954311D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift */; };
 		234954341D565EE7007B053A /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954331D565EE7007B053A /* TextField.swift */; };
 		234FA5D01C44040700931341 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 234FA5D21C44040700931341 /* DefaultPreferences.plist */; };
+		2357819D1D7C8B3700F7CF96 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2357819C1D7C8B3700F7CF96 /* Workout.swift */; };
 		235930E41B0A89800021003D /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235930E31B0A89800021003D /* TimerViewController.swift */; };
 		235B0CF61C279B6800A8D7D7 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B106B1C1F1A4F00D52713 /* HealthKitHelper.swift */; };
 		235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B50031BF64E95008FBC53 /* IAPHelper.swift */; };
@@ -292,6 +294,7 @@
 		234FA5D61C44041B00931341 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/DefaultPreferences.plist"; sourceTree = "<group>"; };
 		234FA5D71C44041B00931341 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant"; path = "zh-Hant.lproj/DefaultPreferences.plist"; sourceTree = "<group>"; };
 		234FA5D81C44052400931341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2357819C1D7C8B3700F7CF96 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		235930E31B0A89800021003D /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		235B50031BF64E95008FBC53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		23612F3F1AFD57620087A11E /* Chronic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chronic.entitlements; sourceTree = "<group>"; };
@@ -760,15 +763,16 @@
 			name = "View Controller";
 			sourceTree = "<group>";
 		};
-		2397F2F31B66B197008F7BFF /* Core Data */ = {
+		2397F2F31B66B197008F7BFF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2357819C1D7C8B3700F7CF96 /* Workout.swift */,
 				232F4C781AC02EA700D25995 /* RoutineModel.swift */,
 				2397F2F11B66B158008F7BFF /* ExerciseModel.swift */,
 				238C1A9E1C8B651E009F9CC1 /* DataAccess.swift */,
 				23FDF3F91BC6131400ABD267 /* Chronic.xcdatamodeld */,
 			);
-			path = "Core Data";
+			path = Models;
 			sourceTree = "<group>";
 		};
 		23A0E7E21B5AEDA700F53E50 /* Chronic WatchKit */ = {
@@ -833,7 +837,7 @@
 				232EDE371C1A1823007D0103 /* Resources */,
 				234953FA1D564174007B053A /* Generics */,
 				237B106D1C1F36C600D52713 /* Helpers */,
-				2397F2F31B66B197008F7BFF /* Core Data */,
+				2397F2F31B66B197008F7BFF /* Models */,
 				23CFD9141BC54E9000CF4BAC /* Custom Keyboards */,
 				23979D941B63FB13005BC945 /* View Controller */,
 				234A33B21C409BC90024D898 /* Views */,
@@ -1278,6 +1282,7 @@
 				234954151D565552007B053A /* ExtensionDelegate.swift in Sources */,
 				23210BD11D6CF28E00C004E6 /* QTInterfaceController.swift in Sources */,
 				234954231D565632007B053A /* ExerciseModel.swift in Sources */,
+				2324ACDA1D7CA8C8005EAF7B /* Workout.swift in Sources */,
 				234954251D565632007B053A /* WatchDataAccess.swift in Sources */,
 				234954241D565632007B053A /* RoutineModel.swift in Sources */,
 				23210BD21D6CF28E00C004E6 /* RunTrackerInterfaceController.swift in Sources */,
@@ -1323,6 +1328,7 @@
 				232F4C811AC02EA700D25995 /* RoutinesTableViewController.swift in Sources */,
 				234953FE1D564174007B053A /* Extensions.swift in Sources */,
 				234954001D564174007B053A /* Constants.swift in Sources */,
+				2357819D1D7C8B3700F7CF96 /* Workout.swift in Sources */,
 				2314652A1B176C8C008DD375 /* SARate.m in Sources */,
 				237B107F1C25D75100D52713 /* NotificationIntervalTextField.swift in Sources */,
 				238C1ACF1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift in Sources */,
