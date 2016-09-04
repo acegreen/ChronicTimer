@@ -173,7 +173,7 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         case "ShareWithFriendsCell":
             
             guard Functions.isConnectedToNetwork() else {
-                SweetAlert().showAlert("No Internet Connection", subTitle: "Make sure your device is connected to the internet", style: AlertStyle.warning)
+                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
                 return
             }
             
@@ -258,8 +258,14 @@ class SettingsTableViewController: UITableViewController, Dimmable {
             
         case "UltimatePackageCell", "ProVersionCell", "RemoveAdsCell", "DonateCell":
             
-            if IAPHelper.sharedInstance.list != nil {
+            if !IAPHelper.sharedInstance.list.isEmpty {
                 self.performSegue(withIdentifier: "InAppPurchaseSegueIdentifier", sender: tableView.cellForRow(at: indexPath))
+            } else {
+                IAPHelper.sharedInstance.requestProducts(displayAlert: true, { (success) in
+                    if !IAPHelper.sharedInstance.list.isEmpty {
+                        self.performSegue(withIdentifier: "InAppPurchaseSegueIdentifier", sender: tableView.cellForRow(at: indexPath))
+                    }
+                })
             }
             
         case "RestoreUpgradesCell":

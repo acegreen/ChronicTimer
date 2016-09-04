@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "Sorry!"; ObjectID = "3et-xI-Tj6"; */
+"3et-xI-Tj6.text" = "Scusa!";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "EEd-Ru-aaE"; */
+"EEd-Ru-aaE.normalTitle" = "Chiudi";
+
+/* Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "F1w-jL-OQM"; */
+"F1w-jL-OQM.normalTitle" = "Contattaci";
+
+/* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "Gba-nI-gsg"; */
+"Gba-nI-gsg.text" = "Che ne dici di votare Chronic sull'AppStore? Noi apprezziamo il tuo feedback!";
+
+/* Class = "UIButton"; normalTitle = "Nope"; ObjectID = "OgZ-yZ-Ifl"; */
+"OgZ-yZ-Ifl.normalTitle" = "No No";
+
+/* Class = "UILabel"; text = "Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!"; ObjectID = "QOO-Kq-XxZ"; */
+"QOO-Kq-XxZ.text" = "Pensi che ci sia un modo per noi per migliorare la tua esperianza con Chronic? Contattaci, noi apprezziamo il tuo feedback!";
+
+/* Class = "UILabel"; text = "Yay!"; ObjectID = "dOG-nK-wlQ"; */
+"dOG-nK-wlQ.text" = "Evvai!";
+
+/* Class = "UIButton"; normalTitle = "Sure!"; ObjectID = "u5A-qD-5RW"; */
+"u5A-qD-5RW.normalTitle" = "Certo!";
+
+/* Class = "UILabel"; text = "Good job keeping fit! \nBy the way, we’d love some feedback! How do you feel about Chronic? "; ObjectID = "vhQ-7p-kln"; */
+"vhQ-7p-kln.text" = "Ottimo lavoro nel tenerti in forma! \nIn ogni caso, noi apprezziamo il tuo feedback! Che ne pensi di Chronic?";
+
+/* Class = "UILabel"; text = "Way To Go!"; ObjectID = "zHu-tp-Nuk"; */
+"zHu-tp-Nuk.text" = "Vai cosÏ!";

@@ -151,8 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         }
         
         // Request upgrade products
-        IAPHelper.sharedInstance.requestProductsWithCompletionHandler({ (success) in
-        })
+        IAPHelper.sharedInstance.requestProducts(displayAlert: false, nil)
         
         // increment event count
         SARate.sharedInstance().eventCount += 1

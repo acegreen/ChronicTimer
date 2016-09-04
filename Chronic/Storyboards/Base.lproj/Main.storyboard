@@ -17,9 +17,6 @@
         <array key="HelveticaNeueExtras.ttc">
             <string>HelveticaNeue-CondensedBold</string>
         </array>
-        <array key="KaushanScript.ttf">
-            <string>KaushanScript-Regular</string>
-        </array>
         <array key="timenormal.ttf">
             <string>Time-Normal</string>
         </array>
@@ -308,7 +305,7 @@
                         <outlet property="rightTopLabel" destination="Cdc-wW-Hzz" id="84F-be-tei"/>
                         <outlet property="stopButton" destination="QQW-sx-1c2" id="vbN-Ha-Jgz"/>
                         <outlet property="topStackView" destination="Sqt-fO-K4I" id="WZW-ff-xp5"/>
-                        <segue destination="0Fz-OJ-Z1d" kind="presentation" identifier="FeedbackSegueIdentifier" id="M6E-OI-vVl"/>
+                        <segue destination="Bjn-ZT-CEL" kind="presentation" identifier="FeedbackSegueIdentifier" id="QN4-OZ-0z6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -566,7 +563,7 @@
                                             <frame key="frameInset" width="342" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Donation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WTk-cv-gXZ">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Donate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WTk-cv-gXZ">
                                                     <frame key="frameInset" minX="15" width="325" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1187,7 +1184,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzi-CD-rwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Wfr-c2-Lfh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4339.130434782609" y="2119.5652173913045"/>
+            <point key="canvasLocation" x="3431" y="2138"/>
         </scene>
         <!--Empty Data Set Delegate-->
         <scene sceneID="NOb-Uf-V4X">
@@ -1612,7 +1609,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ane-cC-4Uj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8gs-wv-sOi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5011.594202898551" y="2119.5652173913045"/>
+            <point key="canvasLocation" x="4103" y="2138"/>
         </scene>
         <!--Exercise Details-->
         <scene sceneID="1MI-4C-kTH">
@@ -1761,281 +1758,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgN-Mb-KoA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5011.594202898551" y="2778.2608695652175"/>
+            <point key="canvasLocation" x="4103" y="2798"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="TgF-Pn-L9m">
+        <!--Feedback-->
+        <scene sceneID="ifG-TG-qNu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Sf-7j-UTY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="E4I-VG-40M" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8yY-ON-MDp"/>
-                        <viewControllerLayoutGuide type="bottom" id="7WX-ch-xYg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EQM-QK-hXu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Way To Go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-CN-Ytx">
-                                <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOe-44-JgT">
-                                <string key="text">Good job keeping fit! 
-By the way, we’d love some feedback! How do you feel about Chronic? </string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g6-Wn-dcE">
-                                <state key="normal" image="smile">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="19D-s3-KcY" kind="show" id="Hut-4N-eq7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSu-nj-ooS">
-                                <state key="normal" image="sad">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gdC-VB-wAT" kind="show" id="Mf0-pc-MEO"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.96078431369999995" green="0.75294117650000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="z2I-CN-Ytx" firstAttribute="leading" secondItem="EQM-QK-hXu" secondAttribute="leading" constant="16" id="7D0-74-MLx"/>
-                            <constraint firstAttribute="trailing" secondItem="z2I-CN-Ytx" secondAttribute="trailing" constant="16" id="83H-5N-hsL"/>
-                            <constraint firstItem="dOe-44-JgT" firstAttribute="leading" secondItem="EQM-QK-hXu" secondAttribute="leading" constant="16" id="BqA-J5-Zsa"/>
-                            <constraint firstItem="4g6-Wn-dcE" firstAttribute="top" secondItem="dOe-44-JgT" secondAttribute="bottom" constant="45" id="FTm-Fx-eVV"/>
-                            <constraint firstItem="hSu-nj-ooS" firstAttribute="top" secondItem="4g6-Wn-dcE" secondAttribute="bottom" constant="30" id="FjB-tK-EOT">
-                                <variation key="heightClass=regular-widthClass=regular" constant="60"/>
-                            </constraint>
-                            <constraint firstAttribute="trailing" secondItem="dOe-44-JgT" secondAttribute="trailing" constant="16" id="SBI-qn-qke"/>
-                            <constraint firstItem="z2I-CN-Ytx" firstAttribute="centerY" secondItem="EQM-QK-hXu" secondAttribute="centerY" multiplier="0.3" id="aDX-MK-VPu"/>
-                            <constraint firstItem="dOe-44-JgT" firstAttribute="top" secondItem="z2I-CN-Ytx" secondAttribute="bottom" constant="20" id="gJ2-4j-x2U"/>
-                            <constraint firstAttribute="centerX" secondItem="4g6-Wn-dcE" secondAttribute="centerX" id="m7S-7m-KVN"/>
-                            <constraint firstAttribute="centerX" secondItem="hSu-nj-ooS" secondAttribute="centerX" id="ySQ-6U-VsX"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="7ee-zM-hum"/>
-                </viewController>
+                <viewControllerPlaceholder storyboardName="Feedback" id="Bjn-ZT-CEL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48K-ki-aLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2353" y="-1260"/>
-        </scene>
-        <!--Feedback View Controller-->
-        <scene sceneID="M0f-pv-y4V">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yoz-gt-2aH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="19D-s3-KcY" customClass="FeedbackViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Nag-v7-SD1"/>
-                        <viewControllerLayoutGuide type="bottom" id="lJ2-hx-zvj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ncz-Yu-0ir">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yay!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVX-df-kiU">
-                                <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How about rating Chronic on the AppStore? We always appreciate the feedback!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tz-d5-wtw">
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2v-PX-9sM">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="N1d-p5-Ru8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Sure!">
-                                    <color key="titleColor" red="0.96078431369999995" green="0.75294117650000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="reviewAction" destination="19D-s3-KcY" eventType="touchUpInside" id="8bz-rE-JXa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="og9-r5-BCD">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="HXB-Tc-YhN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Nope">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="negativeAction" destination="19D-s3-KcY" eventType="touchUpInside" id="sSa-7L-Z7y"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.96078431369999995" green="0.75294117650000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="og9-r5-BCD" firstAttribute="leading" secondItem="ncz-Yu-0ir" secondAttribute="leadingMargin" id="AMY-Jd-RJq"/>
-                            <constraint firstItem="5Tz-d5-wtw" firstAttribute="leading" secondItem="ncz-Yu-0ir" secondAttribute="leading" constant="16" id="HMz-76-djF"/>
-                            <constraint firstItem="vVX-df-kiU" firstAttribute="centerY" secondItem="ncz-Yu-0ir" secondAttribute="centerY" multiplier="0.3" id="KVj-rE-gKK"/>
-                            <constraint firstItem="lJ2-hx-zvj" firstAttribute="top" secondItem="M2v-PX-9sM" secondAttribute="bottom" constant="20" id="OAX-YO-yKP"/>
-                            <constraint firstItem="og9-r5-BCD" firstAttribute="width" secondItem="M2v-PX-9sM" secondAttribute="width" id="Pw8-Bg-oLM"/>
-                            <constraint firstAttribute="trailing" secondItem="vVX-df-kiU" secondAttribute="trailing" constant="16" id="Zig-To-BNQ"/>
-                            <constraint firstItem="M2v-PX-9sM" firstAttribute="leading" secondItem="og9-r5-BCD" secondAttribute="trailing" constant="8" id="dOe-7g-fdc"/>
-                            <constraint firstItem="5Tz-d5-wtw" firstAttribute="top" secondItem="vVX-df-kiU" secondAttribute="bottom" constant="50" id="fq4-yO-Zyb"/>
-                            <constraint firstItem="lJ2-hx-zvj" firstAttribute="top" secondItem="og9-r5-BCD" secondAttribute="bottom" constant="20" id="gkO-Oi-qNJ"/>
-                            <constraint firstAttribute="trailing" secondItem="5Tz-d5-wtw" secondAttribute="trailing" constant="16" id="hWK-YD-sIJ"/>
-                            <constraint firstItem="vVX-df-kiU" firstAttribute="leading" secondItem="ncz-Yu-0ir" secondAttribute="leading" constant="16" id="kh3-da-GeA"/>
-                            <constraint firstItem="M2v-PX-9sM" firstAttribute="trailing" secondItem="ncz-Yu-0ir" secondAttribute="trailingMargin" id="m2y-kJ-BcS"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="tji-Xb-BAw"/>
-                    <connections>
-                        <outlet property="negativeButton" destination="og9-r5-BCD" id="UzU-J6-yQm"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3069" y="-1580"/>
-        </scene>
-        <!--Feedback View Controller-->
-        <scene sceneID="VbK-NG-Ujh">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9GU-Pa-WJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="gdC-VB-wAT" customClass="FeedbackViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ysj-4L-7Bz"/>
-                        <viewControllerLayoutGuide type="bottom" id="U3w-Rd-R15"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cOa-Gy-w52">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBa-IB-cCa">
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="cNu-mf-NRR"/>
-                                    <constraint firstAttribute="height" constant="40" id="zyZ-aW-7qV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Close">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="negativeAction" destination="19D-s3-KcY" eventType="touchUpInside" id="Hs6-iJ-OoD"/>
-                                    <action selector="negativeAction" destination="gdC-VB-wAT" eventType="touchUpInside" id="vcA-do-Wsx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xz-BS-7zF">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Fvr-DD-EAa"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="tpV-bD-tgf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Contact us">
-                                    <color key="titleColor" red="0.96078431369999995" green="0.75294117650000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="contactAction" destination="gdC-VB-wAT" eventType="touchUpInside" id="v0Q-SX-X8g"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-zg-3O7">
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Up-H7-Yku">
-                                <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.96078431369999995" green="0.75294117650000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="0Up-H7-Yku" firstAttribute="centerY" secondItem="cOa-Gy-w52" secondAttribute="centerY" multiplier="0.3" id="3yW-vq-qjh"/>
-                            <constraint firstItem="2xz-BS-7zF" firstAttribute="leading" secondItem="FBa-IB-cCa" secondAttribute="trailing" constant="8" id="52n-Ut-4P1"/>
-                            <constraint firstItem="FBa-IB-cCa" firstAttribute="width" secondItem="2xz-BS-7zF" secondAttribute="width" id="5Eg-in-QnL"/>
-                            <constraint firstItem="2xz-BS-7zF" firstAttribute="trailing" secondItem="cOa-Gy-w52" secondAttribute="trailingMargin" id="9Ln-gm-Mh0"/>
-                            <constraint firstItem="gc1-zg-3O7" firstAttribute="leading" secondItem="cOa-Gy-w52" secondAttribute="leading" constant="16" id="9vE-3R-ofI"/>
-                            <constraint firstItem="FBa-IB-cCa" firstAttribute="width" secondItem="2xz-BS-7zF" secondAttribute="width" id="Gbk-k0-LB5"/>
-                            <constraint firstAttribute="trailing" secondItem="0Up-H7-Yku" secondAttribute="trailing" constant="16" id="KLN-mn-26m"/>
-                            <constraint firstItem="2xz-BS-7zF" firstAttribute="leading" secondItem="FBa-IB-cCa" secondAttribute="trailing" constant="8" id="NQz-Lx-2qw"/>
-                            <constraint firstItem="gc1-zg-3O7" firstAttribute="top" secondItem="0Up-H7-Yku" secondAttribute="bottom" constant="50" id="RbX-40-CQS"/>
-                            <constraint firstItem="U3w-Rd-R15" firstAttribute="top" secondItem="FBa-IB-cCa" secondAttribute="bottom" constant="20" id="WoL-cH-roH"/>
-                            <constraint firstItem="FBa-IB-cCa" firstAttribute="leading" secondItem="cOa-Gy-w52" secondAttribute="leadingMargin" id="aMx-wj-zwm"/>
-                            <constraint firstAttribute="trailing" secondItem="gc1-zg-3O7" secondAttribute="trailing" constant="16" id="pJ1-zG-fOA"/>
-                            <constraint firstItem="U3w-Rd-R15" firstAttribute="top" secondItem="2xz-BS-7zF" secondAttribute="bottom" constant="20" id="pWn-7E-DP5"/>
-                            <constraint firstItem="0Up-H7-Yku" firstAttribute="leading" secondItem="cOa-Gy-w52" secondAttribute="leading" constant="16" id="rfK-go-HxV"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="vrf-FF-LF9"/>
-                    <connections>
-                        <outlet property="negativeButton" destination="FBa-IB-cCa" id="Sue-sb-b8E"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3069" y="-925"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="7ax-oE-oyh">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e6m-JF-nVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="0Fz-OJ-Z1d" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="96z-Io-XRn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="E4I-VG-40M" kind="relationship" relationship="rootViewController" id="jIg-Me-R9V"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="1680" y="-1260"/>
+            <point key="canvasLocation" x="3774" y="-178"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="Nxq-qW-J31">
@@ -2052,7 +1783,6 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                     <connections>
                         <segue destination="nSH-gy-Gab" kind="relationship" relationship="viewControllers" id="csu-25-KzW"/>
                         <segue destination="xtB-c9-a1F" kind="relationship" relationship="viewControllers" id="hxm-oz-MHP"/>
-                        <segue destination="0Fz-OJ-Z1d" kind="presentation" identifier="FeedbackSegueIdentifier" id="HuX-iZ-1iX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBO-i3-hm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2249,7 +1979,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j1p-jz-Ny3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="2678"/>
+            <point key="canvasLocation" x="1228" y="1973"/>
         </scene>
         <!--Form Sheet Content Sizing Navigation Controller-->
         <scene sceneID="n58-wQ-8pq">
@@ -2267,7 +1997,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8O-qC-Npr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="2678"/>
+            <point key="canvasLocation" x="449" y="1973"/>
         </scene>
     </scenes>
     <resources>
@@ -2279,12 +2009,9 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
         <image name="play" width="25" height="25"/>
         <image name="rewind" width="25" height="25"/>
         <image name="runner" width="25" height="25"/>
-        <image name="sad" width="100" height="100"/>
-        <image name="smile" width="100" height="100"/>
         <image name="stop" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HuX-iZ-1iX"/>
         <segue reference="CGI-hB-tSy"/>
         <segue reference="TdU-I4-8e7"/>
     </inferredMetricsTieBreakers>

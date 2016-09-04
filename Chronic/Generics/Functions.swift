@@ -269,13 +269,36 @@ class Functions {
     }
     
     @available(iOS 9.0, *)
-    class func addToSpotlight (_ title: String, contentDescription: String, uniqueIdentifier: String, domainIdentifier: String) {
+    class func createNSUserActivity(routine: RoutineModel, domainIdentifier: String) {
+                
+        let attributeSet:CSSearchableItemAttributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeImage as String)
+        attributeSet.contentDescription = routine.searchDescription
+        //    attributeSet.thumbnailData = image
+        attributeSet.relatedUniqueIdentifier = routine.name
+        
+        let activity = NSUserActivity(activityType: domainIdentifier)
+        activity.title = routine.name
+        activity.keywords = NSSet(array: [routine.name, "Workout", "Timer"]) as! Set<String>
+        activity.userInfo = ["name": routine.name, "type": routine.type]
+        activity.contentAttributeSet = attributeSet
+        
+        activity.requiredUserInfoKeys = NSSet(array: ["name", "type"]) as! Set<String>
+        activity.isEligibleForSearch = true
+        activity.isEligibleForPublicIndexing = true
+        Constants.nsUserActivityArray.append(activity)
+        activity.becomeCurrent()
+        
+        print("NSUserActivity created")
+    }
+    
+    @available(iOS 9.0, *)
+    class func addToSpotlight (routine: RoutineModel, domainIdentifier: String) {
         
         let attributeSet:CSSearchableItemAttributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
-        attributeSet.title = title
-        attributeSet.contentDescription = contentDescription
+        attributeSet.title = routine.name
+        attributeSet.contentDescription = routine.searchDescription
         
-        let searchableItem = CSSearchableItem(uniqueIdentifier: uniqueIdentifier, domainIdentifier: domainIdentifier, attributeSet: attributeSet)
+        let searchableItem = CSSearchableItem(uniqueIdentifier: routine.name, domainIdentifier: domainIdentifier, attributeSet: attributeSet)
         
         CSSearchableIndex.default().indexSearchableItems([searchableItem]) { (error) -> Void in
             
@@ -473,7 +496,6 @@ class Functions {
         Constants.userDefaults.set(true, forKey: "FEEDBACK_GIVEN")
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "HideStarButton"), object: nil)
-        
     }
     
     class func showPopTipOnceForKey(_ key: String, userDefaults: UserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: AMPopTipDirection = .down, color: UIColor = .darkGray) -> AMPopTip? {
