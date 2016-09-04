@@ -20,7 +20,7 @@ class Functions {
     
     // MARK: -Exercise Function
     
-    class func makeRoutineArray(_ routine: RoutineModel?) -> ([[String:Any]], Int) {
+    class func makeRoutineArray(routine: RoutineModel?) -> ([[String:Any]], Int) {
         
         let stagesArray = NSMutableArray()
         var totalTime = 0
@@ -269,23 +269,23 @@ class Functions {
     }
     
     @available(iOS 9.0, *)
-    class func createNSUserActivity(routine: RoutineModel, domainIdentifier: String) {
+    class func createNSUserActivity(workout: Workout, domainIdentifier: String) {
                 
         let attributeSet:CSSearchableItemAttributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeImage as String)
-        attributeSet.contentDescription = routine.searchDescription
+        attributeSet.contentDescription = workout.searchDescription
         //    attributeSet.thumbnailData = image
-        attributeSet.relatedUniqueIdentifier = routine.name
+        attributeSet.relatedUniqueIdentifier = workout.name
         
         let activity = NSUserActivity(activityType: domainIdentifier)
-        activity.title = routine.name
-        activity.keywords = NSSet(array: [routine.name, "Workout", "Timer"]) as! Set<String>
-        activity.userInfo = ["name": routine.name, "type": routine.type]
+        activity.title = workout.name
+        activity.keywords = NSSet(array: [workout.name, "Workout", "Timer"]) as! Set<String>
+        activity.userInfo = ["name": workout.name]
         activity.contentAttributeSet = attributeSet
         
-        activity.requiredUserInfoKeys = NSSet(array: ["name", "type"]) as! Set<String>
+        activity.requiredUserInfoKeys = NSSet(array: ["name"]) as! Set<String>
         activity.isEligibleForSearch = true
         activity.isEligibleForPublicIndexing = true
-        Constants.nsUserActivityArray.append(activity)
+        workout.nsUserActivity = activity
         activity.becomeCurrent()
         
         print("NSUserActivity created")
@@ -390,23 +390,25 @@ class Functions {
         
     }
     
-    class func timeStringFrom(time: Int, type: String) -> String {
+    class func timeStringFrom(time: Int) -> String {
         
         let (HoursLeft,MinutesLeft,SecondsLeft) = timeComponentsFrom(time: time)
         
-        if type == "Routine" {
-            
-            if HoursLeft == 0 {
-                return String(format:"%.2d:%.2d", MinutesLeft, SecondsLeft)
-            } else {
-                return String(format:"%2d:%.2d:%.2d", HoursLeft, MinutesLeft, SecondsLeft)
-            }
-            
+        if HoursLeft == 0 {
+            return String(format:"%.2d:%.2d", MinutesLeft, SecondsLeft)
         } else {
-            
             return String(format:"%2d:%.2d:%.2d", HoursLeft, MinutesLeft, SecondsLeft)
-            
         }
+        
+//        if type == "Routine" {
+//            if HoursLeft == 0 {
+//                return String(format:"%.2d:%.2d", MinutesLeft, SecondsLeft)
+//            } else {
+//                return String(format:"%2d:%.2d:%.2d", HoursLeft, MinutesLeft, SecondsLeft)
+//            }
+//        } else {
+//            return String(format:"%2d:%.2d:%.2d", HoursLeft, MinutesLeft, SecondsLeft)
+//        }
     }
     
     class func displayAlert(_ title: String, message: String, Action1: UIAlertAction?, Action2: UIAlertAction?) -> UIAlertController {

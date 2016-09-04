@@ -31,7 +31,7 @@ extension RoutineModel {
     
     @nonobjc var searchDescription: String {
         
-        let totalTimeString = Functions.timeStringFrom(time: self.totalRoutineTime! as Int, type: "Routine")
+        let totalTimeString = Functions.timeStringFrom(time: self.totalRoutineTime! as Int)
         return "Total Time: \(totalTimeString)"
     }
 }

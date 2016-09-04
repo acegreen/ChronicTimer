@@ -63,11 +63,11 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             coolDownDuration = Constants.coolDownExercise.exerciseTime as Int
             
             self.nameTextField.text = routineToEdit.name
-            self.warmUpTimeTextField.text = Functions.timeStringFrom(time: warmUpDuration, type: "Routine")
+            self.warmUpTimeTextField.text = Functions.timeStringFrom(time: warmUpDuration)
             self.numberOfRoundsTextField.text = String(numberOfRounds)
-            self.roundTimeTextField.text = Functions.timeStringFrom(time: roundDuration, type: "Routine")
-            self.restTimeTextField.text = Functions.timeStringFrom(time: restDuration, type: "Routine")
-            self.coolDownTimeTextField.text = Functions.timeStringFrom(time: coolDownDuration, type: "Routine")
+            self.roundTimeTextField.text = Functions.timeStringFrom(time: roundDuration)
+            self.restTimeTextField.text = Functions.timeStringFrom(time: restDuration)
+            self.coolDownTimeTextField.text = Functions.timeStringFrom(time: coolDownDuration)
             
             nameTextField.isEnabled = false
             
@@ -205,12 +205,12 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     Functions.setSelectedRoutine(routineToEdit, completion: { (result) -> Void in
                     })
                     
-                    let (stagesArray, totalTime) = Functions.makeRoutineArray(self.routineToEdit)
+                    let (stagesArray, totalTime) = Functions.makeRoutineArray(routine: self.routineToEdit)
                     
                     routineToEdit.totalRoutineTime = totalTime as NSNumber
                     
                     // add routine to spotlight & send context to Watch
-                    let totalTimeString = Functions.timeStringFrom(time: routineToEdit.totalRoutineTime! as Int, type: "Routine")
+                    let totalTimeString = Functions.timeStringFrom(time: routineToEdit.totalRoutineTime! as Int)
                     
                     Functions.addToSpotlight(routine: routineToEdit, domainIdentifier: "Routines")
                     
@@ -311,12 +311,12 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     Functions.setSelectedRoutine(newRoutine, completion: { (result) -> Void in
                     })
                     
-                    let (stagesArray, totalTime) = Functions.makeRoutineArray(self.newRoutine)
+                    let (stagesArray, totalTime) = Functions.makeRoutineArray(routine: self.newRoutine)
                     
                     newRoutine.totalRoutineTime = totalTime as NSNumber
                     
                     // add routine to spotlight & send context to Watch                        
-                    let totalTimeString = Functions.timeStringFrom(time: newRoutine.totalRoutineTime! as Int, type: "Routine")
+                    let totalTimeString = Functions.timeStringFrom(time: newRoutine.totalRoutineTime! as Int)
                     
                     Functions.addToSpotlight(routine: newRoutine, domainIdentifier: "Routines")
                     

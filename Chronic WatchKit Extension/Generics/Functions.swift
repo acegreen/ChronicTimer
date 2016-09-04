@@ -176,7 +176,7 @@ class Functions {
     }
     
     //MARK: -Exercise Function
-    class func makeRoutineArray(routine: RoutineModel?) -> ([[String:AnyObject]], Int) {
+    class func makeRoutineArray(routine: RoutineModel?) -> ([[String:Any]], Int) {
         
         let stagesArray = NSMutableArray()
         var totalTime = 0

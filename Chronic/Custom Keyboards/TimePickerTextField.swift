@@ -152,7 +152,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
     
     func UpdateLabel() {
         
-        self.text = Functions.timeStringFrom(time: pickerTotal, type: "Routine")
+        self.text = Functions.timeStringFrom(time: pickerTotal)
         self.sizeToFit()
 
     }

@@ -12,25 +12,12 @@ import HealthKit
 import UserNotifications
 
 class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
+
+    var workout: Workout!
     
-    var workoutType = Constants.WorkoutType.quickTimer
-    var workoutState = Constants.WorkoutEventType.preRun
-    
-    let workoutActivityType: HKWorkoutActivityType = HKWorkoutActivityType.crossTraining
     var anchor = HKQueryAnchor(fromValue: Int(HKAnchoredObjectQueryNoAnchor))
     
-    var routineArray = [[String:AnyObject]]()
-    var currentTimerDict = [String:AnyObject]()
-    var routineTotalTime = Int()
-    var selectedRoutine: Any!
-    var routineIndex: Int = 0
-    
-    var routineStartDate: Date!
-    var routineEndDate: Date!
-    
     var time: Int = 0
-    var timeRemaining: Int = 0
-    var timeElapsed: Int = 0
     
     var soundlocation = NSURL()
     var localNotification: UNNotification!
@@ -54,25 +41,25 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     @IBAction func PlayButtonPressed() {
         
-        if routineArray.count != 0 && !Constants.timer.isValid {
+        if workout.routineStages.count != 0 && !Constants.timer.isValid {
             
-            if workoutState == .preRun {
+            if workout.workoutState == .preRun {
                 
                 playFeedback("Routine Begin")
                 
                 // Set routine start time
-                routineStartDate = Date()
-                print("start time \(routineStartDate)")
+                workout.routineStartDate = Date()
+                print("start time \(workout.routineStartDate)")
                 
                 // Start workout session
-                Functions.startWorkSession(delegateInterfaceController: self, workoutActivityType: self.workoutActivityType)
+                Functions.startWorkSession(delegateInterfaceController: self, workoutActivityType: workout.workoutActivityType)
                 
             } else {
                 Functions.resumeWorkSession()
             }
             
             startTimer()
-            workoutState = Constants.WorkoutEventType.active
+            workout.workoutState = Workout.WorkoutState.active
         }
     }
     
@@ -80,7 +67,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         Constants.timer.invalidate()
         
-        workoutState = Constants.WorkoutEventType.pause
+        workout.workoutState = Workout.WorkoutState.paused
         
         Functions.pauseWorkSession()
     }
@@ -90,11 +77,11 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         // End workout session if running
         Functions.endWorkoutSession()
         
-        if workoutState == .active || workoutState == .pause || workoutState == .complete {
+        if workout.workoutState == .active || workout.workoutState == .paused || workout.workoutState == .completed {
             
             // Set end time
-            routineEndDate = Date()
-            print("end time \(routineEndDate)")
+            workout.routineEndDate = Date()
+            print("end time \(workout.routineEndDate)")
             
             // Check to save workout
             checkSaveWorkout()
@@ -107,25 +94,11 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        selectedRoutine = context
-        
-        if selectedRoutine is RoutineModel {
-            
-            workoutType = .routine
-            
-            (routineArray, routineTotalTime) = Functions.makeRoutineArray(routine: selectedRoutine as? RoutineModel)
-            
+        if context is RoutineModel {
+            self.workout = Workout(workoutActivityType: .crossTraining, workoutType: .routine, routineModel: context as! RoutineModel?)
         } else {
-            
-            workoutType = .quickTimer
-            
-            (routineArray, routineTotalTime) = Functions.makeRoutineArray(routine: nil)
+            self.workout = Workout(workoutActivityType: .crossTraining, workoutType: .quickTimer)
         }
-        
-//        // MARK: Disable heart rate
-//        if !Functions.isProFeaturesUpgradePurchased() {
-//            hideHeartRateGroup()
-//        }
         
         setToInitialState()
         changeStage()
@@ -148,8 +121,8 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     func countDown() {
         
         time -= 1
-        timeRemaining -= 1
-        timeElapsed += 1
+        workout.timeRemaining -= 1
+        workout.timeElapsed += 1
         
         changeLabels()
         
@@ -161,20 +134,20 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             
             // If the current timer ends
             
-            if routineIndex == routineArray.count - 1 {
+            if workout.routineIndex == workout.routineStages.count - 1 {
                 
                 completeWorkout()
                 
             } else {
                 
-                routineIndex += 1
+                workout.routineIndex += 1
                 
                 Constants.timer.invalidate()
                 
                 changeStage()
                 
                 //Let's go to next round, So increase these variables and start new timer
-                playFeedback(currentTimerDict["Name"] as! String)
+                playFeedback(workout.currentTimerDict["Name"] as! String)
                 
                 startTimer()
                 
@@ -187,11 +160,11 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     //Function to change the state of routine, based on the currentTimerDict Value
     func changeStage() {
         
-        if routineArray.count != 0 {
+        if workout.routineStages.count != 0 {
             
-            currentTimerDict = routineArray[routineIndex]
+            workout.currentTimerDict = workout.routineStages[workout.routineIndex]
             
-            time = currentTimerDict["Time"] as! Int
+            time = workout.currentTimerDict["Time"] as! Int
             
             changeLabels()
             changeStageLabelColor()
@@ -208,11 +181,11 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         // End workout session if running
         Functions.endWorkoutSession()
         
-        routineIndex = 0
-        timeRemaining = routineTotalTime
-        timeElapsed = 0
+        workout.routineIndex = 0
+        workout.timeRemaining = workout.totalTime
+        workout.timeElapsed = 0
     
-        workoutState = Constants.WorkoutEventType.preRun
+        workout.workoutState = Workout.WorkoutState.preRun
         
         changeLabels()
     }
@@ -220,17 +193,17 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     func changeLabels() {
         
         //self.setTitle(routineName)
-        RoutineStateLabel.setText(currentTimerDict["Name"] as? String)
+        RoutineStateLabel.setText(workout.currentTimerDict["Name"] as? String)
         CountDownLabel.setText(Functions.timeStringFrom(time: Int(time)))
-        timeRemainingLabel.setText(Functions.timeStringFrom(time: Int(timeRemaining)))
-        timeElapsedLabel.setText(Functions.timeStringFrom(time: Int(timeElapsed)))
+        timeRemainingLabel.setText(Functions.timeStringFrom(time: Int(workout.timeRemaining)))
+        timeElapsedLabel.setText(Functions.timeStringFrom(time: Int(workout.timeElapsed)))
     }
     
     func changeStageLabelColor() {
         
         var stageColor: UIColor!
     
-        if let currentTimerDictColor = currentTimerDict["Color"] as? Data {
+        if let currentTimerDictColor = workout.currentTimerDict["Color"] as? Data {
             
             stageColor = (NSKeyedUnarchiver.unarchiveObject(with: currentTimerDictColor) as? UIColor)!
         }
@@ -269,7 +242,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     func completeWorkout() {
         
         // Mark routine as completed
-        workoutState = Constants.WorkoutEventType.complete
+        workout.workoutState = .completed
         
         //Congrats you've completed workout
         playFeedback("Routine End")
@@ -280,7 +253,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             var alertTitle: String!
             var alertBody: String!
             
-            switch workoutType {
+            switch workout.workoutType {
             case .quickTimer:
                 alertTitle = NSLocalizedString("Notification Timer Text", comment: "")
                 alertBody = NSLocalizedString("Notification Timer subText", comment: "")
@@ -313,10 +286,10 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
         guard HKHealthStore.isHealthDataAvailable() else { return }
         
-        if selectedRoutine is RoutineModel {
+        if workout.workoutType == .routine {
             
-            if workoutState == .complete {
-                Functions.saveWorkout(interfaceController: self, workoutActivityType: workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil)
+            if workout.workoutState == .completed {
+                Functions.saveWorkout(interfaceController: self, workoutActivityType: workout.workoutActivityType, startDate: workout.routineStartDate, endDate: workout.routineEndDate, kiloCalories: nil, distance: nil)
             } else {
                 promptToSaveWorkout()
             }
@@ -330,7 +303,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         let yesAction = WKAlertAction(title: NSLocalizedString("Yes", comment: ""), style: WKAlertActionStyle.default, handler: { () -> Void in
             
-            Functions.saveWorkout(interfaceController: self, workoutActivityType: self.workoutActivityType, startDate: self.routineStartDate, endDate: self.routineEndDate, kiloCalories: nil, distance: nil)
+            Functions.saveWorkout(interfaceController: self, workoutActivityType: self.workout.workoutActivityType, startDate: self.workout.routineStartDate, endDate: self.workout.routineEndDate, kiloCalories: nil, distance: nil)
         })
         
         let noAction = WKAlertAction(title: NSLocalizedString("No", comment: ""), style: WKAlertActionStyle.default, handler: { })

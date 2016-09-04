@@ -96,8 +96,6 @@ class Constants {
     
     static let healtKitAuthorized: Bool = false
     
-    static var nsUserActivityArray = [NSUserActivity]()
-    
     static var warmUpExercise: ExerciseModel!
     static var roundExercise: ExerciseModel!
     static var restExercise: ExerciseModel!
@@ -127,19 +125,6 @@ class Constants {
     ]
     
     static var wcSession: WCSession!
-    
-    enum WorkoutType {
-        case routine
-        case run
-        case quickTimer
-    }
-    
-    enum WorkoutEventType {
-        case preRun
-        case active
-        case paused
-        case completed
-    }
     
     enum DistanceType {
         case miles
