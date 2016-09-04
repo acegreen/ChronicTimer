@@ -96,6 +96,8 @@ class Constants {
     
     static let healtKitAuthorized: Bool = false
     
+    static var nsUserActivityArray = [NSUserActivity]()
+    
     static var warmUpExercise: ExerciseModel!
     static var roundExercise: ExerciseModel!
     static var restExercise: ExerciseModel!
@@ -142,6 +144,10 @@ class Constants {
     enum DistanceType {
         case miles
         case kilometers
+    }
+    
+    enum DomainIdentifier: String {
+        case routineIdentifier = "com.chronic.routine"
     }
     
     enum NotificationIdentifier: String {

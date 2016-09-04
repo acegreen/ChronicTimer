@@ -55,6 +55,8 @@
 		234078731AC030B8006BBD70 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 234078721AC030B8006BBD70 /* AVFoundation.framework */; };
 		234078751AC030CB006BBD70 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 234078741AC030CB006BBD70 /* MediaPlayer.framework */; };
 		2348A9171D7B5C560080402F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2348A9191D7B5C560080402F /* Onboarding.storyboard */; };
+		2348A9241D7C647D0080402F /* Feedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2348A9261D7C647D0080402F /* Feedback.storyboard */; };
+		2348A9391D7C6F3D0080402F /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2348A9381D7C6F3D0080402F /* FeedbackViewController.swift */; };
 		234953FE1D564174007B053A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234953FB1D564174007B053A /* Extensions.swift */; };
 		234953FF1D564174007B053A /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234953FC1D564174007B053A /* Functions.swift */; };
 		234954001D564174007B053A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234953FD1D564174007B053A /* Constants.swift */; };
@@ -78,7 +80,6 @@
 		235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B50031BF64E95008FBC53 /* IAPHelper.swift */; };
 		2362A04E1D63476600EBD63F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2362A04D1D63476600EBD63F /* Keychain.swift */; };
 		2362A04F1D63476700EBD63F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2362A04D1D63476600EBD63F /* Keychain.swift */; };
-		236582C51C174FE000FE1378 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236582C41C174FE000FE1378 /* FeedbackViewController.swift */; };
 		2368C1731B0CC5C800F41346 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368C1721B0CC5C800F41346 /* AudioToolbox.framework */; };
 		23698CD51BCDF05400EBEC7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614961B30C39500180218 /* AdSupport.framework */; };
 		236ADAC41D79DA1700D092A6 /* InAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236ADAC31D79DA1700D092A6 /* InAppPurchaseViewController.swift */; };
@@ -256,6 +257,12 @@
 		2348A91D1D7B5C5D0080402F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Onboarding.strings; sourceTree = "<group>"; };
 		2348A91F1D7B5C620080402F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Onboarding.strings"; sourceTree = "<group>"; };
 		2348A9211D7B5C660080402F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Onboarding.strings"; sourceTree = "<group>"; };
+		2348A9251D7C647D0080402F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feedback.storyboard; sourceTree = "<group>"; };
+		2348A9301D7C67C40080402F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Feedback.strings; sourceTree = "<group>"; };
+		2348A9321D7C67D30080402F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Feedback.strings; sourceTree = "<group>"; };
+		2348A9341D7C67DD0080402F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Feedback.strings"; sourceTree = "<group>"; };
+		2348A9361D7C67E20080402F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Feedback.strings"; sourceTree = "<group>"; };
+		2348A9381D7C6F3D0080402F /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		234953FB1D564174007B053A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		234953FC1D564174007B053A /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		234953FD1D564174007B053A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -289,7 +296,6 @@
 		235B50031BF64E95008FBC53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		23612F3F1AFD57620087A11E /* Chronic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chronic.entitlements; sourceTree = "<group>"; };
 		2362A04D1D63476600EBD63F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		236582C41C174FE000FE1378 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		2368C1721B0CC5C800F41346 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		236ADAC31D79DA1700D092A6 /* InAppPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewController.swift; sourceTree = "<group>"; };
 		236ADAC61D79DE2F00D092A6 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
@@ -545,6 +551,15 @@
 			path = ../Frameworks;
 			sourceTree = "<group>";
 		};
+		2348A9371D7C6F3D0080402F /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				2348A9381D7C6F3D0080402F /* FeedbackViewController.swift */,
+			);
+			name = Feedback;
+			path = "View Controllers/Feedback";
+			sourceTree = "<group>";
+		};
 		234953FA1D564174007B053A /* Generics */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +676,7 @@
 				23D4824E1B91093F0066164A /* LaunchScreen.storyboard */,
 				2328E4771AC03136009A8C46 /* Main.storyboard */,
 				2348A9191D7B5C560080402F /* Onboarding.storyboard */,
+				2348A9261D7C647D0080402F /* Feedback.storyboard */,
 				231152A91D7A3B28003938E4 /* InAppPurchaseReusableView.xib */,
 			);
 			path = Storyboards;
@@ -691,7 +707,6 @@
 				237605271AEFE779003E2C07 /* SettingsTableViewController.swift */,
 				23F85F391B645202002221AF /* ExerciseTableViewCell.swift */,
 				23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */,
-				236582C41C174FE000FE1378 /* FeedbackViewController.swift */,
 				230171711C407D7000B1EBC9 /* FAQTableViewController.swift */,
 				231CE07E1CF217B80095E607 /* SuperUserPopoverViewController.swift */,
 				236ADAC31D79DA1700D092A6 /* InAppPurchaseViewController.swift */,
@@ -740,6 +755,7 @@
 			children = (
 				238C1AA01C8B65C6009F9CC1 /* Main */,
 				237B108A1C265A9000D52713 /* Onboarding */,
+				2348A9371D7C6F3D0080402F /* Feedback */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -1130,6 +1146,7 @@
 				23AF7DE81AC02E2900AA3FC7 /* Images.xcassets in Resources */,
 				232EDE3B1C1A1823007D0103 /* KaushanScript.ttf in Resources */,
 				2314652C1B176C8C008DD375 /* star-gray.png in Resources */,
+				2348A9241D7C647D0080402F /* Feedback.storyboard in Resources */,
 				2396A6A51B815B9300E6A55F /* Beep.wav in Resources */,
 				2385231C1CE7E62900694A4A /* Flute 2.wav in Resources */,
 				23AB7A4D1AFCFD2C00F74EE1 /* Tick-Deep.mp3 in Resources */,
@@ -1293,6 +1310,7 @@
 				2311EC301B6FF2C3001A48E1 /* ExerciseModel.swift in Sources */,
 				2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */,
 				231465291B176C8C008DD375 /* iRate.m in Sources */,
+				2348A9391D7C6F3D0080402F /* FeedbackViewController.swift in Sources */,
 				235930E41B0A89800021003D /* TimerViewController.swift in Sources */,
 				230668431C1E7242003BDF03 /* NotificationHelper.swift in Sources */,
 				23F85F3C1B64521A002221AF /* ExerciseNameTableViewCell.swift in Sources */,
@@ -1310,7 +1328,6 @@
 				238C1ACF1C8B6FF4009F9CC1 /* MulticolorPolylineSegment.swift in Sources */,
 				237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */,
 				23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */,
-				236582C51C174FE000FE1378 /* FeedbackViewController.swift in Sources */,
 				232F4C7C1AC02EA700D25995 /* CircuitRoutineTableViewController.swift in Sources */,
 				238C1A9F1C8B651E009F9CC1 /* DataAccess.swift in Sources */,
 				237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */,
@@ -1378,6 +1395,18 @@
 				2348A9211D7B5C660080402F /* zh-Hant */,
 			);
 			name = Onboarding.storyboard;
+			sourceTree = "<group>";
+		};
+		2348A9261D7C647D0080402F /* Feedback.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2348A9251D7C647D0080402F /* Base */,
+				2348A9301D7C67C40080402F /* de */,
+				2348A9321D7C67D30080402F /* it */,
+				2348A9341D7C67DD0080402F /* zh-Hans */,
+				2348A9361D7C67E20080402F /* zh-Hant */,
+			);
+			name = Feedback.storyboard;
 			sourceTree = "<group>";
 		};
 		2349542E1D56574C007B053A /* Interface.storyboard */ = {

@@ -34,13 +34,16 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         _ = SKPaymentQueue.default().add(self)
     }
     
-    func requestProductsWithCompletionHandler(_ handler:((Bool) -> Void)) {
+    func requestProducts(displayAlert: Bool, _ handler:((Bool) -> Void)?) {
         
         guard Functions.isConnectedToNetwork() else {
             
-            DispatchQueue.main.async(execute: { () -> Void in
-                SweetAlert().showAlert(NSLocalizedString("Alert: Requires Upgrade Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Requires Upgrade Subtitle Text", comment: ""), style: AlertStyle.warning)
-            })
+            if displayAlert {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
+                })
+            }
+            self.completionHandler?(false)
             return
         }
         
@@ -57,9 +60,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             
         } else {
             
-            DispatchQueue.main.async(execute: { () -> Void in
-                SweetAlert().showAlert(NSLocalizedString("Alert: In-App Purchases Disabled Title Text", comment: ""), subTitle: NSLocalizedString("Alert: In-App Purchases Disabled Subtitle Text", comment: ""), style: AlertStyle.error)
-            })
+            if displayAlert {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    SweetAlert().showAlert(NSLocalizedString("Alert: In-App Purchases Disabled Title Text", comment: ""), subTitle: NSLocalizedString("Alert: In-App Purchases Disabled Subtitle Text", comment: ""), style: AlertStyle.error)
+                })
+            }
+            
+            self.completionHandler?(false)
         }
     }
     

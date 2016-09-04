@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "Sorry!"; ObjectID = "3et-xI-Tj6"; */
+"3et-xI-Tj6.text" = "抱歉！";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "EEd-Ru-aaE"; */
+"EEd-Ru-aaE.normalTitle" = "关闭";
+
+/* Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "F1w-jL-OQM"; */
+"F1w-jL-OQM.normalTitle" = "联系我们";
+
+/* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "Gba-nI-gsg"; */
+"Gba-nI-gsg.text" = "我们期待您的反馈，请您访问 AppStore 给 Chronic 评分。";
+
+/* Class = "UIButton"; normalTitle = "Nope"; ObjectID = "OgZ-yZ-Ifl"; */
+"OgZ-yZ-Ifl.normalTitle" = "不";
+
+/* Class = "UILabel"; text = "Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!"; ObjectID = "QOO-Kq-XxZ"; */
+"QOO-Kq-XxZ.text" = "有何宝贵意见和建议？ 请联系我们，我们非常期待您的反馈！";
+
+/* Class = "UILabel"; text = "Yay!"; ObjectID = "dOG-nK-wlQ"; */
+"dOG-nK-wlQ.text" = "很棒！";
+
+/* Class = "UIButton"; normalTitle = "Sure!"; ObjectID = "u5A-qD-5RW"; */
+"u5A-qD-5RW.normalTitle" = "当然！";
+
+/* Class = "UILabel"; text = "Good job keeping fit! \nBy the way, we’d love some feedback! How do you feel about Chronic? "; ObjectID = "vhQ-7p-kln"; */
+"vhQ-7p-kln.text" = "干的不错继续！\n我们期待您的反馈！您对 Chronic 有何宝贵意见和建议？";
+
+/* Class = "UILabel"; text = "Way To Go!"; ObjectID = "zHu-tp-Nuk"; */
+"zHu-tp-Nuk.text" = "开始吧!";

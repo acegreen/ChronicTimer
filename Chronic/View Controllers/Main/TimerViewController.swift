@@ -361,7 +361,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         if timeElapsed % 30 == 0 && !Functions.isConnectedToNetwork() && !Functions.isRemoveAdsUpgradePurchased() {
             
             SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
-            
+
             self.pause()
             
             return
@@ -395,15 +395,22 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     // Stop Timer
                     self.stop()
                     
-                    // Ask for feedback or show ad
-                    if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
-                        
+                    #if DEBUG
                         self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
                         
-                    } else {
-                        
                         self.displayInterstitialAds()
-                    }
+                        
+                    #else
+                        // Ask for feedback or show ad
+                        if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
+                            
+                            self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
+                            
+                        } else {
+                            
+                            self.displayInterstitialAds()
+                        }
+                    #endif
                     
                 } else {
                     
@@ -891,6 +898,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 
                 startLocationUpdates()
             }
+            
+            // Create an NSUserActivity
+            //Functions.createNSUserActivity(routine: self.routine, domainIdentifier: Constants.DomainIdentifier.routineIdentifier)
         }
         
         if workoutState == .paused {
@@ -1203,7 +1213,7 @@ extension TimerViewController: UIViewControllerTransitioningDelegate {
         return transition
     }
     
-    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
         transition.startingPoint = self.view.center
         transition.bubbleColor = Constants.chronicColor

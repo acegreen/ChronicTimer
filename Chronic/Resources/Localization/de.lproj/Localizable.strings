@@ -86,7 +86,7 @@
 "Alert: Requires Upgrade Subtitle Text" = "Verbindung zum Internet nötig um Kauf zu initiieren";
 
 "Alert: No Internet Connection Title Text" = "Keine Internetverbindung";
-"Alert: No Internet Connection Subtitle Text" = "Bitte verbinden Sie sich, um fortzufahren";
+"Alert: No Internet Connection Subtitle Text" = "Bitte verbinden, um fortzufahren";
 
 "Alert: No Email Account Title Text" = "Keine E-Mail-Konto vorhanden";
 "Alert: No Email Account Subtitle Text" = "Bitte fügen Sie eine E-Mail-Konto in Ihrem Mail-App";

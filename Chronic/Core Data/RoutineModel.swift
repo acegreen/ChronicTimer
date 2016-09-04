@@ -28,4 +28,10 @@ extension RoutineModel {
     @nonobjc class func fetchRequest() -> NSFetchRequest<RoutineModel> {
         return NSFetchRequest<RoutineModel>(entityName: "RoutineModel");
     }
+    
+    @nonobjc var searchDescription: String {
+        
+        let totalTimeString = Functions.timeStringFrom(time: self.totalRoutineTime! as Int, type: "Routine")
+        return "Total Time: \(totalTimeString)"
+    }
 }

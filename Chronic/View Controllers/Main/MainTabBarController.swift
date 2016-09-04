@@ -39,32 +39,31 @@ class MainTabBarController: UITabBarController {
     }
 
     // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "FeedbackSegueIdentifier" {
-            
-            let controller = segue.destination
-            controller.transitioningDelegate = self
-            controller.modalPresentationStyle = .custom
-        }
-    }
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "FeedbackSegueIdentifier" {
+//            
+//            let controller = segue.destination
+//            controller.transitioningDelegate = self
+//            controller.modalPresentationStyle = .custom
+//        }
+//    }
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
-extension MainTabBarController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .present
-        transition.startingPoint = self.view.center
-        transition.bubbleColor = UIColor.goldColor()
-        return transition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .dismiss
-        transition.startingPoint = self.view.center
-        transition.bubbleColor = Constants.chronicColor
-        return transition
-    }
-}
+//extension MainTabBarController: UIViewControllerTransitioningDelegate {
+//    
+//    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .present
+//        transition.startingPoint = self.view.center
+//        transition.bubbleColor = UIColor.goldColor()
+//        return transition
+//    }
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .dismiss
+//        transition.startingPoint = self.view.center
+//        transition.bubbleColor = Constants.chronicColor
+//        return transition
+//    }
+//}

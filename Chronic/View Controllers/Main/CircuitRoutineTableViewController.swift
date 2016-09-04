@@ -212,7 +212,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     // add routine to spotlight & send context to Watch
                     let totalTimeString = Functions.timeStringFrom(time: routineToEdit.totalRoutineTime! as Int, type: "Routine")
                     
-                    Functions.addToSpotlight(routineToEdit.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: routineToEdit.name!, domainIdentifier: "Routines")
+                    Functions.addToSpotlight(routine: routineToEdit, domainIdentifier: "Routines")
                     
                     if Constants.wcSession != nil {
                         Functions.sendContextToAppleWatch(["routineName":routineToEdit.name!, "routineType":routineToEdit.type!, "routineStage": stagesArray, "contextType":"RoutineModified"])
@@ -318,7 +318,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     // add routine to spotlight & send context to Watch                        
                     let totalTimeString = Functions.timeStringFrom(time: newRoutine.totalRoutineTime! as Int, type: "Routine")
                     
-                    Functions.addToSpotlight(newRoutine.name!, contentDescription: "Total Time: \(totalTimeString)", uniqueIdentifier: newRoutine.name!, domainIdentifier: "Routines")
+                    Functions.addToSpotlight(routine: newRoutine, domainIdentifier: "Routines")
                     
                     if Constants.wcSession != nil {
                         
