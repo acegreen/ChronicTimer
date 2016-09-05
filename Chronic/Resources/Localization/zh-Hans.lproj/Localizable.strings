@@ -88,6 +88,12 @@
 "Alert: No Internet Connection Title Text" = "未连接互联网";
 "Alert: No Internet Connection Subtitle Text" = "请连接互联网后再继续";
 
+"Alert: Reconnect To Internet Title Text" = "Reconnect to Internet";
+"Alert: Reconnect To Internet Subtitle Text" = "By reconnecting to the internet, you can continue running your workout";
+
+"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads Upgrade";
+"Alert: Purchase Remove Ads Subtitle Text" = "With the upgrade, you can run a workout without internet and distraction free";
+
 "Alert: No Email Account Title Text" = "没有发现电子邮件账户";
 "Alert: No Email Account Subtitle Text" = "请在您的电子邮件应用中设置电子邮件账户";
 

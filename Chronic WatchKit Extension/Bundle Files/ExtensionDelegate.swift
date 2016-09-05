@@ -87,4 +87,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
             Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         }
     }
+    
+    // =========================================================================
+    // MARK: - UserActivity
+//    func handleUserActivity(_ userInfo: [AnyHashable : Any]?) {
+//        
+//    }
 }

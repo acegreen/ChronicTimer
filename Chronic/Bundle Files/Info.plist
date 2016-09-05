@@ -85,6 +85,8 @@
 	<string>Chronic would like to save your workouts to the Health app.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Chronic will use location to show your progress during a run</string>
+	<key>NSSiriUsageDescription</key>
+	<string>You can use Siri to start a workout on Chronic</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

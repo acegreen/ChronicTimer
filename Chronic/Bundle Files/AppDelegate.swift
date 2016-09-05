@@ -20,6 +20,7 @@ import Parse
 import ParseFacebookUtilsV4
 import LaunchKit
 import UserNotifications
+import Intents
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateDelegate {
@@ -188,41 +189,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
         
+        var uniqueIdentifier: String?
+        
         if userActivity.activityType == CSSearchableItemActionType {
             
-            if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            if let userInfoIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+                uniqueIdentifier = userInfoIdentifier
+            }
+            
+        } else if userActivity.activityType == NSStringFromClass(INStartWorkoutIntent.self) {
+            
+            if let workoutName = userActivity.userInfo?["workoutName"] as? String {
+                uniqueIdentifier = workoutName
+            }
+        }
+        
+        if let uniqueIdentifier = uniqueIdentifier {
+            
+            let uniqueIdentifierPredicate: NSPredicate = NSPredicate(format: "name = %@", uniqueIdentifier)
+            
+            do {
                 
-                let uniqueIdentifierPredicate: NSPredicate = NSPredicate(format: "name = %@", uniqueIdentifier)
+                guard let routineSelectedInSpotlight = try DataAccess.sharedInstance.GetRoutines(uniqueIdentifierPredicate).first else { return false }
                 
-                do {
-                    
-                    guard let routineSelectedInSpotlight = try DataAccess.sharedInstance.GetRoutines(uniqueIdentifierPredicate).first else { return false }
-                    
-                    let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-                    timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
-                    
-                    let rootViewController = Constants.appDel.window?.rootViewController
-                    if rootViewController?.presentedViewController != nil {
-                        rootViewController?.dismiss(animated: true, completion: nil)
-                    }
-                    
-                    rootViewController?.present(timerViewController, animated: true, completion: nil)
-                    
-                    // Mark correct routine as selected
-                    
-                    let routineMarkedSelected = Functions.getSelectedRoutine()
-                    
-                    if routineMarkedSelected != nil && routineMarkedSelected?.name != uniqueIdentifier {
-                        
-                        routineMarkedSelected!.selectedRoutine = false
-                        
-                    }
-                    
-                    routineSelectedInSpotlight.selectedRoutine = true
-                    
-                } catch {
-                    // TO-DO: HANDLE ERROR
+                let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+                timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
+                
+                let rootViewController = Constants.appDel.window?.rootViewController
+                if rootViewController?.presentedViewController != nil {
+                    rootViewController?.dismiss(animated: true, completion: nil)
                 }
+                
+                rootViewController?.present(timerViewController, animated: true, completion: nil)
+                
+                // Mark correct routine as selected
+                
+                let routineMarkedSelected = Functions.getSelectedRoutine()
+                
+                if routineMarkedSelected != nil && routineMarkedSelected?.name != uniqueIdentifier {
+                    
+                    routineMarkedSelected!.selectedRoutine = false
+                }
+                
+                routineSelectedInSpotlight.selectedRoutine = true
+                
+            } catch {
+                // TO-DO: HANDLE ERROR
             }
         }
         

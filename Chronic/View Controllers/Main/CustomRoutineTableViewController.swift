@@ -136,8 +136,6 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 routineToEdit.totalRoutineTime = totalTime as NSNumber
                 
                 // add routine to spotlight & send context to Watch
-                let totalTimeString = Functions.timeStringFrom(time:routineToEdit.totalRoutineTime! as Int)
-                
                 Functions.addToSpotlight(routine: routineToEdit, domainIdentifier: "Routines")
                 
                 if Constants.wcSession != nil {
@@ -194,9 +192,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 newRoutine.totalRoutineTime = totalTime as NSNumber
                 
-                // add routine to spotlight & send context to Watch if iOS9                
-                let totalTimeString = Functions.timeStringFrom(time:newRoutine.totalRoutineTime! as Int)
-                
+                // add routine to spotlight & send context to Watch
                 Functions.addToSpotlight(routine: newRoutine, domainIdentifier: "Routines")
                 
                 if Constants.wcSession != nil {

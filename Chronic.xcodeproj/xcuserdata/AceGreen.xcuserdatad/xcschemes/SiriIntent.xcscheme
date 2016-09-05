@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0800"
-   version = "1.7">
+   wasCreatedForAppExtension = "YES"
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "236B0ACA1D7CC5E30055C754"
+               BuildableName = "SiriIntent.appex"
+               BlueprintName = "SiriIntent"
+               ReferencedContainer = "container:Chronic.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
@@ -20,34 +35,6 @@
                ReferencedContainer = "container:Chronic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "23AF7DEF1AC02E2900AA3FC7"
-               BuildableName = "ChronicTests.xctest"
-               BlueprintName = "ChronicTests"
-               ReferencedContainer = "container:Chronic.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "23612F261AFD50C10087A11E"
-               BuildableName = "CoreDataKitTests.xctest"
-               BlueprintName = "CoreDataKitTests"
-               ReferencedContainer = "container:Chronic.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -56,33 +43,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "23AF7DEF1AC02E2900AA3FC7"
-               BuildableName = "ChronicTests.xctest"
-               BlueprintName = "ChronicTests"
-               ReferencedContainer = "container:Chronic.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "23612F261AFD50C10087A11E"
-               BuildableName = "CoreDataKitTests.xctest"
-               BlueprintName = "CoreDataKitTests"
-               ReferencedContainer = "container:Chronic.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "23AF7DD71AC02E2800AA3FC7"
-            BuildableName = "Chronic.app"
-            BlueprintName = "Chronic"
+            BlueprintIdentifier = "236B0ACA1D7CC5E30055C754"
+            BuildableName = "SiriIntent.appex"
+            BlueprintName = "SiriIntent"
             ReferencedContainer = "container:Chronic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -91,14 +58,15 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "NO">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -111,17 +79,14 @@
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
-      <LocationScenarioReference
-         identifier = "../New York City Marathon.gpx"
-         referenceType = "0">
-      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
