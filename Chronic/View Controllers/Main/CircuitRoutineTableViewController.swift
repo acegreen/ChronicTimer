@@ -210,8 +210,6 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     routineToEdit.totalRoutineTime = totalTime as NSNumber
                     
                     // add routine to spotlight & send context to Watch
-                    let totalTimeString = Functions.timeStringFrom(time: routineToEdit.totalRoutineTime! as Int)
-                    
                     Functions.addToSpotlight(routine: routineToEdit, domainIdentifier: "Routines")
                     
                     if Constants.wcSession != nil {
@@ -315,9 +313,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     newRoutine.totalRoutineTime = totalTime as NSNumber
                     
-                    // add routine to spotlight & send context to Watch                        
-                    let totalTimeString = Functions.timeStringFrom(time: newRoutine.totalRoutineTime! as Int)
-                    
+                    // add routine to spotlight & send context to Watch
                     Functions.addToSpotlight(routine: newRoutine, domainIdentifier: "Routines")
                     
                     if Constants.wcSession != nil {

@@ -87,6 +87,12 @@
 "Alert: No Internet Connection Title Text" = "No Internet Connection";
 "Alert: No Internet Connection Subtitle Text" = "Please connect to continue";
 
+"Alert: Reconnect To Internet Title Text" = "Reconnect to Internet";
+"Alert: Reconnect To Internet Subtitle Text" = "By reconnecting to the internet, you can continue running your workout";
+
+"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads Upgrade";
+"Alert: Purchase Remove Ads Subtitle Text" = "With the upgrade, you can run a workout without internet and distraction free";
+
 "Alert: No Email Account Title Text" = "No Email Account Found";
 "Alert: No Email Account Subtitle Text" = "Please add an email account in your mail app";
 

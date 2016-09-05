@@ -88,7 +88,6 @@ class Functions {
                     if Constants.roundExercise.exerciseTime as Int > 0 {
                         
                         //Round Time
-                        
                         roundDictionary["Name"] = Constants.roundExercise.exerciseName
                         
                         if Constants.roundExercise.exerciseNumberOfRounds as Int > 1 {
@@ -107,7 +106,6 @@ class Functions {
                     if Constants.restExercise.exerciseTime as Int > 0 {
                         
                         //Rest Time
-                        
                         restDictionary["Name"] = Constants.restExercise.exerciseName
                         
                         if Constants.restExercise.exerciseNumberOfRounds as Int > 1 {

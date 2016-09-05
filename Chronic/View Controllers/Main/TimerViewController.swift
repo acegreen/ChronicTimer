@@ -499,8 +499,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         time = 0
         preRoutineCountDownTime = 3
         
-//        ProgressCircle.strokeEnd = 0
-        
         locations.removeAll(keepingCapacity: false)
         
         if mapView.isDescendant(of: self.view) {
@@ -532,7 +530,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         if workout.workoutType == .routine || workout.workoutType == .quickTimer {
             
-            //RoutineButton.setTitle(routineName, forState: .Normal)
             countDownLabel.text = Functions.timeStringFrom(time: time)
             leftBottomLabel.text = Functions.timeStringFrom(time: workout.timeElapsed)
             middleTopLabel.text = workout.currentTimerDict["Name"] as? String
@@ -575,11 +572,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 mapView.removeFromSuperview()
             }
             
-//            ProgressBarView.hidden = false
-//            ProgressbarContainer.hidden = false
-//            middleTopLabel.isHidden = false
-//            middleBottomLabel.isHidden = false
-            
             leftTopLabel.text = NSLocalizedString("Left Side Label Text (Routine)", comment: "")
             rightTopLabel.text = NSLocalizedString("Right Side Label Text (Routine)", comment: "")
             
@@ -590,11 +582,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             if !mapView.isDescendant(of: self.progressView) {
                 self.LayoutMapView()
             }
-            
-//            ProgressBarView.hidden = true
-//            ProgressbarContainer.hidden = true
-//            middleTopLabel.isHidden = true
-//            middleBottomLabel.isHidden = true
             
             leftTopLabel.text = NSLocalizedString("Left Side Label Text (Run)", comment: "")
             middleTopLabel.text = NSLocalizedString("Middle Label Text (Run)", comment: "")
