@@ -33,7 +33,7 @@ class InterfaceTableController: WKInterfaceController {
         Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         
         // Get Routines from database
-        Constants.Routines = WatchDataAccess.sharedInstance.GetRoutines(predicate: nil)
+        Constants.Routines = WatchDataAccess.sharedInstance.fetchRoutines(with: nil)
         
         #if DEBUG
             

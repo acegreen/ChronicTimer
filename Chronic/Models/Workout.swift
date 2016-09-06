@@ -8,6 +8,7 @@
 
 import Foundation
 import HealthKit
+import ChronicKit
 
 public class Workout {
     

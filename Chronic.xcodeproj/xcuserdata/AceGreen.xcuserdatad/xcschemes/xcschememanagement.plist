@@ -6,16 +6,27 @@
 	<dict>
 		<key>Chronic WatchKit.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 		<key>Chronic.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ChronicKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
 		<key>Notification - Chronic WatchKit.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
@@ -53,6 +64,11 @@
 			<true/>
 		</dict>
 		<key>236B0AD31D7CC5E40055C754</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>236B0AF81D7E10CF0055C754</key>
 		<dict>
 			<key>primary</key>
 			<true/>

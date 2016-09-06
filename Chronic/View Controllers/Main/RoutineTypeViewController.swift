@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChronicKit
 import QuartzCore
 
 class RoutineTypeViewController: UIViewController, RoutineDelegate {

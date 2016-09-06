@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import ChronicKit
 import HealthKit
 import UserNotifications
 

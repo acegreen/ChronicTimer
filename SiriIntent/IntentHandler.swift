@@ -7,6 +7,7 @@
 //
 
 import Intents
+import ChronicKit
 
 class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIntentHandling, INResumeWorkoutIntentHandling, INCancelWorkoutIntentHandling, INEndWorkoutIntentHandling {
 
@@ -22,19 +23,20 @@ class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIn
         
         print("resolveWorkoutName")
         
-        let speakableStringRoutine = INSpeakableString(identifier: "identifier", spokenPhrase: "Test", pronunciationHint: nil)
-        let speakableStringQuickTimer = INSpeakableString(identifier: "identifier", spokenPhrase: "Quick Timer", pronunciationHint: "Quick")
-        let speakableStringRun = INSpeakableString(identifier: "identifier", spokenPhrase: "Run", pronunciationHint: nil)
-        
-        if let workoutName = intent.workoutName, let spokenPhrase = workoutName.spokenPhrase, (spokenPhrase == speakableStringRoutine.spokenPhrase || spokenPhrase == speakableStringQuickTimer.spokenPhrase || spokenPhrase == speakableStringRun.spokenPhrase) {
+        if let routines = loadRoutines() {
             
-            print("workoutName resolved")
+            let speakableStringRoutines: [INSpeakableString] = routines.map({ INSpeakableString(identifier: "routines", spokenPhrase: $0.name, pronunciationHint: nil) })
             
-            completion(INSpeakableStringResolutionResult.success(with: workoutName))
-            
+            if let workoutName = intent.workoutName, speakableStringRoutines.contains(where: { $0.spokenPhrase == workoutName.spokenPhrase }) {
+                print("workoutName resolved")
+                
+                completion(INSpeakableStringResolutionResult.success(with: workoutName))
+                
+            } else {
+                completion(INSpeakableStringResolutionResult.disambiguation(with: speakableStringRoutines))
+            }
         } else {
-            
-            completion(INSpeakableStringResolutionResult.disambiguation(with: [speakableStringRoutine, speakableStringQuickTimer, speakableStringRun]))
+            // TODO: Handle no routines
         }
     }
     
@@ -80,6 +82,20 @@ class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIn
     public func handle(endWorkout intent: INEndWorkoutIntent, completion: @escaping (INEndWorkoutIntentResponse) -> Void) {
         
         
+    }
+    
+    func loadRoutines() -> [RoutineModel]? {
+        
+        // Get Routines from database
+        do {
+            
+            return try DataAccess.sharedInstance.fetchRoutines(with: nil)
+            
+        } catch {
+            // TO-DO: HANDLE ERROR
+            
+            return nil
+        }
     }
 }
 

@@ -17,7 +17,7 @@ public class ExerciseModel: NSManagedObject {
     @NSManaged public var exerciseName: String!
     @NSManaged public var exerciseTime: NSNumber!
     @NSManaged public var exerciseNumberOfRounds: NSNumber!
-    @NSManaged public var exerciseColor: Any
+    @NSManaged public var exerciseColor: NSData!
     
     @NSManaged open var exerciseToRoutine: RoutineModel?
     
