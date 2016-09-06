@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ChronicKit
 import CoreData
 import CoreSpotlight
 import MobileCoreServices
@@ -183,7 +184,7 @@ class Functions {
         
         do {
             
-            let routineMarkedSelected = try DataAccess.sharedInstance.GetRoutines(selectedRoutinePredicate).first
+            let routineMarkedSelected = try DataAccess.sharedInstance.fetchRoutines(with: selectedRoutinePredicate).first
             
             routineMarkedSelected?.selectedRoutine = false
             
@@ -206,7 +207,7 @@ class Functions {
         
         do {
             
-            return try DataAccess.sharedInstance.GetRoutines(existingRoutinePredicate).first
+            return try DataAccess.sharedInstance.fetchRoutines(with: existingRoutinePredicate).first
             
         } catch {
             // TO-DO: HANDLE ERROR
@@ -220,7 +221,7 @@ class Functions {
         
         do {
             
-            return try DataAccess.sharedInstance.GetRoutines(selectedRoutinePredicate).first
+            return try DataAccess.sharedInstance.fetchRoutines(with: selectedRoutinePredicate).first
             
         } catch {
             // TO-DO: HANDLE ERROR
@@ -232,7 +233,7 @@ class Functions {
         
         do {
             
-            try Constants.context.save()
+            try DataAccess.context.save()
             
             completion(true)
             

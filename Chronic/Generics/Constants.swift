@@ -10,6 +10,7 @@
 import Foundation
 import UIKit
 import HealthKit
+import ChronicKit
 import CoreData
 import MobileCoreServices
 import SystemConfiguration
@@ -25,6 +26,7 @@ class Constants {
     static let infoDict = Bundle.main.infoDictionary
     static let AppVersion = infoDict!["CFBundleShortVersionString"]!
     static let BundleVersion = infoDict!["CFBundleVersion"]!
+    static let groupIdentifier = "group.AG.Chronic"
     
     static let reachability = Reachability()
     
@@ -64,10 +66,6 @@ class Constants {
     
     static let defaultPrefsFile: URL = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
     static let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
-    
-    static let context = DataAccess.sharedInstance.managedObjectContext
-    static let routineEntity = NSEntityDescription.entity(forEntityName: "Routines", in: context)
-    static let exerciseEntity = NSEntityDescription.entity(forEntityName: "Exercises", in: context)
     
     static var timerSound: String!
     static var timerVolume: Float!

@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import ChronicKit
 
 class RoutineCell: UITableViewCell {
     

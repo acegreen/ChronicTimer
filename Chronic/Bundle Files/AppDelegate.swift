@@ -210,7 +210,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             
             do {
                 
-                guard let routineSelectedInSpotlight = try DataAccess.sharedInstance.GetRoutines(uniqueIdentifierPredicate).first else { return false }
+                guard let routineSelectedInSpotlight = try DataAccess.sharedInstance.fetchRoutines(with: uniqueIdentifierPredicate).first else { return false }
                 
                 let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
                 timerViewController.initializeRoutine(with: routineSelectedInSpotlight)

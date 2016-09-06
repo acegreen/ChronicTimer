@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChronicKit
 import QuartzCore
 import CoreFoundation
 import CoreGraphics

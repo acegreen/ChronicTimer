@@ -8,14 +8,19 @@
 
 import UIKit
 import CoreData
+import ChronicKit
 
-public class DataAccess: NSObject {
+public class WatchDataAccess {
     
-    static let sharedInstance = DataAccess()
+    static let sharedInstance = WatchDataAccess()
+    
+    static let context = sharedInstance.managedObjectContext
+    static let routineEntity = NSEntityDescription.entity(forEntityName: "Routines", in: context)
+    static let exerciseEntity = NSEntityDescription.entity(forEntityName: "Exercises", in: context)
     
     //MARK: -Get Routines & Exercises Functions
     
-    public func GetExistingRoutineWith(_ objectID: NSManagedObjectID) -> NSManagedObject? {
+    public func fetchExistingRoutineWith(objectID: NSManagedObjectID) -> NSManagedObject? {
         
         do {
             
@@ -28,14 +33,12 @@ public class DataAccess: NSObject {
         }
     }
     
-    public func GetRoutines(_ predicate: NSPredicate?) throws -> [RoutineModel] {
+    public func fetchRoutines(with predicate: NSPredicate?) -> [RoutineModel]? {
         
-        let request: NSFetchRequest<RoutineModel> = RoutineModel.fetchRequest()
-        let entity = NSEntityDescription.entity(forEntityName: "Routines", in: self.managedObjectContext)
-        request.entity = entity
+        let request: NSFetchRequest<RoutineModel> = RoutineModel.fetchRoutineRequest()
+        request.entity = WatchDataAccess.routineEntity
         
         if predicate != nil {
-            
             request.predicate = predicate
         }
         
@@ -44,14 +47,14 @@ public class DataAccess: NSObject {
         
         do {
             
-            let results = try Constants.context.fetch(request)
+            let results = try self.managedObjectContext.fetch(request)
             return results
             
         } catch let error as NSError {
             // failure
             print("Fetch failed: \(error.localizedDescription)")
             
-            throw error
+            return nil
             
         }
     }
@@ -59,37 +62,34 @@ public class DataAccess: NSObject {
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: URL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "AG.Test" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "AG.Chronic" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1]
-    }()
+        }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = Bundle.main.url(forResource: "Chronic", withExtension: "momd")!
+        let chronicKitBundle = Bundle(identifier: "AG.ChronicKit")!
+        
+        let modelURL = chronicKitBundle.url(forResource: "Chronic", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
-    }()
+        }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+        // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.appendingPathComponent("Chronic.sqlite")
-        
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("ChronicWatchOS.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true])
-            
         } catch {
-            
             // Report any error we got.
             var dict = [String: Any]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             
             dict[NSUnderlyingErrorKey] = error as NSError
-            
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -98,7 +98,7 @@ public class DataAccess: NSObject {
         }
         
         return coordinator
-    }()
+        }()
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
@@ -106,7 +106,7 @@ public class DataAccess: NSObject {
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
-    }()
+        }()
     
     // MARK: - Core Data Saving support
     
@@ -123,4 +123,5 @@ public class DataAccess: NSObject {
             }
         }
     }
+
 }

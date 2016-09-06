@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import ChronicKit
 import HealthKit
 import WatchConnectivity
 
@@ -33,10 +34,6 @@ class Constants {
     static var timerSoundSwitchState:Bool = true
     static var enableDeviceSleepState:Bool = false
     static var pauseInBackgroundState: Bool = false
-    
-    static let context = WatchDataAccess.sharedInstance.managedObjectContext
-    static let routineEntity = NSEntityDescription.entity(forEntityName: "Routines", in: context)
-    static let exerciseEntity = NSEntityDescription.entity(forEntityName: "Exercises", in: context)
     
     static var Routines: [NSManagedObject]!
     static var selectedRoutine: AnyObject!

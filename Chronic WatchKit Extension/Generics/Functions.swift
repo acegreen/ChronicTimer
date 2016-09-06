@@ -9,6 +9,7 @@
 import Foundation
 import WatchKit
 import CoreData
+import ChronicKit
 import HealthKit
 import WatchConnectivity
 
@@ -36,20 +37,20 @@ class Functions {
         
         let exerciseSet = NSMutableOrderedSet()
         
-        let newRoutine = RoutineModel(entity: Constants.routineEntity!, insertInto: Constants.context)
+        let newRoutine = RoutineModel(entity: WatchDataAccess.routineEntity!, insertInto: WatchDataAccess.context)
         
         for stage in 0 ..< routineStage.count {
             
             let currentStageDict = routineStage[stage]
             
-            let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+            let newExercise = ExerciseModel(entity: WatchDataAccess.exerciseEntity!, insertInto: WatchDataAccess.context)
             
             newExercise.exerciseName = currentStageDict["Name"] as? String
             newExercise.exerciseTime = currentStageDict["Time"] as! NSNumber
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = currentStageDict["Color"]
+            newExercise.exerciseColor = currentStageDict["Color"] as! NSData
             
             newExercise.exerciseToRoutine = newRoutine
             
@@ -74,7 +75,7 @@ class Functions {
         do {
             
             // save into CoreData
-            try Constants.context.save()
+            try WatchDataAccess.context.save()
             
             NotificationCenter.default.post(name: NSNotification.Name("willActivate"), object: nil)
             
@@ -98,20 +99,20 @@ class Functions {
         
         let existingRoutinePredicate: NSPredicate = NSPredicate(format:  "name == %@", routineName)
         
-        if let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first {
+        if let existingRoutine = WatchDataAccess.sharedInstance.fetchRoutines(with: existingRoutinePredicate)!.first {
             
             for stage in 0 ..< routineStage.count {
                 
                 let currentStageDict = routineStage[stage]
                 
-                let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                let newExercise = ExerciseModel(entity: WatchDataAccess.exerciseEntity!, insertInto: WatchDataAccess.context)
                 
                 newExercise.exerciseName = currentStageDict["Name"] as? String
                 newExercise.exerciseTime = currentStageDict["Time"] as! NSNumber
                 
                 newExercise.exerciseNumberOfRounds = 1
                 
-                newExercise.exerciseColor = currentStageDict["Color"]
+                newExercise.exerciseColor = currentStageDict["Color"] as! NSData
                 
                 newExercise.exerciseToRoutine = existingRoutine
                 
@@ -131,7 +132,7 @@ class Functions {
             do {
                 
                 // save into CoreData
-                try Constants.context.save()
+                try WatchDataAccess.context.save()
                 
                 NotificationCenter.default.post(name: NSNotification.Name("willActivate"), object: nil)
                 
@@ -153,16 +154,16 @@ class Functions {
         
         let existingRoutinePredicate: NSPredicate = NSPredicate(format:  "name == %@", routineName)
         
-        let existingRoutine = WatchDataAccess.sharedInstance.GetRoutines(predicate: existingRoutinePredicate)!.first
+        let existingRoutine = WatchDataAccess.sharedInstance.fetchRoutines(with: existingRoutinePredicate)!.first
         
         if existingRoutine != nil {
             
-            Constants.context.delete(existingRoutine!)
+            WatchDataAccess.context.delete(existingRoutine!)
             
             do {
                 
                 // save into CoreData
-                try Constants.context.save()
+                try WatchDataAccess.context.save()
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "willActivate"), object: nil)
                 

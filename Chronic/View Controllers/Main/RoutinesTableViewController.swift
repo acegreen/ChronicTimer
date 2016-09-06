@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChronicKit
 import QuartzCore
 import DZNEmptyDataSet
 import LaunchKit
@@ -59,7 +60,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         // Get Routines from database
         do {
             
-            self.routines = try DataAccess.sharedInstance.GetRoutines(nil)
+            self.routines = try DataAccess.sharedInstance.fetchRoutines(with: nil)
 
             self.tableView.reloadData()
         
@@ -178,9 +179,9 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
             
             do {
                 
-                try Constants.context.save()
+                try DataAccess.context.save()
                 
-                Constants.context.delete(selectedRoutine)
+                DataAccess.context.delete(selectedRoutine)
                 self.routines.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: .left)
                 

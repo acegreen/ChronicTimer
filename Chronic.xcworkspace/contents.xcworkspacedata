@@ -5,6 +5,9 @@
       location = "group:Chronic.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:ChronicKit/ChronicKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

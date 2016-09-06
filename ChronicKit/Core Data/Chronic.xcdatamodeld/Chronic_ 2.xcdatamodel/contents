@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11224.2" systemVersion="15G31" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Exercises" representedClassName="ExerciseModel" syncable="YES">
+        <attribute name="exerciseColor" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="exerciseName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseNumberOfRounds" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="exerciseTime" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="exerciseToRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routines" inverseName="routineToExcercise" inverseEntity="Routines" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Exercises"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="Routines" representedClassName="RoutineModel" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="selectedRoutine" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="tableDisplayOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="totalRoutineTime" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="routineToExcercise" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Exercises" inverseName="exerciseToRoutine" inverseEntity="Exercises" spotlightIndexingEnabled="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Exercises" positionX="241" positionY="45" width="128" height="149"/>
+        <element name="Routines" positionX="-63" positionY="-18" width="128" height="150"/>
+    </elements>
+</model>

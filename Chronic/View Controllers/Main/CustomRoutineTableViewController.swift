@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ChronicKit
 import LaunchKit
 
 class CustomRoutineTableViewController: UITableViewController, UITextFieldDelegate {
@@ -46,7 +47,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
         } else {
             
-            let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+            let newExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
             
             newExercise.exerciseName = ""
             
@@ -54,7 +55,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) // green
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) as NSData // green
             
             exerciseSet.add(newExercise)
             
@@ -173,7 +174,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                     }
                 }
                 
-                newRoutine = RoutineModel(entity: Constants.routineEntity!, insertInto: Constants.context)
+                newRoutine = RoutineModel(entity: DataAccess.routineEntity!, insertInto: DataAccess.context)
                 
                 newRoutine.routineToExcercise = exerciseSet
                 
@@ -214,7 +215,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         do {
             
             // save into CoreData
-            try Constants.context.save()
+            try DataAccess.context.save()
             
             // send delegate out
             self.delegate?.didCreateRoutine(newRoutine ?? routineToEdit, isNew: (routineToEdit != nil) ? false : true)
@@ -358,7 +359,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 // Delete the row from the data source
                 if exerciseSet.count != 0 && (indexPath as NSIndexPath).row + 1 <= exerciseSet.count {
                     
-                    Constants.context.delete(exerciseSet[(indexPath as NSIndexPath).row] as! NSManagedObject)
+                    DataAccess.context.delete(exerciseSet[(indexPath as NSIndexPath).row] as! NSManagedObject)
                     
                     exerciseSet.removeObject(at: (indexPath as NSIndexPath).row)
                 }
@@ -376,7 +377,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             let index:IndexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 1), section: 1)
             
-            let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+            let newExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
             
             newExercise.exerciseName = ""
             
@@ -384,7 +385,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) // green
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) as NSData // green
             
             exerciseSet.add(newExercise)
             
@@ -434,7 +435,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             let index:IndexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 1), section: 1)
             
-            let newExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+            let newExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
             
             newExercise.exerciseName = ""
             
@@ -442,7 +443,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
             newExercise.exerciseNumberOfRounds = 1
             
-            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green)
+            newExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.green) as NSData
             
             exerciseSet.add(newExercise)
             
@@ -514,7 +515,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
             } else if textField.tag == 4 {
                 
-                exercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: textField.backgroundColor!)
+                exercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: textField.backgroundColor!) as NSData
                 
             }
         }

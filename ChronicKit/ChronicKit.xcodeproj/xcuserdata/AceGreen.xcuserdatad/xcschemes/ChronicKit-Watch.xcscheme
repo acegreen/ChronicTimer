@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4428872B6DA6450021F3C7747B95F553"
-               BuildableName = "SDVersion.framework"
-               BlueprintName = "SDVersion"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "23FC72BE1D7E4B9900671989"
+               BuildableName = "ChronicKit.framework"
+               BlueprintName = "ChronicKitWatchOS"
+               ReferencedContainer = "container:ChronicKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4428872B6DA6450021F3C7747B95F553"
-            BuildableName = "SDVersion.framework"
-            BlueprintName = "SDVersion"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "23FC72BE1D7E4B9900671989"
+            BuildableName = "ChronicKit.framework"
+            BlueprintName = "ChronicKitWatchOS"
+            ReferencedContainer = "container:ChronicKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "23FC72BE1D7E4B9900671989"
+            BuildableName = "ChronicKit.framework"
+            BlueprintName = "ChronicKitWatchOS"
+            ReferencedContainer = "container:ChronicKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

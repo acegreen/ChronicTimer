@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChronicKit
 import CoreData
 
 class CircuitRoutineTableViewController: UITableViewController, UITextFieldDelegate {
@@ -135,7 +136,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Warm Up Exercise
                     
-                    let warmUpExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let warmUpExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     warmUpExercise.exerciseName = NSLocalizedString("Exercise Name Text (Warm Up)", comment: "")
                     
@@ -143,7 +144,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     warmUpExercise.exerciseNumberOfRounds = 1
                     
-                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFFCD02)) // yellow
+                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFFCD02)) as NSData // yellow
                     
                     warmUpExercise.exerciseToRoutine = routineToEdit
                     
@@ -151,7 +152,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Round Exercise
                     
-                    let roundExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let roundExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     roundExercise.exerciseName = NSLocalizedString("Exercise Name Text (Round)", comment: "")
                     
@@ -159,7 +160,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     roundExercise.exerciseNumberOfRounds = numberOfRounds as NSNumber
                     
-                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) // green
+                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) as NSData // green
                     
                     roundExercise.exerciseToRoutine = routineToEdit
                     
@@ -167,7 +168,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Rest Exercise
                     
-                    let restExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let restExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     restExercise.exerciseName = NSLocalizedString("Exercise Name Text (Rest)", comment: "")
                     
@@ -175,7 +176,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     restExercise.exerciseNumberOfRounds = numberOfRounds as NSNumber
                     
-                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFF3A2D)) // red
+                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFF3A2D)) as NSData // red
                     
                     restExercise.exerciseToRoutine = routineToEdit
                     
@@ -183,7 +184,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Cool Down Exercise
                     
-                    let coolDownExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let coolDownExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     coolDownExercise.exerciseName = NSLocalizedString("Exercise Name Text (Cool Down)", comment: "")
                     
@@ -191,7 +192,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     coolDownExercise.exerciseNumberOfRounds = 1
                     
-                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x1D62F0)) // blue
+                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x1D62F0)) as NSData // blue
                     
                     coolDownExercise.exerciseToRoutine = routineToEdit
                     
@@ -233,14 +234,14 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Warm Up Exercise
                     
-                    let warmUpExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let warmUpExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     warmUpExercise.exerciseName = NSLocalizedString("Exercise Name Text (Warm Up)", comment: "")
                     warmUpExercise.exerciseTime = warmUpDuration as NSNumber
                     
                     warmUpExercise.exerciseNumberOfRounds = 1
                     
-                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFFCD02))
+                    warmUpExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFFCD02)) as NSData
                     
                     warmUpExercise.exerciseToRoutine = newRoutine
                     
@@ -248,7 +249,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Round Exercise
                     
-                    let roundExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let roundExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     roundExercise.exerciseName = NSLocalizedString("Exercise Name Text (Round)", comment: "")
                     
@@ -256,7 +257,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     roundExercise.exerciseNumberOfRounds = numberOfRounds as NSNumber
                     
-                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427))
+                    roundExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x5AD427)) as NSData
                     
                     roundExercise.exerciseToRoutine = routineToEdit
                     
@@ -264,7 +265,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Rest Exercise
                     
-                    let restExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let restExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     restExercise.exerciseName = NSLocalizedString("Exercise Name Text (Rest)", comment: "")
                     
@@ -272,7 +273,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     restExercise.exerciseNumberOfRounds = numberOfRounds as NSNumber
                     
-                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFF3A2D))
+                    restExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0xFF3A2D)) as NSData
                     
                     restExercise.exerciseToRoutine = routineToEdit
                     
@@ -280,7 +281,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     // Cool Down Exercise
                     
-                    let coolDownExercise = ExerciseModel(entity: Constants.exerciseEntity!, insertInto: Constants.context)
+                    let coolDownExercise = ExerciseModel(entity: DataAccess.exerciseEntity!, insertInto: DataAccess.context)
                     
                     coolDownExercise.exerciseName = NSLocalizedString("Exercise Name Text (Cool Down)", comment: "")
                     
@@ -288,13 +289,13 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
                     
                     coolDownExercise.exerciseNumberOfRounds = 1
                     
-                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x1D62F0))
+                    coolDownExercise.exerciseColor = NSKeyedArchiver.archivedData(withRootObject: UIColor.colorFromRGB(0x1D62F0)) as NSData
                     
                     coolDownExercise.exerciseToRoutine = newRoutine
                     
                     exerciseSet.add(coolDownExercise)
                     
-                    newRoutine = RoutineModel(entity: Constants.routineEntity!, insertInto: Constants.context)
+                    newRoutine = RoutineModel(entity: DataAccess.routineEntity!, insertInto: DataAccess.context)
                     
                     newRoutine.routineToExcercise = exerciseSet
                     
@@ -339,7 +340,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             do {
                 
                 // save into CoreData
-                try Constants.context.save()
+                try DataAccess.context.save()
                 
                 // send delegate out
                 self.delegate?.didCreateRoutine(newRoutine ?? routineToEdit, isNew: (routineToEdit != nil) ? false : true)
