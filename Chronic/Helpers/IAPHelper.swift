@@ -93,18 +93,19 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
-//        if inAppPurchasePopupController != nil {
-//            
-//            inAppPurchasePopupController.dismiss(animated: true)
-//        }
-        
+
         for transaction:SKPaymentTransaction in transactions {
             
             let productID = transaction.payment.productIdentifier
-            let productPrice = p.price
-            let formatter = NumberFormatter()
-            formatter.locale = p.priceLocale
-            let productCurrency = formatter.currencyCode
+            var productPrice: NSDecimalNumber!
+            var productCurrency: String!
+            
+            if let product = self.list.filter({ $0.productIdentifier == productID }).first {
+                productPrice = product.price
+                let formatter = NumberFormatter()
+                formatter.locale = product.priceLocale
+                productCurrency = formatter.currencyCode
+            }
             
             switch transaction.transactionState {
                 
@@ -236,20 +237,20 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 
                 var errorMessage = ""
                 
-                switch (transaction.error as? SKError)!.code {
-                case .unknown:
+                switch (transaction.error as? SKError)?.code {
+                case .unknown?:
                     errorMessage = "Unknown error"
                     break
-                case .clientInvalid:
+                case .clientInvalid?:
                     errorMessage = "Client Not Allowed To issue Request"
                     break
-                case .paymentCancelled:
+                case .paymentCancelled?:
                     errorMessage = "User Cancelled Request"
                     break
-                case .paymentInvalid:
+                case .paymentInvalid?:
                     errorMessage = "Purchase Identifier Invalid"
                     break
-                case .paymentNotAllowed:
+                case .paymentNotAllowed?:
                     errorMessage = "Device Not Allowed To Make Payment"
                     break
                 default:

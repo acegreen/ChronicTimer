@@ -20,20 +20,7 @@ public class WatchDataAccess {
     
     //MARK: -Get Routines & Exercises Functions
     
-    public func fetchExistingRoutineWith(objectID: NSManagedObjectID) -> NSManagedObject? {
-        
-        do {
-            
-            return try self.managedObjectContext.existingObject(with: objectID)
-            
-        } catch let error as NSError {
-            // failure
-            print("Fetch failed: \(error.localizedDescription)")
-            return nil
-        }
-    }
-    
-    public func fetchRoutines(with predicate: NSPredicate?) -> [RoutineModel]? {
+    public func fetchRoutines(with predicate: NSPredicate?) throws -> [RoutineModel] {
         
         let request: NSFetchRequest<RoutineModel> = RoutineModel.fetchRoutineRequest()
         request.entity = WatchDataAccess.routineEntity
@@ -54,8 +41,48 @@ public class WatchDataAccess {
             // failure
             print("Fetch failed: \(error.localizedDescription)")
             
-            return nil
+            throw error
+        }
+    }
+    
+    public func fetchRoutine(with objectID: NSManagedObjectID) -> NSManagedObject? {
+        
+        do {
             
+            return try self.managedObjectContext.existingObject(with: objectID)
+            
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    public func fetchRoutine(with name: String) -> RoutineModel? {
+        
+        let existingRoutinePredicate: NSPredicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            
+            return try self.fetchRoutines(with: existingRoutinePredicate).first
+            
+        } catch {
+            // TO-DO: HANDLE ERROR
+            return nil
+        }
+    }
+    
+    public func fetchSelectedRoutine() -> RoutineModel? {
+        
+        let selectedRoutinePredicate: NSPredicate = NSPredicate(format: "selectedRoutine == true")
+        
+        do {
+            
+            return try self.fetchRoutines(with: selectedRoutinePredicate).first
+            
+        } catch {
+            // TO-DO: HANDLE ERROR
+            return nil
         }
     }
     

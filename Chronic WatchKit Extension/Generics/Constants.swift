@@ -35,7 +35,6 @@ class Constants {
     static var enableDeviceSleepState:Bool = false
     static var pauseInBackgroundState: Bool = false
     
-    static var Routines: [NSManagedObject]!
     static var selectedRoutine: AnyObject!
     static var warmUpExercise: ExerciseModel!
     static var roundExercise: ExerciseModel!

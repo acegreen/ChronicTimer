@@ -25,19 +25,6 @@ public class DataAccess {
     
     //MARK: -Get Routines & Exercises Functions
     
-    public func fetchExistingRoutineWith(_ objectID: NSManagedObjectID) -> NSManagedObject? {
-        
-        do {
-            
-            return try self.managedObjectContext.existingObject(with: objectID)
-            
-        } catch let error as NSError {
-            // failure
-            print("Fetch failed: \(error.localizedDescription)")
-            return nil
-        }
-    }
-    
     public func fetchRoutines(with predicate: NSPredicate?) throws -> [RoutineModel] {
         
         let request: NSFetchRequest<RoutineModel> = RoutineModel.fetchRoutineRequest()
@@ -63,6 +50,47 @@ public class DataAccess {
         }
     }
     
+    public func fetchRoutine(with objectID: NSManagedObjectID) -> NSManagedObject? {
+        
+        do {
+            
+            return try self.managedObjectContext.existingObject(with: objectID)
+            
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    public func fetchRoutine(with name: String) -> RoutineModel? {
+        
+        let existingRoutinePredicate: NSPredicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            
+            return try self.fetchRoutines(with: existingRoutinePredicate).first
+            
+        } catch {
+            // TO-DO: HANDLE ERROR
+            return nil
+        }
+    }
+    
+    public func fetchSelectedRoutine() -> RoutineModel? {
+        
+        let selectedRoutinePredicate: NSPredicate = NSPredicate(format: "selectedRoutine == true")
+        
+        do {
+            
+            return try self.fetchRoutines(with: selectedRoutinePredicate).first
+            
+        } catch {
+            // TO-DO: HANDLE ERROR
+            return nil
+        }
+    }
+    
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: URL = {
@@ -85,18 +113,11 @@ public class DataAccess {
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        //var store: NSPersistentStore!
-        
-        // Check if store needs migration
-        // let (needsMigration, targetURL) = self.checkIfMigrationRequired(oldLocationURL: oldLocationURL, newLocationURL: newLocationURL)
         
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: newLocationURL, options: options)
-            
-            //try self.persistentStoreCoordinator.migratePersistentStore(store, to: newLocationURL, options: DataAccess.options, withType: NSSQLiteStoreType)
-            print("CoreData store migration complete")
             
         } catch {
             
@@ -160,21 +181,17 @@ public class DataAccess {
         return (needsMigration ,targetURL)
     }
     
-    func moveCoreDataStore(from oldLocationURL: URL, to newLocationURL: URL) {
+    func migrateCoreDataStore(from oldLocationURL: URL, to newLocationURL: URL) {
         
         if FileManager.default.fileExists(atPath: oldLocationURL.path) {
-            //Check if a new file exists. This can happen when the watch app is run before
-            //Topo Maps+ runs and move the core data database
-            if FileManager.default.fileExists(atPath: newLocationURL.path) {
-                do {
-                    try FileManager.default.removeItem(at: newLocationURL)
-                }
-                catch let error {
-                    print(error)
-                }
-            }
             do {
-                try self.persistentStoreCoordinator.migratePersistentStore(self.persistentStoreCoordinator.persistentStore(for: oldLocationURL)!, to: newLocationURL, options: DataAccess.options, withType: NSSQLiteStoreType)
+                
+                if let newStore = self.persistentStoreCoordinator.persistentStore(for: newLocationURL) {
+                    try self.persistentStoreCoordinator.remove(newStore)
+                }
+                
+                let oldStore = try self.persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: oldLocationURL, options: DataAccess.options)
+                try self.persistentStoreCoordinator.migratePersistentStore(oldStore, to: newLocationURL, options: DataAccess.options, withType: NSSQLiteStoreType)
                 try FileManager.default.removeItem(at: oldLocationURL)
                 
                 print("CoreData store moved")

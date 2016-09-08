@@ -28,6 +28,8 @@
 "Week" = "Settimana";
 "Month" = "Mese";
 
+"Of" = "Di";
+
 /* Main */
 "Text-To-Speech Default Sentence" = "Questa applicazione è impressionante";
 "Text-To-Speech Tracking Run Text" = "Tracciamento del percorso";

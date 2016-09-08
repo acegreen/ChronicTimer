@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>10</string>
+	<string>30</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -79,6 +79,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Used by Google AdMob for certain ads</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Used by Twitter MoPub for certain ads</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Chronic would like to show you your heart rate during workouts &amp; workout history.</string>
 	<key>NSHealthUpdateUsageDescription</key>

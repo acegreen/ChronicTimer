@@ -35,7 +35,7 @@ class RoutineCell: UITableViewCell {
     func configure(with routine: RoutineModel) {
         
         self.name = routine.name
-        self.time = Functions.timeStringFrom(time:Int(routine.totalRoutineTime!))
+        self.time = Functions.timeStringFrom(time: Int(routine.totalRoutineTime))
         
         barPoints = [String]()
         barValues = [Double]()

@@ -28,6 +28,8 @@
 "Week" = "Week";
 "Month" = "Month";
 
+"Of" = "Of";
+
 /* Main */
 "Text-To-Speech Default Sentence" = "This app is awesome";
 "Text-To-Speech Tracking Run Text" = "Tracking Run";

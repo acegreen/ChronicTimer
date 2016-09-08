@@ -16,6 +16,7 @@
 		2304E5361CA83B4300A10005 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304E5351CA83B4300A10005 /* MainTabBarController.swift */; };
 		230668431C1E7242003BDF03 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230668421C1E7242003BDF03 /* NotificationHelper.swift */; };
 		2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307C5431C078C8F0069B35F /* NumberPickerTextField.swift */; };
+		230A40FF1D81C57E00A391DC /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A40FE1D81C57E00A391DC /* SweetAlert.swift */; };
 		231152A81D7A1679003938E4 /* InAppPurchaseReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231152A71D7A1679003938E4 /* InAppPurchaseReusableView.swift */; };
 		231152AA1D7A3B28003938E4 /* InAppPurchaseReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231152A91D7A3B28003938E4 /* InAppPurchaseReusableView.xib */; };
 		231152AC1D7A634F003938E4 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231152AB1D7A634F003938E4 /* Protocols.swift */; };
@@ -41,7 +42,6 @@
 		2315CD191D7EE8D400372228 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2315CD021D7EE8D400372228 /* star.png */; };
 		2315CD1A1D7EE8D400372228 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2315CD031D7EE8D400372228 /* star@2x.png */; };
 		2315CD1B1D7EE8D400372228 /* SARate.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 2315CD041D7EE8D400372228 /* SARate.podspec */; };
-		2315CD1C1D7EE8D400372228 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315CD061D7EE8D400372228 /* SweetAlert.swift */; };
 		2315CD1D1D7EE8D400372228 /* SwiftColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315CD081D7EE8D400372228 /* SwiftColorPickerView.swift */; };
 		2315CD201D7EE9B300372228 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315CCF21D7EE8D400372228 /* Keychain.swift */; };
 		231CE07D1CF1FB940095E607 /* CustomAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CE07C1CF1FB940095E607 /* CustomAdView.swift */; };
@@ -93,6 +93,7 @@
 		236B0AE01D7CC5E40055C754 /* SiriIntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 236B0AD41D7CC5E40055C754 /* SiriIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		236B0AE31D7CC5E40055C754 /* SiriIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 236B0ACB1D7CC5E30055C754 /* SiriIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		236B0AEC1D7CEE8F0055C754 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236B0AEB1D7CEE8F0055C754 /* Intents.framework */; };
+		237518601D7F53FD0037040F /* ChronicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385C1D7E79FD005C999D /* ChronicKit.framework */; };
 		237525C51BD6838200E667D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525C41BD6838100E667D2 /* HealthKit.framework */; };
 		2375A5A51D459D9A00DCA06C /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2375A5A41D459D9A00DCA06C /* Pods_Chronic.framework */; };
 		237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237605271AEFE779003E2C07 /* SettingsTableViewController.swift */; };
@@ -258,6 +259,7 @@
 		2305F2A01BBDB4C30049447E /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		230668421C1E7242003BDF03 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		2307C5431C078C8F0069B35F /* NumberPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerTextField.swift; sourceTree = "<group>"; };
+		230A40FE1D81C57E00A391DC /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		231152A71D7A1679003938E4 /* InAppPurchaseReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseReusableView.swift; sourceTree = "<group>"; };
 		231152A91D7A3B28003938E4 /* InAppPurchaseReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppPurchaseReusableView.xib; sourceTree = "<group>"; };
 		231152AB1D7A634F003938E4 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -285,7 +287,6 @@
 		2315CD021D7EE8D400372228 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		2315CD031D7EE8D400372228 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		2315CD041D7EE8D400372228 /* SARate.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SARate.podspec; sourceTree = "<group>"; };
-		2315CD061D7EE8D400372228 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		2315CD081D7EE8D400372228 /* SwiftColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftColorPickerView.swift; sourceTree = "<group>"; };
 		231CE07C1CF1FB940095E607 /* CustomAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAdView.swift; sourceTree = "<group>"; };
 		231CE07E1CF217B80095E607 /* SuperUserPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperUserPopoverViewController.swift; sourceTree = "<group>"; };
@@ -431,6 +432,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237518601D7F53FD0037040F /* ChronicKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +518,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		230A40FD1D81C57E00A391DC /* SweetAlert */ = {
+			isa = PBXGroup;
+			children = (
+				230A40FE1D81C57E00A391DC /* SweetAlert.swift */,
+			);
+			name = SweetAlert;
+			path = Libraries/SweetAlert;
+			sourceTree = SOURCE_ROOT;
+		};
 		2315CCE21D7EE82900372228 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,11 +544,10 @@
 				2315CCF11D7EE8D400372228 /* Keychain */,
 				2315CCF31D7EE8D400372228 /* MulticolorPolylineSegment */,
 				2315CCF51D7EE8D400372228 /* SARate-master */,
-				2315CD051D7EE8D400372228 /* SweetAlert */,
 				2315CD071D7EE8D400372228 /* SwiftColorPickerView */,
+				230A40FD1D81C57E00A391DC /* SweetAlert */,
 			);
-			name = Libraries;
-			path = ../Libraries;
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		2315CCE91D7EE8D400372228 /* Fabric */ = {
@@ -612,14 +622,6 @@
 			path = iRate;
 			sourceTree = "<group>";
 		};
-		2315CD051D7EE8D400372228 /* SweetAlert */ = {
-			isa = PBXGroup;
-			children = (
-				2315CD061D7EE8D400372228 /* SweetAlert.swift */,
-			);
-			path = SweetAlert;
-			sourceTree = "<group>";
-		};
 		2315CD071D7EE8D400372228 /* SwiftColorPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,9 +633,9 @@
 		23210BCA1D6CF28E00C004E6 /* Interface Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				23210BCB1D6CF28E00C004E6 /* InterfaceController.swift */,
-				23210BCC1D6CF28E00C004E6 /* InterfaceTableController.swift */,
 				23210BCD1D6CF28E00C004E6 /* QTInterfaceController.swift */,
+				23210BCC1D6CF28E00C004E6 /* InterfaceTableController.swift */,
+				23210BCB1D6CF28E00C004E6 /* InterfaceController.swift */,
 				23210BCE1D6CF28E00C004E6 /* RunTrackerInterfaceController.swift */,
 			);
 			path = "Interface Controllers";
@@ -889,6 +891,7 @@
 				236B0AD71D7CC5E40055C754 /* SiriIntentUI */,
 				23AF7DD91AC02E2800AA3FC7 /* Products */,
 				19AA88A6D119872640CE60F1 /* Pods */,
+				2315CCE81D7EE8D400372228 /* Libraries */,
 				CAB895CE144CF53267391711 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -915,10 +918,9 @@
 				237B106D1C1F36C600D52713 /* Helpers */,
 				2315CCE21D7EE82900372228 /* Models */,
 				23CFD9141BC54E9000CF4BAC /* Custom Keyboards */,
-				23979D941B63FB13005BC945 /* View Controller */,
 				234A33B21C409BC90024D898 /* Views */,
+				23979D941B63FB13005BC945 /* View Controller */,
 				237B10891C265A7100D52713 /* Storyboards */,
-				2315CCE81D7EE8D400372228 /* Libraries */,
 				23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */,
 			);
 			path = Chronic;
@@ -1482,6 +1484,7 @@
 				231152A81D7A1679003938E4 /* InAppPurchaseReusableView.swift in Sources */,
 				23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */,
 				2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */,
+				230A40FF1D81C57E00A391DC /* SweetAlert.swift in Sources */,
 				234954321D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift in Sources */,
 				237B10901C2667EA00D52713 /* OBHealthViewController.swift in Sources */,
 				2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */,
@@ -1502,7 +1505,6 @@
 				237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */,
 				23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */,
 				232F4C7C1AC02EA700D25995 /* CircuitRoutineTableViewController.swift in Sources */,
-				2315CD1C1D7EE8D400372228 /* SweetAlert.swift in Sources */,
 				237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */,
 				2315CCE41D7EE82900372228 /* Workout.swift in Sources */,
 				234954341D565EE7007B053A /* TextField.swift in Sources */,

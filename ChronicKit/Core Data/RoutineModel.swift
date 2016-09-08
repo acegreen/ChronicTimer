@@ -18,7 +18,7 @@ public class RoutineModel: NSManagedObject {
     @NSManaged public var name: String!
     @NSManaged public var selectedRoutine: Bool
     @NSManaged public var tableDisplayOrder: NSNumber!
-    @NSManaged public var totalRoutineTime: NSNumber?
+    @NSManaged public var totalRoutineTime: NSNumber!
     @NSManaged public var type: String!
     
     @NSManaged public var routineToExcercise: NSOrderedSet?
@@ -32,7 +32,7 @@ extension RoutineModel {
     
     @nonobjc public var searchDescription: String {
         
-        let totalTimeString = self.timeStringFrom(time: self.totalRoutineTime! as Int)
+        let totalTimeString = self.timeStringFrom(time: self.totalRoutineTime as Int)
         return "Total Time: \(totalTimeString)"
     }
     
