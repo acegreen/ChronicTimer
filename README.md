@@ -1,3 +1,5 @@
+![Facebook_851x315.png](https://bitbucket.org/repo/nMyn5A/images/2361191355-Facebook_851x315.png)
+
 # Chronic Timer #
 
 You concentrate on your workout, Chronic will take care of timing! Anyone who is serious about working out knows that the key to success is a routine. 
