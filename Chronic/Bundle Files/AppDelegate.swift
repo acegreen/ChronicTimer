@@ -165,6 +165,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             Functions.loadMainInterface()
         }
         
+        // Migrate if neccessary
+        let (needsMigration, _) = DataAccess.sharedInstance.checkIfMigrationRequired(oldLocationURL: DataAccess.oldLocationURL, newLocationURL: DataAccess.newLocationURL)
+        if needsMigration {
+            DataAccess.sharedInstance.migrateCoreDataStore(from: DataAccess.oldLocationURL, to: DataAccess.newLocationURL)
+        }
+        
         return true
     }
     
@@ -206,36 +212,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         if let uniqueIdentifier = uniqueIdentifier {
             
-            let uniqueIdentifierPredicate: NSPredicate = NSPredicate(format: "name = %@", uniqueIdentifier)
+            guard let routineSelectedInSpotlight = DataAccess.sharedInstance.fetchRoutine(with: uniqueIdentifier) else { return false }
             
-            do {
-                
-                guard let routineSelectedInSpotlight = try DataAccess.sharedInstance.fetchRoutines(with: uniqueIdentifierPredicate).first else { return false }
-                
-                let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-                timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
-                
-                let rootViewController = Constants.appDel.window?.rootViewController
-                if rootViewController?.presentedViewController != nil {
-                    rootViewController?.dismiss(animated: true, completion: nil)
-                }
-                
-                rootViewController?.present(timerViewController, animated: true, completion: nil)
-                
-                // Mark correct routine as selected
-                
-                let routineMarkedSelected = Functions.getSelectedRoutine()
-                
-                if routineMarkedSelected != nil && routineMarkedSelected?.name != uniqueIdentifier {
-                    
-                    routineMarkedSelected!.selectedRoutine = false
-                }
-                
-                routineSelectedInSpotlight.selectedRoutine = true
-                
-            } catch {
-                // TO-DO: HANDLE ERROR
+            let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+            timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
+            
+            let rootViewController = Constants.appDel.window?.rootViewController
+            if rootViewController?.presentedViewController != nil {
+                rootViewController?.dismiss(animated: true, completion: nil)
             }
+            
+            rootViewController?.present(timerViewController, animated: true, completion: nil)
+            
+            // Mark correct routine as selected
+            
+            Functions.deselectSelectedRoutine()
+            
+            let routineMarkedSelected = DataAccess.sharedInstance.fetchSelectedRoutine()
+            
+            if routineMarkedSelected != nil && routineMarkedSelected?.name != uniqueIdentifier {
+                
+                routineMarkedSelected!.selectedRoutine = false
+            }
+            
+            routineSelectedInSpotlight.selectedRoutine = true
         }
         
         return true
@@ -388,7 +388,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             
         case ShortcutIdentifier.Dynamic.type:
             
-            guard let selectedRoutine = Functions.getRoutine(shortcutItem.localizedTitle) else { return false }
+            guard let selectedRoutine = DataAccess.sharedInstance.fetchRoutine(with: shortcutItem.localizedTitle) else { return false }
                 
             timerViewController.initializeRoutine(with: selectedRoutine)
             rootViewController?.present(timerViewController, animated: true, completion: nil)

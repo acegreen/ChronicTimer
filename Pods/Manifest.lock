@@ -21,7 +21,7 @@ PODS:
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
   - MZAppearance (1.1.6)
-  - MZFormSheetPresentationController (2.4.1):
+  - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
   - Parse (1.14.2):
     - Bolts/Tasks (~> 1.8)
@@ -39,8 +39,8 @@ PODS:
     - Parse (~> 1.9)
   - PureLayout (3.0.2)
   - ReachabilitySwift (2.3.3)
-  - Rollout.io (1.3.0)
-  - SDVersion (3.4)
+  - Rollout.io (1.3.1)
+  - SDVersion (3.5)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -75,7 +75,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Charts:
-    :commit: ce4e1809f521850548f5c78622908d02f0869c1d
+    :commit: 2dd22b903a78d0d34d07ef71728c41ac22f6a114
     :git: https://github.com/danielgindi/Charts.git
   ReachabilitySwift:
     :commit: 3c7e72ac66186e2477d07d36e2b4589fb5e855d8
@@ -96,15 +96,15 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: c8da9e592fe43d9b47ef86b018cadb71af53f6b3
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
-  MZFormSheetPresentationController: 730bf8879cd637d84462ef5343fca65ad6bf1fc0
+  MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
   ParseTwitterUtils: 0dde9689565e7012d83f892c64aed2ebe69f2ea9
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
-  Rollout.io: ca9238a4473c84b1b4c381c5ad927024a1bab4e7
-  SDVersion: c0a16b2c659a66e0af6c7bba6de4057bc2cc626d
+  Rollout.io: e2374975b36769db594ecbe8738e13f8a5b202c8
+  SDVersion: 73adb37feaf9ddaca41b88f4095325d4d583af7e
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 PODFILE CHECKSUM: d2c0520f9b9ffddaec2626ae3fadfd0695572e7f

@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>3.1</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>30</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -31,8 +31,6 @@
 				<string>INStartWorkoutIntent</string>
 				<string>INPauseWorkoutIntent</string>
 				<string>INResumeWorkoutIntent</string>
-				<string>INCancelWorkoutIntent
-</string>
 				<string>INEndWorkoutIntent</string>
 			</array>
 		</dict>

@@ -10,7 +10,7 @@ public class NotificationHelper {
     class var interval: String { return Constants.userDefaults.string(forKey: "NOTIFICATION_REMINDER_INTERVAL")! }
     class var hour: Int { return Constants.userDefaults.integer(forKey: "NOTIFICATION_REMINDER_TIME")}
 
-    class var reminderDateComponents:DateComponents { return DateComponents(calendar: Constants.currentCalendar, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: hour, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil) }
+    class var reminderDateComponents: DateComponents { return DateComponents(calendar: Constants.currentCalendar, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: hour, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil) }
     
     class func scheduleNotification(_ dateComponents: DateComponents!, repeatInterval: Calendar.Component?, alertTitle: String!, alertBody: String!, sound: String!, identifier: String!) {
         
@@ -36,7 +36,6 @@ public class NotificationHelper {
         center.getPendingNotificationRequests(completionHandler: { (requests) in
             print(requests)
         })
-        
     }
 
     class func unscheduleNotifications(notificationIdentifier :String?) {

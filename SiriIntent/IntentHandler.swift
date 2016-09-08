@@ -6,14 +6,20 @@
 //  Copyright © 2016 Ace Green. All rights reserved.
 //
 
+import Foundation
 import Intents
 import ChronicKit
 
-class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIntentHandling, INResumeWorkoutIntentHandling, INCancelWorkoutIntentHandling, INEndWorkoutIntentHandling {
+class IntentHandler: INExtension, INWorkoutsDomainHandling {
+    
+    var routines = [RoutineModel]()
 
     override func handler(for intent: INIntent) -> Any {
         // This is the default implementation.  If you want different objects to handle different intents,
         // you can override this and return the handler you want for that particular intent.
+        
+        // Load routines
+        routines = loadRoutines()
         
         return self
     }
@@ -21,20 +27,25 @@ class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIn
     // MARK: - INStartWorkoutIntentHandling
     public func resolveWorkoutName(forStartWorkout intent: INStartWorkoutIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Void) {
         
-        print("resolveWorkoutName")
+        print("resolveWorkoutName", intent.workoutName?.spokenPhrase)
         
-        if let routines = loadRoutines() {
+        if routines.count > 0 {
             
-            let speakableStringRoutines: [INSpeakableString] = routines.map({ INSpeakableString(identifier: "routines", spokenPhrase: $0.name, pronunciationHint: nil) })
-            
-            if let workoutName = intent.workoutName, speakableStringRoutines.contains(where: { $0.spokenPhrase == workoutName.spokenPhrase }) {
-                print("workoutName resolved")
+            if let workoutName = intent.workoutName, let routine = routines.filter({ $0.name.lowercased() == workoutName.spokenPhrase?.lowercased() }).first {
                 
-                completion(INSpeakableStringResolutionResult.success(with: workoutName))
+                print("workoutName resolved", workoutName)
+                
+                let resolvingString = INSpeakableString(identifier: "routine", spokenPhrase: routine.name, pronunciationHint: nil)
+                
+                completion(INSpeakableStringResolutionResult.success(with: resolvingString))
                 
             } else {
+                
+                let speakableStringRoutines: [INSpeakableString] = routines.map({ INSpeakableString(identifier: "routines", spokenPhrase: $0.name, pronunciationHint: nil) })
+                
                 completion(INSpeakableStringResolutionResult.disambiguation(with: speakableStringRoutines))
             }
+            
         } else {
             // TODO: Handle no routines
         }
@@ -53,38 +64,47 @@ class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIn
     public func handle(startWorkout intent: INStartWorkoutIntent, completion: @escaping (INStartWorkoutIntentResponse) -> Void) {
         
         // Implement app logic to start a workout
-        if let workoutName = intent.workoutName, let workoutNameSpokenPhrase = workoutName.spokenPhrase {
+        var response: INStartWorkoutIntentResponse!
+
+        if let workoutName = intent.workoutName, let workoutSpokenphrase = workoutName.spokenPhrase {
+            
             let userActivity = NSUserActivity(activityType: NSStringFromClass(INStartWorkoutIntent.self))
-            userActivity.userInfo = ["workoutName": workoutNameSpokenPhrase]
-            let response = INStartWorkoutIntentResponse(code: .continueInApp, userActivity: userActivity)
-            completion(response)
+            userActivity.userInfo = ["workoutName": workoutSpokenphrase]
+            
+            response = INStartWorkoutIntentResponse(code: .continueInApp, userActivity: userActivity)
+            
+        } else {
+            response = INStartWorkoutIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
         }
+        
+        completion(response)
     }
     
     // MARK: - INPauseWorkoutIntentHandling
     public func handle(pauseWorkout intent: INPauseWorkoutIntent, completion: @escaping (INPauseWorkoutIntentResponse) -> Void) {
         
+        print(intent.workoutName)
     }
     
     // MARK: - INResumeWorkoutIntentHandling
     public func handle(resumeWorkout intent: INResumeWorkoutIntent, completion: @escaping (INResumeWorkoutIntentResponse) -> Void) {
         
-        
+        print(intent.workoutName)
     }
     
     // MARK: - INCancelWorkoutIntentHandling
     public func handle(cancelWorkout intent: INCancelWorkoutIntent, completion: @escaping (INCancelWorkoutIntentResponse) -> Void) {
         
-        
+        print(intent.workoutName)
     }
 
     // MARK: - INEndWorkoutIntentHandling
     public func handle(endWorkout intent: INEndWorkoutIntent, completion: @escaping (INEndWorkoutIntentResponse) -> Void) {
         
-        
+        print(intent.workoutName)
     }
     
-    func loadRoutines() -> [RoutineModel]? {
+    func loadRoutines() -> [RoutineModel] {
         
         // Get Routines from database
         do {
@@ -94,7 +114,7 @@ class IntentHandler: INExtension, INStartWorkoutIntentHandling, INPauseWorkoutIn
         } catch {
             // TO-DO: HANDLE ERROR
             
-            return nil
+            return []
         }
     }
 }

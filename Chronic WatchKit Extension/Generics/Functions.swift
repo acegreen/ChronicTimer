@@ -97,9 +97,7 @@ class Functions {
         
         let exerciseSet = NSMutableOrderedSet()
         
-        let existingRoutinePredicate: NSPredicate = NSPredicate(format:  "name == %@", routineName)
-        
-        if let existingRoutine = WatchDataAccess.sharedInstance.fetchRoutines(with: existingRoutinePredicate)!.first {
+        if let existingRoutine = WatchDataAccess.sharedInstance.fetchRoutine(with: routineName) {
             
             for stage in 0 ..< routineStage.count {
                 
@@ -152,9 +150,7 @@ class Functions {
         
         let routineName = appContext["routineName"] as! String
         
-        let existingRoutinePredicate: NSPredicate = NSPredicate(format:  "name == %@", routineName)
-        
-        let existingRoutine = WatchDataAccess.sharedInstance.fetchRoutines(with: existingRoutinePredicate)!.first
+        let existingRoutine = WatchDataAccess.sharedInstance.fetchRoutine(with: routineName)
         
         if existingRoutine != nil {
             

@@ -157,7 +157,7 @@ class Functions {
     
     class func setSelectedRoutine(_ routine: RoutineModel, completion: (_ result: Bool) -> Void) {
         
-        routine.setValue(true, forKey: "selectedRoutine")
+        routine.selectedRoutine = true
         
         updateDynamicAction(with: routine)
         
@@ -180,53 +180,16 @@ class Functions {
     
     class func deselectSelectedRoutine() {
         
-        let selectedRoutinePredicate: NSPredicate = NSPredicate(format: "selectedRoutine == true")
+        let routineMarkedSelected = DataAccess.sharedInstance.fetchSelectedRoutine()
+        routineMarkedSelected?.selectedRoutine = false
         
-        do {
+        saveContext( { (save) -> Void in
             
-            let routineMarkedSelected = try DataAccess.sharedInstance.fetchRoutines(with: selectedRoutinePredicate).first
-            
-            routineMarkedSelected?.selectedRoutine = false
-            
-            saveContext( { (save) -> Void in
+            if save == true {
                 
-                if save == true {
-                    
-                    UIApplication.shared.shortcutItems = nil
-                }
-            })
-            
-        } catch {
-            // TO-DO: HANDLE ERROR
-        }
-    }
-    
-    class func getRoutine(_ withName: String) -> RoutineModel? {
-        
-        let existingRoutinePredicate: NSPredicate = NSPredicate(format: "name == %@", withName)
-        
-        do {
-            
-            return try DataAccess.sharedInstance.fetchRoutines(with: existingRoutinePredicate).first
-            
-        } catch {
-            // TO-DO: HANDLE ERROR
-            return nil
-        }
-    }
-    
-    class func getSelectedRoutine() -> RoutineModel? {
-        
-        let selectedRoutinePredicate: NSPredicate = NSPredicate(format: "selectedRoutine == true")
-        
-        do {
-            
-            return try DataAccess.sharedInstance.fetchRoutines(with: selectedRoutinePredicate).first
-            
-        } catch {
-            // TO-DO: HANDLE ERROR
-            return nil
-        }
+                UIApplication.shared.shortcutItems = nil
+            }
+        })
     }
     
     class func saveContext(_ completion: (_ didSave: Bool) -> Void) {
@@ -262,9 +225,7 @@ class Functions {
         var dayComponent: DateComponents = DateComponents()
         dayComponent.day = numberOfDays
         
-        let calendar:Calendar = Calendar.current
-        
-        return calendar.date(byAdding: dayComponent, to: Date())!
+        return Constants.currentCalendar.date(byAdding: dayComponent, to: Date())!
     }
     
     @available(iOS 9.0, *)

@@ -28,6 +28,8 @@
 "Week" = "周";
 "Month" = "月";
 
+"Of" = "的";
+
 /* Main */
 "Text-To-Speech Default Sentence" = "这个程序是真棒";
 "Text-To-Speech Tracking Run Text" = "记录跑步";

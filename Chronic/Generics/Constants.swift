@@ -119,7 +119,7 @@ class Constants {
     static let synthesizer = AVSpeechSynthesizer()
     
     static var decryptDictionary : Dictionary<String, String> = [
-        "/" : "Of",
+        "/" : NSLocalizedString("Of", comment: "")
     ]
     
     static var wcSession: WCSession!

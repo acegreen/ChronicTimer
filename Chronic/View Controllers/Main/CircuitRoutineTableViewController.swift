@@ -128,7 +128,7 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             
             Functions.deselectSelectedRoutine()
             
-            let existingRoutine = Functions.getRoutine(nameTextField.text!)
+            let existingRoutine = DataAccess.sharedInstance.fetchRoutine(with: nameTextField.text!)
             
             if routineToEdit != nil {
                 

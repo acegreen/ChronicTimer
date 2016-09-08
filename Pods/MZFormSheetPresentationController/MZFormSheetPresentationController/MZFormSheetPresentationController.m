@@ -65,7 +65,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
         [appearance setPortraitTopInset:66.0];
         [appearance setLandscapeTopInset:6.0];
         [appearance setShouldCenterHorizontally:YES];
-        [appearance setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.8]];
+        [appearance setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.7]];
         [appearance setBlurEffectStyle:UIBlurEffectStyleLight];
     }
 }

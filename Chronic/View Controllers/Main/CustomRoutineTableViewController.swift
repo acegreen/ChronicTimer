@@ -102,7 +102,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         
         Functions.deselectSelectedRoutine()
         
-        let existingRoutine = Functions.getRoutine(nameCell.NameTextField.text!)
+        let existingRoutine = DataAccess.sharedInstance.fetchRoutine(with: nameCell.NameTextField.text!)
         
         if routineToEdit != nil {
             

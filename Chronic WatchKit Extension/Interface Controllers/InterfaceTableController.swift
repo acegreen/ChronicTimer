@@ -7,9 +7,12 @@
 //
 
 import WatchKit
+import ChronicKit
 import Foundation
 
 class InterfaceTableController: WKInterfaceController {
+    
+    var routines = [RoutineModel]()
     
     @IBOutlet var routineTable: WKInterfaceTable!
 
@@ -33,24 +36,30 @@ class InterfaceTableController: WKInterfaceController {
         Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         
         // Get Routines from database
-        Constants.Routines = WatchDataAccess.sharedInstance.fetchRoutines(with: nil)
+        do {
+            
+            self.routines = try WatchDataAccess.sharedInstance.fetchRoutines(with: nil)
         
-        #if DEBUG
-            
-            loadTableData()
-            
-        #else
-            
-            if Functions.isProFeaturesUpgradePurchased() {
+            #if DEBUG
                 
                 loadTableData()
                 
-            } else {
+            #else
                 
-                self.routineTable.setNumberOfRows(1, withRowType: "noProVersionRow")
-            }
+                if Functions.isProFeaturesUpgradePurchased() {
+                    
+                    loadTableData()
+                    
+                } else {
+                    
+                    self.routineTable.setNumberOfRows(1, withRowType: "noProVersionRow")
+                }
+                
+            #endif
             
-        #endif
+        } catch {
+            // TO-DO: HANDLE ERROR
+        }
     }
 
     override func didDeactivate() {
@@ -60,14 +69,14 @@ class InterfaceTableController: WKInterfaceController {
     
     func loadTableData() {
         
-        guard Constants.Routines.count > 0 else {
+        guard routines.count > 0 else {
             self.routineTable.setNumberOfRows(1, withRowType: "noRoutinesRow")
             return
         }
         
-        self.routineTable.setNumberOfRows(Constants.Routines.count, withRowType: "routinesRow")
+        self.routineTable.setNumberOfRows(routines.count, withRowType: "routinesRow")
         
-        for (index, item) in Constants.Routines.enumerated() {
+        for (index, item) in routines.enumerated() {
             
             let row = self.routineTable.rowController(at: index) as! TableRowType
             
@@ -78,9 +87,9 @@ class InterfaceTableController: WKInterfaceController {
 
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         
-        if Constants.Routines.count != 0 {
+        if routines.count != 0 {
             
-            return Constants.Routines[rowIndex]
+            return routines[rowIndex]
             
         }
         
@@ -89,9 +98,9 @@ class InterfaceTableController: WKInterfaceController {
     
     override func contextsForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> [Any]? {
         
-        if Constants.Routines.count != 0 {
+        if routines.count != 0 {
             
-            return [Constants.Routines[rowIndex]]
+            return [routines[rowIndex]]
             
         }
         
