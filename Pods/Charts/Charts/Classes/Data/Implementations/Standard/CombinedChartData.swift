@@ -8,12 +8,12 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
 
-public class CombinedChartData: BarLineScatterCandleBubbleChartData
+open class CombinedChartData: BarLineScatterCandleBubbleChartData
 {
     private var _lineData: LineChartData!
     private var _barData: BarChartData!
@@ -36,7 +36,7 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
         super.init(xVals: xVals, dataSets: dataSets)
     }
     
-    public var lineData: LineChartData!
+    open var lineData: LineChartData!
     {
         get
         {
@@ -59,7 +59,7 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    public var barData: BarChartData!
+    open var barData: BarChartData!
     {
         get
         {
@@ -82,7 +82,7 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    public var scatterData: ScatterChartData!
+    open var scatterData: ScatterChartData!
     {
         get
         {
@@ -105,7 +105,7 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    public var candleData: CandleChartData!
+    open var candleData: CandleChartData!
     {
         get
         {
@@ -128,7 +128,7 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
     }
     
-    public var bubbleData: BubbleChartData!
+    open var bubbleData: BubbleChartData!
     {
         get
         {
@@ -152,7 +152,7 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
     }
     
     /// - returns: all data objects in row: line-bar-scatter-candle-bubble if not null.
-    public var allData: [ChartData]
+    open var allData: [ChartData]
     {
         var data = [ChartData]()
         
@@ -177,10 +177,10 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
             data.append(bubbleData)
         }
         
-        return data;
+        return data
     }
     
-    public override func notifyDataChanged()
+    open override func notifyDataChanged()
     {
         if (_lineData !== nil)
         {
@@ -204,5 +204,42 @@ public class CombinedChartData: BarLineScatterCandleBubbleChartData
         }
         
         super.notifyDataChanged() // recalculate everything
+    }
+    
+    
+    /// Get the Entry for a corresponding highlight object
+    ///
+    /// - parameter highlight:
+    /// - returns: the entry that is highlighted
+    open override func getEntryForHighlight(_ highlight: ChartHighlight) -> ChartDataEntry?
+    {
+        let dataObjects = allData
+        
+        if highlight.dataIndex >= dataObjects.count
+        {
+            return nil
+        }
+        
+        let data = dataObjects[highlight.dataIndex]
+        
+        if highlight.dataSetIndex >= data.dataSetCount
+        {
+            return nil
+        }
+        else
+        {
+            // The value of the highlighted entry could be NaN - if we are not interested in highlighting a specific value.
+            
+            let entries = data.getDataSetByIndex(highlight.dataSetIndex).entriesForXIndex(highlight.xIndex)
+            for e in entries
+            {
+                if e.value == highlight.value || highlight.value.isNaN
+                {
+                    return e
+                }
+            }
+            
+            return nil
+        }
     }
 }

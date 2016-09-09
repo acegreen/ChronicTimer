@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the appropriate permission"; ObjectID = "AwI-N6-Myc"; */
+"AwI-N6-Myc.text" = "首先，為了能保存您的體能訓練數據，我們需要獲得您的授權訪問您的健康數據。點擊下麵的按鈕設定存取權限。";
+
+/* Class = "UILabel"; text = "Remind me"; ObjectID = "CJb-a2-pbO"; */
+"CJb-a2-pbO.text" = "提醒我";
+
+/* Class = "UILabel"; text = "Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. "; ObjectID = "DTT-8b-Les"; */
+"DTT-8b-Les.text" = "好，現在讓我們設定體能訓練提醒，開啟設定會有定時體能訓練提醒。";
+
+/* Class = "UILabel"; text = "At"; ObjectID = "I4s-EA-o6Y"; */
+"I4s-EA-o6Y.text" = "在";
+
+/* Class = "UILabel"; text = "Lets set you up right so you get the most out of Chronic."; ObjectID = "KDX-QH-y2U"; */
+"KDX-QH-y2U.text" = "讓我們正確設定，您可以方便實用Chronic。";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "RxO-Ic-eSU"; */
+"RxO-Ic-eSU.normalTitle" = "完成";
+
+/* Class = "UILabel"; text = "Hi there!"; ObjectID = "aAb-fL-2kN"; */
+"aAb-fL-2kN.text" = "您好！";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "bhL-Z1-ZSl"; */
+"bhL-Z1-ZSl.normalTitle" = "返回";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "iUV-37-MkW"; */
+"iUV-37-MkW.normalTitle" = "返回";
+
+/* Class = "UITextField"; text = "Day"; ObjectID = "lgm-sG-NWR"; */
+"lgm-sG-NWR.text" = "日期";
+
+/* Class = "UILabel"; text = "Every"; ObjectID = "nDs-uh-OIF"; */
+"nDs-uh-OIF.text" = "每一個";
+
+/* Class = "UITextField"; text = "18:00"; ObjectID = "vHP-sz-7Gz"; */
+"vHP-sz-7Gz.text" = "18:00";

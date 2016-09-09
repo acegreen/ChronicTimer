@@ -9,16 +9,16 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
 import CoreGraphics
 
-public class ChartHighlighter : NSObject
+open class ChartHighlighter : NSObject
 {
     /// instance of the data-provider
-    public weak var chart: BarLineChartViewBase?
+    open weak var chart: BarLineChartViewBase?
     
     public init(chart: BarLineChartViewBase)
     {
@@ -29,89 +29,89 @@ public class ChartHighlighter : NSObject
     /// - parameter x:
     /// - parameter y:
     /// - returns:
-    public func getHighlight(x x: Double, y: Double) -> ChartHighlight?
+    open func getHighlight(x: CGFloat, y: CGFloat) -> ChartHighlight?
     {
         let xIndex = getXIndex(x)
-        if (xIndex == -Int.max)
-        {
-            return nil
-        }
         
-        let dataSetIndex = getDataSetIndex(xIndex: xIndex, x: x, y: y)
-        if (dataSetIndex == -Int.max)
-        {
-            return nil
-        }
+        guard let selectionDetail = getSelectionDetail(xIndex: xIndex, y: y, dataSetIndex: nil)
+            else { return nil }
         
-        return ChartHighlight(xIndex: xIndex, dataSetIndex: dataSetIndex)
+        return ChartHighlight(xIndex: xIndex, value: selectionDetail.value, dataIndex: selectionDetail.dataIndex, dataSetIndex: selectionDetail.dataSetIndex, stackIndex: -1)
     }
     
     /// Returns the corresponding x-index for a given touch-position in pixels.
     /// - parameter x:
     /// - returns:
-    public func getXIndex(x: Double) -> Int
+    open func getXIndex(_ x: CGFloat) -> Int
     {
         // create an array of the touch-point
         var pt = CGPoint(x: x, y: 0.0)
         
         // take any transformer to determine the x-axis value
-        self.chart?.getTransformer(ChartYAxis.AxisDependency.Left).pixelToValue(&pt)
+        self.chart?.getTransformer(ChartYAxis.AxisDependency.left).pixelToValue(&pt)
         
         return Int(round(pt.x))
     }
     
-    /// Returns the corresponding dataset-index for a given xIndex and xy-touch position in pixels.
+    /// Returns the corresponding ChartSelectionDetail for a given xIndex and y-touch position in pixels.
     /// - parameter xIndex:
-    /// - parameter x:
     /// - parameter y:
+    /// - parameter dataSetIndex: A dataset index to look at - or nil, to figure that out automatically
     /// - returns:
-    public func getDataSetIndex(xIndex xIndex: Int, x: Double, y: Double) -> Int
+    open func getSelectionDetail(xIndex: Int, y: CGFloat, dataSetIndex: Int?) -> ChartSelectionDetail?
     {
-        let valsAtIndex = getSelectionDetailsAtIndex(xIndex)
+        let valsAtIndex = getSelectionDetailsAtIndex(xIndex, dataSetIndex: dataSetIndex)
         
-        let leftdist = ChartUtils.getMinimumDistance(valsAtIndex, val: y, axis: ChartYAxis.AxisDependency.Left)
-        let rightdist = ChartUtils.getMinimumDistance(valsAtIndex, val: y, axis: ChartYAxis.AxisDependency.Right)
+        let leftdist = ChartUtils.getMinimumDistance(valsAtIndex, y: y, axis: ChartYAxis.AxisDependency.left)
+        let rightdist = ChartUtils.getMinimumDistance(valsAtIndex, y: y, axis: ChartYAxis.AxisDependency.right)
         
-        let axis = leftdist < rightdist ? ChartYAxis.AxisDependency.Left : ChartYAxis.AxisDependency.Right
+        let axis = leftdist < rightdist ? ChartYAxis.AxisDependency.left : ChartYAxis.AxisDependency.right
         
-        let dataSetIndex = ChartUtils.closestDataSetIndex(valsAtIndex, value: y, axis: axis)
+        let detail = ChartUtils.closestSelectionDetailByPixelY(valsAtIndex: valsAtIndex, y: y, axis: axis)
         
-        return dataSetIndex
+        return detail
     }
     
     /// Returns a list of SelectionDetail object corresponding to the given xIndex.
     /// - parameter xIndex:
+    /// - parameter dataSetIndex: A dataset index to look at - or nil, to figure that out automatically
     /// - returns:
-    public func getSelectionDetailsAtIndex(xIndex: Int) -> [ChartSelectionDetail]
+    open func getSelectionDetailsAtIndex(_ xIndex: Int, dataSetIndex: Int?) -> [ChartSelectionDetail]
     {
         var vals = [ChartSelectionDetail]()
         var pt = CGPoint()
         
-        for i in 0 ..< (self.chart?.data?.dataSetCount ?? 0)
+        guard let data = self.chart?.data
+            else { return vals }
+        
+        for i in 0 ..< data.dataSetCount
         {
-            let dataSet = self.chart!.data!.getDataSetByIndex(i)
-            
-            // dont include datasets that cannot be highlighted
-            if !dataSet.isHighlightEnabled
+            if dataSetIndex != nil && dataSetIndex != i
             {
                 continue
             }
             
-            // extract all y-values from all DataSets at the given x-index
-            let yVal: Double = dataSet.yValForXIndex(xIndex)
-            if yVal.isNaN
-            {
-                continue
-            }
-            
-            pt.y = CGFloat(yVal)
-            
-            self.chart!.getTransformer(dataSet.axisDependency).pointValueToPixel(&pt)
-            
-            if !pt.y.isNaN
-            {
-                vals.append(ChartSelectionDetail(value: Double(pt.y), dataSetIndex: i, dataSet: dataSet))
-            }
+			if let dataSet = data.getDataSetByIndex(i) {
+				// dont include datasets that cannot be highlighted
+				if !dataSet.highlightEnabled
+				{
+					continue
+				}
+				
+				// extract all y-values from all DataSets at the given x-index
+				let yVals: [Double] = dataSet.yValsForXIndex(xIndex)
+				for yVal in yVals
+				{
+					pt.y = CGFloat(yVal)
+					
+					self.chart!.getTransformer(dataSet.axisDependency).pointValueToPixel(&pt)
+					
+					if !pt.y.isNaN
+					{
+						vals.append(ChartSelectionDetail(y: pt.y, value: yVal, dataSetIndex: i, dataSet: dataSet))
+					}
+				}
+			}
         }
         
         return vals

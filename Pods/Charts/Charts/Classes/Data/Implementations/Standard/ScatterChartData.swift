@@ -8,13 +8,13 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
 import CoreGraphics
 
-public class ScatterChartData: BarLineScatterCandleBubbleChartData
+open class ScatterChartData: BarLineScatterCandleBubbleChartData
 {
     public override init()
     {
@@ -32,7 +32,7 @@ public class ScatterChartData: BarLineScatterCandleBubbleChartData
     }
     
     /// - returns: the maximum shape-size across all DataSets.
-    public func getGreatestShapeSize() -> CGFloat
+    open func getGreatestShapeSize() -> CGFloat
     {
         var max = CGFloat(0.0)
         

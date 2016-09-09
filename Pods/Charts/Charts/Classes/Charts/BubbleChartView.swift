@@ -6,22 +6,22 @@
 //    Copyright 2015 Pierre-Marc Airoldi
 //    Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
 import CoreGraphics
 
-public class BubbleChartView: BarLineChartViewBase, BubbleChartDataProvider
+open class BubbleChartView: BarLineChartViewBase, BubbleChartDataProvider
 {
-    public override func initialize()
+    open override func initialize()
     {
         super.initialize()
         
         renderer = BubbleChartRenderer(dataProvider: self, animator: _animator, viewPortHandler: _viewPortHandler)
     }
     
-    public override func calcMinMax()
+    open override func calcMinMax()
     {
         super.calcMinMax()
         guard let data = _data else { return }
@@ -59,5 +59,5 @@ public class BubbleChartView: BarLineChartViewBase, BubbleChartDataProvider
     
     // MARK: - BubbleChartDataProbider
     
-    public var bubbleData: BubbleChartData? { return _data as? BubbleChartData }
+    open var bubbleData: BubbleChartData? { return _data as? BubbleChartData }
 }

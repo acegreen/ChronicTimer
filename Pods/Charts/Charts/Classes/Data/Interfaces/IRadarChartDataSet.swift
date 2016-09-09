@@ -8,10 +8,11 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
+import CoreGraphics
 
 @objc
 public protocol IRadarChartDataSet: ILineRadarChartDataSet
@@ -22,8 +23,6 @@ public protocol IRadarChartDataSet: ILineRadarChartDataSet
     
     /// flag indicating whether highlight circle should be drawn or not
     var drawHighlightCircleEnabled: Bool { get set }
-    
-    var isDrawHighlightCircleEnabled: Bool { get }
     
     var highlightCircleFillColor: NSUIColor? { get set }
     

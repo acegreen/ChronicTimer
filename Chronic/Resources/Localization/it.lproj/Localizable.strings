@@ -7,7 +7,6 @@
  */
 
 /* Globals */
-"Reminder Notification Text" = "E' tempo per un FANTASTICO allenamento!";
 "Yes" = "Si";
 "No" = "No";
 "Ok" = "Ok";
@@ -29,6 +28,8 @@
 "Week" = "Settimana";
 "Month" = "Mese";
 
+"Of" = "Di";
+
 /* Main */
 "Text-To-Speech Default Sentence" = "Questa applicazione è impressionante";
 "Text-To-Speech Tracking Run Text" = "Tracciamento del percorso";
@@ -36,15 +37,20 @@
 "Text-To-Speech Workout Complete Text" = "Allenamento Completato";
 "Text-To-Speech Run Complete Text" = "Corsa Completata";
 
-"Congratulation Text (Routine)" = "Congratulazioni! Hai completato il tuo allenamento";
-"Congratulation Text (Run)" =  "Congratulazioni! Hai finito di correre";
-"Timer Ended Text" =  "Il tuo tempo e' finito";
+"Notification Workout Text" = "Workout Complete";
+"Notification Workout subText" = "Congratulazioni! Hai completato il tuo allenamento";
+"Notification Timer Text" =  "Timer Finished";
+"Notification Timer subText" = "Il tuo tempo e' finito";
+"Notification Reminder Text" = "Workout Reminder";
+"Notification Reminder subText" = "E' tempo per un FANTASTICO allenamento!";
+//"Congratulation Text (Run)" =  "Congratulazioni! Hai finito di correre";
 
 "No Exercise" = "Nessun esercizio";
 
 "Left Side Label Text (Routine)" = "Trascorso";
 "Right Side Label Text (Routine)" = "Rimanente";
 
+"Middle Label Text (Run)" = "Pace";
 "Left Side Label Text (Run)" = "Tempo";
 "Right Side Label Text (Run)" = "Distanza";
 
@@ -83,6 +89,12 @@
 
 "Alert: No Internet Connection Title Text" = "Nessuna Connessione Internet ";
 "Alert: No Internet Connection Subtitle Text" = "Per favore connettiti per continuare";
+
+"Alert: Reconnect To Internet Title Text" = "Reconnect to Internet";
+"Alert: Reconnect To Internet Subtitle Text" = "By reconnecting to the internet, you can continue running your workout";
+
+"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads Upgrade";
+"Alert: Purchase Remove Ads Subtitle Text" = "With the upgrade, you can run a workout without internet and distraction free";
 
 "Alert: No Email Account Title Text" = "Nessun email account trovato";
 "Alert: No Email Account Subtitle Text" =  "Per favore aggiungi un email account";

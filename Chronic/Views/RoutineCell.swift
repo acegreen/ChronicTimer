@@ -8,8 +8,9 @@
 
 import UIKit
 import Charts
+import ChronicKit
 
-class RoutineCell: UITableViewCell, ChartViewDelegate {
+class RoutineCell: UITableViewCell {
     
     var barPoints: [String]!
     var barValues: [Double]!
@@ -27,20 +28,20 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
         }
     }
     
-    @IBOutlet private weak var routineName: UILabel!
-    @IBOutlet private weak var routineTotalTime: UILabel!
-    @IBOutlet private weak var routineChartView: PieChartView!
+    @IBOutlet fileprivate weak var routineName: UILabel!
+    @IBOutlet fileprivate weak var routineTotalTime: UILabel!
+    @IBOutlet fileprivate weak var routineChartView: PieChartView!
     
     func configure(with routine: RoutineModel) {
         
         self.name = routine.name
-        self.time = timeStringFrom(time:Int(routine.totalRoutineTime!), type: "Routine")
+        self.time = Functions.timeStringFrom(time: Int(routine.totalRoutineTime))
         
         barPoints = [String]()
         barValues = [Double]()
         barColors = [UIColor]()
         
-        let (routineStages, _) = makeRoutineArray(routine)
+        let (routineStages, _) = Functions.makeRoutineArray(routine: routine)
         
         for stage in routineStages {
 
@@ -48,16 +49,16 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
                 
             barPoints.append(currentTimerDict["Name"] as! String)
             barValues.append(currentTimerDict["Time"] as! Double)
-            barColors.append((NSKeyedUnarchiver.unarchiveObjectWithData(currentTimerDict["Color"] as! NSData) as! UIColor).flatten())
+            barColors.append((NSKeyedUnarchiver.unarchiveObject(with: currentTimerDict["Color"] as! Data) as! UIColor))
         }
         
-        self.setPieChart(self.barPoints, values: barValues)
+        self.setupPieChart(self.barPoints, values: barValues)
     }
     
     
     // MARK: Routine Chart Stuff
     
-    func setPieChart(dataPoints: [String], values: [Double]) {
+    func setupPieChart(_ dataPoints: [String], values: [Double]) {
         
         var dataEntries: [ChartDataEntry] = []
         
@@ -72,14 +73,16 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         
         routineChartView.data = pieChartData
-        routineChartView.userInteractionEnabled = false
+        routineChartView.isUserInteractionEnabled = false
         routineChartView.drawSliceTextEnabled = false
         routineChartView.legend.enabled = false
+        //routineChartView.drawHoleEnabled = false
         routineChartView.holeColor = nil
         routineChartView.descriptionText = ""
     }
     
-//    func setBarChart(dataPoints: [String], values: [Double]) {
+    // Bar chart version
+//    func setBarChart(_ dataPoints: [String], values: [Double]) {
 //        
 //        var dataEntries = [BarChartDataEntry]()
 //        
@@ -92,11 +95,11 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
 //        chartDataSet.drawValuesEnabled = false
 //        chartDataSet.colors = barColors
 //        chartDataSet.valueFont = UIFont(name: "HelveticaNeue", size: 15.0)!
-//        chartDataSet.valueTextColor = chronicColor
+//        chartDataSet.valueTextColor = Constants.chronicColor
 //        chartDataSet.barSpace = 0
 //        
-//        let numberFormatter = NSNumberFormatter()
-//        numberFormatter.numberStyle = .NoStyle
+//        let numberFormatter = NumberFormatter()
+//        numberFormatter.numberStyle = .none
 //        chartDataSet.valueFormatter = numberFormatter
 //        
 //        //        routineChartView.noDataText = "Loading Analysts Data"
@@ -104,20 +107,20 @@ class RoutineCell: UITableViewCell, ChartViewDelegate {
 //        //        routineChartView.infoTextColor = Constants.stockSwipeFontColor
 //        routineChartView.descriptionText = ""
 //        //routineChartView.backgroundColor = UIColor.flatGrayColor()
-//        routineChartView.xAxis.labelPosition = .Bottom
+//        routineChartView.xAxis.labelPosition = .bottom
 //        routineChartView.xAxis.drawLabelsEnabled = false
 //        routineChartView.xAxis.drawGridLinesEnabled = false
 //        routineChartView.xAxis.labelFont = UIFont(name: "HelveticaNeue", size: 11.0)!
-//        routineChartView.xAxis.labelTextColor = chronicColor
-//        routineChartView.leftAxis.enabled = false
-//        routineChartView.leftAxis.drawGridLinesEnabled = false
-//        routineChartView.leftAxis.customAxisMin = 0.0
-//        routineChartView.rightAxis.enabled = false
-//        routineChartView.rightAxis.drawGridLinesEnabled = false
-//        routineChartView.drawBordersEnabled = false
-//        routineChartView.drawGridBackgroundEnabled = false
+//        routineChartView.xAxis.labelTextColor = Constants.chronicColor
+////        routineChartView.leftAxis.enabled = false
+////        routineChartView.leftAxis.drawGridLinesEnabled = false
+////        routineChartView.leftAxis.customAxisMin = 0.0
+////        routineChartView.rightAxis.enabled = false
+////        routineChartView.rightAxis.drawGridLinesEnabled = false
+////        routineChartView.drawBordersEnabled = false
+////        routineChartView.drawGridBackgroundEnabled = false
 //        routineChartView.legend.enabled = false
-//        routineChartView.userInteractionEnabled = false
+//        routineChartView.isUserInteractionEnabled = false
 //        
 //        let chartData = BarChartData(xVals: barPoints, dataSet: chartDataSet)
 //        routineChartView.data = chartData

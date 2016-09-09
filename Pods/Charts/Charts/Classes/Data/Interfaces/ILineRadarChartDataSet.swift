@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
@@ -41,7 +41,4 @@ public protocol ILineRadarChartDataSet: ILineScatterCandleRadarChartDataSet
     /// Disabling this will give great performance boost.
     /// Please note that this method uses the path clipping for drawing the filled area (with images, gradients and layers).
     var drawFilledEnabled: Bool { get set }
-    
-    /// Returns true if filled drawing is enabled, false if not
-    var isDrawFilledEnabled: Bool { get }
 }

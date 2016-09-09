@@ -1,7 +1,3 @@
-
-/* Class = "UILabel"; text = "Sorry!"; ObjectID = "0Up-H7-Yku"; */
-"0Up-H7-Yku.text" = "Scusa!";
-
 /* Class = "UITableViewSection"; headerTitle = "Upgrades"; ObjectID = "0fi-Bi-iQz"; */
 "0fi-Bi-iQz.headerTitle" = "Aggiornamenti";
 
@@ -10,9 +6,6 @@
 
 /* Class = "UITextField"; placeholder = "Enter Exercise Name"; ObjectID = "1Go-gJ-F42"; */
 "1Go-gJ-F42.placeholder" = "Inserisci il Nome dell'Esercizio";
-
-/* Class = "UIButton"; normalTitle = "Contact us"; ObjectID = "2xz-BS-7zF"; */
-"2xz-BS-7zF.normalTitle" = "Contattaci";
 
 /* Class = "UITableViewController"; title = "Settings"; ObjectID = "3GQ-hT-fPZ"; */
 "3GQ-hT-fPZ.title" = "Impostazioni";
@@ -32,11 +25,8 @@
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "5GG-Ww-woU"; */
 "5GG-Ww-woU.title" = "Chiudi";
 
-/* Class = "UILabel"; text = "How about rating Chronic on the AppStore? We always appreciate the feedback!"; ObjectID = "5Tz-d5-wtw"; */
-"5Tz-d5-wtw.text" = "Che ne dici di votare Chronic sull'AppStore? Noi apprezziamo il tuo feedback!";
-
-/* Class = "UILabel"; text = "Write a Review"; ObjectID = "62U-Rt-gry"; */
-"62U-Rt-gry.text" = "Scrivi una Recensione";
+/* Class = "UILabel"; text = "Rate us on App Store"; ObjectID = "SiX-ba-3V3"; */
+"SiX-ba-3V3.text" = "Scrivi una Recensione";
 
 /* Class = "UILabel"; text = "Quick Timer"; ObjectID = "6YK-pi-Gau"; */
 "6YK-pi-Gau.text" = "Quick Timer";
@@ -65,12 +55,6 @@
 /* Class = "UILabel"; text = "Name"; ObjectID = "8wN-lo-4Es"; */
 "8wN-lo-4Es.text" = "Nome";
 
-/* Class = "UILabel"; text = "Ok, now lets setup a reminder so you always get that workout in. Set the switch on and allow notifications when prompted. "; ObjectID = "9Ss-1c-YZ1"; */
-"9Ss-1c-YZ1.text" = "Ok, adesso impostiamo un promemoria perché tutto possa sempre allenarti. Imposta lo switch su On e permetti cosi l'invio di notifiche. ";
-
-/* Class = "UILabel"; text = "First, in order for us to save your workouts, we need your permission to read and write a few things to the Health app. Tap the button below to set up the appropriate permission"; ObjectID = "AEV-ww-lGd"; */
-"AEV-ww-lGd.text" = "Innanzitutto, per poter salvare i risultati del tuo allenamenento, abbiamo bisogno del tuo permesso per poter leggere e scrivere i dati. Premi il pulsante qui sotto per impostare i permessi necessari";
-
 /* Class = "UILabel"; text = "Timer Volume"; ObjectID = "AeL-ZO-UtH"; */
 "AeL-ZO-UtH.text" = "Volume Timer";
 
@@ -92,8 +76,8 @@
 /* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "Ceb-xy-Zpg"; */
 "Ceb-xy-Zpg.title" = "Dettagli della Routine";
 
-/* Class = "UILabel"; text = "Pro Features"; ObjectID = "D2Q-kn-9Pp"; */
-"D2Q-kn-9Pp.text" = "Caratteristiche Pro";
+/* Class = "UILabel"; text = "Apple Watch"; ObjectID = "D2Q-kn-9Pp"; */
+"D2Q-kn-9Pp.text" = "Apple Watch";
 
 /* Class = "UILabel"; text = "Sex"; ObjectID = "DaS-Dy-Var"; */
 "DaS-Dy-Var.text" = "Sesso";
@@ -116,9 +100,6 @@
 /* Class = "UITableViewSection"; headerTitle = "Notifications"; ObjectID = "EOa-un-ybR"; */
 "EOa-un-ybR.headerTitle" = "Notifiche";
 
-/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "FBa-IB-cCa"; */
-"FBa-IB-cCa.normalTitle" = "Chiudi";
-
 /* Class = "UILabel"; text = "Question"; ObjectID = "FPa-VY-ydJ"; */
 "FPa-VY-ydJ.text" = "Domanda";
 
@@ -137,9 +118,6 @@
 /* Class = "UIBarButtonItem"; title = "Routines"; ObjectID = "HsO-xr-GoR"; */
 "HsO-xr-GoR.title" = "Routine";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "II3-ta-GUD"; */
-"II3-ta-GUD.normalTitle" = "Indietro";
-
 /* Class = "UILabel"; text = "Name"; ObjectID = "JNg-DG-Jjz"; */
 "JNg-DG-Jjz.text" = "Nome";
 
@@ -148,9 +126,6 @@
 
 /* Class = "UITextField"; placeholder = "Enter Exercise Name"; ObjectID = "Kgw-Eb-Rmt"; */
 "Kgw-Eb-Rmt.placeholder" = "Inserisci il Nome dell'Esercizio";
-
-/* Class = "UIButton"; normalTitle = "Sure!"; ObjectID = "M2v-PX-9sM"; */
-"M2v-PX-9sM.normalTitle" = "Certo!";
 
 /* Class = "UITextField"; text = "01:00"; ObjectID = "MAe-cf-U0y"; */
 "MAe-cf-U0y.text" = "01:00";
@@ -161,14 +136,8 @@
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "MbB-hh-ZlQ"; */
 "MbB-hh-ZlQ.title" = "Profilo";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "NCO-cD-nBI"; */
-"NCO-cD-nBI.normalTitle" = "Indietro";
-
 /* Class = "UIViewController"; title = "SelectRoutineTypeViewController"; ObjectID = "OEM-3I-2D6"; */
 "OEM-3I-2D6.title" = "SelectRoutineTypeViewController";
-
-/* Class = "UITextField"; text = "18:00"; ObjectID = "QtB-qu-X1C"; */
-"QtB-qu-X1C.text" = "18:00";
 
 /* Class = "UILabel"; text = "Timer Sound"; ObjectID = "RNd-mJ-SDV"; */
 "RNd-mJ-SDV.text" = "Suoneria Timer";
@@ -181,9 +150,6 @@
 
 /* Class = "UITextField"; text = "01:00"; ObjectID = "Stk-tL-gga"; */
 "Stk-tL-gga.text" = "01:00";
-
-/* Class = "UILabel"; text = "Remind me"; ObjectID = "TbR-d9-kbv"; */
-"TbR-d9-kbv.text" = "Ricordami";
 
 /* Class = "UILabel"; text = "00:00"; ObjectID = "ThG-2m-7cS"; */
 "ThG-2m-7cS.text" = "00:00";
@@ -227,11 +193,8 @@
 /* Class = "UILabel"; text = "Every"; ObjectID = "dCw-n5-c4O"; */
 "dCw-n5-c4O.text" = "Ogni";
 
-/* Class = "UILabel"; text = "Good job keeping fit! \nBy the way, we‚Äôd love some feedback! How do you feel about Chronic? "; ObjectID = "dOe-44-JgT"; */
-"dOe-44-JgT.text" = "Ottimo lavoro nel tenerti in forma! \nIn ogni caso, noi apprezziamo il tuo feedback! Che ne pensi di Chronic? ";
-
 /* Class = "UILabel"; text = "Round Time"; ObjectID = "eHS-bw-2In"; */
-"eHS-bw-2In.text" = "Round Time";
+"eHS-bw-2In.text" = "Durata del round";
 
 /* Class = "UIViewController"; title = "QuickTimerViewController"; ObjectID = "eeg-Hi-sa7"; */
 "eeg-Hi-sa7.title" = "QuickTimerViewController";
@@ -252,13 +215,10 @@
 "fcp-Ta-Nxf.text" = "Ricordami di Allenarmi";
 
 /* Class = "UILabel"; text = "Rest Time"; ObjectID = "fmz-O1-O7D"; */
-"fmz-O1-O7D.text" = "Riposo";
+"fmz-O1-O7D.text" = "Durata riposo";
 
 /* Class = "UIButton"; normalTitle = "Chronic"; ObjectID = "gM7-vF-hwX"; */
 "gM7-vF-hwX.normalTitle" = "Chronic";
-
-/* Class = "UILabel"; text = "Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!"; ObjectID = "gc1-zg-3O7"; */
-"gc1-zg-3O7.text" = "Pensi che ci sia un modo per noi per migliorare la tua esperianza con Chronic? Contattaci, noi apprezziamo il tuo feedback!";
 
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "gun-mK-gVn"; */
 "gun-mK-gVn.title" = "Chiudi";
@@ -284,8 +244,8 @@
 /* Class = "UITextField"; placeholder = "Enter Routine Name"; ObjectID = "ksH-2j-BQg"; */
 "ksH-2j-BQg.placeholder" = "Inserisci il Nome della Routine";
 
-/* Class = "UILabel"; text = "FAQ"; ObjectID = "m5y-CQ-t8h"; */
-"m5y-CQ-t8h.text" = "FAQ";
+/* Class = "UILabel"; text = "FAQ"; ObjectID = "ODQ-6G-b00"; */
+"ODQ-6G-b00.text" = "FAQ";
 
 /* Class = "UILabel"; text = "Restore Upgrades"; ObjectID = "mcW-yo-ctz"; */
 "mcW-yo-ctz.text" = "Ripristina Aggiornamenti";
@@ -295,12 +255,6 @@
 
 /* Class = "UINavigationItem"; title = "Routine Details"; ObjectID = "mvc-Ed-45P"; */
 "mvc-Ed-45P.title" = "Dettagli della Routine";
-
-/* Class = "UITextField"; text = "Day"; ObjectID = "oL4-m0-1Ho"; */
-"oL4-m0-1Ho.text" = "Giorno";
-
-/* Class = "UIButton"; normalTitle = "Nope"; ObjectID = "og9-r5-BCD"; */
-"og9-r5-BCD.normalTitle" = "No No";
 
 /* Class = "UITextField"; text = "01:00"; ObjectID = "oko-vD-zIo"; */
 "oko-vD-zIo.text" = "01:00";
@@ -314,14 +268,11 @@
 /* Class = "UILabel"; text = "Weight"; ObjectID = "sXh-6f-GEL"; */
 "sXh-6f-GEL.text" = "Peso";
 
-/* Class = "UINavigationItem"; title = "Quick Timer"; ObjectID = "sxo-gx-Ral"; */
+/* Class = "UINavigationItem"; title = "Quick Timer"; ObjectID = "sxo-gx-Ral""F; */
 "sxo-gx-Ral.title" = "Quick Timer";
 
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "u6B-yn-UEJ"; */
 "u6B-yn-UEJ.title" = "Chiudi";
-
-/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "uXJ-DE-TSl"; */
-"uXJ-DE-TSl.normalTitle" = "Fatto";
 
 /* Class = "UITextField"; text = "01:00"; ObjectID = "ucr-QL-M0P"; */
 "ucr-QL-M0P.text" = "01:00";
@@ -332,20 +283,20 @@
 /* Class = "UITextField"; text = "01:00"; ObjectID = "vQM-jl-vRg"; */
 "vQM-jl-vRg.text" = "01:00";
 
-/* Class = "UILabel"; text = "Yay!"; ObjectID = "vVX-df-kiU"; */
-"vVX-df-kiU.text" = "Evvai!";
-
-/* Class = "UILabel"; text = "At"; ObjectID = "vnV-tz-5tH"; */
-"vnV-tz-5tH.text" = "A";
-
 /* Class = "UILabel"; text = "Time"; ObjectID = "wdO-aq-f58"; */
 "wdO-aq-f58.text" = "Tempo";
 
-/* Class = "UILabel"; text = "Lets set you up right so you get the most out of Chronic."; ObjectID = "yYN-50-1YB"; */
-"yYN-50-1YB.text" = "Facciamo in modo che tu possa ottenere il meglio da Chronic.";
+/* Class = "UILabel"; text = "Email Us"; ObjectID = "eV4-4e-xDW"; */
+"eV4-4e-xDW.text" = "Scrivici";
 
-/* Class = "UILabel"; text = "Way To Go!"; ObjectID = "z2I-CN-Ytx"; */
-"z2I-CN-Ytx.text" = "Vai cosÏ!";
+/* Class = "UITableViewSection"; headerTitle = "Social"; ObjectID = "ekw-bF-kQ2"; */
+"ekw-bF-kQ2.headerTitle" = "Sociale";
 
-/* Class = "UILabel"; text = "Email Us"; ObjectID = "zrb-SX-QX1"; */
-"zrb-SX-QX1.text" = "Scrivici";
+/* Class = "UILabel"; text = "Like us on Facebook"; ObjectID = "m5y-CQ-t8h"; */
+"m5y-CQ-t8h.text" = "Come noi su Facebook";
+
+/* Class = "UILabel"; text = "Follow us on Twitter"; ObjectID = "62U-Rt-gry"; */
+"62U-Rt-gry.text" = "Seguici su Twitter";
+
+/* Class = "UILabel"; text = "Share With Friends"; ObjectID = "zrb-SX-QX1"; */
+"zrb-SX-QX1.text" = "Condividere con gli amici";

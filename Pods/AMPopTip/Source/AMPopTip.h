@@ -207,7 +207,7 @@ typedef NS_ENUM(NSInteger, AMPopTipActionAnimation) {
  *
  * Holds the UIFont used in the popover
  */
-@property (nonatomic, strong) UIFont *font UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIFont *font;
 
 /** Text Color
  *
@@ -363,6 +363,12 @@ typedef NS_ENUM(NSInteger, AMPopTipActionAnimation) {
  * CGfloat value that determines the leftmost margin from the screen
  */
 @property (nonatomic, assign) CGFloat edgeMargin UI_APPEARANCE_SELECTOR;
+
+/** Offset for the Bubble
+ *
+ * Holds the offset between the bubble and origin
+ */
+@property (nonatomic, assign) CGFloat bubbleOffset UI_APPEARANCE_SELECTOR;
 
 /** The frame the poptip is pointing to
  *

@@ -8,13 +8,13 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
 
 /// Data object that encapsulates all data associated with a LineChart.
-public class LineChartData: ChartData
+open class LineChartData: ChartData
 {
     public override init()
     {

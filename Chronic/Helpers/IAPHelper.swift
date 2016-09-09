@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 import StoreKit
-import CNPPopupController
+//import CNPPopupController
 import Crashlytics
 import Parse
+import SwiftyJSON
 
 class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver, SKRequestDelegate {
     
@@ -22,91 +23,99 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     var request: SKProductsRequest!
     var list = [SKProduct]()
     var p = SKProduct()
+    var productsArray = [Constants.iapUltimatePackageKey, Constants.proVersionKey, Constants.removeAdsKey, Constants.donate99Key]
     
-    var inAppPurchasePopupController: CNPPopupController!
-    var sweetAlertLoadingPurchase = SweetAlert()
-    var sweetAlertProcessingPurchase = SweetAlert()
+    //var inAppPurchasePopupController: CNPPopupController!
     var sweetAlertRestorePurchases = SweetAlert()
     
     override init() {
         
         super.init()
-        _ = SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        _ = SKPaymentQueue.default().add(self)
     }
     
-    func requestProductsWithCompletionHandler(handler:((Bool) -> Void)) {
+    func requestProducts(displayAlert: Bool, _ handler:((Bool) -> Void)?) {
+        
+        guard Functions.isConnectedToNetwork() else {
+            
+            if displayAlert {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
+                })
+            }
+            self.completionHandler?(false)
+            return
+        }
         
         self.completionHandler = handler
         if SKPaymentQueue.canMakePayments() {
             
             print("IAP is enabled, loading")
             
-            let productIDs: NSSet = NSSet(objects: iapUltimatePackageKey, proVersionKey, removeAdsKey, donate99Key)
+            let productIDs: Set = Set(productsArray)
             
-            request = SKProductsRequest(productIdentifiers: productIDs as! Set<String>)
+            request = SKProductsRequest(productIdentifiers: productIDs)
             request.delegate = self
             request.start()
             
         } else {
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SweetAlert().showAlert(NSLocalizedString("Alert: In-App Purchases Disabled Title Text", comment: ""), subTitle: NSLocalizedString("Alert: In-App Purchases Disabled Subtitle Text", comment: ""), style: AlertStyle.Error)
-            })
+            if displayAlert {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    SweetAlert().showAlert(NSLocalizedString("Alert: In-App Purchases Disabled Title Text", comment: ""), subTitle: NSLocalizedString("Alert: In-App Purchases Disabled Subtitle Text", comment: ""), style: AlertStyle.error)
+                })
+            }
+            
+            self.completionHandler?(false)
         }
     }
     
     // MARK: - Payment Processing
     
-    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
         print("Product Request")
         let myProducts = response.products
         
-        for product in myProducts {
-            
-            print("Product added")
-            print(product.productIdentifier)
-            print(product.localizedTitle)
-            print(product.localizedDescription)
-            print(product.price)
-            
-            list.append(product as SKProduct)
+        list.removeAll()
+        
+        for product in productsArray {
+            for myProduct in myProducts {
+                if myProduct.productIdentifier == product {
+                    list.append(myProduct)
+                }
+            }
         }
         
         self.completionHandler?(true)
         completionHandler = nil
     }
     
-    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
-        if inAppPurchasePopupController != nil {
-            
-            inAppPurchasePopupController.dismissPopupControllerAnimated(true)
-        }
-        
+
         for transaction:SKPaymentTransaction in transactions {
             
             let productID = transaction.payment.productIdentifier
-            let productPrice = p.price
-            let formatter = NSNumberFormatter()
-            formatter.locale = p.priceLocale
-            let productCurrency = formatter.currencyCode
+            var productPrice: NSDecimalNumber!
+            var productCurrency: String!
+            
+            if let product = self.list.filter({ $0.productIdentifier == productID }).first {
+                productPrice = product.price
+                let formatter = NumberFormatter()
+                formatter.locale = product.priceLocale
+                productCurrency = formatter.currencyCode
+            }
             
             switch transaction.transactionState {
                 
-            case .Purchasing:
+            case .purchasing:
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.sweetAlertProcessingPurchase.showAlert(NSLocalizedString("Alert: Processing Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Processing Purchase Subtitle Text", comment: ""), style: AlertStyle.ActivityIndicator, dismissTime: nil)
-                })
+                print("purchasing")
                 
-            case .Purchased, .Restored:
+            case .purchased, .restored:
                 
                 verifyReceipt({ (receiptTransactionsArray, environment) -> Void in
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.sweetAlertProcessingPurchase.closeAlertDismissButton()
-                    })
                     
                     if let receiptTransactionsArray = receiptTransactionsArray {
                         
@@ -126,7 +135,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                 
                                 switch transactionProductID {
 
-                                case iapUltimatePackageKey:
+                                case Constants.iapUltimatePackageKey:
                                     
                                     print("\(transaction.transactionState) - ultimate")
                                     self.proVersionPurchased()
@@ -135,18 +144,18 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log Ultimate Package purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Ultimate Package",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
                                     
-                                case proVersionKey:
+                                case Constants.proVersionKey:
                                     
                                     print("\(transaction.transactionState) - pro version")
                                     self.proVersionPurchased()
@@ -154,18 +163,18 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log pro purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Pro Version",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
                                     
-                                case removeAdsKey:
+                                case Constants.removeAdsKey:
                                     
                                     print("\(transaction.transactionState) - remove ads")
                                     self.removeAdsPurchased()
@@ -173,31 +182,31 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     if transactionID.string == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log remove ads purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Remove Ads",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
                                     
-                                case donate99Key:
+                                case Constants.donate99Key:
                                     
                                     print("\(transaction.transactionState) - donate")
                                     
                                     if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log donation purchase
-                                        Answers.logPurchaseWithPrice(productPrice,
+                                        Answers.logPurchase(withPrice: productPrice,
                                             currency: productCurrency,
                                             success: true,
                                             itemName: "Donation",
                                             itemType: "In-App Purchase (Consumable)",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "App Version": AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -224,42 +233,41 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 })
                 break
                 
-            case .Failed:
+            case .failed:
                 
                 var errorMessage = ""
                 
-                switch (transaction.error!.code) {
-                case SKErrorCode.Unknown.rawValue:
+                switch (transaction.error as? SKError)?.code {
+                case .unknown?:
                     errorMessage = "Unknown error"
-                    break;
-                case SKErrorCode.ClientInvalid.rawValue:
+                    break
+                case .clientInvalid?:
                     errorMessage = "Client Not Allowed To issue Request"
-                    break;
-                case SKErrorCode.PaymentCancelled.rawValue:
+                    break
+                case .paymentCancelled?:
                     errorMessage = "User Cancelled Request"
-                    break;
-                case SKErrorCode.PaymentInvalid.rawValue:
+                    break
+                case .paymentInvalid?:
                     errorMessage = "Purchase Identifier Invalid"
-                    break;
-                case SKErrorCode.PaymentNotAllowed.rawValue:
+                    break
+                case .paymentNotAllowed?:
                     errorMessage = "Device Not Allowed To Make Payment"
-                    break;
+                    break
                 default:
-                    break;
+                    break
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.sweetAlertProcessingPurchase.closeAlertDismissButton()
-                    SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: errorMessage, style: AlertStyle.Error)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: errorMessage, style: AlertStyle.error)
                 })
                 
-                Answers.logPurchaseWithPrice(nil,
+                Answers.logPurchase(withPrice: nil,
                     currency: nil,
                     success: false,
                     itemName: nil,
                     itemType: nil,
                     itemId: nil,
-                    customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId, "Error": errorMessage, "App Version": AppVersion])
+                    customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "Error": errorMessage, "App Version": Constants.AppVersion])
                 
                 print(errorMessage)
                 
@@ -276,29 +284,29 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         }
     }
     
-    func paymentQueue(queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
+    func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
         
         print("removed transactions")
         
     }
     
-    func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue) {
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         
         print("transactions restored")
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.sweetAlertRestorePurchases.closeAlertDismissButton()
-            SweetAlert().showAlert(NSLocalizedString("Success", comment: ""), subTitle: NSLocalizedString("Alert: Restore Success Subtitle Text", comment: ""), style: AlertStyle.Success)
+            SweetAlert().showAlert(NSLocalizedString("Success", comment: ""), subTitle: NSLocalizedString("Alert: Restore Success Subtitle Text", comment: ""), style: AlertStyle.success)
         })
     }
     
-    func paymentQueue(queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: NSError) {
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: NSError) {
         
         print("restore transactions failed")
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.sweetAlertRestorePurchases.closeAlertDismissButton()
-            SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error.localizedDescription, style: AlertStyle.Error)
+            SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error.localizedDescription, style: AlertStyle.error)
         })
         
 //        // log restore failed
@@ -313,10 +321,10 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     //MARK: SKRequestDelegate methods
     
-    func requestDidFinish(request: SKRequest) {
+    func requestDidFinish(_ request: SKRequest) {
         
         print("request did finish")
-        let fileExists = NSFileManager.defaultManager().fileExistsAtPath(receiptURL!.path!)
+        let fileExists = FileManager.default.fileExists(atPath: Constants.receiptURL!.path)
         
         if fileExists {
             print("Appstore Receipt now exists")
@@ -326,60 +334,62 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         print("something went wrong while obtaining the receipt, maybe the user did not successfully enter it's credentials")
     }
     
-    func request(request: SKRequest, didFailWithError error: NSError) {
+    func request(_ request: SKRequest, didFailWithError error: Error) {
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            SweetAlert().showAlert(NSLocalizedString("Alert: Purchase Request Failed Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Purchase Request Failed Subtitle Text", comment: ""), style: AlertStyle.Warning)
+        DispatchQueue.main.async(execute: { () -> Void in
+            SweetAlert().showAlert(NSLocalizedString("Alert: Purchase Request Failed Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Purchase Request Failed Subtitle Text", comment: ""), style: AlertStyle.warning)
         })
         
-        print("request did fail with error: \(error.code)")
+        print("request did fail with error: \(error.localizedDescription)")
     }
     
-    func selectProduct(productID: String) {
+//    func selectProduct(_ productID: String) {
+//        
+//        guard Functions.isConnectedToNetwork() else {
+//            
+//            DispatchQueue.main.async(execute: { () -> Void in
+//                SweetAlert().showAlert(NSLocalizedString("Alert: Requires Upgrade Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Requires Upgrade Subtitle Text", comment: ""), style: AlertStyle.warning)
+//            })
+//            return
+//        }
+//        
+//        DispatchQueue.main.async(execute: { () -> Void in
+//            self.sweetAlertLoadingPurchase.showAlert(NSLocalizedString("Alert: Loading Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Loading Purchase Subtitle Text", comment: ""), style: AlertStyle.activityIndicator, dismissTime: nil)
+//        })
+//        
+//        self.requestProductsWithCompletionHandler { (success) -> Void in
+//            
+//            DispatchQueue.main.async(execute: { () -> Void in
+//                self.sweetAlertLoadingPurchase.closeAlertDismissButton()
+//            })
+//            
+//            if success {
+//                
+//                for product in self.list {
+//                    
+//                    if product.productIdentifier == productID {
+//                        
+//                        self.p = product
+//                        self.displayCustomAlert(self.p.localizedTitle, lineTwo: self.p.localizedPrice(), lineThree: "\(self.p.localizedDescription)", image: nil, popupStyle: CNPPopupStyle.centered)
+//                        break
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    func buyProduct(product: SKProduct) {
         
-        guard isConnectedToNetwork() else {
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SweetAlert().showAlert(NSLocalizedString("Alert: Requires Upgrade Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Requires Upgrade Subtitle Text", comment: ""), style: AlertStyle.Warning)
-            })
-            return
-        }
+        print("buy " + product.productIdentifier)
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.sweetAlertLoadingPurchase.showAlert(NSLocalizedString("Alert: Loading Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Loading Purchase Subtitle Text", comment: ""), style: AlertStyle.ActivityIndicator, dismissTime: nil)
-        })
+        self.p = product
         
-        self.requestProductsWithCompletionHandler { (success) -> Void in
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.sweetAlertLoadingPurchase.closeAlertDismissButton()
-            })
-            
-            if success {
-                
-                for product in self.list {
-                    
-                    if product.productIdentifier == productID {
-                        
-                        self.p = product
-                        self.displayCustomAlert(self.p.localizedTitle, lineTwo: self.p.localizedPrice(), lineThree: "\(self.p.localizedDescription)", image: nil, popupStyle: CNPPopupStyle.Centered)
-                        break
-                    }
-                }
-            }
-        }
+        let pay = SKPayment(product: product)
+        _ = SKPaymentQueue.default().add(pay as SKPayment)
+        
     }
     
-    func buyProduct() {
-        
-        print("buy " + p.productIdentifier)
-        
-        let pay = SKPayment(product: p)
-        _ = SKPaymentQueue.defaultQueue().addPayment(pay as SKPayment)
-        
-    }
-    
-    func finishTransaction(trans: SKPaymentTransaction) {
+    func finishTransaction(_ trans: SKPaymentTransaction) {
         
         print("finish transaction")
         
@@ -389,105 +399,104 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         
         // Set KeyChain Value
         do {
-            try keychain
+            try Constants.keychain
+                .accessibility(.always)
                 .synchronizable(true)
-                .set(removeAdsKeyValue, key: removeAdsKey)
+                .set(value: Constants.removeAdsKeyValue, key: Constants.removeAdsKey)
         } catch let error {
             print("error: \(error)")
         }
         
-        keychainRemoveAdsString  = keychain[removeAdsKey]
+        Constants.keychainRemoveAdsString  = Constants.keychain[Constants.removeAdsKey]
     }
     
     func proVersionPurchased() {
         
         // send context to Watch if iOS9
-        if wcSession != nil {
-            
-            sendContextToAppleWatch(["contextType":"PurchasedProVersion"])
+        if Constants.wcSession != nil {
+            Functions.sendContextToAppleWatch(["contextType":"PurchasedProVersion"])
         }
         
         // Set KeyChain Value
         do {
-            try keychain
-                .accessibility(.Always)
+            try Constants.keychain
+                .accessibility(.always)
                 .synchronizable(true)
-                .set(proVersionKeyValue, key: proVersionKey)
+                .set(value: Constants.proVersionKeyValue, key: Constants.proVersionKey)
         } catch let error {
             print("error: \(error)")
         }
         
-        keychainProVersionString = keychain[proVersionKey]
+        Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
     }
     
     func restorePurchases() {
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.sweetAlertRestorePurchases.showAlert(NSLocalizedString("Alert: Restoring Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Restoring Purchase Subtitle Text", comment: ""), style: AlertStyle.ActivityIndicator, dismissTime: nil)
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.sweetAlertRestorePurchases.showAlert(NSLocalizedString("Alert: Restoring Purchase Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Restoring Purchase Subtitle Text", comment: ""), style: AlertStyle.activityIndicator, dismissTime: nil)
         })
         
-        _ = SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+        _ = SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
     // Custom Alert Functions
     
-    func displayCustomAlert (lineOne: String, lineTwo: String, lineThree:String, image: UIImage?, popupStyle: CNPPopupStyle) {
-        
-        var contents:[AnyObject] = []
-        
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        paragraphStyle.alignment = NSTextAlignment.Center
-        
-        let attributedLineOne: NSAttributedString = NSAttributedString(string: lineOne, attributes: [NSFontAttributeName: UIFont.boldSystemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
-        
-        let attributedLineTwo: NSAttributedString = NSAttributedString(string: lineTwo, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(20), NSParagraphStyleAttributeName: paragraphStyle])
-        
-        let attributedLineThree: NSAttributedString = NSAttributedString(string: lineThree, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSParagraphStyleAttributeName: paragraphStyle])
-        
-        let lineOneLabel: UILabel = UILabel()
-        lineOneLabel.numberOfLines = 0
-        lineOneLabel.attributedText = attributedLineOne
-        contents.append(lineOneLabel)
-        
-        let lineTwoLabel: UILabel = UILabel()
-        lineTwoLabel.numberOfLines = 0
-        lineTwoLabel.attributedText = attributedLineTwo
-        contents.append(lineTwoLabel)
-        
-        let lineThreeLabel: UILabel = UILabel()
-        lineThreeLabel.numberOfLines = 0
-        lineThreeLabel.attributedText = attributedLineThree
-        contents.append(lineThreeLabel)
-        
-        if image != nil {
-            
-            let imageView: UIImageView = UIImageView(image: image)
-            contents.append(imageView)
-        }
-        
-        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.System)
-        purchaseButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        purchaseButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Highlighted)
-        purchaseButton.titleLabel?.font =  UIFont.boldSystemFontOfSize(20)
-        purchaseButton.setTitle("Purchase", forState: UIControlState.Normal)
-        purchaseButton.backgroundColor = UIColor.greenColor()
-        purchaseButton.layer.cornerRadius = 4
-        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), forControlEvents: UIControlEvents.TouchUpInside)
-        contents.append(purchaseButton)
-        
-        inAppPurchasePopupController = CNPPopupController(contents: contents)
-        inAppPurchasePopupController.theme.popupStyle = popupStyle
-        inAppPurchasePopupController.theme.contentVerticalPadding = 5
-        inAppPurchasePopupController.presentPopupControllerAnimated(true)
-        
-    }
+//    func displayCustomAlert (_ lineOne: String, lineTwo: String, lineThree:String, image: UIImage?, popupStyle: CNPPopupStyle) {
+//        
+//        var contents:[AnyObject] = []
+//        
+//        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
+//        paragraphStyle.alignment = NSTextAlignment.center
+//        
+//        let attributedLineOne: NSAttributedString = NSAttributedString(string: lineOne, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24), NSParagraphStyleAttributeName: paragraphStyle])
+//        
+//        let attributedLineTwo: NSAttributedString = NSAttributedString(string: lineTwo, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSParagraphStyleAttributeName: paragraphStyle])
+//        
+//        let attributedLineThree: NSAttributedString = NSAttributedString(string: lineThree, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
+//        
+//        let lineOneLabel: UILabel = UILabel()
+//        lineOneLabel.numberOfLines = 0
+//        lineOneLabel.attributedText = attributedLineOne
+//        contents.append(lineOneLabel)
+//        
+//        let lineTwoLabel: UILabel = UILabel()
+//        lineTwoLabel.numberOfLines = 0
+//        lineTwoLabel.attributedText = attributedLineTwo
+//        contents.append(lineTwoLabel)
+//        
+//        let lineThreeLabel: UILabel = UILabel()
+//        lineThreeLabel.numberOfLines = 0
+//        lineThreeLabel.attributedText = attributedLineThree
+//        contents.append(lineThreeLabel)
+//        
+//        if image != nil {
+//            
+//            let imageView: UIImageView = UIImageView(image: image)
+//            contents.append(imageView)
+//        }
+//        
+//        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.system)
+//        purchaseButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+//        purchaseButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
+//        purchaseButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
+//        purchaseButton.setTitle("Purchase", for: UIControlState.normal)
+//        purchaseButton.backgroundColor = UIColor.green
+//        purchaseButton.layer.cornerRadius = 4
+//        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControlEvents.touchUpInside)
+//        contents.append(purchaseButton)
+//        
+//        inAppPurchasePopupController = CNPPopupController(contents: contents)
+//        inAppPurchasePopupController.theme.popupStyle = popupStyle
+//        inAppPurchasePopupController.theme.contentVerticalPadding = 5
+//        inAppPurchasePopupController.present(animated: true)
+//    }
     
     //MARK: Receipt methods
     
     func obtainReceipt() {
         
-        let fileExists = NSFileManager.defaultManager().fileExistsAtPath(receiptURL!.path!)
+        let fileExists = FileManager.default.fileExists(atPath: Constants.receiptURL!.path)
         
         if fileExists {
             print("Appstore Receipt already exists")
@@ -504,7 +513,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         request.start()
     }
     
-    func verifyReceipt(completionHandler:(receiptTransactionsArray: [JSON]?, environment: String?) -> Void) {
+    func verifyReceipt(_ completionHandler: @escaping (_ receiptTransactionsArray: [JSON]?, _ environment: String?) -> Void) {
         
         print("Validating Receipt")
         
@@ -514,72 +523,72 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             let serverURL = "https://buy.itunes.apple.com/verifyReceipt"
         #endif
         
-        guard let receipt: NSData = NSData(contentsOfURL: receiptURL!) else {
+        guard let receipt: Data = try? Data(contentsOf: Constants.receiptURL!) else {
             print("no receipt content")
             return
         }
         
-        let receiptData: NSString = receipt.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        let receiptData: NSString = NSString(string: receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)))
         //print("\(receiptData)")
         
-        let payload: NSString = "{\"receipt-data\" : \"\(receiptData)\"}"
-        let payloadData = payload.dataUsingEncoding(NSUTF8StringEncoding)
+        let payload: NSString = NSString(string: "{\"receipt-data\" : \"\(receiptData)\"}")
+        let payloadData = payload.data(using: String.Encoding.utf8.rawValue)
         //print("\(payloadData)")
         
-        let request = NSMutableURLRequest(URL: NSURL(string: serverURL)!, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 10)
+        var request = URLRequest(url: URL(string: serverURL)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10)
         
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        request.HTTPBody = payloadData
+        let session = URLSession.shared
+        request.httpMethod = "POST"
+        request.httpBody = payloadData
         
-        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+        let task = session.dataTask(with: request) { (data, response, error) in
             
             guard error == nil else {
                 
                 print(error!.localizedDescription)
-                let jsonString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                let jsonString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                 print(")Error could not parse JSON: \(jsonString)")
                 
-                return completionHandler(receiptTransactionsArray: nil, environment: nil)
+                return completionHandler(nil, nil)
             }
-
+            
             let json = JSON(data: data!)
             let receiptStatus = json["status"]
             let receiptEnvironment = json["environment"]
             
             guard json != nil else {
-                return completionHandler(receiptTransactionsArray: nil, environment: receiptEnvironment.string)
+                return completionHandler(nil, receiptEnvironment.string)
             }
             
             print("Receipt \(json)")
             
             guard receiptStatus.int == 0  else {
                 
-                return completionHandler(receiptTransactionsArray: nil, environment: receiptEnvironment.string)
+                return completionHandler(nil, receiptEnvironment.string)
             }
-                
+            
             print("Sucessfully returned purchased receipt data")
             
             let receiptContent = json["receipt"]
             
             if let inAppPurchases = receiptContent["in_app"].array {
                 
-                completionHandler(receiptTransactionsArray: inAppPurchases, environment: receiptEnvironment.string)
+                completionHandler(inAppPurchases, receiptEnvironment.string)
                 
             } else {
                 
-                completionHandler(receiptTransactionsArray: nil, environment: receiptEnvironment.string)
+                completionHandler(nil, receiptEnvironment.string)
                 
             }
         }
         task.resume()
     }
     
-    func validateTransaction(transaction: SKPaymentTransaction, receiptTransactionsArray: [JSON], completionHandler:(success:Bool, receiptTransactionArray: JSON?) -> Void) {
+    func validateTransaction(_ transaction: SKPaymentTransaction, receiptTransactionsArray: [JSON], completionHandler:(_ success:Bool, _ receiptTransactionArray: JSON?) -> Void) {
         
         let transactionProductID = transaction.payment.productIdentifier as String
         
-        for (index,inAppPurchase) in receiptTransactionsArray.enumerate() {
+        for (index,inAppPurchase) in receiptTransactionsArray.enumerated() {
             
             print(index)
             print(receiptTransactionsArray.count)
@@ -588,13 +597,13 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             
             if product_id.string == transactionProductID {
                 
-                completionHandler(success: true, receiptTransactionArray: inAppPurchase)
+                completionHandler(true, inAppPurchase)
                 
                 break
                 
             } else if index == receiptTransactionsArray.count - 1 {
                 
-                completionHandler(success: false, receiptTransactionArray: nil)
+                completionHandler(false, nil)
                 
             }
         }
@@ -602,8 +611,8 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     
     func displayValidationError() {
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            SweetAlert().showAlert(NSLocalizedString("Alert: Validation Error Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Validation Error Subtitle Text", comment: ""), style: AlertStyle.Error, dismissTime: nil)
+        DispatchQueue.main.async(execute: { () -> Void in
+            SweetAlert().showAlert(NSLocalizedString("Alert: Validation Error Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Validation Error Subtitle Text", comment: ""), style: AlertStyle.error, dismissTime: nil)
             
         })
     }

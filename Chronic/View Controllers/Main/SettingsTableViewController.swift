@@ -10,14 +10,16 @@ import UIKit
 import MessageUI
 import HealthKit
 import LaunchKit
+import Crashlytics
+import MZFormSheetPresentationController
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, Dimmable {
     
     var emailTitle: String!
     var messageBody: String!
     var toReceipients: [String]!
     
-    @IBAction func unwindToSettingsViewController(segue: UIStoryboardSegue) {
+    @IBAction func unwindToSettingsViewController(_ segue: UIStoryboardSegue) {
         
     }
     
@@ -31,57 +33,53 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet var appVersionLabel: UILabel!
     
-    @IBAction func timerVolumeSlider(sender: UISlider) {
+    @IBAction func timerVolumeSlider(_ sender: UISlider) {
         
-        timerVolume = timerVolumeSlider.value
+        Constants.timerVolume = timerVolumeSlider.value
         
-        userDefaults.setFloat(timerVolumeSlider.value, forKey: "TIMER_VOLUME")
-        
-        userDefaults.synchronize()
+        Constants.userDefaults.set(timerVolumeSlider.value, forKey: "TIMER_VOLUME")
+
     }
     
-    @IBAction func enableDeviceSleepSwitchChanged(sender: UISwitch) {
+    @IBAction func enableDeviceSleepSwitchChanged(_ sender: UISwitch) {
         
-        if !sender.on {
+        if !sender.isOn {
             
-        userDefaults.setBool(false, forKey: "ENABLE_DEVICE_SLEEP")
+            Constants.userDefaults.set(false, forKey: "ENABLE_DEVICE_SLEEP")
             
-        } else if sender.on {
+        } else if sender.isOn {
                 
-            userDefaults.setBool(true, forKey: "ENABLE_DEVICE_SLEEP")
+            Constants.userDefaults.set(true, forKey: "ENABLE_DEVICE_SLEEP")
         }
+                
+        Constants.enableDeviceSleepState = Constants.userDefaults.bool(forKey: "ENABLE_DEVICE_SLEEP") as Bool
         
-        userDefaults.synchronize()
-        
-        enableDeviceSleepState = userDefaults.boolForKey("ENABLE_DEVICE_SLEEP") as Bool
-        
-        UIApplication.sharedApplication().idleTimerDisabled = !enableDeviceSleepState
+        UIApplication.shared.isIdleTimerDisabled = !Constants.enableDeviceSleepState
         
     }
     
-    @IBAction func runInBackgroundSwitchChanged(sender: UISwitch) {
+    @IBAction func runInBackgroundSwitchChanged(_ sender: UISwitch) {
         
-        if !sender.on {
+        if !sender.isOn {
             
-            userDefaults.setBool(false, forKey: "RUN_IN_BACKGROUND")
+            Constants.userDefaults.set(false, forKey: "RUN_IN_BACKGROUND")
             
-        } else if sender.on {
+        } else if sender.isOn {
             
-            userDefaults.setBool(true, forKey: "RUN_IN_BACKGROUND")
+            Constants.userDefaults.set(true, forKey: "RUN_IN_BACKGROUND")
         }
         
-        userDefaults.synchronize()
-        runInBackgroundState = userDefaults.boolForKey("RUN_IN_BACKGROUND") as Bool
+        Constants.runInBackgroundState = Constants.userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
         
     }
     
-    @IBAction func notificationSwitchChanged(sender: UISwitch) {
-        userDefaults.setBool(sender.on, forKey: "NOTIFICATION_REMINDER_ENABLED")
-        userDefaults.synchronize()
+    @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
+        Constants.userDefaults.set(sender.isOn, forKey: "NOTIFICATION_REMINDER_ENABLED")
+        
+        Constants.notificationReminderState = Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
+        NotificationHelper.updateNotificationPreferences(Constants.notificationReminderState)
+    
         self.tableView.reloadData()
-        
-        notificationReminderState = userDefaults.boolForKey("NOTIFICATION_REMINDER_ENABLED") as Bool
-        NotificationHelper.updateNotificationPreferences(notificationReminderState)
     }
     
     override func viewDidLoad() {
@@ -91,18 +89,18 @@ class SettingsTableViewController: UITableViewController {
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setProFeaturesDefaultSettings",name:"SetProFeatureDefaultSettings", object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
         
-        timerSoundDetailTextField.text = timerSound
-        timerVolumeSlider.value = timerVolume
-        enableDeviceSleepSwitch.on = enableDeviceSleepState
-        runInBackgroundSwitch.on = runInBackgroundState
-        notificationSwitch.on = notificationReminderState
+        timerSoundDetailTextField.text = Constants.timerSound
+        timerVolumeSlider.value = Constants.timerVolume
+        enableDeviceSleepSwitch.isOn = Constants.enableDeviceSleepState
+        runInBackgroundSwitch.isOn = Constants.runInBackgroundState
+        notificationSwitch.isOn = Constants.notificationReminderState
         notificationIntervalTextfield.text = NotificationHelper.interval
         notificationTimeTextfield.text = String(NotificationHelper.hour) + ":00"
-        appVersionLabel.text = payloadShort
+        appVersionLabel.text = Constants.payloadShort
 
     }
     
@@ -113,39 +111,38 @@ class SettingsTableViewController: UITableViewController {
     
     func setProFeaturesDefaultSettings() {
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
         
-            self.runInBackgroundSwitch.on = true
+            self.runInBackgroundSwitch.isOn = true
             self.runInBackgroundSwitchChanged(self.runInBackgroundSwitch)
-            self.enableDeviceSleepSwitch.on = false
+            self.enableDeviceSleepSwitch.isOn = false
             self.enableDeviceSleepSwitchChanged(self.enableDeviceSleepSwitch)
-            
         })
     }
     
     // MARK: - TableView Functions
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
     }
     
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let view = view as? UITableViewHeaderFooterView {
             
-            view.textLabel!.textColor = UIColor.whiteColor()
+            view.textLabel!.textColor = UIColor.white
             
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
             return 4
         } else if (section == 1) {
             return 4
         } else if (section == 2) {
-            if userDefaults.boolForKey("NOTIFICATION_REMINDER_ENABLED") {
+            if Constants.notificationReminderState == true {
                 return 3
             } else {
                 return 1
@@ -155,9 +152,9 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let reuseIdentifier = tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier else { return }
+        guard let reuseIdentifier = tableView.cellForRow(at: indexPath)?.reuseIdentifier else { return }
         
         switch reuseIdentifier {
             
@@ -165,15 +162,73 @@ class SettingsTableViewController: UITableViewController {
             
             timerSoundDetailTextField.becomeFirstResponder()
             
+        case "FacebookLikeCell":
+            
+            Constants.SocialNetwork.Facebook.openPage()
+            
+        case "TwitterFollowCell":
+            
+            Constants.SocialNetwork.Twitter.openPage()
+            
+        case "ShareWithFriendsCell":
+            
+            guard Functions.isConnectedToNetwork() else {
+                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
+                return
+            }
+            
+            let textToShare: String = "Check out @ChronicTimer, the simplest workout timer app! For Interval, HIIT, Tabata, Yoga, Boxing, Running #ChronicTimer"
+            
+            let objectsToShare: NSArray = [textToShare, Constants.appURL!]
+            
+            let excludedActivityTypesArray: [UIActivityType] = [
+                UIActivityType.postToWeibo,
+                UIActivityType.addToReadingList,
+                UIActivityType.assignToContact,
+                UIActivityType.print,
+                UIActivityType.saveToCameraRoll,
+                UIActivityType.assignToContact,
+                UIActivityType.airDrop,
+                ]
+            
+            let activityVC = UIActivityViewController(activityItems: objectsToShare as [AnyObject], applicationActivities: nil)
+            activityVC.excludedActivityTypes = excludedActivityTypesArray
+            
+            activityVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.unknown
+            
+            activityVC.popoverPresentationController?.sourceView = self.view
+            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2, width: 0, height: 0)
+            
+            self.present(activityVC, animated: true, completion: nil)
+            
+            activityVC.completionWithItemsHandler = { (activity, success, items, error) in
+                print("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
+                
+                if success {
+                    
+                    SweetAlert().showAlert("Success!", subTitle: nil, style: AlertStyle.success)
+                    
+                    // log shared successfully
+                    Answers.logShare(withMethod: "\(activity!)",
+                                               contentName: "Chronic Shared",
+                                               contentType: "Share",
+                                               contentId: nil,
+                                               customAttributes: ["App Version": Constants.AppVersion])
+                    
+                } else if error != nil {
+                    SweetAlert().showAlert("Error!", subTitle: "That didn't go through", style: AlertStyle.error)
+                }
+            }
+            
         case "WriteAReviewCell":
             
-            if isConnectedToNetwork() {
+            if Functions.isConnectedToNetwork() {
                 
-                appDel.window?.rootViewController?.performSegueWithIdentifier("FeedbackSegueIdentifier", sender: self)
+                iRate.sharedInstance().openRatingsPageInAppStore()
                 
             } else {
                 
-                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.Warning)
+                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
             }
             
         case "EmailUsCell":
@@ -185,37 +240,33 @@ class SettingsTableViewController: UITableViewController {
                 mc.mailComposeDelegate = self
                 
                 emailTitle = "Chronic Feedback/Bug"
-                messageBody = "Hello Chronic Team, </br> </br> </br> </br> </br> - - - - - - - - - - - - - - - - - - - - - </br>" + emailDiagnosticInfo
-                toReceipients = [appEmail]
+                messageBody = "Hello Chronic Team, </br> </br> </br> </br> </br> - - - - - - - - - - - - - - - - - - - - - </br>" + Constants.emailDiagnosticInfo
+                toReceipients = [Constants.appEmail]
                 
                 mc.setSubject(emailTitle)
                 mc.setMessageBody(messageBody, isHTML: true)
                 mc.setToRecipients(toReceipients)
                 
-                self.presentViewController(mc, animated: true, completion: nil)
+                self.present(mc, animated: true, completion: nil)
                 
             } else {
                 
-                SweetAlert().showAlert(NSLocalizedString("Alert: No Email Account Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Email Account Subtitle Text", comment: ""), style: AlertStyle.Warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
+                SweetAlert().showAlert(NSLocalizedString("Alert: No Email Account Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Email Account Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Ok", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: nil, otherButtonColor: nil) { (isOtherButton) -> Void in
                     
                 }
             }
             
-        case "UltimatePackageCell":
+        case "UltimatePackageCell", "ProVersionCell", "RemoveAdsCell", "DonateCell":
             
-            IAPHelper.sharedInstance.selectProduct(iapUltimatePackageKey)
-            
-        case "ProVersionCell":
-            
-            IAPHelper.sharedInstance.selectProduct(proVersionKey)
-            
-        case "RemoveAdsCell":
-            
-            IAPHelper.sharedInstance.selectProduct(removeAdsKey)
-            
-        case "DonateCell":
-            
-            IAPHelper.sharedInstance.selectProduct(donate99Key)
+            if !IAPHelper.sharedInstance.list.isEmpty {
+                self.performSegue(withIdentifier: "InAppPurchaseSegueIdentifier", sender: tableView.cellForRow(at: indexPath))
+            } else {
+                IAPHelper.sharedInstance.requestProducts(displayAlert: true, { (success) in
+                    if !IAPHelper.sharedInstance.list.isEmpty {
+                        self.performSegue(withIdentifier: "InAppPurchaseSegueIdentifier", sender: tableView.cellForRow(at: indexPath))
+                    }
+                })
+            }
             
         case "RestoreUpgradesCell":
             
@@ -231,17 +282,38 @@ class SettingsTableViewController: UITableViewController {
             
         case "FAQCell":
             
-            if isConnectedToNetwork() {
+            if Functions.isConnectedToNetwork() {
                 
-                self.performSegueWithIdentifier("FAQSegueIdentifier", sender: self)
+                self.performSegue(withIdentifier: "FAQSegueIdentifier", sender: self)
                 
             } else {
                 
-                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.Warning)
+                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
             }
             
         default:
             break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "InAppPurchaseSegueIdentifier" {
+            let presentationSegue = segue as! MZFormSheetPresentationViewControllerSegue
+            presentationSegue.formSheetPresentationController.contentViewControllerTransitionStyle = .slideAndBounceFromLeft
+            presentationSegue.formSheetPresentationController.presentationController?.shouldCenterVertically = true
+            presentationSegue.formSheetPresentationController.presentationController?.shouldUseMotionEffect = true
+            presentationSegue.formSheetPresentationController.presentationController?.shouldDismissOnBackgroundViewTap = true
+            presentationSegue.formSheetPresentationController.presentationController?.contentViewSize = CGSize(width: self.view.bounds.size.width, height: 450)
+            
+            let navigationController = presentationSegue.formSheetPresentationController.contentViewController as! UINavigationController
+            let presentedViewController = navigationController.viewControllers.first as! InAppPurchaseViewController
+            
+            //presentedViewController.preferredContentSize = CGSize(width: self.view.bounds.size.width, height: 450)
+            presentedViewController.inAppProducts = IAPHelper.sharedInstance.list
+            
+            guard let cell = sender as? UITableViewCell else { return }
+            presentedViewController.carouselIndex = self.tableView.indexPath(for: cell)?.row ?? 0
         }
     }
 }
@@ -250,23 +322,23 @@ class SettingsTableViewController: UITableViewController {
 extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         switch result.rawValue {
             
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.cancelled.rawValue:
             
             print("Mail Cancelled")
             
-        case MFMailComposeResultSaved.rawValue:
+        case MFMailComposeResult.saved.rawValue:
             
             print("Mail Saved")
             
-        case MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.sent.rawValue:
             
             print("Mail Sent")
             
-        case MFMailComposeResultFailed.rawValue:
+        case MFMailComposeResult.failed.rawValue:
             
             print("Mail Failed")
             
@@ -276,7 +348,7 @@ extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
             
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
     }
     

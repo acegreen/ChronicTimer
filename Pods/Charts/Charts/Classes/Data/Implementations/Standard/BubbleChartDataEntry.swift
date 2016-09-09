@@ -6,16 +6,16 @@
 //    Copyright 2015 Pierre-Marc Airoldi
 //    Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/ios-charts
+//  https://github.com/danielgindi/Charts
 //
 
 import Foundation
 import CoreGraphics
 
-public class BubbleChartDataEntry: ChartDataEntry
+open class BubbleChartDataEntry: ChartDataEntry
 {
     /// The size of the bubble.
-    public var size = CGFloat(0.0)
+    open var size = CGFloat(0.0)
     
     public required init()
     {
@@ -45,7 +45,7 @@ public class BubbleChartDataEntry: ChartDataEntry
     
     // MARK: NSCopying
     
-    public override func copyWithZone(zone: NSZone) -> AnyObject
+    open override func copyWithZone(_ zone: NSZone?) -> Any
     {
         let copy = super.copyWithZone(zone) as! BubbleChartDataEntry
         copy.size = size

@@ -7,7 +7,6 @@
  */
 
 /* Globals */
-"Reminder Notification Text" = "Zeit für eine tolle Training!";
 "Yes" = "Ja";
 "No" = "Nein";
 "Ok" = "Ok";
@@ -29,6 +28,8 @@
 "Week" = "Woche";
 "Month" = "Monat";
 
+"Of" = "Von";
+
 /* Main */
 "Text-To-Speech Default Sentence" = "Diese App ist super";
 "Text-To-Speech Tracking Run Text" = "Tracking Lauf";
@@ -36,15 +37,20 @@
 "Text-To-Speech Workout Complete Text" = "Workout beendet";
 "Text-To-Speech Run Complete Text" = "Lauf beendet";
 
-"Congratulation Text (Routine)" = "Glückwünsche! Sie haben Ihr Training beendet";
-"Congratulation Text (Run)" =  "Glückwünsche! Sie haben Ihre Lauf abgeschlossen";
-"Timer Ended Text" =  "Ihre Timer ist beendet";
+"Notification Workout Text" = "Workout Complete";
+"Notification Workout subText" = "Glückwünsche! Sie haben Ihr Training beendet";
+"Notification Timer Text" =  "Timer Finished";
+"Notification Timer subText" = "Ihre Timer ist beendet";
+"Notification Reminder Text" = "Workout Reminder";
+"Notification Reminder subText" = "Zeit für eine tolle Training!";
+//"Congratulation Text (Run)" =  "Glückwünsche! Sie haben Ihre Lauf abgeschlossen";
 
 "No Exercise" = "Keine Übung";
 
 "Left Side Label Text (Routine)" = "Vergangen";
 "Right Side Label Text (Routine)" = "Verbleibend";
 
+"Middle Label Text (Run)" = "Pace";
 "Left Side Label Text (Run)" = "Zeit";
 "Right Side Label Text (Run)" = "Distanz";
 
@@ -82,7 +88,13 @@
 "Alert: Requires Upgrade Subtitle Text" = "Verbindung zum Internet nötig um Kauf zu initiieren";
 
 "Alert: No Internet Connection Title Text" = "Keine Internetverbindung";
-"Alert: No Internet Connection Subtitle Text" = "Bitte verbinden Sie sich, um fortzufahren";
+"Alert: No Internet Connection Subtitle Text" = "Bitte verbinden, um fortzufahren";
+
+"Alert: Reconnect To Internet Title Text" = "Reconnect to Internet";
+"Alert: Reconnect To Internet Subtitle Text" = "By reconnecting to the internet, you can continue running your workout";
+
+"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads Upgrade";
+"Alert: Purchase Remove Ads Subtitle Text" = "With the upgrade, you can run a workout without internet and distraction free";
 
 "Alert: No Email Account Title Text" = "Keine E-Mail-Konto vorhanden";
 "Alert: No Email Account Subtitle Text" = "Bitte fügen Sie eine E-Mail-Konto in Ihrem Mail-App";

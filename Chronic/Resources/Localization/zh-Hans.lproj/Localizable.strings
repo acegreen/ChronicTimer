@@ -7,7 +7,6 @@
  */
 
 /* Globals */
-"Reminder Notification Text" = "开始体能训练!";
 "Yes" = "是";
 "No" = "否";
 "Ok" = "好的";
@@ -29,6 +28,8 @@
 "Week" = "周";
 "Month" = "月";
 
+"Of" = "的";
+
 /* Main */
 "Text-To-Speech Default Sentence" = "这个程序是真棒";
 "Text-To-Speech Tracking Run Text" = "记录跑步";
@@ -36,15 +37,20 @@
 "Text-To-Speech Workout Complete Text" = "训练完成";
 "Text-To-Speech Run Complete Text" = "跑步结束";
 
-"Congratulation Text (Routine)" = "恭喜！您已经完成了您的体能训练";
-"Congratulation Text (Run)" =  "恭喜！您已经完成了你的活动";
-"Timer Ended Text" =  "您的定时计数已到";
+"Notification Workout Text" = "Workout Complete";
+"Notification Workout subText" = "恭喜！您已经完成了您的体能训练";
+"Notification Timer Text" =  "Timer Finished";
+"Notification Timer subText" =  "您的定时计数已到";
+"Notification Reminder Text" = "Workout Reminder";
+"Notification Reminder subText" = "开始体能训练!";
+//"Congratulation Text (Run)" =  "恭喜！您已经完成了你的活动";
 
 "No Exercise" = "没有训练项目";
 
 "Left Side Label Text (Routine)" = "耗时";
 "Right Side Label Text (Routine)" = "剩余";
 
+"Middle Label Text (Run)" = "Pace";
 "Left Side Label Text (Run)" = "时间";
 "Right Side Label Text (Run)" = "距离";
 
@@ -83,6 +89,12 @@
 
 "Alert: No Internet Connection Title Text" = "未连接互联网";
 "Alert: No Internet Connection Subtitle Text" = "请连接互联网后再继续";
+
+"Alert: Reconnect To Internet Title Text" = "Reconnect to Internet";
+"Alert: Reconnect To Internet Subtitle Text" = "By reconnecting to the internet, you can continue running your workout";
+
+"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads Upgrade";
+"Alert: Purchase Remove Ads Subtitle Text" = "With the upgrade, you can run a workout without internet and distraction free";
 
 "Alert: No Email Account Title Text" = "没有发现电子邮件账户";
 "Alert: No Email Account Subtitle Text" = "请在您的电子邮件应用中设置电子邮件账户";

@@ -29,7 +29,7 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         self.inputAccessoryView = configureAccessoryView()
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent textfield from editing
         return false
@@ -38,7 +38,7 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     
     func configurePicker() -> UIView {
         
-        picker.selectRow(pickerData.indexOf(timerSound)!, inComponent: 0, animated: true)
+        picker.selectRow(pickerData.index(of: Constants.timerSound)!, inComponent: 0, animated: true)
         
         return picker
         
@@ -46,15 +46,15 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     
     func configureAccessoryView() -> UIView {
         
-        let inputAccessoryView = UIToolbar(frame: CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.size.width, 44))
-        inputAccessoryView.barStyle = UIBarStyle.BlackTranslucent
+        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 44))
+        inputAccessoryView.barStyle = UIBarStyle.blackTranslucent
         
-        let flex = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
+        let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
     
         // Configure done button
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
-        doneButton.tintColor = UIColor.greenColor()
+        doneButton.tintColor = UIColor.green
         doneButton.action = #selector(TimerSoundPickerTextField.dismissPicker)
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
@@ -64,19 +64,19 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     
     // Disallow selection or editing and remove caret
     
-    override func caretRectForPosition(position: UITextPosition) -> CGRect {
-        return CGRectZero
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        return CGRect.zero
     }
     
-    override func selectionRectsForRange(range: UITextRange) -> [AnyObject] {
+    override func selectionRects(for range: UITextRange) -> [Any] {
         return []
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         
-        UIMenuController.sharedMenuController().menuVisible = false
+        UIMenuController.shared.isMenuVisible = false
         
-        if action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.selectAll(_:)) || action == #selector(NSObject.paste(_:)) {
+        if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {
             return false
         }
         
@@ -91,32 +91,32 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     //MARK: - UIPickerView Functions
     
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
         return 1
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         return pickerData.count
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let title = pickerData[row]
-        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
         
-        pickerView.backgroundColor = UIColor.clearColor()
+        pickerView.backgroundColor = UIColor.clear
         
         return attributedString
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerData[row] == "Text-To-Speech" {
             
-            textToSpeech(NSLocalizedString("Text-To-Speech Default Sentence", comment: ""))
+            Functions.textToSpeech(NSLocalizedString("Text-To-Speech Default Sentence", comment: ""))
             
         } else if pickerData[row] == "No Sound" {
             
@@ -124,13 +124,13 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
             
         } else {
             
-            loadPlayer(pickerData[row], ext: ".wav")
+            Functions.loadPlayer(pickerData[row], ext: ".wav")
             
         }
         
-        userDefaults.setValue(pickerData[row], forKey: "TIMER_SOUND")
+        Constants.userDefaults.setValue(pickerData[row], forKey: "TIMER_SOUND")
         
-        timerSound = pickerData[row]
+        Constants.timerSound = pickerData[row]
         
         self.text = pickerData[row]
         self.sizeToFit()
