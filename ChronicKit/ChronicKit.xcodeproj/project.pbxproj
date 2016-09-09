@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		23FC72D81D7E4C8C00671989 /* ChronicKit-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 23FC72D91D7E4C8C00671989 /* Build configuration list for PBXAggregateTarget "ChronicKit-Universal" */;
+			buildPhases = (
+				23FC72DC1D7E539500671989 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "ChronicKit-Universal";
+			productName = "ChronicKit-Universal";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		23FC72B61D7E4B6E00671989 /* ChronicKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 23FC72B41D7E4B6E00671989 /* ChronicKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23FC72C31D7E4B9900671989 /* ChronicKit-Watch.h in Headers */ = {isa = PBXBuildFile; fileRef = 23FC72C11D7E4B9900671989 /* ChronicKit-Watch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23FC72CE1D7E4C0300671989 /* Chronic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23FC72C91D7E4C0300671989 /* Chronic.xcdatamodeld */; };
+		23FC72CF1D7E4C0300671989 /* Chronic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23FC72C91D7E4C0300671989 /* Chronic.xcdatamodeld */; };
+		23FC72D01D7E4C0300671989 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC72CC1D7E4C0300671989 /* ExerciseModel.swift */; };
+		23FC72D11D7E4C0300671989 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC72CC1D7E4C0300671989 /* ExerciseModel.swift */; };
+		23FC72D21D7E4C0300671989 /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC72CD1D7E4C0300671989 /* RoutineModel.swift */; };
+		23FC72D31D7E4C0300671989 /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC72CD1D7E4C0300671989 /* RoutineModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		23FC72B11D7E4B6E00671989 /* ChronicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23FC72B41D7E4B6E00671989 /* ChronicKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChronicKit.h; sourceTree = "<group>"; };
+		23FC72B51D7E4B6E00671989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23FC72BF1D7E4B9900671989 /* ChronicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChronicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23FC72C11D7E4B9900671989 /* ChronicKit-Watch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChronicKit-Watch.h"; sourceTree = "<group>"; };
+		23FC72C21D7E4B9900671989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23FC72CA1D7E4C0300671989 /* Chronic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chronic.xcdatamodel; sourceTree = "<group>"; };
+		23FC72CB1D7E4C0300671989 /* Chronic_ 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Chronic_ 2.xcdatamodel"; sourceTree = "<group>"; };
+		23FC72CC1D7E4C0300671989 /* ExerciseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		23FC72CD1D7E4C0300671989 /* RoutineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		23FC72AD1D7E4B6E00671989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23FC72BB1D7E4B9900671989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23FC72A51D7E4B2100671989 = {
+			isa = PBXGroup;
+			children = (
+				23FC72C81D7E4C0300671989 /* Core Data */,
+				23FC72B31D7E4B6E00671989 /* ChronicKit */,
+				23FC72C01D7E4B9900671989 /* ChronicKit-Watch */,
+				23FC72B21D7E4B6E00671989 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		23FC72B21D7E4B6E00671989 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23FC72B11D7E4B6E00671989 /* ChronicKit.framework */,
+				23FC72BF1D7E4B9900671989 /* ChronicKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		23FC72B31D7E4B6E00671989 /* ChronicKit */ = {
+			isa = PBXGroup;
+			children = (
+				23FC72B41D7E4B6E00671989 /* ChronicKit.h */,
+				23FC72B51D7E4B6E00671989 /* Info.plist */,
+			);
+			path = ChronicKit;
+			sourceTree = "<group>";
+		};
+		23FC72C01D7E4B9900671989 /* ChronicKit-Watch */ = {
+			isa = PBXGroup;
+			children = (
+				23FC72C11D7E4B9900671989 /* ChronicKit-Watch.h */,
+				23FC72C21D7E4B9900671989 /* Info.plist */,
+			);
+			path = "ChronicKit-Watch";
+			sourceTree = "<group>";
+		};
+		23FC72C81D7E4C0300671989 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				23FC72CD1D7E4C0300671989 /* RoutineModel.swift */,
+				23FC72CC1D7E4C0300671989 /* ExerciseModel.swift */,
+				23FC72C91D7E4C0300671989 /* Chronic.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		23FC72AE1D7E4B6E00671989 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23FC72B61D7E4B6E00671989 /* ChronicKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23FC72BC1D7E4B9900671989 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23FC72C31D7E4B9900671989 /* ChronicKit-Watch.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		23FC72B01D7E4B6E00671989 /* ChronicKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23FC72B71D7E4B6E00671989 /* Build configuration list for PBXNativeTarget "ChronicKit" */;
+			buildPhases = (
+				23FC72AC1D7E4B6E00671989 /* Sources */,
+				23FC72AD1D7E4B6E00671989 /* Frameworks */,
+				23FC72AE1D7E4B6E00671989 /* Headers */,
+				23FC72AF1D7E4B6E00671989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChronicKit;
+			productName = ChronicKit;
+			productReference = 23FC72B11D7E4B6E00671989 /* ChronicKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		23FC72BE1D7E4B9900671989 /* ChronicKitWatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23FC72C41D7E4B9900671989 /* Build configuration list for PBXNativeTarget "ChronicKitWatchOS" */;
+			buildPhases = (
+				23FC72BA1D7E4B9900671989 /* Sources */,
+				23FC72BB1D7E4B9900671989 /* Frameworks */,
+				23FC72BC1D7E4B9900671989 /* Headers */,
+				23FC72BD1D7E4B9900671989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChronicKitWatchOS;
+			productName = "ChronicKit-Watch";
+			productReference = 23FC72BF1D7E4B9900671989 /* ChronicKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		23FC72A61D7E4B2100671989 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				TargetAttributes = {
+					23FC72B01D7E4B6E00671989 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 8T3W9YR268;
+						ProvisioningStyle = Automatic;
+					};
+					23FC72BE1D7E4B9900671989 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 8T3W9YR268;
+						ProvisioningStyle = Automatic;
+					};
+					23FC72D81D7E4C8C00671989 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 8T3W9YR268;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 23FC72A91D7E4B2100671989 /* Build configuration list for PBXProject "ChronicKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 23FC72A51D7E4B2100671989;
+			productRefGroup = 23FC72B21D7E4B6E00671989 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23FC72B01D7E4B6E00671989 /* ChronicKit */,
+				23FC72BE1D7E4B9900671989 /* ChronicKitWatchOS */,
+				23FC72D81D7E4C8C00671989 /* ChronicKit-Universal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		23FC72AF1D7E4B6E00671989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23FC72BD1D7E4B9900671989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23FC72DC1D7E539500671989 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\nif [ \"true\" == ${ALREADYINVOKED:-false} ]\nthen\necho \"RECURSION: Detected, stopping\"\nelse\nexport ALREADYINVOKED=\"true\"\n\necho \"Building\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk watchos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk watchsimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2 make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-watchos/${PROJECT_NAME}WatchOS.framework/${PROJECT_NAME}WatchOS\"\n\n# Step 4. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n# Step 5. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		23FC72AC1D7E4B6E00671989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23FC72D21D7E4C0300671989 /* RoutineModel.swift in Sources */,
+				23FC72CE1D7E4C0300671989 /* Chronic.xcdatamodeld in Sources */,
+				23FC72D01D7E4C0300671989 /* ExerciseModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23FC72BA1D7E4B9900671989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23FC72D31D7E4C0300671989 /* RoutineModel.swift in Sources */,
+				23FC72CF1D7E4C0300671989 /* Chronic.xcdatamodeld in Sources */,
+				23FC72D11D7E4C0300671989 /* ExerciseModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		23FC72AA1D7E4B2100671989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_MODULE_NAME = "";
+			};
+			name = Debug;
+		};
+		23FC72AB1D7E4B2100671989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_MODULE_NAME = "";
+			};
+			name = Release;
+		};
+		23FC72B81D7E4B6E00671989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8T3W9YR268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = ChronicKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = AG.ChronicKit;
+				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
+				PRODUCT_NAME = ChronicKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		23FC72B91D7E4B6E00671989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8T3W9YR268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = ChronicKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = AG.ChronicKit;
+				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
+				PRODUCT_NAME = ChronicKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		23FC72C51D7E4B9900671989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8T3W9YR268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "ChronicKit-Watch/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = AG.ChronicKit;
+				PRODUCT_MODULE_NAME = ChronicKit;
+				PRODUCT_NAME = ChronicKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		23FC72C61D7E4B9900671989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8T3W9YR268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "ChronicKit-Watch/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = AG.ChronicKit;
+				PRODUCT_MODULE_NAME = ChronicKit;
+				PRODUCT_NAME = ChronicKit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		23FC72DA1D7E4C8C00671989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8T3W9YR268;
+				PRODUCT_MODULE_NAME = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		23FC72DB1D7E4C8C00671989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8T3W9YR268;
+				PRODUCT_MODULE_NAME = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23FC72A91D7E4B2100671989 /* Build configuration list for PBXProject "ChronicKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23FC72AA1D7E4B2100671989 /* Debug */,
+				23FC72AB1D7E4B2100671989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23FC72B71D7E4B6E00671989 /* Build configuration list for PBXNativeTarget "ChronicKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23FC72B81D7E4B6E00671989 /* Debug */,
+				23FC72B91D7E4B6E00671989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23FC72C41D7E4B9900671989 /* Build configuration list for PBXNativeTarget "ChronicKitWatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23FC72C51D7E4B9900671989 /* Debug */,
+				23FC72C61D7E4B9900671989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23FC72D91D7E4C8C00671989 /* Build configuration list for PBXAggregateTarget "ChronicKit-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23FC72DA1D7E4C8C00671989 /* Debug */,
+				23FC72DB1D7E4C8C00671989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		23FC72C91D7E4C0300671989 /* Chronic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				23FC72CA1D7E4C0300671989 /* Chronic.xcdatamodel */,
+				23FC72CB1D7E4C0300671989 /* Chronic_ 2.xcdatamodel */,
+			);
+			currentVersion = 23FC72CB1D7E4C0300671989 /* Chronic_ 2.xcdatamodel */;
+			path = Chronic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 23FC72A61D7E4B2100671989 /* Project object */;
+}

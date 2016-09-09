@@ -2,28 +2,28 @@ import UIKit
 
 class OBHealthViewController: OnboardingViewController {
     
-    @IBAction func healthAccessButtonPressed(sender: AnyObject) {
+    @IBAction func healthAccessButtonPressed(_ sender: AnyObject) {
         
         // Request HealthKit Authorization
         HealthKitHelper.sharedInstance.authorizeHealthKit { (success,  error) -> Void in
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 
                 if success {
                     
-                    if userDefaults.boolForKey("HEALTHACCESS_PROMPTED") {
+                    if Constants.userDefaults.bool(forKey: "HEALTHACCESS_PROMPTED") {
                         
-                        SweetAlert().showAlert(NSLocalizedString("Alert: Health Prompted Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Health Prompted Subtitle Text", comment: ""), style: AlertStyle.Success)
+                        SweetAlert().showAlert(NSLocalizedString("Alert: Health Prompted Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Health Prompted Subtitle Text", comment: ""), style: AlertStyle.success)
                         
                         print("HealthKit authorization received.")
                         
                     } else {
                         
-                        userDefaults.setBool(true, forKey: "HEALTHACCESS_PROMPTED")
+                        Constants.userDefaults.set(true, forKey: "HEALTHACCESS_PROMPTED")
                     }
                     
                 } else if error != nil {
-                    SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error.localizedDescription, style: AlertStyle.Warning)
+                    SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error?.localizedDescription, style: AlertStyle.warning)
                     print("\(error)")
                 }
             })

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import ChronicKit
 import QuartzCore
 
-class RoutineTypeViewController: UIViewController {
+class RoutineTypeViewController: UIViewController, RoutineDelegate {
+    
+    var delegate: RoutineDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +25,23 @@ class RoutineTypeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func didCreateRoutine(_ routine: RoutineModel, isNew: Bool) {
+        self.delegate?.didCreateRoutine(routine, isNew: isNew)
+    }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "AddCircuitRoutineSegueIdentifier" {
+            
+            let circuitRoutineTableViewController = segue.destination as! CircuitRoutineTableViewController
+            circuitRoutineTableViewController.delegate = self
+            
+        } else if segue.identifier == "AddCustomRoutineSegueIdentifier" {
+            
+            let customRoutineTableViewController = segue.destination as! CustomRoutineTableViewController
+            customRoutineTableViewController.delegate = self
+        }
     }
-    */
-
 }

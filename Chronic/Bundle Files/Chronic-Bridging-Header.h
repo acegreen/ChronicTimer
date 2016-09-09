@@ -4,10 +4,8 @@
 
 #import "SARate.h"
 #import "iRate.h"
-
-#import <UIKit/UIKit.h>
-//#import <AdColony/AdColony.h>
-
-//#import <GoogleAppIndexing/GoogleAppIndexing.h>
-
 #import <Rollout/Rollout.h>
+#import "iCarousel.h"
+
+//#import <AdColony/AdColony.h>
+//#import <GoogleAppIndexing/GoogleAppIndexing.h>

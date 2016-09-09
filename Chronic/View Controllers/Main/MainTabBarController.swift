@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController {
     
     let transition = BubbleTransition()
     
-    @IBAction func unwindToMainviewcontroller(segue: UIStoryboardSegue) {
+    @IBAction func unwindToMainviewcontroller(_ segue: UIStoryboardSegue) {
 
     }
 
@@ -22,20 +22,15 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if !userDefaults.boolForKey("ONBOARDING_SHOWN") {
-            // Present onboarding on first install
-            self.performSegueWithIdentifier("OBSegueIdentifier", sender: self)
-        } else {
-            // Present release notes on first update
-            LaunchKit.sharedInstance().presentAppReleaseNotesIfNeededFromViewController(self, completion: { (didPresent) -> Void in
-                if didPresent {
-                    print("Woohoo, we showed the release notes card!")
-                }
-            })
-        }
+        // Present release notes on first update
+        LaunchKit.sharedInstance().presentAppReleaseNotesIfNeeded(from: self, completion: { (didPresent) -> Void in
+            if didPresent {
+                print("Woohoo, we showed the release notes card!")
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,32 +39,31 @@ class MainTabBarController: UITabBarController {
     }
 
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "FeedbackSegueIdentifier" {
-            
-            let controller = segue.destinationViewController
-            controller.transitioningDelegate = self
-            controller.modalPresentationStyle = .Custom
-        }
-    }
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "FeedbackSegueIdentifier" {
+//            
+//            let controller = segue.destination
+//            controller.transitioningDelegate = self
+//            controller.modalPresentationStyle = .custom
+//        }
+//    }
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
-extension MainTabBarController: UIViewControllerTransitioningDelegate {
-    
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Present
-        transition.startingPoint = self.view.center
-        transition.bubbleColor = UIColor.goldColor()
-        return transition
-    }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Dismiss
-        transition.startingPoint = self.view.center
-        transition.bubbleColor = chronicColor
-        return transition
-    }
-}
+//extension MainTabBarController: UIViewControllerTransitioningDelegate {
+//    
+//    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .present
+//        transition.startingPoint = self.view.center
+//        transition.bubbleColor = UIColor.goldColor()
+//        return transition
+//    }
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.transitionMode = .dismiss
+//        transition.startingPoint = self.view.center
+//        transition.bubbleColor = Constants.chronicColor
+//        return transition
+//    }
+//}

@@ -1,116 +1,160 @@
 import Foundation
 import UIKit
 import Parse
+import UserNotifications
 
 public class NotificationHelper {
     
-    class var interval: String { return userDefaults.stringForKey("NOTIFICATION_REMINDER_INTERVAL")! }
-    class var hour: Int { return userDefaults.integerForKey("NOTIFICATION_REMINDER_TIME") ?? 0 }
-
-    class var reminderDate:NSDate { return currentCalendar.dateBySettingHour(hour, minute: 0, second: 0, ofDate: NSDate(), options: NSCalendarOptions())! }
+    static let center = UNUserNotificationCenter.current()
     
-    class func scheduleNotification(date: NSDate?, repeatInterval: NSCalendarUnit?, alertTitle: String?, alertBody: String?, sound: String?, category: String?) {
+    class var interval: String { return Constants.userDefaults.string(forKey: "NOTIFICATION_REMINDER_INTERVAL")! }
+    class var hour: Int { return Constants.userDefaults.integer(forKey: "NOTIFICATION_REMINDER_TIME")}
+
+    class var reminderDateComponents: DateComponents { return DateComponents(calendar: Constants.currentCalendar, timeZone: nil, era: nil, year: nil, month: nil, day: nil, hour: hour, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil) }
+    
+    class func scheduleNotification(_ dateComponents: DateComponents!, repeatInterval: Calendar.Component?, alertTitle: String!, alertBody: String!, sound: String!, identifier: String!) {
         
-        let localNotification = UILocalNotification()
+        // Schedule workoutCompleteLocalNotification
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = alertTitle
+        notificationContent.body = alertBody
+        let notificaitonSound = UNNotificationSound(named: sound)
+        notificationContent.sound = notificaitonSound
         
-        if date != nil {
-            localNotification.fireDate = date!
+        var trigger: UNNotificationTrigger!
+        if dateComponents != nil {
+            trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         }
         
-        if repeatInterval != nil {
-            localNotification.repeatInterval = repeatInterval!
+        let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
+        
+        // Schedule the notification.
+        center.add(request) { (error) in
+            print(error)
         }
         
-        if #available(iOS 8.2, *) {
-            localNotification.alertTitle = alertTitle
-        }
-        
-        localNotification.alertBody = alertBody
-        localNotification.soundName = sound
-        localNotification.category = category
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        print(UIApplication.sharedApplication().scheduledLocalNotifications)
+        center.getPendingNotificationRequests(completionHandler: { (requests) in
+            print(requests)
+        })
     }
 
-    class func unscheduleNotifications(notificationCategory:String?) {
+    class func unscheduleNotifications(notificationIdentifier :String?) {
         
-        if notificationCategory == nil {
+        if notificationIdentifier == nil {
             
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            center.removeAllPendingNotificationRequests()
             
-        } else if let notificationScheduled = checkScheduledNotificationsForNotificationWith(notificationCategory!) {
+        } else if let notificationCategory = notificationIdentifier {
                 
-            UIApplication.sharedApplication().cancelLocalNotification(notificationScheduled)
+            center.removePendingNotificationRequests(withIdentifiers: [notificationCategory])
+            
+            center.getPendingNotificationRequests(completionHandler: { (requests) in
+                print(requests)
+            })
         }
     }
     
-    class func checkScheduledNotificationsForNotificationWith(category:String) -> UILocalNotification? {
+    class func checkScheduledNotificationsForNotificationWith(_ notificationIdentifier: String) -> Bool {
+        
+        let deliveredNotification: [UNNotification] = {
+            var deliveredNotification = [UNNotification]()
+            center.getDeliveredNotifications { (notifications) in
+                deliveredNotification = notifications
+            }
+            return deliveredNotification
+        }()
+        
+        guard deliveredNotification.count != 0 else {
             
-        guard let scheduledNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else {
-            
-            print("notification found in scheduled")
-            return nil
+            print("notification not found")
+            return false
         }
         
-        for notification in scheduledNotifications {
+        for notification in deliveredNotification {
             
-            if notification.category == category {
+            if notification.request.identifier == notificationIdentifier {
                 
-                print("notification found in scheduled for categoy \(category)")
-                return notification
+                print("notification found in scheduled for categoy \(notificationIdentifier)")
+                return true
             }
         }
         
-        print("No notification in scheduled for categoy \(category)")
-        return nil
+        return false
     }
     
     class func resetAppBadgePush() {
-        if application.isRegisteredForRemoteNotifications() {
-            let currentInstallation = PFInstallation.currentInstallation()
+        if Constants.application.isRegisteredForRemoteNotifications {
+            guard let currentInstallation = PFInstallation.current() else { return }
             currentInstallation.badge = 0
             currentInstallation.saveEventually()
         }
     }
 
-    class func registerForNotifications() {
-        if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
-            let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
+    class func registerForPushNotifications() {
+        
+        // Unschedule reminder notifications
+        self.unscheduleNotifications(notificationIdentifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
+        
+        if Constants.application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:))) {
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                
+                if granted == true {
+                    
+                    if Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") == true  {
+                    
+                        // Schedule reminder notifications if userdefault if true
+                        self.scheduleNotification(NotificationHelper.reminderDateComponents, repeatInterval: NotificationHelper.getNSCalendarUnit(NotificationHelper.interval), alertTitle: NSLocalizedString("Notification Reminder Text", comment: ""), alertBody:  NSLocalizedString("Notification Reminder subText", comment: ""), sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
+                    }
+                    print("Granted")
+                    
+                } else if let error = error {
+                    print(error)
+                }
+                
+                Constants.application.registerForRemoteNotifications()
+            }
             
         } else {
-            application.registerForRemoteNotifications()
+            Constants.application.registerForRemoteNotifications()
         }
     }
 
-    class func updateNotificationPreferences(notificationReminderState: Bool) {
+    class func updateNotificationPreferences(_ notificationReminderState: Bool) {
         if notificationReminderState {
-            NotificationHelper.unscheduleNotifications(NotificationCategory.ReminderCategory.key())
-            NotificationHelper.registerForNotifications()
+            NotificationHelper.registerForPushNotifications()
         } else {
-            NotificationHelper.unscheduleNotifications(NotificationCategory.ReminderCategory.key())
+            NotificationHelper.unscheduleNotifications(notificationIdentifier: Constants.NotificationIdentifier.ReminderIdentifier.key())
         }
     }
     
-    class func getNSCalendarUnit(interval: String) -> NSCalendarUnit {
+    class func getNSCalendarUnit(_ interval: String) -> Calendar.Component {
         
         switch interval {
             
             case NSLocalizedString("Week", comment: ""):
             
-            return NSCalendarUnit.WeekOfYear
+            return Calendar.Component.weekOfYear
             
             case NSLocalizedString("Month", comment: ""):
             
-            return NSCalendarUnit.Month
+            return Calendar.Component.month
             
             default:
             
-            return NSCalendarUnit.Day
-            
+            return Calendar.Component.day
         }
     }
+    
+//    // MARK: UNUserNotificationCenterDelegate functions
+//    
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+//        
+//        print("willPresent notification called")
+//    }
+//    
+//    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
+//        
+//        // Handle received remote notification
+//    }
 }

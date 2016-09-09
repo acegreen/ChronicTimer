@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InAppPurchaseReusableView" customModule="Chronic" customModuleProvider="target">
+            <connections>
+                <outlet property="bestValueImageView" destination="bWU-8B-187" id="UId-4f-geg"/>
+                <outlet property="productDescriptionTextView" destination="mik-gg-991" id="nVf-Qt-rwQ"/>
+                <outlet property="productIconImageView" destination="WtY-UJ-FGs" id="FEf-Hx-YIw"/>
+                <outlet property="productPriceLabel" destination="gNF-Vc-cv8" id="4qb-4T-fcG"/>
+                <outlet property="productTitleLabel" destination="shK-oy-cbM" id="y6D-Mf-R2S"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="529" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="best_value" translatesAutoresizingMaskIntoConstraints="NO" id="bWU-8B-187">
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shK-oy-cbM">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mik-gg-991">
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="ultimate_package" translatesAutoresizingMaskIntoConstraints="NO" id="WtY-UJ-FGs"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNF-Vc-cv8">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.96078431606292725" green="0.75294119119644165" blue="0.094117648899555206" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="bWU-8B-187" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="5Iz-HZ-3O7"/>
+                <constraint firstAttribute="trailing" secondItem="gNF-Vc-cv8" secondAttribute="trailing" constant="20" id="5Xv-5A-yt1"/>
+                <constraint firstItem="WtY-UJ-FGs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="DdY-rN-s2F"/>
+                <constraint firstItem="gNF-Vc-cv8" firstAttribute="top" secondItem="mik-gg-991" secondAttribute="bottom" constant="20" id="G80-kO-chw"/>
+                <constraint firstAttribute="trailing" secondItem="mik-gg-991" secondAttribute="trailing" constant="20" id="LML-ga-j0f"/>
+                <constraint firstItem="mik-gg-991" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="MNy-xH-8La"/>
+                <constraint firstItem="shK-oy-cbM" firstAttribute="top" secondItem="WtY-UJ-FGs" secondAttribute="bottom" constant="10" id="Pr9-be-OVB"/>
+                <constraint firstAttribute="trailing" secondItem="shK-oy-cbM" secondAttribute="trailing" constant="20" id="QLe-ty-cmE"/>
+                <constraint firstAttribute="trailing" secondItem="bWU-8B-187" secondAttribute="trailing" constant="25" id="TPX-uh-mNZ"/>
+                <constraint firstItem="WtY-UJ-FGs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="fhh-Fq-0nf"/>
+                <constraint firstItem="mik-gg-991" firstAttribute="top" secondItem="shK-oy-cbM" secondAttribute="bottom" constant="10" id="gYY-KY-CCh"/>
+                <constraint firstItem="gNF-Vc-cv8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="i8o-gT-0At"/>
+                <constraint firstItem="shK-oy-cbM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="j1l-BO-v7V"/>
+                <constraint firstAttribute="bottom" secondItem="gNF-Vc-cv8" secondAttribute="bottom" constant="25" id="ofj-JD-x1U"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="173.5" y="17.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="best_value" width="100" height="54"/>
+        <image name="ultimate_package" width="100" height="100"/>
+    </resources>
+</document>

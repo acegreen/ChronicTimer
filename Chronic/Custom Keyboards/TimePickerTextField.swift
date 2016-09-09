@@ -30,7 +30,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         
         super.layoutSubviews()
         
-        (pickerHours,pickerMinutes,pickerSeconds) = timeComponentsFrom(string: self.text!)
+        (pickerHours,pickerMinutes,pickerSeconds) = Functions.timeComponentsFrom(string: self.text!)
         
         self.inputView = configurePicker()
         self.inputAccessoryView = configureAccessoryView()
@@ -38,7 +38,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent textfield from editing
         return false
@@ -57,16 +57,16 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
     
     func configureAccessoryView() -> UIView {
         
-        let inputAccessoryView = UIToolbar(frame: CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.size.width, 44))
-        inputAccessoryView.barStyle = UIBarStyle.BlackTranslucent
+        let inputAccessoryView = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 44))
+        inputAccessoryView.barStyle = UIBarStyle.blackTranslucent
         
-        let flex = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
+        let flex = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
     
         // Configure done button
         let doneButton = UIBarButtonItem()
         doneButton.title = "Done"
-        doneButton.tintColor = UIColor.greenColor()
-        doneButton.action = Selector("dismissPicker")
+        doneButton.tintColor = UIColor.green
+        doneButton.action = #selector(TimePickerTextField.dismissPicker)
         
         inputAccessoryView.items = NSArray(array: [flex, doneButton]) as? [UIBarButtonItem]
         
@@ -75,19 +75,19 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
     
     // Disallow selection or editing and remove caret
     
-    override func caretRectForPosition(position: UITextPosition) -> CGRect {
-        return CGRectZero
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        return CGRect.zero
     }
     
-    override func selectionRectsForRange(range: UITextRange) -> [AnyObject] {
+    override func selectionRects(for range: UITextRange) -> [Any] {
         return []
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         
-        UIMenuController.sharedMenuController().menuVisible = false
+        UIMenuController.shared.isMenuVisible = false
         
-        if action == "copy:" || action == "selectAll:" || action == "paste:" {
+        if action == #selector(copy(_:)) || action == #selector(selectAll(_:)) || action == #selector(paste(_:)) {
             return false
         }
         
@@ -102,13 +102,13 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
     //MARK: - UIPickerView Functions
     
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
         return 3
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if component == 0 {
             
@@ -119,17 +119,17 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         return 60
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let title = String(row)
-        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
         
-        pickerView.backgroundColor = UIColor.clearColor()
+        pickerView.backgroundColor = UIColor.clear
         
         return attributedString
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if component == 0 {
             
@@ -144,7 +144,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
             pickerSeconds = row
         }
         
-        pickerTotal = timeFromTimeComponents(hoursComponent: pickerHours, minutesComponent: pickerMinutes, secondsComponent: pickerSeconds)
+        pickerTotal = Functions.timeFromTimeComponents(hoursComponent: pickerHours, minutesComponent: pickerMinutes, secondsComponent: pickerSeconds)
         
         UpdateLabel()
         
@@ -152,7 +152,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
     
     func UpdateLabel() {
         
-        self.text = timeStringFrom(time: pickerTotal, type: "Routine")
+        self.text = Functions.timeStringFrom(time: pickerTotal)
         self.sizeToFit()
 
     }

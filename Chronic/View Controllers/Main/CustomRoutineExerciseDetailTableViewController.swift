@@ -10,7 +10,7 @@ import UIKit
 
 class CustomRoutineExerciseDetailTableViewController: UITableViewController {
     
-    var indexOfExercise: NSIndexPath!
+    var indexOfExercise: IndexPath!
 
     override func viewDidLoad() {
         super.viewDidLoad()

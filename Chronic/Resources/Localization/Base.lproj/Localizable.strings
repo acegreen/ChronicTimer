@@ -7,7 +7,6 @@
  */
 
 /* Globals */
-"Reminder Notification Text" = "Time for an AWESOME workout!";
 "Yes" = "Yes";
 "No" = "No";
 "Ok" = "Ok";
@@ -29,6 +28,8 @@
 "Week" = "Week";
 "Month" = "Month";
 
+"Of" = "Of";
+
 /* Main */
 "Text-To-Speech Default Sentence" = "This app is awesome";
 "Text-To-Speech Tracking Run Text" = "Tracking Run";
@@ -36,15 +37,19 @@
 "Text-To-Speech Workout Complete Text" = "Workout Complete";
 "Text-To-Speech Run Complete Text" = "Run Complete";
 
-"Congratulation Text (Routine)" = "Congratulations! You've completed your workout";
-"Congratulation Text (Run)" =  "Congratulations! You've completed your run";
-"Timer Ended Text" =  "Your timer has ended";
+"Notification Workout Text" = "Workout Complete";
+"Notification Workout subText" = "Congratulations! You've completed your workout";
+"Notification Timer Text" =  "Timer Finished";
+"Notification Timer subText" =  "Your timer has ended";
+"Notification Reminder Text" = "Workout Reminder";
+"Notification Reminder subText" = "Time for an AWESOME workout!";
 
 "No Exercise" = "No Exercise";
 
 "Left Side Label Text (Routine)" = "Elapsed";
 "Right Side Label Text (Routine)" = "Remaining";
 
+"Middle Label Text (Run)" = "Pace";
 "Left Side Label Text (Run)" = "Time";
 "Right Side Label Text (Run)" = "Distance";
 
@@ -84,6 +89,12 @@
 "Alert: No Internet Connection Title Text" = "No Internet Connection";
 "Alert: No Internet Connection Subtitle Text" = "Please connect to continue";
 
+"Alert: Reconnect To Internet Title Text" = "Reconnect to Internet";
+"Alert: Reconnect To Internet Subtitle Text" = "By reconnecting to the internet, you can continue running your workout";
+
+"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads Upgrade";
+"Alert: Purchase Remove Ads Subtitle Text" = "With the upgrade, you can run a workout without internet and distraction free";
+
 "Alert: No Email Account Title Text" = "No Email Account Found";
 "Alert: No Email Account Subtitle Text" = "Please add an email account in your mail app";
 
@@ -97,7 +108,7 @@
 "Alert: Processing Purchase Subtitle Text" = "While we process your purchase request";
 
 "Alert: Loading Purchase Title Text" = "Hold On!";
-"Alert: Loading Purchase Subtitle Text" = "While we load your purchase request";
+"Alert: Loading Purchase Subtitle Text" = "While we get things loaded";
 
 "Alert: Restoring Purchase Title Text" = "Hold On!";
 "Alert: Restoring Purchase Subtitle Text" = "While we restore your purchase(s)";

@@ -12,11 +12,11 @@ class OnboardingViewController: AMWaveViewController {
         updateUI()
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
 
-    override func visibleCells() -> [AnyObject]! {
+    override func visibleCells() -> [Any]! {
         return self.viewArray
     }
 
@@ -24,16 +24,16 @@ class OnboardingViewController: AMWaveViewController {
 
     }
     
-    @IBAction func forwardButtonAction(sender: AnyObject) {
+    @IBAction func forwardButtonAction(_ sender: AnyObject) {
         
         if HKHealthStore.isHealthDataAvailable() {
-            self.performSegueWithIdentifier("OBSegue_HealthController", sender: self)
+            self.performSegue(withIdentifier: "OBSegue_HealthController", sender: self)
         } else {
-            self.performSegueWithIdentifier("OBSegue_NotificationController", sender: self)
+            self.performSegue(withIdentifier: "OBSegue_NotificationController", sender: self)
         }
     }
 
     @IBAction func backAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
