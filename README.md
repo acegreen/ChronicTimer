@@ -27,16 +27,16 @@ Chronic by definition is "Of long duration, continuing or recurring event" and t
 - Practising timed tests, presentations or even simply timing yourself between studying and resting. 
 
 ### Core features: ###
-√ A beautiful Apple Watch app so you can track your routines from your wrist. 
-√ Fully customizable routines
-√ A run tracker feature with a gorgeous fully size map and routine marking
-√ Text-To-Speech feedback so you know where you are in the routine
-√ A quick timer feature (time selector with seconds)
-√ Routines run in the background with notifications
-√ Integration with the Health app and Activity Rings so your workout count
-√ 3D Touch support with home quick actions
-√ Pre-routine 3 second warning timer so that you can get ready for your workout
-√ Optimized for iPhone, iPad (portrait and landscape) and Apple Watch
+* A beautiful Apple Watch app so you can track your routines from your wrist. 
+* Fully customizable routines
+* A run tracker feature with a gorgeous fully size map and routine marking
+* Text-To-Speech feedback so you know where you are in the routine
+* A quick timer feature (time selector with seconds)
+* Routines run in the background with notifications
+* Integration with the Health app and Activity Rings so your workout count
+* 3D Touch support with home quick actions
+* Pre-routine 3 second warning timer so that you can get ready for your workout
+* Optimized for iPhone, iPad (portrait and landscape) and Apple Watch
 
 ### Health App ###
 -------------
