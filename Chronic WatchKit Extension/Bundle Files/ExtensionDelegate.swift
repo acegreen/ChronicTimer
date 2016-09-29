@@ -14,9 +14,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
         
-        // setup user defaults
-        //userDefaults.registerDefaults(defaultPrefs as! [String : AnyObject])
-        
+        // Set the pro features purchase
         Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         
         // Request HealthKit Authorization
@@ -51,9 +49,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     // =========================================================================
     // MARK: - WCSessionDelegate
     
-    @available(watchOSApplicationExtension 2.2, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("session activationDidCompleteWith")
+        print("WCSession activationDidCompleteWith")
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {

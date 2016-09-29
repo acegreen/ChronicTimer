@@ -105,7 +105,8 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if let size: DeviceVersion = SDiOSVersion.deviceVersion(), size == .iPadPro12Dot9Inch || size == .iPadPro9Dot7Inch {
+        let size: DeviceVersion = SDiOSVersion.deviceVersion()
+        if size == .iPadPro12Dot9Inch || size == .iPadPro9Dot7Inch {
             return 300
         }
         

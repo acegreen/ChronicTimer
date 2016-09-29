@@ -45,7 +45,7 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
             
             if workout.workoutState == .preRun {
                 
-                playFeedback("Routine Begin")
+                Constants.currentDevice.play(.start)
                 
                 // Set routine start time
                 workout.routineStartDate = Date()
@@ -80,6 +80,9 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
             // Mark routine as completed
             workout.workoutState = .completed
         }
+        
+        // Congrats you've completed workout
+        Constants.currentDevice.play(.success)
         
         // End workout session if running
         Functions.endWorkoutSession()
@@ -151,29 +154,6 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     func changeLabels() {
         timeElapsedLabel.setText(Functions.timeStringFrom(time: workout.timeElapsed))
         distanceLabel.setText(distanceFormatter.string(fromDistance: workout.distance))
-    }
-    
-    func playFeedback (_ type: String) {
-        
-        var hapticType: WKHapticType!
-        
-        switch type {
-            
-        case "Routine Begin":
-            
-            hapticType = WKHapticType.start
-            
-        case "Routine End":
-            
-            hapticType = WKHapticType.success
-            
-        default:
-            
-            hapticType = WKHapticType.directionUp
-            
-        }
-        
-        WKInterfaceDevice.current().play(hapticType)
     }
     
     func setToInitialState() {

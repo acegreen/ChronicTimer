@@ -57,7 +57,6 @@ public extension UIColor {
     }
     
     class func goldColor() -> UIColor {
-        
         return UIColor(red: 245, green: 192, blue: 24)
     }
     

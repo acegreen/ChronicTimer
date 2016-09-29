@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TlE-Y4-PfO">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TlE-Y4-PfO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11517.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -196,9 +196,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="healthAccessButtonPressed:" destination="Cmy-zQ-dw0" eventType="touchUpInside" id="DEi-y3-F9P"/>
-                                    <segue destination="pD5-bI-zpm" kind="show" id="okk-Aa-NRL">
-                                        <nil key="action"/>
-                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -220,6 +217,7 @@
                         <outletCollection property="viewArray" destination="AwI-N6-Myc" collectionClass="NSMutableArray" id="abE-aM-R2S"/>
                         <outletCollection property="viewArray" destination="fsV-Nc-pxY" collectionClass="NSMutableArray" id="5xt-x3-nqo"/>
                         <outletCollection property="viewArray" destination="LVz-jU-dak" collectionClass="NSMutableArray" id="rUW-rS-FMO"/>
+                        <segue destination="pD5-bI-zpm" kind="show" identifier="OBNotificationVCSegueIdentifier" id="4gQ-sF-AHx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPf-sj-Ldm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -412,7 +410,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="TlE-Y4-PfO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oWv-XR-fOM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oWv-XR-fOM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -427,7 +425,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eSG-FG-xtA"/>
+        <segue reference="4gQ-sF-AHx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
