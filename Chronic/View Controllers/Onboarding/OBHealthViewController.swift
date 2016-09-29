@@ -26,6 +26,8 @@ class OBHealthViewController: OnboardingViewController {
                     SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error?.localizedDescription, style: AlertStyle.warning)
                     print("\(error)")
                 }
+                
+                self.performSegue(withIdentifier: "OBNotificationVCSegueIdentifier", sender: self)
             })
         }
     }

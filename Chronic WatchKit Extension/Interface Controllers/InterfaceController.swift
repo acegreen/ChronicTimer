@@ -20,9 +20,6 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     var time: Int = 0
     
-    var soundlocation = NSURL()
-    var localNotification: UNNotification!
-    
     var heartRateQuery: HKQuery?
     
     @IBOutlet var mainGroup: WKInterfaceGroup!
@@ -30,11 +27,8 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     @IBOutlet var heartRateGroup: WKInterfaceGroup!
     
     @IBOutlet var RoutineStateLabel: WKInterfaceLabel!
-
     @IBOutlet var CountDownLabel: WKInterfaceLabel!
-    
     @IBOutlet var timeRemainingLabel: WKInterfaceLabel!
-    
     @IBOutlet var timeElapsedLabel: WKInterfaceLabel!
     
     @IBOutlet var heart: WKInterfaceImage!
@@ -46,7 +40,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             
             if workout.workoutState == .preRun {
                 
-                playFeedback("Routine Begin")
+                Constants.currentDevice.play(.start)
                 
                 // Set routine start time
                 workout.routineStartDate = Date()
@@ -74,9 +68,6 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     }
     
     @IBAction func StopButtonPressed() {
-        
-        // End workout session if running
-        Functions.endWorkoutSession()
         
         if workout.workoutState == .active || workout.workoutState == .paused || workout.workoutState == .completed {
             
@@ -129,7 +120,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         
         if time < 4 && time > 0 {
             
-            playFeedback("Tick")
+            Constants.currentDevice.play(.click)
             
         } else if time <= 0 {
             
@@ -148,7 +139,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 changeStage()
                 
                 //Let's go to next round, So increase these variables and start new timer
-                playFeedback(workout.currentTimerDict["Name"] as! String)
+                Constants.currentDevice.play(.directionUp)
                 
                 startTimer()
                 
@@ -213,40 +204,13 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         //RoutineStateLabel.setTextColor(stageColor ?? UIColor.white)
     }
     
-    func playFeedback (_ type: String) {
-        
-        var hapticType: WKHapticType!
-        
-        switch type {
-            
-        case "Routine Begin":
-            
-            hapticType = WKHapticType.start
-            
-        case "Routine End":
-            
-            hapticType = WKHapticType.success
-            
-        case "Tick":
-            
-            hapticType = WKHapticType.click
-            
-        default:
-            
-            hapticType = WKHapticType.directionUp
-            
-        }
-        
-        WKInterfaceDevice.current().play(hapticType)
-    }
-    
     func completeWorkout() {
         
         // Mark routine as completed
         workout.workoutState = .completed
         
-        //Congrats you've completed workout
-        playFeedback("Routine End")
+        // Congrats you've completed workout
+        Constants.currentDevice.play(.success)
         
         // Set Alert if in background
         if WKExtension.shared().applicationState == WKApplicationState.background {
@@ -263,7 +227,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 alertBody = NSLocalizedString("Notification Workout subText", comment: "")
             }
             
-            // Schedule workoutCompleteLocalNotification
+            // Schedule workoutComplete Notification
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = alertTitle
             notificationContent.body = alertBody
@@ -275,7 +239,9 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             // Schedule the notification.
             let center = UNUserNotificationCenter.current()
             center.add(request) { (error) in
-                print(error)
+                if error != nil {
+                    print("notification error:", error)
+                }
             }
         }
         

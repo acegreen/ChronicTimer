@@ -6,14 +6,15 @@
 //  Copyright © 2015 Ace Green. All rights reserved.
 //
 
-import Foundation
-import UIKit
-import CoreData
+import WatchKit
 import ChronicKit
 import HealthKit
 import WatchConnectivity
 
 class Constants {
+    
+    static let currentDevice = WKInterfaceDevice.current()
+    static let ext = WKExtension.shared
     
     static let userDefaults: UserDefaults = UserDefaults.standard
     static let defaultPrefsFile: URL = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!

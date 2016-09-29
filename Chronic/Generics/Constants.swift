@@ -54,7 +54,8 @@ class Constants {
     static let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
     static let receiptURL = Bundle.main.appStoreReceiptURL
     
-    static let countryCode = Locale.current.localizedString(forIdentifier: "countryCode")!
+    static let locale = Locale.current
+    static let regionCode = locale.regionCode
     static let currentCalendar = Calendar.current
     
     static let emailDiagnosticInfo = Array(payload.keys).reduce("", { (input, key) -> String in

@@ -376,6 +376,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     // Stop Timer
                     self.stop()
                     
+                    // Present feedback or intersitial ads
                     #if DEBUG
                         self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
                         
@@ -997,7 +998,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             self.stop()
             
         } else if segue.identifier == "FeedbackSegueIdentifier" {
-            
             let controller = segue.destination
             controller.transitioningDelegate = self
             controller.modalPresentationStyle = .custom

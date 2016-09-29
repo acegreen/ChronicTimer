@@ -1,5 +1,5 @@
 PODS:
-  - AMPopTip (1.2.0)
+  - AMPopTip (1.3.0)
   - AMWaveTransition (0.6.2)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
@@ -7,19 +7,25 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BubbleTransition (1.0.3)
+  - BubbleTransition (2.0.0)
   - Charts (2.2.5):
     - Charts/Core (= 2.2.5)
   - Charts/Core (2.2.5)
+  - Crashlytics (3.8.2):
+    - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
-  - FBSDKCoreKit (4.15.0):
+  - Fabric (1.6.8)
+  - FBSDKCoreKit (4.15.1):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.15.0):
+  - FBSDKLoginKit (4.15.1):
     - FBSDKCoreKit
-  - Google-Mobile-Ads-SDK (7.10.1)
+  - Google-Mobile-Ads-SDK (7.11.0)
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
+  - mopub-ios-sdk (4.9.1):
+    - mopub-ios-sdk/MoPubSDK (= 4.9.1)
+  - mopub-ios-sdk/MoPubSDK (4.9.1)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
@@ -40,17 +46,19 @@ PODS:
   - PureLayout (3.0.2)
   - ReachabilitySwift (2.3.3)
   - Rollout.io (1.3.1)
-  - SDVersion (3.5)
+  - SDVersion (3.6)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - AMPopTip
   - AMWaveTransition
   - BubbleTransition
-  - Charts (from `https://github.com/danielgindi/Charts.git`, branch `Swift-3.0`)
+  - Charts (from `https://github.com/danielgindi/Charts.git`, branch `Chart2.2.5-Swift3.0`)
+  - Crashlytics
   - DZNEmptyDataSet
   - Google-Mobile-Ads-SDK
   - LaunchKit
+  - mopub-ios-sdk
   - MZFormSheetPresentationController
   - Parse
   - ParseFacebookUtilsV4
@@ -64,7 +72,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Charts:
-    :branch: Swift-3.0
+    :branch: Chart2.2.5-Swift3.0
     :git: https://github.com/danielgindi/Charts.git
   ReachabilitySwift:
     :branch: feature/ios10
@@ -75,7 +83,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Charts:
-    :commit: 2dd22b903a78d0d34d07ef71728c41ac22f6a114
+    :commit: ab3bb619df2c2d165b41736b6bc25a4218833252
     :git: https://github.com/danielgindi/Charts.git
   ReachabilitySwift:
     :commit: 3c7e72ac66186e2477d07d36e2b4589fb5e855d8
@@ -85,16 +93,19 @@ CHECKOUT OPTIONS:
     :git: https://github.com/acegreen/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  AMPopTip: 853bcb307ecc6f71742cccdbc5b594bea097f188
+  AMPopTip: b810a33c120feacafce170cc9ddcaa8ce3a8389d
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BubbleTransition: a7ae6678721406d60f604cbbea1ace505563119d
+  BubbleTransition: bdb9d71993b8d3513008e2dda6bada1ddad25d4f
   Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  FBSDKCoreKit: 6680cbd33a4243d80700f182d0af36b3fa7f3118
-  FBSDKLoginKit: 96d9b70b5784490f02ab86119e542a1f182017a8
-  Google-Mobile-Ads-SDK: c8da9e592fe43d9b47ef86b018cadb71af53f6b3
+  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
+  FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
+  FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
+  Google-Mobile-Ads-SDK: 0e864ab93ba1ff8afe92e16de0e4e883f581ed33
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
+  mopub-ios-sdk: a2fc16e924c1c17f8cff26b3d50f9e88a34d1f06
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
@@ -104,9 +115,9 @@ SPEC CHECKSUMS:
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   Rollout.io: e2374975b36769db594ecbe8738e13f8a5b202c8
-  SDVersion: 73adb37feaf9ddaca41b88f4095325d4d583af7e
+  SDVersion: 43383b6ac05462c973c3fd92d9748c74e360aba5
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: d2c0520f9b9ffddaec2626ae3fadfd0695572e7f
+PODFILE CHECKSUM: c312b1863f8c38483a6388acfd8972576c287ced
 
-COCOAPODS: 1.1.0.beta.1
+COCOAPODS: 1.1.0.rc.2

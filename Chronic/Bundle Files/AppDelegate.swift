@@ -246,6 +246,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         completionHandler(handledShhortcutItem)
     }
     
+    // MARK: - Notification Delegates
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         if let currentInstallation: PFInstallation = PFInstallation.current() {
@@ -346,7 +348,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
                           contentName: "Chronic Rated",
                           contentType: "Rate",
                           contentId: nil,
-                          customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "Country Code": Constants.countryCode, "App Version": Constants.AppVersion])
+                          customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "Country Code": Constants.regionCode ?? "", "App Version": Constants.AppVersion])
     }
     
     func iRateDidDetectAppUpdate() {
