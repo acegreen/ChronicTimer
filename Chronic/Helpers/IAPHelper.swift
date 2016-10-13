@@ -14,9 +14,16 @@ import Crashlytics
 import Parse
 import SwiftyJSON
 
+protocol IAPDelegate {
+    func didPurchaseProFeaturesUpgrade()
+    func didPurchaseRemoveAdsUpgrade()
+}
+
 class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver, SKRequestDelegate {
     
     static let sharedInstance = IAPHelper()
+    
+    var delegate: IAPDelegate?
 
     var completionHandler:((Bool) -> Void)?
     
@@ -395,21 +402,6 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         
     }
     
-    func removeAdsPurchased() {
-        
-        // Set KeyChain Value
-        do {
-            try Constants.keychain
-                .accessibility(.always)
-                .synchronizable(true)
-                .set(value: Constants.removeAdsKeyValue, key: Constants.removeAdsKey)
-        } catch let error {
-            print("error: \(error)")
-        }
-        
-        Constants.keychainRemoveAdsString  = Constants.keychain[Constants.removeAdsKey]
-    }
-    
     func proVersionPurchased() {
         
         // send context to Watch if iOS9
@@ -428,6 +420,25 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         }
         
         Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
+        
+        self.delegate?.didPurchaseProFeaturesUpgrade()
+    }
+    
+    func removeAdsPurchased() {
+        
+        // Set KeyChain Value
+        do {
+            try Constants.keychain
+                .accessibility(.always)
+                .synchronizable(true)
+                .set(value: Constants.removeAdsKeyValue, key: Constants.removeAdsKey)
+        } catch let error {
+            print("error: \(error)")
+        }
+        
+        Constants.keychainRemoveAdsString  = Constants.keychain[Constants.removeAdsKey]
+        
+        self.delegate?.didPurchaseRemoveAdsUpgrade()
     }
     
     func restorePurchases() {

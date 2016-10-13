@@ -67,6 +67,8 @@ class Constants {
     
     static let defaultPrefsFile: URL = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
     static let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
+
+    static var timer = Timer()
     
     static var timerSound: String!
     static var timerVolume: Float!

@@ -15,7 +15,7 @@
 	<key>ENABLE_DEVICE_SLEEP</key>
 	<false/>
 	<key>RUN_IN_BACKGROUND</key>
-	<true/>
+	<false/>
 	<key>REWARDS_HINT_SHOWN</key>
 	<false/>
 	<key>FEEDBACK_HINT_SHOWN</key>

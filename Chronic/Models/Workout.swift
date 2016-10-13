@@ -12,7 +12,7 @@ import ChronicKit
 
 public class Workout {
     
-    enum WorkoutType {
+    enum WorkoutType: String {
         case routine
         case run
         case quickTimer
@@ -32,6 +32,7 @@ public class Workout {
     var timeRemaining: Int = 0
     var timeElapsed: Int = 0
     
+    var kiloCalories: Double = 0.0
     var distance: Double = 0.0
     var pace: Double = 0.0
     
@@ -63,7 +64,7 @@ public class Workout {
         
         switch self.workoutType {
         case .quickTimer:
-            self.name = "Chornic Quick Timer"
+            self.name = "Chronic Quick Timer"
             (self.routineStages, self.totalTime) = Functions.makeRoutineArray(routine: nil)
         case .routine:
             self.name = routineModel?.name

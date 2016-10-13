@@ -15,7 +15,9 @@ public class HealthKitHelper {
     let healthKitStore = HKHealthStore()
     
     let heartRateUnit = HKUnit(from: "count/min")
-    let workoutType = HKObjectType.workoutType()
+    static let workoutType = HKObjectType.workoutType()
+
+   let workoutAuthorizationStatus = HKHealthStore().authorizationStatus(for: workoutType)
 
     var distanceUnit: Constants.DistanceType = .kilometers
     

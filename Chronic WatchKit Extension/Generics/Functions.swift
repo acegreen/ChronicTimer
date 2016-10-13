@@ -180,14 +180,14 @@ class Functions {
         
         if routine != nil {
             
-            var customeExerciseDictionary = [String: Any]()
-            
             let routineExercises = routine!.routineToExcercise?.array as! [ExerciseModel]
             let type:String = routine!.type!
             
             if type == "Custom" || type == "Circuit"  {
                 
                 for exercise in routineExercises {
+                    
+                    var customeExerciseDictionary = [String: Any]()
                     
                     for _ in 1...(exercise.exerciseNumberOfRounds as Int) {
                         
@@ -308,27 +308,6 @@ class Functions {
     }
     
     class func saveWorkout(interfaceController: WKInterfaceController, workoutActivityType: HKWorkoutActivityType, startDate: Date, endDate: Date, kiloCalories: Double?, distance: Double?) {
-        
-        guard Constants.workoutAuthorizationStatus != HKAuthorizationStatus.notDetermined else {
-            
-            // Request Authorization
-            HealthKitHelper.sharedInstance.authorizeHealthKit { (success,  error) -> Void in
-                if success {
-                    self.saveWorkout(interfaceController: interfaceController, workoutActivityType: workoutActivityType, startDate: startDate, endDate: endDate, kiloCalories: kiloCalories, distance: distance)
-                }
-            }
-            
-            return
-        }
-        
-        guard Constants.workoutAuthorizationStatus != HKAuthorizationStatus.sharingDenied else {
-            
-            let okAction = WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: WKAlertActionStyle.default, handler: { })
-            
-            interfaceController.presentAlert(withTitle: "Alert: Authorize Chronic Save Workout Title Text", message: "Alert: Authorize Chronic Save Workout Subtitle Text", preferredStyle: WKAlertControllerStyle.actionSheet, actions: [okAction])
-            
-            return
-        }
         
         // Add workout to HealthKit if available
         HealthKitHelper.sharedInstance.saveRunningWorkout(workoutActivityType: workoutActivityType, startDate: startDate, endDate: endDate, kiloCalories: kiloCalories, distance: distance, completion: { (success, error) -> Void in

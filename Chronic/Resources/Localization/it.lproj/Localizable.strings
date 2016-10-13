@@ -93,8 +93,8 @@
 "Alert: Reconnect To Internet Title Text" = "Reconnect to Internet";
 "Alert: Reconnect To Internet Subtitle Text" = "By reconnecting to the internet, you can continue running your workout";
 
-"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads Upgrade";
-"Alert: Purchase Remove Ads Subtitle Text" = "With the upgrade, you can run a workout without internet and distraction free";
+"Alert: Purchase Remove Ads Title Text" = "Purchase Remove Ads";
+"Alert: Purchase Remove Ads Subtitle Text" = "Run workouts without internet, in background, with device sleep and distraction free";
 
 "Alert: No Email Account Title Text" = "Nessun email account trovato";
 "Alert: No Email Account Subtitle Text" =  "Per favore aggiungi un email account";

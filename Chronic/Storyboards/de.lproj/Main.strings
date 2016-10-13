@@ -89,6 +89,9 @@
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "DbO-PW-UIF"; */
 "DbO-PW-UIF.title" = "FAQ";
 
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "bf4-WF-oIb"; */
+"bf4-WF-oIb.title" = " ";
+
 /* Class = "UILabel"; text = "Wärmen"; ObjectID = "E5a-vJ-ckn"; */
 "E5a-vJ-ckn.text" = "Wärmen";
 

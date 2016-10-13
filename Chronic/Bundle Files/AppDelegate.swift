@@ -23,9 +23,9 @@ import UserNotifications
 import Intents
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateDelegate, TimerVCDelegate {
     
-    var backgroundTask: UIBackgroundTaskIdentifier!
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     
     var window: UIWindow?
     
@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         // setup user defaults
         setupUserDefaults()
         
-        // Set idelTimerDisabled accordingly
+        // Set idelTimerDisabled accordingly to
         UIApplication.shared.isIdleTimerDisabled = !Constants.enableDeviceSleepState
         
         // Check for pro version purchase
@@ -276,9 +276,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-        if Constants.runInBackgroundState == true {
-            backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {})
-        }
+        beginBackgroundTask()
         
         // Register for Push Notitications
         NotificationHelper.registerForPushNotifications()
@@ -293,12 +291,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        if backgroundTask != nil {
-            
-            UIApplication.shared.endBackgroundTask(backgroundTask)
-            
-            backgroundTask = nil
-        }
+        // End background task if it exists
+        endBackgroundTask()
         
         // Track Facebook events
         FBSDKAppEvents.activateApp()
@@ -404,7 +398,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
     }
     
-    // MARK: - Setup User Defaults
+    // MARK: - TimeVCDelegate
+    
+    func timerDidBegin(timer: Timer) {
+        print("timerDidBegin")
+    }
+    
+    func timerDidEnd(timer: Timer) {
+        endBackgroundTask()
+        
+        print("timerDidEnd")
+    }
+    
+    // MARK: - Helper Functions
     
     func setupUserDefaults() {
         
@@ -424,6 +430,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // Enable/Disable notification reminders based on notificationReminderState flag
         Constants.notificationReminderState = Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool
+    }
+    
+    func beginBackgroundTask() {
+        
+        // End background task if it exists
+        endBackgroundTask()
+        
+        if Constants.runInBackgroundState == true && Functions.isRemoveAdsUpgradePurchased() && Constants.timer.isValid {
+            backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+                self.endBackgroundTask()
+            })
+            
+            print("background task began")
+        }
+    }
+    
+    func endBackgroundTask() {
+        
+        guard backgroundTask != UIBackgroundTaskInvalid else { return }
+        
+        UIApplication.shared.endBackgroundTask(self.backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid
+        
+        print("background task ended")
     }
 }
 
