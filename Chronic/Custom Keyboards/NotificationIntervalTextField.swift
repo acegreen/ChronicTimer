@@ -33,7 +33,6 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
         
         // Prevent textfield from editing
         return false
-        
     }
     
     func configurePicker() -> UIView {
@@ -41,7 +40,6 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
         picker.selectRow(pickerData.index(of: NotificationHelper.interval)!, inComponent: 0, animated: true)
         
         return picker
-        
     }
     
     func configureAccessoryView() -> UIView {

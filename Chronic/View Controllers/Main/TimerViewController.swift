@@ -22,6 +22,12 @@ import AMPopTip
 import LaunchKit
 import BubbleTransition
 import PureLayout
+import Crashlytics
+
+protocol TimerVCDelegate {
+    func timerDidBegin(timer: Timer)
+    func timerDidEnd(timer: Timer)
+}
 
 class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
 
@@ -33,9 +39,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         case locked
     }
     
-    var buttonState = ButtonState.initial
+    var delegate: TimerVCDelegate!
     
-    var timer = Timer()
+    var buttonState = ButtonState.initial
     
     var time: Int = 0
     var preRoutineCountDownTime: Int = 3
@@ -67,7 +73,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.activityType = .fitness
-        locationManager.distanceFilter = 5.0
+        locationManager.distanceFilter = 10.0
         return locationManager
     }()
     
@@ -108,7 +114,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         guard (workout.routineStages.get(workout.routineIndex - 1) != nil) else { return }
         
-        if timer.isValid {
+        if Constants.timer.isValid {
             self.pause()
         }
         
@@ -121,7 +127,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         guard (workout.routineStages.get(workout.routineIndex + 1) != nil) else { return }
         
-        if timer.isValid {
+        if Constants.timer.isValid {
             self.pause()
         }
         
@@ -167,7 +173,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         if !Functions.isConnectedToNetwork() && !Functions.isRemoveAdsUpgradePurchased() {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
+            SweetAlert().showAlert(NSLocalizedString("Alert: Purchase Remove Ads Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Purchase Remove Ads Subtitle Text", comment: ""), style: AlertStyle.warning)
             
         } else {
             
@@ -181,7 +187,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func pause() {
         
-        timer.invalidate()
+        Constants.timer.invalidate()
     
         workout.workoutState = .paused
         buttonState = .pause
@@ -190,7 +196,11 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func stop() {
         
-        timer.invalidate()
+        // Stop timer
+        Constants.timer.invalidate()
+        
+        // Send to delegate
+        self.delegate.timerDidEnd(timer: Constants.timer)
         
         // Set end time
         workout.routineEndDate = Date()
@@ -224,7 +234,15 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
         
         // Save workout
-        checkSaveWorkout { (complete) in
+        if workout.workoutState != .preRun {
+            
+            checkSaveWorkout { (complete) in
+                
+                let applicationState: String = Constants.app.applicationState == .active ? "Active" : "Background"
+                
+                // Log with Answer
+                Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.totalTime), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "App Version": Constants.AppVersion])
+            }
         }
         
         // Reset settings to initial state (Just for tidiness)
@@ -246,6 +264,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // assign delegate to appDelegate
+        self.delegate = Constants.appDel
         
         // Adjust font greater than 300 limitation from Storyboard
         self.countDownLabel.font = countDownLabel.font.withSize(1000)
@@ -328,10 +349,10 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     //Function to start exercise time
     func startTimer(_ selector: String) {
         
-        timer.invalidate()
+        Constants.timer.invalidate()
         
-        if !timer.isValid {
-            timer = Timer .scheduledTimer(timeInterval: 1, target: self, selector: Selector(selector) , userInfo: nil, repeats: true)
+        if !Constants.timer.isValid {
+            Constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector(selector) , userInfo: nil, repeats: true)
         }
     }
     
@@ -341,7 +362,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         // Check for internet connection every 30 seconds, pause routine and display error if not connected and no upgrade purchased
         if workout.timeElapsed % 30 == 0 && !Functions.isConnectedToNetwork() && !Functions.isRemoveAdsUpgradePurchased() {
             
-            SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
+            SweetAlert().showAlert(NSLocalizedString("Alert: Purchase Remove Ads Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Purchase Remove Ads Subtitle Text", comment: ""), style: AlertStyle.warning)
 
             self.pause()
             
@@ -357,7 +378,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             changeLabels()
             
-            if time < 4 && time > 0 {
+            if (time < 4 && time > 0) || (time % 60 == 0 && time != 0) {
                 
                 playSound("Tick")
                 
@@ -434,7 +455,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         } else if preRoutineCountDownTime == 0 {
             
-            timer.invalidate()
+            Constants.timer.invalidate()
     
             if self.threeMinuteCounterVisualEffectView.isDescendant(of: self.view) {
                 
@@ -464,7 +485,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func initializeQuickTimer() {
         
-        timer.invalidate()
+        Constants.timer.invalidate()
         
         self.workout = Workout(workoutActivityType: .crossTraining, workoutType: .quickTimer)
         
@@ -473,7 +494,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func initializeRoutine(with routine: RoutineModel) {
     
-        timer.invalidate()
+        Constants.timer.invalidate()
         
         self.workout = Workout(workoutActivityType: .crossTraining, workoutType: .routine, routineModel: routine)
         
@@ -482,7 +503,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func initializeRunner() {
         
-        timer.invalidate()
+        Constants.timer.invalidate()
         
         self.workout = Workout(workoutActivityType: .running, workoutType: .run)
         
@@ -555,7 +576,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             stageColor = (NSKeyedUnarchiver.unarchiveObject(with: currentTimerDictColor) as? UIColor)!
             self.progressView.backgroundColor = stageColor
             middleTopLabel.textColor = stageColor
-            print(stageColor)
+            // print(stageColor)
         }
     }
     
@@ -757,7 +778,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 } else if workout.workoutType == .run {
                     
                     Functions.textToSpeech(NSLocalizedString("Text-To-Speech Tracking Run Text", comment: ""))
-                    
                 }
                 
             } else {
@@ -800,14 +820,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     Functions.textToSpeech("\(preRoutineCountDownTime)")
                     
                 } else {
-                    Functions.textToSpeech("\(time)")
+                    
+                    if time > 59 {
+                        Functions.textToSpeech(Functions.timeRemainingString(from: time))
+                    } else {
+                        Functions.textToSpeech("\(time)")
+                    }
                 }
                 
             } else {
-                
                 soundName = "Tick-Deep"
                 ext = ".mp3"
-                
             }
             
         default:
@@ -820,7 +843,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 
                 soundName = Constants.timerSound
                 ext = ".wav"
-                
             }
         }
         
@@ -839,6 +861,9 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             startTimer("countDown3Seconds")
         }
+        
+        // Send to delegate
+        self.delegate.timerDidBegin(timer: Constants.timer)
     }
     
     func startWorkout() {
@@ -854,7 +879,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             startTimer("counter")
             
             if workout.workoutType == .run {
-                
                 startLocationUpdates()
             }
             
@@ -885,6 +909,45 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         guard workout.workoutState != .preRun else { return completion(false) }
         
         guard HKHealthStore.isHealthDataAvailable() else { return completion(false) }
+        
+        guard HealthKitHelper.sharedInstance.workoutAuthorizationStatus != HKAuthorizationStatus.notDetermined else {
+            
+            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text 2", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Prompt Me", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
+                
+                if !isOtherButton {
+                    
+                    // Request Authorization
+                    HealthKitHelper.sharedInstance.authorizeHealthKit { (success,  error) -> Void in
+                        
+                        if success {
+                            
+                            DispatchQueue.main.async(execute: { () -> Void in
+                                
+                                self.saveWorkout({ (success) in
+                                    
+                                })
+                            })
+                        }
+                    }
+                }
+            }
+            
+            return
+        }
+        
+        guard HealthKitHelper.sharedInstance.workoutAuthorizationStatus != HKAuthorizationStatus.sharingDenied else {
+            
+            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Settings", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
+                
+                if !isOtherButton {
+                    
+                    UIApplication.shared.open(Constants.settingsURL!, options: [:], completionHandler: { (success) in
+                    })
+                }
+            }
+            
+            return
+        }
         
         if workout.workoutType == .routine || workout.workoutType == .run {
             
@@ -923,48 +986,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     func saveWorkout(_ completion: @escaping (Bool) -> ()) {
-        
-        let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatus(for: HealthKitHelper.sharedInstance.workoutType)
-    
-        guard workoutAuthorizationStatus != HKAuthorizationStatus.notDetermined else {
-            
-            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text 2", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Prompt Me", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
-                
-                if !isOtherButton {
-                    
-                    // Request Authorization
-                    HealthKitHelper.sharedInstance.authorizeHealthKit { (success,  error) -> Void in
-                        
-                        if success {
-                            
-                            DispatchQueue.main.async(execute: { () -> Void in
-                                
-                                 self.saveWorkout({ (success) in
-                                    
-                                 })
-                            })
-                        }
-                    }
-                }
-            }
-            
-            return
-        }
-        
-        guard workoutAuthorizationStatus != HKAuthorizationStatus.sharingDenied else {
-            
-            SweetAlert().showAlert(NSLocalizedString("Alert: Authorize Chronic Save Workout Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Authorize Chronic Save Workout Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil, buttonTitle: NSLocalizedString("Cancel", comment: ""), buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle: NSLocalizedString("Settings", comment: ""), otherButtonColor: UIColor.colorFromRGB(0xAEDEF4)) { (isOtherButton) -> Void in
-                
-                if !isOtherButton {
-                    
-                    UIApplication.shared.open(Constants.settingsURL!, options: [:], completionHandler: { (success) in
-                        
-                    })
-                }
-            }
-            
-            return
-        }
         
         guard workout.routineStartDate != nil && workout.routineEndDate != nil else { return }
         
@@ -1164,7 +1185,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
 // MARK: - UIViewControllerTransitioningDelegate
 extension TimerViewController: UIViewControllerTransitioningDelegate {
     
-    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = self.view.center
         transition.bubbleColor = UIColor.goldColor()

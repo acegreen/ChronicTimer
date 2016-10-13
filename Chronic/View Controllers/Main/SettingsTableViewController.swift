@@ -43,14 +43,16 @@ class SettingsTableViewController: UITableViewController, Dimmable {
     
     @IBAction func enableDeviceSleepSwitchChanged(_ sender: UISwitch) {
         
-        if !sender.isOn {
+        guard Functions.isRemoveAdsUpgradePurchased() else {
             
-            Constants.userDefaults.set(false, forKey: "ENABLE_DEVICE_SLEEP")
+            SweetAlert().showAlert(NSLocalizedString("Alert: Purchase Remove Ads Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Purchase Remove Ads Subtitle Text", comment: ""), style: AlertStyle.warning)
             
-        } else if sender.isOn {
-                
-            Constants.userDefaults.set(true, forKey: "ENABLE_DEVICE_SLEEP")
+            sender.isOn = false
+            
+            return
         }
+        
+        Constants.userDefaults.set(sender.isOn, forKey: "ENABLE_DEVICE_SLEEP")
                 
         Constants.enableDeviceSleepState = Constants.userDefaults.bool(forKey: "ENABLE_DEVICE_SLEEP") as Bool
         
@@ -60,14 +62,16 @@ class SettingsTableViewController: UITableViewController, Dimmable {
     
     @IBAction func runInBackgroundSwitchChanged(_ sender: UISwitch) {
         
-        if !sender.isOn {
+        guard Functions.isRemoveAdsUpgradePurchased() else {
             
-            Constants.userDefaults.set(false, forKey: "RUN_IN_BACKGROUND")
+            SweetAlert().showAlert(NSLocalizedString("Alert: Purchase Remove Ads Title Text", comment: ""), subTitle: NSLocalizedString("Alert: Purchase Remove Ads Subtitle Text", comment: ""), style: AlertStyle.warning)
             
-        } else if sender.isOn {
+            sender.isOn = false
             
-            Constants.userDefaults.set(true, forKey: "RUN_IN_BACKGROUND")
+            return
         }
+        
+        Constants.userDefaults.set(sender.isOn, forKey: "RUN_IN_BACKGROUND")
         
         Constants.runInBackgroundState = Constants.userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
         
@@ -84,6 +88,8 @@ class SettingsTableViewController: UITableViewController, Dimmable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        IAPHelper.sharedInstance.delegate = self
         
 //        // Add Observers
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setProFeaturesDefaultSettings",name:"SetProFeatureDefaultSettings", object: nil)
@@ -109,14 +115,15 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         // Dispose of any resources that can be recreated.
     }
     
-    func setProFeaturesDefaultSettings() {
+    func setRemoveAdsDefaultSettings() {
         
         DispatchQueue.main.async(execute: { () -> Void in
         
-            self.runInBackgroundSwitch.isOn = true
-            self.runInBackgroundSwitchChanged(self.runInBackgroundSwitch)
             self.enableDeviceSleepSwitch.isOn = false
             self.enableDeviceSleepSwitchChanged(self.enableDeviceSleepSwitch)
+            
+            self.runInBackgroundSwitch.isOn = true
+            self.runInBackgroundSwitchChanged(self.runInBackgroundSwitch)
         })
     }
     
@@ -318,7 +325,24 @@ class SettingsTableViewController: UITableViewController, Dimmable {
     }
 }
 
+// MARK: - IAP Delegate
+
+extension SettingsTableViewController: IAPDelegate {
+    
+    func didPurchaseProFeaturesUpgrade() {
+        print("didPurchaseProFeaturesUpgrade called in settings")
+    }
+    
+    func didPurchaseRemoveAdsUpgrade() {
+        
+        print("didPurchaseRemoveAdsUpgrade called in settings")
+        
+        self.setRemoveAdsDefaultSettings()
+    }
+}
+
 // MARK: - Email Delegate
+
 extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     
     

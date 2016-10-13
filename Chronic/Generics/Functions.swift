@@ -28,12 +28,6 @@ class Functions {
         
         if routine != nil {
             
-            var customeExerciseDictionary = [String:Any]()
-            var warmUpDictionary = [String:Any]()
-            var roundDictionary = [String:Any]()
-            var restDictionary = [String:Any]()
-            var coolDownDictionary = [String:Any]()
-            
             let routineExercises = routine!.routineToExcercise?.array as! [ExerciseModel]
             
             let type:String = routine!.type!
@@ -41,6 +35,8 @@ class Functions {
             if type == "Custom" {
                 
                 for exercise in routineExercises {
+                    
+                    var customeExerciseDictionary = [String:Any]()
                     
                     for number in 1...(exercise.exerciseNumberOfRounds as Int) {
                         
@@ -65,6 +61,11 @@ class Functions {
                 }
                 
             } else if type == "Circuit" {
+                
+                var warmUpDictionary = [String:Any]()
+                var roundDictionary = [String:Any]()
+                var restDictionary = [String:Any]()
+                var coolDownDictionary = [String:Any]()
                 
                 Constants.warmUpExercise = routineExercises[0]
                 Constants.roundExercise = routineExercises[1]
@@ -151,7 +152,7 @@ class Functions {
             
         }
         
-        // print(stagesArray, totalTime)
+        print(stagesArray, totalTime)
         return (stagesArray as Any as! [[String:Any]], totalTime)
     }
     
@@ -313,7 +314,6 @@ class Functions {
     class func timeFromTimeComponents (hoursComponent: Int, minutesComponent: Int, secondsComponent: Int) -> Int {
         
         return (hoursComponent * 3600) + (minutesComponent * 60) + (secondsComponent)
-        
     }
     
     class func timeComponentsFrom(time: Int) -> (HoursLeft: Int, MinutesLeft: Int, SecondsLeft: Int) {
@@ -323,7 +323,6 @@ class Functions {
         let SecondsLeft = (((time%3600)%60)%60)
         
         return (HoursLeft, MinutesLeft, SecondsLeft)
-        
     }
     
     class func timeComponentsFrom(string: String) -> (HoursLeft: Int, MinutesLeft: Int, SecondsLeft: Int) {
@@ -347,28 +346,31 @@ class Functions {
         }
         
         return (hoursComponent,minutesComponent,secondsComponent)
-        
     }
     
     class func timeStringFrom(time: Int) -> String {
         
-        let (HoursLeft,MinutesLeft,SecondsLeft) = timeComponentsFrom(time: time)
+        let (hoursLeft, minutesLeft, secondsLeft) = timeComponentsFrom(time: time)
         
-        if HoursLeft == 0 {
-            return String(format:"%.2d:%.2d", MinutesLeft, SecondsLeft)
+        if hoursLeft == 0 {
+            return String(format:"%.2d:%.2d", minutesLeft, secondsLeft)
         } else {
-            return String(format:"%2d:%.2d:%.2d", HoursLeft, MinutesLeft, SecondsLeft)
+            return String(format:"%2d:%.2d:%.2d", hoursLeft, minutesLeft, secondsLeft)
         }
+    }
+    
+    class func timeRemainingString(from time: Int) -> String {
         
-//        if type == "Routine" {
-//            if HoursLeft == 0 {
-//                return String(format:"%.2d:%.2d", MinutesLeft, SecondsLeft)
-//            } else {
-//                return String(format:"%2d:%.2d:%.2d", HoursLeft, MinutesLeft, SecondsLeft)
-//            }
-//        } else {
-//            return String(format:"%2d:%.2d:%.2d", HoursLeft, MinutesLeft, SecondsLeft)
-//        }
+        let dateNow = Date()
+        let date = Date(timeIntervalSinceNow: TimeInterval(time))
+        
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .spellOut
+        formatter.includesTimeRemainingPhrase = true
+        formatter.maximumUnitCount = 0
+        formatter.allowedUnits = [.hour, .minute, .second]
+        
+        return formatter.string(from: dateNow, to: date) ?? ""
     }
     
     class func displayAlert(_ title: String, message: String, Action1: UIAlertAction?, Action2: UIAlertAction?) -> UIAlertController {

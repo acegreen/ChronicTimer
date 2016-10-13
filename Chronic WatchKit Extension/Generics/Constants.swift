@@ -46,7 +46,6 @@ class Constants {
     static var timer = Timer()
     static var wcSession: WCSession!
     
-    static let workoutAuthorizationStatus = HealthKitHelper.sharedInstance.healthKitStore.authorizationStatus(for: HealthKitHelper.sharedInstance.workoutType)
     static var workoutSession: HKWorkoutSession!
     
     enum DistanceType {

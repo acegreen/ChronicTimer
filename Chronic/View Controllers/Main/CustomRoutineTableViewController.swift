@@ -468,16 +468,15 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "exerciseDetailSegue" {
-            
-            let indexPathofSelectedRow = self.tableView.indexPathForSelectedRow
-            
-            let destinationVC = segue.destination as! CustomRoutineExerciseDetailTableViewController
-            
-            destinationVC.indexOfExercise = indexPathofSelectedRow
-            
-        }
-        
+//        if segue.identifier == "exerciseDetailSegue" {
+//            
+//            let indexPathofSelectedRow = self.tableView.indexPathForSelectedRow
+//            
+//            let destinationVC = segue.destination as! CustomRoutineExerciseDetailTableViewController
+//            
+//            destinationVC.indexOfExercise = indexPathofSelectedRow
+//            
+//        }
     }
     
     //MARK: - TextField and Touches Functions3

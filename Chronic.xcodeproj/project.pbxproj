@@ -73,7 +73,6 @@
 		2349541A1D565596007B053A /* TableRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954191D565596007B053A /* TableRowType.swift */; };
 		2349542B1D565738007B053A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234954281D565738007B053A /* Assets.xcassets */; };
 		234954301D56574C007B053A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2349542E1D56574C007B053A /* Interface.storyboard */; };
-		234954321D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954311D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift */; };
 		234954341D565EE7007B053A /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954331D565EE7007B053A /* TextField.swift */; };
 		234FA5D01C44040700931341 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 234FA5D21C44040700931341 /* DefaultPreferences.plist */; };
 		235930E41B0A89800021003D /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235930E31B0A89800021003D /* TimerViewController.swift */; };
@@ -335,7 +334,6 @@
 		234954291D565738007B053A /* Chronic WatchKit.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Chronic WatchKit.entitlements"; sourceTree = "<group>"; };
 		2349542A1D565738007B053A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2349542F1D56574C007B053A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		234954311D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRoutineExerciseDetailTableViewController.swift; sourceTree = "<group>"; };
 		234954331D565EE7007B053A /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		234A33B71C40C65E0024D898 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		234A33BA1C40CEA10024D898 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -818,7 +816,6 @@
 				2388D3271B0672770091C9E5 /* QuickTimerViewController.swift */,
 				232F4C751AC02EA700D25995 /* CircuitRoutineTableViewController.swift */,
 				23979D921B63C81E005BC945 /* CustomRoutineTableViewController.swift */,
-				234954311D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift */,
 				237605271AEFE779003E2C07 /* SettingsTableViewController.swift */,
 				23F85F391B645202002221AF /* ExerciseTableViewCell.swift */,
 				23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */,
@@ -1476,7 +1473,6 @@
 				23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */,
 				2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */,
 				230A40FF1D81C57E00A391DC /* SweetAlert.swift in Sources */,
-				234954321D565C60007B053A /* CustomRoutineExerciseDetailTableViewController.swift in Sources */,
 				237B10901C2667EA00D52713 /* OBHealthViewController.swift in Sources */,
 				2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */,
 				2348A9391D7C6F3D0080402F /* FeedbackViewController.swift in Sources */,

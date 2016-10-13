@@ -253,6 +253,27 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
         guard HKHealthStore.isHealthDataAvailable() else { return }
         
+        guard HealthKitHelper.sharedInstance.workoutAuthorizationStatus != HKAuthorizationStatus.notDetermined else {
+            
+            // Request Authorization
+            HealthKitHelper.sharedInstance.authorizeHealthKit { (success,  error) -> Void in
+                if success {
+                    Functions.saveWorkout(interfaceController: self, workoutActivityType: self.workout.workoutActivityType, startDate: self.workout.routineStartDate, endDate: self.workout.routineEndDate, kiloCalories: nil, distance: nil)
+                }
+            }
+            
+            return
+        }
+        
+        guard HealthKitHelper.sharedInstance.workoutAuthorizationStatus != HKAuthorizationStatus.sharingDenied else {
+            
+            let okAction = WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: WKAlertActionStyle.default, handler: { })
+            
+            self.presentAlert(withTitle: "Alert: Authorize Chronic Save Workout Title Text", message: "Alert: Authorize Chronic Save Workout Subtitle Text", preferredStyle: WKAlertControllerStyle.actionSheet, actions: [okAction])
+            
+            return
+        }
+        
         if workout.workoutType == .routine {
             
             if workout.workoutState == .completed {
