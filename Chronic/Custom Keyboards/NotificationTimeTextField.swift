@@ -32,7 +32,6 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         
         // Prevent textfield from editing
         return false
-        
     }
     
     func configurePicker() -> UIView {
@@ -40,7 +39,6 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         picker.selectRow(NotificationHelper.hour, inComponent: 0, animated: true)
         
         return picker
-        
     }
     
     func configureAccessoryView() -> UIView {
@@ -83,7 +81,6 @@ class NotificationTimeTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     }
 
     func dismissPicker () {
-        
         self.resignFirstResponder()
     }
     

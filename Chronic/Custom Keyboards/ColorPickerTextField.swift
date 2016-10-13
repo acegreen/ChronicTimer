@@ -83,14 +83,12 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
     }
 
     func dismissPicker () {
-        
         self.resignFirstResponder()
     }
     
     //MARK: - SwiftColorPickerDelegate Functions
     
     func colorSelectionChanged(selectedColor color: UIColor) {
-        
         self.backgroundColor = color
     }
     
@@ -108,7 +106,6 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
             fillColorMatrix(numXStripes,numYStripes)
             return colorForPalletIndex(x, y:y, numXStripes: numXStripes, numYStripes: numYStripes)
         }
-        
     }
     
     // MARK: - Color Matrix (only for test case)

@@ -27,6 +27,8 @@ class SettingsTableViewController: UITableViewController, Dimmable {
     @IBOutlet var timerVolumeSlider: UISlider!
     @IBOutlet var enableDeviceSleepSwitch: UISwitch!
     @IBOutlet var runInBackgroundSwitch: UISwitch!
+    @IBOutlet var timeRemainingFeedbackSwitch: UISwitch!
+    @IBOutlet var countdownTimeTextfield: NumberPickerTextField!
     @IBOutlet var notificationSwitch: UISwitch!
     @IBOutlet var notificationIntervalTextfield: NotificationIntervalTextField!
     @IBOutlet var notificationTimeTextfield: NotificationTimeTextField!
@@ -72,9 +74,20 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         }
         
         Constants.userDefaults.set(sender.isOn, forKey: "RUN_IN_BACKGROUND")
-        
         Constants.runInBackgroundState = Constants.userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
         
+    }
+    
+    @IBAction func timeRemainingFeedbackSwitchChanged(_ sender: UISwitch) {
+        
+        Constants.userDefaults.set(sender.isOn, forKey: "TIME_REMAINING_FEEDBACK")
+        Constants.timeRemainingFeedbackState = Constants.userDefaults.bool(forKey: "TIME_REMAINING_FEEDBACK") as Bool
+    }
+
+    @IBAction func countdownTimeTextfieldChanged(_ sender: UITextField) {
+        
+        Constants.userDefaults.set(Int(sender.text!), forKey: "COUNTDOWN_TIME")
+        Constants.countdownTime = Constants.userDefaults.integer(forKey: "COUNTDOWN_TIME") as Int
     }
     
     @IBAction func notificationSwitchChanged(_ sender: UISwitch) {
@@ -103,6 +116,8 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         timerVolumeSlider.value = Constants.timerVolume
         enableDeviceSleepSwitch.isOn = Constants.enableDeviceSleepState
         runInBackgroundSwitch.isOn = Constants.runInBackgroundState
+        timeRemainingFeedbackSwitch.isOn = Constants.timeRemainingFeedbackState
+        countdownTimeTextfield.text = String(Constants.countdownTime)
         notificationSwitch.isOn = Constants.notificationReminderState
         notificationIntervalTextfield.text = NotificationHelper.interval
         notificationTimeTextfield.text = String(NotificationHelper.hour) + ":00"
@@ -145,7 +160,7 @@ class SettingsTableViewController: UITableViewController, Dimmable {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
-            return 4
+            return 5
         } else if (section == 1) {
             return 4
         } else if (section == 2) {
@@ -168,6 +183,10 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         case "TimerSoundCell":
             
             timerSoundDetailTextField.becomeFirstResponder()
+            
+        case "CountdownTimeCell":
+            
+            countdownTimeTextfield.becomeFirstResponder()
             
         case "FacebookLikeCell":
             
