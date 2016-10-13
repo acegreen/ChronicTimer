@@ -41,7 +41,6 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         picker.selectRow(pickerData.index(of: Constants.timerSound)!, inComponent: 0, animated: true)
         
         return picker
-        
     }
     
     func configureAccessoryView() -> UIView {

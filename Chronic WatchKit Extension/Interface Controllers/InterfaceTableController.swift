@@ -15,6 +15,11 @@ class InterfaceTableController: WKInterfaceController {
     var routines = [RoutineModel]()
     
     @IBOutlet var routineTable: WKInterfaceTable!
+    
+//    @IBAction func longPressGestureAction(_ sender: AnyObject) {
+//        
+//        print("long pressed routine cell")
+//    }
 
     override init() {
         
@@ -81,7 +86,6 @@ class InterfaceTableController: WKInterfaceController {
             let row = self.routineTable.rowController(at: index) as! TableRowType
             
             row.routineRowLabel.setText(item.value(forKey: "name")! as? String)
-            
         }
     }
 
@@ -90,7 +94,6 @@ class InterfaceTableController: WKInterfaceController {
         if routines.count != 0 {
             
             return routines[rowIndex]
-            
         }
         
         return nil
@@ -101,7 +104,6 @@ class InterfaceTableController: WKInterfaceController {
         if routines.count != 0 {
             
             return [routines[rowIndex]]
-            
         }
         
         return nil

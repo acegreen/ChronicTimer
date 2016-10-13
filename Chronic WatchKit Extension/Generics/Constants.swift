@@ -16,9 +16,11 @@ class Constants {
     static let currentDevice = WKInterfaceDevice.current()
     static let ext = WKExtension.shared
     
-    static let userDefaults: UserDefaults = UserDefaults.standard
-    static let defaultPrefsFile: URL = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
-    static let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
+//    static let userDefaults: UserDefaults = UserDefaults.standard
+//    static let defaultPrefsFile: URL = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
+//    static let defaultPrefs: [String : Any] = NSDictionary(contentsOf: defaultPrefsFile) as! [String : Any]
+//    static let localizedPrefsFile: URL = Bundle.main.url(forResource: "LocalizedPreferences", withExtension: "plist")!
+//    static let localizedPrefs: [String : Any] = NSDictionary(contentsOf: localizedPrefsFile) as! [String : Any]
     
     static let bundleIdentifier = Bundle.main.bundleIdentifier
     

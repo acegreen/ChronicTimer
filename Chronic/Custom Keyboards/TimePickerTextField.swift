@@ -34,15 +34,12 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         
         self.inputView = configurePicker()
         self.inputAccessoryView = configureAccessoryView()
-        
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent textfield from editing
         return false
-        
     }
     
     func configurePicker() -> UIView {
@@ -52,7 +49,6 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         picker.selectRow(pickerSeconds, inComponent: 2, animated: true)
         
         return picker
-        
     }
     
     func configureAccessoryView() -> UIView {

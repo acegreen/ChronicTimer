@@ -12,5 +12,4 @@ import Foundation
 class TableRowType: NSObject {
     
     @IBOutlet var routineRowLabel: WKInterfaceLabel!
-    
 }

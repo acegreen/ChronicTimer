@@ -44,7 +44,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     var buttonState = ButtonState.initial
     
     var time: Int = 0
-    var preRoutineCountDownTime: Int = 3
+    var preRoutineCountDownTime = Constants.countdownTime
     
     var workout: Workout!
     
@@ -372,14 +372,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         switch workout.workoutType {
         case .routine, .quickTimer:
             
+            // Increment time
             time -= 1
             workout.timeRemaining -= 1
             workout.timeElapsed += 1
             
+            // Update labels
             changeLabels()
             
+            // handle time accordingly (Routine/QT)
             if (time < 4 && time > 0) || (time % 60 == 0 && time != 0) {
-                
+        
                 playSound("Tick")
                 
             } else  if time <= 0 {
@@ -417,15 +420,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     
                 } else {
                     
+                    // Update index
                     workout.routineIndex += 1
                     
+                    // Change stage
                     changeStage()
+                    
+                    // Start a new timer
+                    startTimer("counter")
                     
                     // Play exercise name and interval stage
                     playSound("Stage Change")
-                    
-                    startTimer("counter")
-                    
                 }
                 
                 return
@@ -433,27 +438,30 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         case .run:
             
+            // Increment time
             workout.timeElapsed += 1
             
+            // Update labels
+            changeLabels()
+            
+            // Calculate pace every minute
             if workout.timeElapsed % 60 == 0 || workout.pace == 0 {
                 workout.pace = calculatePace(workout.timeElapsed, distance: workout.distance)
             }
-            
-            changeLabels()
         }
     }
     
-    func countDown3Seconds() {
+    func countDown() {
             
         playSound("Tick")
     
         preRoutineCountDownTime -= 1
         
-        if preRoutineCountDownTime < 4 && preRoutineCountDownTime > 0 {
+        if preRoutineCountDownTime > 0 {
             
             threeMinuteCounterLabel.text = String(preRoutineCountDownTime)
             
-        } else if preRoutineCountDownTime == 0 {
+        } else if preRoutineCountDownTime <= 0 {
             
             Constants.timer.invalidate()
     
@@ -520,7 +528,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         workout.timeElapsed = 0
         workout.distance = 0
         time = 0
-        preRoutineCountDownTime = 3
+        preRoutineCountDownTime = Constants.countdownTime
         
         locations.removeAll(keepingCapacity: false)
         
@@ -817,12 +825,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             if Constants.timerSound == "Text-To-Speech" {
                 
                 if workout.workoutState == .preRun {
-                    Functions.textToSpeech("\(preRoutineCountDownTime)")
                     
+                    Functions.textToSpeech("\(preRoutineCountDownTime)")
+    
                 } else {
                     
                     if time > 59 {
-                        Functions.textToSpeech(Functions.timeRemainingString(from: time))
+                        Functions.textToSpeech(Functions.timeRemainingString(from: time), volumeOn: Constants.timeRemainingFeedbackState)
                     } else {
                         Functions.textToSpeech("\(time)")
                     }
@@ -859,7 +868,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             LayoutBurSubview()
             
-            startTimer("countDown3Seconds")
+            startTimer("countDown")
         }
         
         // Send to delegate

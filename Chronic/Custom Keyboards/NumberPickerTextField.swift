@@ -36,7 +36,6 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
         
         // Prevent textfield from editing
         return false
-        
     }
     
     func configurePicker() -> UIView {
@@ -44,7 +43,6 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
         picker.selectRow(pickerNumber - 1, inComponent: 0, animated: true)
         
         return picker
-        
     }
     
     func configureAccessoryView() -> UIView {
@@ -87,7 +85,6 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
     }
 
     func dismissPicker() {
-        
         self.resignFirstResponder()
     }
     
@@ -120,7 +117,6 @@ class NumberPickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDe
         pickerNumber = row + 1
         
         UpdateLabel()
-        
     }
     
     func UpdateLabel() {

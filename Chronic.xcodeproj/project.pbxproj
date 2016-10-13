@@ -20,6 +20,7 @@
 		231152A81D7A1679003938E4 /* InAppPurchaseReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231152A71D7A1679003938E4 /* InAppPurchaseReusableView.swift */; };
 		231152AA1D7A3B28003938E4 /* InAppPurchaseReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231152A91D7A3B28003938E4 /* InAppPurchaseReusableView.xib */; };
 		231152AC1D7A634F003938E4 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231152AB1D7A634F003938E4 /* Protocols.swift */; };
+		231488B61DB020E40016CEBE /* LocalizedPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231488B81DB020E40016CEBE /* LocalizedPreferences.plist */; };
 		2315CCE11D7EE7FC00372228 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315CCE01D7EE7FC00372228 /* DataAccess.swift */; };
 		2315CCE41D7EE82900372228 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315CCE31D7EE82900372228 /* Workout.swift */; };
 		2315CCE51D7EE85800372228 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2315CCE01D7EE7FC00372228 /* DataAccess.swift */; };
@@ -74,10 +75,10 @@
 		2349542B1D565738007B053A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234954281D565738007B053A /* Assets.xcassets */; };
 		234954301D56574C007B053A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2349542E1D56574C007B053A /* Interface.storyboard */; };
 		234954341D565EE7007B053A /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954331D565EE7007B053A /* TextField.swift */; };
-		234FA5D01C44040700931341 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 234FA5D21C44040700931341 /* DefaultPreferences.plist */; };
 		235930E41B0A89800021003D /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235930E31B0A89800021003D /* TimerViewController.swift */; };
 		235B0CF61C279B6800A8D7D7 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B106B1C1F1A4F00D52713 /* HealthKitHelper.swift */; };
 		235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B50031BF64E95008FBC53 /* IAPHelper.swift */; };
+		2367421A1DB0301800D3DE4D /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236742191DB0301800D3DE4D /* DefaultPreferences.plist */; };
 		2368C1731B0CC5C800F41346 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368C1721B0CC5C800F41346 /* AudioToolbox.framework */; };
 		23698CD51BCDF05400EBEC7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614961B30C39500180218 /* AdSupport.framework */; };
 		236ADAC41D79DA1700D092A6 /* InAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236ADAC31D79DA1700D092A6 /* InAppPurchaseViewController.swift */; };
@@ -260,6 +261,11 @@
 		231152A71D7A1679003938E4 /* InAppPurchaseReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseReusableView.swift; sourceTree = "<group>"; };
 		231152A91D7A3B28003938E4 /* InAppPurchaseReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppPurchaseReusableView.xib; sourceTree = "<group>"; };
 		231152AB1D7A634F003938E4 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		231488B71DB020E40016CEBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/LocalizedPreferences.plist; sourceTree = "<group>"; };
+		231488B91DB020E60016CEBE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/LocalizedPreferences.plist; sourceTree = "<group>"; };
+		231488BA1DB020E80016CEBE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = it; path = it.lproj/LocalizedPreferences.plist; sourceTree = "<group>"; };
+		231488BB1DB020E90016CEBE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/LocalizedPreferences.plist"; sourceTree = "<group>"; };
+		231488BC1DB020EA0016CEBE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant"; path = "zh-Hant.lproj/LocalizedPreferences.plist"; sourceTree = "<group>"; };
 		2315CCDE1D7EE7C000372228 /* WatchDataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchDataAccess.swift; path = "Chronic WatchKit Extension/Bundle Files/WatchDataAccess.swift"; sourceTree = SOURCE_ROOT; };
 		2315CCE01D7EE7FC00372228 /* DataAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
 		2315CCE31D7EE82900372228 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -337,15 +343,11 @@
 		234954331D565EE7007B053A /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		234A33B71C40C65E0024D898 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		234A33BA1C40CEA10024D898 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		234FA5D11C44040700931341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/DefaultPreferences.plist; sourceTree = "<group>"; };
-		234FA5D41C44041600931341 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/DefaultPreferences.plist; sourceTree = "<group>"; };
-		234FA5D51C44041900931341 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = it; path = it.lproj/DefaultPreferences.plist; sourceTree = "<group>"; };
-		234FA5D61C44041B00931341 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/DefaultPreferences.plist"; sourceTree = "<group>"; };
-		234FA5D71C44041B00931341 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant"; path = "zh-Hant.lproj/DefaultPreferences.plist"; sourceTree = "<group>"; };
 		234FA5D81C44052400931341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		235930E31B0A89800021003D /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		235B50031BF64E95008FBC53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		23612F3F1AFD57620087A11E /* Chronic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chronic.entitlements; sourceTree = "<group>"; };
+		236742191DB0301800D3DE4D /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		2368C1721B0CC5C800F41346 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		236ADAC31D79DA1700D092A6 /* InAppPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewController.swift; sourceTree = "<group>"; };
 		236B0ACB1D7CC5E30055C754 /* SiriIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -625,7 +627,8 @@
 		232EDE371C1A1823007D0103 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				234FA5D21C44040700931341 /* DefaultPreferences.plist */,
+				236742191DB0301800D3DE4D /* DefaultPreferences.plist */,
+				231488B81DB020E40016CEBE /* LocalizedPreferences.plist */,
 				237B10741C1F6DFA00D52713 /* Localizable.strings */,
 				23B336E21AC05F390052685B /* Sounds */,
 				232EDE381C1A1823007D0103 /* Fonts */,
@@ -1290,9 +1293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2396A6AB1B8232C200E6A55F /* Toggle.wav in Resources */,
+				2367421A1DB0301800D3DE4D /* DefaultPreferences.plist in Resources */,
 				238523191CE7E4ED00694A4A /* Chime.wav in Resources */,
 				2315CD1A1D7EE8D400372228 /* star@2x.png in Resources */,
 				238890FB1B8108CF00750D90 /* Temple Bell.wav in Resources */,
+				231488B61DB020E40016CEBE /* LocalizedPreferences.plist in Resources */,
 				2315CD131D7EE8D400372228 /* iRate.bundle in Resources */,
 				2376052A1AF27A5D003E2C07 /* Buzzer.wav in Resources */,
 				232F4C871AC02EDA00D25995 /* Boxing.wav in Resources */,
@@ -1308,7 +1313,6 @@
 				237B10721C1F6DFA00D52713 /* Localizable.strings in Resources */,
 				238890FD1B81143700750D90 /* Gong.wav in Resources */,
 				2385231A1CE7E4ED00694A4A /* Flute.wav in Resources */,
-				234FA5D01C44040700931341 /* DefaultPreferences.plist in Resources */,
 				232EDE3C1C1A1823007D0103 /* Lato-Light.ttf in Resources */,
 				23AF7DE81AC02E2900AA3FC7 /* Images.xcassets in Resources */,
 				2315CD121D7EE8D400372228 /* LICENSE in Resources */,
@@ -1552,6 +1556,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		231488B81DB020E40016CEBE /* LocalizedPreferences.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				231488B71DB020E40016CEBE /* Base */,
+				231488B91DB020E60016CEBE /* de */,
+				231488BA1DB020E80016CEBE /* it */,
+				231488BB1DB020E90016CEBE /* zh-Hans */,
+				231488BC1DB020EA0016CEBE /* zh-Hant */,
+			);
+			name = LocalizedPreferences.plist;
+			sourceTree = "<group>";
+		};
 		2328E4771AC03136009A8C46 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1599,19 +1615,6 @@
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
-		};
-		234FA5D21C44040700931341 /* DefaultPreferences.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				234FA5D11C44040700931341 /* Base */,
-				234FA5D41C44041600931341 /* de */,
-				234FA5D51C44041900931341 /* it */,
-				234FA5D61C44041B00931341 /* zh-Hans */,
-				234FA5D71C44041B00931341 /* zh-Hant */,
-			);
-			name = DefaultPreferences.plist;
-			path = Chronic/Resources/Localization;
-			sourceTree = SOURCE_ROOT;
 		};
 		236B0ADA1D7CC5E40055C754 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;

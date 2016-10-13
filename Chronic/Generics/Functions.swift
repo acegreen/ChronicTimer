@@ -408,11 +408,17 @@ class Functions {
         }
     }
     
-    class func textToSpeech(_ text: String) {
+    class func textToSpeech(_ text: String, volumeOn: Bool = true) {
         
         let myUtterance = AVSpeechUtterance(string: decryptString(text, dict: Constants.decryptDictionary))
         myUtterance.rate = 0.3
-        myUtterance.volume = Constants.timerVolume
+        
+        if volumeOn {
+            myUtterance.volume = Constants.timerVolume
+        } else {
+            myUtterance.volume = 0
+        }
+        
         Constants.synthesizer.speak(myUtterance)
     }
     

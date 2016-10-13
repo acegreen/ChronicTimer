@@ -414,19 +414,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func setupUserDefaults() {
         
-        Constants.userDefaults.register(defaults: Constants.defaultPrefs as! [String : AnyObject])
+        // Regiter defaults
+        Constants.userDefaults.register(defaults: Constants.defaultPrefs)
+        Constants.userDefaults.register(defaults: Constants.localizedPrefs)
         
         // Enable/Disable Timer Sound based on timerSound
-        Constants.timerSound = Constants.userDefaults.string(forKey: "TIMER_SOUND")
+        Constants.timerSound = Constants.userDefaults.string(forKey: "TIMER_SOUND")!
         
         // Set Timer Volume based on timerVolume
         Constants.timerVolume = Constants.userDefaults.float(forKey: "TIMER_VOLUME")
         
-        // Enable/Disable display sleep based on enableDeviceSleepState flag
+        // Enable/Disable display sleep based on ENABLE_DEVICE_SLEEP flag
         Constants.enableDeviceSleepState = Constants.userDefaults.bool(forKey: "ENABLE_DEVICE_SLEEP") as Bool
         
-        // Enable/Disable background tasks based on runInBackgroundState flag
+        // Enable/Disable background tasks based on RUN_IN_BACKGROUND flag
         Constants.runInBackgroundState = Constants.userDefaults.bool(forKey: "RUN_IN_BACKGROUND") as Bool
+        
+        // Enable/Disable time remaining feedback based on TIME_REMAINING_FEEDBACK flag
+        Constants.timeRemainingFeedbackState = Constants.userDefaults.bool(forKey: "TIME_REMAINING_FEEDBACK") as Bool
+        
+        // Set the countdown time based on countdownTime flag
+        Constants.countdownTime = Constants.userDefaults.integer(forKey: "COUNTDOWN_TIME") as Int
         
         // Enable/Disable notification reminders based on notificationReminderState flag
         Constants.notificationReminderState = Constants.userDefaults.bool(forKey: "NOTIFICATION_REMINDER_ENABLED") as Bool

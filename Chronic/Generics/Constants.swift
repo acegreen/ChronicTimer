@@ -65,16 +65,21 @@ class Constants {
     static let chronicColor: UIColor = UIColor(red: 92/255, green: 92/255, blue: 102/255, alpha: 1.0)
     static let chronicGreen: UIColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0)
     
+    static let userDefaults: UserDefaults = UserDefaults.standard
     static let defaultPrefsFile: URL = Bundle.main.url(forResource: "DefaultPreferences", withExtension: "plist")!
-    static let defaultPrefs: NSDictionary = NSDictionary(contentsOf: defaultPrefsFile)!
+    static let defaultPrefs: [String : Any] = NSDictionary(contentsOf: defaultPrefsFile) as! [String : Any]
+    static let localizedPrefsFile: URL = Bundle.main.url(forResource: "LocalizedPreferences", withExtension: "plist")!
+    static let localizedPrefs: [String : Any] = NSDictionary(contentsOf: localizedPrefsFile) as! [String : Any]
 
     static var timer = Timer()
     
-    static var timerSound: String!
+    static var timerSound: String = "Text-To-Speech"
     static var timerVolume: Float!
-    static var enableDeviceSleepState: Bool!
-    static var runInBackgroundState: Bool!
-    static var notificationReminderState: Bool!
+    static var enableDeviceSleepState: Bool = false
+    static var runInBackgroundState: Bool = false
+    static var timeRemainingFeedbackState: Bool = true
+    static var countdownTime: Int = 3
+    static var notificationReminderState: Bool = false
     
     static var QuickTimerTime: Int = 60
     
@@ -92,8 +97,6 @@ class Constants {
     static let donate99Key: String = "chronic.iap.donate0.99"
     
     static let kiipMomentId:String = "Chronic_workout_complete"
-    
-    static let userDefaults: UserDefaults = UserDefaults.standard
     
     static let healtKitAuthorized: Bool = false
     
