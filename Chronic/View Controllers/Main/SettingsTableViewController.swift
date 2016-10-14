@@ -160,7 +160,7 @@ class SettingsTableViewController: UITableViewController, Dimmable {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
-            return 5
+            return 6
         } else if (section == 1) {
             return 4
         } else if (section == 2) {
@@ -364,7 +364,6 @@ extension SettingsTableViewController: IAPDelegate {
 
 extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     
-    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         switch result.rawValue {
@@ -392,7 +391,5 @@ extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
         }
         
         self.dismiss(animated: true, completion: nil)
-        
     }
-    
 }

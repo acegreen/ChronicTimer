@@ -54,8 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         //configure
         SARate.sharedInstance().minAppStoreRaiting = 4
-        SARate.sharedInstance().eventsUntilPrompt = 5
-        SARate.sharedInstance().daysUntilPrompt = 5
+        SARate.sharedInstance().eventsUntilPrompt = 10
+        SARate.sharedInstance().daysUntilPrompt = 7
         SARate.sharedInstance().remindPeriod = 0
         
         SARate.sharedInstance().email = Constants.appEmail
