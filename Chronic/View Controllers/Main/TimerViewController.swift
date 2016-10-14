@@ -226,7 +226,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 alertBody = NSLocalizedString("Notification Timer subText", comment: "")
             case .routine, .run:
                 alertTitle = NSLocalizedString("Notification Workout Text", comment: "")
-                alertBody = NSLocalizedString("Notifcation Workout subText", comment: "")
+                alertBody = NSLocalizedString("Notification Workout subText", comment: "")
             }
             
             // Schedule workoutCompleteLocalNotification
@@ -241,7 +241,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 let applicationState: String = Constants.app.applicationState == .active ? "Active" : "Background"
                 
                 // Log with Answer
-                Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.totalTime), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "App Version": Constants.AppVersion])
+                Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.totalTime), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "Remove Ads Upgrade Purchased": String(Functions.isRemoveAdsUpgradePurchased()), "App Version": Constants.AppVersion])
             }
         }
         
@@ -347,7 +347,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     //Function to start exercise time
-    func startTimer(_ selector: String) {
+    func startTimer(selector: String) {
         
         Constants.timer.invalidate()
         
@@ -357,7 +357,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     //Timer Function
-    func counter() {
+    func counterRoutine() {
         
         // Check for internet connection every 30 seconds, pause routine and display error if not connected and no upgrade purchased
         if workout.timeElapsed % 30 == 0 && !Functions.isConnectedToNetwork() && !Functions.isRemoveAdsUpgradePurchased() {
@@ -400,23 +400,15 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     // Stop Timer
                     self.stop()
                     
-                    // Present feedback or intersitial ads
-                    #if DEBUG
+                    // Ask for feedback or show ad
+                    if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
+                        
                         self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
                         
-                        self.displayInterstitialAds()
+                    } else {
                         
-                    #else
-                        // Ask for feedback or show ad
-                        if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
-                            
-                            self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
-                            
-                        } else {
-                            
-                            self.displayInterstitialAds()
-                        }
-                    #endif
+                        self.displayInterstitialAds()
+                    }
                     
                 } else {
                     
@@ -427,7 +419,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     changeStage()
                     
                     // Start a new timer
-                    startTimer("counter")
+                    startTimer(selector: "counterRoutine")
                     
                     // Play exercise name and interval stage
                     playSound("Stage Change")
@@ -451,7 +443,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
     }
     
-    func countDown() {
+    func counterPreRun() {
             
         playSound("Tick")
     
@@ -468,7 +460,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             if self.threeMinuteCounterVisualEffectView.isDescendant(of: self.view) {
                 
                 threeMinuteCounterVisualEffectView.removeFromSuperview()
-                
             }
             
             startWorkout()
@@ -868,7 +859,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             LayoutBurSubview()
             
-            startTimer("countDown")
+            startTimer(selector: "counterPreRun")
         }
         
         // Send to delegate
@@ -885,7 +876,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             workout.routineStartDate = Date()
             print("start time \(workout.routineStartDate)")
             
-            startTimer("counter")
+            startTimer(selector: "counterRoutine")
             
             if workout.workoutType == .run {
                 startLocationUpdates()
@@ -897,7 +888,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         if workout.workoutState == .paused {
             
-            startTimer("counter")
+            startTimer(selector: "counterRoutine")
             
             if workout.workoutType == .run {
                 
@@ -1119,9 +1110,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             // Positions the ad at the top, with the correct size
             adBannerView = CustomAdView(forAutoLayout: ())
             
-            self.view.addSubview(adBannerView)
-            self.adBannerView.addSubview(mopubBanner)
-            
+            // Add it to the view
             self.view.addSubview(adBannerView)
             self.adBannerView.addSubview(mopubBanner)
             
