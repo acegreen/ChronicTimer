@@ -1,5 +1,4 @@
 PODS:
-  - AdColony (3.0.4.1)
   - AMPopTip (1.3.0)
   - AMWaveTransition (0.6.2)
   - Bolts (1.8.4):
@@ -9,25 +8,25 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - BubbleTransition (2.0.0)
-  - Charts (2.2.5):
-    - Charts/Core (= 2.2.5)
-  - Charts/Core (2.2.5)
-  - Crashlytics (3.8.2):
+  - Charts (3.0.0):
+    - Charts/Core (= 3.0.0)
+  - Charts/Core (3.0.0)
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
-  - Fabric (1.6.8)
+  - Fabric (1.6.10)
   - FBAudienceNetwork (4.16.1)
-  - FBSDKCoreKit (4.15.1):
+  - FBSDKCoreKit (4.16.1):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.15.1):
+  - FBSDKLoginKit (4.16.1):
     - FBSDKCoreKit
-  - Google-Mobile-Ads-SDK (7.11.0)
+  - Google-Mobile-Ads-SDK (7.13.1)
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
-  - mopub-ios-sdk (4.9.1):
-    - mopub-ios-sdk/MoPubSDK (= 4.9.1)
-  - mopub-ios-sdk/MoPubSDK (4.9.1)
+  - mopub-ios-sdk (4.10.0):
+    - mopub-ios-sdk/MoPubSDK (= 4.10.0)
+  - mopub-ios-sdk/MoPubSDK (4.10.0)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
@@ -47,16 +46,15 @@ PODS:
     - Parse (~> 1.9)
   - PureLayout (3.0.2)
   - ReachabilitySwift (2.3.3)
-  - Rollout.io (1.3.1)
+  - Rollout.io (1.5.0)
   - SDVersion (3.6)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - AdColony
   - AMPopTip
   - AMWaveTransition
   - BubbleTransition
-  - Charts (from `https://github.com/danielgindi/Charts.git`, branch `Chart2.2.5-Swift3.0`)
+  - Charts
   - Crashlytics
   - DZNEmptyDataSet
   - FBAudienceNetwork
@@ -75,9 +73,6 @@ DEPENDENCIES:
   - SwiftyJSON (from `https://github.com/acegreen/SwiftyJSON.git`, branch `swift3`)
 
 EXTERNAL SOURCES:
-  Charts:
-    :branch: Chart2.2.5-Swift3.0
-    :git: https://github.com/danielgindi/Charts.git
   ReachabilitySwift:
     :branch: feature/ios10
     :git: https://github.com/ashleymills/Reachability.swift.git
@@ -86,9 +81,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/acegreen/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
-  Charts:
-    :commit: ab3bb619df2c2d165b41736b6bc25a4218833252
-    :git: https://github.com/danielgindi/Charts.git
   ReachabilitySwift:
     :commit: 3c7e72ac66186e2477d07d36e2b4589fb5e855d8
     :git: https://github.com/ashleymills/Reachability.swift.git
@@ -97,21 +89,20 @@ CHECKOUT OPTIONS:
     :git: https://github.com/acegreen/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  AdColony: f640f3729486a6b4f6112d6da912f4f57dea8b23
   AMPopTip: b810a33c120feacafce170cc9ddcaa8ce3a8389d
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BubbleTransition: bdb9d71993b8d3513008e2dda6bada1ddad25d4f
-  Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
-  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
+  Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   FBAudienceNetwork: 8df6be605acb98347614fe124f828138362f3341
-  FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
-  FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
-  Google-Mobile-Ads-SDK: 0e864ab93ba1ff8afe92e16de0e4e883f581ed33
+  FBSDKCoreKit: 6feac4e8921ccd7afa83fb1df6291dc6eec42c7c
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  Google-Mobile-Ads-SDK: 41c963a8aee9419e1c87bc5b6aa8d4e4ef905555
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
-  mopub-ios-sdk: a2fc16e924c1c17f8cff26b3d50f9e88a34d1f06
+  mopub-ios-sdk: 2e46581805d709c3fc3129051b0cb9fde24421a7
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
@@ -120,10 +111,10 @@ SPEC CHECKSUMS:
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
-  Rollout.io: e2374975b36769db594ecbe8738e13f8a5b202c8
+  Rollout.io: 6f6df8278d71f5e07254a8f0410b0a44697fff1c
   SDVersion: 43383b6ac05462c973c3fd92d9748c74e360aba5
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 143affb42f08a894bc628cb1a7d2427931469042
+PODFILE CHECKSUM: ffe70c4c62d149b1d37d7cae8b37f89b128d9321
 
 COCOAPODS: 1.1.0.rc.3

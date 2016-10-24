@@ -63,22 +63,22 @@ class RoutineCell: UITableViewCell {
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Routine Data")
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Routine Data")
         pieChartDataSet.colors = barColors
         pieChartDataSet.drawValuesEnabled = false
-        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
         
         routineChartView.data = pieChartData
         routineChartView.isUserInteractionEnabled = false
-        routineChartView.drawSliceTextEnabled = false
+        routineChartView.drawEntryLabelsEnabled = false
         routineChartView.legend.enabled = false
         //routineChartView.drawHoleEnabled = false
         routineChartView.holeColor = nil
-        routineChartView.descriptionText = ""
+        routineChartView.chartDescription = nil
     }
     
     // Bar chart version

@@ -124,6 +124,16 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  return [self application:application
+                   openURL:url
+         sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
@@ -310,12 +320,16 @@ static NSString *const FBSDKAppLinkInboundEvent = @"fb_al_inbound";
       [parent.transitionCoordinator animateAlongsideTransition:NULL completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         // Note SFVC init must occur inside block to avoid blank screen.
         _safariViewController = [[SFSafariViewControllerClass alloc] initWithURL:url];
+        // Disable dismissing with edge pan gesture
+        _safariViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [_safariViewController performSelector:@selector(setDelegate:) withObject:self];
         [container displayChildController:_safariViewController];
         [parent presentViewController:container animated:YES completion:nil];
       }];
     } else {
       _safariViewController = [[SFSafariViewControllerClass alloc] initWithURL:url];
+      // Disable dismissing with edge pan gesture
+      _safariViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
       [_safariViewController performSelector:@selector(setDelegate:) withObject:self];
       [container displayChildController:_safariViewController];
       [parent presentViewController:container animated:YES completion:nil];

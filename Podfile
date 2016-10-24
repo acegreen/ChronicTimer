@@ -31,7 +31,7 @@ target "Chronic" do
     
     # Ad Networks
     pod 'FBAudienceNetwork'
-    pod 'AdColony'
+    #pod 'AdColony'
     
     #pod 'CNPPopupController'
     #pod 'PermissionScope'
