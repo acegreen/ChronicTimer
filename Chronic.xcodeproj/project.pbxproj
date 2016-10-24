@@ -89,6 +89,7 @@
 		236B0AE01D7CC5E40055C754 /* SiriIntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 236B0AD41D7CC5E40055C754 /* SiriIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		236B0AE31D7CC5E40055C754 /* SiriIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 236B0ACB1D7CC5E30055C754 /* SiriIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		236B0AEC1D7CEE8F0055C754 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236B0AEB1D7CEE8F0055C754 /* Intents.framework */; };
+		23733C0F1DBD10A200E2BD7A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23733C0E1DBD10A200E2BD7A /* CoreMotion.framework */; };
 		237518601D7F53FD0037040F /* ChronicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385C1D7E79FD005C999D /* ChronicKit.framework */; };
 		237525C51BD6838200E667D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525C41BD6838100E667D2 /* HealthKit.framework */; };
 		2375A5A51D459D9A00DCA06C /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2375A5A41D459D9A00DCA06C /* Pods_Chronic.framework */; };
@@ -102,8 +103,6 @@
 		237B108D1C265A9000D52713 /* OBNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B108B1C265A9000D52713 /* OBNotificationViewController.swift */; };
 		237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B108C1C265A9000D52713 /* OnboardingViewController.swift */; };
 		237B10901C2667EA00D52713 /* OBHealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B108F1C2667EA00D52713 /* OBHealthViewController.swift */; };
-		237FC71E1D947C9C003017CE /* MPGoogleAdMobBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 237FC71B1D947C9C003017CE /* MPGoogleAdMobBannerCustomEvent.m */; };
-		237FC71F1D947C9C003017CE /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 237FC71D1D947C9C003017CE /* MPGoogleAdMobInterstitialCustomEvent.m */; };
 		23812C4E1BC4559D007A314E /* TimerSoundPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23812C4D1BC4559D007A314E /* TimerSoundPickerTextField.swift */; };
 		2384D7E21D107BAC00ADB984 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2384D7E11D107BAC00ADB984 /* UserNotifications.framework */; };
 		238523191CE7E4ED00694A4A /* Chime.wav in Resources */ = {isa = PBXBuildFile; fileRef = 238523171CE7E4ED00694A4A /* Chime.wav */; };
@@ -130,6 +129,14 @@
 		23AF7DE81AC02E2900AA3FC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */; };
 		23AF7DF71AC02E2900AA3FC7 /* ChronicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF7DF61AC02E2900AA3FC7 /* ChronicTests.swift */; };
 		23B099C21D2C988600BB125A /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2305F2A01BBDB4C30049447E /* PassKit.framework */; };
+		23B83CB61DBD0DD300C1736C /* FacebookBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C431DBD0DD300C1736C /* FacebookBannerCustomEvent.m */; };
+		23B83CB71DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C451DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m */; };
+		23B83CB81DBD0DD300C1736C /* FacebookNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C471DBD0DD300C1736C /* FacebookNativeAdAdapter.m */; };
+		23B83CB91DBD0DD300C1736C /* FacebookNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C491DBD0DD300C1736C /* FacebookNativeCustomEvent.m */; };
+		23B83CBA1DBD0DD300C1736C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C4B1DBD0DD300C1736C /* README.md */; };
+		23B83CC51DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C741DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.m */; };
+		23B83CC61DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C761DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.m */; };
+		23B83CC71DBD0DD300C1736C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C781DBD0DD300C1736C /* README.md */; };
 		23C2F2111B6EE2C200056DBB /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2101B6EE2C200056DBB /* CoreSpotlight.framework */; };
 		23C2F2131B6EE2D000056DBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */; };
 		23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */; };
@@ -360,6 +367,7 @@
 		236B0ADD1D7CC5E40055C754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236B0AEB1D7CEE8F0055C754 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		236B0AF21D7E00B60055C754 /* SiriIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SiriIntent.entitlements; sourceTree = "<group>"; };
+		23733C0E1DBD10A200E2BD7A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		237525C41BD6838100E667D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		2375A5A41D459D9A00DCA06C /* Pods_Chronic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Chronic.framework; path = "../../../Library/Developer/Xcode/DerivedData/Chronic-bjuyftuhdmnbqtfplqrzqehfdafu/Build/Products/Debug-iphonesimulator/Pods_Chronic.framework"; sourceTree = "<group>"; };
 		237605271AEFE779003E2C07 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -370,10 +378,6 @@
 		237B108B1C265A9000D52713 /* OBNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBNotificationViewController.swift; sourceTree = "<group>"; };
 		237B108C1C265A9000D52713 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		237B108F1C2667EA00D52713 /* OBHealthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBHealthViewController.swift; sourceTree = "<group>"; };
-		237FC71A1D947C9C003017CE /* MPGoogleAdMobBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobBannerCustomEvent.h; sourceTree = "<group>"; };
-		237FC71B1D947C9C003017CE /* MPGoogleAdMobBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobBannerCustomEvent.m; sourceTree = "<group>"; };
-		237FC71C1D947C9C003017CE /* MPGoogleAdMobInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobInterstitialCustomEvent.h; sourceTree = "<group>"; };
-		237FC71D1D947C9C003017CE /* MPGoogleAdMobInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobInterstitialCustomEvent.m; sourceTree = "<group>"; };
 		23812C4D1BC4559D007A314E /* TimerSoundPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSoundPickerTextField.swift; sourceTree = "<group>"; };
 		2384D7E11D107BAC00ADB984 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.0.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
 		238523171CE7E4ED00694A4A /* Chime.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Chime.wav; sourceTree = "<group>"; };
@@ -408,6 +412,20 @@
 		23AF7DF01AC02E2900AA3FC7 /* ChronicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChronicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AF7DF51AC02E2900AA3FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23AF7DF61AC02E2900AA3FC7 /* ChronicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronicTests.swift; sourceTree = "<group>"; };
+		23B83C421DBD0DD300C1736C /* FacebookBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookBannerCustomEvent.h; sourceTree = "<group>"; };
+		23B83C431DBD0DD300C1736C /* FacebookBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookBannerCustomEvent.m; sourceTree = "<group>"; };
+		23B83C441DBD0DD300C1736C /* FacebookInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		23B83C451DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		23B83C461DBD0DD300C1736C /* FacebookNativeAdAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookNativeAdAdapter.h; sourceTree = "<group>"; };
+		23B83C471DBD0DD300C1736C /* FacebookNativeAdAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookNativeAdAdapter.m; sourceTree = "<group>"; };
+		23B83C481DBD0DD300C1736C /* FacebookNativeCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookNativeCustomEvent.h; sourceTree = "<group>"; };
+		23B83C491DBD0DD300C1736C /* FacebookNativeCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookNativeCustomEvent.m; sourceTree = "<group>"; };
+		23B83C4B1DBD0DD300C1736C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		23B83C731DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobBannerCustomEvent.h; sourceTree = "<group>"; };
+		23B83C741DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobBannerCustomEvent.m; sourceTree = "<group>"; };
+		23B83C751DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPGoogleAdMobInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		23B83C761DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPGoogleAdMobInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		23B83C781DBD0DD300C1736C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		23C2F2101B6EE2C200056DBB /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerTextField.swift; sourceTree = "<group>"; };
@@ -458,6 +476,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23E4F5EF1BBDEDE6009A0F53 /* StoreKit.framework in Frameworks */,
+				23733C0F1DBD10A200E2BD7A /* CoreMotion.framework in Frameworks */,
 				236B0AEC1D7CEE8F0055C754 /* Intents.framework in Frameworks */,
 				2375A5A51D459D9A00DCA06C /* Pods_Chronic.framework in Frameworks */,
 				239D97071D12E3F10070D423 /* UserNotifications.framework in Frameworks */,
@@ -475,7 +495,6 @@
 				232F57B51BD088CA00DC7686 /* MapKit.framework in Frameworks */,
 				23852A9B1BD008E4003D487D /* CoreLocation.framework in Frameworks */,
 				23698CD51BCDF05400EBEC7B /* AdSupport.framework in Frameworks */,
-				23E4F5EF1BBDEDE6009A0F53 /* StoreKit.framework in Frameworks */,
 				23F26B4A1B8B920A002310BE /* WatchConnectivity.framework in Frameworks */,
 				23C2F2131B6EE2D000056DBB /* MobileCoreServices.framework in Frameworks */,
 				23C2F2111B6EE2C200056DBB /* CoreSpotlight.framework in Frameworks */,
@@ -793,20 +812,9 @@
 		237FC7181D947C9C003017CE /* Fabric */ = {
 			isa = PBXGroup;
 			children = (
-				237FC7191D947C9C003017CE /* GoogleCustomEvents */,
+				23B83C241DBD0DD300C1736C /* AdNetworkSupport */,
 			);
 			path = Fabric;
-			sourceTree = "<group>";
-		};
-		237FC7191D947C9C003017CE /* GoogleCustomEvents */ = {
-			isa = PBXGroup;
-			children = (
-				237FC71A1D947C9C003017CE /* MPGoogleAdMobBannerCustomEvent.h */,
-				237FC71B1D947C9C003017CE /* MPGoogleAdMobBannerCustomEvent.m */,
-				237FC71C1D947C9C003017CE /* MPGoogleAdMobInterstitialCustomEvent.h */,
-				237FC71D1D947C9C003017CE /* MPGoogleAdMobInterstitialCustomEvent.m */,
-			);
-			path = GoogleCustomEvents;
 			sourceTree = "<group>";
 		};
 		238C1AA01C8B65C6009F9CC1 /* Main */ = {
@@ -965,6 +973,59 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		23B83C241DBD0DD300C1736C /* AdNetworkSupport */ = {
+			isa = PBXGroup;
+			children = (
+				23B83C411DBD0DD300C1736C /* Facebook */,
+				23B83C721DBD0DD300C1736C /* GoogleAdMob */,
+			);
+			path = AdNetworkSupport;
+			sourceTree = "<group>";
+		};
+		23B83C411DBD0DD300C1736C /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				23B83C421DBD0DD300C1736C /* FacebookBannerCustomEvent.h */,
+				23B83C431DBD0DD300C1736C /* FacebookBannerCustomEvent.m */,
+				23B83C441DBD0DD300C1736C /* FacebookInterstitialCustomEvent.h */,
+				23B83C451DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m */,
+				23B83C461DBD0DD300C1736C /* FacebookNativeAdAdapter.h */,
+				23B83C471DBD0DD300C1736C /* FacebookNativeAdAdapter.m */,
+				23B83C481DBD0DD300C1736C /* FacebookNativeCustomEvent.h */,
+				23B83C491DBD0DD300C1736C /* FacebookNativeCustomEvent.m */,
+				23B83C4A1DBD0DD300C1736C /* SDK */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
+		23B83C4A1DBD0DD300C1736C /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				23B83C4B1DBD0DD300C1736C /* README.md */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		23B83C721DBD0DD300C1736C /* GoogleAdMob */ = {
+			isa = PBXGroup;
+			children = (
+				23B83C731DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.h */,
+				23B83C741DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.m */,
+				23B83C751DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.h */,
+				23B83C761DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.m */,
+				23B83C771DBD0DD300C1736C /* SDK */,
+			);
+			path = GoogleAdMob;
+			sourceTree = "<group>";
+		};
+		23B83C771DBD0DD300C1736C /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				23B83C781DBD0DD300C1736C /* README.md */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
 		23CFD9141BC54E9000CF4BAC /* Custom Keyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -982,6 +1043,7 @@
 		CAB895CE144CF53267391711 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23733C0E1DBD10A200E2BD7A /* CoreMotion.framework */,
 				23FF385C1D7E79FD005C999D /* ChronicKit.framework */,
 				239D97061D12E3F10070D423 /* UserNotifications.framework */,
 				237525C41BD6838100E667D2 /* HealthKit.framework */,
@@ -1470,6 +1532,7 @@
 				231CE07F1CF217B80095E607 /* SuperUserPopoverViewController.swift in Sources */,
 				231152AC1D7A634F003938E4 /* Protocols.swift in Sources */,
 				236ADAC41D79DA1700D092A6 /* InAppPurchaseViewController.swift in Sources */,
+				23B83CB81DBD0DD300C1736C /* FacebookNativeAdAdapter.m in Sources */,
 				2315CD111D7EE8D400372228 /* MulticolorPolylineSegment.swift in Sources */,
 				23D66F391B69459B00BE7041 /* TimePickerTextField.swift in Sources */,
 				2392DA8E1BC72CB2002A7110 /* CustomUIPickerView.swift in Sources */,
@@ -1477,7 +1540,11 @@
 				23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */,
 				2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */,
 				230A40FF1D81C57E00A391DC /* SweetAlert.swift in Sources */,
+				23B83CB71DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m in Sources */,
+				23B83CBA1DBD0DD300C1736C /* README.md in Sources */,
 				237B10901C2667EA00D52713 /* OBHealthViewController.swift in Sources */,
+				23B83CC51DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.m in Sources */,
+				23B83CB61DBD0DD300C1736C /* FacebookBannerCustomEvent.m in Sources */,
 				2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */,
 				2348A9391D7C6F3D0080402F /* FeedbackViewController.swift in Sources */,
 				235930E41B0A89800021003D /* TimerViewController.swift in Sources */,
@@ -1485,7 +1552,6 @@
 				23F85F3C1B64521A002221AF /* ExerciseNameTableViewCell.swift in Sources */,
 				231CE07D1CF1FB940095E607 /* CustomAdView.swift in Sources */,
 				23979D961B63FB60005BC945 /* RoutineTypeViewController.swift in Sources */,
-				237FC71F1D947C9C003017CE /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */,
 				238C1ADE1C8B982A009F9CC1 /* AppDelegate.swift in Sources */,
 				23F85F3A1B645202002221AF /* ExerciseTableViewCell.swift in Sources */,
 				2304E5361CA83B4300A10005 /* MainTabBarController.swift in Sources */,
@@ -1503,16 +1569,18 @@
 				23812C4E1BC4559D007A314E /* TimerSoundPickerTextField.swift in Sources */,
 				237B10811C25E64700D52713 /* NotificationTimeTextField.swift in Sources */,
 				2315CD151D7EE8D400372228 /* SARate.m in Sources */,
+				23B83CB91DBD0DD300C1736C /* FacebookNativeCustomEvent.m in Sources */,
 				2315CCE11D7EE7FC00372228 /* DataAccess.swift in Sources */,
 				2315CD0F1D7EE8D400372228 /* iCarousel.m in Sources */,
 				237B106C1C1F1A4F00D52713 /* HealthKitHelper.swift in Sources */,
 				235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */,
 				2315CD141D7EE8D400372228 /* iRate.m in Sources */,
 				237B108D1C265A9000D52713 /* OBNotificationViewController.swift in Sources */,
-				237FC71E1D947C9C003017CE /* MPGoogleAdMobBannerCustomEvent.m in Sources */,
 				238C1AD61C8B70EF009F9CC1 /* ExpandingCell.swift in Sources */,
 				234953FF1D564174007B053A /* Functions.swift in Sources */,
+				23B83CC71DBD0DD300C1736C /* README.md in Sources */,
 				2315CD161D7EE8D400372228 /* SARateViewController.m in Sources */,
+				23B83CC61DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */,
 				2315CD101D7EE8D400372228 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1996,6 +2064,11 @@
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Flurry/SDK/Flurry",
+					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Flurry/SDK/FlurryAds",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "AG.$(PRODUCT_NAME:rfc1034identifier)";
@@ -2035,6 +2108,11 @@
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Flurry/SDK/Flurry",
+					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Flurry/SDK/FlurryAds",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "AG.$(PRODUCT_NAME:rfc1034identifier)";
