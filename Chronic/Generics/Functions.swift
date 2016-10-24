@@ -392,13 +392,13 @@ class Functions {
     
     class func loadPlayer(_ sound: String, ext: String) {
         
-        // Load Sound
-        Constants.soundlocation = Bundle.main.url(forResource: sound, withExtension: ext)!
+        // Load Soundlocation
+        let soundlocation = Bundle.main.url(forResource: sound, withExtension: ext)!
         
         do {
             
             // Play Sound
-            Constants.player = try AVAudioPlayer(contentsOf: Constants.soundlocation as URL)
+            Constants.player = try AVAudioPlayer(contentsOf: soundlocation)
             Constants.player.volume = Constants.timerVolume
             Constants.player.play()
             

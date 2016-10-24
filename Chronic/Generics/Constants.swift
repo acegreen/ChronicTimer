@@ -119,9 +119,7 @@ class Constants {
     
     static let emptyRoutineTableIcon: UIImage = UIImage(named: "emptyRoutineTableIcon")!
     
-    static var soundlocation: URL!
     static var player = AVAudioPlayer()
-    static var soundError: NSError? = nil
     static let synthesizer = AVSpeechSynthesizer()
     
     static var decryptDictionary : Dictionary<String, String> = [

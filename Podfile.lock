@@ -1,4 +1,5 @@
 PODS:
+  - AdColony (3.0.4.1)
   - AMPopTip (1.3.0)
   - AMWaveTransition (0.6.2)
   - Bolts (1.8.4):
@@ -15,6 +16,7 @@ PODS:
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
   - Fabric (1.6.8)
+  - FBAudienceNetwork (4.16.1)
   - FBSDKCoreKit (4.15.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.15.1):
@@ -50,12 +52,14 @@ PODS:
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - AdColony
   - AMPopTip
   - AMWaveTransition
   - BubbleTransition
   - Charts (from `https://github.com/danielgindi/Charts.git`, branch `Chart2.2.5-Swift3.0`)
   - Crashlytics
   - DZNEmptyDataSet
+  - FBAudienceNetwork
   - Google-Mobile-Ads-SDK
   - LaunchKit
   - mopub-ios-sdk
@@ -93,6 +97,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/acegreen/SwiftyJSON.git
 
 SPEC CHECKSUMS:
+  AdColony: f640f3729486a6b4f6112d6da912f4f57dea8b23
   AMPopTip: b810a33c120feacafce170cc9ddcaa8ce3a8389d
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -101,6 +106,7 @@ SPEC CHECKSUMS:
   Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
+  FBAudienceNetwork: 8df6be605acb98347614fe124f828138362f3341
   FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
   FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
   Google-Mobile-Ads-SDK: 0e864ab93ba1ff8afe92e16de0e4e883f581ed33
@@ -118,6 +124,6 @@ SPEC CHECKSUMS:
   SDVersion: 43383b6ac05462c973c3fd92d9748c74e360aba5
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: c312b1863f8c38483a6388acfd8972576c287ced
+PODFILE CHECKSUM: 143affb42f08a894bc628cb1a7d2427931469042
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.0.rc.3

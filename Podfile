@@ -9,7 +9,7 @@ target "Chronic" do
     pod 'LaunchKit'
     pod 'SwiftyJSON', :git => 'https://github.com/acegreen/SwiftyJSON.git', :branch => 'swift3'
     pod 'Rollout.io'
-    pod 'Charts', :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Chart2.2.5-Swift3.0'
+    pod 'Charts'
     pod 'PureLayout'
     pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :branch => 'feature/ios10'
     
@@ -29,16 +29,12 @@ target "Chronic" do
     pod 'mopub-ios-sdk'
     pod 'Google-Mobile-Ads-SDK'
     
+    # Ad Networks
+    pod 'FBAudienceNetwork'
+    pod 'AdColony'
+    
     #pod 'CNPPopupController'
     #pod 'PermissionScope'
     #pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     #pod 'ChameleonFramework/Swift'
-end
-
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'NO'
-        end
-    end
 end
