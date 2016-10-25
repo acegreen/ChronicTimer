@@ -7,11 +7,11 @@ target "Chronic" do
     pod 'SDVersion'
     pod 'AMPopTip'
     pod 'LaunchKit'
-    pod 'SwiftyJSON', :git => 'https://github.com/acegreen/SwiftyJSON.git', :branch => 'swift3'
+    pod 'SwiftyJSON'
     pod 'Rollout.io'
     pod 'Charts'
     pod 'PureLayout'
-    pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :branch => 'feature/ios10'
+    pod 'ReachabilitySwift'
     
     # Transitions / Segues
     pod 'BubbleTransition'
@@ -31,10 +31,10 @@ target "Chronic" do
     
     # Ad Networks
     pod 'FBAudienceNetwork'
-    #pod 'AdColony'
+    pod 'AdColony', '2.6.2'
     
     #pod 'CNPPopupController'
     #pod 'PermissionScope'
-    #pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+    #pod 'Spring'
     #pod 'ChameleonFramework/Swift'
 end

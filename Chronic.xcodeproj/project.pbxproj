@@ -93,6 +93,14 @@
 		237518601D7F53FD0037040F /* ChronicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385C1D7E79FD005C999D /* ChronicKit.framework */; };
 		237525C51BD6838200E667D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525C41BD6838100E667D2 /* HealthKit.framework */; };
 		2375A5A51D459D9A00DCA06C /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2375A5A41D459D9A00DCA06C /* Pods_Chronic.framework */; };
+		2375AC741DBFA3CD00322285 /* AdColonyCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC651DBFA3CD00322285 /* AdColonyCustomEvent.m */; };
+		2375AC751DBFA3CD00322285 /* AdColonyGlobalMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC671DBFA3CD00322285 /* AdColonyGlobalMediationSettings.m */; };
+		2375AC761DBFA3CD00322285 /* AdColonyInstanceMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC691DBFA3CD00322285 /* AdColonyInstanceMediationSettings.m */; };
+		2375AC771DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC6B1DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.m */; };
+		2375AC781DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC6D1DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.m */; };
+		2375AC791DBFA3CD00322285 /* MPAdColonyRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC6F1DBFA3CD00322285 /* MPAdColonyRouter.m */; };
+		2375AC7A1DBFA3CD00322285 /* MPInstanceProvider+AdColony.m in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC711DBFA3CD00322285 /* MPInstanceProvider+AdColony.m */; };
+		2375AC7B1DBFA3CD00322285 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2375AC731DBFA3CD00322285 /* README.md */; };
 		237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237605271AEFE779003E2C07 /* SettingsTableViewController.swift */; };
 		2376052A1AF27A5D003E2C07 /* Buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 237605291AF27A5D003E2C07 /* Buzzer.wav */; };
 		237B106C1C1F1A4F00D52713 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B106B1C1F1A4F00D52713 /* HealthKitHelper.swift */; };
@@ -151,7 +159,9 @@
 		23FF385E1D7E79FD005C999D /* ChronicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385C1D7E79FD005C999D /* ChronicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		23FF38601D7E7A49005C999D /* ChronicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385F1D7E7A49005C999D /* ChronicKit.framework */; };
 		23FF38611D7E7A49005C999D /* ChronicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385F1D7E7A49005C999D /* ChronicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4FF4905E27CB992556BA6873 /* RolloutGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE88540859AEB05079F72283 /* RolloutGenerated.swift */; };
 		D69D02BA433759ADF503C506 /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341947639641CB1E7950F23C /* Pods_Chronic.framework */; };
+		FD2B48D726E32CB1FB5E8271 /* RolloutSwiftInjectionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9DBD07537C9E2026E4C7B8 /* RolloutSwiftInjectionBridge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -370,6 +380,21 @@
 		23733C0E1DBD10A200E2BD7A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		237525C41BD6838100E667D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		2375A5A41D459D9A00DCA06C /* Pods_Chronic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Chronic.framework; path = "../../../Library/Developer/Xcode/DerivedData/Chronic-bjuyftuhdmnbqtfplqrzqehfdafu/Build/Products/Debug-iphonesimulator/Pods_Chronic.framework"; sourceTree = "<group>"; };
+		2375AC641DBFA3CD00322285 /* AdColonyCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyCustomEvent.h; sourceTree = "<group>"; };
+		2375AC651DBFA3CD00322285 /* AdColonyCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyCustomEvent.m; sourceTree = "<group>"; };
+		2375AC661DBFA3CD00322285 /* AdColonyGlobalMediationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyGlobalMediationSettings.h; sourceTree = "<group>"; };
+		2375AC671DBFA3CD00322285 /* AdColonyGlobalMediationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyGlobalMediationSettings.m; sourceTree = "<group>"; };
+		2375AC681DBFA3CD00322285 /* AdColonyInstanceMediationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyInstanceMediationSettings.h; sourceTree = "<group>"; };
+		2375AC691DBFA3CD00322285 /* AdColonyInstanceMediationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyInstanceMediationSettings.m; sourceTree = "<group>"; };
+		2375AC6A1DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		2375AC6B1DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		2375AC6C1DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdColonyRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
+		2375AC6D1DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdColonyRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
+		2375AC6E1DBFA3CD00322285 /* MPAdColonyRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPAdColonyRouter.h; sourceTree = "<group>"; };
+		2375AC6F1DBFA3CD00322285 /* MPAdColonyRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPAdColonyRouter.m; sourceTree = "<group>"; };
+		2375AC701DBFA3CD00322285 /* MPInstanceProvider+AdColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPInstanceProvider+AdColony.h"; sourceTree = "<group>"; };
+		2375AC711DBFA3CD00322285 /* MPInstanceProvider+AdColony.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPInstanceProvider+AdColony.m"; sourceTree = "<group>"; };
+		2375AC731DBFA3CD00322285 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		237605271AEFE779003E2C07 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		237605291AF27A5D003E2C07 /* Buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Buzzer.wav; sourceTree = "<group>"; };
 		237B106B1C1F1A4F00D52713 /* HealthKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitHelper.swift; sourceTree = "<group>"; };
@@ -440,6 +465,8 @@
 		23FF385F1D7E7A49005C999D /* ChronicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChronicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		341947639641CB1E7950F23C /* Pods_Chronic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		574CEB827F8A6DCBDED6D002 /* Pods-Chronic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.release.xcconfig"; sourceTree = "<group>"; };
+		8A9DBD07537C9E2026E4C7B8 /* RolloutSwiftInjectionBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutSwiftInjectionBridge.swift; path = Pods/Rollout.io/RolloutSwift/RolloutSwiftInjectionBridge.swift; sourceTree = "<group>"; };
+		EE88540859AEB05079F72283 /* RolloutGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutGenerated.swift; path = Pods/Rollout.io/RolloutSwift/RolloutGenerated.swift; sourceTree = "<group>"; };
 		FCFA6AE49CB5BE02EDB6123B /* Pods-Chronic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -776,6 +803,36 @@
 			path = SiriIntentUI;
 			sourceTree = "<group>";
 		};
+		2375AC631DBFA3CD00322285 /* AdColony */ = {
+			isa = PBXGroup;
+			children = (
+				2375AC641DBFA3CD00322285 /* AdColonyCustomEvent.h */,
+				2375AC651DBFA3CD00322285 /* AdColonyCustomEvent.m */,
+				2375AC661DBFA3CD00322285 /* AdColonyGlobalMediationSettings.h */,
+				2375AC671DBFA3CD00322285 /* AdColonyGlobalMediationSettings.m */,
+				2375AC681DBFA3CD00322285 /* AdColonyInstanceMediationSettings.h */,
+				2375AC691DBFA3CD00322285 /* AdColonyInstanceMediationSettings.m */,
+				2375AC6A1DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.h */,
+				2375AC6B1DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.m */,
+				2375AC6C1DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.h */,
+				2375AC6D1DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.m */,
+				2375AC6E1DBFA3CD00322285 /* MPAdColonyRouter.h */,
+				2375AC6F1DBFA3CD00322285 /* MPAdColonyRouter.m */,
+				2375AC701DBFA3CD00322285 /* MPInstanceProvider+AdColony.h */,
+				2375AC711DBFA3CD00322285 /* MPInstanceProvider+AdColony.m */,
+				2375AC721DBFA3CD00322285 /* SDK */,
+			);
+			path = AdColony;
+			sourceTree = "<group>";
+		};
+		2375AC721DBFA3CD00322285 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				2375AC731DBFA3CD00322285 /* README.md */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
 		237B106D1C1F36C600D52713 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,6 +960,7 @@
 				19AA88A6D119872640CE60F1 /* Pods */,
 				2315CCE81D7EE8D400372228 /* Libraries */,
 				CAB895CE144CF53267391711 /* Frameworks */,
+				6AD989C9320BE5FFC1F57019 /* Rollout */,
 			);
 			sourceTree = "<group>";
 		};
@@ -976,6 +1034,7 @@
 		23B83C241DBD0DD300C1736C /* AdNetworkSupport */ = {
 			isa = PBXGroup;
 			children = (
+				2375AC631DBFA3CD00322285 /* AdColony */,
 				23B83C411DBD0DD300C1736C /* Facebook */,
 				23B83C721DBD0DD300C1736C /* GoogleAdMob */,
 			);
@@ -1038,6 +1097,15 @@
 				237B107E1C25D75100D52713 /* NotificationIntervalTextField.swift */,
 			);
 			path = "Custom Keyboards";
+			sourceTree = "<group>";
+		};
+		6AD989C9320BE5FFC1F57019 /* Rollout */ = {
+			isa = PBXGroup;
+			children = (
+				EE88540859AEB05079F72283 /* RolloutGenerated.swift */,
+				8A9DBD07537C9E2026E4C7B8 /* RolloutSwiftInjectionBridge.swift */,
+			);
+			name = Rollout;
 			sourceTree = "<group>";
 		};
 		CAB895CE144CF53267391711 /* Frameworks */ = {
@@ -1152,7 +1220,7 @@
 			buildConfigurationList = 23AF7DFA1AC02E2900AA3FC7 /* Build configuration list for PBXNativeTarget "Chronic" */;
 			buildPhases = (
 				EA86015371A3F65EACE7ECC2 /* [CP] Check Pods Manifest.lock */,
-				C3AB446FE39C1B3FACB43C13 /* Rollout.io pre-build */,
+				F21FB08C63516B5F7DF47473 /* Rollout.io pre-build */,
 				23AF7DD41AC02E2800AA3FC7 /* Sources */,
 				23AF7DD51AC02E2800AA3FC7 /* Frameworks */,
 				23AF7DD61AC02E2800AA3FC7 /* Resources */,
@@ -1160,9 +1228,9 @@
 				23E6E6EE1CEB6EED009CB57A /* ShellScript */,
 				D1BE961839030199606E2AB6 /* [CP] Embed Pods Frameworks */,
 				D6336CB693D8296A93F5B472 /* [CP] Copy Pods Resources */,
-				4732CE62455F3C6859BCA810 /* Rollout.io post-build */,
 				236B0AEA1D7CC5E40055C754 /* Embed App Extensions */,
 				23FF384E1D7E773B005C999D /* Embed Frameworks */,
+				49C9CDE1C828AFE56C61AB01 /* Rollout.io post-build */,
 			);
 			buildRules = (
 			);
@@ -1411,7 +1479,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\n# VerNSLocalizedStrings\n\nwhile getopts \"vsl:\" arg; do\ncase $arg in\nv)\nverbose=\"yes\"\n;;\ns)\nstopOnMissing=\"yes\"\n;;\nl)\nlang=$OPTARG\n;;\nesac\ndone\n\nif [[ -z $lang ]]\nthen\nlang=\"en\"\nfi\n\nsearchDir=$lang.lproj\nfileFound=`ls . | grep $searchDir`\nif [[ -z $fileFound ]]\nthen\necho \"dir \"$searchDir\" not found.\"\nexit\nfi\n\nfileFound=`ls $searchDir/ | grep strings`\nif [[ -z $fileFound ]]\nthen\necho \"No .strings files found in dir \"$searchDir\".\"\nexit\nfi\n\necho \"Verifying NSLocalizationStrings in \"$searchDir\n\n# Get all the NSLocalizedString Commands\noutput=$(grep -R NSLocalizedString . --include=\"*.m\")\n\n# Go thru the NSLocalizedString commands line for line\ncount=$(( 0 ))\nmissing=$(( 0 ))\nunusable=$(( 0 ))\nOIFS=\"${IFS}\"\nNIFS=$'\\n'\nIFS=\"${NIFS}\"\nfor LINE in ${output} ; do\nIFS=\"${OIFS}\"\n\n# Now extract the key from it\n# admittedly this only works if there are no line breaks between\n# NSLocalizedStrings and the entire key,\n# but it accounts for the keys it couldn't identify.\nquotes=`echo $LINE | awk -F\\\" '{ for(i=2; i<=NF; i=i+2){ a = a\"\\\"\"$i\"\\\"\"\"^\";} {print a; a=\"\";}}'`\nkey=`echo $quotes | cut -f1 -d\"^\"`\n\n# If we couldn't find the key then flag problem\nif [[ -z $key ]]\nthen\n(( unusable += 1 ))\necho \"Couldn't extract key: \" $LINE\nif [ -n \"$stopOnMissing\" ]\nthen\nbreak\nelse\ncontinue\nfi\nfi\n\n# I don't know how grep works regarding length of string, only that\n# if the string is too long then it doesn't find it in the file\nkeyLength=$(echo ${#key})\n    if [ $keyLength -gt 79 ]\n    then\n    (( unusable += 1 ))\n    echo \"Key too long (\"$keyLength\"): \" $key\n    if [ -n \"$stopOnMissing\" ]\n    then\n    break\n    else\n    continue\n    fi\n    fi\n    \n    # It would be nice if this were a regular expression that allowed as many\n    # spaces as you want, even a line break then forced the quotes on the\n    # other side of the equal sign.\n    keyString=$key\" =\"\n    \n    # Search for the key\n    found=$(iconv -sc -f utf-16 -t utf8 $searchDir/*.strings | grep \"$keyString\")\n                                                   \n                                                   # damned if I know why some strings files are utf-16 and others are utf8\n                                                   if [[ -z $found ]]\n                                                   then\n                                                   found=$(grep -r \"$keyString\" $searchDir/ --include=*.strings)\n                                                   fi\n                                                   \n                                                   # analyze the result\n                                                   if [[ -z $found ]]\n                                                   then\n                                                   (( missing += 1 ))\n                                                   echo \"Missing:  \" $key \"\\n from: \" $LINE\n                                                   if [ -n \"$stopOnMissing\" ]\n                                                   then\n                                                   break\n                                                   fi\n                                                   else\n                                                   if [ -n \"$verbose\" ]\n                                                   then\n                                                   echo \"found:  \" $key\n                                                   fi\n                                                   fi\n                                                   (( count += 1 ))\n                                                   \n                                                   IFS=\"${NIFS}\" \n                                                   done\n                                                   \n                                                   IFS=\"${OIFS}\"\n                                                   \n                                                   # It would also be nice if it went the other way and identified \n                                                   # extraneous unused items in the strings files.  But\n                                                   # I've spent enough time on this for now\n                                                   \n                                                   echo $count \" keys analyzed\"\n                                                   echo $unusable \" keys could not be determined\"\n                                                   echo $missing \" keys missing\"";
 		};
-		4732CE62455F3C6859BCA810 /* Rollout.io post-build */ = {
+		49C9CDE1C828AFE56C61AB01 /* Rollout.io post-build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1424,20 +1492,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "ROLLOUT_lastXcodeprojConfiguration=7 \"${SRCROOT}/Pods/Rollout.io/lib/post-build_xcode_phase\" -k 56932e164e1e847211ffe9ee";
-		};
-		C3AB446FE39C1B3FACB43C13 /* Rollout.io pre-build */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Rollout.io pre-build";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "ROLLOUT_lastXcodeprojConfiguration=7 \"${SRCROOT}/Pods/Rollout.io/lib/pre-build_xcode_phase\"";
 		};
 		D1BE961839030199606E2AB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1483,6 +1537,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		F21FB08C63516B5F7DF47473 /* Rollout.io pre-build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Rollout.io pre-build";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ROLLOUT_lastXcodeprojConfiguration=7 \"${SRCROOT}/Pods/Rollout.io/lib/pre-build_xcode_phase\" -k 56932e164e1e847211ffe9ee";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1535,6 +1603,7 @@
 				23B83CB81DBD0DD300C1736C /* FacebookNativeAdAdapter.m in Sources */,
 				2315CD111D7EE8D400372228 /* MulticolorPolylineSegment.swift in Sources */,
 				23D66F391B69459B00BE7041 /* TimePickerTextField.swift in Sources */,
+				2375AC751DBFA3CD00322285 /* AdColonyGlobalMediationSettings.m in Sources */,
 				2392DA8E1BC72CB2002A7110 /* CustomUIPickerView.swift in Sources */,
 				231152A81D7A1679003938E4 /* InAppPurchaseReusableView.swift in Sources */,
 				23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */,
@@ -1543,6 +1612,7 @@
 				23B83CB71DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m in Sources */,
 				23B83CBA1DBD0DD300C1736C /* README.md in Sources */,
 				237B10901C2667EA00D52713 /* OBHealthViewController.swift in Sources */,
+				2375AC7B1DBFA3CD00322285 /* README.md in Sources */,
 				23B83CC51DBD0DD300C1736C /* MPGoogleAdMobBannerCustomEvent.m in Sources */,
 				23B83CB61DBD0DD300C1736C /* FacebookBannerCustomEvent.m in Sources */,
 				2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */,
@@ -1551,6 +1621,7 @@
 				230668431C1E7242003BDF03 /* NotificationHelper.swift in Sources */,
 				23F85F3C1B64521A002221AF /* ExerciseNameTableViewCell.swift in Sources */,
 				231CE07D1CF1FB940095E607 /* CustomAdView.swift in Sources */,
+				2375AC7A1DBFA3CD00322285 /* MPInstanceProvider+AdColony.m in Sources */,
 				23979D961B63FB60005BC945 /* RoutineTypeViewController.swift in Sources */,
 				238C1ADE1C8B982A009F9CC1 /* AppDelegate.swift in Sources */,
 				23F85F3A1B645202002221AF /* ExerciseTableViewCell.swift in Sources */,
@@ -1558,6 +1629,7 @@
 				232F4C811AC02EA700D25995 /* RoutinesTableViewController.swift in Sources */,
 				234953FE1D564174007B053A /* Extensions.swift in Sources */,
 				234954001D564174007B053A /* Constants.swift in Sources */,
+				2375AC791DBFA3CD00322285 /* MPAdColonyRouter.m in Sources */,
 				2315CD1D1D7EE8D400372228 /* SwiftColorPickerView.swift in Sources */,
 				237B107F1C25D75100D52713 /* NotificationIntervalTextField.swift in Sources */,
 				237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */,
@@ -1566,6 +1638,7 @@
 				237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */,
 				2315CCE41D7EE82900372228 /* Workout.swift in Sources */,
 				234954341D565EE7007B053A /* TextField.swift in Sources */,
+				2375AC771DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.m in Sources */,
 				23812C4E1BC4559D007A314E /* TimerSoundPickerTextField.swift in Sources */,
 				237B10811C25E64700D52713 /* NotificationTimeTextField.swift in Sources */,
 				2315CD151D7EE8D400372228 /* SARate.m in Sources */,
@@ -1575,6 +1648,8 @@
 				237B106C1C1F1A4F00D52713 /* HealthKitHelper.swift in Sources */,
 				235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */,
 				2315CD141D7EE8D400372228 /* iRate.m in Sources */,
+				2375AC781DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.m in Sources */,
+				2375AC741DBFA3CD00322285 /* AdColonyCustomEvent.m in Sources */,
 				237B108D1C265A9000D52713 /* OBNotificationViewController.swift in Sources */,
 				238C1AD61C8B70EF009F9CC1 /* ExpandingCell.swift in Sources */,
 				234953FF1D564174007B053A /* Functions.swift in Sources */,
@@ -1582,6 +1657,9 @@
 				2315CD161D7EE8D400372228 /* SARateViewController.m in Sources */,
 				23B83CC61DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */,
 				2315CD101D7EE8D400372228 /* Keychain.swift in Sources */,
+				4FF4905E27CB992556BA6873 /* RolloutGenerated.swift in Sources */,
+				FD2B48D726E32CB1FB5E8271 /* RolloutSwiftInjectionBridge.swift in Sources */,
+				2375AC761DBFA3CD00322285 /* AdColonyInstanceMediationSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2076,6 +2154,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SWIFT_EXEC = "$(SRCROOT)/Pods/Rollout.io/lib/swift_wrapper/swiftc";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2120,6 +2199,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SWIFT_EXEC = "$(SRCROOT)/Pods/Rollout.io/lib/swift_wrapper/swiftc";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;

@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>15</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -80,15 +80,21 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Used by Google AdMob for certain ads</string>
+	<string>Used for certain ads</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Used by Twitter MoPub for certain ads</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Used for certain ads to help take pictures</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Chronic would like to show you your heart rate during workouts &amp; workout history.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Chronic would like to save your workouts to the Health app.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Chronic will use location to show your progress during a run</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Interactive ad controls</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used for certain ads to help take pictures</string>
 	<key>NSSiriUsageDescription</key>
 	<string>You can use Siri to start a workout on Chronic</string>
 	<key>UIApplicationShortcutItems</key>
