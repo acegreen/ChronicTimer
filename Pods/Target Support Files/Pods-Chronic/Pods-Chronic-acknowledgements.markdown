@@ -50,6 +50,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+## AdColony
+
+You must accept the terms and conditions on the AdColony website by registering in order to legally use the AdColony SDK. U.S. based companies will need to complete the W-9 form and send it to us, as well as complete the section on payment information on clients.adcolony.com, before publisher payments can be issued.
+
 ## Bolts
 
 BSD License
@@ -603,7 +607,7 @@ SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Ruoyu Fu
+Copyright (c) 2016 Ruoyu Fu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

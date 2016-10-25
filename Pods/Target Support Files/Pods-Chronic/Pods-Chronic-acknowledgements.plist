@@ -75,6 +75,16 @@ SOFTWARE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>You must accept the terms and conditions on the AdColony website by registering in order to legally use the AdColony SDK. U.S. based companies will need to complete the W-9 form and send it to us, as well as complete the section on payment information on clients.adcolony.com, before publisher payments can be issued.</string>
+			<key>License</key>
+			<string>Commercial</string>
+			<key>Title</key>
+			<string>AdColony</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>BSD License
 
 For Bolts software
@@ -752,7 +762,7 @@ SOFTWARE.
 			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
-Copyright (c) 2014 Ruoyu Fu
+Copyright (c) 2016 Ruoyu Fu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

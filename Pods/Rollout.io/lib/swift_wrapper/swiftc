@@ -125,6 +125,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 STRIPFILES=()
 rollout_replacements_file="$VAR_DIR"/replacements
 rollout_sources_file="$VAR_DIR"/sources
+touch "$rollout_sources_file"
+
 for i in "$@"
 do
     [[ $i =~ RolloutGenerated\.swift$ ]] && {

@@ -6,6 +6,9 @@
 //  Copyright © 2015 Ace Green. All rights reserved.
 //
 
+// Exclude file from rollout
+// ROLLOUT_EXCLUDE_SWIFT_FILE_INSTRUMENTATION
+
 import Foundation
 import UIKit
 import StoreKit
@@ -225,6 +228,5 @@ extension Dimmable where Self: UIViewController {
 }
 
 extension Dismissible where Self: UIViewController {
-    
     
 }
