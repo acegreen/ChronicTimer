@@ -72,7 +72,6 @@
 		234954081D5654DD007B053A /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954061D5654DD007B053A /* Functions.swift */; };
 		234954151D565552007B053A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954131D565552007B053A /* ExtensionDelegate.swift */; };
 		2349541A1D565596007B053A /* TableRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954191D565596007B053A /* TableRowType.swift */; };
-		2349542B1D565738007B053A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234954281D565738007B053A /* Assets.xcassets */; };
 		234954301D56574C007B053A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2349542E1D56574C007B053A /* Interface.storyboard */; };
 		234954341D565EE7007B053A /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954331D565EE7007B053A /* TextField.swift */; };
 		235930E41B0A89800021003D /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235930E31B0A89800021003D /* TimerViewController.swift */; };
@@ -137,6 +136,9 @@
 		23AF7DE81AC02E2900AA3FC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */; };
 		23AF7DF71AC02E2900AA3FC7 /* ChronicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF7DF61AC02E2900AA3FC7 /* ChronicTests.swift */; };
 		23B099C21D2C988600BB125A /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2305F2A01BBDB4C30049447E /* PassKit.framework */; };
+		23B716B31DC50E8E009524C7 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B716B21DC50E8E009524C7 /* ComplicationController.swift */; };
+		23B716B51DC517BF009524C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B716B41DC517BF009524C7 /* Assets.xcassets */; };
+		23B716B71DC5196B009524C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B716B61DC5196B009524C7 /* Assets.xcassets */; };
 		23B83CB61DBD0DD300C1736C /* FacebookBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C431DBD0DD300C1736C /* FacebookBannerCustomEvent.m */; };
 		23B83CB71DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C451DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m */; };
 		23B83CB81DBD0DD300C1736C /* FacebookNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C471DBD0DD300C1736C /* FacebookNativeAdAdapter.m */; };
@@ -353,7 +355,6 @@
 		234954171D565569007B053A /* Chronic WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chronic WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		234954191D565596007B053A /* TableRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRowType.swift; sourceTree = "<group>"; };
 		234954261D5656E4007B053A /* Chronic WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Chronic WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
-		234954281D565738007B053A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		234954291D565738007B053A /* Chronic WatchKit.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Chronic WatchKit.entitlements"; sourceTree = "<group>"; };
 		2349542A1D565738007B053A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2349542F1D56574C007B053A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -433,10 +434,13 @@
 		23A4FE8D1CA8E3C900AF1D07 /* RoutineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
 		23AB7A4C1AFCFD2C00F74EE1 /* Tick-Deep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tick-Deep.mp3"; sourceTree = "<group>"; };
 		23AF7DD81AC02E2800AA3FC7 /* Chronic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronic.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Bundle Files/Images.xcassets"; sourceTree = "<group>"; };
+		23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23AF7DF01AC02E2900AA3FC7 /* ChronicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChronicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AF7DF51AC02E2900AA3FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23AF7DF61AC02E2900AA3FC7 /* ChronicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronicTests.swift; sourceTree = "<group>"; };
+		23B716B21DC50E8E009524C7 /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		23B716B41DC517BF009524C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23B716B61DC5196B009524C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23B83C421DBD0DD300C1736C /* FacebookBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookBannerCustomEvent.h; sourceTree = "<group>"; };
 		23B83C431DBD0DD300C1736C /* FacebookBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookBannerCustomEvent.m; sourceTree = "<group>"; };
 		23B83C441DBD0DD300C1736C /* FacebookInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookInterstitialCustomEvent.h; sourceTree = "<group>"; };
@@ -729,6 +733,7 @@
 				234954261D5656E4007B053A /* Chronic WatchKit Extension-Bridging-Header.h */,
 				2315CCDE1D7EE7C000372228 /* WatchDataAccess.swift */,
 				234954141D565552007B053A /* Info.plist */,
+				23B716B41DC517BF009524C7 /* Assets.xcassets */,
 			);
 			path = "Bundle Files";
 			sourceTree = "<group>";
@@ -744,9 +749,9 @@
 		234954271D565738007B053A /* Bundle Files */ = {
 			isa = PBXGroup;
 			children = (
-				234954281D565738007B053A /* Assets.xcassets */,
 				234954291D565738007B053A /* Chronic WatchKit.entitlements */,
 				2349542A1D565738007B053A /* Info.plist */,
+				23B716B61DC5196B009524C7 /* Assets.xcassets */,
 			);
 			path = "Bundle Files";
 			sourceTree = "<group>";
@@ -903,6 +908,7 @@
 				238C1ADC1C8B982A009F9CC1 /* Chronic-Bridging-Header.h */,
 				238C1ADD1C8B982A009F9CC1 /* Info.plist */,
 				2315CCE01D7EE7FC00372228 /* DataAccess.swift */,
+				23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */,
 			);
 			path = "Bundle Files";
 			sourceTree = "<group>";
@@ -929,6 +935,7 @@
 		23A0E7F11B5AEDA700F53E50 /* Chronic WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				23B716B21DC50E8E009524C7 /* ComplicationController.swift */,
 				234954121D565552007B053A /* Bundle Files */,
 				234954041D5654DD007B053A /* Generics */,
 				23210BCA1D6CF28E00C004E6 /* Interface Controllers */,
@@ -989,7 +996,6 @@
 				234A33B21C409BC90024D898 /* Views */,
 				23979D941B63FB13005BC945 /* View Controller */,
 				237B10891C265A7100D52713 /* Storyboards */,
-				23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */,
 			);
 			path = Chronic;
 			sourceTree = "<group>";
@@ -1405,8 +1411,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B716B71DC5196B009524C7 /* Assets.xcassets in Resources */,
 				234954301D56574C007B053A /* Interface.storyboard in Resources */,
-				2349542B1D565738007B053A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1414,6 +1420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B716B51DC517BF009524C7 /* Assets.xcassets in Resources */,
 				237B10761C1F6E7F00D52713 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1578,6 +1585,7 @@
 			files = (
 				234954081D5654DD007B053A /* Functions.swift in Sources */,
 				235B0CF61C279B6800A8D7D7 /* HealthKitHelper.swift in Sources */,
+				23B716B31DC50E8E009524C7 /* ComplicationController.swift in Sources */,
 				234954071D5654DD007B053A /* Constants.swift in Sources */,
 				2349541A1D565596007B053A /* TableRowType.swift in Sources */,
 				234954151D565552007B053A /* ExtensionDelegate.swift in Sources */,
@@ -1887,6 +1895,7 @@
 		23A0E8011B5AEDA700F53E50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Chronic WatchKit Extension/Bundle Files/Chronic WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1933,6 +1942,7 @@
 		23A0E8021B5AEDA700F53E50 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Chronic WatchKit Extension/Bundle Files/Chronic WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";

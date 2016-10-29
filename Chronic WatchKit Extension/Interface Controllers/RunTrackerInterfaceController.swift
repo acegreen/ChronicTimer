@@ -1,6 +1,6 @@
 //
 //  RunTrackerInterfaceController.swift
-//  Chronic
+//  Chronic WatchKit Extension
 //
 //  Created by Ace Green on 2015-10-15.
 //  Copyright © 2015 Ace Green. All rights reserved.

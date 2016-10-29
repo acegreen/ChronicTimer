@@ -1,6 +1,6 @@
 //
 //  InterfaceTableController.swift
-//  Chronic
+//  Chronic WatchKit Extension
 //
 //  Created by Ace Green on 2015-05-09.
 //  Copyright (c) 2015 Ace Green. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  InterfaceController.swift
-//  Boxer Timer WatchKit Extension
+//  Chronic WatchKit Extension
 //
 //  Created by Ahmed E on 21/02/15.
 //  Copyright (c) 2015 Ace Green. All rights reserved.
