@@ -42,14 +42,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
         } else if complication.family == .modularSmall {
             
-            let template = CLKComplicationTemplateCircularSmallSimpleImage()
+            let template = CLKComplicationTemplateModularSmallSimpleImage()
             template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Modular")!)
             let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
             handler(timelineEntry)
             
         }  else if complication.family == .utilitarianSmall{
             
-            let template = CLKComplicationTemplateCircularSmallSimpleImage()
+            let template = CLKComplicationTemplateUtilitarianSmallSquare()
             template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Utilitarian")!)
             let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
             handler(timelineEntry)
