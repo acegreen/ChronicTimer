@@ -9,6 +9,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - BubbleTransition (2.0.0)
+  - ChartboostSDK (6.5.1)
   - Charts (3.0.0):
     - Charts/Core (= 3.0.0)
   - Charts/Core (3.0.0)
@@ -21,6 +22,7 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.16.1):
     - FBSDKCoreKit
+  - Flurry-iOS-SDK/FlurrySDK (7.8.0)
   - Google-Mobile-Ads-SDK (7.13.1)
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
@@ -50,16 +52,19 @@ PODS:
   - Rollout.io (1.5.1)
   - SDVersion (3.6)
   - SwiftyJSON (3.1.1)
+  - VungleSDK-iOS (4.0.6)
 
 DEPENDENCIES:
   - AdColony (= 2.6.2)
   - AMPopTip
   - AMWaveTransition
   - BubbleTransition
+  - ChartboostSDK
   - Charts
   - Crashlytics
   - DZNEmptyDataSet
   - FBAudienceNetwork
+  - Flurry-iOS-SDK/FlurrySDK
   - Google-Mobile-Ads-SDK
   - LaunchKit
   - mopub-ios-sdk
@@ -73,6 +78,7 @@ DEPENDENCIES:
   - Rollout.io
   - SDVersion
   - SwiftyJSON
+  - VungleSDK-iOS
 
 SPEC CHECKSUMS:
   AdColony: c91c627c389e8d26a22c05ce7585d83db0121c25
@@ -80,6 +86,7 @@ SPEC CHECKSUMS:
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   BubbleTransition: bdb9d71993b8d3513008e2dda6bada1ddad25d4f
+  ChartboostSDK: a0b3b393cac97cd6dd75841bf5d78b46794c77ce
   Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -87,6 +94,7 @@ SPEC CHECKSUMS:
   FBAudienceNetwork: 8df6be605acb98347614fe124f828138362f3341
   FBSDKCoreKit: 6feac4e8921ccd7afa83fb1df6291dc6eec42c7c
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  Flurry-iOS-SDK: 388df247b9d92659527b608c891c7e474cd9d00e
   Google-Mobile-Ads-SDK: 41c963a8aee9419e1c87bc5b6aa8d4e4ef905555
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
   mopub-ios-sdk: 2e46581805d709c3fc3129051b0cb9fde24421a7
@@ -101,7 +109,8 @@ SPEC CHECKSUMS:
   Rollout.io: 633918322ee94d38bf1a1f761f12eaf83d724cc0
   SDVersion: 43383b6ac05462c973c3fd92d9748c74e360aba5
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  VungleSDK-iOS: d2b8ee974547810e7bac912411e8da32ced8ba08
 
-PODFILE CHECKSUM: 1f8f4111476f5720902b51a6b17122a5c122d5e6
+PODFILE CHECKSUM: 84abff9d0a873ebc2a0aaa5701b96433d9fe3170
 
 COCOAPODS: 1.1.1

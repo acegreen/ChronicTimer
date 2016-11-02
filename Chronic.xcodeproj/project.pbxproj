@@ -74,9 +74,20 @@
 		2349541A1D565596007B053A /* TableRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954191D565596007B053A /* TableRowType.swift */; };
 		234954301D56574C007B053A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2349542E1D56574C007B053A /* Interface.storyboard */; };
 		234954341D565EE7007B053A /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234954331D565EE7007B053A /* TextField.swift */; };
+		2356C4551DCA15A60007F43B /* MPInstanceProvider+Vungle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2356C44A1DCA15A60007F43B /* MPInstanceProvider+Vungle.m */; };
+		2356C4561DCA15A60007F43B /* MPVungleRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2356C44C1DCA15A60007F43B /* MPVungleRouter.m */; };
+		2356C4571DCA15A60007F43B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2356C44E1DCA15A60007F43B /* README.md */; };
+		2356C4581DCA15A60007F43B /* VungleInstanceMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2356C4501DCA15A60007F43B /* VungleInstanceMediationSettings.m */; };
+		2356C4591DCA15A60007F43B /* VungleInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2356C4521DCA15A60007F43B /* VungleInterstitialCustomEvent.m */; };
+		2356C45A1DCA15A60007F43B /* VungleRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2356C4541DCA15A60007F43B /* VungleRewardedVideoCustomEvent.m */; };
 		235930E41B0A89800021003D /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235930E31B0A89800021003D /* TimerViewController.swift */; };
 		235B0CF61C279B6800A8D7D7 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B106B1C1F1A4F00D52713 /* HealthKitHelper.swift */; };
 		235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B50031BF64E95008FBC53 /* IAPHelper.swift */; };
+		23639B341DC9895C001DB128 /* ChartboostInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23639B2B1DC9895C001DB128 /* ChartboostInterstitialCustomEvent.m */; };
+		23639B351DC9895C001DB128 /* ChartboostRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23639B2D1DC9895C001DB128 /* ChartboostRewardedVideoCustomEvent.m */; };
+		23639B361DC9895C001DB128 /* MPChartboostRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23639B2F1DC9895C001DB128 /* MPChartboostRouter.m */; };
+		23639B371DC9895C001DB128 /* MPInstanceProvider+Chartboost.m in Sources */ = {isa = PBXBuildFile; fileRef = 23639B311DC9895C001DB128 /* MPInstanceProvider+Chartboost.m */; };
+		23639B381DC9895C001DB128 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 23639B331DC9895C001DB128 /* README.md */; };
 		2367421A1DB0301800D3DE4D /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236742191DB0301800D3DE4D /* DefaultPreferences.plist */; };
 		2368C1731B0CC5C800F41346 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368C1721B0CC5C800F41346 /* AudioToolbox.framework */; };
 		23698CD51BCDF05400EBEC7B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614961B30C39500180218 /* AdSupport.framework */; };
@@ -149,6 +160,16 @@
 		23B83CC71DBD0DD300C1736C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 23B83C781DBD0DD300C1736C /* README.md */; };
 		23C2F2111B6EE2C200056DBB /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2101B6EE2C200056DBB /* CoreSpotlight.framework */; };
 		23C2F2131B6EE2D000056DBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */; };
+		23C35ADC1DC99B9C00E116CD /* FlurryBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35AB81DC99B9C00E116CD /* FlurryBannerCustomEvent.m */; };
+		23C35ADD1DC99B9C00E116CD /* FlurryInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35ABA1DC99B9C00E116CD /* FlurryInterstitialCustomEvent.m */; };
+		23C35ADE1DC99B9C00E116CD /* FlurryMPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35ABC1DC99B9C00E116CD /* FlurryMPConfig.m */; };
+		23C35ADF1DC99B9C00E116CD /* FlurryNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35ABE1DC99B9C00E116CD /* FlurryNativeAdAdapter.m */; };
+		23C35AE01DC99B9C00E116CD /* FlurryNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35AC01DC99B9C00E116CD /* FlurryNativeCustomEvent.m */; };
+		23C35AE11DC99B9C00E116CD /* FlurryNativeVideoAdRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35AC21DC99B9C00E116CD /* FlurryNativeVideoAdRenderer.m */; };
+		23C35AE21DC99B9C00E116CD /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35AC61DC99B9C00E116CD /* FlurryEmpty.m */; };
+		23C35AE31DC99B9C00E116CD /* libFlurry_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C35AC71DC99B9C00E116CD /* libFlurry_7.6.4.a */; };
+		23C35AE41DC99B9C00E116CD /* FlurryAdsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C35AD41DC99B9C00E116CD /* FlurryAdsEmpty.m */; };
+		23C35AE51DC99B9C00E116CD /* libFlurryAds_7.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C35AD51DC99B9C00E116CD /* libFlurryAds_7.6.4.a */; };
 		23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */; };
 		23D02ABB1B003A3100DCB1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D02ABA1B003A3100DCB1C5 /* QuartzCore.framework */; };
 		23D4824F1B91093F0066164A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D4824E1B91093F0066164A /* LaunchScreen.storyboard */; };
@@ -362,9 +383,29 @@
 		234A33B71C40C65E0024D898 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		234A33BA1C40CEA10024D898 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		234FA5D81C44052400931341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2356C4491DCA15A60007F43B /* MPInstanceProvider+Vungle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPInstanceProvider+Vungle.h"; sourceTree = "<group>"; };
+		2356C44A1DCA15A60007F43B /* MPInstanceProvider+Vungle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPInstanceProvider+Vungle.m"; sourceTree = "<group>"; };
+		2356C44B1DCA15A60007F43B /* MPVungleRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVungleRouter.h; sourceTree = "<group>"; };
+		2356C44C1DCA15A60007F43B /* MPVungleRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPVungleRouter.m; sourceTree = "<group>"; };
+		2356C44E1DCA15A60007F43B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2356C44F1DCA15A60007F43B /* VungleInstanceMediationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VungleInstanceMediationSettings.h; sourceTree = "<group>"; };
+		2356C4501DCA15A60007F43B /* VungleInstanceMediationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VungleInstanceMediationSettings.m; sourceTree = "<group>"; };
+		2356C4511DCA15A60007F43B /* VungleInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VungleInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		2356C4521DCA15A60007F43B /* VungleInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VungleInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		2356C4531DCA15A60007F43B /* VungleRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VungleRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
+		2356C4541DCA15A60007F43B /* VungleRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VungleRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
 		235930E31B0A89800021003D /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		235B50031BF64E95008FBC53 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		23612F3F1AFD57620087A11E /* Chronic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chronic.entitlements; sourceTree = "<group>"; };
+		23639B2A1DC9895C001DB128 /* ChartboostInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartboostInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		23639B2B1DC9895C001DB128 /* ChartboostInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartboostInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		23639B2C1DC9895C001DB128 /* ChartboostRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartboostRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
+		23639B2D1DC9895C001DB128 /* ChartboostRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartboostRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
+		23639B2E1DC9895C001DB128 /* MPChartboostRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPChartboostRouter.h; sourceTree = "<group>"; };
+		23639B2F1DC9895C001DB128 /* MPChartboostRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPChartboostRouter.m; sourceTree = "<group>"; };
+		23639B301DC9895C001DB128 /* MPInstanceProvider+Chartboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPInstanceProvider+Chartboost.h"; sourceTree = "<group>"; };
+		23639B311DC9895C001DB128 /* MPInstanceProvider+Chartboost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPInstanceProvider+Chartboost.m"; sourceTree = "<group>"; };
+		23639B331DC9895C001DB128 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		236742191DB0301800D3DE4D /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		2368C1721B0CC5C800F41346 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		236ADAC31D79DA1700D092A6 /* InAppPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +498,35 @@
 		23B83C781DBD0DD300C1736C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		23C2F2101B6EE2C200056DBB /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		23C35AB71DC99B9C00E116CD /* FlurryBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryBannerCustomEvent.h; sourceTree = "<group>"; };
+		23C35AB81DC99B9C00E116CD /* FlurryBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryBannerCustomEvent.m; sourceTree = "<group>"; };
+		23C35AB91DC99B9C00E116CD /* FlurryInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		23C35ABA1DC99B9C00E116CD /* FlurryInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		23C35ABB1DC99B9C00E116CD /* FlurryMPConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryMPConfig.h; sourceTree = "<group>"; };
+		23C35ABC1DC99B9C00E116CD /* FlurryMPConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryMPConfig.m; sourceTree = "<group>"; };
+		23C35ABD1DC99B9C00E116CD /* FlurryNativeAdAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryNativeAdAdapter.h; sourceTree = "<group>"; };
+		23C35ABE1DC99B9C00E116CD /* FlurryNativeAdAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryNativeAdAdapter.m; sourceTree = "<group>"; };
+		23C35ABF1DC99B9C00E116CD /* FlurryNativeCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryNativeCustomEvent.h; sourceTree = "<group>"; };
+		23C35AC01DC99B9C00E116CD /* FlurryNativeCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryNativeCustomEvent.m; sourceTree = "<group>"; };
+		23C35AC11DC99B9C00E116CD /* FlurryNativeVideoAdRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryNativeVideoAdRenderer.h; sourceTree = "<group>"; };
+		23C35AC21DC99B9C00E116CD /* FlurryNativeVideoAdRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryNativeVideoAdRenderer.m; sourceTree = "<group>"; };
+		23C35AC51DC99B9C00E116CD /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		23C35AC61DC99B9C00E116CD /* FlurryEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEmpty.m; sourceTree = "<group>"; };
+		23C35AC71DC99B9C00E116CD /* libFlurry_7.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.6.4.a; sourceTree = "<group>"; };
+		23C35ACA1DC99B9C00E116CD /* FlurryAdBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBanner.h; sourceTree = "<group>"; };
+		23C35ACB1DC99B9C00E116CD /* FlurryAdBannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBannerDelegate.h; sourceTree = "<group>"; };
+		23C35ACD1DC99B9C00E116CD /* FlurryAdInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitial.h; sourceTree = "<group>"; };
+		23C35ACE1DC99B9C00E116CD /* FlurryAdInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitialDelegate.h; sourceTree = "<group>"; };
+		23C35AD01DC99B9C00E116CD /* FlurryAdNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNative.h; sourceTree = "<group>"; };
+		23C35AD11DC99B9C00E116CD /* FlurryAdNativeAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeAsset.h; sourceTree = "<group>"; };
+		23C35AD21DC99B9C00E116CD /* FlurryAdNativeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeDelegate.h; sourceTree = "<group>"; };
+		23C35AD31DC99B9C00E116CD /* FlurryAdNativeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeStyle.h; sourceTree = "<group>"; };
+		23C35AD41DC99B9C00E116CD /* FlurryAdsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryAdsEmpty.m; sourceTree = "<group>"; };
+		23C35AD51DC99B9C00E116CD /* libFlurryAds_7.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_7.6.4.a; sourceTree = "<group>"; };
+		23C35AD71DC99B9C00E116CD /* FlurryAdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdError.h; sourceTree = "<group>"; };
+		23C35AD81DC99B9C00E116CD /* FlurryAdTargeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdTargeting.h; sourceTree = "<group>"; };
+		23C35ADA1DC99B9C00E116CD /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
+		23C35ADB1DC99B9C00E116CD /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
 		23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerTextField.swift; sourceTree = "<group>"; };
 		23D02ABA1B003A3100DCB1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23D4824E1B91093F0066164A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -509,6 +579,7 @@
 			files = (
 				23E4F5EF1BBDEDE6009A0F53 /* StoreKit.framework in Frameworks */,
 				23733C0F1DBD10A200E2BD7A /* CoreMotion.framework in Frameworks */,
+				23C35AE51DC99B9C00E116CD /* libFlurryAds_7.6.4.a in Frameworks */,
 				236B0AEC1D7CEE8F0055C754 /* Intents.framework in Frameworks */,
 				2375A5A51D459D9A00DCA06C /* Pods_Chronic.framework in Frameworks */,
 				239D97071D12E3F10070D423 /* UserNotifications.framework in Frameworks */,
@@ -517,6 +588,7 @@
 				23B099C21D2C988600BB125A /* PassKit.framework in Frameworks */,
 				23FF385D1D7E79FD005C999D /* ChronicKit.framework in Frameworks */,
 				232614951B30C38F00180218 /* SystemConfiguration.framework in Frameworks */,
+				23C35AE31DC99B9C00E116CD /* libFlurry_7.6.4.a in Frameworks */,
 				2301ECB61BE56C2900A65AFD /* Security.framework in Frameworks */,
 				23D02ABB1B003A3100DCB1C5 /* QuartzCore.framework in Frameworks */,
 				2301ECB41BE56C1900A65AFD /* CoreGraphics.framework in Frameworks */,
@@ -774,6 +846,56 @@
 				231152A71D7A1679003938E4 /* InAppPurchaseReusableView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2356C4481DCA15A60007F43B /* Vungle */ = {
+			isa = PBXGroup;
+			children = (
+				2356C4491DCA15A60007F43B /* MPInstanceProvider+Vungle.h */,
+				2356C44A1DCA15A60007F43B /* MPInstanceProvider+Vungle.m */,
+				2356C44B1DCA15A60007F43B /* MPVungleRouter.h */,
+				2356C44C1DCA15A60007F43B /* MPVungleRouter.m */,
+				2356C44D1DCA15A60007F43B /* SDK */,
+				2356C44F1DCA15A60007F43B /* VungleInstanceMediationSettings.h */,
+				2356C4501DCA15A60007F43B /* VungleInstanceMediationSettings.m */,
+				2356C4511DCA15A60007F43B /* VungleInterstitialCustomEvent.h */,
+				2356C4521DCA15A60007F43B /* VungleInterstitialCustomEvent.m */,
+				2356C4531DCA15A60007F43B /* VungleRewardedVideoCustomEvent.h */,
+				2356C4541DCA15A60007F43B /* VungleRewardedVideoCustomEvent.m */,
+			);
+			path = Vungle;
+			sourceTree = "<group>";
+		};
+		2356C44D1DCA15A60007F43B /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				2356C44E1DCA15A60007F43B /* README.md */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		23639B291DC9895C001DB128 /* Chartboost */ = {
+			isa = PBXGroup;
+			children = (
+				23639B2A1DC9895C001DB128 /* ChartboostInterstitialCustomEvent.h */,
+				23639B2B1DC9895C001DB128 /* ChartboostInterstitialCustomEvent.m */,
+				23639B2C1DC9895C001DB128 /* ChartboostRewardedVideoCustomEvent.h */,
+				23639B2D1DC9895C001DB128 /* ChartboostRewardedVideoCustomEvent.m */,
+				23639B2E1DC9895C001DB128 /* MPChartboostRouter.h */,
+				23639B2F1DC9895C001DB128 /* MPChartboostRouter.m */,
+				23639B301DC9895C001DB128 /* MPInstanceProvider+Chartboost.h */,
+				23639B311DC9895C001DB128 /* MPInstanceProvider+Chartboost.m */,
+				23639B321DC9895C001DB128 /* SDK */,
+			);
+			path = Chartboost;
+			sourceTree = "<group>";
+		};
+		23639B321DC9895C001DB128 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				23639B331DC9895C001DB128 /* README.md */,
+			);
+			path = SDK;
 			sourceTree = "<group>";
 		};
 		23698CD61BCED16600EBEC7B /* Frameworks */ = {
@@ -1041,8 +1163,11 @@
 			isa = PBXGroup;
 			children = (
 				2375AC631DBFA3CD00322285 /* AdColony */,
+				23639B291DC9895C001DB128 /* Chartboost */,
 				23B83C411DBD0DD300C1736C /* Facebook */,
+				23C35AB61DC99B9C00E116CD /* Flurry */,
 				23B83C721DBD0DD300C1736C /* GoogleAdMob */,
+				2356C4481DCA15A60007F43B /* Vungle */,
 			);
 			path = AdNetworkSupport;
 			sourceTree = "<group>";
@@ -1089,6 +1214,106 @@
 				23B83C781DBD0DD300C1736C /* README.md */,
 			);
 			path = SDK;
+			sourceTree = "<group>";
+		};
+		23C35AB61DC99B9C00E116CD /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				23C35AB71DC99B9C00E116CD /* FlurryBannerCustomEvent.h */,
+				23C35AB81DC99B9C00E116CD /* FlurryBannerCustomEvent.m */,
+				23C35AB91DC99B9C00E116CD /* FlurryInterstitialCustomEvent.h */,
+				23C35ABA1DC99B9C00E116CD /* FlurryInterstitialCustomEvent.m */,
+				23C35ABB1DC99B9C00E116CD /* FlurryMPConfig.h */,
+				23C35ABC1DC99B9C00E116CD /* FlurryMPConfig.m */,
+				23C35ABD1DC99B9C00E116CD /* FlurryNativeAdAdapter.h */,
+				23C35ABE1DC99B9C00E116CD /* FlurryNativeAdAdapter.m */,
+				23C35ABF1DC99B9C00E116CD /* FlurryNativeCustomEvent.h */,
+				23C35AC01DC99B9C00E116CD /* FlurryNativeCustomEvent.m */,
+				23C35AC11DC99B9C00E116CD /* FlurryNativeVideoAdRenderer.h */,
+				23C35AC21DC99B9C00E116CD /* FlurryNativeVideoAdRenderer.m */,
+				23C35AC31DC99B9C00E116CD /* SDK */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
+		23C35AC31DC99B9C00E116CD /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				23C35AC41DC99B9C00E116CD /* Flurry */,
+				23C35AC81DC99B9C00E116CD /* FlurryAds */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		23C35AC41DC99B9C00E116CD /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				23C35AC51DC99B9C00E116CD /* Flurry.h */,
+				23C35AC61DC99B9C00E116CD /* FlurryEmpty.m */,
+				23C35AC71DC99B9C00E116CD /* libFlurry_7.6.4.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
+		23C35AC81DC99B9C00E116CD /* FlurryAds */ = {
+			isa = PBXGroup;
+			children = (
+				23C35AC91DC99B9C00E116CD /* FlurryAdBanner */,
+				23C35ACC1DC99B9C00E116CD /* FlurryAdInterstitial */,
+				23C35ACF1DC99B9C00E116CD /* FlurryAdNative */,
+				23C35AD41DC99B9C00E116CD /* FlurryAdsEmpty.m */,
+				23C35AD51DC99B9C00E116CD /* libFlurryAds_7.6.4.a */,
+				23C35AD61DC99B9C00E116CD /* Shared */,
+				23C35AD91DC99B9C00E116CD /* StaticAPI */,
+			);
+			path = FlurryAds;
+			sourceTree = "<group>";
+		};
+		23C35AC91DC99B9C00E116CD /* FlurryAdBanner */ = {
+			isa = PBXGroup;
+			children = (
+				23C35ACA1DC99B9C00E116CD /* FlurryAdBanner.h */,
+				23C35ACB1DC99B9C00E116CD /* FlurryAdBannerDelegate.h */,
+			);
+			path = FlurryAdBanner;
+			sourceTree = "<group>";
+		};
+		23C35ACC1DC99B9C00E116CD /* FlurryAdInterstitial */ = {
+			isa = PBXGroup;
+			children = (
+				23C35ACD1DC99B9C00E116CD /* FlurryAdInterstitial.h */,
+				23C35ACE1DC99B9C00E116CD /* FlurryAdInterstitialDelegate.h */,
+			);
+			path = FlurryAdInterstitial;
+			sourceTree = "<group>";
+		};
+		23C35ACF1DC99B9C00E116CD /* FlurryAdNative */ = {
+			isa = PBXGroup;
+			children = (
+				23C35AD01DC99B9C00E116CD /* FlurryAdNative.h */,
+				23C35AD11DC99B9C00E116CD /* FlurryAdNativeAsset.h */,
+				23C35AD21DC99B9C00E116CD /* FlurryAdNativeDelegate.h */,
+				23C35AD31DC99B9C00E116CD /* FlurryAdNativeStyle.h */,
+			);
+			path = FlurryAdNative;
+			sourceTree = "<group>";
+		};
+		23C35AD61DC99B9C00E116CD /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				23C35AD71DC99B9C00E116CD /* FlurryAdError.h */,
+				23C35AD81DC99B9C00E116CD /* FlurryAdTargeting.h */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		23C35AD91DC99B9C00E116CD /* StaticAPI */ = {
+			isa = PBXGroup;
+			children = (
+				23C35ADA1DC99B9C00E116CD /* FlurryAdDelegate.h */,
+				23C35ADB1DC99B9C00E116CD /* FlurryAds.h */,
+			);
+			path = StaticAPI;
 			sourceTree = "<group>";
 		};
 		23CFD9141BC54E9000CF4BAC /* Custom Keyboards */ = {
@@ -1610,12 +1835,17 @@
 				236ADAC41D79DA1700D092A6 /* InAppPurchaseViewController.swift in Sources */,
 				23B83CB81DBD0DD300C1736C /* FacebookNativeAdAdapter.m in Sources */,
 				2315CD111D7EE8D400372228 /* MulticolorPolylineSegment.swift in Sources */,
+				23C35AE21DC99B9C00E116CD /* FlurryEmpty.m in Sources */,
 				23D66F391B69459B00BE7041 /* TimePickerTextField.swift in Sources */,
 				2375AC751DBFA3CD00322285 /* AdColonyGlobalMediationSettings.m in Sources */,
 				2392DA8E1BC72CB2002A7110 /* CustomUIPickerView.swift in Sources */,
+				23639B361DC9895C001DB128 /* MPChartboostRouter.m in Sources */,
+				2356C45A1DCA15A60007F43B /* VungleRewardedVideoCustomEvent.m in Sources */,
 				231152A81D7A1679003938E4 /* InAppPurchaseReusableView.swift in Sources */,
 				23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */,
+				2356C4591DCA15A60007F43B /* VungleInterstitialCustomEvent.m in Sources */,
 				2307C5441C078C8F0069B35F /* NumberPickerTextField.swift in Sources */,
+				23C35AE11DC99B9C00E116CD /* FlurryNativeVideoAdRenderer.m in Sources */,
 				230A40FF1D81C57E00A391DC /* SweetAlert.swift in Sources */,
 				23B83CB71DBD0DD300C1736C /* FacebookInterstitialCustomEvent.m in Sources */,
 				23B83CBA1DBD0DD300C1736C /* README.md in Sources */,
@@ -1625,6 +1855,7 @@
 				23B83CB61DBD0DD300C1736C /* FacebookBannerCustomEvent.m in Sources */,
 				2388D3281B0672770091C9E5 /* QuickTimerViewController.swift in Sources */,
 				2348A9391D7C6F3D0080402F /* FeedbackViewController.swift in Sources */,
+				23C35ADD1DC99B9C00E116CD /* FlurryInterstitialCustomEvent.m in Sources */,
 				235930E41B0A89800021003D /* TimerViewController.swift in Sources */,
 				230668431C1E7242003BDF03 /* NotificationHelper.swift in Sources */,
 				23F85F3C1B64521A002221AF /* ExerciseNameTableViewCell.swift in Sources */,
@@ -1638,13 +1869,18 @@
 				234953FE1D564174007B053A /* Extensions.swift in Sources */,
 				234954001D564174007B053A /* Constants.swift in Sources */,
 				2375AC791DBFA3CD00322285 /* MPAdColonyRouter.m in Sources */,
+				23C35ADF1DC99B9C00E116CD /* FlurryNativeAdAdapter.m in Sources */,
 				2315CD1D1D7EE8D400372228 /* SwiftColorPickerView.swift in Sources */,
 				237B107F1C25D75100D52713 /* NotificationIntervalTextField.swift in Sources */,
+				23C35AE41DC99B9C00E116CD /* FlurryAdsEmpty.m in Sources */,
+				2356C4581DCA15A60007F43B /* VungleInstanceMediationSettings.m in Sources */,
 				237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */,
 				23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */,
 				232F4C7C1AC02EA700D25995 /* CircuitRoutineTableViewController.swift in Sources */,
+				23C35ADE1DC99B9C00E116CD /* FlurryMPConfig.m in Sources */,
 				237605281AEFE779003E2C07 /* SettingsTableViewController.swift in Sources */,
 				2315CCE41D7EE82900372228 /* Workout.swift in Sources */,
+				23639B351DC9895C001DB128 /* ChartboostRewardedVideoCustomEvent.m in Sources */,
 				234954341D565EE7007B053A /* TextField.swift in Sources */,
 				2375AC771DBFA3CD00322285 /* AdColonyInterstitialCustomEvent.m in Sources */,
 				23812C4E1BC4559D007A314E /* TimerSoundPickerTextField.swift in Sources */,
@@ -1652,7 +1888,10 @@
 				2315CD151D7EE8D400372228 /* SARate.m in Sources */,
 				23B83CB91DBD0DD300C1736C /* FacebookNativeCustomEvent.m in Sources */,
 				2315CCE11D7EE7FC00372228 /* DataAccess.swift in Sources */,
+				2356C4551DCA15A60007F43B /* MPInstanceProvider+Vungle.m in Sources */,
 				2315CD0F1D7EE8D400372228 /* iCarousel.m in Sources */,
+				23639B381DC9895C001DB128 /* README.md in Sources */,
+				23639B341DC9895C001DB128 /* ChartboostInterstitialCustomEvent.m in Sources */,
 				237B106C1C1F1A4F00D52713 /* HealthKitHelper.swift in Sources */,
 				235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */,
 				2315CD141D7EE8D400372228 /* iRate.m in Sources */,
@@ -1661,13 +1900,18 @@
 				237B108D1C265A9000D52713 /* OBNotificationViewController.swift in Sources */,
 				238C1AD61C8B70EF009F9CC1 /* ExpandingCell.swift in Sources */,
 				234953FF1D564174007B053A /* Functions.swift in Sources */,
+				2356C4571DCA15A60007F43B /* README.md in Sources */,
 				23B83CC71DBD0DD300C1736C /* README.md in Sources */,
 				2315CD161D7EE8D400372228 /* SARateViewController.m in Sources */,
 				23B83CC61DBD0DD300C1736C /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */,
+				23C35AE01DC99B9C00E116CD /* FlurryNativeCustomEvent.m in Sources */,
 				2315CD101D7EE8D400372228 /* Keychain.swift in Sources */,
+				2356C4561DCA15A60007F43B /* MPVungleRouter.m in Sources */,
 				4FF4905E27CB992556BA6873 /* RolloutGenerated.swift in Sources */,
 				FD2B48D726E32CB1FB5E8271 /* RolloutSwiftInjectionBridge.swift in Sources */,
+				23C35ADC1DC99B9C00E116CD /* FlurryBannerCustomEvent.m in Sources */,
 				2375AC761DBFA3CD00322285 /* AdColonyInstanceMediationSettings.m in Sources */,
+				23639B371DC9895C001DB128 /* MPInstanceProvider+Chartboost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,6 +32,9 @@ target "Chronic" do
     # Ad Networks
     pod 'FBAudienceNetwork'
     pod 'AdColony', '2.6.2'
+    pod 'ChartboostSDK'
+    pod 'Flurry-iOS-SDK/FlurrySDK'
+    pod 'VungleSDK-iOS'
     
     #pod 'CNPPopupController'
     #pod 'PermissionScope'

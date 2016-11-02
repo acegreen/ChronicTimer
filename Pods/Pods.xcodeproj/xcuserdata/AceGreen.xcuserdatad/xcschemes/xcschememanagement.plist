@@ -8,159 +8,130 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>AMWaveTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
 		</dict>
 		<key>BubbleTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>12</integer>
 		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
 		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
 		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>15</integer>
 		</dict>
 		<key>FBSDKLoginKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
+		</dict>
+		<key>Flurry-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>LaunchKit-LaunchKitResources.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
 		</dict>
 		<key>LaunchKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
 		</dict>
 		<key>MZAppearance.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
 		</dict>
 		<key>MZFormSheetPresentationController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>21</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>22</integer>
 		</dict>
 		<key>ParseFacebookUtilsV4.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>23</integer>
 		</dict>
 		<key>ParseTwitterUtils.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>24</integer>
 		</dict>
 		<key>ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>25</integer>
 		</dict>
 		<key>Pods-Chronic.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>26</integer>
 		</dict>
 		<key>PureLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>27</integer>
 		</dict>
 		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>28</integer>
 		</dict>
 		<key>SDVersion.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>29</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>30</integer>
 		</dict>
 		<key>mopub-ios-sdk.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>19</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>03423F6B45B5BF9527389919DD84C037</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10F873B610D55FB45C3C524ADE2289CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>124BA04F2E4A4F5C8CDAA39DB6C7F903</key>
 		<dict>
 			<key>primary</key>
@@ -181,7 +152,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>33BB17347A3D419F2333965A4086AAA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>586E40C0BEBAB01A075A5E60359FA09D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>61F49FF3E3B8B469D0DD259CB5B30A5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -196,22 +177,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6750ED48532C2286C30C664D349C581C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>7372CA79CE92E7AC032175441663EBE4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7CC4877BEEC3403A8063A44BE99A993C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -231,6 +202,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8C191A1E2849A6D85195C37A3EB34EAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>909ED2F977F88D9F0901710ADCA5B6EB</key>
 		<dict>
 			<key>primary</key>
@@ -246,17 +222,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9FD9CAC4914BD16DCA413B4F2DC827F7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BA076290A76CEBB54F1264D19F6B658F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C7236884FFA9C8609C56CB47979A35C5</key>
+		<key>A4F6E38C100EAB9CFEC194907FCA23D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
