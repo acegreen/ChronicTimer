@@ -207,12 +207,12 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         print("end time \(workout.routineEndDate)")
         
         // Complete workout if .Run 
-        if workout.workoutType == .run {
+        if workout.workoutType == .run && workout.workoutState != .preRun {
             workout.workoutState = Workout.WorkoutState.completed
         }
         
         // End the workout session 
-        workout.nsUserActivity?.invalidate()
+        workout.nsUserActivity?.invalidate() 
             
         // Set Alert if in background
         if UIApplication.shared.applicationState == UIApplicationState.background {
@@ -233,16 +233,14 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             NotificationHelper.scheduleNotification(nil, repeatInterval: nil, alertTitle: alertTitle, alertBody: alertBody, sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.WorkoutIdentifier.key())
         }
         
-        // Save workout
+        // Save & log workout
         if workout.workoutState != .preRun {
             
             checkSaveWorkout { (complete) in
-                
-                let applicationState: String = Constants.app.applicationState == .active ? "Active" : "Background"
-                
-                // Log with Answer
-                Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.totalTime), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "Remove Ads Upgrade Purchased": String(Functions.isRemoveAdsUpgradePurchased()), "App Version": Constants.AppVersion])
             }
+            
+            let applicationState: String = Constants.app.applicationState == .active ? "Active" : "Background"
+            Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.timeElapsed), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "Remove Ads Upgrade Purchased": String(Functions.isRemoveAdsUpgradePurchased()), "App Version": Constants.AppVersion])
         }
         
         // Reset settings to initial state (Just for tidiness)
@@ -954,7 +952,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             if workout.workoutState == .completed {
                 
                 self.saveWorkout({ (success) in
-                    
                     completion(true)
                 })
                 
@@ -1119,7 +1116,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             
         } else {
             
-            mainStackViewTopConstraint.constant = 20
+            mainStackViewTopConstraint.constant = -20
 
             guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
             mopubBanner.removeFromSuperview()
@@ -1134,7 +1131,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         let size: CGSize = adView.adContentViewSize()
         let centeredX: CGFloat = (relativeToView.bounds.size.width - size.width) / 2
         adView.frame = CGRect(x: centeredX, y: 0, width: size.width, height: size.height)
-        mainStackViewTopConstraint.constant = size.height
+        mainStackViewTopConstraint.constant = -size.height
     }
     
     func adViewDidLoadAd(_ view: MPAdView!) {
@@ -1145,7 +1142,12 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     }
     
     func adViewDidFail(toLoadAd view: MPAdView!) {
-        mainStackViewTopConstraint.constant = 20
+        
+        mainStackViewTopConstraint.constant = -20
+        
+        guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
+        mopubBanner.removeFromSuperview()
+        adBannerView.removeFromSuperview()
     }
 
     func viewControllerForPresentingModalView() -> UIViewController {
