@@ -64,7 +64,11 @@ fi
 
 dsym_file_gzip="$dsym_file".gz
 gzip < "$dsym_file" > "$dsym_file_gzip" || fail_script "gzip file \"$dsym_file\" failed" "$?"
-curl -sS --location --post301 --post302 -F dsym=@"$dsym_file_gzip" -F swift_structure=@"$structure_file_gzip" "${server}/api/dsym/$rollout_key?rollout_key=$rollout_key&rollout_build=$rollout_build" || fail_script "curl failed" "$?"
+if [ -f "$structure_file_gzip" ]; then
+  curl -sS --location --post301 --post302 -F dsym=@"$dsym_file_gzip" -F swift_structure=@"$structure_file_gzip" "${server}/api/dsym/$rollout_key?rollout_key=$rollout_key&rollout_build=$rollout_build" || fail_script "curl failed" "$?"
+else
+  curl -sS --location --post301 --post302 -F dsym=@"$dsym_file_gzip" "${server}/api/dsym/$rollout_key?rollout_key=$rollout_key&rollout_build=$rollout_build" || fail_script "curl failed" "$?"
+fi
 rm "$dsym_file_gzip" || fail_script "rm gzipped dsym file failed" "$?"
 
 if [ -f "$structure_file_gzip" ]; then

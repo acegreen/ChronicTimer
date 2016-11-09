@@ -111,24 +111,31 @@ fi
 
 [ -f "$dsym_file" ] || handle_error ERROR_missingDsym
 
-rollout_structure_file=`find "$VAR_DIR"/swift_injections -name "$PRODUCT_MODULE_NAME"_"$CURRENT_ARCH"*`
-
 if [ -z "$disable_upload" ]; then
   dsym_session_id=$RANDOM
   named_dsym="$VAR_DIR"/dsym__"$app_key"__`date +"%Y-%m-%d_%H:%M:%S"`__$dsym_session_id.dsym
   cp "$dsym_file" "$named_dsym"
 
-  if [ -f "$rollout_structure_file" ]; then
+  swift_injection_var_dir="$VAR_DIR"/swift_injections
+  if [ -d "$swift_injection_var_dir" ]; then
     named_structure_file="$VAR_DIR"/structure__"$app_key"__`date +"%Y-%m-%d_%H:%M:%S"`__$dsym_session_id.json
+    rollout_structure_file=`find "$swift_injection_var_dir" -name "$PRODUCT_MODULE_NAME"_"$CURRENT_ARCH"*`
     mv "$rollout_structure_file" "$named_structure_file"
+  else
+    named_structure_file=""
   fi
 
   echo "Going to upload the data in the background. Session id: $dsym_session_id, dsym path: \"$named_dsym\", structure path: \"$named_structure_file\"   "
   (
-    echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $dsym_session_id started (-k $app_key -d \"$named_dsym\" -s \"$named_structure_file\" )"
-    "$LIB_DIR"/upload_data -k $app_key -d "$named_dsym" -s "$named_structure_file"
+    if [ -n "$named_structure_file" ]; then
+      echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $dsym_session_id started (-k $app_key -d \"$named_dsym\" -s \"$named_structure_file\")"
+      "$LIB_DIR"/upload_data -k $app_key -d "$named_dsym" -s "$named_structure_file"
+      rm "$named_structure_file"
+    else
+      echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $dsym_session_id started (-k $app_key -d \"$named_dsym\")"
+      "$LIB_DIR"/upload_data -k $app_key -d "$named_dsym"
+    fi
     rm "$named_dsym"
-    rm "$named_structure_file"
     echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $dsym_session_id finished"
   ) >> "$VAR_DIR"/upload_data.log 2>&1 &
 else
