@@ -49,7 +49,7 @@ PODS:
     - Parse (~> 1.9)
   - PureLayout (3.0.2)
   - ReachabilitySwift (3)
-  - Rollout.io (1.7.0)
+  - Rollout.io (1.7.1)
   - SDVersion (3.6)
   - SwiftyJSON (3.1.1)
   - VungleSDK-iOS (4.0.8)
@@ -106,7 +106,7 @@ SPEC CHECKSUMS:
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Rollout.io: 488f068935f31a3317fb54f8ffbda14e29910aa0
+  Rollout.io: 4a178b5020f33162de7309087ceabcefa7d0c5f2
   SDVersion: 43383b6ac05462c973c3fd92d9748c74e360aba5
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
   VungleSDK-iOS: 84efcda6b75d3eaa188c5b8fff0870b4891785a9
