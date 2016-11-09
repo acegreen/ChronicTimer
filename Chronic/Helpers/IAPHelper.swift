@@ -157,7 +157,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Ultimate Package",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -176,7 +176,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Pro Version",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -195,7 +195,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Remove Ads",
                                             itemType: "In-App Purchase",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -213,7 +213,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                             itemName: "Donation",
                                             itemType: "In-App Purchase (Consumable)",
                                             itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
                                     }
                                     
                                     break
@@ -414,7 +414,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             try Constants.keychain
                 .accessibility(.always)
                 .synchronizable(true)
-                .set(value: Constants.proVersionKeyValue, key: Constants.proVersionKey)
+                .set(Constants.proVersionKeyValue, key: Constants.proVersionKey)
         } catch let error {
             print("error: \(error)")
         }
@@ -431,7 +431,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             try Constants.keychain
                 .accessibility(.always)
                 .synchronizable(true)
-                .set(value: Constants.removeAdsKeyValue, key: Constants.removeAdsKey)
+                .set(Constants.removeAdsKeyValue, key: Constants.removeAdsKey)
         } catch let error {
             print("error: \(error)")
         }

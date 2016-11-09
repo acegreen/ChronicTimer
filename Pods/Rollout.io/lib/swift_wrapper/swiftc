@@ -1,6 +1,6 @@
 #!/bin/bash
 
-unset arch output_file_map
+unset arch output_file_map module_name
 extract_args() {
     while [[ $# -gt 0 ]]
     do
@@ -129,6 +129,8 @@ touch "$rollout_sources_file"
 
 for i in "$@"
 do
+    [ -f "$i" ] || continue;
+    
     [[ $i =~ RolloutGenerated\.swift$ ]] && {
         touch "$i"
         last_component=`basename "$i"`
@@ -162,7 +164,8 @@ do
     }
 done
 
-"$DIR/../../lib/Oyster/MacOS/Oyster" "$Rollout_Generated" "$rollout_sources_file" $debug_mode >&3 2>$error_file; oyster_exit_code=$?
+rollout_structure_file="$VAR_DIR"/rollout_structure_file
+"$DIR/../../lib/Oyster/MacOS/Oyster" "$Rollout_Generated" "$rollout_sources_file" "$module_name" "$rollout_structure_file" $debug_mode >&3 2>$error_file; oyster_exit_code=$?
 
 [ $oyster_exit_code -eq 0 ] || {
     error_handler "false" $oyster_exit_code "Oyster"
@@ -177,7 +180,9 @@ cat $error_file
 
 for i in "${STRIPFILES[@]}"
 do
-    strip -x "$i" 2>$error_file 1>&2 || error_handler "false" $? "Strip"
+    xcrun strip -x "$i" 2>$error_file 1>&2 || error_handler "false" $? "Strip"
 done
+
+mv "$rollout_structure_file" "$swift_injections_dir"/"$module_name"_"$arch"
 
 clean

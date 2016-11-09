@@ -58,7 +58,7 @@ class InAppPurchaseViewController: UIViewController, MZFormSheetPresentationCont
     func contentViewFrame(for presentationController: MZFormSheetPresentationController!, currentFrame: CGRect) -> CGRect {
         
         var currentFrame = currentFrame
-        currentFrame.size.width = Constants.application.keyWindow!.bounds.size.width
+        currentFrame.size = CGSize(width: Constants.application.keyWindow!.bounds.size.width, height: 475)
         return currentFrame
     }
     
@@ -112,7 +112,7 @@ extension InAppPurchaseViewController: iCarouselDataSource, iCarouselDelegate {
         
         //create new view if no view is available for recycling
         if view == nil {
-            itemView = InAppPurchaseReusableView(frame: CGRect(x: 0, y: 0, width: 340, height: 450))
+            itemView = InAppPurchaseReusableView(frame: CGRect(x: 0, y: 0, width: 340, height: 475))
         } else {
             itemView = view as! InAppPurchaseReusableView
         }
@@ -150,6 +150,10 @@ extension InAppPurchaseViewController: iCarouselDataSource, iCarouselDelegate {
         } else if option == .wrap {
             
             return 1.0
+            
+        } else if option == .radius {
+            
+            return 5.0
         }
         
         return value

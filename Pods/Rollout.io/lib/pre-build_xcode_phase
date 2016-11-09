@@ -12,7 +12,7 @@ while getopts "k:" option; do #{{{
   esac
 done #}}}
 
-BUILD_SETTINGS_FILE=/tmp/rollout_var/build_data/$TARGET_NAME.$CURRENT_ARCH-apple-$SWIFT_PLATFORM_TARGET_PREFIX$IPHONEOS_DEPLOYMENT_TARGET
+BUILD_SETTINGS_FILE=/tmp/rollout_var/build_data/$PRODUCT_MODULE_NAME.$CURRENT_ARCH-apple-$SWIFT_PLATFORM_TARGET_PREFIX$IPHONEOS_DEPLOYMENT_TARGET
 echo "Using build settings file: $BUILD_SETTINGS_FILE"
 mkdir -p `dirname $BUILD_SETTINGS_FILE`
 echo "rollout_key=$app_key" > $BUILD_SETTINGS_FILE
@@ -22,8 +22,11 @@ xcodeproj_configuration=`(. "$LIB_DIR"/versions; echo $xcodeproj_configuration)`
   cat << end_of_error_msg
 Rollout.io SDK version was not reconfigured, aborting...
 Our guess is that you changed Rollout.io version in your podfile, but have not reconfigured it yet.
-If this is correct, please run the following command:
-    "$ROLLOUT_DIR"/install/configure_pod.sh -k $app_key
+You need to run the configure_pod script again
+For objective-c and swift support, please run:
+    "$ROLLOUT_DIR"/install/configure_pod.sh -k $app_key -s
+For objective-c only support, please run:
+    "$ROLLOUT_DIR"/install/configure_pod.sh -k $app_key -o
 
 If our guess is incorrect or if the above didn't help, please contact us at support@rollout.io
 end_of_error_msg

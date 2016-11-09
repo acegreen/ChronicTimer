@@ -94,12 +94,10 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return routines.count
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         cell.backgroundColor = UIColor.clear
     }
     
@@ -117,10 +115,8 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RoutineCell
         
-        if routines.count != 0 {
-            
-                let routine = routines[(indexPath as NSIndexPath).row]
-                cell.configure(with: routine)
+        if let routineAtIndex = routines.get(indexPath.row) {
+                cell.configure(with: routineAtIndex)
         }
         
         return cell

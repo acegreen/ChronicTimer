@@ -1455,8 +1455,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23AF7DFA1AC02E2900AA3FC7 /* Build configuration list for PBXNativeTarget "Chronic" */;
 			buildPhases = (
-				6A0CD7FCBE772B17BBB623C7 /* Rollout.io pre-build */,
 				EA86015371A3F65EACE7ECC2 /* [CP] Check Pods Manifest.lock */,
+				6A0CD7FCBE772B17BBB623C7 /* Rollout.io pre-build */,
 				23AF7DD41AC02E2800AA3FC7 /* Sources */,
 				23AF7DD51AC02E2800AA3FC7 /* Frameworks */,
 				23AF7DD61AC02E2800AA3FC7 /* Resources */,
@@ -1594,7 +1594,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic.xcodeproj.rollouttemp" */;
+			buildConfigurationList = 23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2552,7 +2552,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic.xcodeproj.rollouttemp" */ = {
+		23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23AF7DF81AC02E2900AA3FC7 /* Debug */,
