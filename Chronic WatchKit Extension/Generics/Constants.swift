@@ -50,6 +50,9 @@ class Constants {
     
     static var workoutSession: HKWorkoutSession!
     
+    static let chronicColor: UIColor = UIColor(red: 92/255, green: 92/255, blue: 102/255, alpha: 1.0)
+    static let chronicGreen: UIColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0)
+    
     enum DistanceType {
         case miles
         case kilometers
