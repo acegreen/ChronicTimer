@@ -37,6 +37,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
             let template = CLKComplicationTemplateCircularSmallSimpleImage()
             template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Circular")!)
+            template.tintColor = UIColor.colorFromRGB(0xFFCD02)
             let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
             handler(timelineEntry)
             
@@ -44,6 +45,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
             let template = CLKComplicationTemplateModularSmallSimpleImage()
             template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Modular")!)
+            template.tintColor = UIColor.colorFromRGB(0xFFCD02)
             let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
             handler(timelineEntry)
             
@@ -51,6 +53,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
             let template = CLKComplicationTemplateUtilitarianSmallSquare()
             template.imageProvider = CLKImageProvider(onePieceImage: UIImage(named: "Complication/Utilitarian")!)
+            template.tintColor = UIColor.colorFromRGB(0xFFCD02)
             let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
             handler(timelineEntry)
             
