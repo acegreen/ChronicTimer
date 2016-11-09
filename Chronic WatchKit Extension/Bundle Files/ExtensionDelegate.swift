@@ -76,7 +76,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
                 try Constants.keychain
                     .accessibility(.always)
                     .synchronizable(true)
-                    .set(value: Constants.proVersionKeyValue, key: Constants.proVersionKey)
+                    .set(Constants.proVersionKeyValue, key: Constants.proVersionKey)
             } catch let error {
                 print("error: \(error)")
             }

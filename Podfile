@@ -1,8 +1,7 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
 use_frameworks!
 
-target "Chronic" do
+target 'Chronic' do
+    
     pod 'DZNEmptyDataSet'
     pod 'SDVersion'
     pod 'AMPopTip'
@@ -27,14 +26,15 @@ target "Chronic" do
     # Fabric
     pod 'Crashlytics'
     pod 'mopub-ios-sdk'
-    pod 'Google-Mobile-Ads-SDK'
     
     # Ad Networks
+    pod 'Google-Mobile-Ads-SDK'
     pod 'FBAudienceNetwork'
     pod 'AdColony', '2.6.2'
     pod 'ChartboostSDK'
     pod 'Flurry-iOS-SDK/FlurrySDK'
     pod 'VungleSDK-iOS'
+    #pod 'GreystripeSDK' // installed manually cocoapods not up-to-date
     
     #pod 'CNPPopupController'
     #pod 'PermissionScope'

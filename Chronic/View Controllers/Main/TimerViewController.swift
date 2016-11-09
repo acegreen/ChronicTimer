@@ -1116,7 +1116,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             
         } else {
             
-            mainStackViewTopConstraint.constant = -20
+            mainStackViewTopConstraint.constant = 20
 
             guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
             mopubBanner.removeFromSuperview()
@@ -1131,7 +1131,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         let size: CGSize = adView.adContentViewSize()
         let centeredX: CGFloat = (relativeToView.bounds.size.width - size.width) / 2
         adView.frame = CGRect(x: centeredX, y: 0, width: size.width, height: size.height)
-        mainStackViewTopConstraint.constant = -size.height
+        mainStackViewTopConstraint.constant = size.height
     }
     
     func adViewDidLoadAd(_ view: MPAdView!) {
@@ -1143,7 +1143,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     
     func adViewDidFail(toLoadAd view: MPAdView!) {
         
-        mainStackViewTopConstraint.constant = -20
+        mainStackViewTopConstraint.constant = 20
         
         guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
         mopubBanner.removeFromSuperview()
