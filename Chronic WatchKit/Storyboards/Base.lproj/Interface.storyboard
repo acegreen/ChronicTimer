@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11521.1" systemVersion="16A319" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nvx-ar-6as">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nvx-ar-6as">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11517.1"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Symbol.ttf">
@@ -70,12 +73,12 @@
                                 </group>
                                 <group width="1" alignment="left" verticalAlignment="bottom" id="fuQ-gO-voQ">
                                     <items>
-                                        <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="2Xi-Sr-a7p">
+                                        <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="qkO-Pl-bIS">
                                             <items>
-                                                <label height="14.5" alignment="left" text="Remaining" textAlignment="left" id="T9M-ZY-pwK">
+                                                <label alignment="left" text="Elapsed" textAlignment="right" id="n5a-oH-osJ" userLabel="Time Elapsed">
                                                     <fontDescription key="font" type="system" pointSize="12"/>
                                                 </label>
-                                                <label alignment="left" verticalAlignment="bottom" text="00:00" textAlignment="left" id="uhL-jW-cs2">
+                                                <label alignment="left" verticalAlignment="bottom" text="00:00" textAlignment="right" id="YUE-fZ-do1">
                                                     <fontDescription key="font" type="system" pointSize="17"/>
                                                     <variation key="device=watch42mm">
                                                         <fontDescription key="font" type="system" pointSize="18"/>
@@ -83,12 +86,12 @@
                                                 </label>
                                             </items>
                                         </group>
-                                        <group alignment="right" verticalAlignment="center" layout="vertical" spacing="0.0" id="qkO-Pl-bIS">
+                                        <group alignment="right" verticalAlignment="center" layout="vertical" spacing="0.0" id="2Xi-Sr-a7p">
                                             <items>
-                                                <label alignment="right" text="Elapsed" textAlignment="right" id="n5a-oH-osJ" userLabel="Time Elapsed">
+                                                <label height="14.5" alignment="right" text="Remaining" textAlignment="left" id="T9M-ZY-pwK">
                                                     <fontDescription key="font" type="system" pointSize="12"/>
                                                 </label>
-                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="right" id="YUE-fZ-do1">
+                                                <label alignment="right" verticalAlignment="bottom" text="00:00" textAlignment="left" id="uhL-jW-cs2">
                                                     <fontDescription key="font" type="system" pointSize="17"/>
                                                     <variation key="device=watch42mm">
                                                         <fontDescription key="font" type="system" pointSize="18"/>
