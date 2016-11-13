@@ -27,9 +27,9 @@ PODS:
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
-  - mopub-ios-sdk (4.10.1):
-    - mopub-ios-sdk/MoPubSDK (= 4.10.1)
-  - mopub-ios-sdk/MoPubSDK (4.10.1)
+  - mopub-ios-sdk (4.11.0):
+    - mopub-ios-sdk/MoPubSDK (= 4.11.0)
+  - mopub-ios-sdk/MoPubSDK (4.11.0)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
@@ -97,7 +97,7 @@ SPEC CHECKSUMS:
   Flurry-iOS-SDK: 3d1daff95d43b8fead3bb43590d54c6e8244d410
   Google-Mobile-Ads-SDK: dbb0211c52ca02f72331b831ce4ccd218cf08748
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
-  mopub-ios-sdk: 54b3b9cb41118202eb69653b0ac1d011c9e2bce1
+  mopub-ios-sdk: 5eb11389c025ca283a646389f35b6a6fd27b2ce5
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
