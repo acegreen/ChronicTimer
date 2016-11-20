@@ -110,33 +110,30 @@ else
 fi
 
 [ -f "$dsym_file" ] || handle_error ERROR_missingDsym
-
+  
 if [ -z "$disable_upload" ]; then
-  dsym_session_id=$RANDOM
-  named_dsym="$VAR_DIR"/dsym__"$app_key"__`date +"%Y-%m-%d_%H:%M:%S"`__$dsym_session_id.dsym
+  upload_session_id=$RANDOM
+  named_dsym="$VAR_DIR"/dsym__"$app_key"__`date +"%Y-%m-%d_%H:%M:%S"`__$upload_session_id.dsym
   cp "$dsym_file" "$named_dsym"
 
+  unset named_structure_file
   swift_injection_var_dir="$VAR_DIR"/swift_injections
   if [ -d "$swift_injection_var_dir" ]; then
-    named_structure_file="$VAR_DIR"/structure__"$app_key"__`date +"%Y-%m-%d_%H:%M:%S"`__$dsym_session_id.json
-    rollout_structure_file=`find "$swift_injection_var_dir" -name "$PRODUCT_MODULE_NAME"_"$CURRENT_ARCH"*`
-    mv "$rollout_structure_file" "$named_structure_file"
-  else
-    named_structure_file=""
+    rollout_structure_file=`find "$swift_injection_var_dir" -name "${PRODUCT_MODULE_NAME}_${CURRENT_ARCH}*"`
+    if [ -f "$rollout_structure_file" ]; then
+      named_structure_file="$VAR_DIR"/structure__"$app_key"__`date +"%Y-%m-%d_%H:%M:%S"`__$upload_session_id.json
+      mv "$rollout_structure_file" "$named_structure_file"
+    fi
   fi
 
-  echo "Going to upload the data in the background. Session id: $dsym_session_id, dsym path: \"$named_dsym\", structure path: \"$named_structure_file\"   "
+  echo "Going to upload the data in the background. Session id: $upload_session_id, dsym path: \"$named_dsym\", structure path: \"$named_structure_file\"   "
   (
-    if [ -n "$named_structure_file" ]; then
-      echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $dsym_session_id started (-k $app_key -d \"$named_dsym\" -s \"$named_structure_file\")"
-      "$LIB_DIR"/upload_data -k $app_key -d "$named_dsym" -s "$named_structure_file"
-      rm "$named_structure_file"
-    else
-      echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $dsym_session_id started (-k $app_key -d \"$named_dsym\")"
-      "$LIB_DIR"/upload_data -k $app_key -d "$named_dsym"
-    fi
-    rm "$named_dsym"
-    echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $dsym_session_id finished"
+    upload_data_cmd=("$LIB_DIR"/upload_data -k $app_key -d "$named_dsym")
+    [ -z "$named_structure_file" ] || upload_data_cmd=("${upload_data_cmd[@]}" -s "$named_structure_file")
+    echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $upload_session_id started (`printf "%q " "${upload_data_cmd[@]}"`)"
+    "${upload_data_cmd[@]}"
+    rm -f "$named_dsym" "$named_structure_file"
+    echo "`date +"%Y-%m-%d_%H:%M:%S"`: session $upload_session_id finished"
   ) >> "$VAR_DIR"/upload_data.log 2>&1 &
 else
   echo "Data uploading disabled"
