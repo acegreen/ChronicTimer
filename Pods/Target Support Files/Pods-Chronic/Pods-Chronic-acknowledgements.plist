@@ -156,7 +156,7 @@ SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>LICENSE © 2011-2016 Chartboost. All rights reserved. LICENSE</string>
+			<string>LICENSE © 2011-2017 Chartboost. All rights reserved. LICENSE</string>
 			<key>License</key>
 			<string>Commercial</string>
 			<key>Title</key>
@@ -407,7 +407,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+			<string>Copyright 2004-present Facebook. All Rights Reserved.
 
 You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 copy, modify, and distribute this software in source code or binary form for use
@@ -509,7 +509,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2011 Google Inc. All Rights Reserved.</string>
+			<string>Copyright 2017 Google</string>
 			<key>License</key>
 			<string>Copyright</string>
 			<key>Title</key>

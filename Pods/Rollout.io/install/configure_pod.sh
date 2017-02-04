@@ -85,6 +85,7 @@ $0 <options>
   -p <.xcodeproj dir>    a path to the project directory (optional, for cases
                          in which the script cannot locate it automatically)
   -l                     set tweaker script phase before the linking phase
+  -s                     Include swift support
   -o                     Exclude swift support (ObjC only)
   -h                     this help message
 EOF

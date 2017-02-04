@@ -1,6 +1,6 @@
 PODS:
   - AdColony (2.6.2)
-  - AMPopTip (1.3.0)
+  - AMPopTip (1.4.1)
   - AMWaveTransition (0.6.2)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
@@ -8,8 +8,8 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - BubbleTransition (2.0.0)
-  - ChartboostSDK (6.5.2)
+  - BubbleTransition (2.0.1)
+  - ChartboostSDK (6.6.1)
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
@@ -17,19 +17,19 @@ PODS:
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
   - Fabric (1.6.11)
-  - FBAudienceNetwork (4.17.0)
-  - FBSDKCoreKit (4.17.0):
+  - FBAudienceNetwork (4.19.0)
+  - FBSDKCoreKit (4.19.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.17.0):
+  - FBSDKLoginKit (4.19.0):
     - FBSDKCoreKit
-  - Flurry-iOS-SDK/FlurrySDK (7.8.2)
-  - Google-Mobile-Ads-SDK (7.14.0)
+  - Flurry-iOS-SDK/FlurrySDK (7.9.2)
+  - Google-Mobile-Ads-SDK (7.17.0)
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
-  - mopub-ios-sdk (4.11.0):
-    - mopub-ios-sdk/MoPubSDK (= 4.11.0)
-  - mopub-ios-sdk/MoPubSDK (4.11.0)
+  - mopub-ios-sdk (4.11.1):
+    - mopub-ios-sdk/MoPubSDK (= 4.11.1)
+  - mopub-ios-sdk/MoPubSDK (4.11.1)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
@@ -49,10 +49,10 @@ PODS:
     - Parse (~> 1.9)
   - PureLayout (3.0.2)
   - ReachabilitySwift (3)
-  - Rollout.io (1.7.2)
+  - Rollout.io (1.11.1)
   - SDVersion (3.6)
-  - SwiftyJSON (3.1.3)
-  - VungleSDK-iOS (4.0.8)
+  - SwiftyJSON (3.1.4)
+  - VungleSDK-iOS (4.0.9)
 
 DEPENDENCIES:
   - AdColony (= 2.6.2)
@@ -82,22 +82,22 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AdColony: c91c627c389e8d26a22c05ce7585d83db0121c25
-  AMPopTip: b810a33c120feacafce170cc9ddcaa8ce3a8389d
+  AMPopTip: 65ce21ac23607020e6b5b4e261b8b76df7190987
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BubbleTransition: bdb9d71993b8d3513008e2dda6bada1ddad25d4f
-  ChartboostSDK: ded657a1f15f74112ec6e8090dbb0d760693c6fc
+  BubbleTransition: bb24ed389ab672eecf3c87170d0a73f959a8e696
+  ChartboostSDK: d8a43d8913910b0445f12ae64364c683499e57b6
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  FBAudienceNetwork: d95c0724b61df6e7ffbd5ccb3f77c631551c882e
-  FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
-  FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
-  Flurry-iOS-SDK: 8ed76252016d0162a893363c108a010ab97d424c
-  Google-Mobile-Ads-SDK: dbb0211c52ca02f72331b831ce4ccd218cf08748
+  FBAudienceNetwork: 6081a5ce8c54419582b06267f777682d40c26c7a
+  FBSDKCoreKit: 894b2b6eda6a4c8c4204e92e59cc355709ef045c
+  FBSDKLoginKit: 83ca4d8f12a2022570af9fd6aacf27f6b425b99f
+  Flurry-iOS-SDK: 300dc1d78443dea3d433a38e76292f20f14f0a96
+  Google-Mobile-Ads-SDK: a8bf4211624999b73e4184be516f94770b139525
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
-  mopub-ios-sdk: 5eb11389c025ca283a646389f35b6a6fd27b2ce5
+  mopub-ios-sdk: 099068378872b60ae5be882dbcfbaa3a8a2b1c36
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
@@ -106,11 +106,11 @@ SPEC CHECKSUMS:
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Rollout.io: 48f679519c134bd48e47a1dcc5f559ba9a817256
+  Rollout.io: 2057beff22c917b0a402bfeaca2016cb0c06b524
   SDVersion: 43383b6ac05462c973c3fd92d9748c74e360aba5
-  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
-  VungleSDK-iOS: 84efcda6b75d3eaa188c5b8fff0870b4891785a9
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  VungleSDK-iOS: 053446955ef1fa777fd699b6bea6635cac604524
 
 PODFILE CHECKSUM: a072dcd902f859102d2fb04236ab490411ba70d3
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.0

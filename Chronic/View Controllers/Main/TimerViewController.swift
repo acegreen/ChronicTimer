@@ -81,8 +81,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     var threeMinuteCounterVisualEffectView: UIVisualEffectView!
     let transition = BubbleTransition()
     
-    var adBannerView: CustomAdView!
-    var mopubBanner: MPAdView!
+    var adBannerView: CustomAdView?
+    var mopubBanner: MPAdView?
     var mopubInterstitial: MPInterstitialAdController!
     
     @IBOutlet var mainStackViewTopConstraint: NSLayoutConstraint!
@@ -274,8 +274,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
-        self.mopubBanner.rotate(to: toInterfaceOrientation)
+        guard let mopubBanner = mopubBanner else { return }
+        mopubBanner.rotate(to: toInterfaceOrientation)
     }
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -1102,14 +1102,15 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             }
 
             mopubBanner = MPAdView(adUnitId: bannerID, size: bannerSize)
-            mopubBanner.delegate = self
+            mopubBanner?.delegate = self
             
             // Positions the ad at the top, with the correct size
             adBannerView = CustomAdView(forAutoLayout: ())
             
             // Add it to the view
+            guard let adBannerView = adBannerView, let mopubBanner = mopubBanner else { return }
             self.view.addSubview(adBannerView)
-            self.adBannerView.addSubview(mopubBanner)
+            self.adBannerView?.addSubview(mopubBanner)
             
             // Loads the ad over the network
             mopubBanner.loadAd()
@@ -1118,7 +1119,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             
             mainStackViewTopConstraint.constant = 20
 
-            guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
+            guard let mopubBanner = mopubBanner, let adBannerView = adBannerView else { return }
             mopubBanner.removeFromSuperview()
             adBannerView.removeFromSuperview()
         }
@@ -1135,8 +1136,9 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     }
     
     func adViewDidLoadAd(_ view: MPAdView!) {
-        adBannerView.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero, excludingEdge: .bottom)
-        adBannerView.autoSetDimension(.height, toSize: view.adContentViewSize().height, relation: .equal)
+        
+        adBannerView?.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero, excludingEdge: .bottom)
+        adBannerView?.autoSetDimension(.height, toSize: view.adContentViewSize().height, relation: .equal)
     
         centerMoPubBannerAd(view, relativeToView: self.view)
     }
@@ -1145,7 +1147,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         
         mainStackViewTopConstraint.constant = 20
         
-        guard let ad = mopubBanner, ad.isDescendant(of: self.adBannerView) else { return }
+        guard let mopubBanner = mopubBanner, let adBannerView = adBannerView else { return }
         mopubBanner.removeFromSuperview()
         adBannerView.removeFromSuperview()
     }
@@ -1199,52 +1201,3 @@ extension TimerViewController: UIViewControllerTransitioningDelegate {
         return transition
     }
 }
-
-//// MARK: - TimerViewController AdColony Extension
-//extension TimerViewController: AppodealBannerDelegate {
-//
-//    // MARK: AppodealFunctions
-//
-//    func canDisplayAds() {
-//
-//        if !removeAdsUpgradePurchased() {
-//
-//            // optional: set delegate
-//            Appodeal.setBannerDelegate(self)
-//            Appodeal.showAd(AppodealShowStyle.BannerTop, rootViewController: self)
-//
-//            //            var size: CGSize = kAppodealUnitSize_320x50
-//            //
-//            //            if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-//            //                size = kAppodealUnitSize_728x90
-//            //            } else {
-//            //                size = kAppodealUnitSize_320x50
-//            //            }
-//            //
-//            //            // required: init ad banner
-//            //            bannerView = AppodealBannerView(size: size, rootViewController: self)
-//            //
-//            //            // required: add banner to superview and call -loadAd to start banner loading
-//            //            self.view.addSubview(bannerView)
-//            //            bannerView.loadAd()
-//
-//        } else {
-//            Appodeal.hideBanner()
-//            mainStackViewTopConstraint.constant = 20
-//        }
-//    }
-//
-//    func bannerDidLoadAd() {
-//        print("bannerDidLoadAd")
-//
-//        mainStackViewTopConstraint.constant = Appodeal.banner().frame.height
-//    }
-//
-//    func bannerDidFailToLoadAd() {
-//        print("bannerDidFailToLoadAd")
-//    }
-//
-//    func bannerDidClick() {
-//        print("bannerDidClick")
-//    }
-//}

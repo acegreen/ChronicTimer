@@ -115,7 +115,7 @@ SOFTWARE.
 
 ## ChartboostSDK
 
-LICENSE © 2011-2016 Chartboost. All rights reserved. LICENSE
+LICENSE © 2011-2017 Chartboost. All rights reserved. LICENSE
 
 ## Charts
 
@@ -342,7 +342,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## FBAudienceNetwork
 
-Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+Copyright 2004-present Facebook. All Rights Reserved.
 
 You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 copy, modify, and distribute this software in source code or binary form for use
@@ -414,7 +414,7 @@ Developer's use of the SDK is governed by the license in the applicable Flurry T
 
 ## Google-Mobile-Ads-SDK
 
-Copyright 2011 Google Inc. All Rights Reserved.
+Copyright 2017 Google
 
 ## LaunchKit
 
