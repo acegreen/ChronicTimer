@@ -21,7 +21,7 @@
 	<key>TIMER_VOLUME</key>
 	<real>0.75</real>
 	<key>COUNTDOWN_TIME</key>
-	<integer>3</integer>
+	<integer>5</integer>
 	<key>NOTIFICATION_REMINDER_ENABLED</key>
 	<false/>
 	<key>NOTIFICATION_REMINDER_TIME</key>

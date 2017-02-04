@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18D98F32EE189BF45F88E64B /* RolloutGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6EABA5C08009F15AAD0BAF /* RolloutGenerated.swift */; };
 		230171721C407D7000B1EBC9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230171711C407D7000B1EBC9 /* FAQTableViewController.swift */; };
 		2301ECB21BE56C1100A65AFD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2301ECB11BE56C1100A65AFD /* CFNetwork.framework */; };
 		2301ECB41BE56C1900A65AFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2301ECB31BE56C1900A65AFD /* CoreGraphics.framework */; };
@@ -184,8 +183,11 @@
 		23FF385E1D7E79FD005C999D /* ChronicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385C1D7E79FD005C999D /* ChronicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		23FF38601D7E7A49005C999D /* ChronicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385F1D7E7A49005C999D /* ChronicKit.framework */; };
 		23FF38611D7E7A49005C999D /* ChronicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385F1D7E7A49005C999D /* ChronicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3572B30845D08F25BC1822CF /* RolloutSwiftInjectionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A4F9D5500542B8CB29764 /* RolloutSwiftInjectionBridge.swift */; };
+		BC5396BEFA0463A0BAD67623 /* RolloutSwiftCompilerInitiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B79E41755BB27A1F8B660AD /* RolloutSwiftCompilerInitiator.swift */; };
 		D69D02BA433759ADF503C506 /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341947639641CB1E7950F23C /* Pods_Chronic.framework */; };
+		E0798E36653DD1424D4B6486 /* RolloutMayPatchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D3526D78924CC42DBCBBB5 /* RolloutMayPatchFilter.swift */; };
+		E406B4F703E29ECB510D09E9 /* RolloutGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F267DC5C6EA54B8F854B94 /* RolloutGenerated.swift */; };
+		E49C095FAFB7650B50D897B5 /* RolloutSwiftInjectionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4169914F94BE78438D15DA /* RolloutSwiftInjectionBridge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -539,11 +541,13 @@
 		23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseNameTableViewCell.swift; sourceTree = "<group>"; };
 		23FF385C1D7E79FD005C999D /* ChronicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChronicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FF385F1D7E7A49005C999D /* ChronicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChronicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D4169914F94BE78438D15DA /* RolloutSwiftInjectionBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutSwiftInjectionBridge.swift; path = Pods/Rollout.io/RolloutSwift/RolloutSwiftInjectionBridge.swift; sourceTree = "<group>"; };
 		341947639641CB1E7950F23C /* Pods_Chronic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F8DE25EB9D3CF4706C33D8A /* Pods_Chronic_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B79E41755BB27A1F8B660AD /* RolloutSwiftCompilerInitiator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutSwiftCompilerInitiator.swift; path = Pods/Rollout.io/RolloutSwift/RolloutSwiftCompilerInitiator.swift; sourceTree = "<group>"; };
 		574CEB827F8A6DCBDED6D002 /* Pods-Chronic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.release.xcconfig"; sourceTree = "<group>"; };
-		808A4F9D5500542B8CB29764 /* RolloutSwiftInjectionBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutSwiftInjectionBridge.swift; path = Pods/Rollout.io/RolloutSwift/RolloutSwiftInjectionBridge.swift; sourceTree = "<group>"; };
-		EF6EABA5C08009F15AAD0BAF /* RolloutGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutGenerated.swift; path = Pods/Rollout.io/RolloutSwift/RolloutGenerated.swift; sourceTree = "<group>"; };
+		A2D3526D78924CC42DBCBBB5 /* RolloutMayPatchFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutMayPatchFilter.swift; path = Pods/Rollout.io/RolloutSwift/RolloutMayPatchFilter.swift; sourceTree = "<group>"; };
+		C6F267DC5C6EA54B8F854B94 /* RolloutGenerated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RolloutGenerated.swift; path = Pods/Rollout.io/RolloutSwift/RolloutGenerated.swift; sourceTree = "<group>"; };
 		FCFA6AE49CB5BE02EDB6123B /* Pods-Chronic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1085,7 +1089,7 @@
 				19AA88A6D119872640CE60F1 /* Pods */,
 				2315CCE81D7EE8D400372228 /* Libraries */,
 				CAB895CE144CF53267391711 /* Frameworks */,
-				5664A46F5C8382E467F6FF63 /* Rollout */,
+				B7B4AD3553F8BF16648655DF /* Rollout */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1334,11 +1338,13 @@
 			path = KeychainAccess;
 			sourceTree = "<group>";
 		};
-		5664A46F5C8382E467F6FF63 /* Rollout */ = {
+		B7B4AD3553F8BF16648655DF /* Rollout */ = {
 			isa = PBXGroup;
 			children = (
-				EF6EABA5C08009F15AAD0BAF /* RolloutGenerated.swift */,
-				808A4F9D5500542B8CB29764 /* RolloutSwiftInjectionBridge.swift */,
+				C6F267DC5C6EA54B8F854B94 /* RolloutGenerated.swift */,
+				4B79E41755BB27A1F8B660AD /* RolloutSwiftCompilerInitiator.swift */,
+				2D4169914F94BE78438D15DA /* RolloutSwiftInjectionBridge.swift */,
+				A2D3526D78924CC42DBCBBB5 /* RolloutMayPatchFilter.swift */,
 			);
 			name = Rollout;
 			sourceTree = "<group>";
@@ -1455,8 +1461,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23AF7DFA1AC02E2900AA3FC7 /* Build configuration list for PBXNativeTarget "Chronic" */;
 			buildPhases = (
+				4782F4FBB1FCB8CB7B5A52AC /* Rollout.io pre-build */,
 				EA86015371A3F65EACE7ECC2 /* [CP] Check Pods Manifest.lock */,
-				6A0CD7FCBE772B17BBB623C7 /* Rollout.io pre-build */,
 				23AF7DD41AC02E2800AA3FC7 /* Sources */,
 				23AF7DD51AC02E2800AA3FC7 /* Frameworks */,
 				23AF7DD61AC02E2800AA3FC7 /* Resources */,
@@ -1466,7 +1472,7 @@
 				D6336CB693D8296A93F5B472 /* [CP] Copy Pods Resources */,
 				236B0AEA1D7CC5E40055C754 /* Embed App Extensions */,
 				23FF384E1D7E773B005C999D /* Embed Frameworks */,
-				A24800784769E4BD1CEA467D /* Rollout.io post-build */,
+				9A733EAECF3615CE0F655F43 /* Rollout.io post-build */,
 			);
 			buildRules = (
 			);
@@ -1594,7 +1600,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic" */;
+			buildConfigurationList = 23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic.xcodeproj.rollouttemp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1716,7 +1722,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\n# VerNSLocalizedStrings\n\nwhile getopts \"vsl:\" arg; do\ncase $arg in\nv)\nverbose=\"yes\"\n;;\ns)\nstopOnMissing=\"yes\"\n;;\nl)\nlang=$OPTARG\n;;\nesac\ndone\n\nif [[ -z $lang ]]\nthen\nlang=\"en\"\nfi\n\nsearchDir=$lang.lproj\nfileFound=`ls . | grep $searchDir`\nif [[ -z $fileFound ]]\nthen\necho \"dir \"$searchDir\" not found.\"\nexit\nfi\n\nfileFound=`ls $searchDir/ | grep strings`\nif [[ -z $fileFound ]]\nthen\necho \"No .strings files found in dir \"$searchDir\".\"\nexit\nfi\n\necho \"Verifying NSLocalizationStrings in \"$searchDir\n\n# Get all the NSLocalizedString Commands\noutput=$(grep -R NSLocalizedString . --include=\"*.m\")\n\n# Go thru the NSLocalizedString commands line for line\ncount=$(( 0 ))\nmissing=$(( 0 ))\nunusable=$(( 0 ))\nOIFS=\"${IFS}\"\nNIFS=$'\\n'\nIFS=\"${NIFS}\"\nfor LINE in ${output} ; do\nIFS=\"${OIFS}\"\n\n# Now extract the key from it\n# admittedly this only works if there are no line breaks between\n# NSLocalizedStrings and the entire key,\n# but it accounts for the keys it couldn't identify.\nquotes=`echo $LINE | awk -F\\\" '{ for(i=2; i<=NF; i=i+2){ a = a\"\\\"\"$i\"\\\"\"\"^\";} {print a; a=\"\";}}'`\nkey=`echo $quotes | cut -f1 -d\"^\"`\n\n# If we couldn't find the key then flag problem\nif [[ -z $key ]]\nthen\n(( unusable += 1 ))\necho \"Couldn't extract key: \" $LINE\nif [ -n \"$stopOnMissing\" ]\nthen\nbreak\nelse\ncontinue\nfi\nfi\n\n# I don't know how grep works regarding length of string, only that\n# if the string is too long then it doesn't find it in the file\nkeyLength=$(echo ${#key})\n    if [ $keyLength -gt 79 ]\n    then\n    (( unusable += 1 ))\n    echo \"Key too long (\"$keyLength\"): \" $key\n    if [ -n \"$stopOnMissing\" ]\n    then\n    break\n    else\n    continue\n    fi\n    fi\n    \n    # It would be nice if this were a regular expression that allowed as many\n    # spaces as you want, even a line break then forced the quotes on the\n    # other side of the equal sign.\n    keyString=$key\" =\"\n    \n    # Search for the key\n    found=$(iconv -sc -f utf-16 -t utf8 $searchDir/*.strings | grep \"$keyString\")\n                                                   \n                                                   # damned if I know why some strings files are utf-16 and others are utf8\n                                                   if [[ -z $found ]]\n                                                   then\n                                                   found=$(grep -r \"$keyString\" $searchDir/ --include=*.strings)\n                                                   fi\n                                                   \n                                                   # analyze the result\n                                                   if [[ -z $found ]]\n                                                   then\n                                                   (( missing += 1 ))\n                                                   echo \"Missing:  \" $key \"\\n from: \" $LINE\n                                                   if [ -n \"$stopOnMissing\" ]\n                                                   then\n                                                   break\n                                                   fi\n                                                   else\n                                                   if [ -n \"$verbose\" ]\n                                                   then\n                                                   echo \"found:  \" $key\n                                                   fi\n                                                   fi\n                                                   (( count += 1 ))\n                                                   \n                                                   IFS=\"${NIFS}\" \n                                                   done\n                                                   \n                                                   IFS=\"${OIFS}\"\n                                                   \n                                                   # It would also be nice if it went the other way and identified \n                                                   # extraneous unused items in the strings files.  But\n                                                   # I've spent enough time on this for now\n                                                   \n                                                   echo $count \" keys analyzed\"\n                                                   echo $unusable \" keys could not be determined\"\n                                                   echo $missing \" keys missing\"";
 		};
-		6A0CD7FCBE772B17BBB623C7 /* Rollout.io pre-build */ = {
+		4782F4FBB1FCB8CB7B5A52AC /* Rollout.io pre-build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1728,9 +1734,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ROLLOUT_lastXcodeprojConfiguration=8 \"${SRCROOT}/Pods/Rollout.io/lib/pre-build_xcode_phase\" -k 56932e164e1e847211ffe9ee";
+			shellScript = "ROLLOUT_lastXcodeprojConfiguration=9 \"${SRCROOT}/Pods/Rollout.io/lib/pre-build_xcode_phase\" -k 56932e164e1e847211ffe9ee";
 		};
-		A24800784769E4BD1CEA467D /* Rollout.io post-build */ = {
+		9A733EAECF3615CE0F655F43 /* Rollout.io post-build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1742,7 +1748,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "ROLLOUT_lastXcodeprojConfiguration=8 \"${SRCROOT}/Pods/Rollout.io/lib/post-build_xcode_phase\" -k 56932e164e1e847211ffe9ee";
+			shellScript = "ROLLOUT_lastXcodeprojConfiguration=9 \"${SRCROOT}/Pods/Rollout.io/lib/post-build_xcode_phase\" -k 56932e164e1e847211ffe9ee";
 		};
 		D1BE961839030199606E2AB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1916,8 +1922,10 @@
 				23C35ADC1DC99B9C00E116CD /* FlurryBannerCustomEvent.m in Sources */,
 				2375AC761DBFA3CD00322285 /* AdColonyInstanceMediationSettings.m in Sources */,
 				23639B371DC9895C001DB128 /* MPInstanceProvider+Chartboost.m in Sources */,
-				18D98F32EE189BF45F88E64B /* RolloutGenerated.swift in Sources */,
-				3572B30845D08F25BC1822CF /* RolloutSwiftInjectionBridge.swift in Sources */,
+				E406B4F703E29ECB510D09E9 /* RolloutGenerated.swift in Sources */,
+				BC5396BEFA0463A0BAD67623 /* RolloutSwiftCompilerInitiator.swift in Sources */,
+				E49C095FAFB7650B50D897B5 /* RolloutSwiftInjectionBridge.swift in Sources */,
+				E0798E36653DD1424D4B6486 /* RolloutMayPatchFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2552,7 +2560,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic" */ = {
+		23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic.xcodeproj.rollouttemp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23AF7DF81AC02E2900AA3FC7 /* Debug */,
