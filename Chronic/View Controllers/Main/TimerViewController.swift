@@ -1127,7 +1127,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     
     func centerMoPubBannerAd(_ adView: MPAdView?, relativeToView: UIView?) {
         
-        guard let adView = adView, let relativeToView = relativeToView else { return }
+        guard let adView = adView, let relativeToView = relativeToView, let adBannerView = adBannerView, adBannerView.isDescendant(of: self.view) else { return }
         
         let size: CGSize = adView.adContentViewSize()
         let centeredX: CGFloat = (relativeToView.bounds.size.width - size.width) / 2
@@ -1137,7 +1137,7 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
     
     func adViewDidLoadAd(_ view: MPAdView!) {
         
-        adBannerView?.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets.zero, excludingEdge: .bottom)
+        adBannerView?.autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .bottom)
         adBannerView?.autoSetDimension(.height, toSize: view.adContentViewSize().height, relation: .equal)
     
         centerMoPubBannerAd(view, relativeToView: self.view)
