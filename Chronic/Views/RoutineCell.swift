@@ -52,9 +52,8 @@ class RoutineCell: UITableViewCell {
             barColors.append((NSKeyedUnarchiver.unarchiveObject(with: currentTimerDict["Color"] as! Data) as! UIColor))
         }
         
-        self.setupPieChart(self.barPoints, values: barValues)
+        self.setupPieChart(barPoints, values: barValues)
     }
-    
     
     // MARK: Routine Chart Stuff
     

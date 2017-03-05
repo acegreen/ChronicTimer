@@ -6,6 +6,7 @@
 //  Copyright © 2016 Ace Green. All rights reserved.
 //
 
+import UIKit
 import Foundation
 import HealthKit
 import ChronicKit
@@ -49,6 +50,8 @@ public class Workout {
     
     let routineModel: RoutineModel?
     var nsUserActivity: NSUserActivity?
+    
+    var mapImage: UIImage?
     
     var searchDescription: String {
         let totalTimeString = Functions.timeStringFrom(time: self.totalTime)

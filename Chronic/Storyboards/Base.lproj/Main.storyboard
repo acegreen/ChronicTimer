@@ -441,7 +441,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uYk-Jz-y1d">
-                                                    <rect key="frame" x="138" y="1" width="216" height="50"/>
+                                                    <rect key="frame" x="138" y="0.0" width="216" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="6r6-9d-Pie"/>
                                                         <constraint firstAttribute="width" constant="404.5" id="wrR-99-RMU">
@@ -1334,19 +1334,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="3Z2-tu-8RF">
-                                            <rect key="frame" x="19" y="1" width="338" height="199"/>
+                                            <rect key="frame" x="19" y="0.0" width="338" height="199"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6TS-i4-zA6">
                                                     <rect key="frame" x="0.0" y="0.0" width="114" height="199"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="yWQ-iz-lvW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="99.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="100"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="35"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-GN-I7t">
-                                                            <rect key="frame" x="0.0" y="99.5" width="114" height="99.5"/>
+                                                            <rect key="frame" x="0.0" y="100" width="114" height="99"/>
                                                             <fontDescription key="fontDescription" name="Time-Normal" family="Time" pointSize="70"/>
                                                             <color key="textColor" red="0.43529412150382996" green="0.44313725829124451" blue="0.47450980544090271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1855,7 +1855,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v7v-b5-daC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ffL-aA-ZpM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ffL-aA-ZpM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1958,7 +1958,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="9p3-Sb-xKX" customClass="MZFormSheetContentSizingNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="khW-20-aWW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="khW-20-aWW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

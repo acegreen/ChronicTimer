@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShareRoutineReusableView" customModule="Chronic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="750" height="750"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zN7-sh-7z8">
+                    <rect key="frame" x="10" y="10" width="730" height="725"/>
+                    <subviews>
+                        <stackView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QKn-Nz-VOp">
+                            <rect key="frame" x="0.0" y="0.0" width="730" height="50"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="chronic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="WtY-UJ-FGs">
+                                    <rect key="frame" x="0.0" y="0.0" width="360" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Ehz-BP-yTA"/>
+                                    </constraints>
+                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rFn-PP-59E">
+                                    <rect key="frame" x="370" y="7.5" width="360" height="35.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--:--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8qk-5J-vrx">
+                                            <rect key="frame" x="151" y="0.5" width="58" height="23.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bbK-pe-OCI">
+                                            <rect key="frame" x="157" y="24" width="46" height="12"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2P-uY-abQ" customClass="PieChartView" customModule="Charts">
+                            <rect key="frame" x="0.0" y="65" width="730" height="660"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.36078432202339172" green="0.36078432202339172" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="zN7-sh-7z8" secondAttribute="trailing" constant="10" id="Byo-la-HnR"/>
+                <constraint firstAttribute="bottom" secondItem="zN7-sh-7z8" secondAttribute="bottom" constant="15" id="E4P-Ec-R6p"/>
+                <constraint firstItem="zN7-sh-7z8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="grx-qW-7V1"/>
+                <constraint firstItem="zN7-sh-7z8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="p33-ng-OWt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="routineChartView" destination="K2P-uY-abQ" id="UaY-3P-gqd"/>
+                <outlet property="topStackView" destination="QKn-Nz-VOp" id="0Me-RA-ihX"/>
+                <outlet property="totalTimeTitleLabel" destination="bbK-pe-OCI" id="trL-94-Cku"/>
+                <outlet property="totalTimeValueLabel" destination="8qk-5J-vrx" id="CXI-Yf-5SL"/>
+            </connections>
+            <point key="canvasLocation" x="324" y="-9"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chronic_logo" width="250" height="250"/>
+    </resources>
+</document>

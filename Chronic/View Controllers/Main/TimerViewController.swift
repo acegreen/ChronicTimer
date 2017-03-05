@@ -23,6 +23,7 @@ import LaunchKit
 import BubbleTransition
 import PureLayout
 import Crashlytics
+import MZFormSheetPresentationController
 
 protocol TimerVCDelegate {
     func timerDidBegin(timer: Timer)
@@ -206,13 +207,19 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         workout.routineEndDate = Date()
         print("end time \(workout.routineEndDate)")
         
-        // Complete workout if .Run 
+        // Complete workout if .Run  and present share card
         if workout.workoutType == .run && workout.workoutState != .preRun {
             workout.workoutState = Workout.WorkoutState.completed
+            presentShareCard()
         }
         
         // End the workout session 
-        workout.nsUserActivity?.invalidate() 
+        workout.nsUserActivity?.invalidate()
+        
+        // take a screenshot of map if workout type is run - for share feature
+        if workout.workoutType == .run {
+            workout.mapImage = mapView.takeScreenshot()
+        }
             
         // Set Alert if in background
         if UIApplication.shared.applicationState == UIApplicationState.background {
@@ -403,6 +410,10 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                         
                         self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
                         
+                    } else if workout.totalTime >= 60 {
+                    
+                        presentShareCard()
+
                     } else {
                         
                         self.displayInterstitialAds()
@@ -1007,6 +1018,26 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 }
             })
         })
+    }
+    
+    func presentShareCard() {
+        
+//        guard workout.totalTime >= 60 else { return }
+        
+        let shareWorkoutStoryboard = UIStoryboard(name: "ShareWorkout", bundle: nil)
+        let viewController = shareWorkoutStoryboard.instantiateViewController(withIdentifier: "ShareWorkoutViewController") as! ShareWorkoutViewController
+        viewController.workout = workout
+
+        let formSheetController = MZFormSheetPresentationViewController(contentViewController: viewController)
+        
+        formSheetController.contentViewControllerTransitionStyle = .slideAndBounceFromLeft
+        formSheetController.presentationController?.shouldCenterVertically = true
+        formSheetController.presentationController?.shouldUseMotionEffect = true
+        formSheetController.presentationController?.isTransparentTouchEnabled = true
+        formSheetController.presentationController?.shouldDismissOnBackgroundViewTap = true
+        formSheetController.presentationController?.contentViewSize = CGSize(width: 350, height: 450)
+        
+        Constants.appDel.window?.rootViewController?.present(formSheetController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
