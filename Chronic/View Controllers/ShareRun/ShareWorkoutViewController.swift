@@ -8,20 +8,23 @@
 
 import Foundation
 import UIKit
+import Charts
 
-class ShareRunViewController:
+class ShareWorkoutViewController:
     UIViewController,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate {
     
     @IBOutlet var segmentedControl: UISegmentedControl!
-    @IBOutlet var shareCardView: ShareCardView!
+    @IBOutlet var shareCardView: UIView!
     @IBOutlet var shareButton: UIButton!
     
     enum ShareMethod {
         case WithPhoto
         case WithPie
     }
+    
+    var workout: Workout!
     
     var removePhotoButtton: UIButton!
     
@@ -31,7 +34,6 @@ class ShareRunViewController:
     var takePhotoButtton: UIButton!
     var photoLibraryButtton: UIButton!
     
-    var shareCardGradientView: UIView!
     var topShaderView: UIView!
     var bottomShaderView: UIView!
     
@@ -45,9 +47,18 @@ class ShareRunViewController:
         initRemovePhotoButton()
         initWorkoutPie()
         initSelfiePhoto()
+        
+        setupWith(workout: workout)
     }
     
-    func refreshWithl(workout: Workout) {
+    func setupWith(workout: Workout) {
+        
+        switch workout.workoutType {
+        case .routine, .quickTimer:
+            setupRoutineUI()
+        case .run:
+            setupRunUI()
+        }
         
 //        self.shareCard.distanceValueLabel.text = distanceViewModel.distanceValue
 //        self.shareCard.distanceUnitLabel.text = distanceViewModel.distanceUnit
@@ -164,9 +175,26 @@ class ShareRunViewController:
         }
     }
     
+    func setupRoutineUI() {
+        let shareRoutineReuseableView = ShareRoutineReusableView.loadViewFromNib() as! ShareRoutineReusableView
+        self.shareCardView.addSubview(shareRoutineReuseableView)
+        shareRoutineReuseableView.autoPinEdgesToSuperviewEdges()
+        
+        guard let routineModel = workout.routineModel else { return }
+        shareRoutineReuseableView.configure(with: routineModel)
+    }
+    
+    func setupRunUI() {
+        let shareRunReuseableView = ShareRunReusableView.loadViewFromNib() as! ShareRunReusableView
+        self.shareCardView.addSubview(shareRunReuseableView)
+        shareRunReuseableView.autoPinEdgesToSuperviewEdges()
+        
+        shareRunReuseableView.configure(with: workout)
+    }
+    
     func setupPieUI() {
         
-        pieChartWidgetView.isHidden = false
+        shareCardView.isHidden = false
         selfieImageView.isHidden = true
         removeShades()
         shareButton.isEnabled = true
@@ -177,14 +205,13 @@ class ShareRunViewController:
     
     func setupPhotoUI() {
         
-        pieChartWidgetView.isHidden = true
+        shareCardView.isHidden = true
         selfieImageView.isHidden = false
         
         if selfieImageView.image == nil || selfieImageView.image == placeholderImage {
             initImageSelectorButtons()
             shareButton.isEnabled = false
         } else {
-            removeBackgroundGradient()
             applyshades()
             removePhotoButtton.isHidden = false
             shareButton.isEnabled = true
@@ -250,7 +277,8 @@ class ShareRunViewController:
     }
     
     func shareButtonPressed(sender: UIButton) {
-        guard let imageToShare = shareCardView.takeSnapshot() else { return }
+        guard let imageToShare = UIImage(named: "ASS") else { return }
+            //shareCardView.takeSnapshot() else { return }
         let textToShare = ""
         
         presentActivityViewController(with: textToShare, and: imageToShare)
@@ -307,27 +335,22 @@ class ShareRunViewController:
     
     func applyImageToView(image: UIImage) {
         selfieImageView.image = image
-        removeBackgroundGradient()
         applyshades()
         removeImageSelectorButtons()
         removePhotoButtton.isHidden = false
         shareButton.isEnabled = true
     }
     
-    func removeBackgroundGradient() {
-        shareCardGradientView.removeFromSuperview()
-    }
-    
     func applyshades() {
         
         if !didApplyShades {
-            topShaderView = shareCardView.applyGradient(Gradients.shareCardTopShader,
-                                                        height: shareCardView.topStackView.frame.maxY + 20,
-                                                        shouldOffsetStatusbar: false)
-            bottomShaderView = shareCardView.applyGradient(Gradients.shareCardBottomShader,
-                                                        height: shareCardView.frame.maxY - shareCardView.bottomStackViewSeparatorView.frame.minY + 20,
-                                                        withOffset: shareCardView.bottomStackViewSeparatorView.frame.minY - 20,
-                                                        shouldOffsetStatusbar: false)
+//            topShaderView = shareCardView.applyGradient(Gradients.shareCardTopShader,
+//                                                        height: shareCardView.topStackView.frame.maxY + 20,
+//                                                        shouldOffsetStatusbar: false)
+//            bottomShaderView = shareCardView.applyGradient(Gradients.shareCardBottomShader,
+//                                                        height: shareCardView.frame.maxY - shareCardView.bottomStackViewSeparatorView.frame.minY + 20,
+//                                                        withOffset: shareCardView.bottomStackViewSeparatorView.frame.minY - 20,
+//                                                        shouldOffsetStatusbar: false)
             didApplyShades = true
         }
     }
