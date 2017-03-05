@@ -62,6 +62,10 @@ class Constants {
         return "\(input)\r\n\(key): \(payload[key]!)</br>"
     })
     
+    struct ChronicFonts {
+        static let regular: UIFont = UIFont(name: "HelveticaNeue", size: 20)!
+    }
+    
     static let chronicColor: UIColor = UIColor(red: 92/255, green: 92/255, blue: 102/255, alpha: 1.0)
     static let chronicGreen: UIColor = UIColor(red: 0/255, green: 255/255, blue: 0/255, alpha: 1.0)
     

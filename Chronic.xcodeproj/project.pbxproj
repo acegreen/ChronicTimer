@@ -97,6 +97,9 @@
 		236B0AE01D7CC5E40055C754 /* SiriIntentUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 236B0AD41D7CC5E40055C754 /* SiriIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		236B0AE31D7CC5E40055C754 /* SiriIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 236B0ACB1D7CC5E30055C754 /* SiriIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		236B0AEC1D7CEE8F0055C754 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236B0AEB1D7CEE8F0055C754 /* Intents.framework */; };
+		236E388D1E6C4E7000978795 /* ShareRun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236E388C1E6C4E7000978795 /* ShareRun.storyboard */; };
+		236E38901E6C50FE00978795 /* ShareRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E388F1E6C50FE00978795 /* ShareRunViewController.swift */; };
+		236E38941E6C538100978795 /* ShareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E38931E6C538100978795 /* ShareCardView.swift */; };
 		23733C0F1DBD10A200E2BD7A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23733C0E1DBD10A200E2BD7A /* CoreMotion.framework */; };
 		237518601D7F53FD0037040F /* ChronicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385C1D7E79FD005C999D /* ChronicKit.framework */; };
 		237525C51BD6838200E667D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 237525C41BD6838100E667D2 /* HealthKit.framework */; };
@@ -421,6 +424,9 @@
 		236B0ADD1D7CC5E40055C754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236B0AEB1D7CEE8F0055C754 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		236B0AF21D7E00B60055C754 /* SiriIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SiriIntent.entitlements; sourceTree = "<group>"; };
+		236E388C1E6C4E7000978795 /* ShareRun.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShareRun.storyboard; sourceTree = "<group>"; };
+		236E388F1E6C50FE00978795 /* ShareRunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareRunViewController.swift; sourceTree = "<group>"; };
+		236E38931E6C538100978795 /* ShareCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareCardView.swift; path = "../View Controllers/ShareRun/ShareCardView.swift"; sourceTree = "<group>"; };
 		23733C0E1DBD10A200E2BD7A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		237525C41BD6838100E667D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		2375A5A41D459D9A00DCA06C /* Pods_Chronic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Chronic.framework; path = "../../../Library/Developer/Xcode/DerivedData/Chronic-bjuyftuhdmnbqtfplqrzqehfdafu/Build/Products/Debug-iphonesimulator/Pods_Chronic.framework"; sourceTree = "<group>"; };
@@ -844,6 +850,7 @@
 				231CE07C1CF1FB940095E607 /* CustomAdView.swift */,
 				234954331D565EE7007B053A /* TextField.swift */,
 				231152A71D7A1679003938E4 /* InAppPurchaseReusableView.swift */,
+				236E38931E6C538100978795 /* ShareCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -930,6 +937,15 @@
 			path = SiriIntentUI;
 			sourceTree = "<group>";
 		};
+		236E388E1E6C50FE00978795 /* ShareRun */ = {
+			isa = PBXGroup;
+			children = (
+				236E388F1E6C50FE00978795 /* ShareRunViewController.swift */,
+			);
+			name = ShareRun;
+			path = "View Controllers/ShareRun";
+			sourceTree = "<group>";
+		};
 		2375AC631DBFA3CD00322285 /* AdColony */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,6 +993,7 @@
 				2328E4771AC03136009A8C46 /* Main.storyboard */,
 				2348A9191D7B5C560080402F /* Onboarding.storyboard */,
 				2348A9261D7C647D0080402F /* Feedback.storyboard */,
+				236E388C1E6C4E7000978795 /* ShareRun.storyboard */,
 				231152A91D7A3B28003938E4 /* InAppPurchaseReusableView.xib */,
 			);
 			path = Storyboards;
@@ -1041,6 +1058,7 @@
 				238C1AA01C8B65C6009F9CC1 /* Main */,
 				237B108A1C265A9000D52713 /* Onboarding */,
 				2348A9371D7C6F3D0080402F /* Feedback */,
+				236E388E1E6C50FE00978795 /* ShareRun */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -1600,7 +1618,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic.xcodeproj.rollouttemp" */;
+			buildConfigurationList = 23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1691,6 +1709,7 @@
 				2315CD121D7EE8D400372228 /* LICENSE in Resources */,
 				232EDE3B1C1A1823007D0103 /* KaushanScript.ttf in Resources */,
 				2348A9241D7C647D0080402F /* Feedback.storyboard in Resources */,
+				236E388D1E6C4E7000978795 /* ShareRun.storyboard in Resources */,
 				2396A6A51B815B9300E6A55F /* Beep.wav in Resources */,
 				2315CD1B1D7EE8D400372228 /* SARate.podspec in Resources */,
 				2315CD191D7EE8D400372228 /* star.png in Resources */,
@@ -1906,12 +1925,14 @@
 				23639B381DC9895C001DB128 /* README.md in Sources */,
 				23639B341DC9895C001DB128 /* ChartboostInterstitialCustomEvent.m in Sources */,
 				237B106C1C1F1A4F00D52713 /* HealthKitHelper.swift in Sources */,
+				236E38901E6C50FE00978795 /* ShareRunViewController.swift in Sources */,
 				235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */,
 				2315CD141D7EE8D400372228 /* iRate.m in Sources */,
 				2375AC781DBFA3CD00322285 /* AdColonyRewardedVideoCustomEvent.m in Sources */,
 				2375AC741DBFA3CD00322285 /* AdColonyCustomEvent.m in Sources */,
 				237B108D1C265A9000D52713 /* OBNotificationViewController.swift in Sources */,
 				238C1AD61C8B70EF009F9CC1 /* ExpandingCell.swift in Sources */,
+				236E38941E6C538100978795 /* ShareCardView.swift in Sources */,
 				234953FF1D564174007B053A /* Functions.swift in Sources */,
 				2356C4571DCA15A60007F43B /* README.md in Sources */,
 				23B83CC71DBD0DD300C1736C /* README.md in Sources */,
@@ -2560,7 +2581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic.xcodeproj.rollouttemp" */ = {
+		23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23AF7DF81AC02E2900AA3FC7 /* Debug */,
