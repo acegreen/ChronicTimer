@@ -33,9 +33,10 @@ class Constants {
     static let app = UIApplication.shared
     static let appDel: AppDelegate = Constants.app.delegate as! AppDelegate
     static let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
+    static let feedbackStoryboard = UIStoryboard(name: "Feedback", bundle: nil)
+    static let shareWorkoutStoryboard = UIStoryboard(name: "ShareWorkout", bundle: nil)
+
     static let payloadShort = "Version: \(AppVersion) (\(BundleVersion)) \n Copyright © 2016"
-    
     static let payload = [ "BundleID" : infoDict!["CFBundleIdentifier"]!,
                     "AppVersion" : AppVersion,
                     "BundleVersion" : BundleVersion,
@@ -75,18 +76,6 @@ class Constants {
     static let localizedPrefsFile: URL = Bundle.main.url(forResource: "LocalizedPreferences", withExtension: "plist")!
     static let localizedPrefs: [String : Any] = NSDictionary(contentsOf: localizedPrefsFile) as! [String : Any]
 
-    static var timer = Timer()
-    
-    static var timerSound: String = "Text-To-Speech"
-    static var timerVolume: Float!
-    static var enableDeviceSleepState: Bool = false
-    static var runInBackgroundState: Bool = false
-    static var timeRemainingFeedbackState: Bool = true
-    static var countdownTime: Int = 3
-    static var notificationReminderState: Bool = false
-    
-    static var QuickTimerTime: Int = 60
-    
     static let keychain = Keychain(service: "AG.Chronic")
     
     static let proVersionKey: String = "chronic.iap.proversion"
@@ -100,7 +89,20 @@ class Constants {
     static let iapUltimatePackageKey: String = "chronic.iap.ultimate"
     static let donate99Key: String = "chronic.iap.donate0.99"
     
-    static let kiipMomentId:String = "Chronic_workout_complete"
+    static let kiipMomentId: String = "Chronic_workout_complete"
+
+    static var lastWorkout: Workout?
+    static var timer = Timer()
+    
+    static var timerSound: String = "Text-To-Speech"
+    static var timerVolume: Float!
+    static var enableDeviceSleepState: Bool = false
+    static var runInBackgroundState: Bool = false
+    static var timeRemainingFeedbackState: Bool = true
+    static var countdownTime: Int = 3
+    static var notificationReminderState: Bool = false
+    
+    static var QuickTimerTime: Int = 60
     
     static let healtKitAuthorized: Bool = false
     

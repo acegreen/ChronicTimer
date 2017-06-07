@@ -6,9 +6,6 @@
 //  Copyright © 2015 Ace Green. All rights reserved.
 //
 
-// Exclude file from rollout
-// ROLLOUT_EXCLUDE_SWIFT_FILE_INSTRUMENTATION
-
 import Foundation
 import UIKit
 import StoreKit
@@ -121,19 +118,6 @@ public extension UIImage {
     }
 }
 
-extension UIViewController {
-    
-    func fixIOS9PopOverAnchor(_ segue:UIStoryboardSegue?) {
-        
-        guard #available(iOS 9.0, *) else { return }
-        if let popOver = segue?.destination.popoverPresentationController,
-            let anchor  = popOver.sourceView
-            , popOver.sourceRect == CGRect()
-                && segue!.source === self
-        { popOver.sourceRect = anchor.bounds }
-    }       
-}
-
 extension SKProduct {
     
     func localizedPrice() -> String {
@@ -239,6 +223,37 @@ extension Dimmable where Self: UIViewController {
                     dimView.removeFromSuperview()
             })
         }
+    }
+}
+
+extension UIViewController {
+    
+    func fixIOS9PopOverAnchor(_ segue:UIStoryboardSegue?) {
+        
+        guard #available(iOS 9.0, *) else { return }
+        if let popOver = segue?.destination.popoverPresentationController,
+            let anchor  = popOver.sourceView
+            , popOver.sourceRect == CGRect()
+                && segue!.source === self
+        { popOver.sourceRect = anchor.bounds }
+    }
+}
+
+extension UIApplication {
+    
+    class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(presented)
+        }
+        return base
     }
 }
 

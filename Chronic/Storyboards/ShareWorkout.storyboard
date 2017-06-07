@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IEs-6A-y4g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IEs-6A-y4g">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,21 +26,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="450"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tcx-U6-Yj6">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AWI-1W-msZ">
                                 <rect key="frame" x="0.0" y="20" width="350" height="29"/>
                                 <segments>
-                                    <segment title="Pie"/>
-                                    <segment title="Photo"/>
+                                    <segment title="Workout"/>
+                                    <segment title="Image"/>
                                 </segments>
                                 <color key="tintColor" red="0.35294117650000001" green="0.83137254900000002" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="segementedControlChangedValue:" destination="IEs-6A-y4g" eventType="valueChanged" id="u3d-i3-ODD"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XjS-Xw-MJj">
                                 <rect key="frame" x="0.0" y="65" width="350" height="320"/>
@@ -72,14 +67,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Tcx-U6-Yj6" secondAttribute="trailing" id="1bX-vZ-NE1"/>
                             <constraint firstItem="XjS-Xw-MJj" firstAttribute="leading" secondItem="9kM-mI-2BS" secondAttribute="leading" id="6UB-nC-NWN"/>
+                            <constraint firstItem="AWI-1W-msZ" firstAttribute="leading" secondItem="9kM-mI-2BS" secondAttribute="leading" id="7xX-RT-hIN"/>
                             <constraint firstAttribute="trailing" secondItem="XjS-Xw-MJj" secondAttribute="trailing" id="A1F-WP-ED8"/>
                             <constraint firstItem="1AR-7I-SHU" firstAttribute="top" secondItem="eWG-m5-Biw" secondAttribute="bottom" id="EFx-wR-ZYD"/>
                             <constraint firstAttribute="trailing" secondItem="eWG-m5-Biw" secondAttribute="trailing" id="Ep5-fQ-iec"/>
-                            <constraint firstItem="Tcx-U6-Yj6" firstAttribute="top" secondItem="frQ-Vf-3A8" secondAttribute="bottom" id="KIF-HE-W8S"/>
                             <constraint firstItem="eWG-m5-Biw" firstAttribute="leading" secondItem="9kM-mI-2BS" secondAttribute="leading" id="R3J-0Y-6ry"/>
-                            <constraint firstItem="Tcx-U6-Yj6" firstAttribute="leading" secondItem="9kM-mI-2BS" secondAttribute="leading" id="ofW-Kz-vSn"/>
+                            <constraint firstAttribute="trailing" secondItem="AWI-1W-msZ" secondAttribute="trailing" id="WFO-Yw-9GS"/>
+                            <constraint firstItem="AWI-1W-msZ" firstAttribute="top" secondItem="frQ-Vf-3A8" secondAttribute="bottom" id="lsU-mE-x4P"/>
                             <constraint firstItem="XjS-Xw-MJj" firstAttribute="centerY" secondItem="9kM-mI-2BS" secondAttribute="centerY" id="sSF-kn-GGI"/>
                         </constraints>
                     </view>
@@ -88,7 +83,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="350" height="450"/>
                     <connections>
-                        <outlet property="segmentedControl" destination="Tcx-U6-Yj6" id="LRK-pJ-dTq"/>
+                        <outlet property="segmentedControl" destination="AWI-1W-msZ" id="dsv-SK-6Ym"/>
                         <outlet property="shareButton" destination="eWG-m5-Biw" id="mxS-3X-f1D"/>
                         <outlet property="shareCardView" destination="XjS-Xw-MJj" id="bcb-wA-uOG"/>
                     </connections>

@@ -20,9 +20,9 @@ class ShareRoutineReusableView: UIView {
     @IBOutlet weak var topStackView: UIStackView!
     
     var routine: RoutineModel!
-    var barPoints: [String]!
-    var barValues: [Double]!
-    var barColors: [UIColor]!
+    var barPoints = [String]()
+    var barValues = [Double]()
+    var barColors = [UIColor]()
     
     static func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: ShareRoutineReusableView.self)
@@ -36,9 +36,9 @@ class ShareRoutineReusableView: UIView {
         self.routine = routine
         self.totalTimeValueLabel.text = Functions.timeStringFrom(time: Int(routine.totalRoutineTime))
         
-        barPoints = [String]()
-        barValues = [Double]()
-        barColors = [UIColor]()
+        barPoints.removeAll()
+        barValues.removeAll()
+        barColors.removeAll()
         
         let (routineStages, _) = Functions.makeRoutineArray(routine: routine)
         
@@ -50,8 +50,8 @@ class ShareRoutineReusableView: UIView {
             barValues.append(currentTimerDict["Time"] as! Double)
             barColors.append((NSKeyedUnarchiver.unarchiveObject(with: currentTimerDict["Color"] as! Data) as! UIColor))
         }
-        
-        self.setupPieChart(barPoints, values: barValues)
+    
+        setupPieChart(barPoints, values: barValues)
     }
     
     func setupPieChart(_ dataPoints: [String], values: [Double]) {

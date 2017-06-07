@@ -25,11 +25,19 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol FBNativeAdDelegate;
 @class FBAdImage;
 
+/**
+ Determines what parts of a native ad's content are cached through FBMediaView
+ */
 typedef NS_OPTIONS(NSInteger, FBNativeAdsCachePolicy) {
+    /// No ad content is cached
     FBNativeAdsCachePolicyNone = 1 << 0,
+    /// Icon is cached
     FBNativeAdsCachePolicyIcon = 1 << 1,
+    /// Cover image is cached
     FBNativeAdsCachePolicyCoverImage = 1 << 2,
+    /// Video is cached
     FBNativeAdsCachePolicyVideo = 1 << 3,
+    /// All content is cached
     FBNativeAdsCachePolicyAll = FBNativeAdsCachePolicyCoverImage | FBNativeAdsCachePolicyIcon | FBNativeAdsCachePolicyVideo,
 };
 
@@ -72,6 +80,10 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
   Typed access to the ad cover image creative. See `FBAdImage` for details.
  */
 @property (nonatomic, strong, readonly, nullable) FBAdImage *coverImage;
+/**
+  Typed access to the body raw untruncated text, usually a longer description of the ad. Note, this method always returns untruncated text, as opposed to -(NSString *) body.
+ */
+@property (nonatomic, copy, readonly, nullable) NSString *rawBody;
 /**
   Typed access to the body text, usually a longer description of the ad.
  */
@@ -143,8 +155,6 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 @end
 
 /**
- @protocol
-
   The methods declared by the FBNativeAdDelegate protocol allow the adopting delegate to respond to messages
  from the FBNativeAd class and thus respond to operations such as whether the native ad has been loaded.
  */
@@ -196,7 +206,9 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
   Represents the Facebook ad star rating, which contains the rating value and rating scale.
  */
 FB_EXPORT struct FBAdStarRating {
+    /// The value of the star rating, X in X/5
     CGFloat value;
+    // The total possible star rating, Y in 4/Y
     NSInteger scale;
 } FBAdStarRating;
 

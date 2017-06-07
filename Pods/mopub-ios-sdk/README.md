@@ -6,7 +6,7 @@ Sign up for an account at [http://app.mopub.com/](http://app.mopub.com/).
 
 ## Need Help?
 
-You can find integration documentation on our [wiki](https://github.com/mopub/mopub-ios-sdk/wiki/Getting-Started) and additional help documentation on our [developer help site](http://dev.twitter.com/mopub).
+You can find integration documentation on our [wiki](https://github.com/mopub/mopub-ios-sdk/wiki/Getting-Started) and additional help documentation on our [developer help site](https://www.mopub.com/resources/docs).
 
 To file an issue with our team visit the [MoPub Forum](https://twittercommunity.com/c/fabric/mopub) or email [support@mopub.com](mailto:support@mopub.com).
 
@@ -19,12 +19,12 @@ The MoPub SDK is distributed as source code that you can include in your applica
 - **[MoPub Base SDK.zip](http://bit.ly/2bH8ObO)**
 
   Includes everything you need to serve HTML, MRAID, and Native MoPub advertisements.  Third party ad networks are not included.
-  
+
 - **[MoPub Base SDK Excluding Native.zip](http://bit.ly/2bCCgRw)**
 
   Includes everything you need to serve HTML and MRAID advertisements.  Third party ad networks and Native MoPub advertisements are not included.
 
-The current version of the SDK is 4.11.1
+The current version of the SDK is 4.14.0
 
 ## Integrate
 
@@ -36,9 +36,18 @@ More detailed class documentation is available in the repo under the `ClassDocum
 
 Please view the [changelog](https://github.com/mopub/mopub-ios-sdk/blob/master/CHANGELOG.md) for details.
 
-- **App Transport Security Updates**
-	- Checks for "NSAllowsArbitraryLoadsInMedia" were changed to "NSAllowsArbitraryLoadsForMedia", per updated Apple documentation
-	- Resolves issue in which explicitly using NSAllowsArbitraryLoadsForMedia or NSAllowsArbitraryLoadsInWebContent causes HTTP clickthroughs not to resolve on iOS 10.1 or higher
+- **Features**
+    - For Rewarded ads, the client-side callback will now be invoked when using server-side rewarding.
+    - Non-mediated interstitial, rewarded, and native ad placer ads will expire within 4 hours.
+
+- **Bug Fixes**
+    - Fix old custom events that use the wrong native renderer.
+    - Replace usage of typeof with __typeof__ for C99 and C11 compliance.
+    - Fix CFBridgingRetain casting bug.
+    - Native ad impression tracker will now fire while scrolling.
+    - Fix HTML click tracker to fire when using window.location and window.open.
+
+See the [Getting Started Guide](https://github.com/mopub/mopub-ios-sdk/wiki/Getting-Started#app-transport-security-settings) for instructions on setting up ATS in your app.  
 
 
 ### IMPORTANT 4.0 UPGRADE INSTRUCTIONS

@@ -19,6 +19,7 @@
 #import <UIKit/UIKit.h>
 
 #import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBMediaViewVideoRenderer.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -48,9 +49,14 @@ FB_CLASS_EXPORT
 @property (nonatomic, strong, nonnull) FBNativeAd *nativeAd;
 
 /**
+ A custom FBMediaViewVideoRenderer instance, used to override the default user experience of video ads.
+ */
+@property (nonatomic, strong, nonnull) FBMediaViewVideoRenderer *videoRenderer;
+
+/**
   The current volume of the media view, ranging from 0.0 through 1.0.
  */
-@property (nonatomic, assign, readonly) float volume;
+@property (nonatomic, assign, readonly) float volume FB_DEPRECATED;
 
 /**
   Enables or disables autoplay for some types of media. Defaults to YES.
@@ -58,7 +64,7 @@ FB_CLASS_EXPORT
 @property (nonatomic, assign, getter=isAutoplayEnabled) BOOL autoplayEnabled;
 
 /**
- The aspect ratio of the media view visual content. Returns a CGFloat ranging from 0.0 to 1.0. Returns 0.0 if no ad is currently loaded.
+ The aspect ratio of the media view visual content. Returns a positive CGFloat, or 0.0 if no ad is currently loaded.
  */
 @property (nonatomic, assign, readonly) CGFloat aspectRatio;
 
@@ -78,8 +84,6 @@ FB_CLASS_EXPORT
 @end
 
 /**
- @protocol
-
   The methods declared by the FBMediaViewDelegate protocol allow the adopting delegate to respond to messages from the FBMediaView class and thus respond to operations such as whether the media content has been loaded.
  */
 @protocol FBMediaViewDelegate <NSObject>

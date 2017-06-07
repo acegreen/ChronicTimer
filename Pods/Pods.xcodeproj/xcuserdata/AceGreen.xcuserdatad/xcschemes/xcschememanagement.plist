@@ -114,6 +114,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Whisper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>mopub-ios-sdk.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -128,6 +133,11 @@
 			<true/>
 		</dict>
 		<key>2A52779AA0BD86BA0CEB8753126ED2FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35243D63F91B339C83DF1132F612362A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,22 +157,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4646576BAE3511AC833E41713263F74A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>46739CEE041522D6DDF4F68C7C06C732</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>48016C9177BB4C347A57A9BE8956D87C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>518E5A122F8BE5C56262F616108E98A2</key>
+		<key>536E9A83EF12B73E5C85D1533F19F171</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>51CB0AF616C6306147B99C320EB6D3ED</key>
+		<key>5A6C675F62C406DEDA405CA1D5A9A4E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5A4D211EA721AC73F5A6DDC92980939F</key>
+		<key>6EE458AB7C9239893E5C6E840C0BF9B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,7 +197,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D8A417113FE973AF5ACB7F4878E995C</key>
+		<key>966BE15BC6D37DFA888EBCBDAED94F79</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,27 +207,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F3D87F439055380F6449CB0D92A8929</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9F64F691C3C68E6FDA6FB1E22434EBA5</key>
+		<key>A406E78BB0A2D11548A4B5AB13C56142</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>A760316124FD796EF09C09479E9F0021</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B60742998EEB08D41262197A7B027940</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B6C0F023B0EF5FB4A8D9F71990E1F195</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -227,12 +232,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EAD404C65741C4F45853736BC570557D</key>
+		<key>ECD56B8BE8FF2FDB1B7CD1FEF8877D29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F307B842FF76B2DE6C55DB67C0885325</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3E577EBAAEE8D4DA0B3FEBE1212E5FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

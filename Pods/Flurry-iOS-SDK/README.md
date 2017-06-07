@@ -37,12 +37,14 @@ end
 ```
 
 
+To use FlurrySDK for tvOS apps:
+
+```
+target :"Your TVOS Application" do
+pod 'Flurry-iOS-SDK/FlurryTVOS' #tVOS Analytics Pod'
+platform :tvos, '9.0'
+end
+```
+
 Don't forget to read how to track events correctly in Apple Watch Extensions  in FlurryiOSAnalyticsREADMExx.pdf  
 
-
-To enable Tumblr in-app sharing: 
-```
-pod 'Flurry-iOS-SDK/FlurrySDK'
-pod 'Flurry-iOS-SDK/FlurryAds'
-pod 'Flurry-iOS-SDK/TumblrAPI'
-```

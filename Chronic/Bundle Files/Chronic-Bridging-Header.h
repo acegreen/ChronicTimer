@@ -4,7 +4,6 @@
 
 #import "SARate.h"
 #import "iRate.h"
-#import <Rollout/Rollout.h>
 #import "iCarousel.h"
 
 //#import <AdColony/AdColony.h>

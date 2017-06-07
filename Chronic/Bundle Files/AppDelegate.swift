@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         //configure
         SARate.sharedInstance().minAppStoreRaiting = 4
-        SARate.sharedInstance().eventsUntilPrompt = 10
+        SARate.sharedInstance().eventsUntilPrompt = 7
         SARate.sharedInstance().daysUntilPrompt = 7
         SARate.sharedInstance().remindPeriod = 0
         
@@ -100,9 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         LaunchKit.launch(withToken: "FYwLCkgJpT_r8kEp1O_-PSg-UnhaD3B7PMPxkG5qIIfq")
         LaunchKit.sharedInstance().debugAlwaysPresentAppReleaseNotes = true
         LaunchKit.sharedInstance().debugAppUserIsAlwaysSuper = true
-        
-        // Initialize Rollout
-        Rollout.setup(withKey: "56932e164e1e847211ffe9ee")
         
         // Register for Google App Indexing
         //GSDAppIndexing.sharedInstance().registerApp(iTunesID)
@@ -153,10 +150,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // Request upgrade products
         IAPHelper.sharedInstance.requestProducts(displayAlert: false, nil)
-        
-        // increment event count
-        SARate.sharedInstance().eventCount += 1
-        print("eventCount", SARate.sharedInstance().eventCount)
         
         // load storyboard
         if !Constants.userDefaults.bool(forKey: "ONBOARDING_SHOWN") {
@@ -400,14 +393,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     // MARK: - TimeVCDelegate
     
-    func timerDidBegin(timer: Timer) {
-        print("timerDidBegin")
+    func workoutDidBegin(timer: Timer) {
+        print("workoutDidBegin")
     }
     
-    func timerDidEnd(timer: Timer) {
+    func workoutDidEnd(timer: Timer) {
         endBackgroundTask()
         
-        print("timerDidEnd")
+        print("workoutDidEnd")
+        
+        guard let lastWorkout = Constants.lastWorkout, lastWorkout.timeElapsed >= 60 else { return }
+        
+        // Ask for feedback or show ad
+        if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
+            
+            Functions.presentFeedback()
+            
+        } else {
+            
+            self.displayInterstitialAds()
+        }
+        
+//        else {
+//            let lastWorkout = Constants.lastWorkout!
+//            Functions.presentShareCard(lastWorkout: lastWorkout)
+//        }
     }
     
     // MARK: - Helper Functions

@@ -515,6 +515,10 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+-----
+
+As of April 5, 2017, Parse, LLC has transferred this code to the parse-community organization, and will no longer be contributing to or distributing this code. 
+
 
 ## ParseFacebookUtilsV4
 
@@ -580,10 +584,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
-## Rollout.io
-
-See http://www.rollout.io/
 
 ## SDVersion
 
@@ -709,6 +709,32 @@ Tracking Data. Developer acknowledges that unique identifiers and other technolo
 Payment Amounts. Subject to the terms and conditions of this Agreement, Vungle shall pay to Developer amounts calculated in accordance with the applicable insertion order entered into between the parties and the definitions of CPM and Net Revenue set forth herein. Developer acknowledges that all payments hereunder shall be based on the impression counts used by the applicable Advertisers to pay Vungle. For the avoidance of doubt, all payments hereunder are based on advertisement requests from the Developer Apps that are actually fulfilled with a Vungle Advertisement, except as expressly provided in this Agreement. All amounts received from activities Vungle deems to be fraudulent may be refunded to Advertisers in Vungle’s sole discretion.
 Payment Terms. Vungle agrees to pay all amounts due hereunder within 60 days after the last day of the month in which Vungle received the corresponding payment from the Advertiser, provided that no check will be issued for any amount less than $50 U.S. If there are any payment fees from the receiving bank, immediate bank or from paypal, Developer will be responsible for these fees. All unpaid earnings will rollover to the next pay period. All payments will be made in U.S. dollars ($U.S.). Vungle may deduct from such payments any withholding, sales, value added, and other applicable taxes (other than its net income taxes) which Vungle is required by law to deduct. Developer is responsible for paying any other taxes, duties, or fees for which Developer is legally responsible.
  
+
+
+## Whisper
+
+Licensed under the **MIT** license
+
+> Copyright (c) 2015 Hyper Interaktiv AS
+>
+> Permission is hereby granted, free of charge, to any person obtaining
+> a copy of this software and associated documentation files (the
+> "Software"), to deal in the Software without restriction, including
+> without limitation the rights to use, copy, modify, merge, publish,
+> distribute, sublicense, and/or sell copies of the Software, and to
+> permit persons to whom the Software is furnished to do so, subject to
+> the following conditions:
+>
+> The above copyright notice and this permission notice shall be
+> included in all copies or substantial portions of the Software.
+>
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+> MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+> IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+> CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+> TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+> SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ## mopub-ios-sdk
