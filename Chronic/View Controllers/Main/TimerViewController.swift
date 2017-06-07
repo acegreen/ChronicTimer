@@ -8,26 +8,18 @@
 
 import UIKit
 import ChronicKit
-import QuartzCore
-import CoreFoundation
-import CoreGraphics
 import MapKit
-import iAd
 import HealthKit
-import Parse
 import Fabric
 import Crashlytics
 import MoPub
-import AMPopTip
 import LaunchKit
-import BubbleTransition
 import PureLayout
 import Crashlytics
-import MZFormSheetPresentationController
 
 protocol TimerVCDelegate {
-    func timerDidBegin(timer: Timer)
-    func timerDidEnd(timer: Timer)
+    func workoutDidBegin(timer: Timer)
+    func workoutDidEnd(timer: Timer)
 }
 
 class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
@@ -80,7 +72,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     var threeMinuteCounterLabel: UILabel!
     var threeMinuteCounterVisualEffectView: UIVisualEffectView!
-    let transition = BubbleTransition()
     
     var adBannerView: CustomAdView?
     var mopubBanner: MPAdView?
@@ -200,9 +191,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         // Stop timer
         Constants.timer.invalidate()
         
-        // Send to delegate
-        self.delegate.timerDidEnd(timer: Constants.timer)
-        
         // Set end time
         workout.routineEndDate = Date()
         print("end time \(workout.routineEndDate)")
@@ -210,8 +198,10 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         // Complete workout if .Run  and present share card
         if workout.workoutType == .run && workout.workoutState != .preRun {
             workout.workoutState = Workout.WorkoutState.completed
-            presentShareCard()
         }
+        
+        // Store lastWorkout
+        Constants.lastWorkout = workout
         
         // End the workout session 
         workout.nsUserActivity?.invalidate()
@@ -220,7 +210,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         if workout.workoutType == .run {
             workout.mapImage = mapView.takeScreenshot()
         }
+        
+        // Save & log workout
+        if workout.workoutState != .preRun {
             
+            checkSaveWorkout { (complete) in
+            }
+            
+            let applicationState: String = Constants.app.applicationState == .active ? "Active" : "Background"
+            Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.timeElapsed), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "Remove Ads Upgrade Purchased": String(Functions.isRemoveAdsUpgradePurchased()), "App Version": Constants.AppVersion])
+        }
+        
         // Set Alert if in background
         if UIApplication.shared.applicationState == UIApplicationState.background {
             
@@ -240,14 +240,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             NotificationHelper.scheduleNotification(nil, repeatInterval: nil, alertTitle: alertTitle, alertBody: alertBody, sound: "Boxing.wav", identifier: Constants.NotificationIdentifier.WorkoutIdentifier.key())
         }
         
-        // Save & log workout
-        if workout.workoutState != .preRun {
-            
-            checkSaveWorkout { (complete) in
-            }
-            
-            let applicationState: String = Constants.app.applicationState == .active ? "Active" : "Background"
-            Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.timeElapsed), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "Remove Ads Upgrade Purchased": String(Functions.isRemoveAdsUpgradePurchased()), "App Version": Constants.AppVersion])
+        // Send to delegate
+        self.delegate.workoutDidEnd(timer: Constants.timer)
+        
+        // increment event count
+        if workout.timeElapsed >= 60 {
+            SARate.sharedInstance().eventCount += 1
+            print("eventCount", SARate.sharedInstance().eventCount)
         }
         
         // Reset settings to initial state (Just for tidiness)
@@ -404,20 +403,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     
                     // Stop Timer
                     self.stop()
-                    
-                    // Ask for feedback or show ad
-                    if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
-                        
-                        self.performSegue(withIdentifier: "FeedbackSegueIdentifier", sender: self)
-                        
-                    } else if workout.totalTime >= 60 {
-                    
-                        presentShareCard()
-
-                    } else {
-                        
-                        self.displayInterstitialAds()
-                    }
                     
                 } else {
                     
@@ -872,7 +857,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
         
         // Send to delegate
-        self.delegate.timerDidBegin(timer: Constants.timer)
+        self.delegate.workoutDidBegin(timer: Constants.timer)
     }
     
     func startWorkout() {
@@ -1004,13 +989,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 
                 if success {
                     
-                    SweetAlert().showAlert("\(self.workout.workoutType) Saved", subTitle: nil, style: .success)
+                    Functions.presentWhisper(with: "\(self.workout.workoutType) Saved")
                     
                     completion(true)
                     
                 } else if error != nil {
                     
-                    SweetAlert().showAlert("Failed", subTitle: "We were unable to save your \(self.workout.workoutType)", style: .error)
+                    Functions.presentWhisper(with: "We were unable to save your \(self.workout.workoutType)")
                     
                     print("\(error)")
                     
@@ -1020,36 +1005,11 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         })
     }
     
-    func presentShareCard() {
-        
-//        guard workout.totalTime >= 60 else { return }
-        
-        let shareWorkoutStoryboard = UIStoryboard(name: "ShareWorkout", bundle: nil)
-        let viewController = shareWorkoutStoryboard.instantiateViewController(withIdentifier: "ShareWorkoutViewController") as! ShareWorkoutViewController
-        viewController.workout = workout
-
-        let formSheetController = MZFormSheetPresentationViewController(contentViewController: viewController)
-        
-        formSheetController.contentViewControllerTransitionStyle = .slideAndBounceFromLeft
-        formSheetController.presentationController?.shouldCenterVertically = true
-        formSheetController.presentationController?.shouldUseMotionEffect = true
-        formSheetController.presentationController?.isTransparentTouchEnabled = true
-        formSheetController.presentationController?.shouldDismissOnBackgroundViewTap = true
-        formSheetController.presentationController?.contentViewSize = CGSize(width: 350, height: 450)
-        
-        Constants.appDel.window?.rootViewController?.present(formSheetController, animated: true, completion: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "StopWorkoutSegueIdentifier" {
             
             self.stop()
-            
-        } else if segue.identifier == "FeedbackSegueIdentifier" {
-            let controller = segue.destination
-            controller.transitioningDelegate = self
-            controller.modalPresentationStyle = .custom
         }
     }
 }
@@ -1212,23 +1172,5 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
         if (interstitial.ready) {
             interstitial.show(from: self)
         }
-    }
-}
-
-// MARK: - UIViewControllerTransitioningDelegate
-extension TimerViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .present
-        transition.startingPoint = self.view.center
-        transition.bubbleColor = UIColor.goldColor()
-        return transition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .dismiss
-        transition.startingPoint = self.view.center
-        transition.bubbleColor = Constants.chronicColor
-        return transition
     }
 }

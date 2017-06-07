@@ -16,6 +16,8 @@ import SystemConfiguration
 import AVFoundation
 import WatchConnectivity
 import AMPopTip
+import MZFormSheetPresentationController
+import Whisper
 
 class Functions {
     
@@ -535,5 +537,49 @@ class Functions {
         if let controller = storyboard.instantiateInitialViewController() {
             Constants.appDel.window?.rootViewController = controller
         }
+    }
+    
+    // MARK: - Presenting Stuff
+    
+    class func presentWhisper(with title: String) {
+        
+        guard let navigationController = UIApplication.topViewController()?.navigationController else { return }
+        
+        let message = Message(title: title, backgroundColor: Constants.chronicGreen)
+        
+        // Show and hide a message after delay
+        show(whisper: message, to: navigationController, action: .show)
+        
+        // Hide a message
+        hide(whisperFrom: navigationController, after: 5)
+    }
+    
+    class func presentFeedback() {
+        
+        let navigationViewController = Constants.feedbackStoryboard.instantiateViewController(withIdentifier: "FeedbackNavigationController") as! UINavigationController
+        let bubbleTransitionDelegate = BubbleTransitionDelegate()
+        navigationViewController.transitioningDelegate = bubbleTransitionDelegate
+        navigationViewController.modalPresentationStyle = .custom
+        
+        UIApplication.topViewController()?.present(navigationViewController, animated: true, completion: nil)
+    }
+    
+    class func presentShareCard(lastWorkout: Workout) {
+        
+        //        guard workout.totalTime >= 60 else { return }
+        
+        let viewController = Constants.shareWorkoutStoryboard.instantiateViewController(withIdentifier: "ShareWorkoutViewController") as! ShareWorkoutViewController
+        viewController.workout = lastWorkout
+        
+        let formSheetController = MZFormSheetPresentationViewController(contentViewController: viewController)
+        
+        formSheetController.contentViewControllerTransitionStyle = .slideAndBounceFromLeft
+        formSheetController.presentationController?.shouldCenterVertically = true
+        formSheetController.presentationController?.shouldUseMotionEffect = true
+//        formSheetController.presentationController?.isTransparentTouchEnabled = true
+        formSheetController.presentationController?.shouldDismissOnBackgroundViewTap = true
+        formSheetController.presentationController?.contentViewSize = CGSize(width: 350, height: 450)
+        
+        UIApplication.topViewController()?.present(formSheetController, animated: true, completion: nil)
     }
 }

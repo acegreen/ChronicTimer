@@ -15,6 +15,11 @@ class ShareWorkoutViewController:
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate {
     
+    @IBAction func segementedControlChangedValue(_ sender: UISegmentedControl) {
+        selectedMethod()
+        segmentedControlValueDidChange()
+    }
+    
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var shareCardView: UIView!
     @IBOutlet var shareButton: UIButton!
@@ -23,6 +28,9 @@ class ShareWorkoutViewController:
         case WithPhoto
         case WithPie
     }
+    
+    var shareRoutineReuseableView: ShareRoutineReusableView?
+    var shareRunReuseableView: ShareRunReusableView?
     
     var workout: Workout!
     
@@ -45,7 +53,6 @@ class ShareWorkoutViewController:
         super.viewDidLoad()
         
         initRemovePhotoButton()
-        initWorkoutPie()
         initSelfiePhoto()
         
         setupWith(workout: workout)
@@ -59,23 +66,6 @@ class ShareWorkoutViewController:
         case .run:
             setupRunUI()
         }
-        
-//        self.shareCard.distanceValueLabel.text = distanceViewModel.distanceValue
-//        self.shareCard.distanceUnitLabel.text = distanceViewModel.distanceUnit
-//        
-//        self.shareCard.avgPaceValueLabel.text = paceViewModel.paceValue
-//        self.shareCard.avgPaceUnitLabel.text = paceViewModel.paceUnit
-//        
-//        self.shareCard.totalTimeValueLabel.text = durationViewModel.duration
-//        
-//        self.updateSmartZonePie(smartZoneDistribution)
-//        
-//        self.shareCard.rhythmicValueLabel.text = "\(breathingRhythmViewModal.rhytmicPercent)"
-//        self.shareCard.rhythmicUnitLabel.text = "%"
-//        
-//        self.shareCard.hrValueLabel.text = "\(heartRate)"
-//
-//        self.shareCard.caloriesValueLabel.text = "\(numberOfCalories)"
     }
     
     func initRemovePhotoButton() {
@@ -94,7 +84,7 @@ class ShareWorkoutViewController:
         removePhotoButtton.isHidden = true
         self.view.addSubview(removePhotoButtton)
         removePhotoButtton.autoSetDimension(.width, toSize: 110)
-        removePhotoButtton.autoPinEdge(.top, to: .bottom, of: self.segmentedControl, withOffset: 20)
+        removePhotoButtton.autoPinEdge(.top, to: .bottom, of: self.view, withOffset: 20)
         removePhotoButtton.autoPinEdge(toSuperviewEdge: .right, withInset: 20)
     }
     
@@ -150,20 +140,6 @@ class ShareWorkoutViewController:
         takePhotoButtton.autoAlignAxis(.vertical, toSameAxisOf: shareCardView, withOffset: 0)
     }
     
-    func initWorkoutPie() {
-        
-//        let offsetAdjustmentTopBottom: CGFloat = -15
-//        
-//        let pieChartWidget = pieChartVC.smartZoneWidget
-//        pieChartWidgetView = pieChartWidget.view
-//        
-//        shareCard.addSubview(pieChartWidgetView)
-//        pieChartWidgetView.autoPinEdge(.Left, toEdge: .Left, ofView: shareCard)
-//        pieChartWidgetView.autoPinEdge(.Right, toEdge: .Right, ofView: shareCard)
-//        pieChartWidgetView.autoPinEdge(.Top, toEdge: .Top, ofView: shareCard, withOffset: offsetAdjustmentTopBottom)
-//        pieChartWidgetView.autoPinEdge(.Bottom, toEdge: .Bottom, ofView: shareCard)
-    }
-    
     func removeImageSelectorButtons() {
         
         if takePhotoButtton != nil && takePhotoButtton.isDescendant(of: view) {
@@ -176,26 +152,27 @@ class ShareWorkoutViewController:
     }
     
     func setupRoutineUI() {
-        let shareRoutineReuseableView = ShareRoutineReusableView.loadViewFromNib() as! ShareRoutineReusableView
-        self.shareCardView.addSubview(shareRoutineReuseableView)
-        shareRoutineReuseableView.autoPinEdgesToSuperviewEdges()
+        shareRoutineReuseableView = ShareRoutineReusableView.loadViewFromNib() as! ShareRoutineReusableView
+        self.shareCardView.addSubview(shareRoutineReuseableView!)
+        shareRoutineReuseableView!.autoPinEdgesToSuperviewEdges()
         
         guard let routineModel = workout.routineModel else { return }
-        shareRoutineReuseableView.configure(with: routineModel)
+        shareRoutineReuseableView!.configure(with: routineModel)
     }
     
     func setupRunUI() {
-        let shareRunReuseableView = ShareRunReusableView.loadViewFromNib() as! ShareRunReusableView
-        self.shareCardView.addSubview(shareRunReuseableView)
-        shareRunReuseableView.autoPinEdgesToSuperviewEdges()
+        shareRunReuseableView = ShareRunReusableView.loadViewFromNib() as! ShareRunReusableView
+        self.shareCardView.addSubview(shareRunReuseableView!)
+        shareRunReuseableView!.autoPinEdgesToSuperviewEdges()
         
-        shareRunReuseableView.configure(with: workout)
+        shareRunReuseableView!.configure(with: workout)
     }
     
     func setupPieUI() {
-        
-        shareCardView.isHidden = false
+        showWorkoutView(hidden: false)
         selfieImageView.isHidden = true
+        
+        shareCardView.backgroundColor = Constants.chronicColor
         removeShades()
         shareButton.isEnabled = true
         
@@ -204,9 +181,10 @@ class ShareWorkoutViewController:
     }
     
     func setupPhotoUI() {
-        
-        shareCardView.isHidden = true
+        showWorkoutView(hidden: true)
         selfieImageView.isHidden = false
+        
+        shareCardView.backgroundColor = UIColor.clear
         
         if selfieImageView.image == nil || selfieImageView.image == placeholderImage {
             initImageSelectorButtons()
@@ -218,22 +196,23 @@ class ShareWorkoutViewController:
         }
     }
     
+    func showWorkoutView(hidden: Bool) {
+        
+    }
+    
     func selectedMethod() -> ShareMethod {
         
-        let smartZonesSegmentedControlIndex = 0
-        let photoSegmentedControlIndex = 1
-        
         switch(self.segmentedControl.selectedSegmentIndex) {
-        case smartZonesSegmentedControlIndex:
+        case 0:
             return .WithPie
-        case photoSegmentedControlIndex:
+        case 1:
             return .WithPhoto
         default:
             return .WithPie
         }
     }
     
-    func segmentedControlValueDidChange(sender: UISegmentedControl) {
+    func segmentedControlValueDidChange() {
         
         switch(self.selectedMethod()) {
         case .WithPie: setupPieUI()

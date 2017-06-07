@@ -365,7 +365,6 @@
                         <outlet property="rightTopLabel" destination="Cdc-wW-Hzz" id="84F-be-tei"/>
                         <outlet property="stopButton" destination="QQW-sx-1c2" id="vbN-Ha-Jgz"/>
                         <outlet property="topStackView" destination="Sqt-fO-K4I" id="WZW-ff-xp5"/>
-                        <segue destination="Bjn-ZT-CEL" kind="presentation" identifier="FeedbackSegueIdentifier" id="QN4-OZ-0z6"/>
                         <segue destination="yl3-hz-3Af" kind="custom" identifier="PresentPurchaseOptionsSegueIdentifier" customClass="MZFormSheetPresentationViewControllerSegue" id="sRn-OD-oWH"/>
                     </connections>
                 </viewController>
@@ -1340,13 +1339,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="114" height="199"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="yWQ-iz-lvW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="99.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="35"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-GN-I7t">
-                                                            <rect key="frame" x="0.0" y="100" width="114" height="99"/>
+                                                            <rect key="frame" x="0.0" y="99.5" width="114" height="99.5"/>
                                                             <fontDescription key="fontDescription" name="Time-Normal" family="Time" pointSize="70"/>
                                                             <color key="textColor" red="0.43529412150382996" green="0.44313725829124451" blue="0.47450980544090271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1773,14 +1772,6 @@
             </objects>
             <point key="canvasLocation" x="4103" y="2138"/>
         </scene>
-        <!--Feedback-->
-        <scene sceneID="ifG-TG-qNu">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Feedback" id="Bjn-ZT-CEL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="48K-ki-aLM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3774" y="-178"/>
-        </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="Nxq-qW-J31">
             <objects>
@@ -1855,7 +1846,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v7v-b5-daC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ffL-aA-ZpM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ffL-aA-ZpM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078432199999999" green="0.36078432199999999" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1958,7 +1949,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="9p3-Sb-xKX" customClass="MZFormSheetContentSizingNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="khW-20-aWW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="khW-20-aWW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

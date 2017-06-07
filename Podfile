@@ -1,16 +1,19 @@
 use_frameworks!
 
 target 'Chronic' do
-    
-    pod 'DZNEmptyDataSet'
-    pod 'SDVersion'
-    pod 'AMPopTip'
+
+    # Settings
     pod 'LaunchKit'
     pod 'SwiftyJSON'
-    pod 'Rollout.io'
-    pod 'Charts'
-    pod 'PureLayout'
     pod 'ReachabilitySwift'
+    pod 'SDVersion'
+    pod 'PureLayout'    
+
+    # UI
+    pod 'DZNEmptyDataSet'
+    pod 'Charts'
+    pod 'AMPopTip'
+    pod 'Whisper'
     
     # Transitions / Segues
     pod 'BubbleTransition'
@@ -34,10 +37,13 @@ target 'Chronic' do
     pod 'ChartboostSDK'
     pod 'Flurry-iOS-SDK/FlurrySDK'
     pod 'VungleSDK-iOS'
-    #pod 'GreystripeSDK' // installed manually cocoapods not up-to-date
     
+    # Deprecated Frameworks
+    #pod 'GreystripeSDK' // installed manually cocoapods not up-to-date
     #pod 'CNPPopupController'
     #pod 'PermissionScope'
     #pod 'Spring'
     #pod 'ChameleonFramework/Swift'
+    #pod 'Rollout'
+    #pod 'Appsee'
 end
