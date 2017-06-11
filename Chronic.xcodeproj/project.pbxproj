@@ -176,7 +176,7 @@
 		23FF38601D7E7A49005C999D /* ChronicKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385F1D7E7A49005C999D /* ChronicKit.framework */; };
 		23FF38611D7E7A49005C999D /* ChronicKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF385F1D7E7A49005C999D /* ChronicKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		23FFB4FA1E74391B00E8421C /* BubbleTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFB4F91E74391B00E8421C /* BubbleTransitionDelegate.swift */; };
-		C9523FBA47D95FB82C481A9D /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4031A9AA3B001463C0109A24 /* Pods_Chronic.framework */; };
+		8A5302A7AF0AE602BB125F14 /* Pods_Chronic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E62243DCF0730E55AD993D /* Pods_Chronic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -520,8 +520,8 @@
 		23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseNameTableViewCell.swift; sourceTree = "<group>"; };
 		23FF385F1D7E7A49005C999D /* ChronicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChronicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FFB4F91E74391B00E8421C /* BubbleTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransitionDelegate.swift; sourceTree = "<group>"; };
-		4031A9AA3B001463C0109A24 /* Pods_Chronic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		574CEB827F8A6DCBDED6D002 /* Pods-Chronic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.release.xcconfig"; sourceTree = "<group>"; };
+		94E62243DCF0730E55AD993D /* Pods_Chronic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFA6AE49CB5BE02EDB6123B /* Pods-Chronic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chronic/Pods-Chronic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -584,7 +584,7 @@
 				234078751AC030CB006BBD70 /* MediaPlayer.framework in Frameworks */,
 				232614931B30C38000180218 /* CoreTelephony.framework in Frameworks */,
 				234078731AC030B8006BBD70 /* AVFoundation.framework in Frameworks */,
-				C9523FBA47D95FB82C481A9D /* Pods_Chronic.framework in Frameworks */,
+				8A5302A7AF0AE602BB125F14 /* Pods_Chronic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1323,7 +1323,7 @@
 				2301ECB11BE56C1100A65AFD /* CFNetwork.framework */,
 				236B0AEB1D7CEE8F0055C754 /* Intents.framework */,
 				236B0AD51D7CC5E40055C754 /* IntentsUI.framework */,
-				4031A9AA3B001463C0109A24 /* Pods_Chronic.framework */,
+				94E62243DCF0730E55AD993D /* Pods_Chronic.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2075,6 +2075,7 @@
 		23A0E8011B5AEDA700F53E50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Chronic WatchKit Extension/Bundle Files/Chronic WatchKit Extension.entitlements";
@@ -2122,6 +2123,7 @@
 		23A0E8021B5AEDA700F53E50 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Chronic WatchKit Extension/Bundle Files/Chronic WatchKit Extension.entitlements";
@@ -2169,7 +2171,7 @@
 		23A0E8051B5AEDA700F53E50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2196,7 +2198,7 @@
 		23A0E8061B5AEDA700F53E50 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -2329,6 +2331,7 @@
 					"$(PROJECT_DIR)/Frameworks/Fabric/google-ad-mob-7.1",
 					"$(PROJECT_DIR)/ChronicKit",
 					"$(PROJECT_DIR)/Libraries/Fabric",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
 				);
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2348,7 +2351,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = "$(SRCROOT)";
+				SWIFT_EXEC = "$inherited";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2378,6 +2381,7 @@
 					"$(PROJECT_DIR)/Frameworks/Fabric/google-ad-mob-7.1",
 					"$(PROJECT_DIR)/ChronicKit",
 					"$(PROJECT_DIR)/Libraries/Fabric",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
 				);
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2397,7 +2401,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = "$(SRCROOT)";
+				SWIFT_EXEC = "$inherited";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
