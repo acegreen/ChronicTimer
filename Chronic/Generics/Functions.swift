@@ -470,21 +470,30 @@ class Functions {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "HideStarButton"), object: nil)
     }
     
-    class func showPopTipOnceForKey(_ key: String, userDefaults: UserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: AMPopTipDirection = .down, color: UIColor = .darkGray) -> AMPopTip? {
+    class func showPopTipOnceForKey(_ key: String, userDefaults: UserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: PopTipDirection = .down, color: UIColor = .darkGray) -> PopTip? {
         if (!userDefaults.bool(forKey: key)) {
             userDefaults.set(true, forKey: key)
-            AMPopTip.appearance().popoverColor = color
-            AMPopTip.appearance().offset = 10
-            AMPopTip.appearance().edgeMargin = 5
-            let popTip = AMPopTip()
-            popTip.showText(text, direction: direction, maxWidth: 250, in: view, fromFrame: frame)
-            popTip.actionAnimation = AMPopTipActionAnimation.bounce
-            popTip.shouldDismissOnTapOutside = false
-            
-            return popTip
+            userDefaults.synchronize()
+            showPopTip(popTipText: text, inView: view, fromFrame: frame, direction:  direction, color: color)
         }
         
         return nil
+    }
+    
+    class func showPopTip(popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: PopTipDirection, color: UIColor, duration: TimeInterval = 3) -> PopTip? {
+        
+        let popTip = PopTip()
+        popTip.font = UIFont(name: "HelveticaNeue", size: 16)!
+        popTip.textColor = .white
+        popTip.backgroundColor = color
+        popTip.offset = 10
+        popTip.edgeMargin = 5
+        popTip.actionAnimation = PopTipActionAnimation.bounce(8)
+        popTip.shouldDismissOnTapOutside = true
+        popTip.shouldDismissOnTap = true
+        popTip.show(text: text, direction: direction, maxWidth: 300, in: view, from: frame, duration: duration)
+        
+        return popTip
     }
     
     class func screenShotMethod(_ view: UIView) -> UIImage {

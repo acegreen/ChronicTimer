@@ -5,6 +5,3 @@
 #import "SARate.h"
 #import "iRate.h"
 #import "iCarousel.h"
-
-//#import <AdColony/AdColony.h>
-//#import <GoogleAppIndexing/GoogleAppIndexing.h>
