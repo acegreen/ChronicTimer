@@ -1,5 +1,5 @@
 //
-//  ShareCardView.swift
+//  ShareRoutineReusableView.swift
 //  Chronic
 //
 //  Created by Ace Green on 2017-01-09.

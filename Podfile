@@ -1,3 +1,4 @@
+platform :ios, '10.0'
 use_frameworks!
 
 target 'Chronic' do
@@ -33,7 +34,6 @@ target 'Chronic' do
     # Ad Networks
     pod 'Google-Mobile-Ads-SDK'
     pod 'FBAudienceNetwork'
-    pod 'AdColony', '2.6.2'
     pod 'ChartboostSDK'
     pod 'Flurry-iOS-SDK/FlurrySDK'
     pod 'VungleSDK-iOS'
@@ -46,4 +46,5 @@ target 'Chronic' do
     #pod 'ChameleonFramework/Swift'
     #pod 'Rollout'
     #pod 'Appsee'
+    #pod ‘AdColony’
 end

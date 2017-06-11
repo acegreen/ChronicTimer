@@ -1,9 +1,9 @@
 //
-//  ExpandingCell.swift
-//  ExpandingStackCells
+//  RoutineCell.swift
+//  Chronic
 //
-//  Created by József Vesza on 27/06/15.
-//  Copyright © 2015 Jozsef Vesza. All rights reserved.
+//  Created by Ace Green on 5/22/16.
+//  Copyright © 2016 Ace Green. All rights reserved.
 //
 
 import UIKit

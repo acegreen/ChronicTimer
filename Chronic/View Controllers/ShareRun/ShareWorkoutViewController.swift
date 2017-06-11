@@ -1,9 +1,9 @@
 //
-//  ShareRunUI.swift
-//  OMRunApp
+//  ShareWorkoutViewController.swift
+//  Chronic
 //
-//  Created by Ace Green on 2017-01-09.
-//  Copyright © 2017 OMsignal. All rights reserved.
+//  Created by Ace Green on 5/22/16.
+//  Copyright © 2016 Ace Green. All rights reserved.
 //
 
 import Foundation

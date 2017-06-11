@@ -409,12 +409,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             
             Functions.presentFeedback()
             
-        } else {
-            
-            self.displayInterstitialAds()
         }
         
-//        else {
+//        else if {
+//            
+//            self.displayInterstitialAds()
+//        } else {
 //            let lastWorkout = Constants.lastWorkout!
 //            Functions.presentShareCard(lastWorkout: lastWorkout)
 //        }
