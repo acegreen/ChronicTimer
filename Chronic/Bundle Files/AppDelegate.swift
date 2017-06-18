@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Realm
 import CoreData
 import HealthKit
 import CoreSpotlight
@@ -163,6 +164,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         if needsMigration {
             DataAccess.sharedInstance.migrateCoreDataStore(from: DataAccess.oldLocationURL, to: DataAccess.newLocationURL)
         }
+        
+        // Setup Realm
+        RLMRealm(url: DataAccess.realmPathURL)
         
         return true
     }

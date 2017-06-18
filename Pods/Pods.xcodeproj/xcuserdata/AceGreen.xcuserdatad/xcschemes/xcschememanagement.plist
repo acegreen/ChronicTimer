@@ -89,6 +89,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Chronic WatchKit Extension.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Chronic.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -100,6 +105,16 @@
 			<false/>
 		</dict>
 		<key>ReachabilitySwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm-watchOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -127,6 +142,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0B5ECC1E47CBAD07924367750EAEE5E2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0F93CA2718D32395419C6B91631A1CCD</key>
 		<dict>
 			<key>primary</key>
@@ -137,7 +157,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35243D63F91B339C83DF1132F612362A</key>
+		<key>3214F28F3D6F0E27999E3F2537AA7C52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3665AA60085701AD1B6A970626EF13AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,6 +177,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3EF3E2BDBDA12DC1E5DE811A3E886442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
 		<dict>
 			<key>primary</key>
@@ -162,22 +192,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46739CEE041522D6DDF4F68C7C06C732</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>48016C9177BB4C347A57A9BE8956D87C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>536E9A83EF12B73E5C85D1533F19F171</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5A6C675F62C406DEDA405CA1D5A9A4E3</key>
+		<key>4DD5B01DA1129BE6958A845358C0EF4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,12 +212,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C25FCC4FC9C0341E101A53915C44C5B</key>
+		<key>832382A188B958FF7E39BE6F31C31DBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>966BE15BC6D37DFA888EBCBDAED94F79</key>
+		<key>8B1AE2D5EC817D66EF814554C457EF48</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C25FCC4FC9C0341E101A53915C44C5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -227,6 +252,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CF6E9567F89E9FED9C250F6424B39062</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
 		<dict>
 			<key>primary</key>
@@ -237,12 +267,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F307B842FF76B2DE6C55DB67C0885325</key>
+		<key>F0EC49A171ED0591B6ED93FB74961B77</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F3E577EBAAEE8D4DA0B3FEBE1212E5FA</key>
+		<key>F307B842FF76B2DE6C55DB67C0885325</key>
 		<dict>
 			<key>primary</key>
 			<true/>

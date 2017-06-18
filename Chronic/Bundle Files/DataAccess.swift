@@ -20,6 +20,7 @@ public class DataAccess {
     
     static let oldLocationURL = sharedInstance.applicationDocumentsDirectory.appendingPathComponent("Chronic.sqlite")
     static let newLocationURL = sharedInstance.applicationGroupDocumentDirectory.appendingPathComponent("Chronic.sqlite")
+    static let realmPathURL = sharedInstance.applicationGroupDocumentDirectory.appendingPathComponent("db.realm")
     
     static let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
     

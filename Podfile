@@ -1,7 +1,14 @@
-platform :ios, '10.0'
 use_frameworks!
 
+def shared_pods
+    pod 'Realm'
+end
+
 target 'Chronic' do
+    platform :ios, '10.0'
+
+    # Core
+    shared_pods
 
     # Settings
     pod 'LaunchKit'
@@ -47,4 +54,11 @@ target 'Chronic' do
     #pod 'Rollout'
     #pod 'Appsee'
     #pod ‘AdColony’
+end
+
+target 'Chronic WatchKit Extension' do
+    platform :watchos, '3.0'
+    
+    # Core
+    shared_pods
 end

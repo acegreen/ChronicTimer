@@ -10,8 +10,9 @@ import UIKit
 import Foundation
 import HealthKit
 import ChronicKit
+import Realm
 
-public class Workout {
+public class Workout: RLMObject {
     
     enum WorkoutType: String {
         case routine
@@ -75,5 +76,7 @@ public class Workout {
         case .run:
             self.name = "Chronic Run"
         }
+        
+        super.init()
     }
 }
