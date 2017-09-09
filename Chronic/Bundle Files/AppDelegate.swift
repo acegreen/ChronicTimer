@@ -406,9 +406,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // Ask for feedback or show ad
         if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
-            
             Functions.presentFeedback()
-            
         }
         
 //        else if {

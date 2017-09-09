@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 import MessageUI
 import HealthKit
 import LaunchKit
@@ -249,11 +250,8 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         case "WriteAReviewCell":
             
             if Functions.isConnectedToNetwork() {
-                
-                iRate.sharedInstance().openRatingsPageInAppStore()
-                
+                SKStoreReviewController.requestReview()
             } else {
-                
                 SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
             }
             

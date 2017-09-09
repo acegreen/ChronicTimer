@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eyG-1Y-owS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eyG-1Y-owS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,10 +19,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Feedback View Controller-->
         <scene sceneID="Fvw-lX-uCX">
             <objects>
-                <viewController id="1gs-uD-eKw" sceneMemberID="viewController">
+                <viewController id="1gs-uD-eKw" customClass="FeedbackViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tqT-Qz-02p"/>
                         <viewControllerLayoutGuide type="bottom" id="wDA-Ap-flO"/>
@@ -29,11 +32,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Way To Go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHu-tp-Nuk">
+                                <rect key="frame" x="16" y="65" width="343" height="70"/>
                                 <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhQ-7p-kln">
+                                <rect key="frame" x="16" y="155" width="343" height="70"/>
                                 <string key="text">Good job keeping fit! 
 By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
@@ -41,16 +46,16 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQl-9Z-1pW">
+                                <rect key="frame" x="137.5" y="270" width="100" height="100"/>
                                 <state key="normal" image="smile">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="R1Q-PC-a3n" kind="show" id="all-Ui-H73">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <action selector="reviewAction" destination="1gs-uD-eKw" eventType="touchUpInside" id="L32-tv-wMO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xt-p2-bQI">
+                                <rect key="frame" x="137.5" y="400" width="100" height="100"/>
                                 <state key="normal" image="sad">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -96,16 +101,19 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yay!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOG-nK-wlQ">
+                                <rect key="frame" x="16" y="65" width="343" height="70"/>
                                 <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How about rating Chronic on the AppStore? We always appreciate the feedback!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gba-nI-gsg">
+                                <rect key="frame" x="16" y="185" width="343" height="70"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5A-qD-5RW">
+                                <rect key="frame" x="191.5" y="607" width="167.5" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="QJ4-OM-DOZ"/>
@@ -125,6 +133,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgZ-yZ-Ifl">
+                                <rect key="frame" x="16" y="607" width="167.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0po-d1-mT9"/>
                                 </constraints>
@@ -193,6 +202,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEd-Ru-aaE">
+                                <rect key="frame" x="16" y="607" width="167.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1bA-fY-qsz"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Fbc-wa-2jU"/>
@@ -219,6 +229,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1w-jL-OQM">
+                                <rect key="frame" x="191.5" y="607" width="167.5" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="654-zh-tFg"/>
@@ -239,11 +250,13 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is there any way we can improve your experience with Chronic? Contact us, we'd love your feedback!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOO-Kq-XxZ">
+                                <rect key="frame" x="16" y="185" width="343" height="70"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3et-xI-Tj6">
+                                <rect key="frame" x="16" y="65" width="343" height="70"/>
                                 <fontDescription key="fontDescription" name="KaushanScript-Regular" family="Kaushan Script" pointSize="48"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -281,7 +294,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
             <objects>
                 <navigationController storyboardIdentifier="FeedbackNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="eyG-1Y-owS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6FA-fI-eSZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6FA-fI-eSZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
