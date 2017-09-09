@@ -11,7 +11,13 @@ import PureLayout
 
 class CustomAdView: UIView {
    
-    override func layoutSubviews() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        customSetup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         customSetup()
     }
 

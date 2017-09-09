@@ -73,15 +73,16 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     var threeMinuteCounterLabel: UILabel!
     var threeMinuteCounterVisualEffectView: UIVisualEffectView!
     
-    var adBannerView: CustomAdView?
     var mopubBanner: MPAdView?
     var mopubInterstitial: MPInterstitialAdController!
     
-    @IBOutlet var mainStackViewTopConstraint: NSLayoutConstraint!
-    
+    @IBOutlet var adStackView: UIStackView!
     @IBOutlet var topStackView: UIStackView!
     @IBOutlet var middleStackView: UIStackView!
     @IBOutlet var bottomStackView: UIStackView!
+    
+    @IBOutlet var adBannerView: CustomAdView!
+    @IBOutlet weak var adStackViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet var progressView: UIView!
     
@@ -1095,52 +1096,40 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             mopubBanner = MPAdView(adUnitId: bannerID, size: bannerSize)
             mopubBanner?.delegate = self
             
-            // Positions the ad at the top, with the correct size
-            adBannerView = CustomAdView(forAutoLayout: ())
+            adStackView.isHidden = false
             
             // Add it to the view
-            guard let adBannerView = adBannerView, let mopubBanner = mopubBanner else { return }
-            self.view.addSubview(adBannerView)
-            self.adBannerView?.addSubview(mopubBanner)
+            guard let mopubBanner = mopubBanner else { return }
+            adBannerView.addSubview(mopubBanner)
             
             // Loads the ad over the network
             mopubBanner.loadAd()
             
         } else {
-            
-            mainStackViewTopConstraint.constant = 20
-
-            guard let mopubBanner = mopubBanner, let adBannerView = adBannerView else { return }
+            guard let mopubBanner = mopubBanner else { return }
             mopubBanner.removeFromSuperview()
-            adBannerView.removeFromSuperview()
+            adStackView.isHidden = true
         }
     }
     
     func centerMoPubBannerAd(_ adView: MPAdView?, relativeToView: UIView?) {
         
-        guard let adView = adView, let relativeToView = relativeToView, let adBannerView = adBannerView, adBannerView.isDescendant(of: self.view) else { return }
+        guard let adView = adView, let relativeToView = relativeToView, adBannerView.isDescendant(of: self.view) else { return }
         
         let size: CGSize = adView.adContentViewSize()
         let centeredX: CGFloat = (relativeToView.bounds.size.width - size.width) / 2
         adView.frame = CGRect(x: centeredX, y: 0, width: size.width, height: size.height)
-        mainStackViewTopConstraint.constant = size.height
+        
+        adStackViewHeightConstraint.constant = size.height
     }
     
     func adViewDidLoadAd(_ view: MPAdView!) {
-        
-        adBannerView?.autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .bottom)
-        adBannerView?.autoSetDimension(.height, toSize: view.adContentViewSize().height, relation: .equal)
-    
+        adStackView.isHidden = false
         centerMoPubBannerAd(view, relativeToView: self.view)
     }
     
     func adViewDidFail(toLoadAd view: MPAdView!) {
-        
-        mainStackViewTopConstraint.constant = 20
-        
-        guard let mopubBanner = mopubBanner, let adBannerView = adBannerView else { return }
-        mopubBanner.removeFromSuperview()
-        adBannerView.removeFromSuperview()
+        adStackView.isHidden = true
     }
 
     func viewControllerForPresentingModalView() -> UIViewController {
