@@ -20,14 +20,14 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        SARate.sharedInstance().eventCount = 0
+        
         negativeButton.layer.borderColor = UIColor.white.cgColor
     }
     
     @IBAction func reviewAction() {
         self.dismiss(animated: true) {
             SKStoreReviewController.requestReview()
+            Functions.markFeedbackGiven()
         }
     }
     
@@ -80,15 +80,11 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
             print("Mail Failed")
             
         default:
-            
             return
-            
         }
         
         self.dismiss(animated: true) { () -> Void in
-            
             self.dismiss(animated: true, completion: nil)
-            
         }
     }
 }

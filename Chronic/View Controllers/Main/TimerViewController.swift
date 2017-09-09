@@ -1096,8 +1096,6 @@ extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDeleg
             mopubBanner = MPAdView(adUnitId: bannerID, size: bannerSize)
             mopubBanner?.delegate = self
             
-            adStackView.isHidden = false
-            
             // Add it to the view
             guard let mopubBanner = mopubBanner else { return }
             adBannerView.addSubview(mopubBanner)

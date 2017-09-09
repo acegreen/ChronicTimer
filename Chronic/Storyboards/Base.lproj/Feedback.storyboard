@@ -19,10 +19,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Feedback View Controller-->
+        <!--Feedback Main View Controller-->
         <scene sceneID="Fvw-lX-uCX">
             <objects>
-                <viewController id="1gs-uD-eKw" customClass="FeedbackViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1gs-uD-eKw" customClass="FeedbackMainViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tqT-Qz-02p"/>
                         <viewControllerLayoutGuide type="bottom" id="wDA-Ap-flO"/>
@@ -51,7 +51,7 @@ By the way, we’d love some feedback! How do you feel about Chronic? </string>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="reviewAction" destination="1gs-uD-eKw" eventType="touchUpInside" id="L32-tv-wMO"/>
+                                    <action selector="reviewAction" destination="1gs-uD-eKw" eventType="touchUpInside" id="CHH-09-jI6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xt-p2-bQI">

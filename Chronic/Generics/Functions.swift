@@ -15,6 +15,8 @@ import MobileCoreServices
 import SystemConfiguration
 import AVFoundation
 import WatchConnectivity
+import Crashlytics
+import Parse
 import AMPopTip
 import MZFormSheetPresentationController
 import Whisper
@@ -40,15 +42,15 @@ class Functions {
                     
                     var customeExerciseDictionary = [String:Any]()
                     
-                    for number in 1...(exercise.exerciseNumberOfRounds as Int) {
+                    for number in 1...(exercise.exerciseNumberOfRounds as! Int) {
                         
-                        if exercise.exerciseTime as Int > 0 {
+                        if exercise.exerciseTime as! Int > 0 {
                             
                             //Exercise Name & Time
                             
                             customeExerciseDictionary["Name"] = exercise.exerciseName
                             
-                            if exercise.exerciseNumberOfRounds as Int > 1 {
+                            if exercise.exerciseNumberOfRounds as! Int > 1 {
                                 customeExerciseDictionary["Interval"] = "\(number) / \(exercise.exerciseNumberOfRounds!)"
                             }
                             
@@ -74,7 +76,7 @@ class Functions {
                 Constants.restExercise = routineExercises[2]
                 Constants.coolDownExercise = routineExercises[3]
                 
-                if Constants.warmUpExercise.exerciseTime as Int > 0 {
+                if Constants.warmUpExercise.exerciseTime as! Int > 0 {
                     
                     //Warmup
                     warmUpDictionary["Name"] = Constants.warmUpExercise.exerciseName
@@ -89,12 +91,12 @@ class Functions {
                 
                 for i in 1...Int(Constants.roundExercise.exerciseNumberOfRounds) {
                     
-                    if Constants.roundExercise.exerciseTime as Int > 0 {
+                    if Constants.roundExercise.exerciseTime as! Int > 0 {
                         
                         //Round Time
                         roundDictionary["Name"] = Constants.roundExercise.exerciseName
                         
-                        if Constants.roundExercise.exerciseNumberOfRounds as Int > 1 {
+                        if Constants.roundExercise.exerciseNumberOfRounds as! Int > 1 {
                             roundDictionary["Interval"] = "\(i) / \(Constants.roundExercise.exerciseNumberOfRounds!)"
                         }
                         
@@ -107,12 +109,12 @@ class Functions {
                         
                     }
                     
-                    if Constants.restExercise.exerciseTime as Int > 0 {
+                    if Constants.restExercise.exerciseTime as! Int > 0 {
                         
                         //Rest Time
                         restDictionary["Name"] = Constants.restExercise.exerciseName
                         
-                        if Constants.restExercise.exerciseNumberOfRounds as Int > 1 {
+                        if Constants.restExercise.exerciseNumberOfRounds as! Int > 1 {
                             restDictionary["Interval"] = "\(i) / \(Constants.restExercise.exerciseNumberOfRounds!)"
                         }
                         restDictionary["Time"] = Constants.restExercise.exerciseTime
@@ -125,7 +127,7 @@ class Functions {
                     }
                 }
                 
-                if Constants.coolDownExercise.exerciseTime as Int > 0 {
+                if Constants.coolDownExercise.exerciseTime as! Int > 0 {
                     
                     // Cool Down Time
                     coolDownDictionary["Name"] = Constants.coolDownExercise.exerciseName
@@ -464,10 +466,12 @@ class Functions {
     //}
     
     class func markFeedbackGiven() {
-        
         Constants.userDefaults.set(true, forKey: "FEEDBACK_GIVEN")
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "HideStarButton"), object: nil)
+        Answers.logRating(nil,
+                          contentName: "Chronic Rated",
+                          contentType: "Rate",
+                          contentId: nil,
+                          customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "Country Code": Constants.regionCode ?? "", "App Version": Constants.AppVersion])
     }
     
     class func showPopTipOnceForKey(_ key: String, userDefaults: UserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: PopTipDirection = .down, color: UIColor = .darkGray) -> PopTip? {

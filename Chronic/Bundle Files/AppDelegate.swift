@@ -324,26 +324,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         print("reachable:\(session.isReachable)")
     }
     
-    // MARK: - iRateDelegate Functions
-    
-    func iRateDidOpenAppStore() {
-        
-        Functions.markFeedbackGiven()
-        
-        // log rating event
-        Answers.logRating(nil,
-                          contentName: "Chronic Rated",
-                          contentType: "Rate",
-                          contentId: nil,
-                          customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "Country Code": Constants.regionCode ?? "", "App Version": Constants.AppVersion])
-    }
-    
-    func iRateDidDetectAppUpdate() {
-        
-        SARate.sharedInstance().eventCount = 0
-        Constants.userDefaults.set(false, forKey: "FEEDBACK_GIVEN")
-    }
-    
     // MARK: - Shortcut Handling
     
     @available(iOS 9.0, *)
@@ -402,20 +382,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         print("workoutDidEnd")
         
-        guard let lastWorkout = Constants.lastWorkout, lastWorkout.timeElapsed >= 60 else { return }
-        
         // Ask for feedback or show ad
         if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
             Functions.presentFeedback()
         }
-        
-//        else if {
-//            
-//            self.displayInterstitialAds()
-//        } else {
-//            let lastWorkout = Constants.lastWorkout!
-//            Functions.presentShareCard(lastWorkout: lastWorkout)
-//        }
+    }
+    
+    // MARK: - iRateDelegate Functions
+    
+    func iRateDidOpenAppStore() {
+        print("iRateDidOpenAppStore")
+    }
+    
+    func iRateDidDetectAppUpdate() {
+        SARate.sharedInstance().eventCount = 0
+        Constants.userDefaults.set(false, forKey: "FEEDBACK_GIVEN")
     }
     
     // MARK: - Helper Functions

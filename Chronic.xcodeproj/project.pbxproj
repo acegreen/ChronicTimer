@@ -138,6 +138,7 @@
 		2396A6AB1B8232C200E6A55F /* Toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2396A6AA1B8232C200E6A55F /* Toggle.wav */; };
 		23979D931B63C81E005BC945 /* CustomRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23979D921B63C81E005BC945 /* CustomRoutineTableViewController.swift */; };
 		23979D961B63FB60005BC945 /* RoutineTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23979D951B63FB60005BC945 /* RoutineTypeViewController.swift */; };
+		239C3E461F64B22400D1B422 /* FeedbackMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239C3E451F64B22400D1B422 /* FeedbackMainViewController.swift */; };
 		239D97071D12E3F10070D423 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239D97061D12E3F10070D423 /* UserNotifications.framework */; };
 		23A0E7EE1B5AEDA700F53E50 /* Chronic WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 23A0E7ED1B5AEDA700F53E50 /* Chronic WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		23A0E7FF1B5AEDA700F53E50 /* Chronic WatchKit.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 23A0E7E11B5AEDA700F53E50 /* Chronic WatchKit.app */; };
@@ -452,6 +453,7 @@
 		2396A6AA1B8232C200E6A55F /* Toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Toggle.wav; sourceTree = "<group>"; };
 		23979D921B63C81E005BC945 /* CustomRoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRoutineTableViewController.swift; sourceTree = "<group>"; };
 		23979D951B63FB60005BC945 /* RoutineTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineTypeViewController.swift; sourceTree = "<group>"; };
+		239C3E451F64B22400D1B422 /* FeedbackMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackMainViewController.swift; sourceTree = "<group>"; };
 		239D97061D12E3F10070D423 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		23A0E7E11B5AEDA700F53E50 /* Chronic WatchKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chronic WatchKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23A0E7ED1B5AEDA700F53E50 /* Chronic WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Chronic WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -744,6 +746,7 @@
 		2348A9371D7C6F3D0080402F /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
+				239C3E451F64B22400D1B422 /* FeedbackMainViewController.swift */,
 				2348A9381D7C6F3D0080402F /* FeedbackViewController.swift */,
 			);
 			name = Feedback;
@@ -1863,6 +1866,7 @@
 				235B50041BF64E95008FBC53 /* IAPHelper.swift in Sources */,
 				2315CD141D7EE8D400372228 /* iRate.m in Sources */,
 				237B108D1C265A9000D52713 /* OBNotificationViewController.swift in Sources */,
+				239C3E461F64B22400D1B422 /* FeedbackMainViewController.swift in Sources */,
 				238C1AD61C8B70EF009F9CC1 /* ExpandingCell.swift in Sources */,
 				236E38941E6C538100978795 /* ShareRunReusableView.swift in Sources */,
 				234953FF1D564174007B053A /* Functions.swift in Sources */,
@@ -2375,7 +2379,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = "$inherited";
+				SWIFT_EXEC = $inherited;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2425,7 +2429,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = "$inherited";
+				SWIFT_EXEC = $inherited;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
