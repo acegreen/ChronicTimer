@@ -1,4 +1,4 @@
-![Facebook_851x315.png](https://bitbucket.org/repo/nMyn5A/images/2361191355-Facebook_851x315.png)
+![alt tag](https://user-images.githubusercontent.com/10794609/51154474-de1e9d80-1841-11e9-8376-f44dcc573ec5.png)
 
 # Chronic Timer #
 
