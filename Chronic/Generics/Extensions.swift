@@ -106,7 +106,7 @@ public extension UIImage {
     var circle: UIImage {
         let square = size.width < size.height ? CGSize(width: size.width, height: size.width) : CGSize(width: size.height, height: size.height)
         let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: square))
-        imageView.contentMode = UIViewContentMode.scaleAspectFill
+        imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.image = self
         imageView.layer.cornerRadius = square.width/2
         imageView.layer.masksToBounds = true
@@ -187,8 +187,8 @@ extension UIView {
     }
 }
 
-extension UIControlState {
-    public static var normal: UIControlState { return [] }
+extension UIControl.State {
+    public static var normal: UIControl.State { return [] }
 }
 
 extension Dimmable where Self: UIViewController {

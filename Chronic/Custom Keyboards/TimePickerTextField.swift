@@ -75,7 +75,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         return CGRect.zero
     }
     
-    override func selectionRects(for range: UITextRange) -> [Any] {
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
     }
     
@@ -90,7 +90,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
         return super.canPerformAction(action, withSender:sender)
     }
 
-    func dismissPicker () {
+    @objc func dismissPicker() {
         
         self.resignFirstResponder()
     }
@@ -118,7 +118,7 @@ class TimePickerTextField: UITextField, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let title = String(row)
-        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        let attributedString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
         pickerView.backgroundColor = UIColor.clear
         

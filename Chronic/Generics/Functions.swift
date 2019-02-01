@@ -218,7 +218,7 @@ class Functions {
     class func updateDynamicAction(with routine: RoutineModel) {
         
         let type = Bundle.main.bundleIdentifier! + ".Dynamic"
-        let shortcutIconType = UIApplicationShortcutIconType.play
+        let shortcutIconType = UIApplicationShortcutIcon.IconType.play
         let icon = UIApplicationShortcutIcon(type: shortcutIconType)
         
         let dynamicShortcut = UIApplicationShortcutItem(type: type, localizedTitle: routine.name, localizedSubtitle: nil, icon: icon, userInfo: nil)
@@ -379,7 +379,7 @@ class Functions {
     
     class func displayAlert(_ title: String, message: String, Action1: UIAlertAction?, Action2: UIAlertAction?) -> UIAlertController {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         if Action1 != nil {
             
@@ -513,7 +513,7 @@ class Functions {
     // MARK: Generic Question Bool Functions
     
     class func isConnectedToNetwork() -> Bool {
-        if Constants.reachability?.currentReachabilityStatus == .notReachable {
+        if let reachability = Constants.reachability, reachability.connection == .none {
             return false
         } else {
             return true

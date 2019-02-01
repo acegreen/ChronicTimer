@@ -18,7 +18,6 @@ class FeedbackMainViewController: UIViewController {
     @IBAction func reviewAction() {
         self.dismiss(animated: true) {
             SKStoreReviewController.requestReview()
-            Functions.markFeedbackGiven()
         }
     }
 }

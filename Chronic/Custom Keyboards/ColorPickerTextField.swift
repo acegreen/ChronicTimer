@@ -67,7 +67,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         return CGRect.zero
     }
     
-    override func selectionRects(for range: UITextRange) -> [Any] {
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
     }
     
@@ -82,7 +82,7 @@ class ColorPickerTextField: UITextField, SwiftColorPickerDelegate, SwiftColorPic
         return super.canPerformAction(action, withSender:sender)
     }
 
-    func dismissPicker () {
+    @objc func dismissPicker () {
         self.resignFirstResponder()
     }
     

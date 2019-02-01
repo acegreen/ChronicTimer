@@ -117,7 +117,7 @@ public class DataAccess {
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             
-            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: newLocationURL, options: options)
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: DataAccess.newLocationURL, options: DataAccess.options)
             
         } catch {
             

@@ -278,7 +278,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
                 
                 cell.excerciseNameTextField.text = exerciseAtIndexPath.exerciseName
                 
-                cell.exerciseTimeTextField.text = Functions.timeStringFrom(time:exerciseAtIndexPath.exerciseTime as Int)
+                cell.exerciseTimeTextField.text = Functions.timeStringFrom(time:exerciseAtIndexPath.exerciseTime as! Int)
                 
                 cell.exerciseNumberOfRounds.text = exerciseAtIndexPath.exerciseNumberOfRounds!.stringValue
                 
@@ -350,7 +350,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     }
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             
@@ -396,17 +396,17 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         
         switch ((indexPath as NSIndexPath).section) {
             
         case (2):
             
-            return UITableViewCellEditingStyle.insert
+            return UITableViewCell.EditingStyle.insert
             
         default:
             
-            return UITableViewCellEditingStyle.delete
+            return UITableViewCell.EditingStyle.delete
         }
         
     }
@@ -460,7 +460,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
     
     func exerciseCellLongPressed(_ sender: UILongPressGestureRecognizer) {
         
-        if sender.state == UIGestureRecognizerState.began {
+        if sender.state == UIGestureRecognizer.State.began {
             print("UIGestureRecognizerState Began")
             
         }

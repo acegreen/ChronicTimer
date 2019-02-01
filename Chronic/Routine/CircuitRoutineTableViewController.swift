@@ -57,11 +57,11 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
             Constants.restExercise = exerciseSet[2] as! ExerciseModel
             Constants.coolDownExercise = exerciseSet[3] as! ExerciseModel
             
-            warmUpDuration = Constants.warmUpExercise.exerciseTime as Int
-            numberOfRounds = Constants.roundExercise.exerciseNumberOfRounds as Int
-            roundDuration = Constants.roundExercise.exerciseTime as Int
-            restDuration = Constants.restExercise.exerciseTime as Int
-            coolDownDuration = Constants.coolDownExercise.exerciseTime as Int
+            warmUpDuration = Constants.warmUpExercise.exerciseTime as! Int
+            numberOfRounds = Constants.roundExercise.exerciseNumberOfRounds as! Int
+            roundDuration = Constants.roundExercise.exerciseTime as! Int
+            restDuration = Constants.restExercise.exerciseTime as! Int
+            coolDownDuration = Constants.coolDownExercise.exerciseTime as! Int
             
             self.nameTextField.text = routineToEdit.name
             self.warmUpTimeTextField.text = Functions.timeStringFrom(time: warmUpDuration)

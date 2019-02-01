@@ -18,7 +18,7 @@ public class NotificationHelper {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = alertTitle
         notificationContent.body = alertBody
-        let notificaitonSound = UNNotificationSound(named: sound)
+        let notificaitonSound = UNNotificationSound(named: UNNotificationSoundName(rawValue: sound!))
         notificationContent.sound = notificaitonSound
         
         var trigger: UNNotificationTrigger!

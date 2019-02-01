@@ -208,14 +208,14 @@ class SettingsTableViewController: UITableViewController, Dimmable {
             
             let objectsToShare: NSArray = [textToShare, Constants.appURL!]
             
-            let excludedActivityTypesArray: [UIActivityType] = [
-                UIActivityType.postToWeibo,
-                UIActivityType.addToReadingList,
-                UIActivityType.assignToContact,
-                UIActivityType.print,
-                UIActivityType.saveToCameraRoll,
-                UIActivityType.assignToContact,
-                UIActivityType.airDrop,
+            let excludedActivityTypesArray: [UIActivity.ActivityType] = [
+                UIActivity.ActivityType.postToWeibo,
+                UIActivity.ActivityType.addToReadingList,
+                UIActivity.ActivityType.assignToContact,
+                UIActivity.ActivityType.print,
+                UIActivity.ActivityType.saveToCameraRoll,
+                UIActivity.ActivityType.assignToContact,
+                UIActivity.ActivityType.airDrop,
                 ]
             
             let activityVC = UIActivityViewController(activityItems: objectsToShare as [AnyObject], applicationActivities: nil)
@@ -249,11 +249,7 @@ class SettingsTableViewController: UITableViewController, Dimmable {
             
         case "WriteAReviewCell":
             
-            if Functions.isConnectedToNetwork() {
-                SKStoreReviewController.requestReview()
-            } else {
-                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
-            }
+            iRate.sharedInstance().openRatingsPageInAppStore()
             
         case "EmailUsCell":
             

@@ -14,7 +14,7 @@ target 'Chronic' do
     pod 'DZNEmptyDataSet'
     pod 'Charts'
     pod 'AMPopTip'
-    pod 'Whisper'
+    pod 'Whisper', :git => 'https://github.com/freeubi/Whisper.git', :branch => 'swift-4.2-support'
     
     # Transitions / Segues
     pod 'BubbleTransition'
@@ -23,14 +23,12 @@ target 'Chronic' do
 
     # Parse
     pod 'Parse'
-    pod 'ParseFacebookUtilsV4'
-    pod 'ParseTwitterUtils'
-    pod 'ParseUI'
 
     # Fabric
     pod 'Crashlytics'
     pod 'mopub-ios-sdk'
-    
+#    pod 'mopub-ios-mediation'
+
     # Ad Networks
     pod 'Google-Mobile-Ads-SDK'
     pod 'FBAudienceNetwork'

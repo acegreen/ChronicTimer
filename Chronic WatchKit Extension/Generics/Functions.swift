@@ -189,9 +189,9 @@ class Functions {
                     
                     var customeExerciseDictionary = [String: Any]()
                     
-                    for _ in 1...(exercise.exerciseNumberOfRounds as Int) {
+                    for _ in 1...(exercise.exerciseNumberOfRounds as! Int) {
                         
-                        if exercise.exerciseTime as Int > 0 {
+                        if exercise.exerciseTime as! Int > 0 {
                             
                             //Exercise Name & Time
                             customeExerciseDictionary["Name"] = exercise.exerciseName

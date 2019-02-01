@@ -32,7 +32,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         }
         
         // Setup WCSession
-        Constants.wcSession = WCSession.default()
+        Constants.wcSession = WCSession.default
         Constants.wcSession.delegate = self
         Constants.wcSession.activate()
     }

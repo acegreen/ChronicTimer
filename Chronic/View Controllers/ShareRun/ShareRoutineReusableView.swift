@@ -74,7 +74,7 @@ class ShareRoutineReusableView: UIView {
         routineChartView.holeColor = nil
         routineChartView.chartDescription = nil
         routineChartView.legend.enabled = false
-        let stringAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: Constants.ChronicFonts.regular]
+        let stringAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: Constants.ChronicFonts.regular]
         routineChartView.centerAttributedText = NSAttributedString(string: routine.name, attributes: stringAttributes)
         routineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: ChartEasingOption.easeInOutBack)
     }

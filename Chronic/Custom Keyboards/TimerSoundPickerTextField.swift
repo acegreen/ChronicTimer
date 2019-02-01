@@ -67,7 +67,8 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         return CGRect.zero
     }
     
-    override func selectionRects(for range: UITextRange) -> [Any] {
+    
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
     }
     
@@ -82,7 +83,7 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
         return super.canPerformAction(action, withSender:sender)
     }
 
-    func dismissPicker () {
+    @objc func dismissPicker () {
         
         self.resignFirstResponder()
     }
@@ -104,7 +105,7 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let title = pickerData[row]
-        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        let attributedString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
         pickerView.backgroundColor = UIColor.clear
         

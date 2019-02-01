@@ -27,7 +27,6 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBAction func reviewAction() {
         self.dismiss(animated: true) {
             SKStoreReviewController.requestReview()
-            Functions.markFeedbackGiven()
         }
     }
     
@@ -73,7 +72,7 @@ class FeedbackViewController: UIViewController, MFMailComposeViewControllerDeleg
             
         case MFMailComposeResult.saved.rawValue, MFMailComposeResult.sent.rawValue:
             
-            Functions.markFeedbackGiven()
+            print("Mail Feedback given")
             
         case MFMailComposeResult.failed.rawValue:
             

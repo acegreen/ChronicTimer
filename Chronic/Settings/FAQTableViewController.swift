@@ -22,7 +22,7 @@ class FAQTableViewController: UITableViewController {
         
         tableView.contentInset.top = topInset
         tableView.estimatedRowHeight = estimatedHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
 
         let faqQuery = PFQuery(className: "FAQ")
         faqQuery.order(byAscending: "index")

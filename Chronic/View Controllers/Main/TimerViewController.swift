@@ -32,6 +32,13 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         case locked
     }
     
+    struct TMSelector {
+        static let counterPreRun =
+            #selector(TimerViewController.counterPreRun)
+        static let counterRoutine =
+            #selector(TimerViewController.counterRoutine)
+    }
+    
     var delegate: TimerVCDelegate!
     
     var buttonState = ButtonState.initial
@@ -223,7 +230,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
         
         // Set Alert if in background
-        if UIApplication.shared.applicationState == UIApplicationState.background {
+        if UIApplication.shared.applicationState == UIApplication.State.background {
             
             var alertTitle: String!
             var alertBody: String!
@@ -243,12 +250,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         // Send to delegate
         self.delegate.workoutDidEnd(timer: Constants.timer)
-        
-        // increment event count
-        if workout.timeElapsed >= 60 {
-            SARate.sharedInstance().eventCount += 1
-            print("eventCount", SARate.sharedInstance().eventCount)
-        }
         
         // Reset settings to initial state (Just for tidiness)
         switch workout.workoutType {
@@ -323,19 +324,19 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     func LayoutBurSubview() {
         
-        threeMinuteCounterLabel = UILabel()
         threeMinuteCounterVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)) as UIVisualEffectView
         
         self.view.addSubview(threeMinuteCounterVisualEffectView)
         threeMinuteCounterVisualEffectView.translatesAutoresizingMaskIntoConstraints = false
         threeMinuteCounterVisualEffectView.autoPinEdgesToSuperviewEdges()
         
+        threeMinuteCounterLabel = UILabel()
         threeMinuteCounterLabel.frame = CGRect(x: (threeMinuteCounterVisualEffectView.frame.width / 2) - 100, y: (threeMinuteCounterVisualEffectView.frame.height / 2) - 100, width: 200, height: 200)
         threeMinuteCounterLabel.text = String(preRoutineCountDownTime)
         threeMinuteCounterLabel.textColor = UIColor.white
         threeMinuteCounterLabel.font = UIFont(name: threeMinuteCounterLabel.font.fontName, size: 200)
         threeMinuteCounterLabel.textAlignment = NSTextAlignment.center
-        threeMinuteCounterVisualEffectView.addSubview(threeMinuteCounterLabel)
+        threeMinuteCounterVisualEffectView.contentView.addSubview(threeMinuteCounterLabel)
         threeMinuteCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         threeMinuteCounterLabel.autoCenterInSuperview()
     }
@@ -352,17 +353,17 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
     
     //Function to start exercise time
-    func startTimer(selector: String) {
+    func startTimer(selector: Selector) {
         
         Constants.timer.invalidate()
         
         if !Constants.timer.isValid {
-            Constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector(selector) , userInfo: nil, repeats: true)
+            Constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: selector, userInfo: nil, repeats: true)
         }
     }
     
     //Timer Function
-    func counterRoutine() {
+    @objc func counterRoutine() {
         
         // Check for internet connection every 30 seconds, pause routine and display error if not connected and no upgrade purchased
         if workout.timeElapsed % 30 == 0 && !Functions.isConnectedToNetwork() && !Functions.isRemoveAdsUpgradePurchased() {
@@ -414,7 +415,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                     changeStage()
                     
                     // Start a new timer
-                    startTimer(selector: "counterRoutine")
+                    startTimer(selector: TMSelector.counterRoutine)
                     
                     // Play exercise name and interval stage
                     playSound("Stage Change")
@@ -438,7 +439,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
     }
     
-    func counterPreRun() {
+    @objc func counterPreRun() {
             
         playSound("Tick")
     
@@ -614,8 +615,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         case .initial:
             
-            playPauseButton.setImage(UIImage(named:"play.png"),for:UIControlState())
-            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),for:UIControlState())
+            playPauseButton.setImage(UIImage(named:"play.png"),for:UIControl.State())
+            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),for:UIControl.State())
             
             playPauseButton.isEnabled = true
             stopButton.isEnabled = true
@@ -624,20 +625,20 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         case .play:
             
-            playPauseButton.setImage(UIImage(named:"pause.png"),for:UIControlState())
+            playPauseButton.setImage(UIImage(named:"pause.png"),for:UIControl.State())
 
             checkForwardBackButtonState()
 
             
         case .pause:
             
-            playPauseButton.setImage(UIImage(named:"play.png"),for:UIControlState())
+            playPauseButton.setImage(UIImage(named:"play.png"),for:UIControl.State())
             
             checkForwardBackButtonState()
             
         case .unlocked:
             
-            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),for:UIControlState())
+            lockUnlockButton.setImage(UIImage(named:"lock_unlocked.png"),for:UIControl.State())
             
             playPauseButton.isEnabled = true
             stopButton.isEnabled = true
@@ -646,7 +647,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
         case .locked:
             
-            lockUnlockButton.setImage(UIImage(named:"lock_locked.png"),for:UIControlState())
+            lockUnlockButton.setImage(UIImage(named:"lock_locked.png"),for:UIControl.State())
             
             playPauseButton.isEnabled = false
             stopButton.isEnabled = false
@@ -854,7 +855,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             
             LayoutBurSubview()
             
-            startTimer(selector: "counterPreRun")
+            startTimer(selector: TMSelector.counterPreRun)
         }
         
         // Send to delegate
@@ -871,7 +872,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             workout.routineStartDate = Date()
             print("start time \(workout.routineStartDate)")
             
-            startTimer(selector: "counterRoutine")
+            startTimer(selector: TMSelector.counterRoutine)
             
             if workout.workoutType == .run {
                 startLocationUpdates()
@@ -883,7 +884,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         
         if workout.workoutState == .paused {
             
-            startTimer(selector: "counterRoutine")
+            startTimer(selector: TMSelector.counterRoutine)
             
             if workout.workoutType == .run {
                 
@@ -1035,10 +1036,10 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
                     coords.append(self.locations.last!.coordinate)
                     coords.append(location.coordinate)
                         
-                    let region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
+                    let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
                     mapView.setRegion(region, animated: true)
                     
-                    mapView.add(MKPolyline(coordinates: &coords, count: coords.count))
+                    mapView.addOverlay(MKPolyline(coordinates: &coords, count: coords.count))
                 }
             }
             
@@ -1066,7 +1067,7 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         
         if workout.workoutState == .preRun {
             
-            let region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01))
+            let region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             mapView.setRegion(region, animated: true)
         }
     }

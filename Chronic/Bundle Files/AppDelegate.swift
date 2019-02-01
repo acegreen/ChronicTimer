@@ -17,15 +17,14 @@ import Fabric
 import Crashlytics
 import MoPub
 import Parse
-import ParseFacebookUtilsV4
 import LaunchKit
 import UserNotifications
 import Intents
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateDelegate, TimerVCDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, TimerVCDelegate {
     
-    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     
     var window: UIWindow?
     
@@ -46,28 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
     }
     
-    override class func initialize() {
-        setupSARate()
-    }
-    
-    class func setupSARate() {
-        
-        //configure
-        SARate.sharedInstance().minAppStoreRaiting = 4
-        SARate.sharedInstance().eventsUntilPrompt = 7
-        SARate.sharedInstance().daysUntilPrompt = 7
-        SARate.sharedInstance().remindPeriod = 0
-        
-        SARate.sharedInstance().email = Constants.appEmail
-        SARate.sharedInstance().emailSubject = "Chronic Feedback/Bug"
-        SARate.sharedInstance().emailText = "Hello Chronic Team, </br> </br> </br> </br> </br> - - - - - - - - - - - - - - - - - - - - - </br>" + Constants.emailDiagnosticInfo
-        
-        SARate.sharedInstance().previewMode = false
-        SARate.sharedInstance().verboseLogging = false
-        SARate.sharedInstance().promptAtLaunch = false
-    }
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // setup user defaults
         setupUserDefaults()
         
@@ -90,11 +68,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         }
         Parse.initialize(with: configuration)
         
-        // Setup Crashlytics
-        Fabric.with([Crashlytics.self, MoPub.self])
+        // Initialize Crashlytics
+        Fabric.with([Crashlytics.self])
         
-        // Initalize Facebook
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        // Initialize MoPub
+        let moPubConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: Constants.moPubAdUnitID)
+        MoPub.sharedInstance().initializeSdk(with: moPubConfig, completion: nil)
         
         // Initalize LaunchKit
         LaunchKit.launch(withToken: "FYwLCkgJpT_r8kEp1O_-PSg-UnhaD3B7PMPxkG5qIIfq")
@@ -106,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // Setup WCSession
         if (WCSession.isSupported()) {
-            Constants.wcSession = WCSession.default()
+            Constants.wcSession = WCSession.default
             Constants.wcSession.delegate = self
             Constants.wcSession.activate()
         }
@@ -115,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         UIApplication.shared.beginReceivingRemoteControlEvents()
         do {
             
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             
         } catch let error as NSError {
@@ -132,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         UITabBar.appearance().tintColor = Constants.chronicGreen
         
         // Track Push Notitications
-        if application.applicationState != UIApplicationState.background {
+        if application.applicationState != UIApplication.State.background {
             // Track an app open here if we launch with a push, unless
             // "content_available" was used to trigger a background push (introduced in iOS 7).
             // In that case, we skip tracking here to avoid double counting the app-open.
@@ -141,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
             let oldPushHandlerOnly = !self.responds(to: #selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
             var pushPayload = false
             if let options = launchOptions {
-                pushPayload = options[UIApplicationLaunchOptionsKey.remoteNotification] != nil
+                pushPayload = options[UIApplication.LaunchOptionsKey.remoteNotification] != nil
             }
             if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
                 PFAnalytics.trackAppOpened(launchOptions: launchOptions)
@@ -167,18 +146,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         return true
     }
     
-    // func depracted iOS9 - needs to be replaced by func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any?) -> Bool {
-    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
         switch url.scheme {
             
         case "chronic"?:
             
             return true
             
-        case "fb1691125951168014"?:
-            
-            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+//        case "fb1691125951168014"?:
+//
+//            return UIApplication.shared.delegate!.application(application, open: url, options: options)
             
         default:
             
@@ -262,7 +240,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // Handle received remote notification
         PFPush.handle(userInfo)
-        if application.applicationState == UIApplicationState.inactive {
+        if application.applicationState == UIApplication.State.inactive {
             PFAnalytics.trackAppOpened(withRemoteNotificationPayload: userInfo)
         }
     }
@@ -286,9 +264,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         
         // End background task if it exists
         endBackgroundTask()
-        
-        // Track Facebook events
-        FBSDKAppEvents.activateApp()
         
         // Clear Parse Push badges
         NotificationHelper.resetAppBadgePush()
@@ -383,23 +358,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
         print("workoutDidEnd")
         
         // Ask for feedback or show ad
-        if SARate.sharedInstance().eventCount >= SARate.sharedInstance().eventsUntilPrompt && Constants.userDefaults.bool(forKey: "FEEDBACK_GIVEN") == false {
-            Functions.presentFeedback()
-        }
-    }
-    
-    // MARK: - iRateDelegate Functions
-    
-    func iRateDidOpenAppStore() {
-        print("iRateDidOpenAppStore")
-    }
-    
-    func iRateDidDetectAppUpdate() {
-        SARate.sharedInstance().eventCount = 0
-        Constants.userDefaults.set(false, forKey: "FEEDBACK_GIVEN")
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(AppDelegate.requestReview), userInfo: nil, repeats: false)
     }
     
     // MARK: - Helper Functions
+    
+    @objc func requestReview() {
+        SKStoreReviewController.requestReview()
+    }
     
     func setupUserDefaults() {
         
@@ -445,10 +411,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, iRateD
     
     func endBackgroundTask() {
         
-        guard backgroundTask != UIBackgroundTaskInvalid else { return }
+        guard backgroundTask != UIBackgroundTaskIdentifier.invalid else { return }
         
         UIApplication.shared.endBackgroundTask(self.backgroundTask)
-        backgroundTask = UIBackgroundTaskInvalid
+        backgroundTask = UIBackgroundTaskIdentifier.invalid
         
         print("background task ended")
     }

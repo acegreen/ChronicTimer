@@ -25,13 +25,13 @@ class IntentHandler: INExtension, INWorkoutsDomainHandling {
     }
     
     // MARK: - INStartWorkoutIntentHandling
-    public func resolveWorkoutName(forStartWorkout intent: INStartWorkoutIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Void) {
+    public func resolveWorkoutName(for intent: INStartWorkoutIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Void) {
         
         print("resolveWorkoutName", intent.workoutName?.spokenPhrase)
         
         if routines.count > 0 {
             
-            if let workoutName = intent.workoutName, let routine = routines.filter({ $0.name.lowercased() == workoutName.spokenPhrase?.lowercased() }).first {
+            if let workoutName = intent.workoutName, let routine = routines.filter({ $0.name.lowercased() == workoutName.spokenPhrase.lowercased() }).first {
                 
                 print("workoutName resolved", workoutName)
                 
@@ -61,13 +61,13 @@ class IntentHandler: INExtension, INWorkoutsDomainHandling {
 //        completion(response)
 //    }
     
-    public func handle(startWorkout intent: INStartWorkoutIntent, completion: @escaping (INStartWorkoutIntentResponse) -> Void) {
+    public func handle(intent: INStartWorkoutIntent, completion: @escaping (INStartWorkoutIntentResponse) -> Void) {
         
         // Implement app logic to start a workout
         var response: INStartWorkoutIntentResponse!
 
-        if let workoutName = intent.workoutName, let workoutSpokenphrase = workoutName.spokenPhrase {
-            
+        if let workoutName = intent.workoutName {
+            let workoutSpokenphrase = workoutName.spokenPhrase
             let userActivity = NSUserActivity(activityType: NSStringFromClass(INStartWorkoutIntent.self))
             userActivity.userInfo = ["workoutName": workoutSpokenphrase]
             
@@ -80,27 +80,20 @@ class IntentHandler: INExtension, INWorkoutsDomainHandling {
         completion(response)
     }
     
-    // MARK: - INPauseWorkoutIntentHandling
-    public func handle(pauseWorkout intent: INPauseWorkoutIntent, completion: @escaping (INPauseWorkoutIntentResponse) -> Void) {
-        
+    
+    func handle(intent: INPauseWorkoutIntent, completion: @escaping (INPauseWorkoutIntentResponse) -> Void) {
         print(intent.workoutName)
     }
     
-    // MARK: - INResumeWorkoutIntentHandling
-    public func handle(resumeWorkout intent: INResumeWorkoutIntent, completion: @escaping (INResumeWorkoutIntentResponse) -> Void) {
-        
+    func handle(intent: INEndWorkoutIntent, completion: @escaping (INEndWorkoutIntentResponse) -> Void) {
         print(intent.workoutName)
     }
     
-    // MARK: - INCancelWorkoutIntentHandling
-    public func handle(cancelWorkout intent: INCancelWorkoutIntent, completion: @escaping (INCancelWorkoutIntentResponse) -> Void) {
-        
+    func handle(intent: INCancelWorkoutIntent, completion: @escaping (INCancelWorkoutIntentResponse) -> Void) {
         print(intent.workoutName)
     }
-
-    // MARK: - INEndWorkoutIntentHandling
-    public func handle(endWorkout intent: INEndWorkoutIntent, completion: @escaping (INEndWorkoutIntentResponse) -> Void) {
-        
+    
+    func handle(intent: INResumeWorkoutIntent, completion: @escaping (INResumeWorkoutIntentResponse) -> Void) {
         print(intent.workoutName)
     }
     

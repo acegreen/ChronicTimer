@@ -146,7 +146,7 @@ class RunTrackerInterfaceController: WKInterfaceController, CLLocationManagerDel
     }
     
     //Timer Function
-    func countUp() {
+    @objc func countUp() {
         workout.timeElapsed += 1
         changeLabels()
     }

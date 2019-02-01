@@ -110,7 +110,7 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        return NSAttributedString(string: String(row), attributes: [NSForegroundColorAttributeName:UIColor.white])
+        return NSAttributedString(string: String(row), attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
         
     }
     

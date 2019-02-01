@@ -1,65 +1,46 @@
 PODS:
-  - AMPopTip (2.1.7)
+  - AMPopTip (3.5.0)
   - AMWaveTransition (0.6.2)
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
-  - BubbleTransition (2.0.2)
-  - ChartboostSDK (7.0.0)
-  - Charts (3.0.3):
-    - Charts/Core (= 3.0.3)
-  - Charts/Core (3.0.3)
-  - Crashlytics (3.8.6):
-    - Fabric (~> 1.6.3)
+  - Bolts/Tasks (1.9.0)
+  - BubbleTransition (3.2.0)
+  - ChartboostSDK (7.3.0)
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - DZNEmptyDataSet (1.8.1)
-  - Fabric (1.6.13)
-  - FBAudienceNetwork (4.25.0)
-  - FBSDKCoreKit (4.26.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.26.0):
-    - FBSDKCoreKit
-  - Flurry-iOS-SDK/FlurrySDK (8.2.0)
-  - Google-Mobile-Ads-SDK (7.23.0)
+  - Fabric (1.9.0)
+  - FBAudienceNetwork (5.1.1)
+  - Flurry-iOS-SDK/FlurrySDK (9.3.0)
+  - Google-Mobile-Ads-SDK (7.38.0)
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
-  - mopub-ios-sdk (4.16.1):
-    - mopub-ios-sdk/MoPubSDK (= 4.16.1)
-  - mopub-ios-sdk/Avid (4.16.1):
+  - mopub-ios-sdk (5.5.0):
+    - mopub-ios-sdk/MoPubSDK (= 5.5.0)
+  - mopub-ios-sdk/Avid (5.5.0):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/Core (4.16.1)
-  - mopub-ios-sdk/Moat (4.16.1):
+  - mopub-ios-sdk/Core (5.5.0)
+  - mopub-ios-sdk/Moat (5.5.0):
     - mopub-ios-sdk/Core
-  - mopub-ios-sdk/MoPubSDK (4.16.1):
+  - mopub-ios-sdk/MoPubSDK (5.5.0):
     - mopub-ios-sdk/Avid
     - mopub-ios-sdk/Core
     - mopub-ios-sdk/Moat
   - MZAppearance (1.1.6)
-  - MZFormSheetPresentationController (2.4.2):
+  - MZFormSheetPresentationController (2.4.3):
     - MZAppearance
-  - Parse (1.15.2):
-    - Bolts/Tasks (~> 1.8)
-  - ParseFacebookUtilsV4 (1.11.1):
-    - Bolts/Tasks (>= 1.6)
-    - FBSDKCoreKit (~> 4.10)
-    - FBSDKLoginKit (~> 4.10)
-    - FBSDKTVOSKit (~> 4.10)
-    - Parse (~> 1.12)
-  - ParseTwitterUtils (1.11.0):
-    - Bolts/Tasks (~> 1.7)
-    - Parse (~> 1.13)
-  - ParseUI (1.2.0):
-    - Bolts/Tasks (~> 1.3)
-    - Parse (~> 1.9)
-  - PureLayout (3.0.2)
-  - ReachabilitySwift (3)
-  - SDVersion (4.2.1)
-  - SwiftyJSON (3.1.4)
-  - VungleSDK-iOS (5.1.1)
-  - Whisper (5.0.0)
+  - Parse (1.17.2):
+    - Parse/Core (= 1.17.2)
+  - Parse/Core (1.17.2):
+    - Bolts/Tasks (~> 1.9)
+  - PureLayout (3.1.4)
+  - ReachabilitySwift (4.3.0)
+  - SDVersion (4.3.2)
+  - SwiftyJSON (4.2.0)
+  - VungleSDK-iOS (6.3.2)
+  - Whisper (6.0.2)
 
 DEPENDENCIES:
   - AMPopTip
@@ -76,46 +57,73 @@ DEPENDENCIES:
   - mopub-ios-sdk
   - MZFormSheetPresentationController
   - Parse
-  - ParseFacebookUtilsV4
-  - ParseTwitterUtils
-  - ParseUI
   - PureLayout
   - ReachabilitySwift
   - SDVersion
   - SwiftyJSON
   - VungleSDK-iOS
-  - Whisper
+  - Whisper (from `https://github.com/freeubi/Whisper.git`, branch `swift-4.2-support`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AMPopTip
+    - AMWaveTransition
+    - Bolts
+    - BubbleTransition
+    - ChartboostSDK
+    - Charts
+    - Crashlytics
+    - DZNEmptyDataSet
+    - Fabric
+    - FBAudienceNetwork
+    - Flurry-iOS-SDK
+    - Google-Mobile-Ads-SDK
+    - LaunchKit
+    - mopub-ios-sdk
+    - MZAppearance
+    - MZFormSheetPresentationController
+    - Parse
+    - PureLayout
+    - ReachabilitySwift
+    - SDVersion
+    - SwiftyJSON
+    - VungleSDK-iOS
+
+EXTERNAL SOURCES:
+  Whisper:
+    :branch: swift-4.2-support
+    :git: https://github.com/freeubi/Whisper.git
+
+CHECKOUT OPTIONS:
+  Whisper:
+    :commit: 86880dea149a871ec5cb909cc3b93e7fb5804788
+    :git: https://github.com/freeubi/Whisper.git
 
 SPEC CHECKSUMS:
-  AMPopTip: 409326cfee1108b625c85de73934014598cd0797
+  AMPopTip: 871ae0570b68fe396e714922b3f7d8ed6a36bb71
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  BubbleTransition: 7d98ed7d56f0940e83f350a98103ad473491c769
-  ChartboostSDK: cf11f22674ad4fd56572e92c4a4668031a8b9d68
-  Charts: bcde37724c161958c1438dd4883971fcb2d50c06
-  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
+  ChartboostSDK: 63bbdcad37dd78012acaba1f904e82ddb0eb921d
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Fabric: 2fb5676bc811af011a04513451f463dac6803206
-  FBAudienceNetwork: b0e2a46cca38ca0d17d8aebcc4765d628203ee9b
-  FBSDKCoreKit: c8b8582311ec11b145451d8b9717dc6cc2ae5a76
-  FBSDKLoginKit: f3f03b94c21eb834af243c0a881d48641f47ca60
-  Flurry-iOS-SDK: 5907f4767bbe538ced4d39f1268096730193b471
-  Google-Mobile-Ads-SDK: a43dc8efdb566c74d00ac6934c781de969348d80
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FBAudienceNetwork: 56c2dc9b5f075f4a9757d7dc8a83d3972270f645
+  Flurry-iOS-SDK: 43afe11656872692de232f580ef0a8a68b0b47c9
+  Google-Mobile-Ads-SDK: fec4a72b71a81302d3fd75454df3417c03c50ed5
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
-  mopub-ios-sdk: a5b978f489e0d4016a3804f2f8e1aa4f1b1df391
+  mopub-ios-sdk: 937b82dd76d8a396ba6a22ae005a1e24c61bf28b
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
-  MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
-  Parse: 7daa8804b876d250a65420534c97d2d786c3b0b4
-  ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
-  ParseTwitterUtils: 0dde9689565e7012d83f892c64aed2ebe69f2ea9
-  ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
-  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  SDVersion: 29ec8c9fbb3c12916782eb23888cb40f16475226
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  VungleSDK-iOS: 18369c6d5456928a2fb752fa2413d0da8c359548
-  Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
+  MZFormSheetPresentationController: fbfdbad31884f16fac17fbe3c44c168306cc1095
+  Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  SDVersion: 18f32c835c1543611fcfae3c6accd9a04b90597e
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  VungleSDK-iOS: 69a7f407b60281d2954ffc5eeeac349fbfed51d6
+  Whisper: 8c499b08f3b56d5c80162d775e3462318ad7f4fe
 
-PODFILE CHECKSUM: 7a0feae7fbd61c9109306670eee7ea311827a67f
+PODFILE CHECKSUM: aaeef67275adf9f1d976ee514d47c0242ab57311
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.6.0.rc.2

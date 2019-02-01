@@ -75,8 +75,8 @@ class ShareWorkoutViewController:
         removePhotoButtton.setTitleColor(Constants.chronicColor, for: .normal)
         removePhotoButtton.setImage(UIImage(named: "Share_Remove"), for: .normal)
         removePhotoButtton.titleLabel!.font = Constants.ChronicFonts.regular
-        removePhotoButtton.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 10)
-        removePhotoButtton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        removePhotoButtton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 10)
+        removePhotoButtton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         removePhotoButtton.layer.cornerRadius = 5
         removePhotoButtton.layer.borderColor = Constants.chronicColor.cgColor
         removePhotoButtton.layer.borderWidth = 1
@@ -96,7 +96,7 @@ class ShareWorkoutViewController:
         selfieImageView.clipsToBounds = true
         selfieImageView.contentMode = .scaleAspectFill
         shareCardView.addSubview(selfieImageView)
-        shareCardView.sendSubview(toBack: selfieImageView)
+        shareCardView.sendSubviewToBack(selfieImageView)
         selfieImageView.autoPinEdge(toSuperviewEdge: .left)
         selfieImageView.autoPinEdge(toSuperviewEdge: .right)
         selfieImageView.autoPinEdge(.top, to: .bottom, of: self.removePhotoButtton, withOffset: 10)
@@ -111,8 +111,8 @@ class ShareWorkoutViewController:
         photoLibraryButtton.titleLabel!.font = Constants.ChronicFonts.regular
         photoLibraryButtton.titleLabel!.minimumScaleFactor = 0.5
         photoLibraryButtton.contentHorizontalAlignment = .left
-        photoLibraryButtton.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 10, 20)
-        photoLibraryButtton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        photoLibraryButtton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        photoLibraryButtton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         photoLibraryButtton.layer.cornerRadius = 5
         photoLibraryButtton.layer.borderColor = UIColor.white.cgColor
         photoLibraryButtton.layer.borderWidth = 1
@@ -128,8 +128,8 @@ class ShareWorkoutViewController:
         takePhotoButtton.titleLabel!.font = Constants.ChronicFonts.regular
         takePhotoButtton.titleLabel!.minimumScaleFactor = 0.5
         takePhotoButtton.contentHorizontalAlignment = .left
-        takePhotoButtton.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 10, 20)
-        takePhotoButtton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        takePhotoButtton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        takePhotoButtton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         takePhotoButtton.layer.cornerRadius = 5
         takePhotoButtton.layer.borderColor = UIColor.white.cgColor
         takePhotoButtton.layer.borderWidth = 1
@@ -220,7 +220,7 @@ class ShareWorkoutViewController:
         }
     }
     
-    func removePhotoButtonPressed(sender: UIButton) {
+    @objc func removePhotoButtonPressed(sender: UIButton) {
         
         guard selfieImageView.image != nil || selfieImageView.image != placeholderImage else {
             return
@@ -235,18 +235,18 @@ class ShareWorkoutViewController:
     
     //MARK: Image Picker Functions
     
-    func takePhotoButtonPressed(sender: UIButton) {
+    @objc func takePhotoButtonPressed(sender: UIButton) {
         
         // assign image picker delegate
         picker.delegate = self
         picker.allowsEditing = true
-        picker.sourceType = UIImagePickerControllerSourceType.camera
+        picker.sourceType = UIImagePickerController.SourceType.camera
         picker.cameraCaptureMode = .photo
         picker.modalPresentationStyle = .fullScreen
         present(picker, animated: true, completion: nil)
     }
     
-    func photofromLibraryButtonPressed(sender: UIButton) {
+    @objc func photofromLibraryButtonPressed(sender: UIButton) {
     
         // assign image picker delegate
         picker.delegate = self
@@ -271,9 +271,9 @@ class ShareWorkoutViewController:
 
         
 //        let excludedActivityTypesArray = [
-//            UIActivityType.PostToWeibo,
-//            UIActivityType.AssignToContact,
-//            UIActivityType.AirDrop,
+//            UIActivity.ActivityType.PostToWeibo,
+//            UIActivity.ActivityType.AssignToContact,
+//            UIActivity.ActivityType.AirDrop,
 //            ]
         
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -292,13 +292,12 @@ class ShareWorkoutViewController:
     }
 
     //MARK: Image Picker Delegates
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         selfieImageView.contentMode = .scaleAspectFill
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             applyImageToView(image: image)
-        } else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             applyImageToView(image: image)
         } else {
             print("Something went wrong with image picker")

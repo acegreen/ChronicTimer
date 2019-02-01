@@ -110,7 +110,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     }
     
     //Timer Function
-    func countDown() {
+    @objc func countDown() {
         
         time -= 1
         workout.timeRemaining -= 1
@@ -231,7 +231,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = alertTitle
             notificationContent.body = alertBody
-            let notificaitonSound = UNNotificationSound.default()
+            let notificaitonSound = UNNotificationSound.default
             notificationContent.sound = notificaitonSound
             
             let request = UNNotificationRequest(identifier: Constants.NotificationCategory.WorkoutCategory.key(), content: notificationContent, trigger: nil)

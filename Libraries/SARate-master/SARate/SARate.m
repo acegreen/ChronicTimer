@@ -161,7 +161,7 @@
 
 -(NSString *)appstoreRaitingButton{
     if (_appstoreRaitingButton == nil){
-        _appstoreRaitingButton = NSLocalizedString(@"Review it", @"");
+        _appstoreRaitingButton = NSLocalizedString(@"Review It", @"");
     }
     return _appstoreRaitingButton;
 }

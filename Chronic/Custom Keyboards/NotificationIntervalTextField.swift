@@ -66,7 +66,10 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
         return CGRect.zero
     }
     
-    override func selectionRects(for range: UITextRange) -> [Any] {
+    
+    
+    
+    override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
     }
     
@@ -81,7 +84,7 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
         return super.canPerformAction(action, withSender:sender)
     }
 
-    func dismissPicker () {
+    @objc func dismissPicker () {
         
         self.resignFirstResponder()
     }
@@ -103,7 +106,7 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         let title = pickerData[row]
-        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        let attributedString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
         pickerView.backgroundColor = UIColor.clear
         

@@ -460,11 +460,11 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
 //        paragraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
 //        paragraphStyle.alignment = NSTextAlignment.center
 //        
-//        let attributedLineOne: NSAttributedString = NSAttributedString(string: lineOne, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 24), NSParagraphStyleAttributeName: paragraphStyle])
+//        let attributedLineOne: NSAttributedString = NSAttributedString(string: lineOne, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24), NSParagraphStyleAttributeName: paragraphStyle])
 //        
-//        let attributedLineTwo: NSAttributedString = NSAttributedString(string: lineTwo, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20), NSParagraphStyleAttributeName: paragraphStyle])
+//        let attributedLineTwo: NSAttributedString = NSAttributedString(string: lineTwo, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSParagraphStyleAttributeName: paragraphStyle])
 //        
-//        let attributedLineThree: NSAttributedString = NSAttributedString(string: lineThree, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
+//        let attributedLineThree: NSAttributedString = NSAttributedString(string: lineThree, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSParagraphStyleAttributeName: paragraphStyle])
 //        
 //        let lineOneLabel: UILabel = UILabel()
 //        lineOneLabel.numberOfLines = 0
@@ -487,14 +487,14 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
 //            contents.append(imageView)
 //        }
 //        
-//        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButtonType.system)
-//        purchaseButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-//        purchaseButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
+//        let purchaseButton: CNPPopupButton = CNPPopupButton(type: UIButton.ButtonType.system)
+//        purchaseButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+//        purchaseButton.setTitleColor(UIColor.lightGray, for: UIControl.State.highlighted)
 //        purchaseButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
-//        purchaseButton.setTitle("Purchase", for: UIControlState.normal)
+//        purchaseButton.setTitle("Purchase", for: UIControl.State.normal)
 //        purchaseButton.backgroundColor = UIColor.green
 //        purchaseButton.layer.cornerRadius = 4
-//        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControlEvents.touchUpInside)
+//        purchaseButton.addTarget(self, action: #selector(IAPHelper.buyProduct), for: UIControl.Event.touchUpInside)
 //        contents.append(purchaseButton)
 //        
 //        inAppPurchasePopupController = CNPPopupController(contents: contents)
@@ -563,7 +563,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 return completionHandler(nil, nil)
             }
             
-            let json = JSON(data: data!)
+            let json = try! JSON(data: data!)
             let receiptStatus = json["status"]
             let receiptEnvironment = json["environment"]
             
