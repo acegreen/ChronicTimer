@@ -33,7 +33,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
         
         self.tableView.setEditing(true, animated: true)
         
-        nameCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ExerciseNameTableViewCell
+        nameCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ExerciseNameTableViewCell
         
     }
     
@@ -259,7 +259,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
         case (0):
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath) as! ExerciseNameTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseNameTableViewCell", for: indexPath) as! ExerciseNameTableViewCell
             
             if routineToEdit != nil {
                 
@@ -270,7 +270,7 @@ class CustomRoutineTableViewController: UITableViewController, UITextFieldDelega
             
         case (1):
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseCell", for: indexPath) as! ExerciseTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseTableViewCell", for: indexPath) as! ExerciseTableViewCell
             
             if exerciseSet.count != 0 && (indexPath as NSIndexPath).row < exerciseSet.count {
                 
