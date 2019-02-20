@@ -27,14 +27,11 @@ target 'Chronic' do
     # Fabric
     pod 'Crashlytics'
     pod 'mopub-ios-sdk'
-#    pod 'mopub-ios-mediation'
-
+    
     # Ad Networks
-    pod 'Google-Mobile-Ads-SDK'
-    pod 'FBAudienceNetwork'
-    pod 'ChartboostSDK'
-    pod 'Flurry-iOS-SDK/FlurrySDK'
-    pod 'VungleSDK-iOS'
+    pod 'MoPub-AdColony-Adapters', '3.3.5.4'
+    pod 'MoPub-AdMob-Adapters', '7.37.0.4'
+    pod 'MoPub-FacebookAudienceNetwork-Adapters', '5.1.0.4'
     
     # Deprecated Frameworks
     #pod 'GreystripeSDK' // installed manually cocoapods not up-to-date

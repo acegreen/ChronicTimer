@@ -333,20 +333,20 @@ class Functions {
         
         var components = string.components(separatedBy: ":")
         
-        var hoursComponent: Int! = 0
-        var minutesComponent: Int! = 0
-        var secondsComponent: Int! = 0
+        var hoursComponent = 0
+        var minutesComponent = 0
+        var secondsComponent = 0
         
         if components.count == 3 {
             
-            hoursComponent = Int(components[0].replacingOccurrences(of: " ", with: ""))!
-            minutesComponent = Int(components[1])!
-            secondsComponent = Int(components[2])
+            hoursComponent = Int(components[0].replacingOccurrences(of: " ", with: "")) ?? 0
+            minutesComponent = Int(components[1]) ?? 0
+            secondsComponent = Int(components[2]) ?? 0
             
         } else {
             
-            minutesComponent = Int(components[0])
-            secondsComponent = Int(components[1])
+            minutesComponent = Int(components[0]) ?? 0
+            secondsComponent = Int(components[1]) ?? 0
         }
         
         return (hoursComponent,minutesComponent,secondsComponent)

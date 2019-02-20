@@ -1,22 +1,45 @@
 PODS:
-  - AMPopTip (3.5.0)
+  - AdColony (3.3.5)
+  - AMPopTip (3.6.0)
   - AMWaveTransition (0.6.2)
   - Bolts/Tasks (1.9.0)
   - BubbleTransition (3.2.0)
-  - ChartboostSDK (7.3.0)
-  - Charts (3.2.1):
-    - Charts/Core (= 3.2.1)
-  - Charts/Core (3.2.1)
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - DZNEmptyDataSet (1.8.1)
   - Fabric (1.9.0)
-  - FBAudienceNetwork (5.1.1)
-  - Flurry-iOS-SDK/FlurrySDK (9.3.0)
-  - Google-Mobile-Ads-SDK (7.38.0)
+  - FBAudienceNetwork (5.1.0)
+  - Google-Mobile-Ads-SDK (7.37.0)
   - LaunchKit (2.1.4):
     - LaunchKit/LaunchKit (= 2.1.4)
   - LaunchKit/LaunchKit (2.1.4)
+  - MoPub-AdColony-Adapters (3.3.5.4):
+    - MoPub-AdColony-Adapters/MoPub (= 3.3.5.4)
+    - MoPub-AdColony-Adapters/Network (= 3.3.5.4)
+  - MoPub-AdColony-Adapters/MoPub (3.3.5.4):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-AdColony-Adapters/Network (3.3.5.4):
+    - AdColony (= 3.3.5)
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-AdMob-Adapters (7.37.0.4):
+    - MoPub-AdMob-Adapters/MoPub (= 7.37.0.4)
+    - MoPub-AdMob-Adapters/Network (= 7.37.0.4)
+  - MoPub-AdMob-Adapters/MoPub (7.37.0.4):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-AdMob-Adapters/Network (7.37.0.4):
+    - Google-Mobile-Ads-SDK (= 7.37.0)
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-FacebookAudienceNetwork-Adapters (5.1.0.4):
+    - MoPub-FacebookAudienceNetwork-Adapters/MoPub (= 5.1.0.4)
+    - MoPub-FacebookAudienceNetwork-Adapters/Network (= 5.1.0.4)
+  - MoPub-FacebookAudienceNetwork-Adapters/MoPub (5.1.0.4):
+    - mopub-ios-sdk/Core (~> 5.5)
+  - MoPub-FacebookAudienceNetwork-Adapters/Network (5.1.0.4):
+    - FBAudienceNetwork (= 5.1.0)
+    - mopub-ios-sdk/Core (~> 5.5)
   - mopub-ios-sdk (5.5.0):
     - mopub-ios-sdk/MoPubSDK (= 5.5.0)
   - mopub-ios-sdk/Avid (5.5.0):
@@ -39,21 +62,19 @@ PODS:
   - ReachabilitySwift (4.3.0)
   - SDVersion (4.3.2)
   - SwiftyJSON (4.2.0)
-  - VungleSDK-iOS (6.3.2)
   - Whisper (6.0.2)
 
 DEPENDENCIES:
   - AMPopTip
   - AMWaveTransition
   - BubbleTransition
-  - ChartboostSDK
   - Charts
   - Crashlytics
   - DZNEmptyDataSet
-  - FBAudienceNetwork
-  - Flurry-iOS-SDK/FlurrySDK
-  - Google-Mobile-Ads-SDK
   - LaunchKit
+  - MoPub-AdColony-Adapters (= 3.3.5.4)
+  - MoPub-AdMob-Adapters (= 7.37.0.4)
+  - MoPub-FacebookAudienceNetwork-Adapters (= 5.1.0.4)
   - mopub-ios-sdk
   - MZFormSheetPresentationController
   - Parse
@@ -61,24 +82,25 @@ DEPENDENCIES:
   - ReachabilitySwift
   - SDVersion
   - SwiftyJSON
-  - VungleSDK-iOS
   - Whisper (from `https://github.com/freeubi/Whisper.git`, branch `swift-4.2-support`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AdColony
     - AMPopTip
     - AMWaveTransition
     - Bolts
     - BubbleTransition
-    - ChartboostSDK
     - Charts
     - Crashlytics
     - DZNEmptyDataSet
     - Fabric
     - FBAudienceNetwork
-    - Flurry-iOS-SDK
     - Google-Mobile-Ads-SDK
     - LaunchKit
+    - MoPub-AdColony-Adapters
+    - MoPub-AdMob-Adapters
+    - MoPub-FacebookAudienceNetwork-Adapters
     - mopub-ios-sdk
     - MZAppearance
     - MZFormSheetPresentationController
@@ -87,7 +109,6 @@ SPEC REPOS:
     - ReachabilitySwift
     - SDVersion
     - SwiftyJSON
-    - VungleSDK-iOS
 
 EXTERNAL SOURCES:
   Whisper:
@@ -100,19 +121,21 @@ CHECKOUT OPTIONS:
     :git: https://github.com/freeubi/Whisper.git
 
 SPEC CHECKSUMS:
-  AMPopTip: 871ae0570b68fe396e714922b3f7d8ed6a36bb71
+  AdColony: 1d2c622054de217e5af2699abe7da6aa60a3533f
+  AMPopTip: ebfa860ade372f383e8b3500d3101e8c4a4f73ce
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
-  ChartboostSDK: 63bbdcad37dd78012acaba1f904e82ddb0eb921d
-  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  FBAudienceNetwork: 56c2dc9b5f075f4a9757d7dc8a83d3972270f645
-  Flurry-iOS-SDK: 43afe11656872692de232f580ef0a8a68b0b47c9
-  Google-Mobile-Ads-SDK: fec4a72b71a81302d3fd75454df3417c03c50ed5
+  FBAudienceNetwork: 95efd4f20dc44f97254dbd3dfe5a4d19164092a8
+  Google-Mobile-Ads-SDK: d028682d7450749a1955679da050eaf70d997b3e
   LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
+  MoPub-AdColony-Adapters: b8c5e4e70fae23ccba01a1d2f213093701f1621f
+  MoPub-AdMob-Adapters: 7edadb099bd81363e8aefd66883fb48f668d2594
+  MoPub-FacebookAudienceNetwork-Adapters: 52917bab5485381735f31975d809c75cb5fd0221
   mopub-ios-sdk: 937b82dd76d8a396ba6a22ae005a1e24c61bf28b
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: fbfdbad31884f16fac17fbe3c44c168306cc1095
@@ -121,9 +144,8 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   SDVersion: 18f32c835c1543611fcfae3c6accd9a04b90597e
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  VungleSDK-iOS: 69a7f407b60281d2954ffc5eeeac349fbfed51d6
   Whisper: 8c499b08f3b56d5c80162d775e3462318ad7f4fe
 
-PODFILE CHECKSUM: aaeef67275adf9f1d976ee514d47c0242ab57311
+PODFILE CHECKSUM: ebcc91ee80a683efcc5b45fe7096a21a0d3603fd
 
-COCOAPODS: 1.6.0.rc.2
+COCOAPODS: 1.6.0
