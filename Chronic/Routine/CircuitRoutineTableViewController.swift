@@ -397,11 +397,11 @@ class CircuitRoutineTableViewController: UITableViewController, UITextFieldDeleg
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // Prevent crashing undo bug
-        if let text = textField.text, text.characters.count < (range.length + range.location) {
+        if let text = textField.text, text.count < (range.length + range.location) {
             return false
         }
         
-        let newLength: NSInteger = (textField.text?.characters.count)! + string.characters.count - range.length
+        let newLength: NSInteger = (textField.text?.count)! + string.count - range.length
         
         return newLength <= 20
     }

@@ -38,7 +38,7 @@ class TimerSoundPickerTextField: UITextField, UIPickerViewDataSource, UIPickerVi
     
     func configurePicker() -> UIView {
         
-        picker.selectRow(pickerData.index(of: Constants.timerSound)!, inComponent: 0, animated: true)
+        picker.selectRow(pickerData.firstIndex(of: Constants.timerSound)!, inComponent: 0, animated: true)
         
         return picker
     }

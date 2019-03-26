@@ -22,11 +22,11 @@ class QuickTimerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
         Functions.deselectSelectedRoutine()
         
-        let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        timerViewController.initializeQuickTimer()
+        let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+        workoutViewController.initializeQuickTimer()
         
         self.dismiss(animated: true) { 
-            Constants.appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
+            Constants.appDel.window?.rootViewController?.present(workoutViewController, animated: true, completion: nil)
         }
     }
 

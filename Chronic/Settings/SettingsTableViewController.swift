@@ -11,7 +11,7 @@ import StoreKit
 import MessageUI
 import HealthKit
 import LaunchKit
-import Crashlytics
+import Firebase
 import MZFormSheetPresentationController
 
 class SettingsTableViewController: UITableViewController, Dimmable {
@@ -236,11 +236,12 @@ class SettingsTableViewController: UITableViewController, Dimmable {
                     SweetAlert().showAlert("Success!", subTitle: nil, style: AlertStyle.success)
                     
                     // log shared successfully
-                    Answers.logShare(withMethod: "\(activity!)",
-                                               contentName: "Chronic Shared",
-                                               contentType: "Share",
-                                               contentId: nil,
-                                               customAttributes: ["App Version": Constants.AppVersion])
+                    Analytics.logEvent(AnalyticsEventShare, parameters: [
+                        AnalyticsParameterContent: "App shared",
+                        AnalyticsParameterContentType: "Share",
+                        "activity": "\(activity!)",
+                        "app_version": Constants.AppVersion
+                    ])
                     
                 } else if error != nil {
                     SweetAlert().showAlert("Error!", subTitle: "That didn't go through", style: AlertStyle.error)
@@ -281,11 +282,11 @@ class SettingsTableViewController: UITableViewController, Dimmable {
             if !IAPHelper.sharedInstance.list.isEmpty {
                 self.performSegue(withIdentifier: "InAppPurchaseSegueIdentifier", sender: tableView.cellForRow(at: indexPath))
             } else {
-                IAPHelper.sharedInstance.requestProducts(displayAlert: true, { (success) in
+                IAPHelper.sharedInstance.requestProducts(displayAlert: true) { (success) in
                     if !IAPHelper.sharedInstance.list.isEmpty {
                         self.performSegue(withIdentifier: "InAppPurchaseSegueIdentifier", sender: tableView.cellForRow(at: indexPath))
                     }
-                })
+                }
             }
             
         case "RestoreUpgradesCell":

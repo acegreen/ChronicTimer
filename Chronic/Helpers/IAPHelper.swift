@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import StoreKit
 //import CNPPopupController
-import Crashlytics
+import Firebase
 import Parse
 import SwiftyJSON
 
@@ -114,6 +114,9 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 productCurrency = formatter.currencyCode
             }
             
+            let transactionTransactionID = transaction.transactionIdentifier! as String
+            let transactionProductID = transaction.payment.productIdentifier as String
+            
             switch transaction.transactionState {
                 
             case .purchasing:
@@ -132,13 +135,10 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                 
                                 //                        let product_id = receiptTransactionArray!["product_id"]
                                 //                        let quantity = receiptTransactionArray!["quantity"]
-                                let transactionID = receiptTransactionArray!["transaction_id"]
+                                let receiptTransactionID = receiptTransactionArray!["transaction_id"]
                                 //                        let originalTransactionID = receiptTransactionArray!["original_transaction_id"]
                                 //                        let purchaseDate = receiptTransactionArray!["purchase_date"]
                                 //                        let originalPurchaseDate = receiptTransactionArray!["purchase_date"]
-                                
-                                let transactionTransactionID = transaction.transactionIdentifier! as String
-                                let transactionProductID = transaction.payment.productIdentifier as String
                                 
                                 switch transactionProductID {
 
@@ -148,16 +148,18 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     self.proVersionPurchased()
                                     self.removeAdsPurchased()
                                     
-                                    if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
+                                    if receiptTransactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log Ultimate Package purchase
-                                        Answers.logPurchase(withPrice: productPrice,
-                                            currency: productCurrency,
-                                            success: true,
-                                            itemName: "Ultimate Package",
-                                            itemType: "In-App Purchase",
-                                            itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                        Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
+                                            "product_price": productPrice,
+                                            "product_currency": productCurrency,
+                                            "itemName": transactionProductID,
+                                            "itemType": "In-App Purchase",
+                                            "transactionIdentifier": "\(transaction.transactionIdentifier!)",
+                                            "installation_ID": PFInstallation.current()?.installationId ?? "",
+                                            "app_version": Constants.AppVersion, "transaction_date": transaction.transactionDate!
+                                        ])
                                     }
                                     
                                     break
@@ -167,16 +169,18 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     print("\(transaction.transactionState) - pro version")
                                     self.proVersionPurchased()
                                     
-                                    if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
+                                    if receiptTransactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log pro purchase
-                                        Answers.logPurchase(withPrice: productPrice,
-                                            currency: productCurrency,
-                                            success: true,
-                                            itemName: "Pro Version",
-                                            itemType: "In-App Purchase",
-                                            itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                        Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
+                                            "itemName": transactionProductID,
+                                            "itemType": "In-App Purchase",
+                                            AnalyticsParameterValue: productPrice,
+                                            AnalyticsParameterCurrency: productCurrency,
+                                            AnalyticsParameterTransactionID: "\(transaction.transactionIdentifier!)",
+                                            "installation_ID": PFInstallation.current()?.installationId ?? "",
+                                            "app_version": Constants.AppVersion, "transaction_date": transaction.transactionDate!
+                                            ])
                                     }
                                     
                                     break
@@ -186,16 +190,18 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     print("\(transaction.transactionState) - remove ads")
                                     self.removeAdsPurchased()
                                     
-                                    if transactionID.string == transactionTransactionID && environment != "Sandbox" {
+                                    if receiptTransactionID.string == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log remove ads purchase
-                                        Answers.logPurchase(withPrice: productPrice,
-                                            currency: productCurrency,
-                                            success: true,
-                                            itemName: "Remove Ads",
-                                            itemType: "In-App Purchase",
-                                            itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                        Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
+                                            "itemName": transactionProductID,
+                                            "itemType": "In-App Purchase",
+                                            AnalyticsParameterValue: productPrice,
+                                            AnalyticsParameterCurrency: productCurrency,
+                                            AnalyticsParameterTransactionID: "\(transaction.transactionIdentifier!)",
+                                            "installation_ID": PFInstallation.current()?.installationId ?? "",
+                                            "app_version": Constants.AppVersion, "transaction_date": transaction.transactionDate!
+                                            ])
                                     }
                                     
                                     break
@@ -204,16 +210,18 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                                     
                                     print("\(transaction.transactionState) - donate")
                                     
-                                    if transactionID.string  == transactionTransactionID && environment != "Sandbox" {
+                                    if receiptTransactionID.string  == transactionTransactionID && environment != "Sandbox" {
                                         
                                         // log donation purchase
-                                        Answers.logPurchase(withPrice: productPrice,
-                                            currency: productCurrency,
-                                            success: true,
-                                            itemName: "Donation",
-                                            itemType: "In-App Purchase (Consumable)",
-                                            itemId: "\(transaction.transactionIdentifier!)",
-                                            customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "App Version": Constants.AppVersion, "Transaction Date": transaction.transactionDate!])
+                                        Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: [
+                                            "itemName": transactionProductID,
+                                            "itemType": "In-App Purchase",
+                                            AnalyticsParameterValue: productPrice,
+                                            AnalyticsParameterCurrency: productCurrency,
+                                            AnalyticsParameterTransactionID: "\(transaction.transactionIdentifier!)",
+                                            "installation_ID": PFInstallation.current()?.installationId ?? "",
+                                            "app_version": Constants.AppVersion, "transaction_date": transaction.transactionDate!
+                                            ])
                                     }
                                     
                                     break
@@ -268,13 +276,14 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                     SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: errorMessage, style: AlertStyle.error)
                 })
                 
-                Answers.logPurchase(withPrice: nil,
-                    currency: nil,
-                    success: false,
-                    itemName: nil,
-                    itemType: nil,
-                    itemId: nil,
-                    customAttributes: ["Installation ID":PFInstallation.current()?.installationId ?? "", "Error": errorMessage, "App Version": Constants.AppVersion])
+                // log purchase failed event
+                Analytics.logEvent(AnalyticsEventRemoveFromCart, parameters: [
+                    "itemName": transactionProductID,
+                    "itemType": "In-App Purchase",
+                    AnalyticsParameterTransactionID: "\(transaction.transactionIdentifier!)",
+                    "installation_ID": PFInstallation.current()?.installationId ?? "",
+                    "app_version": Constants.AppVersion, "transaction_date": transaction.transactionDate!
+                    ])
                 
                 print(errorMessage)
                 
@@ -315,15 +324,6 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             self.sweetAlertRestorePurchases.closeAlertDismissButton()
             SweetAlert().showAlert(NSLocalizedString("Failed", comment: ""), subTitle: error.localizedDescription, style: AlertStyle.error)
         })
-        
-//        // log restore failed
-//        Answers.logPurchaseWithPrice(nil,
-//            currency: nil,
-//            success: false,
-//            itemName: "Restore Failed",
-//            itemType: "Restore",
-//            itemId: nil,
-//            customAttributes: ["Installation ID":PFInstallation.currentInstallation().installationId])
     }
     
     //MARK: SKRequestDelegate methods
@@ -394,12 +394,16 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         let pay = SKPayment(product: product)
         _ = SKPaymentQueue.default().add(pay as SKPayment)
         
+        // log purchase attempt event
+        Analytics.logEvent(AnalyticsEventAddToCart, parameters: [
+            "itemName": product.productIdentifier,
+            "itemType": "In-App Purchase",
+            "installation_ID": PFInstallation.current()?.installationId ?? ""
+            ])
     }
     
     func finishTransaction(_ trans: SKPaymentTransaction) {
-        
-        print("finish transaction")
-        
+        print("finish transaction")        
     }
     
     func proVersionPurchased() {

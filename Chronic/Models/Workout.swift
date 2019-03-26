@@ -29,7 +29,6 @@ public class Workout {
     var name: String!
     
     var totalTime: Int = 0
-
     var timeRemaining: Int = 0
     var timeElapsed: Int = 0
     

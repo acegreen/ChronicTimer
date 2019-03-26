@@ -13,8 +13,7 @@ import HealthKit
 import CoreSpotlight
 import MobileCoreServices
 import WatchConnectivity
-import Fabric
-import Crashlytics
+import Firebase
 import MoPub
 import Parse
 import LaunchKit
@@ -22,7 +21,7 @@ import UserNotifications
 import Intents
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, TimerVCDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, WorkoutDelegate {
     
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     
@@ -68,8 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, TimerV
         }
         Parse.initialize(with: configuration)
         
-        // Initialize Crashlytics
-        Fabric.with([Crashlytics.self])
+        // Initialize Firebase
+        FirebaseApp.configure()
+        
+        // Log event
+        Analytics.logEvent(AnalyticsEventAppOpen, parameters: [
+            "app_version": Constants.AppVersion
+        ])
         
         // Initialize MoPub
         let moPubConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: Constants.moPubAdUnitID)
@@ -185,15 +189,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, TimerV
             
             guard let routineSelectedInSpotlight = DataAccess.sharedInstance.fetchRoutine(with: uniqueIdentifier) else { return false }
             
-            let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-            timerViewController.initializeRoutine(with: routineSelectedInSpotlight)
+            let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+            workoutViewController.initializeRoutine(with: routineSelectedInSpotlight)
             
             let rootViewController = Constants.appDel.window?.rootViewController
             if rootViewController?.presentedViewController != nil {
                 rootViewController?.dismiss(animated: true, completion: nil)
             }
             
-            rootViewController?.present(timerViewController, animated: true, completion: nil)
+            rootViewController?.present(workoutViewController, animated: true, completion: nil)
             
             // Mark correct routine as selected
             
@@ -307,7 +311,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, TimerV
         guard ShortcutIdentifier(fullType: shortcutItem.type) != nil else { return false }
         guard let shortcutType = shortcutItem.type as String? else { return false }
         
-        let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+        let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
         
         let rootViewController = Constants.appDel.window?.rootViewController
         if rootViewController?.presentedViewController != nil {
@@ -318,15 +322,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, TimerV
             
         case ShortcutIdentifier.Run.type:
             
-            timerViewController.initializeRunner()
-            rootViewController?.present(timerViewController, animated: true, completion: nil)
+            workoutViewController.initializeRunner()
+            rootViewController?.present(workoutViewController, animated: true, completion: nil)
         
             return true
             
         case ShortcutIdentifier.QT.type:
             
-            timerViewController.initializeQuickTimer()
-            rootViewController?.present(timerViewController, animated: true, completion: nil)
+            workoutViewController.initializeQuickTimer()
+            rootViewController?.present(workoutViewController, animated: true, completion: nil)
             
             return true
             
@@ -334,9 +338,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, TimerV
             
             guard let selectedRoutine = DataAccess.sharedInstance.fetchRoutine(with: shortcutItem.localizedTitle) else { return false }
                 
-            timerViewController.initializeRoutine(with: selectedRoutine)
-            rootViewController?.present(timerViewController, animated: true, completion: nil)
-            //timerViewController.play()
+            workoutViewController.initializeRoutine(with: selectedRoutine)
+            rootViewController?.present(workoutViewController, animated: true, completion: nil)
+            //workoutViewController.play()
             
             return true
             

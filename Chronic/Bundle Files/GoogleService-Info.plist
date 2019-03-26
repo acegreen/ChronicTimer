@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>182473037332-njl19jqkp9dend3ug63kljr785725ij4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.182473037332-njl19jqkp9dend3ug63kljr785725ij4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDPaXRlz6GwGGRAW0_kydNnJ5AtHTndCT4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>182473037332</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>AG.Chronic</string>
+	<key>PROJECT_ID</key>
+	<string>ag-chronictimer</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ag-chronictimer.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:182473037332:ios:1a2bc0d116f03f6c</string>
+	<key>DATABASE_URL</key>
+	<string>https://ag-chronictimer.firebaseio.com</string>
+</dict>
+</plist>

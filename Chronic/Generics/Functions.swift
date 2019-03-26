@@ -15,7 +15,7 @@ import MobileCoreServices
 import SystemConfiguration
 import AVFoundation
 import WatchConnectivity
-import Crashlytics
+import Firebase
 import Parse
 import AMPopTip
 import MZFormSheetPresentationController
@@ -86,7 +86,6 @@ class Functions {
                     totalTime += warmUpDictionary["Time"] as! Int
                     
                     stagesArray.add(warmUpDictionary)
-                    
                 }
                 
                 for i in 1...Int(Constants.roundExercise.exerciseNumberOfRounds) {
@@ -106,7 +105,6 @@ class Functions {
                         totalTime += roundDictionary["Time"] as! Int
                         
                         stagesArray.add(roundDictionary)
-                        
                     }
                     
                     if Constants.restExercise.exerciseTime as! Int > 0 {
@@ -123,7 +121,6 @@ class Functions {
                         totalTime += restDictionary["Time"] as! Int
                         
                         stagesArray.add(restDictionary)
-                        
                     }
                 }
                 
@@ -137,7 +134,6 @@ class Functions {
                     totalTime += coolDownDictionary["Time"] as! Int
                     
                     stagesArray.add(coolDownDictionary)
-                    
                 }
             }
             
@@ -169,17 +165,13 @@ class Functions {
         saveContext( { (save) -> Void in
             
             if (save == true) {
-                
                 print("selectedRoutine attribute updated")
                 completion(true)
                 
             } else {
-                
                 print("Didnt save data")
                 completion(false)
-                
             }
-            
         })
     }
     
@@ -189,9 +181,7 @@ class Functions {
         routineMarkedSelected?.selectedRoutine = false
         
         saveContext( { (save) -> Void in
-            
             if save == true {
-                
                 UIApplication.shared.shortcutItems = nil
             }
         })
@@ -200,15 +190,11 @@ class Functions {
     class func saveContext(_ completion: (_ didSave: Bool) -> Void) {
         
         do {
-            
             try DataAccess.context.save()
-            
             completion(true)
             
         } catch let error as NSError {
-            
             print("Fetch failed: \(error.localizedDescription)")
-            
             completion(false)
         }
         
@@ -247,7 +233,7 @@ class Functions {
         activity.userInfo = ["name": workout.name]
         activity.contentAttributeSet = attributeSet
         
-        activity.requiredUserInfoKeys = NSSet(array: ["name"]) as! Set<String>
+        activity.requiredUserInfoKeys = NSSet(array: ["name"]) as? Set<String>
         activity.isEligibleForSearch = true
         activity.isEligibleForPublicIndexing = true
         workout.nsUserActivity = activity
@@ -299,24 +285,20 @@ class Functions {
         // KEEP THOSE TWO GUARD STATEMENTS SEPARTED
         
         if !Constants.wcSession.isPaired {
-            
             SweetAlert().showAlert(NSLocalizedString("Alert: WCSession Paired Error Title Text", comment: ""), subTitle: NSLocalizedString("Alert: WCSession Paired Error Subtitle Text", comment: ""), style: AlertStyle.warning, dismissTime: nil)
         }
         
         do {
             
             try Constants.wcSession.updateApplicationContext(context as! [String : Any])
-            
             print("Context sent")
             
         } catch let error as NSError {
-            
             print("Updating the context failed: " + error.localizedDescription)
         }
     }
     
     class func timeFromTimeComponents (hoursComponent: Int, minutesComponent: Int, secondsComponent: Int) -> Int {
-        
         return (hoursComponent * 3600) + (minutesComponent * 60) + (secondsComponent)
     }
     
@@ -338,13 +320,10 @@ class Functions {
         var secondsComponent = 0
         
         if components.count == 3 {
-            
             hoursComponent = Int(components[0].replacingOccurrences(of: " ", with: "")) ?? 0
             minutesComponent = Int(components[1]) ?? 0
             secondsComponent = Int(components[2]) ?? 0
-            
         } else {
-            
             minutesComponent = Int(components[0]) ?? 0
             secondsComponent = Int(components[1]) ?? 0
         }
@@ -382,12 +361,10 @@ class Functions {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         if Action1 != nil {
-            
             alert.addAction(Action1!)
         }
         
         if Action2 != nil {
-            
             alert.addAction(Action2!)
         }
         
@@ -407,7 +384,6 @@ class Functions {
             Constants.player.play()
             
         } catch let error as NSError {
-            
             print("Fetch failed: \(error.localizedDescription)")
         }
     }
@@ -431,9 +407,7 @@ class Functions {
         var string = string
         
         for (key, value) in dict {
-            
             string = string.replacingOccurrences(of: "\(key)", with: value)
-            
         }
         
         return string
@@ -467,11 +441,6 @@ class Functions {
     
     class func markFeedbackGiven() {
         Constants.userDefaults.set(true, forKey: "FEEDBACK_GIVEN")
-        Answers.logRating(nil,
-                          contentName: "Chronic Rated",
-                          contentType: "Rate",
-                          contentId: nil,
-                          customAttributes: ["Installation ID": PFInstallation.current()?.installationId ?? "", "Country Code": Constants.regionCode ?? "", "App Version": Constants.AppVersion])
     }
     
     class func showPopTipOnceForKey(_ key: String, userDefaults: UserDefaults, popTipText text: String, inView view: UIView, fromFrame frame: CGRect, direction: PopTipDirection = .down, color: UIColor = .darkGray) -> PopTip? {
@@ -506,7 +475,6 @@ class Functions {
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return image!
     }
     

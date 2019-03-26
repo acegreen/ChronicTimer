@@ -37,7 +37,7 @@ class NotificationIntervalTextField: UITextField, UIPickerViewDataSource, UIPick
     
     func configurePicker() -> UIView {
         
-        picker.selectRow(pickerData.index(of: NotificationHelper.interval)!, inComponent: 0, animated: true)
+        picker.selectRow(pickerData.firstIndex(of: NotificationHelper.interval)!, inComponent: 0, animated: true)
         
         return picker
     }

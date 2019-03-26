@@ -3,18 +3,16 @@ use_frameworks!
 
 target 'Chronic' do
 
-    # Settings
+    # Utilities
     pod 'LaunchKit'
     pod 'SwiftyJSON'
     pod 'ReachabilitySwift'
     pod 'SDVersion'
-    pod 'PureLayout'    
-
-    # UI
+    pod 'PureLayout'
     pod 'DZNEmptyDataSet'
     pod 'Charts'
     pod 'AMPopTip'
-    pod 'Whisper', :git => 'https://github.com/freeubi/Whisper.git', :branch => 'swift-4.2-support'
+    pod 'Whisper', :git => 'https://github.com/Ferdens/Whisper.git', :branch => 'swift5'
     
     # Transitions / Segues
     pod 'BubbleTransition'
@@ -24,14 +22,14 @@ target 'Chronic' do
     # Parse
     pod 'Parse'
 
-    # Fabric
-    pod 'Crashlytics'
-    pod 'mopub-ios-sdk'
+    # Analytics
+    pod 'Firebase/Core'
     
     # Ad Networks
-    pod 'MoPub-AdColony-Adapters', '3.3.5.4'
-    pod 'MoPub-AdMob-Adapters', '7.37.0.4'
-    pod 'MoPub-FacebookAudienceNetwork-Adapters', '5.1.0.4'
+    pod 'mopub-ios-sdk'
+    pod 'MoPub-AdColony-Adapters'
+    pod 'MoPub-AdMob-Adapters'
+    pod 'MoPub-FacebookAudienceNetwork-Adapters'
     
     # Deprecated Frameworks
     #pod 'GreystripeSDK' // installed manually cocoapods not up-to-date
@@ -41,5 +39,5 @@ target 'Chronic' do
     #pod 'ChameleonFramework/Swift'
     #pod 'Rollout'
     #pod 'Appsee'
-    #pod ‘AdColony’
+    #pod 'AdColony'
 end

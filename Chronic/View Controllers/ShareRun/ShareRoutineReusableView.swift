@@ -63,7 +63,7 @@ class ShareRoutineReusableView: UIView {
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Routine Data")
+        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "Routine Data")
         pieChartDataSet.colors = barColors
         pieChartDataSet.drawValuesEnabled = false
         let pieChartData = PieChartData(dataSet: pieChartDataSet)

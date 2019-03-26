@@ -10,19 +10,17 @@ import UIKit
 import ChronicKit
 import MapKit
 import HealthKit
-import Fabric
-import Crashlytics
+import Firebase
 import MoPub
 import LaunchKit
 import PureLayout
-import Crashlytics
 
-protocol TimerVCDelegate {
+protocol WorkoutDelegate {
     func workoutDidBegin(timer: Timer)
     func workoutDidEnd(timer: Timer)
 }
 
-class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
+class WorkoutViewController: UIViewController, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     enum ButtonState {
         case play
@@ -34,12 +32,12 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     
     struct TMSelector {
         static let counterPreRun =
-            #selector(TimerViewController.counterPreRun)
+            #selector(WorkoutViewController.counterPreRun)
         static let counterRoutine =
-            #selector(TimerViewController.counterRoutine)
+            #selector(WorkoutViewController.counterRoutine)
     }
     
-    var delegate: TimerVCDelegate!
+    var delegate: WorkoutDelegate!
     
     var buttonState = ButtonState.initial
     
@@ -226,7 +224,14 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             }
             
             let applicationState: String = Constants.app.applicationState == .active ? "Active" : "Background"
-            Answers.logCustomEvent(withName: "Workout", customAttributes: ["Workout Type": self.workout.workoutType.rawValue, "Workout Duration": Functions.timeStringFrom(time: self.workout.timeElapsed), "Workout Distance": self.distanceFormatter.string(fromDistance: self.workout.distance), "Application State": applicationState, "Remove Ads Upgrade Purchased": String(Functions.isRemoveAdsUpgradePurchased()), "App Version": Constants.AppVersion])
+            Analytics.logEvent("workout_completed", parameters: [
+                "workout_type": self.workout.workoutType.rawValue,
+                "workout_duration": Functions.timeStringFrom(time: self.workout.timeElapsed),
+                "workout_distance": self.distanceFormatter.string(fromDistance: self.workout.distance),
+                "application_state": applicationState,
+                "remove_ads_upgrade_purchased": String(Functions.isRemoveAdsUpgradePurchased()),
+                "app_version": Constants.AppVersion
+            ])
         }
         
         // Set Alert if in background
@@ -390,6 +395,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
             if (time < 4 && time > 0) || (time % 60 == 0 && time != 0) {
         
                 playSound("Tick")
+                
                 
             } else  if time <= 0 {
                 
@@ -843,9 +849,7 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         }
         
         if soundName != "" {
-            
             Functions.loadPlayer(soundName, ext: ext)
-            
         }
     }
     
@@ -897,7 +901,6 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
         switchButtonState()
         
         // Handle connection loss when workout running
-        
     }
     
     func checkSaveWorkout(_ completion: @escaping (Bool) -> ()) {
@@ -992,15 +995,12 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
                 if success {
                     
                     Functions.presentWhisper(with: "\(self.workout.workoutType) Saved")
-                    
                     completion(true)
                     
                 } else if error != nil {
                     
-                    Functions.presentWhisper(with: "We were unable to save your \(self.workout.workoutType)")
-                    
                     print("\(error)")
-                    
+                    Functions.presentWhisper(with: "We were unable to save your \(self.workout.workoutType)")
                     completion(false)
                 }
             })
@@ -1016,8 +1016,8 @@ class TimerViewController: UIViewController, UIPopoverControllerDelegate, UIPopo
     }
 }
 
-// MARK: - TimerViewController Location Extension
-extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
+// MARK: - WorkoutViewController Location Extension
+extension WorkoutViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -1073,8 +1073,8 @@ extension TimerViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     }
 }
 
-// MARK: - TimerViewController Ads Extension
-extension TimerViewController: MPAdViewDelegate, MPInterstitialAdControllerDelegate {
+// MARK: - WorkoutViewController Ads Extension
+extension WorkoutViewController: MPAdViewDelegate, MPInterstitialAdControllerDelegate {
     
     // MARK: MoPud Functions
     func displayBannerAds() {

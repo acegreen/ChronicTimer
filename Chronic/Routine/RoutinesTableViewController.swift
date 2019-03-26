@@ -30,10 +30,10 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         
         Functions.deselectSelectedRoutine()
         
-        let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        timerViewController.initializeRunner()
+        let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+        workoutViewController.initializeRunner()
         
-        Constants.appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
+        Constants.appDel.window?.rootViewController?.present(workoutViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -73,7 +73,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         
         if !isNew {
             
-            if let indexOfRoutine = routines.index(of: routine) {
+            if let indexOfRoutine = routines.firstIndex(of: routine) {
                 let indexPath = IndexPath(row: indexOfRoutine, section: 0)
                 routines.removeObject(routine)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -128,10 +128,10 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
             
             Functions.setSelectedRoutine(routines[(indexPath as NSIndexPath).row], completion: { (result) -> Void in
                 
-                let timerViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-                timerViewController.initializeRoutine(with: self.routines[(indexPath as NSIndexPath).row])
+                let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+                workoutViewController.initializeRoutine(with: self.routines[(indexPath as NSIndexPath).row])
                 
-                Constants.appDel.window?.rootViewController?.present(timerViewController, animated: true, completion: nil)
+                Constants.appDel.window?.rootViewController?.present(workoutViewController, animated: true, completion: nil)
             })
         }
     }
