@@ -67,6 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
             $0.server = "http://159.203.62.182:1337/parse"
         }
         Parse.initialize(with: configuration)
+        if PFUser.current() == nil {
+            PFUser.enableAutomaticUser()
+            PFUser.current()?.saveInBackground()
+        }
         
         // Initialize Firebase
         FirebaseApp.configure()
