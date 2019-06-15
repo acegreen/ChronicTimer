@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6vy-nh-Mz0">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+        <array key="timenormal.ttf">
+            <string>Time-Normal</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Free Features-->
+        <scene sceneID="gRC-gx-JuN">
+            <objects>
+                <viewController storyboardIdentifier="ShareViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kOc-Jy-d8x" customClass="ShareViewController" customModule="Chronic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="npc-6P-noc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L2F-o6-n2u">
+                                <rect key="frame" x="40" y="0.0" width="334" height="722"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="QMd-U6-llt">
+                                        <rect key="frame" x="0.0" y="193.5" width="334" height="335.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BUh-dS-HFT">
+                                                <rect key="frame" x="72.5" y="0.0" width="189.5" height="114"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN3-za-zlV">
+                                                        <rect key="frame" x="46" y="0.0" width="97.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" name="Time-Normal" family="Time" pointSize="20"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7A-wC-vdS" customClass="UICountingLabel">
+                                                        <rect key="frame" x="77.5" y="31.5" width="34.5" height="59"/>
+                                                        <fontDescription key="fontDescription" name="Time-Normal" family="Time" pointSize="45"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Xb-3i-F0D">
+                                                        <rect key="frame" x="0.0" y="95.5" width="189.5" height="18.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAv-qQ-hAK" customClass="UICountingLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="18.5"/>
+                                                                <fontDescription key="fontDescription" name="Time-Normal" family="Time" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="credit remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPL-0v-1CU" customClass="UICountingLabel">
+                                                                <rect key="frame" x="35" y="0.0" width="154.5" height="18.5"/>
+                                                                <fontDescription key="fontDescription" name="Time-Normal" family="Time" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W9e-yE-dJM">
+                                                <rect key="frame" x="0.5" y="154" width="333" height="91.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="GET A HEAD START!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt0-yB-IKj">
+                                                        <rect key="frame" x="83" y="0.0" width="167" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite friends to Chronic Timer. Once they sign up, you'll both get credits that you can apply towards Ultimate Package upgrade" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="de4-PQ-4ae">
+                                                        <rect key="frame" x="0.0" y="30.5" width="333" height="61"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlI-Ih-b82">
+                                                <rect key="frame" x="92" y="285.5" width="150" height="50"/>
+                                                <color key="backgroundColor" name="gold"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="9QR-bX-oqG"/>
+                                                    <constraint firstAttribute="height" constant="50" id="qBo-Sr-UEZ"/>
+                                                </constraints>
+                                                <state key="normal" title="Invite a friend">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="inviteFriendsAction:" destination="kOc-Jy-d8x" eventType="touchUpInside" id="dpe-ZE-JTk"/>
+                                                </connections>
+                                            </button>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="ax3-F0-Kbn">
+                                                <rect key="frame" x="-130" y="335.5" width="594" height="110"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have enough credits to redeem it for your free  Ultimate Package upgrade" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZZ-8W-QsP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="594" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCF-MH-jyn">
+                                                        <rect key="frame" x="222" y="60" width="150" height="50"/>
+                                                        <color key="backgroundColor" name="gold"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="150" id="5KM-lH-wzZ"/>
+                                                            <constraint firstAttribute="height" constant="50" id="n9j-Ik-jk0"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Redeem">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="redeemAction:" destination="kOc-Jy-d8x" eventType="touchUpInside" id="sUA-fR-c0j"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="grey"/>
+                        <constraints>
+                            <constraint firstItem="L2F-o6-n2u" firstAttribute="leading" secondItem="Ggj-iQ-5Wt" secondAttribute="leading" constant="40" id="6UK-zB-OTF"/>
+                            <constraint firstAttribute="trailing" secondItem="L2F-o6-n2u" secondAttribute="trailing" constant="40" id="7wP-qE-ktx"/>
+                            <constraint firstItem="L2F-o6-n2u" firstAttribute="top" secondItem="Ggj-iQ-5Wt" secondAttribute="top" id="HWE-gF-SGL"/>
+                            <constraint firstItem="Ggj-iQ-5Wt" firstAttribute="bottom" secondItem="L2F-o6-n2u" secondAttribute="bottom" id="azx-b8-ueD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ggj-iQ-5Wt"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Free Features" largeTitleDisplayMode="always" id="KG5-58-lxm"/>
+                    <connections>
+                        <outlet property="creditsLabel" destination="f7A-wC-vdS" id="fwT-rV-gTS"/>
+                        <outlet property="creditsRemainingLabel" destination="fAv-qQ-hAK" id="I8m-b2-y0q"/>
+                        <outlet property="redeemStackView" destination="ax3-F0-Kbn" id="Rhc-Di-xVw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3a7-WJ-7ys" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831.88405797101461" y="-16.071428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZkZ-my-Sn0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6vy-nh-Mz0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="BJv-2g-2Ls">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="grey"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="green"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kOc-Jy-d8x" kind="relationship" relationship="rootViewController" id="zOt-B3-GDt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMa-Ki-RTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60.869565217391312" y="-16.071428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="gold">
+            <color red="0.96078431372549022" green="0.75294117647058822" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="green">
+            <color red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey">
+            <color red="0.36078431372549019" green="0.36078431372549019" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -4,8 +4,15 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:tsfux.app.link</string>
+		<string>applinks:tsfux-alternate.app.link</string>
+	</array>
 	<key>com.apple.developer.healthkit</key>
 	<true/>
+	<key>com.apple.developer.healthkit.access</key>
+	<array/>
 	<key>com.apple.developer.pass-type-identifiers</key>
 	<array>
 		<string>$(TeamIdentifierPrefix)*</string>

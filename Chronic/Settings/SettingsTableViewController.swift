@@ -163,13 +163,15 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         if (section == 0) {
             return 6
         } else if (section == 1) {
-            return 4
+            return 6
         } else if (section == 2) {
             if Constants.notificationReminderState == true {
                 return 3
             } else {
                 return 1
             }
+        } else if (section == 3) {
+            return 2
         } else {
             return 3
         }
@@ -196,57 +198,6 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         case "TwitterFollowCell":
             
             Constants.SocialNetwork.Twitter.openPage()
-            
-        case "ShareWithFriendsCell":
-            
-            guard Functions.isConnectedToNetwork() else {
-                SweetAlert().showAlert(NSLocalizedString("Alert: No Internet Connection Title Text", comment: ""), subTitle: NSLocalizedString("Alert: No Internet Connection Subtitle Text", comment: ""), style: AlertStyle.warning)
-                return
-            }
-            
-            let textToShare: String = "Check out @ChronicTimer, the simplest workout timer app! For Interval, HIIT, Tabata, Yoga, Boxing, Running #ChronicTimer"
-            
-            let objectsToShare: NSArray = [textToShare, Constants.appURL!]
-            
-            let excludedActivityTypesArray: [UIActivity.ActivityType] = [
-                UIActivity.ActivityType.postToWeibo,
-                UIActivity.ActivityType.addToReadingList,
-                UIActivity.ActivityType.assignToContact,
-                UIActivity.ActivityType.print,
-                UIActivity.ActivityType.saveToCameraRoll,
-                UIActivity.ActivityType.assignToContact,
-                UIActivity.ActivityType.airDrop,
-                ]
-            
-            let activityVC = UIActivityViewController(activityItems: objectsToShare as [AnyObject], applicationActivities: nil)
-            activityVC.excludedActivityTypes = excludedActivityTypesArray
-            
-            activityVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.unknown
-            
-            activityVC.popoverPresentationController?.sourceView = self.view
-            activityVC.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2, width: 0, height: 0)
-            
-            self.present(activityVC, animated: true, completion: nil)
-            
-            activityVC.completionWithItemsHandler = { (activity, success, items, error) in
-                print("Activity: \(activity) Success: \(success) Items: \(items) Error: \(error)")
-                
-                if success {
-                    
-                    SweetAlert().showAlert("Success!", subTitle: nil, style: AlertStyle.success)
-                    
-                    // log shared successfully
-                    Analytics.logEvent(AnalyticsEventShare, parameters: [
-                        AnalyticsParameterContent: "App shared",
-                        AnalyticsParameterContentType: "Share",
-                        "activity": "\(activity!)",
-                        "app_version": Constants.AppVersion
-                    ])
-                    
-                } else if error != nil {
-                    SweetAlert().showAlert("Error!", subTitle: "That didn't go through", style: AlertStyle.error)
-                }
-            }
             
         case "WriteAReviewCell":
             
@@ -292,6 +243,10 @@ class SettingsTableViewController: UITableViewController, Dimmable {
         case "RestoreUpgradesCell":
             
             IAPHelper.sharedInstance.restorePurchases()
+            
+        case "ShareWithFriendsCell":
+            
+            self.performSegue(withIdentifier: "ShareSegueIdentifier", sender: self)
             
         case "NotificationIntervalCell":
             

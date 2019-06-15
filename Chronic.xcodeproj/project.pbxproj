@@ -151,10 +151,12 @@
 		23EA00FA1DCF8A3300786820 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA00F91DCF8A3300786820 /* Keychain.swift */; };
 		23EA00FB1DCF8A3300786820 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA00F91DCF8A3300786820 /* Keychain.swift */; };
 		23F26B4A1B8B920A002310BE /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F26B491B8B920A002310BE /* WatchConnectivity.framework */; };
+		23F3910722B55EF300C7E2CE /* Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F3910522B55EF200C7E2CE /* Share.storyboard */; };
 		23F3910922B55F0F00C7E2CE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F3910822B55F0F00C7E2CE /* Colors.xcassets */; };
 		23F3910D22B560BD00C7E2CE /* KaushanScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE391C1A1823007D0103 /* KaushanScript.ttf */; };
 		23F3910E22B560BD00C7E2CE /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE3A1C1A1823007D0103 /* Lato-Light.ttf */; };
 		23F3910F22B560BD00C7E2CE /* timenormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2320412C1CE7C5F200203DB9 /* timenormal.ttf */; };
+		23F3911422B5678400C7E2CE /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F3911322B5678400C7E2CE /* ShareViewController.swift */; };
 		23F85F3A1B645202002221AF /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F85F391B645202002221AF /* ExerciseTableViewCell.swift */; };
 		23F85F3C1B64521A002221AF /* ExerciseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */; };
 		23FFB4FA1E74391B00E8421C /* BubbleTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFB4F91E74391B00E8421C /* BubbleTransitionDelegate.swift */; };
@@ -438,7 +440,9 @@
 		23E4F5EE1BBDEDE5009A0F53 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		23EA00F91DCF8A3300786820 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		23F26B491B8B920A002310BE /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		23F3910622B55EF200C7E2CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Share.storyboard; sourceTree = "<group>"; };
 		23F3910822B55F0F00C7E2CE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		23F3911322B5678400C7E2CE /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		23F85F391B645202002221AF /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseNameTableViewCell.swift; sourceTree = "<group>"; };
 		23FFB4F91E74391B00E8421C /* BubbleTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -816,6 +820,7 @@
 				234ECA86220A1388005745E7 /* Settings.storyboard */,
 				2348A9261D7C647D0080402F /* Feedback.storyboard */,
 				234ECA7A220A1360005745E7 /* InAppPurchaseReusableView.xib */,
+				23F3910522B55EF200C7E2CE /* Share.storyboard */,
 				234ECA7C220A1361005745E7 /* ShareWorkout.storyboard */,
 				234ECA7E220A1361005745E7 /* ShareRoutineReusableView.xib */,
 				234ECA78220A1360005745E7 /* ShareRunReusableView.xib */,
@@ -868,6 +873,7 @@
 				234ECA8B220A1C85005745E7 /* Routine */,
 				234ECA8A220A1C4D005745E7 /* Settings */,
 				2348A9371D7C6F3D0080402F /* Feedback */,
+				23F3911222B5678400C7E2CE /* Share */,
 				236E388E1E6C50FE00978795 /* ShareWorkout */,
 			);
 			name = "View Controller";
@@ -1005,6 +1011,15 @@
 				23EA00F91DCF8A3300786820 /* Keychain.swift */,
 			);
 			path = KeychainAccess;
+			sourceTree = "<group>";
+		};
+		23F3911222B5678400C7E2CE /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				23F3911322B5678400C7E2CE /* ShareViewController.swift */,
+			);
+			name = Share;
+			path = "View Controllers/Share";
 			sourceTree = "<group>";
 		};
 		CAB895CE144CF53267391711 /* Frameworks */ = {
@@ -1244,6 +1259,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 1;
 							};
@@ -1326,6 +1344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23F3910722B55EF300C7E2CE /* Share.storyboard in Resources */,
 				234ECA82220A1361005745E7 /* ShareWorkout.storyboard in Resources */,
 				2396A6AB1B8232C200E6A55F /* Toggle.wav in Resources */,
 				234ECAA1220A2B9B005745E7 /* star@2x.png in Resources */,
@@ -1401,6 +1420,7 @@
 				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
 				"${BUILT_PRODUCTS_DIR}/AMWaveTransition/AMWaveTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
 				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
@@ -1413,6 +1433,7 @@
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDVersion/SDVersion.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UICountingLabel/UICountingLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
 				"${BUILT_PRODUCTS_DIR}/mopub-ios-sdk/MoPub.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -1422,6 +1443,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMWaveTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
@@ -1434,6 +1456,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDVersion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICountingLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoPub.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -1536,6 +1559,7 @@
 				234954001D564174007B053A /* Constants.swift in Sources */,
 				23EA00FA1DCF8A3300786820 /* Keychain.swift in Sources */,
 				2315CD1D1D7EE8D400372228 /* SwiftColorPickerView.swift in Sources */,
+				23F3911422B5678400C7E2CE /* ShareViewController.swift in Sources */,
 				237B107F1C25D75100D52713 /* NotificationIntervalTextField.swift in Sources */,
 				237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */,
 				23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */,
@@ -1726,6 +1750,14 @@
 			);
 			name = Localizable.strings;
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		23F3910522B55EF200C7E2CE /* Share.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23F3910622B55EF200C7E2CE /* Base */,
+			);
+			name = Share.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2126,7 +2158,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = $inherited;
+				SWIFT_EXEC = "$inherited";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -2176,7 +2208,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = $inherited;
+				SWIFT_EXEC = "$inherited";
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;

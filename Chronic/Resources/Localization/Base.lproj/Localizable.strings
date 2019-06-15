@@ -115,6 +115,8 @@
 
 "Alert: Restore Success Subtitle Text" = "Your purchases have been successfully restored";
 
+"Alert: Redeem Success Subtitle Text" = "You should now have access to the Apple Watch app and no ads";
+
 "Alert: Validation Error Title Text" = "Validation Error!";
 "Alert: Validation Error Subtitle Text" = "This transaction could NOT be validated, Please try again";
 

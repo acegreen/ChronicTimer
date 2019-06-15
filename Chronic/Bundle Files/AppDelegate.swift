@@ -19,6 +19,7 @@ import Parse
 import LaunchKit
 import UserNotifications
 import Intents
+import Branch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, WorkoutDelegate {
@@ -84,6 +85,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
         LaunchKit.sharedInstance().debugAlwaysPresentAppReleaseNotes = true
         LaunchKit.sharedInstance().debugAppUserIsAlwaysSuper = true
         
+        // Initalize Branch
+        let branch: Branch = Branch.getInstance()
+        branch.initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: {params, error in
+            if error == nil {
+                // params are the deep linked params associated with the link that the user clicked -> was re-directed to this app
+                // params will be empty if no data found
+                // ... insert custom logic here ...
+                print("params: %@", params as? [String: AnyObject] ?? {})
+            }
+        })
+        
         // Register for Google App Indexing
         //GSDAppIndexing.sharedInstance().registerApp(iTunesID)
         
@@ -147,25 +159,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
         return true
     }
     
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        switch url.scheme {
-            
-        case "chronic"?:
-            
-            return true
-            
-//        case "fb1691125951168014"?:
-//
-//            return UIApplication.shared.delegate!.application(application, open: url, options: options)
-            
-        default:
-            
-            return false
+        // pass the url to the handle deep link call
+        if let branchHandled = Branch.getInstance()?.application(app, open: url, options: options), !branchHandled {
+            switch url.scheme {
+            case "chronic"?:
+                
+                return true
+                
+                //        case "fb1691125951168014"?:
+                //
+                //            return UIApplication.shared.delegate!.application(application, open: url, options: options)
+                
+            default:
+                return false
+            }
         }
+        
+        return false
     }
     
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        // pass the url to the handle deep link call
+        Branch.getInstance().continue(userActivity)
         
         var uniqueIdentifier: String?
         
@@ -201,9 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
             Functions.deselectSelectedRoutine()
             
             let routineMarkedSelected = DataAccess.sharedInstance.fetchSelectedRoutine()
-            
             if routineMarkedSelected != nil && routineMarkedSelected?.name != uniqueIdentifier {
-                
                 routineMarkedSelected!.selectedRoutine = false
             }
             

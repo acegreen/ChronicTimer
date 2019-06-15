@@ -3,6 +3,9 @@ PODS:
   - AMPopTip (4.0.1)
   - AMWaveTransition (0.6.2)
   - Bolts/Tasks (1.9.0)
+  - Branch (0.27.1):
+    - Branch/Core (= 0.27.1)
+  - Branch/Core (0.27.1)
   - BubbleTransition (3.2.0)
   - Charts (3.3.0):
     - Charts/Core (= 3.3.0)
@@ -110,11 +113,13 @@ PODS:
   - ReachabilitySwift (4.3.1)
   - SDVersion (4.3.2)
   - SwiftyJSON (5.0.0)
+  - UICountingLabel (1.4.1)
   - Whisper (6.0.2)
 
 DEPENDENCIES:
   - AMPopTip
   - AMWaveTransition
+  - Branch
   - BubbleTransition
   - Charts
   - DZNEmptyDataSet
@@ -130,6 +135,7 @@ DEPENDENCIES:
   - ReachabilitySwift
   - SDVersion
   - SwiftyJSON
+  - UICountingLabel
   - Whisper (from `https://github.com/Ferdens/Whisper.git`, branch `swift5`)
 
 SPEC REPOS:
@@ -138,6 +144,7 @@ SPEC REPOS:
     - AMPopTip
     - AMWaveTransition
     - Bolts
+    - Branch
     - BubbleTransition
     - Charts
     - DZNEmptyDataSet
@@ -162,6 +169,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - SDVersion
     - SwiftyJSON
+    - UICountingLabel
 
 EXTERNAL SOURCES:
   Whisper:
@@ -178,6 +186,7 @@ SPEC CHECKSUMS:
   AMPopTip: 41742f15d743203496cfdcd576f41b596b0efae3
   AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Branch: 1ace77c04b6e3efbf982bf4364f0662bfac156a0
   BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -202,8 +211,9 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SDVersion: 18f32c835c1543611fcfae3c6accd9a04b90597e
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  UICountingLabel: faf890b505d96312e324a86718f031fafffb0ccb
   Whisper: 8c499b08f3b56d5c80162d775e3462318ad7f4fe
 
-PODFILE CHECKSUM: fd052211388b03c72759cdb4b72fac098b4eb763
+PODFILE CHECKSUM: 64354bea15f31bd075a137e4301e6d58ec4e88b7
 
 COCOAPODS: 1.7.2

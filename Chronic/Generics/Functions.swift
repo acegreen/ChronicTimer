@@ -563,4 +563,12 @@ class Functions {
         
         UIApplication.topViewController()?.present(formSheetController, animated: true, completion: nil)
     }
+    
+    class func setupConfigParameter(_ parameter:String, completion: @escaping (_ parameterValue: Any?) -> Void) {
+        
+        PFConfig.getInBackground { (config, error) in
+            let configParameter = config?[parameter]
+            completion(configParameter)
+        }
+    }
 }

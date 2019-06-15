@@ -1,4 +1,4 @@
-platform :ios, '10.3'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'Chronic' do
@@ -13,11 +13,15 @@ target 'Chronic' do
     pod 'Charts'
     pod 'AMPopTip'
     pod 'Whisper', :git => 'https://github.com/Ferdens/Whisper.git', :branch => 'swift5'
+    pod 'Branch'
     
     # Transitions / Segues
     pod 'BubbleTransition'
     pod 'AMWaveTransition'
     pod 'MZFormSheetPresentationController'
+    
+    # Animations
+    pod 'UICountingLabel'
 
     # Parse
     pod 'Parse'
