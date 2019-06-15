@@ -46,8 +46,6 @@
 		232614931B30C38000180218 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614921B30C38000180218 /* CoreTelephony.framework */; };
 		232614951B30C38F00180218 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232614941B30C38F00180218 /* SystemConfiguration.framework */; };
 		2328E4791AC03136009A8C46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2328E4771AC03136009A8C46 /* Main.storyboard */; };
-		232EDE3B1C1A1823007D0103 /* KaushanScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE391C1A1823007D0103 /* KaushanScript.ttf */; };
-		232EDE3C1C1A1823007D0103 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE3A1C1A1823007D0103 /* Lato-Light.ttf */; };
 		232F4C7C1AC02EA700D25995 /* CircuitRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F4C751AC02EA700D25995 /* CircuitRoutineTableViewController.swift */; };
 		232F4C811AC02EA700D25995 /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F4C7A1AC02EA700D25995 /* RoutinesTableViewController.swift */; };
 		232F4C871AC02EDA00D25995 /* Boxing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 232F4C851AC02EDA00D25995 /* Boxing.wav */; };
@@ -153,6 +151,10 @@
 		23EA00FA1DCF8A3300786820 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA00F91DCF8A3300786820 /* Keychain.swift */; };
 		23EA00FB1DCF8A3300786820 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EA00F91DCF8A3300786820 /* Keychain.swift */; };
 		23F26B4A1B8B920A002310BE /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F26B491B8B920A002310BE /* WatchConnectivity.framework */; };
+		23F3910922B55F0F00C7E2CE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F3910822B55F0F00C7E2CE /* Colors.xcassets */; };
+		23F3910D22B560BD00C7E2CE /* KaushanScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE391C1A1823007D0103 /* KaushanScript.ttf */; };
+		23F3910E22B560BD00C7E2CE /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 232EDE3A1C1A1823007D0103 /* Lato-Light.ttf */; };
+		23F3910F22B560BD00C7E2CE /* timenormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2320412C1CE7C5F200203DB9 /* timenormal.ttf */; };
 		23F85F3A1B645202002221AF /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F85F391B645202002221AF /* ExerciseTableViewCell.swift */; };
 		23F85F3C1B64521A002221AF /* ExerciseNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */; };
 		23FFB4FA1E74391B00E8421C /* BubbleTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFB4F91E74391B00E8421C /* BubbleTransitionDelegate.swift */; };
@@ -436,6 +438,7 @@
 		23E4F5EE1BBDEDE5009A0F53 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		23EA00F91DCF8A3300786820 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		23F26B491B8B920A002310BE /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		23F3910822B55F0F00C7E2CE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		23F85F391B645202002221AF /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		23F85F3B1B64521A002221AF /* ExerciseNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseNameTableViewCell.swift; sourceTree = "<group>"; };
 		23FFB4F91E74391B00E8421C /* BubbleTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -813,9 +816,9 @@
 				234ECA86220A1388005745E7 /* Settings.storyboard */,
 				2348A9261D7C647D0080402F /* Feedback.storyboard */,
 				234ECA7A220A1360005745E7 /* InAppPurchaseReusableView.xib */,
+				234ECA7C220A1361005745E7 /* ShareWorkout.storyboard */,
 				234ECA7E220A1361005745E7 /* ShareRoutineReusableView.xib */,
 				234ECA78220A1360005745E7 /* ShareRunReusableView.xib */,
-				234ECA7C220A1361005745E7 /* ShareWorkout.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				23A08F96226501D000D37123 /* GoogleService-Info.plist */,
 				2315CCE01D7EE7FC00372228 /* DataAccess.swift */,
 				23AF7DE71AC02E2900AA3FC7 /* Images.xcassets */,
+				23F3910822B55F0F00C7E2CE /* Colors.xcassets */,
 			);
 			path = "Bundle Files";
 			sourceTree = "<group>";
@@ -1336,6 +1340,7 @@
 				232F4C871AC02EDA00D25995 /* Boxing.wav in Resources */,
 				2396A6A91B82320F00E6A55F /* Click.wav in Resources */,
 				234ECAA2220A2B9B005745E7 /* star-gray.png in Resources */,
+				23F3910922B55F0F00C7E2CE /* Colors.xcassets in Resources */,
 				238890F91B81084600750D90 /* Air Horn.wav in Resources */,
 				234ECAA5220A2B9B005745E7 /* SARate.podspec in Resources */,
 				234ECA9C220A2B9B005745E7 /* star-gray@2x.png in Resources */,
@@ -1347,13 +1352,14 @@
 				234ECA88220A1389005745E7 /* Routine.storyboard in Resources */,
 				238890FD1B81143700750D90 /* Gong.wav in Resources */,
 				234ECA80220A1361005745E7 /* ShareRunReusableView.xib in Resources */,
+				23F3910E22B560BD00C7E2CE /* Lato-Light.ttf in Resources */,
 				2385231A1CE7E4ED00694A4A /* Flute.wav in Resources */,
 				234ECAA4220A2B9B005745E7 /* LICENSE in Resources */,
-				232EDE3C1C1A1823007D0103 /* Lato-Light.ttf in Resources */,
 				23AF7DE81AC02E2900AA3FC7 /* Images.xcassets in Resources */,
 				234ECA81220A1361005745E7 /* InAppPurchaseReusableView.xib in Resources */,
-				232EDE3B1C1A1823007D0103 /* KaushanScript.ttf in Resources */,
+				23F3910D22B560BD00C7E2CE /* KaushanScript.ttf in Resources */,
 				234ECA83220A1361005745E7 /* ShareRoutineReusableView.xib in Resources */,
+				23F3910F22B560BD00C7E2CE /* timenormal.ttf in Resources */,
 				234ECA9F220A2B9B005745E7 /* iRate.bundle in Resources */,
 				2348A9241D7C647D0080402F /* Feedback.storyboard in Resources */,
 				2396A6A51B815B9300E6A55F /* Beep.wav in Resources */,
@@ -2017,7 +2023,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2068,7 +2074,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -2103,7 +2109,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
 				);
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2153,7 +2159,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Charts",
 				);
 				INFOPLIST_FILE = "Chronic/Bundle Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
