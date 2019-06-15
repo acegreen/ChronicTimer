@@ -277,15 +277,16 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                 })
                 
                 // log purchase failed event
-                Analytics.logEvent(AnalyticsEventRemoveFromCart, parameters: [
-                    "itemName": transactionProductID,
-                    "itemType": "In-App Purchase",
-                    AnalyticsParameterTransactionID: "\(transaction.transactionIdentifier!)",
-                    "installation_ID": PFInstallation.current()?.installationId ?? "",
-                    "app_version": Constants.AppVersion, "transaction_date": transaction.transactionDate!
-                    ])
-                
-                print(errorMessage)
+                if let transactionIdentifier = transaction.transactionIdentifier, let transactionDate = transaction.transactionDate {
+                    Analytics.logEvent(AnalyticsEventRemoveFromCart, parameters: [
+                        "itemName": transactionProductID,
+                        "itemType": "In-App Purchase",
+                        AnalyticsParameterTransactionID: "\(transactionIdentifier)",
+                        "installation_ID": PFInstallation.current()?.installationId ?? "",
+                        "app_version": Constants.AppVersion, "transaction_date": transactionDate
+                        ])
+                    
+                }
                 
                 queue.finishTransaction(transaction)
                 break

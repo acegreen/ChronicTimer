@@ -131,9 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
             }
         }
         
-        // Request upgrade products
-        IAPHelper.sharedInstance.requestProducts(displayAlert: false, nil)
-        
         // load storyboard
         if !Constants.userDefaults.bool(forKey: "ONBOARDING_SHOWN") {
             Functions.loadOnboardingInterface()
