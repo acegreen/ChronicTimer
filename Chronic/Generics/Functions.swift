@@ -17,9 +17,10 @@ import AVFoundation
 import WatchConnectivity
 import Firebase
 import Parse
+import Reachability
 import AMPopTip
 import MZFormSheetPresentationController
-import Whisper
+import NotificationBannerSwift
 
 class Functions {
     
@@ -481,10 +482,11 @@ class Functions {
     // MARK: Generic Question Bool Functions
     
     class func isConnectedToNetwork() -> Bool {
-        if let reachability = Constants.reachability, reachability.connection == .none {
-            return false
-        } else {
+        if let connection = try? Reachability().connection, connection != .unavailable {
             return true
+        } else {
+            presentNotificationBanner(title: "No Internet Connection", subtitle: "Make sure your device is connected to the internet", style: .warning)
+            return false
         }
     }
     
@@ -522,22 +524,32 @@ class Functions {
     
     // MARK: - Presenting Stuff
     
-    class func presentWhisper(with title: String) {
-        
-        guard let navigationController = UIApplication.topViewController()?.navigationController else { return }
-        
-        let message = Message(title: title, backgroundColor: Constants.chronicGreen)
-        
-        // Show and hide a message after delay
-        show(whisper: message, to: navigationController, action: .show)
-        
-        // Hide a message
-        hide(whisperFrom: navigationController, after: 5)
+    class func presentNotificationBanner(title: String?, subtitle: String?, style: BannerStyle) {
+        class CustomBannerColors: BannerColorsProtocol {
+
+            internal func color(for style: BannerStyle) -> UIColor {
+                switch style {
+                case .danger:
+                    return Constants.CTColors.red
+                case .info:
+                    return Constants.CTColors.grey
+                case .success:
+                    return Constants.CTColors.green
+                case .warning:
+                    return Constants.CTColors.gold
+                case .customView:
+                    return Constants.CTColors.grey
+                }
+            }
+
+        }
+        let banner = NotificationBanner(title: title, subtitle: subtitle, style: style, colors: CustomBannerColors())
+        banner.show()
     }
     
     class func presentFeedback() {
         
-        let navigationViewController = Constants.feedbackStoryboard.instantiateViewController(withIdentifier: "FeedbackNavigationController") as! UINavigationController
+        let navigationViewController = Constants.Storyboards.feedback.instantiateViewController(withIdentifier: "FeedbackNavigationController") as! UINavigationController
         let bubbleTransitionDelegate = BubbleTransitionDelegate()
         navigationViewController.transitioningDelegate = bubbleTransitionDelegate
         navigationViewController.modalPresentationStyle = .custom
@@ -549,7 +561,7 @@ class Functions {
         
         //        guard workout.totalTime >= 60 else { return }
         
-        let viewController = Constants.shareWorkoutStoryboard.instantiateViewController(withIdentifier: "ShareWorkoutViewController") as! ShareWorkoutViewController
+        let viewController = Constants.Storyboards.shareWorkout.instantiateViewController(withIdentifier: "ShareWorkoutViewController") as! ShareWorkoutViewController
         viewController.workout = lastWorkout
         
         let formSheetController = MZFormSheetPresentationViewController(contentViewController: viewController)

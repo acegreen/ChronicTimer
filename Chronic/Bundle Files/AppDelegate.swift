@@ -84,8 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
         MoPub.sharedInstance().initializeSdk(with: moPubConfig, completion: nil)
         
         // Initalize Branch
-        let branch: Branch = Branch.getInstance()
-        branch.initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: {params, error in
+        let branch = Branch.getInstance()
+        branch?.initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: {params, error in
             if error == nil {
                 // params are the deep linked params associated with the link that the user clicked -> was re-directed to this app
                 // params will be empty if no data found
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
         }
         
         // Setup General Appearance (TintColor in UITabBarController not kicking in)
-        UITabBar.appearance().tintColor = Constants.chronicGreen
+        UITabBar.appearance().tintColor = Constants.CTColors.green
         
         // Track Push Notitications
         if application.applicationState != UIApplication.State.background {
@@ -182,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
         // pass the url to the handle deep link call
-        Branch.getInstance().continue(userActivity)
+        Branch.getInstance()?.continue(userActivity)
         
         var uniqueIdentifier: String?
         
@@ -203,7 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
             
             guard let routineSelectedInSpotlight = DataAccess.sharedInstance.fetchRoutine(with: uniqueIdentifier) else { return false }
             
-            let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+            let workoutViewController = Constants.Storyboards.main.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
             workoutViewController.initializeRoutine(with: routineSelectedInSpotlight)
             
             let rootViewController = Constants.appDel.window?.rootViewController
@@ -323,7 +323,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
         guard ShortcutIdentifier(fullType: shortcutItem.type) != nil else { return false }
         guard let shortcutType = shortcutItem.type as String? else { return false }
         
-        let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+        let workoutViewController = Constants.Storyboards.main.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
         
         let rootViewController = Constants.appDel.window?.rootViewController
         if rootViewController?.presentedViewController != nil {

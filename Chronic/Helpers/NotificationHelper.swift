@@ -112,7 +112,9 @@ public class NotificationHelper {
                     print(error)
                 }
                 
-                Constants.application.registerForRemoteNotifications()
+                DispatchQueue.main.async {
+                    Constants.application.registerForRemoteNotifications()
+                }
             }
             
         } else {

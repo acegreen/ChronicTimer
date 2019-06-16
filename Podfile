@@ -11,7 +11,7 @@ target 'Chronic' do
     pod 'DZNEmptyDataSet'
     pod 'Charts'
     pod 'AMPopTip'
-    pod 'Whisper', :git => 'https://github.com/Ferdens/Whisper.git', :branch => 'swift5'
+    pod 'NotificationBannerSwift'
     pod 'Branch'
     
     # Transitions / Segues
@@ -43,5 +43,6 @@ target 'Chronic' do
     #pod 'Rollout'
     #pod 'Appsee'
     #pod 'AdColony'
-    #pod 'LaunchKit'
+    #pod 'LaunchKit
+    #pod 'Whisper', :git => 'https://github.com/Ferdens/Whisper.git', :branch => 'swift5'
 end

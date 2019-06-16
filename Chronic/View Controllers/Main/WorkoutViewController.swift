@@ -993,13 +993,13 @@ class WorkoutViewController: UIViewController, UIPopoverControllerDelegate, UIPo
                 
                 if success {
                     
-                    Functions.presentWhisper(with: "\(self.workout.workoutType) Saved")
+                    Functions.presentNotificationBanner(title: "\(self.workout.workoutType) Saved", subtitle: nil, style: .success)
                     completion(true)
                     
                 } else if error != nil {
                     
                     print("\(error)")
-                    Functions.presentWhisper(with: "We were unable to save your \(self.workout.workoutType)")
+                    Functions.presentNotificationBanner(title: "We were unable to save your \(self.workout.workoutType)", subtitle: nil, style: .danger)
                     completion(false)
                 }
             })
@@ -1057,7 +1057,7 @@ extension WorkoutViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         
         let polyline = overlay as! MKPolyline
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = Constants.chronicGreen
+        renderer.strokeColor = Constants.CTColors.green
         renderer.lineWidth = 6
         return renderer
     }

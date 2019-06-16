@@ -72,13 +72,13 @@ class ShareWorkoutViewController:
         
         removePhotoButtton = UIButton(type: .custom)
         removePhotoButtton.setTitle("Remove Photo", for: .normal)
-        removePhotoButtton.setTitleColor(Constants.chronicColor, for: .normal)
+        removePhotoButtton.setTitleColor(Constants.CTColors.grey, for: .normal)
         removePhotoButtton.setImage(UIImage(named: "Share_Remove"), for: .normal)
-        removePhotoButtton.titleLabel!.font = Constants.ChronicFonts.regular
+        removePhotoButtton.titleLabel!.font = Constants.CTFonts.regular
         removePhotoButtton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 10)
         removePhotoButtton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         removePhotoButtton.layer.cornerRadius = 5
-        removePhotoButtton.layer.borderColor = Constants.chronicColor.cgColor
+        removePhotoButtton.layer.borderColor = Constants.CTColors.grey.cgColor
         removePhotoButtton.layer.borderWidth = 1
         removePhotoButtton.addTarget(self, action: #selector(removePhotoButtonPressed(sender:)), for: .touchUpInside)
         removePhotoButtton.isHidden = true
@@ -108,7 +108,7 @@ class ShareWorkoutViewController:
         photoLibraryButtton = UIButton(forAutoLayout: ())
         photoLibraryButtton.setTitle("Photo Library", for: .normal)
         photoLibraryButtton.setImage(UIImage(named: "Library_Share"), for: .normal)
-        photoLibraryButtton.titleLabel!.font = Constants.ChronicFonts.regular
+        photoLibraryButtton.titleLabel!.font = Constants.CTFonts.regular
         photoLibraryButtton.titleLabel!.minimumScaleFactor = 0.5
         photoLibraryButtton.contentHorizontalAlignment = .left
         photoLibraryButtton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
@@ -125,7 +125,7 @@ class ShareWorkoutViewController:
         takePhotoButtton = UIButton(forAutoLayout: ())
         takePhotoButtton.setTitle("Take Photo", for: .normal)
         takePhotoButtton.setImage(UIImage(named: "Photo_Share"), for: .normal)
-        takePhotoButtton.titleLabel!.font = Constants.ChronicFonts.regular
+        takePhotoButtton.titleLabel!.font = Constants.CTFonts.regular
         takePhotoButtton.titleLabel!.minimumScaleFactor = 0.5
         takePhotoButtton.contentHorizontalAlignment = .left
         takePhotoButtton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
@@ -152,7 +152,7 @@ class ShareWorkoutViewController:
     }
     
     func setupRoutineUI() {
-        shareRoutineReuseableView = ShareRoutineReusableView.loadViewFromNib() as! ShareRoutineReusableView
+        shareRoutineReuseableView = ShareRoutineReusableView.loadViewFromNib() as? ShareRoutineReusableView
         self.shareCardView.addSubview(shareRoutineReuseableView!)
         shareRoutineReuseableView!.autoPinEdgesToSuperviewEdges()
         
@@ -161,7 +161,7 @@ class ShareWorkoutViewController:
     }
     
     func setupRunUI() {
-        shareRunReuseableView = ShareRunReusableView.loadViewFromNib() as! ShareRunReusableView
+        shareRunReuseableView = ShareRunReusableView.loadViewFromNib() as? ShareRunReusableView
         self.shareCardView.addSubview(shareRunReuseableView!)
         shareRunReuseableView!.autoPinEdgesToSuperviewEdges()
         
@@ -172,7 +172,7 @@ class ShareWorkoutViewController:
         showWorkoutView(hidden: false)
         selfieImageView.isHidden = true
         
-        shareCardView.backgroundColor = Constants.chronicColor
+        shareCardView.backgroundColor = Constants.CTColors.grey
         removeShades()
         shareButton.isEnabled = true
         

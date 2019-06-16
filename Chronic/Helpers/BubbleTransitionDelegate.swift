@@ -24,7 +24,7 @@ class BubbleTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .dismiss
         transition.startingPoint = dismissed.view.center
-        transition.bubbleColor = Constants.chronicColor
+        transition.bubbleColor = Constants.CTColors.grey
         return transition
     }
 }

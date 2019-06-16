@@ -28,7 +28,7 @@ class ShareViewController: UIViewController {
     @IBOutlet weak var redeemStackView: UIStackView!
     @IBAction func redeemAction(_ sender: Any) {
         
-        Branch.getInstance().redeemRewards(self.creditRequiredToRedeemFreeFeature, callback: {(success, error) in
+        Branch.getInstance()?.redeemRewards(self.creditRequiredToRedeemFreeFeature, callback: {(success, error) in
             if success {
                 IAPHelper.sharedInstance.proVersionPurchased()
                 IAPHelper.sharedInstance.removeAdsPurchased()
@@ -48,6 +48,7 @@ class ShareViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         creditsLabel.format = "%d"
+        creditsRemainingLabel.format = "%d"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,9 +58,9 @@ class ShareViewController: UIViewController {
     }
     
     private func updateCreditBalance() {
-        Branch.getInstance().loadRewards { (changed, error) in
+        Branch.getInstance()?.loadRewards { (changed, error) in
             if (error == nil) {
-                let credits = Branch.getInstance().getCredits()
+                let credits = Branch.getInstance()?.getCredits() ?? 0
                 DispatchQueue.main.async {
                     self.creditsLabel.countFromZero(to: CGFloat(credits))
                 }
@@ -68,8 +69,8 @@ class ShareViewController: UIViewController {
                     let creditsRemaining = self.creditRequiredToRedeemFreeFeature - credits
                     
                     DispatchQueue.main.async {
-                        let creditsRemainingToDisplay = (creditsRemaining >= 0) ? "\(creditsRemaining)" : "0"
-                        self.creditsRemainingLabel.text = creditsRemainingToDisplay
+                        let creditsRemainingToDisplay = (creditsRemaining >= 0) ? creditsRemaining : 0
+                        self.creditsRemainingLabel.countFromZero(to: CGFloat(creditsRemainingToDisplay))
                         if credits == self.creditRequiredToRedeemFreeFeature {
                             self.redeemStackView.isHidden = false
                         } else {
@@ -94,7 +95,7 @@ class ShareViewController: UIViewController {
         
         branchObject.showShareSheet(withShareText: textToShare) { (activityType, completed) in
             if completed {
-                Functions.presentWhisper(with: "Success!")
+                Functions.presentNotificationBanner(title: "Success!", subtitle: nil, style: .success)
             }
         }
     }

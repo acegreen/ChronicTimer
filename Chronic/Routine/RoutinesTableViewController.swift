@@ -24,7 +24,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
         
         Functions.deselectSelectedRoutine()
         
-        let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+        let workoutViewController = Constants.Storyboards.main.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
         workoutViewController.initializeRunner()
         
         Constants.appDel.window?.rootViewController?.present(workoutViewController, animated: true, completion: nil)
@@ -122,7 +122,7 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
             
             Functions.setSelectedRoutine(routines[(indexPath as NSIndexPath).row], completion: { (result) -> Void in
                 
-                let workoutViewController = Constants.mainStoryboard.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
+                let workoutViewController = Constants.Storyboards.main.instantiateViewController(withIdentifier: "WorkoutViewController") as! WorkoutViewController
                 workoutViewController.initializeRoutine(with: self.routines[(indexPath as NSIndexPath).row])
                 
                 Constants.appDel.window?.rootViewController?.present(workoutViewController, animated: true, completion: nil)
