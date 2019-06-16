@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LaunchKit
 import BubbleTransition
 
 class MainTabBarController: UITabBarController {
@@ -24,13 +23,6 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
-        // Present release notes on first update
-        LaunchKit.sharedInstance().presentAppReleaseNotesIfNeeded(from: self, completion: { (didPresent) -> Void in
-            if didPresent {
-                print("Woohoo, we showed the release notes card!")
-            }
-        })
     }
 
     override func didReceiveMemoryWarning() {

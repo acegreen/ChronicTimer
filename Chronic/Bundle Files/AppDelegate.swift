@@ -16,7 +16,6 @@ import WatchConnectivity
 import Firebase
 import MoPub
 import Parse
-import LaunchKit
 import UserNotifications
 import Intents
 import Branch
@@ -83,11 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, Workou
         // Initialize MoPub
         let moPubConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: Constants.moPubAdUnitID)
         MoPub.sharedInstance().initializeSdk(with: moPubConfig, completion: nil)
-        
-        // Initalize LaunchKit
-        LaunchKit.launch(withToken: "FYwLCkgJpT_r8kEp1O_-PSg-UnhaD3B7PMPxkG5qIIfq")
-        LaunchKit.sharedInstance().debugAlwaysPresentAppReleaseNotes = true
-        LaunchKit.sharedInstance().debugAppUserIsAlwaysSuper = true
         
         // Initalize Branch
         let branch: Branch = Branch.getInstance()

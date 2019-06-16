@@ -10,7 +10,6 @@ import UIKit
 import ChronicKit
 import QuartzCore
 import DZNEmptyDataSet
-import LaunchKit
 import SDVersion
 
 protocol RoutineDelegate {
@@ -22,11 +21,6 @@ class RoutinesTableViewController: UITableViewController, UIPopoverControllerDel
     var routines = [RoutineModel]()
 
     @IBAction func runnerButtonPressed(_ sender: AnyObject) {
-        
-//        guard Functions.isProFeaturesUpgradePurchased() || ((LaunchKit.sharedInstance().currentUser?.isSuper() == true) && !Functions.isRemoveAdsUpgradePurchased()) else {
-//            IAPHelper.sharedInstance.selectProduct(Constants.proVersionKey)
-//            return
-//        }
         
         Functions.deselectSelectedRoutine()
         

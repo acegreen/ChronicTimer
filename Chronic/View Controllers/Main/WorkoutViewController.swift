@@ -12,7 +12,6 @@ import MapKit
 import HealthKit
 import Firebase
 import MoPub
-import LaunchKit
 import PureLayout
 
 protocol WorkoutDelegate {
@@ -1079,7 +1078,6 @@ extension WorkoutViewController: MPAdViewDelegate, MPInterstitialAdControllerDel
     // MARK: MoPud Functions
     func displayBannerAds() {
         
-        // && (LaunchKit.sharedInstance().currentUser?.isSuper() == false)
         if !Functions.isRemoveAdsUpgradePurchased() {
             
             var bannerID: String!

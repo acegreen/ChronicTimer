@@ -10,7 +10,6 @@ import UIKit
 import StoreKit
 import MessageUI
 import HealthKit
-import LaunchKit
 import Firebase
 import MZFormSheetPresentationController
 

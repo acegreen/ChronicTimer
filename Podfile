@@ -4,7 +4,6 @@ use_frameworks!
 target 'Chronic' do
 
     # Utilities
-    pod 'LaunchKit'
     pod 'SwiftyJSON'
     pod 'ReachabilitySwift'
     pod 'SDVersion'
@@ -44,4 +43,5 @@ target 'Chronic' do
     #pod 'Rollout'
     #pod 'Appsee'
     #pod 'AdColony'
+    #pod 'LaunchKit'
 end

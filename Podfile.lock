@@ -59,9 +59,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.7.0):
     - GoogleUtilities/Logger
-  - LaunchKit (2.1.4):
-    - LaunchKit/LaunchKit (= 2.1.4)
-  - LaunchKit/LaunchKit (2.1.4)
   - MoPub-AdColony-Adapters (3.3.7.0):
     - MoPub-AdColony-Adapters/MoPub (= 3.3.7.0)
     - MoPub-AdColony-Adapters/Network (= 3.3.7.0)
@@ -124,7 +121,6 @@ DEPENDENCIES:
   - Charts
   - DZNEmptyDataSet
   - Firebase/Core
-  - LaunchKit
   - MoPub-AdColony-Adapters
   - MoPub-AdMob-Adapters
   - MoPub-FacebookAudienceNetwork-Adapters
@@ -156,7 +152,6 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUtilities
-    - LaunchKit
     - MoPub-AdColony-Adapters
     - MoPub-AdMob-Adapters
     - MoPub-FacebookAudienceNetwork-Adapters
@@ -198,7 +193,6 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 8f4f7e793bfd3fff5b082181b54112f81b579a67
   GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
   GoogleUtilities: 273e67030e0de313e7304f6dcfa96fc5214f6c23
-  LaunchKit: 95ad4fb171a0f8ea1c80aa26d4fb7bd637788f9c
   MoPub-AdColony-Adapters: 59cc3844e24714e1a790454ca807304848a0ac76
   MoPub-AdMob-Adapters: b64e9ef8a8cc94b1d2d2816052334f5ee1f9f642
   MoPub-FacebookAudienceNetwork-Adapters: 76ae52664c5275fc083597a2574239507f79c275
@@ -214,6 +208,6 @@ SPEC CHECKSUMS:
   UICountingLabel: faf890b505d96312e324a86718f031fafffb0ccb
   Whisper: 8c499b08f3b56d5c80162d775e3462318ad7f4fe
 
-PODFILE CHECKSUM: 64354bea15f31bd075a137e4301e6d58ec4e88b7
+PODFILE CHECKSUM: c1abdca66d779752ec63b1e397780cf0d6347ecf
 
 COCOAPODS: 1.7.2
