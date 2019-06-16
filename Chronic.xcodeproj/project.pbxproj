@@ -1280,10 +1280,9 @@
 			};
 			buildConfigurationList = 23AF7DD31AC02E2800AA3FC7 /* Build configuration list for PBXProject "Chronic" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				de,
@@ -2156,7 +2155,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = "$inherited";
+				SWIFT_EXEC = $inherited;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -2206,7 +2205,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_EXEC = "$inherited";
+				SWIFT_EXEC = $inherited;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chronic/Bundle Files/Chronic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
