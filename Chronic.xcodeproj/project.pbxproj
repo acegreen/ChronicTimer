@@ -145,6 +145,7 @@
 		23C2F2131B6EE2D000056DBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */; };
 		23CFD9131BC54E8800CF4BAC /* ColorPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */; };
 		23D02ABB1B003A3100DCB1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D02ABA1B003A3100DCB1C5 /* QuartzCore.framework */; };
+		23D4090F22B5CA19001ED87C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4090E22B5CA19001ED87C /* User.swift */; };
 		23D4824F1B91093F0066164A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D4824E1B91093F0066164A /* LaunchScreen.storyboard */; };
 		23D66F391B69459B00BE7041 /* TimePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D66F381B69459B00BE7041 /* TimePickerTextField.swift */; };
 		23E4F5EF1BBDEDE6009A0F53 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E4F5EE1BBDEDE5009A0F53 /* StoreKit.framework */; };
@@ -435,6 +436,7 @@
 		23C2F2121B6EE2D000056DBB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		23CFD9121BC54E8800CF4BAC /* ColorPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerTextField.swift; sourceTree = "<group>"; };
 		23D02ABA1B003A3100DCB1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		23D4090E22B5CA19001ED87C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23D4824E1B91093F0066164A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23D66F381B69459B00BE7041 /* TimePickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerTextField.swift; sourceTree = "<group>"; };
 		23E4F5EE1BBDEDE5009A0F53 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -551,6 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				2315CCE31D7EE82900372228 /* Workout.swift */,
+				23D4090E22B5CA19001ED87C /* User.swift */,
 			);
 			name = Models;
 			path = Chronic/Models;
@@ -1556,6 +1559,7 @@
 				234954001D564174007B053A /* Constants.swift in Sources */,
 				23EA00FA1DCF8A3300786820 /* Keychain.swift in Sources */,
 				2315CD1D1D7EE8D400372228 /* SwiftColorPickerView.swift in Sources */,
+				23D4090F22B5CA19001ED87C /* User.swift in Sources */,
 				23F3911422B5678400C7E2CE /* ShareViewController.swift in Sources */,
 				237B107F1C25D75100D52713 /* NotificationIntervalTextField.swift in Sources */,
 				237B108E1C265A9000D52713 /* OnboardingViewController.swift in Sources */,

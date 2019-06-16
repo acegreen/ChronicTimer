@@ -427,6 +427,11 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         Constants.keychainProVersionString = Constants.keychain[Constants.proVersionKey]
         
         self.delegate?.didPurchaseProFeaturesUpgrade()
+        
+        if let user = PFUser.current() as? User {
+            user.proVersionPurchased = true
+            user.saveEventually()
+        }
     }
     
     func removeAdsPurchased() {
@@ -444,6 +449,11 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         Constants.keychainRemoveAdsString  = Constants.keychain[Constants.removeAdsKey]
         
         self.delegate?.didPurchaseRemoveAdsUpgrade()
+        
+        if let user = PFUser.current() as? User {
+            user.removeAdsPurchased = true
+            user.saveEventually()
+        }
     }
     
     func restorePurchases() {
