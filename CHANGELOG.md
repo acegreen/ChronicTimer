@@ -214,3 +214,13 @@ specialized RoutinesTableViewController.tableView(UITableView, cellForRowAt : In
 
 ## Version 3.1.9:
 - [x] Fixes a crash introduced in 3.1.8 during refactoring
+
+## Version 3.1.10:
+ - [x] fixes an issue with MoPub AdMob integration + release 3.0.10
+ 
+ ## Version 3.1.11:
+ - [x] Update to Swift 5
+ - [x] Migrate from Fabric to Firebase
+ - [x] Integrate Branch framework
+ - [x] Support Parse Anonymous User
+ - [x] Minor cleanup 
