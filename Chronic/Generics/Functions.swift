@@ -381,8 +381,8 @@ class Functions {
             
             // Play Sound
             Constants.player = try AVAudioPlayer(contentsOf: soundlocation)
-            Constants.player.volume = Constants.timerVolume
-            Constants.player.play()
+            Constants.player?.volume = Constants.timerVolume
+            Constants.player?.play()
             
         } catch let error as NSError {
             print("Fetch failed: \(error.localizedDescription)")
@@ -416,12 +416,11 @@ class Functions {
     
     class func stopSoundsOrSpeech() {
         
-        if Constants.player.isPlaying {
-            Constants.player.stop()
+        if let player = Constants.player, player.isPlaying {
+            Constants.player?.stop()
         }
         
         if Constants.synthesizer.isSpeaking {
-            
             Constants.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         }
         

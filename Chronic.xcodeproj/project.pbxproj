@@ -1779,7 +1779,7 @@
 				CODE_SIGN_ENTITLEMENTS = SiriIntent/SiriIntent.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1793,6 +1793,7 @@
 				);
 				INFOPLIST_FILE = SiriIntent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.SiriIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1810,7 +1811,7 @@
 				CODE_SIGN_ENTITLEMENTS = SiriIntent/SiriIntent.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1820,6 +1821,7 @@
 				);
 				INFOPLIST_FILE = SiriIntent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.SiriIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1836,7 +1838,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1845,6 +1847,7 @@
 				);
 				INFOPLIST_FILE = SiriIntentUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.SiriIntentUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1861,11 +1864,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				INFOPLIST_FILE = SiriIntentUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.SiriIntentUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1882,7 +1886,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chronic WatchKit Extension/Bundle Files/Chronic WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				ENABLE_BITCODE = YES;
@@ -1908,6 +1912,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Chronic WatchKit Extension/Bundle Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1931,7 +1936,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				ENABLE_BITCODE = YES;
@@ -1956,6 +1961,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Chronic WatchKit Extension/Bundle Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1978,7 +1984,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				ENABLE_BITCODE = YES;
@@ -1987,6 +1993,7 @@
 				IBSC_MODULE = Chronic_WatchKit_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/Chronic WatchKit/Bundle Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2006,7 +2013,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				ENABLE_BITCODE = YES;
@@ -2014,6 +2021,7 @@
 				IBSC_MODULE = Chronic_WatchKit_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/Chronic WatchKit/Bundle Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = AG.Chronic.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2142,7 +2150,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chronic/Bundle Files/Chronic.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2167,6 +2175,7 @@
 					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Greystripe/SDK/SDKExtras",
 					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Greystripe/SDK",
 				);
+				MARKETING_VERSION = 3.1.12;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "AG.$(PRODUCT_NAME:rfc1034identifier)";
@@ -2193,7 +2202,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chronic/Bundle Files/Chronic.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8T3W9YR268;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2218,6 +2227,7 @@
 					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Greystripe/SDK/SDKExtras",
 					"$(PROJECT_DIR)/Libraries/Fabric/AdNetworkSupport/Greystripe/SDK",
 				);
+				MARKETING_VERSION = 3.1.12;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "AG.$(PRODUCT_NAME:rfc1034identifier)";

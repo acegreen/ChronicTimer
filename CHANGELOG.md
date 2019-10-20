@@ -224,3 +224,6 @@ specialized RoutinesTableViewController.tableView(UITableView, cellForRowAt : In
  - [x] Integrate Branch framework
  - [x] Support Parse Anonymous User
  - [x] Minor cleanup 
+ 
+ ## Version 3.1.12:
+ - [x] Fixes a crash on iOS13 related to AVAudioPlayer
