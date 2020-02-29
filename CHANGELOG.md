@@ -227,3 +227,7 @@ specialized RoutinesTableViewController.tableView(UITableView, cellForRowAt : In
  
  ## Version 3.1.12:
  - [x] Fixes a crash on iOS13 related to AVAudioPlayer
+ 
+ ## Version 3.1.13:
+ - [x] Fix crash on Apple Watch
+ - [x] Update dependencies
